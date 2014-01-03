@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="papers.xsl"?>
+<papers>
+ 
+  <pubtype>
+
+    <value>Published Papers</value>
+
+    <paper id="aldrich-2013b"
+      link="PDF/aldrich-2013b.pdf">
+      <title>GPU Computing in Economics</title>
+      <journal>Handbook of Computational Economics</journal>
+      <year>2013</year>
+      <volume>Vol. 4</volume>
+    </paper>
+
+    <paper id="aldrich-gallant-2011"
+      link="http://ideas.repec.org/a/oup/jfinec/v9y2011i4p589-618.html">
+      <title>Habit, Long Run Risks, Prospect? A Statistical Inquiry</title>
+      <coauthor colink="http://people.duke.edu/~arg/">
+	<name>A. Ronald Gallant</name>
+	<last>yes</last>
+      </coauthor>
+      <journal>Journal of Financial Econometrics</journal>
+      <year>2011</year>
+      <volume>Vol. 9, No. 4</volume>
+      <pages>589-618</pages>
+    </paper>
+
+    <paper id="aldrich-etal-2011"
+      link="http://ideas.repec.org/a/eee/dyncon/v35y2011i3p386-393.html">
+      <title>Tapping the Supercomputer Under Your Desk: Solving
+      Dynamic Equilibrium Models with Graphics Processors</title>
+      <coauthor colink="http://economics.sas.upenn.edu/~jesusfv/">
+	<name>Jes&#250;s Fern&#225;ndez-Villaverde</name>
+	<last>no</last>
+      </coauthor>
+      <coauthor colink="http://people.duke.edu/~arg/">
+	<name>A. Ronald Gallant</name>
+	<last>no</last>
+      </coauthor>
+      <coauthor colink="http://econ.duke.edu/people/rubio-ramirez">
+	<name>Juan F. Rubio-Ram&#237;rez</name>
+	<last>yes</last>
+      </coauthor>
+      <journal>Journal of Economic Dynamics and Control</journal>
+      <year>2011</year>
+      <volume>35</volume>
+      <pages>386-393</pages>
+      <companion>http://www.ealdrich.com/Research/GPUVFI/</companion>
+    </paper>
+
+    <paper id="gneiting-etal-2006"
+      link="http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1515764">
+      <title>Calibrated Probabilistic Forecasting at the Stateline
+      Wind Energy Center: The Regime-Switching Space-Time
+      Method</title>
+      <coauthor colink="http://www.stat.washington.edu/tilmann/">
+	<name>T. Gneiting</name>
+	<last>no</last>
+      </coauthor>
+      <coauthor>
+	<name>K. Larson</name>
+	<last>no</last>
+      </coauthor>
+      <coauthor>
+	<name>K. Westrick</name>
+	<last>no</last>
+      </coauthor>
+      <coauthor>
+	<name>M. G. Genton</name>
+	<last>yes</last>
+      </coauthor>
+      <journal>Journal of the American Statistical Association</journal>
+      <year>2006</year>
+      <volume>Vol. 101</volume>
+      <pages>968-979</pages>
+    </paper>
+
+    <paper id="aldrich-arcidiacono-vidgor-2005"
+      link="http://ideas.repec.org/a/bpj/bejeap/vtopics.5y2005i1n4.html">
+      <title>Do People Value Racial Diversity? Evidence from the
+      Nielsen Ratings</title>
+      <coauthor colink="http://public.econ.duke.edu/~psarcidi/">
+	<name>Peter Arcidiacono</name>
+	<last>no</last>
+      </coauthor>
+      <coauthor colink="http://fds.duke.edu/db/Sanford/jacob.vigdor">
+	<name>Jacob L. Vigor</name>
+	<last>yes</last>
+      </coauthor>
+      <journal>Topics in Economic Analysis and Policy</journal>
+      <year>2005</year>
+      <volume>Vol. 5, Article 4</volume>
+    </paper>
+
+  </pubtype>
+
+  <pubtype>
+
+    <value>Working Papers</value>
+
+    <paper id="aldrich-2011"
+      link="http://ideas.repec.org/p/red/sed012/36.html">
+      <title>Trading Volume in General Equilibrium with Complete Markets</title>
+      <year>November, 2011</year>
+    </paper>
+
+    <paper id="aldrich-kung-2011"
+      link="http://ideas.repec.org/p/duk/dukeec/10-90.html">
+      <title>Computational Methods for Production-Based Asset Pricing
+      Models with Recursive Utility</title>
+      <coauthor colink="http://www.sauder.ubc.ca/Faculty/People/Faculty_Members/Kung_Howard">
+	<name>Howard Kung</name>
+	<last>yes</last>
+      </coauthor>
+      <year>November, 2011</year>
+    </paper>
+
+    <paper id="aldrich-2005"
+      link="http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1515745">
+      <title>Alternative Estimators of Wavelet Variance</title>
+      <other>Master's Thesis, Department of Statistics, University of
+      Washington</other>
+      <year>2005</year>
+    </paper>
+
+    <paper id="handcock-aldrich-2002"
+      link="http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1515775">
+      <title>Applying Relative Distribution Methods in R</title>
+      <coauthor colink="http://www.stat.ucla.edu/~handcock/">
+	<name>Mark S. Handcock</name>
+	<last>yes</last>
+      </coauthor>
+      <other>Working Paper no. 27, Center for Statistics and the
+      Social Sciences, University of Washington</other>
+      <year>2002</year>
+    </paper>
+
+  </pubtype>
+
+</papers>

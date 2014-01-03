@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="/~ealdrich/Workshop/schedule.xsl"?>
+
+<schedule>
+ 
+  <presentation>
+    <date>3 Apr 2013</date>
+    <paper>
+      <title>Quantitative Easing, Portfolio Choice and International Capital Flows</title>
+      <cite>Fratzscher, Lo Duca &amp; Straub (2012)</cite>
+      <file>Papers/fratzscher-loduca-straub-2012.pdf</file>
+    </paper>
+    <presenter>Sameh Habib</presenter>
+  </presentation>
+
+  <presentation>
+    <date>10 Apr 2013</date>
+    <paper>
+      <title>The Response of Interest Rates to U.S. and U.K. Quantitative Easing</title>
+      <cite>Christensen &amp; Rudebusch (2012)</cite>
+      <file>Papers/christensen-rudebusch-2012.pdf</file>
+    </paper>
+    <presenter>Banjamin Garcia</presenter>
+  </presentation>
+
+  <presentation>
+    <date>17 Apr 2013</date>
+    <paper>
+      <title>Bond supply and excess bond returns</title>
+      <cite>Greenwood &amp; Vayanos (2012)</cite>
+      <file>Papers/greenwood-vayanos-2012.pdf</file>
+    </paper>
+    <presenter>Jae Hoon Choi</presenter>
+  </presentation>
+
+  <presentation>
+    <date>24 Apr 2013</date>
+    <paper>
+      <title>Macroeconomic Regimes</title>
+      <cite>Baele et al. (2011)</cite>
+      <file>Papers/baele-etal-2011.pdf</file>
+    </paper>
+    <presenter>Jeff Hancuff</presenter>
+  </presentation>
+
+  <presentation>
+    <date>1 May 2013</date>
+    <paper>
+      <title>Regime Switches, Agents’ Beliefs, and Post-World War II U.S. Macroeconomic Dynamics</title>
+      <cite>Bianchi (2012)</cite>
+      <file>Papers/bianchi-2012.pdf</file>
+    </paper>
+    <presenter>James Phillips</presenter>
+  </presentation>
+
+  <presentation>
+    <date>8 May 2013</date>
+    <paper>
+      <title>Competitive Search Equilibrium</title>
+      <cite>Moen (1997)</cite>
+      <file>Papers/moen-1997.pdf</file>
+    </paper>
+    <presenter>David Florian-Hoyle</presenter>
+  </presentation>
+
+  <presentation>
+    <date>15 May 2013</date>
+    <paper>
+      <title>A theory of aggregate supply and aggregate demand as functions of market tightness with prices as parameters</title>
+      <cite>Michaillat &amp; Saez (2013)</cite>
+      <file>Papers/michaillat-saez-2013.pdf</file>
+    </paper>
+    <presenter>Dalia Terleckaite</presenter>
+  </presentation>
+
+  <presentation>
+    <date>22 May 2013</date>
+    <paper>
+      <title>A theory of aggregate supply and aggregate demand as functions of market tightness with prices as parameters</title>
+      <cite>Michaillat &amp; Saez (2013)</cite>
+      <file>Papers/michaillat-saez-2013.pdf</file>
+    </paper>
+    <presenter>Wei Xu</presenter>
+  </presentation>
+
+  <presentation>
+    <date>29 May 2013</date>
+    <paper>
+      <title>Unemployment and the business cycle</title>
+      <cite> Christiano, Eichenbaum &amp; Trabandt (2013)</cite>
+      <file>Papers/christiano-eichenbaum-trabandt-2013.pdf</file>
+    </paper>
+    <presenter>Manizha Sharifova</presenter>
+  </presentation>
+
+  <presentation>
+    <date>5 Jun 2013</date>
+    <paper>
+      <title>Job Selection and Wages over the Business Cycle</title>
+      <cite>Hagedorn &amp; Manovskii (2013)</cite>
+      <file>Papers/hagedorn-manovskii-2013.pdf</file>
+    </paper>
+    <presenter>Jongchan Lee</presenter>
+  </presentation>
+
+</schedule>

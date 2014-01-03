@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="/~ealdrich/Workshop/additional.xsl"?>
+
+<list>
+ 
+  <paper>
+    <title>The Zero Bound on Interest Rates and Optimal Monetary Policy</title>
+    <cite>Eggertsson &amp; Woodford (2003)</cite>
+    <file>Papers/eggertsson-woodford-2003.pdf</file>
+  </paper>
+
+  <paper>
+    <title>Optimal and Simple Monetary Policy Rules with Zero Floor on the Nominal Interest Rate</title>
+    <cite>Nakov (2006)</cite>
+    <file>Papers/nakov-2006.pdf</file>
+  </paper>
+
+  <paper>
+    <title>Discretionary monetary policy and the zero lower bound on nominal interest rates</title>
+    <cite>Adam &amp; Billi (2007)</cite>
+    <file>Papers/adam-billi-2007.pdf</file>
+  </paper>
+
+  <paper>
+    <title>Price Level Targeting in a Small Open Economy with Financial Frictions: Welfare Analysis</title>
+    <cite>Dib et al. (2008)</cite>
+    <file>Papers/dib-etal-2008.pdf</file>
+  </paper>
+
+  <paper>
+    <title>Heeding Daedalus : Optimal Inflation and the Zero Lower Bound</title>
+    <cite>Williams (2009)</cite>
+    <file>Papers/williams-2009.pdf</file>
+  </paper>
+
+  <paper>
+    <title>Using monetary policy to stabilize economic activity</title>
+    <cite>Walsh (2009)</cite>
+    <file>Papers/walsh-2009.pdf</file>
+  </paper>
+
+  <paper>
+    <title>The Optimal Inflation Rate in New Keynesian Models: Should Central Banks Raise Their Inflation Targets in Light of the Zero Lower Bound?</title>
+    <cite>Coibion et al. (2011)</cite>
+    <file>Papers/coibion-etal-2011.pdf</file>
+  </paper>
+
+  <paper>
+    <title>What does Monetary Policy do to Long-term Interest Rates at the Zero Lower Bound?</title>
+    <cite>Wright (2012)</cite>
+    <file>Papers/wright-2012.pdf</file>
+  </paper>
+
+  <paper>
+    <title>Macroeconomic Dynamics Near the ZLB: A Tale of Two Equilibria</title>
+    <cite>Aruoba &amp; Schorfheide (2012)</cite>
+    <file>Papers/aruoba-schorfheide-2012.pdf</file>
+  </paper>
+
+  <paper>
+    <title>Imperfect credibility and the zero lower bound</title>
+    <cite>Bodenstein et al. (2012)</cite>
+    <file>Papers/bodenstein-etal-2012.pdf</file>
+  </paper>
+
+</list>

@@ -1,0 +1,45 @@
+.. slideconf::
+   :slide_classes: appear
+
+===========
+Probability
+===========
+
+
+Random Variables
+================
+Suppose :math:`X` is a random variable which can take values :math:`x
+\in \mathcal{X}`.
+
+.. rst-class:: build
+
+- :math:`X` is a discrete r.v. if :math:`\mathcal{X}` is countable.
+
+  .. rst-class:: build
+
+  - :math:`p(x)` is the probability of a value :math:`x` and is called
+    the probability mass function.
+
+.. rst-class:: build
+
+- :math:`X` is a continuous r.v. if :math:`\mathcal{X}` is
+  uncountable.
+
+  .. rst-class:: build
+
+  - :math:`f(x)` is called the probability density function and can be
+    thought of as the probability of a value :math:`x`.
+
+
+Probability Mass Function
+=========================
+For a discrete random variable the *probability mass function* (PMF)
+is
+
+.. math::
+
+   p(a) = P(X = a),
+
+where :math:`a \in \mathbb{R}`.
+
+.. header:: ""

@@ -1,0 +1,138 @@
+body {
+      background-color: #f8f6dd;
+      text-align: center;
+      margin: 0px 0px 50px 0px;
+      font-family: Georgia;
+      font-size: 14px;
+      color: #666666;
+}
+
+div.mainMenu {
+      height: 100px;
+      background-color: #222222;
+}
+
+div.subMenu {
+      height: 50px;
+      background-color: #222222;
+      padding-top: 0px;
+      line-height: 0px;
+}
+
+div.name {
+      font-family: 'News Cycle';
+      font-weight: 300;
+      font-size: 25px;
+      line-height: 2em;
+      letter-spacing: 4px;
+      color: #0099ff;
+      opacity: 0.95;
+}
+
+div.outerMain {
+      width: 500px;
+      margin: 0px auto;
+      margin-top: 40px;
+      text-align: left;
+      line-height: 25px;
+}
+
+div.outer {
+      width: 900px;
+      margin: 0px auto;
+      margin-top: 40px;
+      text-align: left;
+      line-height: 25px;
+}
+
+div.banner {
+      height: 174px;
+      min-width: 1436px;
+      background: url('Images/IMG_0187.JPG') no-repeat center;
+      background-size: 100%;
+}
+
+span.mainMenu {
+      font-family: 'Varela';
+      font-weight: 50;
+      font-size: 12px;
+      line-height: 4em;
+      letter-spacing: 2px;
+      color: #666666;
+      width: 50px;
+      margin: 10px 10px 10px 10px;
+      link: #666666;
+      visited: #666666;
+}
+
+a.mainMenu {
+      color: #666666;
+      visited: #666666;
+}
+
+a.body {
+      color: #009900;
+      visited: #009900;
+}
+
+a.active { 
+      color: #cccccc;
+}
+
+a:hover {
+      color: #cccccc;
+}
+
+a:link {
+      text-decoration: none;
+}
+
+a:visited {
+      text-decoration: none;
+}
+
+#section {
+      font-family: 'Droid Serif';
+      font-size: 22px;
+      color: #ae0f0f;
+      margin-top: 20px;
+      margin-bottom: 10px;
+}
+
+#subSection {
+      font-family: 'Droid Serif';
+      font-size: 18px;
+      color: #333333;
+      margin-top: 25px;
+      margin-bottom: 7px;
+}
+
+#lecUnit {
+      font-family: 'Droid Serif';
+      font-size: 16px;
+      color: #333333;
+      margin-top: 10px;
+      margin-left: 40px;
+}
+
+#lecSection {
+      font-family: 'Droid Serif';
+      font-size: 14px;
+      color: #333333;
+      margin-top: 10px;
+      margin-left: 80px;
+}
+
+#pageTitle {
+      font-family: 'Droid Serif';
+      font-size: 25px;
+      color: #ae0f0f;
+      margin-top: 25px;
+      margin-bottom: 7px;      
+}
+
+span.scheduleTitle {
+      font-family: 'Droid Serif';
+      font-size: 18px;
+      color: #333333;
+}

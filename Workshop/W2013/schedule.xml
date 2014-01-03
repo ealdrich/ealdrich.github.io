@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="/~ealdrich/Workshop/schedule.xsl"?>
+
+<schedule>
+ 
+  <presentation>
+    <date>9 Jan 2013</date>
+    <paper>
+      <title>Organizational Meeting</title>
+      <file>None</file>
+    </paper>
+    <presenter>None</presenter>
+  </presentation>
+
+  <presentation>
+    <date>16 Jan 2013</date>
+    <paper>
+      <title>Job Market Candidate</title>
+      <file>None</file>
+    </paper>
+    <presenter>None</presenter>
+  </presentation>
+
+  <presentation>
+    <date>23 Jan 2013</date>
+    <paper>
+      <title>Job Market Candidate</title>
+      <file>None</file>
+    </paper>
+    <presenter>None</presenter>
+  </presentation>
+
+  <presentation>
+    <date>30 Jan 2013</date>
+    <paper>
+      <title>Escaping from a Liquidity Trap and Deflation: The Foolproof Way and Others</title>
+      <cite>Svensson (2003)</cite>
+      <file>Papers/svensson-2003.pdf</file>
+    </paper>
+    <presenter>Eric Fischer</presenter>
+  </presentation>
+
+  <presentation>
+    <date>6 Feb 2013</date>
+    <paper>
+      <title>When Is the Government Spending Multiplier Large?</title>
+      <cite>Christiano et al. (2011)</cite>
+      <file>Papers/christiano-etal-2011.pdf</file>
+    </paper>
+    <presenter>David Florian-Hoyle</presenter>
+  </presentation>
+
+  <presentation>
+    <date>13 Feb 2013</date>
+    <paper>
+      <title>Continuation of Previous Presentation</title>
+      <file>None</file>
+    </paper>
+    <presenter>David Florian-Hoyle</presenter>
+  </presentation>
+
+  <presentation>
+    <date>20 Feb 2013</date>
+    <paper>
+      <title>The Making Of A Great Contraction With A Liquidity Trap and A Jobless Recovery</title>
+      <cite>Schmitt-Grohe &amp; Uribe (2012)</cite>
+      <file>Papers/schmittgrohe-uribe-2012.pdf</file>
+    </paper>
+    <presenter>Gabe Axarlian</presenter>
+  </presentation>
+
+  <presentation>
+    <date>27 Feb 2013</date>
+    <paper>
+      <title>Job Market Candidate</title>
+      <file>None</file>
+    </paper>
+    <presenter>None</presenter>
+  </presentation>
+
+  <presentation>
+    <date>13 Mar 2013</date>
+    <paper>
+      <title>International Capital Flows and Credit Market Imperfections</title>
+      <cite>Martin &amp; Taddei (2013)</cite>
+      <file>Papers/martin-taddei-2013.pdf</file>
+    </paper>
+    <presenter>Arsenios Skaperdas</presenter>
+  </presentation>
+
+</schedule>

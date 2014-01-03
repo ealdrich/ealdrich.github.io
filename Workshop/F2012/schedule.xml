@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="schedule.xsl"?>
+
+<schedule>
+ 
+  <presentation>
+    <date>1 Oct 2011</date>
+    <paper>
+      <title>Housing market frictions and endogenous commuting behavior</title>
+      <file>None</file>
+    </paper>
+    <presenter>Chris Limnios</presenter>
+    <discussant>None</discussant>
+  </presentation>
+
+  <presentation>
+    <date>8 Oct 2012</date>
+    <paper>
+      <title>Financing Labor</title>
+      <cite>Benmelech et al. (2011)</cite>
+      <file>Papers/benmelech-etal-2011.pdf</file>
+    </paper>
+    <presenter>Evan Smith</presenter>
+    <discussant>Benjamin Garcia</discussant>
+  </presentation>
+
+  <presentation>
+    <date>15 Oct 2012</date>
+    <paper>
+      <title>Testing for Keynesian Labor Demand</title>
+      <cite>Bils et al. (2012)</cite>
+      <file>Papers/bils-etal-2012.pdf</file>
+    </paper>
+    <presenter>Jeff Hancuff</presenter>
+    <discussant>Arsenios Skerpdas</discussant>
+  </presentation>
+
+  <presentation>
+    <date>22 Oct 2012</date>
+    <paper>
+      <title>Financial Intermediation, Exchange Rates, and Unconventional Policy in an Open Economy</title>
+      <cite>Cespedes et al. (2012)</cite>
+      <file>Papers/cespedes-chang-velasco-2012.pdf</file>
+    </paper>
+    <presenter>Juan Catalan</presenter>
+    <discussant>Gabe Axarlian</discussant>
+  </presentation>
+
+  <presentation>
+    <date>29 Oct 2012</date>
+    <paper>
+      <title>Cancelled</title>
+      <file>None</file>
+    </paper>
+    <presenter>None</presenter>
+    <discussant>None</discussant>
+  </presentation>
+
+  <presentation>
+    <date>5 Nov 2012</date>
+    <paper>
+      <title>Political Pressures on Monetary Policy during the US Great Inflation</title>
+      <cite>Weise (2012)</cite>
+      <file>Papers/weise-2012.pdf</file>
+    </paper>
+    <presenter>Michael Enriquez</presenter>
+    <discussant>Sameh Habib</discussant>
+  </presentation>
+
+  <presentation>
+    <date>12 Nov 2012</date>
+    <paper>
+      <title>Holiday - No Meeting</title>
+      <file>None</file>
+    </paper>
+    <presenter>None</presenter>
+    <discussant>None</discussant>
+  </presentation>
+
+  <presentation>
+    <date>19 Nov 2012</date>
+    <paper>
+      <title>Endogenous business cycle propogation and the persistence problem</title>
+      <cite>Ambler et al. (2012)</cite>
+      <file>Papers/ambler-etal-2012.pdf</file>
+    </paper>
+    <presenter>Linh Bun</presenter>
+    <discussant>Eric Fischer</discussant>
+  </presentation>
+
+  <presentation>
+    <date>26 Nov 2012</date>
+    <paper>
+      <title>Labor and Financial Frictions and Aggregate Fluctuations</title>
+      <cite>Mumtax &amp; Zanetti (2011)</cite>
+      <file>Papers/mumtaz-zanetti-2011.pdf</file>
+    </paper>
+    <presenter>Maggie apRoberts</presenter>
+    <discussant>Jae Hoon Choi</discussant>
+  </presentation>
+
+  <presentation>
+    <date>3 Dec 2012</date>
+    <paper>
+      <title>An Equilibrium Asset Pricing Model with Labor and Market Search</title>
+      <cite>Kuehn et al. (2012)</cite>
+      <file>Papers/kuehn-etal-2012.pdf</file>
+    </paper>
+    <presenter>David Florian-Hoyle</presenter>
+    <discussant>Christina Miller</discussant>
+  </presentation>
+
+</schedule>
