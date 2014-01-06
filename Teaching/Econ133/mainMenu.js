@@ -1,6 +1,6 @@
 document.write('<div class="mainMenu">')
     document.write('<div style="padding-top: 15px; text-align: right; padding-right: 10px;">')
-    document.write('<span class="mainMenuTitle"><a class="mainMenuTitle" href="'+rootFolder'">ECON 133</a></span>')
+    document.write('<span class="mainMenuTitle"><a class="mainMenuTitle" href="'+rootFolder+'">ECON 133</a></span>')
     document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Syllabus/">Syllabus</a></span>')
     document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Slides/">Lecture Notes</a></span>')
     document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'">Assignments</a></span>')
