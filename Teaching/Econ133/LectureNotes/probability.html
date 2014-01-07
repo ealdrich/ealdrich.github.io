@@ -1,0 +1,528 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Probability &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="prev" title="Econ 133" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Econ 133"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Econ 133 - Security Markets and Financial Institutions</a> &raquo;</li>
+  <li><a href="Econ133.pdf">Download PDF Version</a> &raquo;</li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="probability">
+<h1>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="random-variables">
+<h2>Random Variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(X\)</span> is a random variable which can take values <span class="math">\(x
+\in \mathcal{X}\)</span>.</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li><span class="math">\(X\)</span> is a discrete r.v. if <span class="math">\(\mathcal{X}\)</span> is countable.<ul class="to-build">
+<li><span class="math">\(p(x)\)</span> is the probability of a value <span class="math">\(x\)</span> and is
+called the probability mass function.</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(X\)</span> is a continuous r.v. if <span class="math">\(\mathcal{X}\)</span> is
+uncountable.<ul class="to-build">
+<li><span class="math">\(f(x)\)</span> is called the probability density function and can
+be thought of as the probability of a value <span class="math">\(x\)</span>.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="probability-mass-function">
+<h2>Probability Mass Function<a class="headerlink" href="#probability-mass-function" title="Permalink to this headline">¶</a></h2>
+<p>For a discrete random variable the <em>probability mass function</em> (PMF)
+is</p>
+<div class="math">
+\[p(a) = P(X = a),\]</div>
+<p>where <span class="math">\(a \in \mathbb{R}\)</span>.</p>
+</div>
+<div class="section" id="probability-density-function">
+<h2>Probability Density Function<a class="headerlink" href="#probability-density-function" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math">\(B = (a,b)\)</span></p>
+<div class="math">
+\[P(X \in B) = P(a \leq X \leq b) = \int_a^b f(x) dx.\]</div>
+<p class="to-build">Strictly speaking</p>
+<div class="to-build math">
+\[P(X = a) = \int_a^a f(x) dx = 0,\]</div>
+<p class="to-build">but we may (intuitively) think of <span class="math">\(f(a) = P(X=a)\)</span>.</p>
+</div>
+<div class="section" id="properties-of-distributions">
+<h2>Properties of Distributions<a class="headerlink" href="#properties-of-distributions" title="Permalink to this headline">¶</a></h2>
+<p>For discrete random variables</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li><span class="math">\(p(x) \geq 0\)</span>, <span class="math">\(\forall x \in \mathcal{X}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\sum_{x\in \mathcal{X}} p(x) = 1\)</span>.</li>
+</ul>
+</div></blockquote>
+<p class="to-build">For continuous random variables</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li><span class="math">\(f(x) \geq 0\)</span>, <span class="math">\(\forall x \in \mathcal{X}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\int_{x\in \mathcal{X}} f(x)dx = 1\)</span>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="cumulative-distribution-function">
+<h2>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Permalink to this headline">¶</a></h2>
+<p>For discrete random variables the cumulative distribution function
+(CDF) is</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li><span class="math">\(F(a) = P(X \leq a) = \sum_{x \leq a} p(x).\)</span></li>
+</ul>
+</div></blockquote>
+<p class="to-build">For continuous random variables the CDF is</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li><span class="math">\(F(a) = P(X \leq a) = \int_{-\infty}^a f(x) dx.\)</span></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="expected-value">
+<h2>Expected Value<a class="headerlink" href="#expected-value" title="Permalink to this headline">¶</a></h2>
+<p>For a discrete r.v. <span class="math">\(X\)</span>, the expected value is</p>
+<div class="to-build math">
+\[E[X] = \sum_{x\in \mathcal{X}} x p(x).\]</div>
+<p class="to-build">For a continuous r.v. <span class="math">\(X\)</span>, the expected value is</p>
+<div class="to-build math">
+\[E[X] = \int_{x\in \mathcal{X}} x \, f(x) dx.\]</div>
+</div>
+<div class="section" id="id1">
+<h2>Expected Value<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math">\(Y = g(X)\)</span>, then</p>
+<ul class="to-build simple">
+<li>For discrete r.v. <span class="math">\(X\)</span></li>
+</ul>
+<div class="to-build math">
+\[E[Y] = E[g(X)] = \sum_{x \in \mathcal{X}} g(x)p(x).\]</div>
+<ul class="to-build to-build simple">
+<li>For continuous r.v. <span class="math">\(X\)</span></li>
+</ul>
+<div class="to-build math">
+\[E[Y] = E[g(X)] = \int_{x \in \mathcal{X}} g(x)f(x)dx.\]</div>
+</div>
+<div class="section" id="properties-of-expectation">
+<h2>Properties of Expectation<a class="headerlink" href="#properties-of-expectation" title="Permalink to this headline">¶</a></h2>
+<p>For random variables <span class="math">\(X\)</span> and <span class="math">\(Y\)</span> and constants <span class="math">\(a,b
+\in \mathbb{R}\)</span>, the expected value has the following properties (for
+both discrete and continuous r.v.&#8217;s):</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li><span class="math">\(E[aX + b] = aE[X] + b.\)</span></li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(E[X + Y] = E[X] + E[Y].\)</span></li>
+</ul>
+</div></blockquote>
+<p class="to-build">Realizations of <span class="math">\(X\)</span>, denoted by <span class="math">\(x\)</span>, may be larger or
+smaller than <span class="math">\(E[X]\)</span>.</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li>If you observed many realizations of <span class="math">\(X\)</span>, <span class="math">\(E[X]\)</span> is
+roughly an average of the values you would observe.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="properties-of-expectation-proof">
+<h2>Properties of Expectation - Proof<a class="headerlink" href="#properties-of-expectation-proof" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[\begin{split}E[aX + b] &amp; = \int_{-\infty}^{\infty} (ax+b)f(x) dx \\
+&amp; = \int_{-\infty}^{\infty} a x f(x) dx +
+\int_{-\infty}^{\infty} b f(x) dx \\
+&amp; = a \int_{-\infty}^{\infty} x f(x) dx + b
+\int_{-\infty}^{\infty} f(x) dx \\
+&amp; = a\,E[X] + b.\end{split}\]</div>
+</div>
+<div class="section" id="variance">
+<h2>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">¶</a></h2>
+<p>Generally speaking, variance is defined as</p>
+<div class="math">
+\[Var(X) = E\left[(X - E[X])^2\right].\]</div>
+<p class="to-build">If <span class="math">\(X\)</span> is discrete:</p>
+<div class="to-build math">
+\[Var(X) = \sum_{x\in \mathcal{X}} (x - E[X])^2 p(x).\]</div>
+<p class="to-build">If <span class="math">\(X\)</span> is continuous:</p>
+<div class="to-build math">
+\[\begin{split}Var(X) &amp; = \int_{x\in \mathcal{X}} (x - E[X])^2 f(x) dx\end{split}\]</div>
+</div>
+<div class="section" id="id2">
+<h2>Variance<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Using the properties of expectations, we can show <span class="math">\(Var(X) =
+E[X^2] - E[X]^2\)</span>:</p>
+<div class="to-build math">
+\[\begin{split}Var(X) &amp; = E\left[(X - E[X])^2\right] \\
+&amp; = E\left[X^2 - 2XE[X] + E[X]^2\right] \\
+&amp; = E[X^2] - 2E[X]E[X] + E[X]^2 \\
+&amp; = E[X^2] - E[X]^2.\end{split}\]</div>
+</div>
+<div class="section" id="standard-deviation">
+<h2>Standard Deviation<a class="headerlink" href="#standard-deviation" title="Permalink to this headline">¶</a></h2>
+<p>The standard deviation is simply</p>
+<div class="math">
+\[Std(X) = \sqrt{Var(X)}.\]</div>
+<ul class="to-build to-build simple">
+<li><span class="math">\(Std(X)\)</span> is in the same units as <span class="math">\(X\)</span>.</li>
+</ul>
+<ul class="to-build to-build simple">
+<li><span class="math">\(Var(X)\)</span> is in units squared.</li>
+</ul>
+</div>
+<div class="section" id="covariance">
+<h2>Covariance<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h2>
+<p>For two random variables <span class="math">\(X\)</span> and <span class="math">\(Y\)</span>, the covariance is
+generally defined as</p>
+<div class="math">
+\[Cov(X,Y)  = E\left[(X-E[X])(Y-E[Y])\right]\]</div>
+<p class="to-build">Note that <span class="math">\(Cov(X,X) = Var(X)\)</span>.</p>
+</div>
+<div class="section" id="id3">
+<h2>Covariance<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Using the properties of expectations, we can show</p>
+<div class="math">
+\[Cov(X,Y) = E[XY] - E[X]E[Y].\]</div>
+<p class="to-build">This can be proven in the exact way that we proved</p>
+<div class="to-build math">
+\[Var(X) = E[X^2] - E[X]^2.\]</div>
+<p class="to-build">In fact, note that</p>
+<div class="to-build math">
+\[\begin{split}Cov(X,X) &amp; = E[XY] - E[X]E[Y] \\
+&amp; = E[X^2] - E[X]^2 = Var(X).\end{split}\]</div>
+</div>
+<div class="section" id="properties-of-variance">
+<h2>Properties of Variance<a class="headerlink" href="#properties-of-variance" title="Permalink to this headline">¶</a></h2>
+<p>Given random variables <span class="math">\(X\)</span> and <span class="math">\(Y\)</span> and constants
+<span class="math">\(a,b \in \mathbb{R}\)</span>,</p>
+<div class="to-build math">
+\[Var(aX + b) = a^2Var(X).\]</div>
+<div class="to-build math">
+\[\begin{split}Var(aX+bY) &amp; = a^2Var(X) + b^2Var(Y) \\
+&amp; \hspace{3in} + 2abCov(X,Y).\end{split}\]</div>
+<p class="to-build">The latter property can be generalized to</p>
+<div class="to-build math">
+\[\begin{split}Var\left(\sum_{i=1}^n a_i X_i \right) &amp; =
+\sum_{i=1}^n a_i^2Var(X_i) \\
+&amp; \hspace{1in} + 2 \sum_{i=1}^{n-1} \sum_{j=i+1}^n
+a_i a_j Cov(X_i, X_j).\end{split}\]</div>
+</div>
+<div class="section" id="properties-of-variance-proof">
+<h2>Properties of Variance - Proof<a class="headerlink" href="#properties-of-variance-proof" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[\begin{split}Var&amp;(aX+bY) = E\left[(aX+bY)^2\right] - E\left[aX+bY\right]^2 \\
+&amp; = E[a^2X^2 + b^2Y^2 + 2abXY] -
+\left(aE[X]+bE[Y]\right)^2 \\
+&amp; = a^2 E[X^2] + b^2 E[Y^2] + 2abE[XY] \\
+&amp; \hspace{1in} - a^2E[X]^2 - b^2E[Y]^2 -2abE[X]E[Y] \\
+&amp; = a^2 \left(E[X^2] - E[X]^2\right) + b^2
+\left(E[Y^2] - E[Y]^2\right) \\
+&amp; \hspace{1.5in} + 2ab \left(E[XY] - E[X]E[Y]\right) \\
+&amp; = a^2Var(X) + b^2Var(Y) + 2abCov(X,Y).\end{split}\]</div>
+</div>
+<div class="section" id="properties-of-covariance">
+<h2>Properties of Covariance<a class="headerlink" href="#properties-of-covariance" title="Permalink to this headline">¶</a></h2>
+<p>Given random variables <span class="math">\(W\)</span>, <span class="math">\(X\)</span>, <span class="math">\(Y\)</span> and <span class="math">\(Z\)</span>
+and constants <span class="math">\(a,b \in \mathbb{R}\)</span>,</p>
+<div class="to-build math">
+\[Cov(X,a) = 0.\]</div>
+<div class="to-build math">
+\[Cov(aX,bY) = abCov(X,Y).\]</div>
+<div class="to-build math">
+\[\begin{split}Cov(W+X,Y+Z) &amp; = Cov(W,Y) + Cov(W,Z) \\
+&amp; \hspace{1.3in}+ Cov(X,Y) + Cov(X,Z).\end{split}\]</div>
+<p class="to-build">The latter two can be generalized to</p>
+<div class="to-build math">
+\[\begin{split}Cov\left(\sum_{i=1}^n a_i X_i, \sum_{j=1}^m b_j Y_j\right) &amp; =
+\sum_{i=1}^n \sum_{j=1}^m a_i b_j Cov(X_i, Y_j).\end{split}\]</div>
+</div>
+<div class="section" id="correlation">
+<h2>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h2>
+<p>Correlation is defined as</p>
+<div class="math">
+\[Corr(X,Y) = \frac{Cov(X,Y)}{Std(X) Std(Y)}.\]</div>
+<ul class="to-build simple">
+<li>It is fairly easy to show that <span class="math">\(-1 \leq Corr(X,Y) \leq 1\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The properties of correlations of sums of random variables follow
+from those of covariance and standard deviations above.</li>
+</ul>
+</div>
+<div class="section" id="normal-distribution">
+<h2>Normal Distribution<a class="headerlink" href="#normal-distribution" title="Permalink to this headline">¶</a></h2>
+<p>The normal distribution is often used to approximate the probability
+distribution of returns.</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li>It is a continuous distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>It is symmetric.</li>
+</ul>
+<ul class="to-build simple">
+<li>It is fully characterized by <span class="math">\(\mu\)</span> (mean) and <span class="math">\(\sigma\)</span>
+(standard deviation) &#8211; i.e. if you only tell me <span class="math">\(\mu\)</span> and
+<span class="math">\(\sigma\)</span>, I can draw every point in the distribution.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="normal-density">
+<h2>Normal Density<a class="headerlink" href="#normal-density" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math">\(X\)</span> is normally distributed with mean <span class="math">\(\mu\)</span> and
+standard deviation <span class="math">\(\sigma\)</span>, we write</p>
+<div class="math">
+\[X \sim \mathcal{N}(\mu, \sigma).\]</div>
+<p class="to-build">The probability density function is</p>
+<div class="to-build math">
+\[f(x) = \frac{1}{\sqrt{2\pi} \sigma}
+\exp\left\{\frac{1}{2\sigma^2}(x - \mu)^2\right\}.\]</div>
+</div>
+<div class="section" id="id4">
+<h2>Normal Distribution<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>From <a class="reference external" href="http://en.wikipedia.org/wiki/Normal_distribution">Wikipedia</a>:</p>
+<a class="reference internal image-reference" href="_images/Normal_Distribution_PDF.png"><img alt="_images/Normal_Distribution_PDF.png" src="_images/Normal_Distribution_PDF.png" style="width: 6in;" /></a>
+</div>
+<div class="section" id="standard-normal-distribution">
+<h2>Standard Normal Distribution<a class="headerlink" href="#standard-normal-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(X \sim \mathcal{N}(\mu, \sigma)\)</span>.</p>
+<p class="to-build">Then</p>
+<div class="to-build math">
+\[Z = \frac{X - \mu}{\sigma}\]</div>
+<p class="to-build">is a standard normal random variable: <span class="math">\(Z \sim
+\mathcal{N}(0,1)\)</span>.</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li>That is, <span class="math">\(Z\)</span> has zero mean and unit standard deviation.</li>
+</ul>
+</div></blockquote>
+<p class="to-build">We can reverse the process by defining</p>
+<div class="to-build math">
+\[X = \mu + \sigma Z.\]</div>
+</div>
+<div class="section" id="standard-normal-distribution-proof">
+<h2>Standard Normal Distribution - Proof<a class="headerlink" href="#standard-normal-distribution-proof" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[\begin{split}E[Z] &amp; = E\left[\frac{X - \mu}{\sigma}\right] \\
+&amp; = \frac{1}{\sigma} E[X - \mu] \\
+&amp; = \frac{1}{\sigma} (E[X] - \mu) \\
+&amp; = \frac{1}{\sigma} (\mu - \mu) \\
+&amp; = 0.\end{split}\]</div>
+</div>
+<div class="section" id="id5">
+<h2>Standard Normal Distribution - Proof<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[\begin{split}Var(Z) &amp; = Var\left(\frac{X - \mu}{\sigma}\right) \\
+&amp; = Var\left(\frac{X}{\sigma} - \frac{\mu}{\sigma}\right) \\
+&amp; = \frac{1}{\sigma^2} Var(X) \\
+&amp; = \frac{\sigma^2}{\sigma^2} \\
+&amp; = 1.\end{split}\]</div>
+</div>
+<div class="section" id="sum-of-normals">
+<h2>Sum of Normals<a class="headerlink" href="#sum-of-normals" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(X_i \sim \mathcal{N}(\mu_i, \sigma_i)\)</span> for <span class="math">\(i =
+1,\ldots,n\)</span>.</p>
+<p class="to-build">Then if we denote <span class="math">\(W = \sum_{i=1}^n X_i\)</span></p>
+<div class="to-build math">
+\[W \sim \mathcal{N}\left(\sum_{i=1}^n \mu_i, \sqrt{\sum_{i=1}^n
+  \sigma_i^2 + 2\sum_{i=1}^j \sum_{j=1}^n Cov(X_i, X_j)}\right).\]</div>
+<p class="to-build">How does this simplify if <span class="math">\(Cov(X_i, X_j) = 0\)</span> for <span class="math">\(i \neq
+j\)</span>?</p>
+</div>
+<div class="section" id="sample-mean">
+<h2>Sample Mean<a class="headerlink" href="#sample-mean" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we don&#8217;t know the true probabilities of a distribution, but
+would like to estimate the mean.</p>
+<ul class="to-build simple">
+<li>Given a sample of observations, <span class="math">\(\{x_i\}_{i=1}^n\)</span>, of random
+variable <span class="math">\(X\)</span>, we can estimate the mean by</li>
+</ul>
+<div class="to-build math">
+\[\hat{\mu} = \frac{1}{n} \sum_{i=1}^n x_i.\]</div>
+<ul class="to-build simple">
+<li>This is just a simple arithmetic average, or a probability
+weighted average with equal probabilities: <span class="math">\(\frac{1}{n}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>But the true mean is a weighted average using actual (most likely,
+unequal) probabilities. How do we reconcile this?</li>
+</ul>
+</div>
+<div class="section" id="sample-mean-cont">
+<h2>Sample Mean (Cont.)<a class="headerlink" href="#sample-mean-cont" title="Permalink to this headline">¶</a></h2>
+<p>Given that the sample <span class="math">\(\{x_i\}_{i=1}^n\)</span> was drawn from the
+distribution of <span class="math">\(X\)</span>, the observed values are inherently weighted by
+the true probabilities (for large samples).</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li>More values in the sample will be drawn from the higher probability
+regions of the distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>So weighting all of the values equally will naturally give more
+weight to the higher probability outcomes.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="sample-variance">
+<h2>Sample Variance<a class="headerlink" href="#sample-variance" title="Permalink to this headline">¶</a></h2>
+<p>Similarly, the sample variance can be defined as</p>
+<div class="math">
+\[\begin{split}\hat{\sigma}^2 &amp; = \frac{1}{n-1} \sum_{i=1}^n (x_i - \hat{\mu})^2.\end{split}\]</div>
+<p class="to-build">Notice that we use <span class="math">\(\frac{1}{n-1}\)</span> instead of
+<span class="math">\(\frac{1}{n}\)</span> for the sample average.</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li>This is because a simple average using <span class="math">\(\frac{1}{n}\)</span>
+underestimates the variability of the data because it doesn&#8217;t
+account for extra error involved in estimating <span class="math">\(\hat{\mu}\)</span>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="other-sample-moments">
+<h2>Other Sample Moments<a class="headerlink" href="#other-sample-moments" title="Permalink to this headline">¶</a></h2>
+<p>Sample standard deviations, covariances and correlations are
+computed in a similar fashion.</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li>Use the definitions above, replacing expectations with simple
+averages.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Probability</a><ul>
+<li><a class="reference internal" href="#random-variables">Random Variables</a></li>
+<li><a class="reference internal" href="#probability-mass-function">Probability Mass Function</a></li>
+<li><a class="reference internal" href="#probability-density-function">Probability Density Function</a></li>
+<li><a class="reference internal" href="#properties-of-distributions">Properties of Distributions</a></li>
+<li><a class="reference internal" href="#cumulative-distribution-function">Cumulative Distribution Function</a></li>
+<li><a class="reference internal" href="#expected-value">Expected Value</a></li>
+<li><a class="reference internal" href="#id1">Expected Value</a></li>
+<li><a class="reference internal" href="#properties-of-expectation">Properties of Expectation</a></li>
+<li><a class="reference internal" href="#properties-of-expectation-proof">Properties of Expectation - Proof</a></li>
+<li><a class="reference internal" href="#variance">Variance</a></li>
+<li><a class="reference internal" href="#id2">Variance</a></li>
+<li><a class="reference internal" href="#standard-deviation">Standard Deviation</a></li>
+<li><a class="reference internal" href="#covariance">Covariance</a></li>
+<li><a class="reference internal" href="#id3">Covariance</a></li>
+<li><a class="reference internal" href="#properties-of-variance">Properties of Variance</a></li>
+<li><a class="reference internal" href="#properties-of-variance-proof">Properties of Variance - Proof</a></li>
+<li><a class="reference internal" href="#properties-of-covariance">Properties of Covariance</a></li>
+<li><a class="reference internal" href="#correlation">Correlation</a></li>
+<li><a class="reference internal" href="#normal-distribution">Normal Distribution</a></li>
+<li><a class="reference internal" href="#normal-density">Normal Density</a></li>
+<li><a class="reference internal" href="#id4">Normal Distribution</a></li>
+<li><a class="reference internal" href="#standard-normal-distribution">Standard Normal Distribution</a></li>
+<li><a class="reference internal" href="#standard-normal-distribution-proof">Standard Normal Distribution - Proof</a></li>
+<li><a class="reference internal" href="#id5">Standard Normal Distribution - Proof</a></li>
+<li><a class="reference internal" href="#sum-of-normals">Sum of Normals</a></li>
+<li><a class="reference internal" href="#sample-mean">Sample Mean</a></li>
+<li><a class="reference internal" href="#sample-mean-cont">Sample Mean (Cont.)</a></li>
+<li><a class="reference internal" href="#sample-variance">Sample Variance</a></li>
+<li><a class="reference internal" href="#other-sample-moments">Other Sample Moments</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Econ 133</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/probability.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Econ 133"
+             >previous</a> |</li>
+        <li><a href="index.html">Econ 133 - Security Markets and Financial Institutions</a> &raquo;</li>
+  <li><a href="Econ133.pdf">Download PDF Version</a> &raquo;</li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Eric M. Aldrich.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>
