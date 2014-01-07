@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sphinx Bootstrap Theme &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="../../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="../../../../index.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="slide level-1" id="sphinx-bootstrap-theme">
+<h1>Sphinx Bootstrap Theme</h1>
+<p>This <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a class="reference external" href="http://sphinx.pocoo.org/theming.html">theme</a> integrates the Twitter <a class="reference external" href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS / JavaScript
+framework with various layout options, hierarchical menu navigation,
+and mobile-friendly responsive design. It is configurable, extensible
+and can use any number of different <a class="reference external" href="http://bootswatch.com">Bootswatch</a> CSS themes.</p>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="slide level-2" id="introduction-and-demos">
+<h2>Introduction and Demos</h2>
+<p>The theme is introduced and discussed in the following posts:</p>
+<ul class="simple">
+<li>12/09/2011 - <a class="reference external" href="http://loose-bits.com/2011/12/09/sphinx-twitter-bootstrap-theme.html">Twitter Bootstrap Theme for Sphinx</a></li>
+<li>11/19/2012 - <a class="reference external" href="http://loose-bits.com/2012/11/19/sphinx-bootstrap-theme-updates.html">Sphinx Bootstrap Theme Updates - Mobile, Dropdowns, and More</a></li>
+<li>2/12/2013 - <a class="reference external" href="http://loose-bits.com/2013/02/12/sphinx-bootstrap-theme-updates.html">Sphinx Bootstrap Theme 0.1.6 - Bootstrap and Other Updates</a></li>
+<li>4/10/2013 - <a class="reference external" href="http://loose-bits.com/2013/04/10/sphinx-bootstrap-theme-bootswatch.html">Sphinx Bootstrap Theme 0.2.0 - Now with Bootswatch!</a></li>
+<li>9/8/2013 - <a class="reference external" href="http://loose-bits.com/2013/09/08/sphinx-bootstrap-theme-bootstrap-3.html">Sphinx Bootstrap Theme 0.3.0 - Bootstrap v3 and more!</a></li>
+</ul>
+<p>Examples of the theme in use for some public projects:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme">Sphinx Bootstrap Theme</a>: This project, with the theme option
+<tt class="docutils literal"><span class="pre">'bootswatch_theme':</span> <span class="pre">&quot;flatly&quot;</span></tt> to use the &quot;<a class="reference external" href="http://bootswatch.com/flatly">Flatly</a>&quot; <a class="reference external" href="http://bootswatch.com">Bootswatch</a> theme.</li>
+<li><a class="reference external" href="http://ryan-roemer.github.com/django-cloud-browser">Django Cloud Browser</a>: A Django reusable app for browsing cloud
+datastores (e.g., Amazon Web Services S3).</li>
+</ul>
+<p>The theme demo website also includes an <a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme/examples.html">examples page</a> for some useful
+illustrations of getting Sphinx to play nicely with Bootstrap (also take a
+look at the <a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme/_sources/examples.txt">examples source</a> for the underlying reStructuredText).</p>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="slide level-2" id="installation">
+<h2>Installation</h2>
+<p>Installation from <a class="reference external" href="http://pypi.python.org/pypi/sphinx-bootstrap-theme/">PyPI</a> is fairly straightforward:</p>
+<ol class="arabic">
+<li><p class="first">Install the package:</p>
+<div class="highlight-python"><pre>$ pip install sphinx_bootstrap_theme</pre>
+</div>
+</li>
+<li><p class="first">Edit the &quot;conf.py&quot; configuration file to point to the bootstrap theme:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># At the top.</span>
+<span class="kn">import</span> <span class="nn">sphinx_bootstrap_theme</span>
+
+<span class="c"># ...</span>
+
+<span class="c"># Activate the theme.</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s">&#39;bootstrap&#39;</span>
+<span class="n">html_theme_path</span> <span class="o">=</span> <span class="n">sphinx_bootstrap_theme</span><span class="o">.</span><span class="n">get_html_theme_path</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ol>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="slide level-2" id="customization">
+<h2>Customization</h2>
+<p>The can be customized in varying ways (some a little more work than others).</p>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="slide level-3" id="theme-options">
+<h3>Theme Options</h3>
+<p>The theme provides many built-in options that can be configured by editing
+your &quot;conf.py&quot; file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># (Optional) Logo. Should be exactly 24x24 px to fit the nav. bar.</span>
+<span class="c"># Path should be relative to the static files directory.</span>
+<span class="n">html_logo</span> <span class="o">=</span> <span class="s">&quot;my_logo.png&quot;</span>
+
+<span class="c"># Theme options are theme-specific and customize the look and feel of a</span>
+<span class="c"># theme further.</span>
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c"># Navigation bar title. (Default: ``project`` value)</span>
+    <span class="s">&#39;navbar_title&#39;</span><span class="p">:</span> <span class="s">&quot;Demo&quot;</span><span class="p">,</span>
+
+    <span class="c"># Tab name for entire site. (Default: &quot;Site&quot;)</span>
+    <span class="s">&#39;navbar_site_name&#39;</span><span class="p">:</span> <span class="s">&quot;Site&quot;</span><span class="p">,</span>
+
+    <span class="c"># A list of tuples containing pages or urls to link to.</span>
+    <span class="c"># Valid tuples should be in the following forms:</span>
+    <span class="c">#    (name, page)                 # a link to a page</span>
+    <span class="c">#    (name, &quot;/aa/bb&quot;, 1)          # a link to an arbitrary relative url</span>
+    <span class="c">#    (name, &quot;http://example.com&quot;, True) # arbitrary absolute url</span>
+    <span class="c"># Note the &quot;1&quot; or &quot;True&quot; value above as the third argument to indicate</span>
+    <span class="c"># an arbitrary url.</span>
+    <span class="s">&#39;navbar_links&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s">&quot;Examples&quot;</span><span class="p">,</span> <span class="s">&quot;examples&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&quot;Link&quot;</span><span class="p">,</span> <span class="s">&quot;http://example.com&quot;</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+    <span class="p">],</span>
+
+    <span class="c"># Render the next and previous page links in navbar. (Default: true)</span>
+    <span class="s">&#39;navbar_sidebarrel&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+
+    <span class="c"># Render the current pages TOC in the navbar. (Default: true)</span>
+    <span class="s">&#39;navbar_pagenav&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+
+    <span class="c"># Global TOC depth for &quot;site&quot; navbar tab. (Default: 1)</span>
+    <span class="c"># Switching to -1 shows all levels.</span>
+    <span class="s">&#39;globaltoc_depth&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+
+    <span class="c"># Include hidden TOCs in Site navbar?</span>
+    <span class="c">#</span>
+    <span class="c"># Note: If this is &quot;false&quot;, you cannot have mixed ``:hidden:`` and</span>
+    <span class="c"># non-hidden ``toctree`` directives in the same page, or else the build</span>
+    <span class="c"># will break.</span>
+    <span class="c">#</span>
+    <span class="c"># Values: &quot;true&quot; (default) or &quot;false&quot;</span>
+    <span class="s">&#39;globaltoc_includehidden&#39;</span><span class="p">:</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+
+    <span class="c"># HTML navbar class (Default: &quot;navbar&quot;) to attach to &lt;div&gt; element.</span>
+    <span class="c"># For black navbar, do &quot;navbar navbar-inverse&quot;</span>
+    <span class="s">&#39;navbar_class&#39;</span><span class="p">:</span> <span class="s">&quot;navbar navbar-inverse&quot;</span><span class="p">,</span>
+
+    <span class="c"># Fix navigation bar to top of page?</span>
+    <span class="c"># Values: &quot;true&quot; (default) or &quot;false&quot;</span>
+    <span class="s">&#39;navbar_fixed_top&#39;</span><span class="p">:</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+
+    <span class="c"># Location of link to source.</span>
+    <span class="c"># Options are &quot;nav&quot; (default), &quot;footer&quot; or anything else to exclude.</span>
+    <span class="s">&#39;source_link_position&#39;</span><span class="p">:</span> <span class="s">&quot;nav&quot;</span><span class="p">,</span>
+
+    <span class="c"># Bootswatch (http://bootswatch.com/) theme.</span>
+    <span class="c">#</span>
+    <span class="c"># Options are nothing with &quot;&quot; (default) or the name of a valid theme</span>
+    <span class="c"># such as &quot;amelia&quot; or &quot;cosmo&quot;.</span>
+    <span class="s">&#39;bootswatch_theme&#39;</span><span class="p">:</span> <span class="s">&quot;united&quot;</span><span class="p">,</span>
+
+    <span class="c"># Choose Bootstrap version.</span>
+    <span class="c"># Values: &quot;3&quot; (default) or &quot;2&quot; (in quotes)</span>
+    <span class="s">&#39;bootstrap_version&#39;</span><span class="p">:</span> <span class="s">&quot;3&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note for the navigation bar title that if you don't specify a theme option of
+<tt class="docutils literal"><span class="pre">navbar_title</span></tt> that the &quot;conf.py&quot; <tt class="docutils literal"><span class="pre">project</span></tt> string will be used. We don't
+use the <tt class="docutils literal"><span class="pre">html_title</span></tt> or <tt class="docutils literal"><span class="pre">html_short_title</span></tt> values because by default those
+both contain version strings, which the navigation bar treats differently.</p>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="slide level-3" id="bootstrap-versions">
+<h3>Bootstrap Versions</h3>
+<p>The theme supports Bootstrap v2.3.2 and v3.0.0 via the <tt class="docutils literal"><span class="pre">bootstrap_version</span></tt>
+theme option (of <tt class="docutils literal"><span class="pre">&quot;2&quot;</span></tt> or <tt class="docutils literal"><span class="pre">&quot;3&quot;</span></tt>). Some notes regarding version differences:</p>
+<ul class="simple">
+<li>Bootstrap 3 has dropped support for <a class="reference external" href="http://stackoverflow.com/questions/18023493">sub-menus</a>, so while supported by this
+theme, they will not show up in site or page menus.</li>
+<li>Internally, &quot;navbar.html&quot; is the Sphinx template used for Bootstrap v3 and
+&quot;navbar-2.html&quot; is the template used for v2.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="slide level-3" id="extending-layout-html">
+<h3>Extending &quot;layout.html&quot;</h3>
+<p>As a more &quot;hands on&quot; approach to customization, you can override any template
+in this Sphinx theme or any others. A good candidate for changes is
+&quot;layout.html&quot;, which provides most of the look and feel. First, take a look
+at the &quot;layout.html&quot; file that the theme provides, and figure out
+what you need to override. As a side note, we have some theme-specific
+enhancements, such as the <tt class="docutils literal"><span class="pre">navbarextra</span></tt> template block for additional
+content in the navbar.</p>
+<p>Then, create your own &quot;_templates&quot; directory and &quot;layout.html&quot; file (assuming
+you build from a &quot;source&quot; directory):</p>
+<div class="highlight-python"><pre>$ mkdir source/_templates
+$ touch source/_templates/layout.html</pre>
+</div>
+<p>Then, configure your &quot;conf.py&quot;:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;_templates&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Finally, edit your override file &quot;source/_templates/layout.html&quot;:</p>
+<div class="highlight-python"><pre>{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+
+{# Add some extra stuff before and use existing with 'super()' call. #}
+{% block footer %}
+  &lt;h2&gt;My footer of awesomeness.&lt;/h2&gt;
+  {{ super() }}
+{% endblock %}</pre>
+</div>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="slide level-3" id="adding-custom-css">
+<h3>Adding Custom CSS</h3>
+<p>Alternately, you could add your own custom static media directory with a CSS
+file to override a style, which in the demo would be something like:</p>
+<div class="highlight-python"><pre>$ mkdir source/_static
+$ touch source/_static/my-styles.css</pre>
+</div>
+<p>Then, in &quot;conf.py&quot;, edit this line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;_static&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You will also need the override template &quot;source/_templates/layout.html&quot; file
+configured as above, but with the following code:</p>
+<div class="highlight-python"><pre>{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+
+{# Custom CSS overrides #}
+{% set bootswatch_css_custom = ['_static/my-styles.css'] %}</pre>
+</div>
+<p>Then, in the new file &quot;source/_static/my-styles.css&quot;, add any appropriate
+styling, e.g. a bold background color:</p>
+<div class="highlight-python"><pre>footer {
+  background-color: red;
+}</pre>
+</div>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="slide level-2" id="theme-notes">
+<h2>Theme Notes</h2>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="slide level-3" id="id2">
+<h3>Sphinx</h3>
+<p>The theme places the global TOC, local TOC, navigation (prev, next) and
+source links all in the top Bootstrap navigation bar, along with the Sphinx
+search bar on the left side.</p>
+<p>The global (site-wide) table of contents is the &quot;Site&quot; navigation dropdown,
+which is a configurable level rendering of the <tt class="docutils literal"><span class="pre">toctree</span></tt> for the entire site.
+The local (page-level) table of contents is the &quot;Page&quot; navigation dropdown,
+which is a multi-level rendering of the current page's <tt class="docutils literal"><span class="pre">toc</span></tt>.</p>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="slide level-3" id="id3">
+<h3>Bootstrap</h3>
+<p>The theme offers Twitter Bootstrap v2.x and v3.x, both of which rely on
+jQuery v.1.9.x. As the jQuery that Bootstrap wants can radically depart from
+the jQuery Sphinx internal libraries use, the library from this theme is
+integrated via <tt class="docutils literal"><span class="pre">noConflict()</span></tt> as <tt class="docutils literal"><span class="pre">$jqTheme</span></tt>.</p>
+<p>You can override any static JS/CSS files by dropping different versions in your
+Sphinx &quot;_static&quot; directory.</p>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="slide level-2" id="contributing">
+<h2>Contributing</h2>
+<p>Contributions to this project are most welcome. Please make sure that the demo
+site builds cleanly, and looks like what you want. First build the demo:</p>
+<div class="highlight-python"><pre>$ fab clean &amp;&amp; fab demo</pre>
+</div>
+<p>Then, view the site in the development server:</p>
+<div class="highlight-python"><pre>$ fab demo_server</pre>
+</div>
+<p>Also, if you are adding a new type of styling or Sphinx or Bootstrap construct,
+please add a usage example to the &quot;Examples&quot; page.</p>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="slide level-2" id="licenses">
+<h2>Licenses</h2>
+<p>Sphinx Bootstrap Theme is licensed under the <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt">MIT</a> license.</p>
+<p>Twitter Bootstrap is licensed under the <a class="reference external" href="https://github.com/twitter/bootstrap/blob/master/LICENSE">Apache</a> license.</p>
+
+<div class="slide-no">13</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../../_static/common.js"></script>
+    <script type="text/javascript" src="../../../../_static/slides.js"></script>
+    <script type="text/javascript" src="../../../../_static/sync.js"></script>
+    <script type="text/javascript" src="../../../../_static/controller.js"></script>
+    <script type="text/javascript" src="../../../../_static/init.js"></script>
+    
+  </body>
+</html>
