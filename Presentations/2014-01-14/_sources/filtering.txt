@@ -1,0 +1,299 @@
+.. slideconf::
+   :slide_classes: appear
+
+===========================================
+Filtering Methods for Volatility Estimation
+===========================================
+
+Motivation
+==========
+
+Volatility estimation has typically taken several forms:
+
+.. rst-class:: to-build
+
+- Computing the sample variance of historical data.
+
+.. rst-class:: to-build
+
+- Computing implied volatilities using options.
+
+.. rst-class:: to-build
+
+- Computing model-based values using GARCH or SV models.
+
+
+Motivation
+==========
+
+Financial data has become more rich in the past two decades.
+
+.. rst-class:: to-build
+
+- Intraday trades and quotes can be used to estimate volatility on a
+  daily basis using only historical data (no model).
+
+
+Prices
+======
+
+Prices are typically modeled as a continuous time diffusion:
+
+.. math::
+
+   dp(t) = \mu(t) dt + \sigma(t) dW(t)
+
+where :math:`W(t)` is a standard Brownian motion.
+
+.. rst-class:: to-build
+
+- :math:`\mu(t)` is the drift and :math:`\sigma(t)` is the spot
+  volatility.
+
+
+Returns and Volatility
+======================
+Returns are the integral of price changes:
+
+.. math::
+
+   r(t) = p(t) - p(t-1) = \int_{t-1}^t \mu(s) ds + \int_{t-1}^t
+   \sigma(s) dW(s)
+
+.. rst-class:: to-build
+
+Hence, the integrated variance is return variance between
+:math:`t-1` and :math:`t`:
+
+.. rst-class:: to-build
+
+.. math::
+
+   IV(t) = \int_{t-1}^t \sigma^2(s) ds
+
+
+Realized Variance
+=================
+Realized variance (RV) is the intuitive discrete approximation to the
+integrated variance (IV).
+
+.. rst-class:: to-build
+
+- Begin by dividing the time interval of interest, :math:`(t-1,t)`,
+  into subintervals of length :math:`\Delta`.
+
+.. rst-class:: to-build
+
+- The realized variance is the sum of squared deviations from the
+  mean:
+
+.. rst-class:: to-build
+
+.. math::
+
+   RV(t,\Delta) = \sum_{j=1}^{1/\Delta} (r(t-1+j\Delta, t) -
+   \hat{\mu}(t-1+j\Delta,t))^2.
+
+.. rst-class:: to-build
+
+- For short time horizons :math:`\hat{\mu}` is considered to be zero.
+
+
+Asymptotic Realized Variance
+============================
+For the stochastic process specified above,
+
+.. math::
+
+   RV(t,\Delta) \to IV(t)
+
+as :math:`\Delta \to 0`.
+
+
+Microstructure Noise
+====================
+Unfortunately, as :math:`\Delta \to 0`, observed price data no longer
+satisfy a diffusion process.
+
+.. rst-class:: to-build
+
+- Bid/offer bounce induces a correlation structure and discreteness in
+  the data that is typically referred to as *microstructure noise*.
+
+.. rst-class:: to-build
+
+- This has provided limitations on the frequency at which returns data
+  can be sampled when used for realized variance estimation.
+
+.. rst-class:: to-build
+
+- The standard over the past decade has been to sample returns at
+  5-minute intervals.
+
+.. rst-class:: to-build
+
+- Sampling the data at finer frequencies can lead to severe bias in
+  realized variance estimation.
+
+
+Volatility Signature Plot
+=========================
+
+.. image:: /_static/volSigPlot.png
+   :width: 7.5in
+   :align: center
+
+
+Current Financial Data
+======================
+High-frequency trading and algorithmic trading have generated a wealth
+of financial data in recent years.
+
+.. rst-class:: to-build
+
+- Consider SPY, a very liquid ETF that tracks the S\&P 500.
+
+.. rst-class:: to-build
+
+- The average daily volume for SPY over the last three months is
+  104,626,000 shares.
+
+.. rst-class:: to-build
+
+- This is comprised of roughly 250,000 individual daily trades (an
+  average of 450 shares per trade, or so).
+
+.. rst-class:: to-build
+
+- Given 23,400 seconds in the trading day between 9:30 A.M. and 4:00
+  P.M., that amounts to roughly 10 trades per second or 1 trade every
+  100 milliseconds.
+
+.. rst-class:: to-build
+
+- Quote data is probably 10 times as dense.
+
+
+Data Loss
+=========
+Consider 5-minute RV.
+
+.. rst-class:: to-build
+
+- This estimator uses only 78 price observations over the course of
+  the day to estimate daily volatility.
+
+.. rst-class:: to-build
+
+- This represents a data loss of 99.97%
+
+.. rst-class:: to-build
+
+- If we could optimally filter the microstructure noise, we could
+  retain the informative part of each data point.
+
+
+Filtering methods
+=================
+In the past couple of years, several papers have proposed filtering
+methods.
+
+.. rst-class:: to-build
+
+- The most popular is the *realized kernel* estimator:
+
+.. rst-class:: to-build
+
+.. math::
+
+   RK(t,H) = \sum_{-H}^H k\left(\frac{h}{H+1}\right) \hat{\gamma}_h.
+
+.. rst-class:: to-build
+
+- This is a special case of a smoothed estimator of the spectral
+  density:
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{S}(f) = \sum_{-(N-1)}^{N-1} k\left(\frac{h}{H+1}\right)
+   \hat{\gamma}_h e^{-i2\pi f h \Delta t}.
+
+
+Filtering methods
+=================
+In practice, realized kernel estimators have been implemented with
+Bartlett and Parzen filters.
+
+.. rst-class:: to-build
+
+- The Bartlett and Parzen filters were proposed for spectral density
+  estimation in 1950 and 1961, respectively.
+
+.. rst-class:: to-build
+
+- New methods have been developed over the intervening decades.
+
+.. rst-class:: to-build
+
+- For example, multitaper estimation or estimation via wavelets.
+
+
+Wavelets
+========
+A wavelet decomposition of a time series is an orthonormal, additive
+decomposition.
+
+.. rst-class:: to-build
+
+- Wavelet coefficients can be thought of as weighted averages of
+  adjacent times series values.
+
+.. rst-class:: to-build
+
+- A wavelet decomposition is not unlike a spectral decomposition,
+  except that the component series are related to varying time scales
+  rather than varying frequencies.
+
+
+
+Wavelet Multiresolution Analysis
+================================
+
+.. image:: /_static/waveDecomp.png
+   :width: 4.8in
+   :align: center
+
+
+
+Volatility Signature Plot
+=========================
+
+.. image:: /_static/volSigPlotWave.png
+   :width: 7.5in
+   :align: center
+
+
+Conclusion
+==========
+We believe that more advanced filtering methods may improve volatility
+estimation with intraday data.
+
+.. rst-class:: to-build
+
+- Bias and variance properties of RV estimators may be improved.
+
+.. rst-class:: to-build
+
+  - They may more optimally filter microstructure noise.
+
+.. rst-class:: to-build
+
+- Asymptotic convergence may be faster.
+
+.. rst-class:: to-build
+
+- As a result, we may be able to use data at finer sampling
+  frequencies and even use finely sampled data to estimate intraday
+  volatility (not just daily volatility).

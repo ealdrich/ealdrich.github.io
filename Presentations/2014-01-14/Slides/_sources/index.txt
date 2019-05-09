@@ -1,0 +1,15 @@
+
+.. Filter Methods for Volatility Estimation slides file, created by
+   hieroglyph-quickstart on Mon Jan 13 06:39:23 2014.
+
+
+Filter Methods for Volatility Estimation
+========================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 1
+
+   filtering
+

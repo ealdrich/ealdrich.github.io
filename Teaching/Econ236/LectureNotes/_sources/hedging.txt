@@ -1,0 +1,503 @@
+.. slideconf::
+   :slide_classes: appear
+
+
+==============================================================================
+Hedging with Futures
+==============================================================================
+
+Long and Short Hedges
+==============================================================================
+A hedge is an investment that limits the risk of another risky
+investment. It typically consists of an offsetting position.
+
+.. raw:: <!--pause-->
+	 
+- Futures are used to hedge against price fluctuations of an asset
+  that must be bought or sold at a future date.
+
+.. raw:: <!--pause-->
+
+- A long hedge is used when you will purchase an asset in the
+  future.
+
+.. raw:: <!--pause-->
+
+- A short hedge is used when you will sell an asset in the
+  future.
+
+Short Hedge Example
+==============================================================================
+Suppose it is May 15th and an oil producer has negotiated to sell
+1 million barrels of crude oil on Aug 15. :math:`\smash{S_0 = \$80}`
+and :math:`\smash{F_0 = \$79}`.
+
+.. raw:: <!--pause-->
+	 
+- The producer will gain/lose \$10,000 for each 1 cent
+  increase/decrease in the spot price.
+
+.. raw:: <!--pause-->
+	 
+- A hedge would consist of shorting 1000 futures contracts (for 1000
+  barrels each) with expiration as close to Aug 15th as possible.
+
+.. raw:: <!--pause-->
+	 
+- Suppose :math:`\smash{S_T = \$75}` on Aug 15 - what are total
+  profits for the producer?
+
+.. raw:: <!--pause-->
+	 
+- Suppose :math:`\smash{S_T = \$85}` on Aug 15 - what are total
+  profits for the producer?
+  
+.. raw:: <!--pause-->
+
+Note that the producer will not want to deliver the barrels for the
+futures contract, but will close out early.
+
+Long Hedge Example
+==============================================================================
+Suppose it is Jan 15th and a copper producer has negotiated to buy
+100,000 pounds of copper on May 15. :math:`\smash{S_0 = 340}` cents
+and :math:`\smash{F_0 = 320}` cents.
+
+.. raw:: <!--pause-->
+	 
+- The producer will gain/lose \$1000 for each 1 cent
+  decrease/increase in the spot price.
+
+.. raw:: <!--pause-->
+	 
+- A hedge would consist of buying 4 CME Group futures contracts (for
+  25,000 pounds each) with expiration as close to May 15th as
+  possible.
+
+.. raw:: <!--pause-->
+	 
+- Suppose :math:`\smash{S_T = 320}` cents on May 15 - what is the
+  total cost for the producer?
+
+.. raw:: <!--pause-->
+	 
+- Suppose :math:`\smash{S_T = 305}` cents on May 15 - what is the
+  total cost for the producer?
+  
+.. raw:: <!--pause-->
+
+Note that the producer will not want to take delivery for the
+futures contract, but will close out early.
+
+Imperfect Hedging
+==============================================================================
+It is typically difficult for an investor to exactly hedge a
+position.
+
+.. raw:: <!--pause-->
+
+1. A futures contract may not exist for the exact asset to be hedged.
+
+   - E.g. VIX futures.
+
+.. raw:: <!--pause-->
+
+2. The expiration of the futures may not coincide with the end of the
+   termination of the position in interest.
+
+.. raw:: <!--pause-->
+
+3. The termination date of the underlying position may be unknown.
+
+Basis
+==============================================================================
+For traders, the basis is defined as the difference between the
+futures and spot prices.
+
+.. raw:: <!--pause-->
+	 
+- Traditional definition: :math:`\smash{b_t = S_t - F_t}`.
+
+.. raw:: <!--pause-->
+
+- For financial assets: :math:`\smash{b_t = F_t - S_t}`.
+
+.. raw:: <!--pause-->
+
+- Recall
+
+.. math::
+
+   \begin{align*}
+   F_t & = e^{c(T-t)} S_t \\
+   \Rightarrow b_t & = S_t - F_t = \left(1-e^{c(T-t)}\right)S_t.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- Note that the basis can be positive or negative.
+
+Basis Fluctuation
+==============================================================================
+The basis can fluctuate through time.
+
+.. raw:: <!--pause-->
+
+- The futures price should converge to the spot price at expiry. This
+  is a deterministic change in the basis related to shortening time
+  window :math:`\smash{T-t}`.
+
+.. raw:: <!--pause-->
+
+- The basis may also fluctuate due to random variation in the cost of
+  carry, :math:`\smash{c}`.
+
+  - This is caused by random fluctuations in :math:`\smash{r}`,
+    :math:`\smash{r_f}`, dividends, storage costs, etc.
+
+Stylized Basis Fluctuation
+==============================================================================
+  .. image:: Hedging/basis.png
+     :width: 7.5in
+     :align: center
+
+Actual Basis Fluctuation
+==============================================================================
+  .. image:: Hedging/basisVariation.png
+     :width: 7.5in
+     :align: center
+
+Hedging and Basis
+==============================================================================
+Consider an arbitrary asset with the following spot and futures prices
+at :math:`\smash{t_1}` and :math:`\smash{t_2}`: :math:`\smash{S_1 =
+\$2.50}`, :math:`\smash{F_1 = \$2.20}`, :math:`\smash{S_2 = \$2.00}`
+and :math:`\smash{F_2 = \$1.90}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{b_1 = \$0.30}` and :math:`\smash{b_2 = \$0.10}`.
+
+.. raw:: <!--pause-->
+
+- If you hold the asset and plan to sell at :math:`\smash{t_2}`, how
+  can you hedge?
+
+.. raw:: <!--pause-->
+
+- Profit: :math:`\smash{S_2 + F_1 - F_2 = F_1 + b_2 = \$2.30}`.
+
+.. raw:: <!--pause-->
+
+- If you need to purchase the asset at :math:`\smash{t_2}`,
+  how can you hedge?
+
+.. raw:: <!--pause-->
+
+- Cost: :math:`\smash{S_2 + F_1 - F_2 = F_1 + b_2 = \$2.30}`.
+
+Basis Risk
+==============================================================================
+Note that the profit/cost of the hedging strategies above is
+:math:`\smash{F_1 + b_2}`.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{b_2}` is known at :math:`\smash{t_1}`, then a
+  perfect hedge could be designed.
+
+.. raw:: <!--pause-->
+
+- Basis change due to :math:`\smash{t_2-t_1}` is perfectly
+  foreseeable.
+
+.. raw:: <!--pause-->
+
+- Basis fluctuation due to random variations in :math:`\smash{c}` is
+  not perfectly foreseeable.
+
+Contract Choice
+==============================================================================
+Perfect hedges typically don't exist. Important decisions for the
+hedge include:
+
+.. raw:: <!--pause-->
+
+- An asset with a futures contract that closely approximates the asset
+  to be hedged.
+
+.. raw:: <!--pause-->
+
+- Expiry close to the necessary terminal date of the hedge.
+
+.. raw:: <!--pause-->
+
+- Typically, expiry is chosen to be a month following hedge
+  termination so that delivery doesn't occur and rolling is
+  unnecessary.
+
+Example: Hedging Yen
+==============================================================================
+Suppose it's March 1st and you will receive 50 million Yen at end of
+July. Yen futures contracts are for delivery of 12.5 million
+Yen in Mar/Jun/Sep/Dec.
+
+.. raw:: <!--pause-->
+
+- How can you hedge?
+
+.. raw:: <!--pause-->
+
+Assume the following spot and (Sep) futures prices
+(cents/Yen): :math:`\smash{F_1 = 0.9800}`, :math:`\smash{S_2 =
+0.9200}` and :math:`\smash{F_2 = 0.9250}`.
+
+.. raw:: <!--pause-->
+
+- What is the price you pay for Yen?
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{F_1 + b_2 = 0.9800 + (0.9200 - 0.9250) = 0.9750}` per
+  Yen.
+
+.. raw:: <!--pause-->
+
+- For 50 million Yen: :math:`\smash{50,000,000 \times 0.9750 =
+  48,750,000}` cents or :math:`\smash{\$487,500}`.
+
+Cross Hedging
+==============================================================================
+A *cross hedge* occurs when the asset being hedged is different from
+the asset underlying a futures contract.
+
+.. raw:: <!--pause-->
+
+- Since the two assets may not be perfectly correlated, an adjustment
+  must be made to determine the optimal number of futures contracts to
+  hold.
+
+.. raw:: <!--pause-->
+
+- The optimal number of futures is determined via the *hedge ratio*.
+
+Hedge Ratio
+==============================================================================
+The optimal hedge ratio is defined as
+
+.. math::
+
+   \begin{align}
+   h^* & = \rho \frac{\sigma_S}{\sigma_F} \\
+   \sigma_S & = Sd(\Delta S) \\
+   \sigma_F & = Sd(\Delta F).
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{h^*}` is the slope of a regression of
+  :math:`\smash{\Delta S}` on :math:`\smash{\Delta F}`.
+
+.. raw:: <!--pause-->
+
+- The hedge ratio is typically computed by estimating
+  :math:`\smash{\rho}`, :math:`\smash{\sigma_S}` and
+  :math:`\smash{\sigma_F}` with historical data.
+
+Hedge Ratio with Returns
+==============================================================================
+Note that
+
+.. math::
+
+   \begin{align}
+   \sigma_{r_S} & = Sd(\Delta S/S) = Sd(\Delta S)/S \\
+   \sigma_{r_F} & = Sd(\Delta F/F) = Sd(\Delta F)/F
+   \end{align}
+
+where :math:`\smash{r_S}` and :math:`\smash{r_F}` are returns (not
+price changes).
+
+.. raw:: <!--pause-->
+
+- An alternate definition of the hedge ratio is:
+
+.. math::
+
+   \begin{gather}
+   \tilde{h} = \rho \frac{\sigma_{r_S}}{\sigma_{r_F}} = \rho
+   \frac{\sigma_S/S}{\sigma_F/F} = h^* \frac{F}{S} \\
+   \Rightarrow h^* = \tilde{h} \frac{S}{F}.
+   \end{gather}
+  
+Hedge Ratio Regression
+==============================================================================
+  .. image:: Hedging/hedgeRatioReg.png
+     :width: 7.5in
+     :align: center
+
+Hedge Ratio
+==============================================================================
+Note that if the asset underlying the futures is identical to the
+asset being hedged:
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\rho = 1}`, :math:`\smash{\sigma_S = \sigma_F}` and
+  :math:`\smash{h^* = 1}`.
+
+.. raw:: <!--pause-->
+
+If :math:`\smash{\rho = 1}` and :math:`\smash{\sigma_S = 2\sigma_F}`,
+you need to hedge with two futures.
+
+.. raw:: <!--pause-->
+
+- The assets are perfectly correlated, but price swings in the futures
+  are only half as large as those for the asset being hedged.
+
+Optimal Number of Contracts
+==============================================================================
+The optimal number of contracts to purchase for a cross hedge is
+
+.. math::
+
+   \begin{align}
+   N^* & = h^* \frac{Q_S}{Q_F} = \tilde{h} \frac{S Q_S}{F Q_F} =
+   \tilde{h} \frac{V_S}{V_F}.
+   \end{align}
+
+where :math:`\smash{Q_S}` is the size of the position being hedged,
+:math:`\smash{Q_F}` is the size of a futures contract and
+:math:`\smash{V_S}` and :math:`\smash{V_F}` are their total valuations
+(shares times price). 
+
+Hedge Ratio Example
+==============================================================================
+An airline company needs to purchase 2 millions gallons of jet fuel in
+1 month.
+
+.. raw:: <!--pause-->
+
+- CME Group heating oil futures are the best contract to use as a
+  hedge.
+
+.. raw:: <!--pause-->
+
+- One contract is for delivery of 42,000 gallons of heating oil.
+
+.. raw:: <!--pause-->
+
+- The table on the following slide has historical data to estimate
+  the optimal hedge ratio.
+
+Hedge Ratio Example
+==============================================================================
+  .. image:: Hedging/hedgeRatioData.png
+     :width: 7.5in
+     :align: center
+
+Hedge Ratio Example
+==============================================================================
+Using the data:
+
+- :math:`\smash{\hat{\rho} = 0.928}`, :math:`\smash{\hat{\sigma}_S =
+  0.0263}` and :math:`\smash{\hat{\sigma}_F = 0.0313}`.
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   \hat{h}^* & = \hat{\rho} \frac{\hat{\sigma_S}}{\hat{\sigma_F}} =
+   0.928 \frac{0.0263}{0.0313} = 0.78
+   \end{align}
+
+.. raw:: <!--pause-->
+
+.. math::
+      
+   \begin{align}
+   \hat{N}^* & = \hat{h}^* \frac{Q_S}{Q_F} =
+   0.78 \frac{2,000,000}{42,000} \approx 37.
+   \end{align}
+
+Hedging an Equity Portfolio
+==============================================================================
+Suppose you want to hedge an equity portfolio which has some
+sensitivity to the market, :math:`\smash{\beta}`:
+
+.. math::
+
+   \begin{align}
+   r_p & = r_f + \beta (r_I - r_f) + \epsilon.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{r_p}`, :math:`\smash{r_I}` and :math:`\smash{r_f}` are
+  the portfolio, market index (S\&P 500) and risk-free returns,
+  respectively.
+
+.. raw:: <!--pause-->
+
+- Since :math:`\smash{\beta}` is the slope of the regression of excess
+  returns, it is the hedge ratio, :math:`\smash{\tilde{h}}`.
+
+Hedging Equity Portfolio Example
+==============================================================================
+Suppose:
+
+- :math:`\smash{P_{SP500} = 1000}`.
+
+- :math:`\smash{P_{ES} = 1010}`.
+
+- Portfolio Value :math:`\smash{\$5,050,000}`.
+
+- :math:`\smash{r_f = 0.04}` per annum.
+
+- Index dividend yield :math:`\smash{0.01}` per annum.
+
+- :math:`\smash{\beta = 1.5}`.
+
+Hedging Equity Portfolio Example
+==============================================================================
+  .. image:: Hedging/equityIndexHedge.png
+     :width: 7.5in
+     :align: center
+
+Why Hedge?
+==============================================================================
+Note that the index hedge results in a portfolio that earns grows at
+the risk-free rate.
+
+.. raw:: <!--pause-->
+
+- So why hedge?
+
+.. raw:: <!--pause-->
+
+- Perhaps you think your portfolio will earn positive *non-market*
+  return (alpha) but don't want to be exposed to the market.
+
+.. raw:: <!--pause-->
+
+- Perhaps you want to hold the portfolio for a long period of time,
+  but need a brief reduction of risk exposure.
+
+Changing Beta
+==============================================================================
+A complete hedge (as above) makes the effective beta zero.
+
+.. raw:: <!--pause-->
+
+- Suppose you simply want to change the beta of your portfolio to a
+  new value, :math:`\smash{\beta^*}`?
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   N^* = (\beta - \beta^*) \frac{V_P}{V_F}.
+   \end{align}

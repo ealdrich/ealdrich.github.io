@@ -1,0 +1,495 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Stationarity
+==============================================================================
+
+
+Time Series
+==============================================================================
+A time series is a stochastic process indexed by time:
+
+.. math::
+
+   Y_1, Y_2, Y_3, \ldots, Y_{T-1}, Y_T.
+
+.. rst-class:: to-build
+
+- *Stochastic* is a synonym for *random*.
+
+.. rst-class:: to-build
+
+- So a time series is a sequence of (potentially different) random
+  variables ordered by time.
+
+.. rst-class:: to-build
+
+- We will let lower-case letters denote a realization of a time
+  series.
+
+.. rst-class:: to-build
+
+.. math::
+
+   y_1, y_2, y_3, \ldots, y_{T-1}, y_T.
+
+
+
+
+Distributions
+==============================================================================
+We will think of :math:`{\bf Y}_T = \{Y_t\}_{t=1}^T` as a random
+variable in its own right.
+
+.. rst-class:: to-build
+
+- :math:`{\bf y}_T = \{y_t\}_{t=1}^T` is a *single*
+  realization of :math:`{\bf Y}_T = \{Y_t\}_{t=1}^T`.
+
+.. rst-class:: to-build
+
+- The CDF is :math:`F_{{\bf Y}_T}({\bf y}_T)` and the PDF is
+  :math:`f_{{\bf Y}_T}({\bf y}_T)`.
+
+.. rst-class:: to-build
+
+- For example, consider :math:`T = 100`:
+
+.. rst-class:: to-build
+
+.. math::
+
+   F\left({\bf y}_{100}\right) & = P(Y_1 \leq y_1, \ldots, Y_{100}
+   \leq y_{100}).
+
+.. rst-class:: to-build
+  
+- Notice that :math:`{\bf Y}_T` is just a collection of random
+  variables and :math:`f_{{\bf Y}_T}({\bf y}_T)` is the joint
+  density.
+
+
+
+Time Series Observations
+==============================================================================
+As statisticians and econometricians, we want many
+observations of :math:`{\bf Y}_T` to learn about its distribution:
+
+.. rst-class:: to-build
+
+.. math::
+
+  {\bf y}_T^{(1)}, \,\,\,\,\,\, {\bf y}_T^{(2)}, \,\,\,\,\,\, {\bf
+  y}_T^{(3)}, \,\,\,\,\,\, \ldots
+
+.. rst-class:: to-build
+
+Likewise, if we are only interested in the marginal distribution of
+:math:`Y_{17}`
+
+.. rst-class:: to-build
+
+.. math::
+
+   f_{Y_{17}}(a) = P(Y_{17} \leq a)
+
+.. rst-class:: to-build
+
+we want many observations: :math:`\left\{y_{17}^{(i)}\right\}_{i=1}^N`.
+
+
+
+Time Series Observations
+==============================================================================
+Unfortunately, we usually only
+have *one observation* of :math:`{\bf Y}_T`.
+
+.. rst-class:: to-build
+
+- Think of the daily closing price of Harley-Davidson stock since January 2nd.  
+
+.. rst-class:: to-build
+
+- Think of your cardiogram for the past 100 seconds.  
+
+.. rst-class:: to-build
+
+In neither case can you repeat history to observe a new sequence of
+prices or electronic heart signals.
+
+.. rst-class:: to-build
+
+- In time series econometrics we typically base inference on a single
+  observation.
+
+.. rst-class:: to-build
+
+- Additional assumptions about the process will allow us to exploit
+  information in the full sequence :math:`{\bf y}_T` to make
+  inferences about the joint
+  distribution :math:`F_{{\bf Y}_T}({\bf y}_T)`.
+
+
+
+
+Moments
+==============================================================================
+Since the stochastic process is comprised of individual random
+variables, we can consider moments of each: 
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[Y_t] & = \int_{-\infty}^{\infty} y_t f_{Y_t}(y_t) dy_t = \mu_t
+
+.. rst-class:: to-build
+
+.. math::
+
+   Var(Y_t) & = \int_{-\infty}^{\infty} (y_t-\mu_t)^2 f_{Y_t}(y_t) dy_t
+   = \gamma_{0t}
+
+.. rst-class:: to-build
+
+.. math::
+
+   Cov(Y_t, Y_{t-j}) & = \int_{-\infty}^{\infty}
+   \int_{-\infty}^{\infty} (y_t-\mu_t)(y_{t-j}-\mu_{t-j}) \\
+   & \hspace{1in} \times \, f_{Y_t,Y_{t-j}}(y_t,y_{t-j}) dy_tdy_{t-j}
+   = \gamma_{jt},
+
+.. rst-class:: to-build
+
+where :math:`f_{Y_t}` and :math:`f_{Y_t,Y_{t-j}}` are the
+marginal distributions of :math:`f_{{\bf Y}_T}` obtained by
+integrating over the appropriate elements of :math:`{\bf Y}_T`.
+
+
+
+Autocovariance and Autocorrelation
+==============================================================================
+- :math:`\gamma_{jt}` is known as the :math:`j` th
+  autocovariance of :math:`Y_t` since it is the
+  covariance of :math:`Y_t` with its own lagged value.
+
+.. rst-class:: to-build
+
+- The :math:`j` th autocorrelation of :math:`Y_t` is defined as
+
+.. rst-class:: to-build
+
+.. math::
+
+  \rho_{jt} & = Corr(Y_t, Y_{t-j}) \enspace
+
+.. rst-class:: to-build
+
+.. math::
+
+  & \qquad \qquad = \frac{Cov(Y_t, Y_{t-j})}{\sqrt{Var(Y_t)} \sqrt{Var(Y_{t-j})}}
+
+.. rst-class:: to-build
+
+.. math::
+
+  & \, = \frac{\gamma_{jt}}{\sqrt{\gamma_{0t}} \sqrt{\gamma_{0t-j}}}.
+
+
+
+
+
+Sample Moments
+==============================================================================
+If we had :math:`N`
+observations :math:`{\bf y}_T^{(1)},\ldots,{\bf y}_T^{(N)}`, we
+could estimate moments of each (univariate) :math:`Y_t` in the usual way:
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{\mu}_t & = \frac{1}{N} \sum_{i=1}^N y_t^{(i)}.
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{\gamma}_{0t} & = \frac{1}{N} \sum_{i=1}^N (y_t^{(i)} -
+   \hat{\mu}_t)^2.
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{\gamma}_{jt} & = \frac{1}{N} \sum_{i=1}^N (y_t^{(i)} -
+   \hat{\mu}_t) (y_{t-j}^{(i)} - \hat{\mu}_{t-j}).
+
+
+
+
+Example
+==============================================================================
+Suppose each element of :math:`{\bf Y}_T` is described by
+
+.. rst-class:: to-build
+
+.. math::
+
+  Y_t & = \mu_t + \varepsilon_t, \,\,\,\, \varepsilon_t \sim
+  \mathcal{N}(0,\sigma^2_t), \forall t.
+
+
+
+Example
+==============================================================================
+In this case,
+
+.. rst-class:: to-build
+
+.. math::
+
+   \mu_t & = E[Y_t] = \mu_t, \,\,\, \forall t,
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_{0t} & = Var(Y_t) = Var(\varepsilon_t) = \sigma^2_t, \,\,\, \forall
+   t
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_{jt} & = Cov(Y_t, Y_{t-j}) = Cov(\varepsilon_t, \varepsilon_{t-j}) = 0,
+   \,\,\, \forall t, j \neq 0.
+
+.. rst-class:: to-build
+
+- If :math:`\sigma^2_t = \sigma^2`  :math:`\forall t`, :math:`{\bf \varepsilon}_T` is known as a *Gaussian white noise* process.
+
+.. rst-class:: to-build
+
+- In this case, :math:`{\bf Y}_T` is a Gaussian white noise
+  process with drift.
+
+.. rst-class:: to-build
+
+- :math:`{\bf \mu}_T` is the drift vector.
+
+
+
+
+White Noise
+==============================================================================
+Generally speaking, :math:`{\bf \varepsilon}_T` is a *white noise process* if 
+
+.. rst-class:: to-build
+
+.. math:: E[\varepsilon_t] & = 0, \,\,\, \forall t
+   :label: wn1
+
+.. rst-class:: to-build
+
+.. math:: E[\varepsilon^2_t] & = \sigma^2, \,\,\, \forall t
+   :label: wn2
+
+.. rst-class:: to-build
+
+.. math:: E[\varepsilon_t \varepsilon_{\tau}] & = 0, \,\,\, \text{ for
+	  } t \neq \tau.
+   :label: wn3
+
+
+
+
+White Noise
+==============================================================================
+Notice there is no distributional assumption for :math:`\varepsilon_t`.
+
+.. rst-class:: to-build
+
+- If :math:`\varepsilon_t` and :math:`\varepsilon_{\tau}` are independent
+  for :math:`t \neq \tau`, :math:`{\bf \varepsilon}_T` is 
+  *independent white noise*.
+
+.. rst-class:: to-build
+
+- Notice that independence :math:`\Rightarrow` Equation :eq:`wn3`, but
+  Equation :eq:`wn3` does not :math:`\Rightarrow` independence.
+
+.. rst-class:: to-build
+
+- If :math:`\varepsilon_t \sim \mathcal{N}(0, \sigma^2)` :math:`\forall t`,
+  as in the example above, :math:`{\bf \varepsilon}_T` is Gaussian white
+  noise.
+
+
+
+
+Weak Stationarity
+==============================================================================
+Suppose the first and second moments of a stochastic process
+:math:`{\bf Y}_{T}` don't depend on :math:`t \in T`:
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[Y_t] & = \mu \,\,\,\, \forall t
+
+.. rst-class:: to-build
+
+.. math::
+
+   Cov(Y_t, Y_{t-j}) & = \gamma_j \,\,\,\, \forall t \text{ and any
+   } j.
+
+.. rst-class:: to-build
+
+- In this case :math:`{\bf Y}_{T}` is *weakly stationary* or
+  *covariance stationary*.
+
+.. rst-class:: to-build
+
+- In the previous example, if :math:`Y_t = \mu + \varepsilon_t`
+  :math:`\forall t`, :math:`{\bf Y}_{T}` is weakly stationary.
+
+.. rst-class:: to-build
+
+- However if :math:`\mu_t \neq \mu` :math:`\forall t`,
+  :math:`{\bf Y}_{T}` is *not* weakly stationary.
+
+
+
+
+Autocorrelation under Weak Stationarity
+==============================================================================
+If :math:`{\bf Y}_{T}` is weakly stationary 
+
+.. rst-class:: to-build
+
+.. math::
+
+  \rho_{jt} & = \frac{\gamma_{jt}}{\sqrt{\gamma_{0t}}
+  \sqrt{\gamma_{0t-j}}}
+
+.. rst-class:: to-build
+
+.. math::
+
+  & = \frac{\gamma_j}{\sqrt{\gamma_0} \sqrt{\gamma_0}}
+
+.. rst-class:: to-build
+
+.. math::
+
+  & = \frac{\gamma_j}{\gamma_0} \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+  & = \rho_j. \qquad \,
+
+.. rst-class:: to-build
+
+- Note that :math:`\rho_0 = 1`.
+
+
+
+
+Weak Stationarity
+==============================================================================
+Under weak stationarity, autocovariances :math:`\gamma_j` only
+depend on the distance between random variables within a stochastic
+process: 
+
+.. rst-class:: to-build
+
+.. math::
+
+   Cov(Y_{\tau}, Y_{\tau-j}) = Cov(Y_t, Y_{t-j}) = \gamma_j.
+
+.. rst-class:: to-build
+
+This implies
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_{-j} = Cov(Y_{t+j}, Y_t) = Cov(Y_t, Y_{t-j}) = \gamma_j.
+
+
+
+
+Weak Stationarity
+==============================================================================
+More generally,
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Sigma_{{\bf Y}_T} & = \left[\begin{array}{ccccc}
+   \gamma_0 & \gamma_1 & \cdots & \gamma_{T-2} & \gamma_{T-1}
+   \\ \gamma_1 & \gamma_0 & \cdots & \gamma_{T-3} & \gamma_{T-2}
+   \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ \gamma_{T-2}
+   & \gamma_{T-3} & \cdots & \gamma_0 & \gamma_1 \\ \gamma_{T-1}
+   & \gamma_{T-2} & \cdots & \gamma_1 &
+   \gamma_0 \end{array}\right].
+
+
+
+Strict Stationarity
+==============================================================================
+:math:`{\bf Y}_{T}` is *strictly stationary* if for any
+set :math:`\{j_1, j_2, \ldots, j_n\} \in T`
+
+.. rst-class:: to-build
+
+.. math::
+
+   f_{Y_{j_1},\ldots,Y_{j_nn}}(a_1, \ldots, a_n) = f_{Y_{j_1 +
+   \tau},\ldots,Y_{j_nn + \tau}}(a_1, \ldots, a_n), \,\,\,
+   \forall \tau.
+
+.. rst-class:: to-build
+
+- Strict stationarity means that the joint distribution of any subset
+  of random variables in :math:`{\bf Y}_{T}` is invariant to shifts
+  in time, :math:`\tau`.
+
+.. rst-class:: to-build
+
+- Strict stationarity :math:`\Rightarrow` weak stationarity if the
+  first and second moments of a stochastic process exist.
+
+.. rst-class:: to-build
+
+- Weak stationarity does note :math:`\Rightarrow` strict stationarity:
+  invariance of first and second moments to time shifts (weak
+  stationarity) does not mean that all higher moments are invariant to
+  time shifts (strict stationarity).
+
+
+
+Strict Stationarity
+==============================================================================
+If :math:`{\bf Y}_{T}` is Gaussian then weak stationarity
+:math:`\Rightarrow` strict stationarity.
+
+.. rst-class:: to-build
+
+- If :math:`{\bf Y}_{T}` is Gaussian, all marginal distributions of
+  :math:`(Y_{j_1}, \ldots, Y_{j_n})` are also Gaussian.
+
+.. rst-class:: to-build
+
+- Gaussian distributions are fully characterized by their first and
+  second moments.
+
+

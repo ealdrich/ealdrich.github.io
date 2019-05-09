@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Stationarity &mdash; Econ 114 - Advanced Quantitative Methods</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
+    <link rel="up" title="Time Series" href="timeSeries.html" />
+    <link rel="next" title="Autoregressive Processes" href="ar.html" />
+    <link rel="prev" title="Time Series" href="timeSeries.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="stationarity">
+<h1>Stationarity</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="time-series">
+<h2>Time Series</h2>
+<p>A time series is a stochastic process indexed by time:</p>
+<div class="math">
+\[Y_1, Y_2, Y_3, \ldots, Y_{T-1}, Y_T.\]</div>
+<ul class="to-build simple">
+<li><em>Stochastic</em> is a synonym for <em>random</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>So a time series is a sequence of (potentially different) random
+variables ordered by time.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will let lower-case letters denote a realization of a time
+series.</li>
+</ul>
+<div class="to-build math">
+\[y_1, y_2, y_3, \ldots, y_{T-1}, y_T.\]</div>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="distributions">
+<h2>Distributions</h2>
+<p>We will think of <span class="math">\({\bf Y}_T = \{Y_t\}_{t=1}^T\)</span> as a random
+variable in its own right.</p>
+<ul class="to-build simple">
+<li><span class="math">\({\bf y}_T = \{y_t\}_{t=1}^T\)</span> is a <em>single</em>
+realization of <span class="math">\({\bf Y}_T = \{Y_t\}_{t=1}^T\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The CDF is <span class="math">\(F_{{\bf Y}_T}({\bf y}_T)\)</span> and the PDF is
+<span class="math">\(f_{{\bf Y}_T}({\bf y}_T)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>For example, consider <span class="math">\(T = 100\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}F\left({\bf y}_{100}\right) &amp; = P(Y_1 \leq y_1, \ldots, Y_{100}
+\leq y_{100}).\end{split}\]</div>
+<ul class="to-build simple">
+<li>Notice that <span class="math">\({\bf Y}_T\)</span> is just a collection of random
+variables and <span class="math">\(f_{{\bf Y}_T}({\bf y}_T)\)</span> is the joint
+density.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="time-series-observations">
+<h2>Time Series Observations</h2>
+<p>As statisticians and econometricians, we want many
+observations of <span class="math">\({\bf Y}_T\)</span> to learn about its distribution:</p>
+<div class="to-build math">
+\[{\bf y}_T^{(1)}, \,\,\,\,\,\, {\bf y}_T^{(2)}, \,\,\,\,\,\, {\bf
+y}_T^{(3)}, \,\,\,\,\,\, \ldots\]</div>
+<p class="to-build">Likewise, if we are only interested in the marginal distribution of
+<span class="math">\(Y_{17}\)</span></p>
+<div class="to-build math">
+\[f_{Y_{17}}(a) = P(Y_{17} \leq a)\]</div>
+<p class="to-build">we want many observations: <span class="math">\(\left\{y_{17}^{(i)}\right\}_{i=1}^N\)</span>.</p>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Time Series Observations</h2>
+<p>Unfortunately, we usually only
+have <em>one observation</em> of <span class="math">\({\bf Y}_T\)</span>.</p>
+<ul class="to-build simple">
+<li>Think of the daily closing price of Harley-Davidson stock since January 2nd.</li>
+</ul>
+<ul class="to-build simple">
+<li>Think of your cardiogram for the past 100 seconds.</li>
+</ul>
+<p class="to-build">In neither case can you repeat history to observe a new sequence of
+prices or electronic heart signals.</p>
+<ul class="to-build simple">
+<li>In time series econometrics we typically base inference on a single
+observation.</li>
+</ul>
+<ul class="to-build simple">
+<li>Additional assumptions about the process will allow us to exploit
+information in the full sequence <span class="math">\({\bf y}_T\)</span> to make
+inferences about the joint
+distribution <span class="math">\(F_{{\bf Y}_T}({\bf y}_T)\)</span>.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="moments">
+<h2>Moments</h2>
+<p>Since the stochastic process is comprised of individual random
+variables, we can consider moments of each:</p>
+<div class="to-build math">
+\[\begin{split}E[Y_t] &amp; = \int_{-\infty}^{\infty} y_t f_{Y_t}(y_t) dy_t = \mu_t\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}Var(Y_t) &amp; = \int_{-\infty}^{\infty} (y_t-\mu_t)^2 f_{Y_t}(y_t) dy_t
+= \gamma_{0t}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}Cov(Y_t, Y_{t-j}) &amp; = \int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty} (y_t-\mu_t)(y_{t-j}-\mu_{t-j}) \\
+&amp; \hspace{1in} \times \, f_{Y_t,Y_{t-j}}(y_t,y_{t-j}) dy_tdy_{t-j}
+= \gamma_{jt},\end{split}\]</div>
+<p class="to-build">where <span class="math">\(f_{Y_t}\)</span> and <span class="math">\(f_{Y_t,Y_{t-j}}\)</span> are the
+marginal distributions of <span class="math">\(f_{{\bf Y}_T}\)</span> obtained by
+integrating over the appropriate elements of <span class="math">\({\bf Y}_T\)</span>.</p>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="autocovariance-and-autocorrelation">
+<h2>Autocovariance and Autocorrelation</h2>
+<ul class="simple">
+<li><span class="math">\(\gamma_{jt}\)</span> is known as the <span class="math">\(j\)</span> th
+autocovariance of <span class="math">\(Y_t\)</span> since it is the
+covariance of <span class="math">\(Y_t\)</span> with its own lagged value.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <span class="math">\(j\)</span> th autocorrelation of <span class="math">\(Y_t\)</span> is defined as</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\rho_{jt} &amp; = Corr(Y_t, Y_{t-j}) \enspace\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \qquad \qquad = \frac{Cov(Y_t, Y_{t-j})}{\sqrt{Var(Y_t)} \sqrt{Var(Y_{t-j})}}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \, = \frac{\gamma_{jt}}{\sqrt{\gamma_{0t}} \sqrt{\gamma_{0t-j}}}.\end{split}\]</div>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="sample-moments">
+<h2>Sample Moments</h2>
+<p>If we had <span class="math">\(N\)</span>
+observations <span class="math">\({\bf y}_T^{(1)},\ldots,{\bf y}_T^{(N)}\)</span>, we
+could estimate moments of each (univariate) <span class="math">\(Y_t\)</span> in the usual way:</p>
+<div class="to-build math">
+\[\begin{split}\hat{\mu}_t &amp; = \frac{1}{N} \sum_{i=1}^N y_t^{(i)}.\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\hat{\gamma}_{0t} &amp; = \frac{1}{N} \sum_{i=1}^N (y_t^{(i)} -
+\hat{\mu}_t)^2.\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\hat{\gamma}_{jt} &amp; = \frac{1}{N} \sum_{i=1}^N (y_t^{(i)} -
+\hat{\mu}_t) (y_{t-j}^{(i)} - \hat{\mu}_{t-j}).\end{split}\]</div>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="example">
+<h2>Example</h2>
+<p>Suppose each element of <span class="math">\({\bf Y}_T\)</span> is described by</p>
+<div class="to-build math">
+\[\begin{split}Y_t &amp; = \mu_t + \varepsilon_t, \,\,\,\, \varepsilon_t \sim
+\mathcal{N}(0,\sigma^2_t), \forall t.\end{split}\]</div>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Example</h2>
+<p>In this case,</p>
+<div class="to-build math">
+\[\begin{split}\mu_t &amp; = E[Y_t] = \mu_t, \,\,\, \forall t,\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\gamma_{0t} &amp; = Var(Y_t) = Var(\varepsilon_t) = \sigma^2_t, \,\,\, \forall
+t\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\gamma_{jt} &amp; = Cov(Y_t, Y_{t-j}) = Cov(\varepsilon_t, \varepsilon_{t-j}) = 0,
+\,\,\, \forall t, j \neq 0.\end{split}\]</div>
+<ul class="to-build simple">
+<li>If <span class="math">\(\sigma^2_t = \sigma^2\)</span>  <span class="math">\(\forall t\)</span>, <span class="math">\({\bf \varepsilon}_T\)</span> is known as a <em>Gaussian white noise</em> process.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this case, <span class="math">\({\bf Y}_T\)</span> is a Gaussian white noise
+process with drift.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\({\bf \mu}_T\)</span> is the drift vector.</li>
+</ul>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="white-noise">
+<h2>White Noise</h2>
+<p>Generally speaking, <span class="math">\({\bf \varepsilon}_T\)</span> is a <em>white noise process</em> if</p>
+<div class="to-build math" id="equation-wn1">
+<span class="eqno">(1)</span>\[\begin{split}E[\varepsilon_t] &amp; = 0, \,\,\, \forall t\end{split}\]</div>
+<div class="to-build math" id="equation-wn2">
+<span class="eqno">(2)</span>\[\begin{split}E[\varepsilon^2_t] &amp; = \sigma^2, \,\,\, \forall t\end{split}\]</div>
+<div class="to-build math" id="equation-wn3">
+<span class="eqno">(3)</span>\[\begin{split}E[\varepsilon_t \varepsilon_{\tau}] &amp; = 0, \,\,\, \text{ for
+       } t \neq \tau.\end{split}\]</div>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>White Noise</h2>
+<p>Notice there is no distributional assumption for <span class="math">\(\varepsilon_t\)</span>.</p>
+<ul class="to-build simple">
+<li>If <span class="math">\(\varepsilon_t\)</span> and <span class="math">\(\varepsilon_{\tau}\)</span> are independent
+for <span class="math">\(t \neq \tau\)</span>, <span class="math">\({\bf \varepsilon}_T\)</span> is
+<em>independent white noise</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Notice that independence <span class="math">\(\Rightarrow\)</span> Equation <a href="#equation-wn3">(3)</a>, but
+Equation <a href="#equation-wn3">(3)</a> does not <span class="math">\(\Rightarrow\)</span> independence.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(\varepsilon_t \sim \mathcal{N}(0, \sigma^2)\)</span> <span class="math">\(\forall t\)</span>,
+as in the example above, <span class="math">\({\bf \varepsilon}_T\)</span> is Gaussian white
+noise.</li>
+</ul>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="weak-stationarity">
+<h2>Weak Stationarity</h2>
+<p>Suppose the first and second moments of a stochastic process
+<span class="math">\({\bf Y}_{T}\)</span> don't depend on <span class="math">\(t \in T\)</span>:</p>
+<div class="to-build math">
+\[\begin{split}E[Y_t] &amp; = \mu \,\,\,\, \forall t\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}Cov(Y_t, Y_{t-j}) &amp; = \gamma_j \,\,\,\, \forall t \text{ and any
+} j.\end{split}\]</div>
+<ul class="to-build simple">
+<li>In this case <span class="math">\({\bf Y}_{T}\)</span> is <em>weakly stationary</em> or
+<em>covariance stationary</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>In the previous example, if <span class="math">\(Y_t = \mu + \varepsilon_t\)</span>
+<span class="math">\(\forall t\)</span>, <span class="math">\({\bf Y}_{T}\)</span> is weakly stationary.</li>
+</ul>
+<ul class="to-build simple">
+<li>However if <span class="math">\(\mu_t \neq \mu\)</span> <span class="math">\(\forall t\)</span>,
+<span class="math">\({\bf Y}_{T}\)</span> is <em>not</em> weakly stationary.</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="autocorrelation-under-weak-stationarity">
+<h2>Autocorrelation under Weak Stationarity</h2>
+<p>If <span class="math">\({\bf Y}_{T}\)</span> is weakly stationary</p>
+<div class="to-build math">
+\[\begin{split}\rho_{jt} &amp; = \frac{\gamma_{jt}}{\sqrt{\gamma_{0t}}
+\sqrt{\gamma_{0t-j}}}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \frac{\gamma_j}{\sqrt{\gamma_0} \sqrt{\gamma_0}}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \frac{\gamma_j}{\gamma_0} \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \rho_j. \qquad \,\end{split}\]</div>
+<ul class="to-build simple">
+<li>Note that <span class="math">\(\rho_0 = 1\)</span>.</li>
+</ul>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Weak Stationarity</h2>
+<p>Under weak stationarity, autocovariances <span class="math">\(\gamma_j\)</span> only
+depend on the distance between random variables within a stochastic
+process:</p>
+<div class="to-build math">
+\[Cov(Y_{\tau}, Y_{\tau-j}) = Cov(Y_t, Y_{t-j}) = \gamma_j.\]</div>
+<p class="to-build">This implies</p>
+<div class="to-build math">
+\[\gamma_{-j} = Cov(Y_{t+j}, Y_t) = Cov(Y_t, Y_{t-j}) = \gamma_j.\]</div>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Weak Stationarity</h2>
+<p>More generally,</p>
+<div class="to-build math">
+\[\begin{split}\Sigma_{{\bf Y}_T} &amp; = \left[\begin{array}{ccccc}
+\gamma_0 &amp; \gamma_1 &amp; \cdots &amp; \gamma_{T-2} &amp; \gamma_{T-1}
+\\ \gamma_1 &amp; \gamma_0 &amp; \cdots &amp; \gamma_{T-3} &amp; \gamma_{T-2}
+\\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\ \gamma_{T-2}
+&amp; \gamma_{T-3} &amp; \cdots &amp; \gamma_0 &amp; \gamma_1 \\ \gamma_{T-1}
+&amp; \gamma_{T-2} &amp; \cdots &amp; \gamma_1 &amp;
+\gamma_0 \end{array}\right].\end{split}\]</div>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="strict-stationarity">
+<h2>Strict Stationarity</h2>
+<p><span class="math">\({\bf Y}_{T}\)</span> is <em>strictly stationary</em> if for any
+set <span class="math">\(\{j_1, j_2, \ldots, j_n\} \in T\)</span></p>
+<div class="to-build math">
+\[f_{Y_{j_1},\ldots,Y_{j_nn}}(a_1, \ldots, a_n) = f_{Y_{j_1 +
+\tau},\ldots,Y_{j_nn + \tau}}(a_1, \ldots, a_n), \,\,\,
+\forall \tau.\]</div>
+<ul class="to-build simple">
+<li>Strict stationarity means that the joint distribution of any subset
+of random variables in <span class="math">\({\bf Y}_{T}\)</span> is invariant to shifts
+in time, <span class="math">\(\tau\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Strict stationarity <span class="math">\(\Rightarrow\)</span> weak stationarity if the
+first and second moments of a stochastic process exist.</li>
+</ul>
+<ul class="to-build simple">
+<li>Weak stationarity does note <span class="math">\(\Rightarrow\)</span> strict stationarity:
+invariance of first and second moments to time shifts (weak
+stationarity) does not mean that all higher moments are invariant to
+time shifts (strict stationarity).</li>
+</ul>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Strict Stationarity</h2>
+<p>If <span class="math">\({\bf Y}_{T}\)</span> is Gaussian then weak stationarity
+<span class="math">\(\Rightarrow\)</span> strict stationarity.</p>
+<ul class="to-build simple">
+<li>If <span class="math">\({\bf Y}_{T}\)</span> is Gaussian, all marginal distributions of
+<span class="math">\((Y_{j_1}, \ldots, Y_{j_n})\)</span> are also Gaussian.</li>
+</ul>
+<ul class="to-build simple">
+<li>Gaussian distributions are fully characterized by their first and
+second moments.</li>
+</ul>
+
+<div class="slide-no">18</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Advanced Quantitative Methods',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

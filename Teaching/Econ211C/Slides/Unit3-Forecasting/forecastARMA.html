@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Forecasting ARMA Models &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Forecasting" href="../forecasting.html" />
+    <link rel="next" title="Vector Processes" href="../varProcesses.html" />
+    <link rel="prev" title="Linear Predictors" href="linearProj.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="forecasting-arma-models">
+
+<h1>Forecasting ARMA Models</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="forecasting-with-infinite-data">
+
+<h2>Forecasting with Infinite Data</h2>
+
+<p>Consider an <span class="math">\(\smash{ARMA}\)</span> process with
+<span class="math">\(\smash{MA(\infty)}\)</span> representation:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_t - \mu &amp; = \psi(L) \varepsilon_t, \,\,\,\, \varepsilon_t
+\stackrel{i.i.d.}{\sim}
+WN(0,\sigma^2)
+\end{align*}\end{split}\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\begin{gather*}
+\psi(L) = \sum_{j=0}^{\infty} \psi_{j}L^{j} \\
+\sum_{j=0}^{\infty}|\psi_{j}| &lt; \infty \\
+\psi_{0} = 1.
+\end{gather*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Forecasting with Infinite Data</h2>
+
+<p>Suppose</p>
+<ul class="simple">
+<li>we observe an infinite history of
+<span class="math">\(\{\smash{\varepsilon_{t}}\}\)</span> up to date <span class="math">\(\smash{t}\)</span>:
+<span class="math">\(\smash{\{\varepsilon_{t},\varepsilon_{t-1},\varepsilon_{t-2},...\}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>we know the <span class="math">\(\smash{MA}\)</span> parameters
+<span class="math">\(\smash{\mu, \sigma, \{\psi_{j}\}_{j=0}^{\infty}}\)</span>.</li>
+</ul>
+<p>Then</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_{t+s} &amp; = \mu + \varepsilon_{t+s} + \psi_{1}\varepsilon_{t+s-1} +
+\ldots + \psi_{s-1}\varepsilon_{t+1} + \psi_{s}\varepsilon_{t} +
+\psi_{s+1}\varepsilon_{t-1} + \ldots
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="optimal-forecast">
+
+<h2>Optimal Forecast</h2>
+
+<p>The optimal forecast of <span class="math">\(\smash{Y_{t+s}}\)</span> in terms of MSE is:</p>
+<div class="math">
+\[\begin{align*}
+E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] = \mu +
+\psi_{s}\varepsilon_{t} + \psi_{s+1}\varepsilon_{t-1} + \ldots
+\end{align*}\]</div>
+<p>Note, this is different from</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_{t} &amp; = \mu + \psi_{0}\varepsilon_{t} +
+\psi_{1}\varepsilon_{t-1} + \ldots
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="forecast-error">
+
+<h2>Forecast Error</h2>
+
+<p>The forecast error is:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_{t+s} &amp; - E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] \\
+&amp; = \mu + \overbrace{\varepsilon_{t+s} +
+\psi_{1}\varepsilon_{t+s-1} + \psi_{2}\varepsilon_{t+s-2} + \ldots
+} + \psi_{s}\varepsilon_{t} + \psi_{s+1}\varepsilon_{t+1} +
+\ldots \\
+&amp; \hspace{2in} - \mu - \psi_{s}\varepsilon_{t} -
+\psi_{s+1}\varepsilon_{t-1} - \ldots \\
+&amp; = \varepsilon_{t+s} + \psi_{1}\varepsilon_{t+s-1}  + \ldots +
+\psi_{s-1}\varepsilon_{t+1}
+\end{align*}\end{split}\]</div>
+<p>Since <span class="math">\(\smash{E[Y_{t+s} |
+\varepsilon_{t},\varepsilon_{t-1},\ldots]}\)</span> is linear in
+<span class="math">\(\smash{\{\varepsilon_{\tau}\}_{\tau=-\infty}^{t}}\)</span>
+it is both the optimal forecast and optimal linear forecast.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="forecast-as-linear-projection">
+
+<h2>Forecast as Linear Projection</h2>
+
+<p>Hamilton refers to optimal linear forecasts as
+<span class="math">\(\smash{\hat{E}[Y_{t+s} |
+\varepsilon_{t},\varepsilon_{t-1},\ldots]}\)</span>.</p>
+<ul class="simple">
+<li>In this case</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{gather*}
+E[Y_{t+s}|\varepsilon_{t},\ldots] =
+\hat{E}[Y_{t+s}|\varepsilon_{t},\ldots] \\
+\implies Y_{t+s|t}^{*} = \hat{Y}_{t+s|t}
+\end{gather*}\end{split}\]</div>
+<p>which is also a linear projection
+<span class="math">\(\smash{\hat{p}(Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots)}\)</span>.</p>
+<ul class="simple">
+<li>Clearly, the linear projection condition is satisfied for
+<span class="math">\(\smash{j = t, t-1, \ldots}\)</span></li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+E[(Y_{t+s} &amp; -
+E[Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots])\varepsilon_{j}]
+\\
+&amp; \hspace{1in} = E[(\varepsilon_{t+s} +
+\psi_{1}\varepsilon_{t+s-1}  + \ldots +
+\psi_{s-1}\varepsilon_{t+1})\varepsilon_{j}] = 0.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="forecast-mse">
+
+<h2>Forecast MSE</h2>
+
+<p>The forecast MSE is:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+E[(Y_{t+s} &amp; -
+E[Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots])^{2}] \\
+&amp; \hspace{1in} =
+E[(\varepsilon_{t+s} + \psi_{1}\varepsilon_{t+s-1}  + \ldots +
+\psi_{s-1}\varepsilon_{t+1})^{2}] \\
+&amp; \hspace{1in} =
+\sigma^{2}\sum_{j=0}^{s-1}\psi_{j}^{2}.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="forecasting-conditional-on-lagged">
+
+<h2>Forecasting Conditional on Lagged <span class="math">\(\smash{Y_t}\)</span></h2>
+
+<p>Suppose we don't observe the full history of
+<span class="math">\(\smash{\varepsilon_{t}}\)</span>.</p>
+<ul class="simple">
+<li>Instead, we observe the full history of <span class="math">\(\smash{y_{t}:
+y_{t},y_{t-1},y_{t-2},\ldots}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We have an <span class="math">\(\smash{ARMA}\)</span> process with the same
+<span class="math">\(\smash{MA}\)</span> representation as before.</li>
+</ul>
+<p>If the <span class="math">\(\smash{MA(\infty)}\)</span> representation is invertible, we can
+write it as an <span class="math">\(\smash{AR(\infty)}\)</span>:</p>
+<div class="math">
+\[\begin{align*}
+\eta(L)(Y_{t}-\mu) = \varepsilon_{t},
+\end{align*}\]</div>
+<p>where <span class="math">\(\smash{\eta(L) = \psi^{-1}(L)}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="computing-historical-values">
+
+<h2>Computing Historical Values</h2>
+
+<p>The history of <span class="math">\(\smash{\varepsilon_{t}}\)</span> can be constructed with
+the history of <span class="math">\(\smash{y_{t}}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\varepsilon_{t} &amp; = \eta(L)(y_{t}-\mu) \\
+\varepsilon_{t-1} &amp; = \eta(L)(y_{t-1}-\mu) \\
+\varepsilon_{t-2} &amp; = \eta(L)(y_{t-2}-\mu) \\
+&amp; \vdots
+\end{align*}\end{split}\]</div>
+<div class="math">
+\[\begin{split}\begin{align*}
+\implies E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] &amp; =
+E[Y_{t+s}|y_{t},y_{t-1},\ldots] \\
+&amp; = \mu + (\psi_{s} + \psi_{s+1}L +
+\psi_{s+2}L^{2}+\ldots)\varepsilon_{t} \\
+&amp; = \mu + (\psi_{s} + \psi_{s+1}L +
+\psi_{s+2}L^{2}+\ldots)\eta(L)(y_{t}-\mu).
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="example">
+
+<h2>Example: <span class="math">\(\smash{AR(1)}\)</span></h2>
+
+<p>For an <span class="math">\(\smash{AR(1)}\)</span> with <span class="math">\(\smash{|\phi| &lt; 1}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_{t} - \mu &amp; = \psi(L)\varepsilon_{t},
+\end{align*}\end{split}\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\psi(L) &amp; = (1 + \phi L + \phi^{2}L^{2}+ \ldots) = (1 + \psi_{1}
+L + \psi_{2} L^2 + \ldots).
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Example: <span class="math">\(\smash{AR(1)}\)</span></h2>
+
+<p>The optimal forecast <span class="math">\(\smash{s}\)</span> -periods ahead is</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] &amp; = \mu +
+\psi_{s}\varepsilon_{t} + \psi_{s+1}\varepsilon_{t-1} + \ldots \\
+&amp; = \mu + \phi^{s}\varepsilon_{t} + \phi^{s+1}\varepsilon_{t-1} +
+\phi^{s+2}\varepsilon_{t-2} + \ldots \\
+&amp; = \mu + \phi^{s}(\varepsilon_{t} + \phi\varepsilon_{t-1} +
+\phi^{2}\varepsilon_{t-2}+...) \\
+&amp; = \mu + \phi^{s}(y_{t} - \mu)
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>The forecast decays toward <span class="math">\(\smash{\mu}\)</span> as <span class="math">\(\smash{s}\)</span>
+increases.</li>
+</ul>
+<ul class="simple">
+<li>The MSE is <span class="math">\(\smash{\sigma^{2}\sum_{j=0}^{s-1}\phi^{2j}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>As <span class="math">\(\smash{s\rightarrow \infty, MSE \rightarrow
+\frac{\sigma^{2}}{1-\phi^{2}} = Var(Y_{t})}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="forecasting-with-finite-data">
+
+<h2>Forecasting with Finite Data</h2>
+
+<p>In reality, we don't observe an infinite history of
+<span class="math">\(\smash{y_{t},y_{t-1},y_{t-2},\ldots}\)</span>.</p>
+<ul class="simple">
+<li>Suppose we have only a finite set of <span class="math">\(\smash{m}\)</span> past
+observations of <span class="math">\(\smash{y_{t}:
+y_{t},y_{t-1},\ldots,y_{t-m+1}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The optimal <span class="math">\(\smash{AR(p)}\)</span> forecast only makes use of the
+past <span class="math">\(\smash{p}\)</span> observations if available
+(i.e. <span class="math">\(\smash{p&lt;m}\)</span>).</li>
+</ul>
+<ul class="simple">
+<li>If we want to forecast an <span class="math">\(\smash{MA}\)</span> or <span class="math">\(\smash{ARMA}\)</span>
+(of arbitrary order), we need an infinite history to construct an
+optimal forecast.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="approximate-optimal-forecasts">
+
+<h2>Approximate Optimal Forecasts</h2>
+
+<p>Start by setting all <span class="math">\(\smash{\varepsilon}\)</span> 's prior to time
+<span class="math">\(\smash{t-m+1}\)</span> equal to zero.</p>
+<div class="math">
+\[\begin{align*}
+E[Y_{t+s}|y_{t},y_{t-1},\ldots] \approx
+E[Y_{t+s}|y_{t},y_{t-1},\ldots,y_{t-m+1},\varepsilon_{t-m} = 0,
+\varepsilon_{t-m-1} = 0, \ldots].
+\end{align*}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Example <span class="math">\(\smash{MA(q)}\)</span></h2>
+
+<p>Start with</p>
+<div class="math">
+\[\begin{gather*}
+\hat{\varepsilon}_{t-m} =
+\hat{\varepsilon}_{t-m-1} = \ldots = \hat{\varepsilon}_{t-m-q+1} = 0.
+\end{gather*}\]</div>
+<p>Calculate forward recursively</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\hat{\varepsilon}_{t-m+1} &amp; = (y_{t-m+1} - \mu) \\
+\hat{\varepsilon}_{t-m+2} &amp; = (y_{t-m+2} - \mu) - \theta_{1}
+\hat{\varepsilon}_{t-m+1} \\
+\hat{\varepsilon}_{t-m+3} &amp; = (y_{t-m+3} - \mu) - \theta_{1}
+\hat{\varepsilon}_{t-m+2} - \theta_{2}\hat{\varepsilon}_{t-m+1} \\
+&amp; \vdots
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>Example <span class="math">\(\smash{MA(q)}\)</span></h2>
+
+<p>With
+<span class="math">\(\smash{\hat{\varepsilon}_{t},\hat{\varepsilon}_{t-1},\ldots,\hat{\varepsilon}_{t-m+1}}\)</span>
+in hand we can compute forecasts</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\hat{Y}_{t+s} &amp; = \theta_{s}\hat{\varepsilon}_{t} +
+\theta_{s+1}\hat{\varepsilon}_{t-1} + \ldots +
+\theta_{q}\hat{\varepsilon}_{t-q+s}.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="exact-finite-sample-forecasts">
+
+<h2>Exact Finite Sample Forecasts</h2>
+
+<p>Another forecast approximation method is to simply project
+<span class="math">\(\smash{Y_{t+1} - \mu}\)</span> on <span class="math">\(\smash{\boldsymbol{X}_{t} =
+(Y_{t} -\mu, Y_{t-1}-\mu, \ldots, Y_{t-m+1} - \mu)^T}\)</span>.</p>
+<p>That is</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\hat{Y}_{t+1|t}^{(m)} - \mu &amp; =
+\boldsymbol{X}_{t}^{'}\boldsymbol{\beta}^{(m)} \\
+&amp; = \beta_{1}^{(m)}(Y_{t}-\mu) + \beta_{2}^{(m)}(Y_{t-1}-\mu) +
+\ldots + \beta_{m}^{(m)}(Y_{t-m+1}-\mu).
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id5">
+
+<h2>Exact Finite Sample Forecasts</h2>
+
+<div class="math">
+\[\begin{split}\begin{align*}
+\boldsymbol{\beta}^{(m)} &amp; =
+E[\boldsymbol{X}_{t}\boldsymbol{X}_{t}^{'}]^{-1}E[\boldsymbol{X}_{t}(Y_{t+1}-\mu)]
+= \left[ \begin{array}{ccccc} \gamma_{0} &amp; \gamma_{1} &amp; \gamma_{2}
+&amp; \ldots &amp; \gamma_{m-1} \\ \gamma_{1} &amp; \gamma_{0} &amp; \gamma_{1} &amp;
+\ldots &amp; \gamma_{m-2} \\ \gamma_{2} &amp; \gamma_{1} &amp; \gamma_{0} &amp;
+\ldots &amp; \gamma_{m-3} \\ \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots
+\\ \gamma_{m-1} &amp; \ldots &amp; \ldots &amp; \ldots &amp; \gamma_{0} \\
+\end{array} \right]^{-1} \left[ \begin{array}{c} \gamma_{1} \\
+\gamma_{2} \\ \vdots \\ \gamma_{m} \\ \end{array} \right].
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id6">
+
+<h2>Exact Finite Sample Forecasts</h2>
+
+<p>Similarly,</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_{t+s|t}^{(m)} - \mu &amp; =
+\boldsymbol{X}_{t}^{'}\boldsymbol{\beta}^{(m,s)} \\
+&amp; = \beta_{1}^{(m,s)}(Y_{t}-\mu) +
+\beta_{2}^{(m,s)}(Y_{t-1}-\mu) + \ldots +
+\beta_{m}^{(m,s)}(Y_{t-m+1}-\mu).
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id7">
+
+<h2>Exact Finite Sample Forecasts</h2>
+
+<div class="math">
+\[\begin{split}\begin{align*}
+\boldsymbol{\beta}^{(m,s)} &amp; =
+E[\boldsymbol{X}_{t}\boldsymbol{X}_{t}^{'}]^{-1}E[\boldsymbol{X}_{t}(Y_{t+s}-\mu)]
+\\
+&amp; = \left[ \begin{array}{ccccc} \gamma_{0} &amp; \gamma_{1} &amp;
+\gamma_{2} &amp; \ldots &amp; \gamma_{m-1} \\ \gamma_{1} &amp; \gamma_{0} &amp;
+\gamma_{1} &amp; \ldots &amp; \gamma_{m-2} \\ \gamma_{2} &amp; \gamma_{1} &amp;
+\gamma_{0} &amp; \ldots &amp; \gamma_{m-3} \\ \vdots &amp; \vdots &amp; \vdots &amp;
+\vdots &amp; \vdots \\ \gamma_{m-1} &amp; \ldots &amp; \ldots &amp; \ldots &amp;
+\gamma_{0} \\ \end{array} \right]^{-1} \left[ \begin{array}{c}
+\gamma_{s} \\ \gamma_{s+1} \\ \vdots \\ \gamma_{s+m-1} \\
+\end{array} \right].
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id8">
+
+<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span></h2>
+
+<p>Let <span class="math">\(\smash{\{Y_t\}}\)</span> be an <span class="math">\(\smash{ARMA(1,1)}\)</span> process
+with <span class="math">\(\smash{|\phi| &lt;1}\)</span> and <span class="math">\(\smash{|\theta| &lt; 1}\)</span>
+(causal and invertible).  Then:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+(1-\phi L)(Y_{t} - \mu) &amp; = (1 + \theta L)\varepsilon_{t} \\
+\implies Y_{t} - \mu &amp; = \psi(L)\varepsilon_{t}
+\end{align*}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\,\,\psi (L) = (1-\phi L)^{-1}(1 + \theta
+L)}\)</span>.</p>
+<ul class="simple">
+<li>We can also write</li>
+</ul>
+<div class="math">
+\[\smash{\varepsilon_{t} = (1+\theta L)^{-1}(1-\phi L)(Y_{t} - \mu) =
+\psi(L)^{-1}(Y_{t} - \mu)}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id9">
+
+<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span></h2>
+
+<p>Expanding the <span class="math">\(\smash{MA}\)</span> representation</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\psi(L) &amp; = (1+\phi L + \phi^{2}L^{2} + \ldots)(1 +\theta L) \\
+&amp; = 1 + (\phi + \theta)L + (\phi^{2} + \phi \theta)L^{2} + (\phi^{3} +
+\phi^{2}\theta)L^{3} + \ldots \\
+&amp; = 1 + \sum_{j=1}^{\infty} (\phi^{j} + \phi^{j-1}\theta)L^{j} \\
+\implies \psi_{m} &amp; = \phi^{m} + \phi^{m-1}\theta.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id10">
+
+<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span></h2>
+
+<p>Let's define <span class="math">\(\smash{\psi_{s}(L)}\)</span> as the polynomial</p>
+<div class="math">
+\[\smash{\psi_{s}(L) = \psi_{s} + \psi_{s+1}L + \psi_{s+2}L^{2} +
+\ldots}\]</div>
+<p>This is different from <span class="math">\(\smash{\,\,\psi_{s}L^{s} +
+\psi_{s+1}L^{s+1} + \ldots}\)</span></p>
+
+
+
+
+</article>
+<article class="slide level-2" id="id11">
+
+<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span></h2>
+
+<p>For the <span class="math">\(\smash{ARMA(1,1)}\)</span>,</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\psi_{s}(L) &amp; = (\phi^{s} + \phi^{s-1}\theta) +
+(\phi^{s+1} + \phi^{s}\theta)L + (\phi^{s+2} +
+\phi^{s+1}\theta)L^{2} + \ldots \\
+&amp; = \sum_{j=s}^{\infty} (\phi^{j} + \phi^{j-1}\theta)L^{j-s} \\
+&amp; = (\phi^{s} + \phi^{s-1}\theta)\sum_{j=0}^{\infty} \phi^{j}L^{j}
+\\
+&amp; = (\phi^{s} + \phi^{s-1}\theta)(1 - \phi L)^{-1}.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id12">
+
+<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span></h2>
+
+<p>Recall, for an <span class="math">\(\smash{MA(\infty)}\)</span>, the optimal forecast is</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\hat{Y}_{t+s|t} - \mu &amp; = E[Y_{t+s} | \varepsilon_{t},
+\varepsilon_{t-1}, \ldots] \\
+&amp; = \psi_{s}\varepsilon_{t} +
+\psi_{s+1}\varepsilon_{t-1} + \psi_{s+2}\varepsilon_{t-2} + \ldots
+= \psi_{s}(L)\varepsilon_{t}
+\end{align*}\end{split}\]</div>
+<p>So, for the <span class="math">\(\smash{ARMA(1,1)}\)</span>.</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\hat{Y}_{t+s|t} - \mu &amp; = (\phi^{s} + \phi^{s-1}\theta)(1-\phi
+L)^{-1}\varepsilon_{t} \\
+&amp; = (\phi^{s} + \phi^{s-1}\theta)(1-\phi L)^{-1} (1-\phi L)(1+
+\theta L)^{-1}(Y_{t}-\mu) \\
+&amp; = (\phi^{s} + \phi^{s-1}\theta)(1+\theta L)^{-1}(Y_{t} - \mu).
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id13">
+
+<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span></h2>
+
+<p>Notice</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\hat{Y}_{t+s|t} - \mu &amp; = (\phi^{s} + \phi^{s-1}\theta)(1+\theta
+L)^{-1}(Y_{t} - \mu) \\
+&amp; = \phi(\phi^{s-1} + \phi^{s-2}\theta)(1+\theta L)^{-1}(Y_{t} -
+\mu) \\
+&amp; = \phi(\hat{Y}_{t+s-1|t} - \mu), \,\,\,\, \text{ if } s \geq 2,
+\end{align*}\end{split}\]</div>
+<p>which means the forecast decays toward <span class="math">\(\smash{\mu}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="id14">
+
+<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span></h2>
+
+<p>For <span class="math">\(\smash{s = 1}\)</span>,</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\hat{Y}_{t+s|t} - \mu &amp; = (\phi +\theta)(1 + \theta L)^{-1}(Y_{t} -
+\mu) \\
+&amp; = (\phi + \phi \theta L - \phi\theta L + \theta)(1 + \theta
+L)^{-1}(Y_{t}- \mu) \\
+&amp; = [\phi(1+\theta L) + \theta(1 - \phi L)](1+\theta L)^{-1}(Y_{t} -
+\mu) \\
+&amp; = \phi(Y_{t} - \mu) + \theta(1 - \phi L)(1 + \theta
+L)^{-1}(Y_{t} - \mu) \\
+&amp; = \phi(Y_{t} - \mu) + \theta\varepsilon_{t}.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

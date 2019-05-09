@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Bayes Theorem &mdash; Econ 114 - Advanced Quantitative Methods</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
+    <link rel="up" title="Bayesian Methods" href="bayesian.html" />
+    <link rel="next" title="Prior and Posterior Distributions" href="priorpost.html" />
+    <link rel="prev" title="Bayesian Methods" href="bayesian.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="bayes-theorem">
+<h1>Bayes Theorem</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="sample-space">
+<h2>Sample Space</h2>
+<p>Consider a random variable <span class="math">\(X\)</span>.</p>
+<ul class="to-build simple">
+<li>The set of all possible outcomes of <span class="math">\(X\)</span> is referred to as the
+<em>sample space</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will denote the sample space as <span class="math">\(\mathcal{S}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Each outcome, <span class="math">\(x\)</span>, of the random variable <span class="math">\(X\)</span> is called
+a member of <span class="math">\(\mathcal{S}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>In notation <span class="math">\(x \in \mathcal{S}\)</span>.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="subsets">
+<h2>Subsets</h2>
+<p>A subset of <span class="math">\(\mathcal{S}\)</span> is a collection of outcomes.</p>
+<ul class="to-build simple">
+<li>If <span class="math">\(A\)</span> is a subset of <span class="math">\(\mathcal{S}\)</span>, we write <span class="math">\(A
+\subset \mathcal{S}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(B\)</span> is a subset of <span class="math">\(\mathcal{S}\)</span> and <span class="math">\(A\)</span> is a
+subset of <span class="math">\(B\)</span>, we write <span class="math">\(A \subset B\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We also say that <span class="math">\(A\)</span> is <em>contained in</em> <span class="math">\(B\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We often refer to subsets of the sample space as <em>events</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <em>empty set</em> is the subset with no elements and is denoted
+<span class="math">\(\emptyset\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The empty set is an impossible event.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="example-of-subsets">
+<h2>Example of Subsets</h2>
+<p>Let <span class="math">\(X\)</span> be the result of a fair die roll.</p>
+<ul class="to-build simple">
+<li>The sample space is <span class="math">\(\{1,2,3,4,5,6\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Let <span class="math">\(B\)</span> be the event that <span class="math">\(X\)</span> is even: <span class="math">\(B =
+\{2,4,6\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Let <span class="math">\(A\)</span> be the event that <span class="math">\(X\)</span> is 2 or 4: <span class="math">\(A =
+\{2,4\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Clearly, <span class="math">\(A \subset B \subset \mathcal{S}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Let <span class="math">\(C\)</span> be the event that <span class="math">\(X\)</span> is <span class="math">\(-1\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Clearly, <span class="math">\(C = \emptyset\)</span>.</li>
+</ul>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="union">
+<h2>Union</h2>
+<p>The <em>union</em> of two sets is the set containing all outcomes that belong
+to <span class="math">\(A\)</span> <em>or</em> <span class="math">\(B\)</span>.</p>
+<ul class="to-build simple">
+<li>We write the union of <span class="math">\(A\)</span> and <span class="math">\(B\)</span> as <span class="math">\(A \cup B\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>For the die roll example, if <span class="math">\(A = \{2,5\}\)</span> and <span class="math">\(B =
+\{2,4,6\}\)</span>, then <span class="math">\(A \cup B = \{2,4,5,6\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The union of many sets is written as</li>
+</ul>
+<div class="to-build math">
+\[\bigcup_{i=1}^N A_i.\]</div>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Union</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/oneEvent.png"><img alt="_images/oneEvent.png" class="align-center" src="_images/oneEvent.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Union</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/twoEvents.png"><img alt="_images/twoEvents.png" class="align-center" src="_images/twoEvents.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Union</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/union.png"><img alt="_images/union.png" class="align-center" src="_images/union.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="intersection">
+<h2>Intersection</h2>
+<p>The <em>intersection</em> of two sets is the set containing all outcomes that
+belong to <span class="math">\(A\)</span> <em>and</em> <span class="math">\(B\)</span>.</p>
+<ul class="to-build simple">
+<li>We write the intersection of <span class="math">\(A\)</span> and <span class="math">\(B\)</span> as <span class="math">\(A
+\cap B\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>For the die roll example, if <span class="math">\(A = \{2,5\}\)</span> and <span class="math">\(B =
+\{2,4,6\}\)</span>, then <span class="math">\(A \cap B = \{2\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The intersection of many sets is written as</li>
+</ul>
+<div class="to-build math">
+\[\bigcap_{i=1}^N A_i.\]</div>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Intersection</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/oneEvent.png"><img alt="_images/oneEvent.png" class="align-center" src="_images/oneEvent.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Intersection</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/twoEvents.png"><img alt="_images/twoEvents.png" class="align-center" src="_images/twoEvents.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Intersection</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/intersection.png"><img alt="_images/intersection.png" class="align-center" src="_images/intersection.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="complements">
+<h2>Complements</h2>
+<p>The <em>complement</em> of <span class="math">\(A \subset \mathcal{S}\)</span> is the subset that
+contains all outcomes in <span class="math">\(\mathcal{S}\)</span> that are not in
+<span class="math">\(A\)</span>.</p>
+<ul class="to-build simple">
+<li>We denote the complement by <span class="math">\(A^c\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>For the die roll example, if <span class="math">\(A = \{2,4,6\}\)</span>, then <span class="math">\(A^c
+= \{1,3,5\}\)</span>.</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Complements</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/partition0.png"><img alt="_images/partition0.png" class="align-center" src="_images/partition0.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Complements</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/complement.png"><img alt="_images/complement.png" class="align-center" src="_images/complement.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Complements</h2>
+<p>Some important properties:</p>
+<div class="to-build math">
+\[(A^c)^c  = A\]</div>
+<div class="to-build math">
+\[\emptyset^c = \mathcal{S}\]</div>
+<div class="to-build math">
+\[\mathcal{S^c} = \emptyset\]</div>
+<div class="to-build math">
+\[A \cup A^c = \mathcal{S}\]</div>
+<div class="to-build math">
+\[A \cap A^c = \emptyset.\]</div>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="disjoint-events">
+<h2>Disjoint Events</h2>
+<p>Two events are <em>disjoint</em> or <em>mutually exclusive</em> if they have no
+outcomes in common.</p>
+<ul class="to-build simple">
+<li><span class="math">\(A\)</span> and <span class="math">\(B\)</span> are disjoint if <span class="math">\(A \cap B =
+\emptyset\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>By definition, any event and its complement are disjoint: <span class="math">\(A
+\cap A^c = \emptyset\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>For the die roll example, if <span class="math">\(A = \{2,5\}\)</span> and <span class="math">\(B =
+\{4,6\}\)</span>, then <span class="math">\(A \cap B = \emptyset\)</span>.</li>
+</ul>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="probability">
+<h2>Probability</h2>
+<p>Given <span class="math">\(A \subset \mathcal{S}\)</span>, denote the probability <span class="math">\(P(X
+\subset A) = P(A)\)</span>.</p>
+<ul class="to-build simple">
+<li>In the Venn diagram, <span class="math">\(P(A)\)</span> is the ratio of the area of
+<span class="math">\(A\)</span> to the area of <span class="math">\(\mathcal{S}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Note that <span class="math">\(P(\mathcal{S}) = 1\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Note that <span class="math">\(P(\emptyset) = 0\)</span>.</li>
+</ul>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="probability-of-intersections">
+<h2>Probability of Intersections</h2>
+<p>The probability that <span class="math">\(X\)</span> is in <span class="math">\(A\)</span> and <span class="math">\(B\)</span> is:</p>
+<div class="to-build math">
+\[\begin{split}P(A \cap B) &amp; = P((X \subset A) \cap (X \subset B)).\end{split}\]</div>
+<ul class="to-build simple">
+<li>For the die roll example, if <span class="math">\(A = \{2,5\}\)</span> and <span class="math">\(B
+= \{2,4,6\}\)</span>, then</li>
+</ul>
+<div class="to-build math">
+\[P(A \cap B) = P(X = 2) = \frac{1}{6}.\]</div>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="probability-of-unions">
+<h2>Probability of Unions</h2>
+<p>The probability that <span class="math">\(X\)</span> is in <span class="math">\(A\)</span> or <span class="math">\(B\)</span> is:</p>
+<div class="to-build math">
+\[P(A \cup B) = P((X \subset A) \cup (X \subset B)) \hspace{0.35in}\]</div>
+<div class="to-build math">
+\[\hspace{0.5in} = P(A) + P(B) - P(A \cap B).\]</div>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="id10">
+<h2>Probability of Unions</h2>
+<p>For the die roll example, if <span class="math">\(A = \{2,5\}\)</span> and <span class="math">\(B =
+\{2,4,6\}\)</span>,</p>
+<div class="to-build math">
+\[P(A) + P(B) - P(A \cap B) \hspace{1.5in}\]</div>
+<div class="to-build math">
+\[\hspace{0.47in} = P\left(\{2,5\}\right) +
+P\left(\{2,4,6\}\right) - P\left(\{2\}\right)\]</div>
+<div class="to-build math">
+\[= \frac{2}{6} + \frac{3}{6} - \frac{1}{6} \hspace{1.15in}\]</div>
+<div class="to-build math">
+\[= \frac{4}{6} \hspace{1.85in}\]</div>
+<div class="to-build math">
+\[= P\left(\{2,4,5,6\}\right) \hspace{0.95in}\]</div>
+<div class="to-build math">
+\[= P(A \cup B). \hspace{1.3in}\]</div>
+
+<div class="slide-no">21</div>
+
+</article>
+<article class="appear slide level-2" id="id11">
+<h2>Probability of Unions</h2>
+<p>If <span class="math">\(A \cap B = \emptyset\)</span>,</p>
+<div class="to-build math">
+\[P(A \cup B) = P(A) + P(B),\]</div>
+<p class="to-build">since <span class="math">\(P(\emptyset) = 0\)</span>.</p>
+
+<div class="slide-no">22</div>
+
+</article>
+<article class="appear slide level-2" id="id12">
+<h2>Probability of Unions</h2>
+<p>For the die roll example, if <span class="math">\(A = \{2,5\}\)</span> and <span class="math">\(B =
+\{4,6\}\)</span>,</p>
+<div class="to-build math">
+\[P(A) + P(B) - P(A \cap B) \hspace{1.5in}\]</div>
+<div class="to-build math">
+\[\hspace{0.47in} = P\left(\{2,5\}\right) + P\left(\{4,6\}\right) -
+P\left(\emptyset\right)\]</div>
+<div class="to-build math">
+\[= \frac{2}{6} + \frac{2}{6} - 0 \hspace{0.88in}\]</div>
+<div class="to-build math">
+\[= \frac{4}{6} \hspace{1.53in}\]</div>
+<div class="to-build math">
+\[= P\left(\{2,4,5,6\}\right) \hspace{0.63in}\]</div>
+<div class="to-build math">
+\[= P(A \cup B). \hspace{0.97in}\]</div>
+
+<div class="slide-no">23</div>
+
+</article>
+<article class="appear slide level-2" id="conditional-probability">
+<h2>Conditional Probability</h2>
+<p>Suppose we know that event <span class="math">\(B\)</span> has occurred - that is, one of
+the outcomes in the subset <span class="math">\(B \subset \mathcal{S}\)</span> has occurred.</p>
+<ul class="to-build simple">
+<li>How does this alter our view of the probability of event <span class="math">\(A\)</span>
+occurring?</li>
+</ul>
+<ul class="to-build simple">
+<li>Denote the probability of <span class="math">\(A\)</span>, conditional on <span class="math">\(B\)</span>
+occurring, as <span class="math">\(P(A|B)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(A \cap B = \emptyset\)</span>, we know <span class="math">\(P(A|B) = 0\)</span>. Why?</li>
+</ul>
+
+<div class="slide-no">24</div>
+
+</article>
+<article class="appear slide level-2" id="id13">
+<h2>Conditional Probability</h2>
+<p>If <span class="math">\(A \cap B \neq \emptyset\)</span></p>
+<div class="to-build math">
+\[\begin{split}P(A|B) &amp; = \frac{P(A \cap B)}{P(B)}.\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(P(A|B)\)</span> is the ratio of the area of <span class="math">\(A \cap B\)</span> to the
+area of <span class="math">\(B\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>That is, we reduce the sample space from <span class="math">\(\mathcal{S}\)</span> to
+<span class="math">\(B\)</span>.</li>
+</ul>
+
+<div class="slide-no">25</div>
+
+</article>
+<article class="appear slide level-2" id="id14">
+<h2>Conditional Probability</h2>
+<p>For the die roll example, if <span class="math">\(A = \{2,4\}\)</span> and <span class="math">\(B = \{2,4,6\}\)</span>,</p>
+<div class="to-build math">
+\[P(A|B) = \frac{P(A \cap B)}{P(B)}
+= \frac{\;\; \frac{2}{6} \;\;}{\frac{3}{6}}
+= \frac{2}{3}.\]</div>
+<ul class="to-build simple">
+<li>Intuitively, if we know that 2,4 or 6 occurs, then the probability
+that a 2 or 4 occurs should be <span class="math">\(\frac{2}{3}\)</span>.</li>
+</ul>
+
+<div class="slide-no">26</div>
+
+</article>
+<article class="appear slide level-2" id="id15">
+<h2>Bayes' Theorem</h2>
+<p>From the definition of conditional probability,</p>
+<div class="to-build math" id="equation-first">
+<span class="eqno">(1)</span>\[P(A|B) = \frac{P(A \cap B)}{P(B)} \quad \Rightarrow \quad
+        P(A \cap B) = P(A|B) P(B).\]</div>
+<p class="to-build">Likewise</p>
+<div class="to-build math" id="equation-second">
+<span class="eqno">(2)</span>\[P(B|A) = \frac{P(A \cap B)}{P(A)} \quad \Rightarrow \quad
+        P(A \cap B) = P(B|A) P(A).\]</div>
+
+<div class="slide-no">27</div>
+
+</article>
+<article class="appear slide level-2" id="id16">
+<h2>Bayes' Theorem</h2>
+<p>Equating <a href="#equation-first">(1)</a> and <a href="#equation-second">(2)</a></p>
+<div class="to-build math" id="equation-third">
+<span class="eqno">(3)</span>\[P(A|B) P(B) = P(B|A) P(A).\]</div>
+<p class="to-build">Rearranging <a href="#equation-third">(3)</a> gives <em>Bayes' Theorem</em>:</p>
+<div class="to-build math">
+\[P(B|A) = \frac{P(A|B) P(B)}{P(A)}.\]</div>
+
+<div class="slide-no">28</div>
+
+</article>
+<article class="appear slide level-2" id="id17">
+<h2>Bayes' Theorem</h2>
+<p>For the die roll example, if <span class="math">\(A = \{2,4\}\)</span> and <span class="math">\(B =
+\{2,4,6\}\)</span>, we already know that</p>
+<ul class="to-build simple">
+<li><span class="math">\(P(A) = \frac{2}{6}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(P(B) = \frac{3}{6}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(P(A|B) = \frac{2}{3}\)</span>.</li>
+</ul>
+<p class="to-build">Thus,</p>
+<div class="to-build math">
+\[P(B|A) = \frac{P(A|B) P(B)}{P(A)} = \frac{\frac{2}{3} \times
+\frac{3}{6}}{\frac{2}{6}} = \frac{\;\; \frac{2}{6}
+\;\;}{\frac{2}{6}} = 1.\]</div>
+
+<div class="slide-no">29</div>
+
+</article>
+<article class="appear slide level-2" id="partitions">
+<h2>Partitions</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/partition0.png"><img alt="_images/partition0.png" class="align-center" src="_images/partition0.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">30</div>
+
+</article>
+<article class="appear slide level-2" id="id18">
+<h2>Partitions</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/partition1.png"><img alt="_images/partition1.png" class="align-center" src="_images/partition1.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">31</div>
+
+</article>
+<article class="appear slide level-2" id="id19">
+<h2>Partitions</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/partition2.png"><img alt="_images/partition2.png" class="align-center" src="_images/partition2.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">32</div>
+
+</article>
+<article class="appear slide level-2" id="id20">
+<h2>Partitions</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/partition3.png"><img alt="_images/partition3.png" class="align-center" src="_images/partition3.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">33</div>
+
+</article>
+<article class="appear slide level-2" id="id21">
+<h2>Partitions</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/partition5.png"><img alt="_images/partition5.png" class="align-center" src="_images/partition5.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">34</div>
+
+</article>
+<article class="appear slide level-2" id="id22">
+<h2>Partitions</h2>
+<p>Let <span class="math">\(B_1, B_2, \ldots, B_K\)</span> be <span class="math">\(K\)</span> subsets of
+<span class="math">\(\mathcal{S}\)</span>: <span class="math">\(B_i \subset \mathcal{S}\)</span> for <span class="math">\(i = 1,
+\ldots, K\)</span>.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\{B_i\}_{i=1}^K\)</span> is a <em>partition</em> of <span class="math">\(\mathcal{S}\)</span> if</li>
+</ul>
+<div class="to-build math">
+\[B_1 \cup B_2 \cup \cdots \cup B_K = \mathcal{S}\]</div>
+<div class="to-build math">
+\[B_i \cap B_j = \emptyset \quad \text{for} i \neq j.\]</div>
+<ul class="to-build simple">
+<li>Note that <span class="math">\(A = (A \cap B_1) \cup \cdots \cup (A \cap B_K)\)</span>.</li>
+</ul>
+
+<div class="slide-no">35</div>
+
+</article>
+<article class="appear slide level-2" id="id23">
+<h2>Partitions</h2>
+<p>Since <span class="math">\((A \cap B_i) \cap (A \cap B_j) = \emptyset\)</span> for <span class="math">\(i
+\neq j\)</span>,</p>
+<div class="to-build math">
+\[P(A) = P\left((A \cap B_1) \cup \cdots \cup (A \cap B_K)\right)
+\hspace{0.38in}\]</div>
+<div class="to-build math">
+\[= P(A \cap B_1) + \cdots + P(A \cap B_K)\]</div>
+<div class="to-build math">
+\[\hspace{0.55in} = P(A|B_1) P(B_1) + \cdots + P(A|B_K) P(B_K).\]</div>
+
+<div class="slide-no">36</div>
+
+</article>
+<article class="appear slide level-2" id="bayes-theorem-extended">
+<h2>Bayes' Theorem Extended</h2>
+<p>Given a partition <span class="math">\(B_1, \ldots, B_K\)</span> of <span class="math">\(\mathcal{S}\)</span>, we
+can applied Bayes' Theorem to each subset of the partition:</p>
+<div class="to-build math">
+\[P(B_j|A) = \frac{P(A|B_j) P(B_j)}{P(A)} \hspace{1.98in}\]</div>
+<div class="to-build math">
+\[\hspace{0.3in} = \frac{P(A|B_j) P(B_j)}{P(A|B_1) P(B_1) + \cdots +
+P(A|B_K) P(B_K)}.\]</div>
+
+<div class="slide-no">37</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Advanced Quantitative Methods',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

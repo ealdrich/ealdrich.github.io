@@ -1,55 +1,169 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Probability &mdash; Econ 114 - Advanced Quantitative Methods</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>Probability &mdash; Econ 114 - Advanced Quantitative Methods</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'Advanced Quantitative Methods',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
-    <link rel="prev" title="Econ 114" href="index.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="index.html" title="Econ 114"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Econ 114 - Advanced Quantitative Methods</a> &raquo;</li>
-  <li><a href="/~ealdrich/Teaching/Econ114/">Econ 114 Home</a> &raquo;</li>
-  <li><a href="Econ114.pdf">Download PDF</a> &raquo;</li>
-  <li><a href="/~ealdrich/Teaching/Econ114/Slides/index.html">View Slides</a> &raquo;</li>
 
-      </ul>
-    </div>  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html"/>
+        <link rel="up" title="Preliminaries" href="preliminaries.html"/>
+        <link rel="next" title="Exploratory Data Analysis" href="data.html"/>
+        <link rel="prev" title="Preliminaries" href="preliminaries.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Econ 114
+        
+
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="preliminaries.html">Preliminaries</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Probability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#random-variables">Random Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probability-mass-function">Probability Mass Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probability-density-function">Probability Density Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#properties-of-distributions">Properties of Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cumulative-distribution-function">Cumulative Distribution Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expected-value">Expected Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Expected Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#properties-of-expectation">Properties of Expectation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#properties-of-expectation-proof">Properties of Expectation - Proof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variance">Variance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Variance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standard-deviation">Standard Deviation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#covariance">Covariance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Covariance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#properties-of-variance">Properties of Variance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#properties-of-variance-proof">Properties of Variance - Proof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#properties-of-covariance">Properties of Covariance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#correlation">Correlation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-distribution">Normal Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-density">Normal Density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Normal Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standard-normal-distribution">Standard Normal Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standard-normal-distribution-proof">Standard Normal Distribution - Proof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Standard Normal Distribution - Proof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sum-of-normals">Sum of Normals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-mean">Sample Mean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-mean-cont">Sample Mean (Cont.)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-variance">Sample Variance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-sample-moments">Other Sample Moments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeSeries.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian Methods</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 114</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="preliminaries.html">Preliminaries</a> &raquo;</li>
+      
+    <li>Probability</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/probability.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="probability">
 <h1>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h1>
@@ -147,7 +261,7 @@ is</p>
 </ul>
 <div class="to-build math">
 \[E[Y] = E[g(X)] = \sum_{x \in \mathcal{X}} g(x)p(x).\]</div>
-<ul class="to-build to-build simple">
+<ul class="to-build simple">
 <li>For continuous r.v. <span class="math">\(X\)</span></li>
 </ul>
 <div class="to-build math">
@@ -212,10 +326,10 @@ E[X^2] - E[X]^2\)</span>:</p>
 <p>The standard deviation is simply</p>
 <div class="math">
 \[Std(X) = \sqrt{Var(X)}.\]</div>
-<ul class="to-build to-build simple">
+<ul class="to-build simple">
 <li><span class="math">\(Std(X)\)</span> is in the same units as <span class="math">\(X\)</span>.</li>
 </ul>
-<ul class="to-build to-build simple">
+<ul class="to-build simple">
 <li><span class="math">\(Var(X)\)</span> is in units squared.</li>
 </ul>
 </div>
@@ -330,7 +444,9 @@ standard deviation <span class="math">\(\sigma\)</span>, we write</p>
 <div class="section" id="id4">
 <h2>Normal Distribution<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>From <a class="reference external" href="http://en.wikipedia.org/wiki/Normal_distribution">Wikipedia</a>:</p>
-<a class="reference internal image-reference" href="_images/Normal_Distribution_PDF.png"><img alt="_images/Normal_Distribution_PDF.png" src="_images/Normal_Distribution_PDF.png" style="width: 6in;" /></a>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/Normal_Distribution_PDF.png"><img alt="_images/Normal_Distribution_PDF.png" src="_images/Normal_Distribution_PDF.png" style="width: 7.5in;" /></a>
+</div></blockquote>
 </div>
 <div class="section" id="standard-normal-distribution">
 <h2>Standard Normal Distribution<a class="headerlink" href="#standard-normal-distribution" title="Permalink to this headline">¶</a></h2>
@@ -442,91 +558,72 @@ averages.</li>
 </div>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Probability</a><ul>
-<li><a class="reference internal" href="#random-variables">Random Variables</a></li>
-<li><a class="reference internal" href="#probability-mass-function">Probability Mass Function</a></li>
-<li><a class="reference internal" href="#probability-density-function">Probability Density Function</a></li>
-<li><a class="reference internal" href="#properties-of-distributions">Properties of Distributions</a></li>
-<li><a class="reference internal" href="#cumulative-distribution-function">Cumulative Distribution Function</a></li>
-<li><a class="reference internal" href="#expected-value">Expected Value</a></li>
-<li><a class="reference internal" href="#id1">Expected Value</a></li>
-<li><a class="reference internal" href="#properties-of-expectation">Properties of Expectation</a></li>
-<li><a class="reference internal" href="#properties-of-expectation-proof">Properties of Expectation - Proof</a></li>
-<li><a class="reference internal" href="#variance">Variance</a></li>
-<li><a class="reference internal" href="#id2">Variance</a></li>
-<li><a class="reference internal" href="#standard-deviation">Standard Deviation</a></li>
-<li><a class="reference internal" href="#covariance">Covariance</a></li>
-<li><a class="reference internal" href="#id3">Covariance</a></li>
-<li><a class="reference internal" href="#properties-of-variance">Properties of Variance</a></li>
-<li><a class="reference internal" href="#properties-of-variance-proof">Properties of Variance - Proof</a></li>
-<li><a class="reference internal" href="#properties-of-covariance">Properties of Covariance</a></li>
-<li><a class="reference internal" href="#correlation">Correlation</a></li>
-<li><a class="reference internal" href="#normal-distribution">Normal Distribution</a></li>
-<li><a class="reference internal" href="#normal-density">Normal Density</a></li>
-<li><a class="reference internal" href="#id4">Normal Distribution</a></li>
-<li><a class="reference internal" href="#standard-normal-distribution">Standard Normal Distribution</a></li>
-<li><a class="reference internal" href="#standard-normal-distribution-proof">Standard Normal Distribution - Proof</a></li>
-<li><a class="reference internal" href="#id5">Standard Normal Distribution - Proof</a></li>
-<li><a class="reference internal" href="#sum-of-normals">Sum of Normals</a></li>
-<li><a class="reference internal" href="#sample-mean">Sample Mean</a></li>
-<li><a class="reference internal" href="#sample-mean-cont">Sample Mean (Cont.)</a></li>
-<li><a class="reference internal" href="#sample-variance">Sample Variance</a></li>
-<li><a class="reference internal" href="#other-sample-moments">Other Sample Moments</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Econ 114</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/probability.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data.html" class="btn btn-neutral float-right" title="Exploratory Data Analysis" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="preliminaries.html" class="btn btn-neutral" title="Preliminaries" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="index.html" title="Econ 114"
-             >previous</a> |</li>
-        <li><a href="index.html">Econ 114 - Advanced Quantitative Methods</a> &raquo;</li>
-  <li><a href="/~ealdrich/Teaching/Econ114/">Econ 114 Home</a> &raquo;</li>
-  <li><a href="Econ114.pdf">Download PDF</a> &raquo;</li>
-  <li><a href="/~ealdrich/Teaching/Econ114/Slides/index.html">View Slides</a> &raquo;</li>
+  
 
-      </ul>
-    </div>
-    <div class="footer">
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
         &copy; Copyright 2014, Eric M. Aldrich.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
-    </div>
-  </body>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Advanced Quantitative Methods',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

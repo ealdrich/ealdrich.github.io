@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Implied Volatility and the Volatility Term Structure &mdash; Econ 236</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Econ 236" href="index.html" />
+    <link rel="prev" title="Black-Scholes-Merton Model" href="blackScholes.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="implied-volatility-and-the-volatility-term-structure">
+
+<h1>Implied Volatility and the Volatility Term Structure</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="implied-volatility">
+
+<h2>Implied Volatility</h2>
+
+<p>Let <span class="math notranslate nohighlight">\(\smash{C_{mkt}}\)</span> and <span class="math notranslate nohighlight">\(\smash{P_{mkt}}\)</span> denote the
+market prices of call and put options. Recall that the implied
+volatility for strike <span class="math notranslate nohighlight">\(\smash{X}\)</span> is defined as the value
+<span class="math notranslate nohighlight">\(\smash{\sigma_{imp}}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+C_{mkt} &amp; = S_0 \Phi(d_1) - X e^{-rT} \Phi(d_2) \\
+P_{mkt} &amp; = X e^{-rT} \Phi(-d_2) - S_0 \Phi(-d_1)\\
+d_1 &amp; = \frac{\log(S_0/X) + (r+\sigma_{imp}^2/2)T}{\sigma_{imp} \sqrt{T}} \\
+d_2 &amp; = \frac{\log(S_0/X) + (r-\sigma_{imp}^2/2)T}{\sigma_{imp} \sqrt{T}} = d_1
+- \sigma_{imp} \sqrt{T}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>That is, <span class="math notranslate nohighlight">\(\smash{\sigma_{imp}}\)</span> is the value such that
+<span class="math notranslate nohighlight">\(\smash{C_{mkt} = C_{bs}}\)</span> and <span class="math notranslate nohighlight">\(\smash{P_{mkt} =
+P_{bs}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="put-call-parity">
+
+<h2>Put-Call Parity</h2>
+
+<p>Both the BSM and market prices satisfy put-call parity:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+C_{mkt} + X e^{r_f} &amp; = S_0 + P_{mkt} \\
+C_{bs} + X e^{r_f} &amp; = S_0 + P_{bs}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>As a result <span class="math notranslate nohighlight">\(\smash{C_{mkt} - C_{bs} = P_{mkt} - P_{bs}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Thus, the implied vol for a particular strike that sets
+<span class="math notranslate nohighlight">\(\smash{C_{mkt} = C_{bs}}\)</span> is also the implied vol that sets
+<span class="math notranslate nohighlight">\(\smash{P_{mkt} = P_{bs}}\)</span> (for the same strike).</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="foreign-exchange-vol-smile">
+
+<h2>Foreign Exchange Vol Smile</h2>
+
+<a class="reference internal image-reference" href="_images/currencySmile.png"><img alt="_images/currencySmile.png" class="align-center" src="_images/currencySmile.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="foreign-exchange-implied-distribution">
+
+<h2>Foreign Exchange Implied Distribution</h2>
+
+<a class="reference internal image-reference" href="_images/currencyImpliedDist.png"><img alt="_images/currencyImpliedDist.png" class="align-center" src="_images/currencyImpliedDist.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="evidence-of-heavy-tails">
+
+<h2>Evidence of Heavy Tails</h2>
+
+<p>The first column of the following table shows the fraction of times
+over a 10-year period that 12 currencies experienced a daily move that
+exceeded various thresholds. The second column compares the
+theoretical probabilities of a lognormal distribution.</p>
+<a class="reference internal image-reference" href="_images/heavyTailTable.png"><img alt="_images/heavyTailTable.png" class="align-center" src="_images/heavyTailTable.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="equities-exchange-vol-smile">
+
+<h2>Equities Exchange Vol Smile</h2>
+
+<a class="reference internal image-reference" href="_images/equitySmile.png"><img alt="_images/equitySmile.png" class="align-center" src="_images/equitySmile.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="equities-implied-distribution">
+
+<h2>Equities Implied Distribution</h2>
+
+<a class="reference internal image-reference" href="_images/equityImpliedDist.png"><img alt="_images/equityImpliedDist.png" class="align-center" src="_images/equityImpliedDist.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="volatility-surface">
+
+<h2>Volatility Surface</h2>
+
+<a class="reference internal image-reference" href="_images/volSurface.png"><img alt="_images/volSurface.png" class="align-center" src="_images/volSurface.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

@@ -1,0 +1,740 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Autoregressive Processes
+==============================================================================
+
+
+:math:`AR(1)` Process
+==============================================================================
+Given white noise :math:`\{\varepsilon_t\}`, consider the process
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_t & = c + \phi Y_{t-1} + \varepsilon_t,
+
+.. rst-class:: to-build
+
+where :math:`c` and :math:`\phi` are constants.  
+
+.. rst-class:: to-build
+
+- This is a *first-order autoregressive* or :math:`AR(1)` process.
+
+.. rst-class:: to-build
+
+- :math:`\phi` can be thought of as a *memory* or *feedback*
+  parameter and introduces serial correlation in :math:`Y_t`.
+
+.. rst-class:: to-build
+
+- When :math:`\phi = 0`, :math:`Y_t` is white noise with drift - it
+  has no memory or serial correlation.
+
+
+
+
+Recursive Substitution of :math:`AR(1)`
+==============================================================================
+Applying recursive substitution:
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_t & = c + \phi Y_{t-1} + \varepsilon_t \qquad \qquad \qquad
+   \qquad \qquad \quad \enspace \,
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = c + \phi(c + \phi Y_{t-2} + \varepsilon_{t-1}) + \varepsilon_t
+   \qquad \qquad \quad \; \;
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = c + \phi c + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2
+   Y_{t-2} \qquad \qquad \quad \;
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = c + \phi c + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2 (c + \phi
+   Y_{t-3} + \varepsilon_{t-2}) 
+
+
+
+Recursive Substitution of :math:`AR(1)`
+==============================================================================
+.. math::
+
+   & = c + \phi c + \phi^2 c + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2
+   \varepsilon_{t-2} + \phi^3 Y_{t-3}
+
+.. rst-class:: to-build
+
+.. math::
+
+   & \vdots \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+   & \: = \sum_{i=0}^{\infty} \phi^i c + \sum_{i=0}^{\infty} \phi^i
+   \varepsilon_{t-i}. \qquad \qquad \qquad \qquad \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+   & \, = \frac{c}{1-\phi} + \sum_{i=0}^{\infty} \phi^i
+   \varepsilon_{t-i}. \qquad \qquad \qquad \qquad \qquad
+
+.. rst-class:: to-build
+
+- The infinite recursive substitution can only be performed if
+  :math:`|\phi| < 1`.
+
+
+
+
+Expectation of :math:`AR(1)`
+==============================================================================
+Assume :math:`Y_t` is weakly stationary: :math:`|\phi| < 1`. 
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[Y_t] & = c + \phi E[Y_{t-1}] + E[\varepsilon_t]
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = c + \phi E[Y_t] \quad \; \;
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow E[Y_t] & = \frac{c}{1-\phi}.
+
+
+
+
+A Useful Property
+==============================================================================
+If :math:`Y_t` is weakly stationary,
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_{t-j} - \mu & = \sum_{i=0}^{\infty} \phi^i \varepsilon_{t-j-i}.
+
+.. rst-class:: to-build
+
+- That is, for :math:`j \geq 1`, :math:`Y_{t-j}` is a function of
+  lagged  values of :math:`\varepsilon_t` and not :math:`\varepsilon_t` itself.
+
+.. rst-class:: to-build
+
+- As a result, for :math:`j \geq 1`
+
+.. rst-class:: to-build
+
+.. math::
+
+   E\left[(Y_{t-j}-\mu) \varepsilon_t\right] & = \sum_{i=0}^{\infty} \phi^i
+   E[\varepsilon_t \varepsilon_{t-j-i}] = 0.
+
+
+
+
+Variance of :math:`AR(1)`
+==============================================================================
+Given that :math:`\mu = c/(1-\phi)` for weakly stationary :math:`Y_t`: 
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_t = \mu(1-\phi) + \phi Y_{t-1} + \varepsilon_t
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow (Y_t - \mu) = \phi(Y_{t-1} - \mu) + \varepsilon_t.
+
+.. rst-class:: to-build
+
+Squaring both sides and taking expectations:
+
+.. rst-class:: to-build
+
+.. math::
+
+   E\left[(Y_t-\mu)^2\right] & = \phi^2
+   E\left[(Y_{t-1}-\mu)^2\right] + 2\phi
+   E\left[(Y_{t-1}-\mu)\varepsilon_t\right] + E[\varepsilon_t^2]
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \phi^2 E\left[(Y_t-\mu)^2\right] + \sigma^2 \qquad \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow (1-\phi^2) \gamma_0 = \sigma^2
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow \gamma_0 = \frac{\sigma^2}{1-\phi^2}
+
+
+
+Autocovariances of :math:`AR(1)`
+==============================================================================
+For :math:`j \geq 1`, 
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_j & = E\left[(Y_t-\mu)(Y_{t-j}-\mu)\right] \qquad \qquad
+   \qquad \qquad \enspace
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \phi E[(Y_{t-1}-\mu)(Y_{t-j} - \mu)] + E[\varepsilon_t (Y_{t-j} -
+   \mu)]
+
+.. rst-class:: to-build
+
+.. math::
+
+   & \enspace = \phi \gamma_{j-1} \qquad \qquad \qquad \qquad \qquad \qquad
+   \qquad \,
+
+.. rst-class:: to-build
+
+.. math::
+
+   & \vdots \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+   & \enspace = \phi^j \gamma_0. \qquad \qquad \qquad \qquad \qquad \qquad
+   \qquad \,
+  
+
+
+
+Autocorrelations of :math:`AR(1)`
+==============================================================================
+The autocorrelations of an :math:`AR(1)` are
+
+.. rst-class:: to-build
+
+.. math::
+
+   \rho_j & = \frac{\gamma_j}{\gamma_0} = \phi^j, \,\,\,\, \forall j
+   \geq 0. 
+
+.. rst-class:: to-build
+
+- Since we assumed :math:`|\phi| < 1`, the autocorrelations decay
+  exponentially as :math:`j` increases.
+
+.. rst-class:: to-build
+
+- Note that if :math:`\phi \in (-1,0)`, the autocorrelations decay in
+  an oscillatory fashion.
+
+
+
+
+Examples of :math:`AR(1)` Processes
+==============================================================================
+.. ifslides::
+
+  .. image:: /_static/AR/ar1ExampleSeries.png
+     :width: 7in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/AR/ar1ExampleSeries.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    ###########################################################
+    # Simulate AR(1) processes for different values of phi
+    ###########################################################
+
+    # Number of simulated points
+    nSim = 1000000;
+    
+    # Values of phi to consider
+    #phi = c(-0.9, 0, 0.9, 0.99);
+    phi = c(0.98, 0.6, 1, 1.01);
+
+    # Draw one set of shocks and use for each AR(1)
+    eps = rnorm(nSim, 0, 1);
+
+    # Matrix which stores each AR(1) in columns
+    y = matrix(0, nrow=nSim, ncol=length(phi));
+    
+    # Each process is intialized at first shock
+    y[1,] = eps[1];
+
+    # Loop over each value of phi
+    for(j in 1:length(phi)){
+	
+      # Loop through the series, simulating the AR(1) values
+      for(i in 2:nSim){
+        y[i,j] = phi[j]*y[i-1,j]+eps[i]
+      }
+    }
+
+    ###########################################################
+    # Plot the AR(1) realizations for each phi
+    ###########################################################
+
+    # Only plot a subset of the whole simulation
+    plotInd = 1:200
+
+    # Specify a plot grid
+    pdf(file="ar1ExampleSeriesAlt.pdf", height=8, width=10)
+    par(mfrow=c(2,2))
+
+    # Loop over each value of phi
+    for(j in 1:length(phi)){
+      plot(plotInd,y[plotInd,j], type='l', xlab='Time Index',
+           ylab="Y", main=paste(expression(phi), " = ", phi[j], sep=""))
+      abline(h=0)
+    }
+    graphics.off()
+
+
+
+:math:`AR(1)` Autocorrelations
+==============================================================================
+.. ifslides::
+
+  .. image:: /_static/AR/ar1ExampleACF.png
+     :width: 7in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/AR/ar1ExampleACF.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    ###########################################################
+    # Plot the sample ACFs for each AR(1) simulation
+    # For large nSim, sample ACFs are close to true ACFs
+    ###########################################################
+
+    # Specify a plot grid
+    pdf(file="ar1ExampleACFAlt.pdf", height=8, width=10)
+    par(mfrow=c(2,2))
+
+    # Loop over each value of phi
+    for(j in 1:length(phi)){
+      acf(y[is.finite(y[,j]),j], main=paste(expression(phi), " = ", phi[j], sep=""))
+    }
+    graphics.off()
+
+
+
+Random Walk
+==============================================================================
+Suppose :math:`\phi = 1`: 
+
+.. rst-class:: to-build
+
+.. math::
+
+  Y_t = c + Y_{t-1} + \varepsilon_t = \cdots = tc + Y_0 + \varepsilon_1 + \cdots
+  \varepsilon_t.
+ 
+.. rst-class:: to-build
+
+- Clearly :math:`E[Y_t] = tc + Y_0`, which is not independent of
+  time.
+
+.. rst-class:: to-build
+
+- :math:`Var(Y_t) = t\sigma^2`, which increases linearly with time.
+
+
+
+
+Explosive :math:`AR(1)`
+==============================================================================
+When :math:`|\phi| > 1`, the autoregressive process is explosive.  
+
+.. rst-class:: to-build
+
+- Recall that :math:`Y_t = \frac{c}{1-\phi} + \sum_{i=0}^{\infty}
+  \phi^i \varepsilon_{t-i}`.
+
+.. rst-class:: to-build
+
+- Now :math:`|\phi^i|` increases with :math:`i` rather than decay.
+
+.. rst-class:: to-build
+
+- Past values of :math:`\varepsilon_{t-i}` contribute greater amounts to
+  :math:`Y_t` as :math:`i` increases.
+
+
+
+
+Examples of :math:`AR(1)` Processes
+==============================================================================
+.. ifslides::
+
+  .. image:: /_static/AR/ar1ExampleSeriesAlt.png
+     :width: 7in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/AR/ar1ExampleSeriesAlt.png
+     :width: 6in
+
+
+
+:math:`AR(1)` Autocorrelations
+==============================================================================
+.. ifslides::
+
+  .. image:: /_static/AR/ar1ExampleACFAlt.png
+     :width: 7in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/AR/ar1ExampleACFAlt.png
+     :width: 6in
+
+
+
+:math:`AR(p)` Process
+==============================================================================
+Given white noise :math:`\{\varepsilon_t\}`, consider the process
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_t & = c + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \ldots + \phi_p
+   Y_{t-p} + \varepsilon_t,
+
+.. rst-class:: to-build
+
+where :math:`c` and :math:`\{\phi\}_{i=1}^p` are constants. 
+
+.. rst-class:: to-build
+
+- This is a :math:`p` *th-order autoregressive* or :math:`AR(p)`
+  process.
+
+
+
+
+Expectation of :math:`AR(p)`
+==============================================================================
+Assume :math:`Y_t` is weakly stationary. 
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[Y_t] & = c + \phi_1 E[Y_{t-1}] + \ldots + \phi_p E[Y_{t-p}] +
+   E[\varepsilon_t]
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = c + \phi_1 E[Y_t] + \ldots + \phi_p E[Y_t] \qquad \enspace
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow E[Y_t] & = \frac{c}{1-\phi_1 - \ldots - \phi_p} =
+   \mu.
+
+
+
+
+Autocovariances of :math:`AR(p)`
+==============================================================================
+Given that :math:`\mu = c/(1-\phi_1 - \ldots - \phi_p)` for weakly
+stationary :math:`Y_t`:
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_t = \mu(1-\phi_1 - \ldots - \phi_p) + \phi_1 Y_{t-1} + \ldots +
+   \phi_p Y_{t-p} + \varepsilon_t
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow (Y_t - \mu) = \phi_1(Y_{t-1} - \mu) + \ldots +
+   \phi_p(Y_{t-p} - \mu) + \varepsilon_t.
+
+
+
+
+Autocovariances of :math:`AR(p)`
+==============================================================================
+Thus,
+
+.. rst-class:: to-build
+
+.. math::
+
+  \gamma_j & = E\left[(Y_t - \mu) (Y_{t-j} - \mu)\right] \qquad \qquad
+  \qquad \qquad \qquad \enspace
+
+.. rst-class:: to-build
+
+.. math::
+
+  & = \phi_1 E\left[(Y_{t-1} - \mu) (Y_{t-j} - \mu)\right] + \ldots
+  \qquad \qquad \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+  & \hspace{0.75in} + \phi_p E\left[(Y_{t-p} - \mu) (Y_{t-j} -
+    \mu)\right] + E\left[\varepsilon_t (Y_{t-j} - \mu)\right]
+
+.. rst-class:: to-build
+
+.. math:: & = \begin{cases} \phi_1 \gamma_{j-1} + \ldots + \phi_p
+	  \gamma_{j-p} & \text{ for } j = 1, \ldots \\ \phi_1
+	  \gamma_1 + \ldots + \phi_p \gamma_p + \sigma^2 & \text{ for
+	  } j = 0. \end{cases} \enspace
+	  :label: gammas
+
+
+
+Autocovariances of :math:`AR(p)`
+==============================================================================
+For :math:`j = 0, 1, \ldots, p`, System :eq:`gammas` is a system of
+:math:`p+1` equations with :math:`p+1` unknowns:
+:math:`\{\gamma_j\}_{j=0}^p`. 
+
+.. rst-class:: to-build
+
+- :math:`\{\gamma_j\}_{j=0}^p` can be solved for as functions of
+  :math:`\{\phi_j\}_{j=1}^p` and :math:`\sigma^2`.
+
+.. rst-class:: to-build
+
+- It can be shown that :math:`\{\gamma_j\}_{j=0}^p` are the first
+  :math:`p` elements of the first column
+  of :math:`\sigma^2 [I_{p^2} - \Phi \otimes \Phi]^{-1}`, where
+  :math:`\otimes` denotes the Kronecker product.  
+
+.. rst-class:: to-build
+
+- :math:`\{\gamma_j\}_{j=p+1}^{\infty}` can then be determined using
+  prior values of :math:`\gamma_j` and :math:`\{\phi_j\}_{j=1}^p`.
+
+
+
+
+Autocorrelations of :math:`AR(p)`
+==============================================================================
+Dividing the autocovariances by :math:`\gamma_0`,
+
+.. rst-class:: to-build
+
+.. math::
+
+   \rho_j & = \phi_1 \rho_{j-1} + \ldots + \phi_p
+   \rho_{j-p} \,\,\,\,\,\, \text{ for } j = 1, 2, 3, \ldots
+  
+
+
+
+Estimating :math:`AR` Models
+==============================================================================
+Ideally, estimation of an :math:`AR` model is done via maximum
+likelihood.  
+
+.. rst-class:: to-build
+
+- For an :math:`AR(p)` model, one would first specify a joint
+  likelihood for the parameters :math:`{\phi_1, \ldots, \phi_p, c,
+  \sigma^2}`.
+
+.. rst-class:: to-build
+
+- Taking derivatives of the log likelihood with respect to each of the
+  parameters would result in a system of equations that could be
+  solved for the MLEs: :math:`{\hat{\phi}_1, \ldots, \hat{\phi}_p,
+  \hat{c}, \hat{\sigma}^2}`.  
+
+
+
+
+Estimating :math:`AR` Models
+==============================================================================
+- The exact likelihood is a bit cumbersome and maximization requires
+  specialized numerical methods.
+
+.. rst-class:: to-build
+
+- It turns out that the least squares estimates obtained by fitting a
+  regression of :math:`Y_t` on :math:`Y_{t-1}, \ldots, Y_{t-p}` are
+  almost identical to the MLEs (they are called the conditional
+  MLEs).
+
+
+
+
+Estimating :math:`AR` Models
+==============================================================================
+- The exact MLEs can be obtained with the :math:`\mathtt{arima}`
+  function in :math:`\mathtt{R}`.
+
+.. rst-class:: to-build
+
+- The conditional (least squares) MLEs can be obtained with the
+  :math:`\mathtt{lm}` function in :math:`\mathtt{R}`.
+
+
+
+
+Which :math:`AR`?
+==============================================================================
+How do we know if an :math:`AR` model is appropriate and which :math:`AR` model
+to fit?  
+
+.. rst-class:: to-build
+
+- After fitting an :math:`AR` model, we can examine the residuals.
+
+.. rst-class:: to-build
+
+- The :math:`\mathtt{acf}` function in :math:`\mathtt{R}` can be used
+  to compute empirical autocorrelations of the residuals.
+
+.. rst-class:: to-build
+
+- If the residuals are autocorrelated, the model is not a good
+  fit. Consider increasing the order of the :math:`AR` or using
+  another model.
+
+
+
+
+Which :math:`AR`?
+==============================================================================
+Suppose :math:`Y_t` is an :math:`AR(2)` process:
+
+.. rst-class:: to-build
+
+.. math::
+
+   (Y_t - \mu) & = \phi_1 (Y_{t-1} - \mu) + \phi_2 (Y_{t-2} - \mu) +
+   \varepsilon_t.
+ 
+.. rst-class:: to-build
+
+- If we estimate an :math:`AR(1)` model using the data, then for large
+  sample sizes :math:`\hat{\mu} \approx \mu` and :math:`\hat{\phi}
+  \approx E[\hat{\phi}] = \phi^* \neq \phi_1`.
+
+
+
+
+Which :math:`AR`?
+==============================================================================
+The resulting residuals would be
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{\varepsilon}_t & = (Y_t - \mu) - \phi^*(Y_{t-1} - \mu) \qquad
+   \qquad \qquad \qquad \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \phi_1(Y_{t-1} - \mu) + \phi_2(Y_{t-2} - \mu) + \varepsilon_t -
+   \phi^*(Y_{t-1} - \mu)
+
+.. rst-class:: to-build
+
+.. math::
+
+   & \quad \enspace \, = (\phi_1 - \phi^*)(Y_{t-1} - \mu) + \phi_2(Y_{t-2} - \mu) +
+   \varepsilon_t - \phi^*(Y_{t-1} - \mu).
+  
+.. rst-class:: to-build
+
+- Even if :math:`\phi^* = \phi_1`, the residuals will
+  exhibit autocorrelation, due to the presence of :math:`Y_{t-2}`.
+
+
+
+
+Which :math:`AR`?
+==============================================================================
+The :math:`\mathtt{auto.arima}` function in :math:`\mathtt{R}`
+estimates a range of :math:`AR(p)` models and selects the one with the
+best fit.
+
+.. rst-class:: to-build
+
+- :math:`\mathtt{auto.arima}` uses the *Akaike Information Criterion*
+  (AIC) or the *Bayesian Information Criterion* (BIC) to select the
+  model.
+
+.. rst-class:: to-build
+
+- Minimizing AIC and BIC amounts to minimizing the sum of
+  squared residuals, with a penalty term that is related to the
+  number of model parameters.
+

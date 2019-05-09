@@ -1,0 +1,310 @@
+.. slideconf::
+   :slide_classes: appear
+
+
+==============================================================================
+Forward Rate Agreements
+==============================================================================
+
+Zero Rates
+==============================================================================
+A *zero rate* for maturity :math:`\smash{T}` is the annual rate of
+interest earned on a :math:`\smash{T}` period investment.
+
+.. raw:: <!--pause-->
+
+- There is a single payment at the end of the investment (no
+  intermediate payments).
+
+.. raw:: <!--pause-->
+
+- It is sometimes called the *spot* rate.
+
+.. raw:: <!--pause-->
+
+- It is equivalent to the yield on a zero-coupon bond.
+
+Zero Coupon Bond
+==============================================================================
+Suppose that the price of a 3-year zero-coupon bond is 97-05.
+
+- The continuously-compounded 3-year zero rate is
+
+  .. math::
+
+     \begin{align}
+     97.15625 e^{r_3 3} & = 100 \\
+     \Rightarrow r_3 & = \frac{1}{3} \left(\log(100) -
+     \log(97.15625)\right) \\
+     & = 0.00961656.
+     \end{align}
+
+Zero Curve
+==============================================================================
+.. image:: InterestFutures/zeroRateTable.png
+   :width: 8in
+   :align: center
+
+Zero Curve
+==============================================================================
+.. image:: InterestFutures/zeroRatePlot.png
+   :width: 8in
+   :align: center
+
+Forward Rates
+==============================================================================
+Forward rates are future spot rates implied by current spot
+rates. Consider two investments:
+
+.. raw:: <!--pause-->
+
+- Investment 1: At :math:`\smash{t_0}` invest \$100 in a
+  :math:`\smash{t_2}` year zero
+  coupon bond, earning :math:`\smash{r_2}` (continuously compounded).
+
+.. raw:: <!--pause-->
+
+- Investment 2: At :math:`\smash{t_0}` invest \$100 in a
+  :math:`\smash{t_1}` year zero coupon bond (where :math:`\smash{t_2 >
+  t_1}`), earning :math:`\smash{r_1}`, and at
+  :math:`\smash{t_1}` roll the proceeds into a :math:`\smash{t_2-t_1}`
+  year zero coupon bond.
+
+.. raw:: <!--pause-->
+
+- The forward rate is the spot rate that would have to prevail
+  at :math:`\smash{t_1}` for the investments to be equal.
+
+.. math::
+   
+   \begin{gather}
+   100e^{r_1\times t_1}e^{r_f \times (t_2-t_1)} = 100e^{r_2 \times t_2} \\
+   \Rightarrow r_1 t_1 + r_f (t_2-t_1) = r_2 t_2 \\
+   \Rightarrow r_f = \frac{r_2 t_2 - r_1 t_1}{t_2-t_1}.
+   \end{gather}
+
+Forward Rate Example
+==============================================================================
+.. image:: InterestFutures/forwardRateTable.png
+   :width: 8in
+   :align: center
+
+Forward Rates: Alternative
+==============================================================================
+Rearranging the forward rate formula:
+
+.. math::
+
+   r_f = r_2 + (r_2-r_1) \frac{t_1}{t_2-t_1}.
+
+.. raw:: <!--pause-->
+
+- If the zero-curve is upward sloping between :math:`\smash{t_1}` and
+  :math:`\smash{t_2}`, :math:`\smash{r_f > r_2 > r_1}`.
+
+.. raw:: <!--pause-->
+
+- If the zero-curve is downward sloping between :math:`\smash{t_1}`
+  and :math:`\smash{t_2}`, :math:`\smash{r_f < r_2 < r_1}`.
+
+
+Notes on Forward Rates
+==============================================================================
+- Spot rates are *currently* available interest rates for
+  investments of different maturities.
+
+.. raw:: <!--pause-->
+
+- Forward rates are *implied future* spot rates for a single
+  maturity.
+
+.. raw:: <!--pause-->
+
+- Forward rates are not the same as future spot rates.
+
+  - They are guaranteed rates for the future period, obtained by
+    investing in current spot rates of differing maturities.
+
+Forward Rate Agreements
+==============================================================================
+A Forward Rate Agreement (FRA) is a contract to fix an interest rate
+for borrowing/lending on a specific principal amount for a specific
+period of time.
+
+.. raw:: <!--pause-->
+
+- The contract is over the counter.
+
+.. raw:: <!--pause-->
+
+- The benchmark interest rate is typically LIBOR.
+
+.. raw:: <!--pause-->
+
+- If LIBOR is below the contracted rate at maturity, the borrower pays
+  the interest differential on the principal to the lender and vice
+  versa.
+
+.. raw:: <!--pause-->
+
+- The principal and time period are variables.
+
+.. raw:: <!--pause-->
+
+- Interest is due at end of period, but present value typically paid
+  at beginning.
+
+FRA Example
+==============================================================================
+A company enters into an FRA to receive 4\% on \$100m for a 3-month
+period starting in 3 years.
+
+.. raw:: <!--pause-->
+
+- If LIBOR is 4.5\% in 3 years, cash flow to the lender at 3.25 years
+  is:
+
+  .. math::
+
+     \smash{100,000,000 \times (0.04 - 0.045) \times 0.25 =
+     -\$125,000.}
+
+.. raw:: <!--pause-->
+
+- The present value is paid at year 3:
+
+  .. math::
+
+     - \frac{125,000}{1+0.045 \times 0.25} = -123,609.
+
+.. raw:: <!--pause-->
+
+- Note that for FRAs, interest rates are typically not quoted with
+  continuous compounding, but with compounding frequency equal to term
+  of agreement.
+
+FRAs vs Eurodollar Futures
+==============================================================================
+FRAs and Eurodollar futures are similar.
+
+.. raw:: <!--pause-->
+
+- Both fix an interest rate for a future period of time, tied to
+  LIBOR.
+
+.. raw:: <!--pause-->
+
+- Eurodollar futures are exchange traded, \$1m principal and 3-month
+  LIBOR.
+
+.. raw:: <!--pause-->
+
+- FRAs are over the counter, variable principal, variable term.
+
+.. raw:: <!--pause-->
+
+- Eurodollar futures commit to pay the difference of principal and
+  interest payment at beginning of period.
+
+.. raw:: <!--pause-->
+
+- FRAs commit to pay interest differential on principal at end of
+  period.
+
+FRA Notation
+==============================================================================
+Suppose an FRA is set so that company :math:`\smash{X}` lends to
+:math:`\smash{Y}` between :math:`\smash{T_1}` and
+:math:`\smash{T_2}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{R_K}`: Fixed interest rate set in FRA.
+
+.. raw:: <!--pause-->
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{R_F}`: Forward LIBOR rate (determined today) between
+  :math:`\smash{T_1}` and :math:`\smash{T_2}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{R_M}`: Actual LIBOR observed at :math:`\smash{T_1}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{L}`: Principal.
+
+FRA Cash Flows
+==============================================================================
+At :math:`\smash{T_2}` the cash flow from :math:`\smash{Y}` to
+:math:`\smash{X}` (possibly negative):
+
+.. math::
+
+   \smash{L(R_K-R_M)(T_2-T_1)}
+
+.. raw:: <!--pause-->
+
+If settled at time :math:`\smash{T_1}`, the present value is:
+
+.. math::
+
+   \frac{L(R_K-R_M)(T_2-T_1)}{1+R_M(T_2-T_1)}
+  
+FRA Valuation
+==============================================================================
+An FRA is worth zero if :math:`\smash{R_K = R_F}`.
+
+.. raw:: <!--pause-->
+
+- At inception, :math:`\smash{R_K}` is set equal to
+  :math:`\smash{R_F}` and the FRA has zero value.
+
+.. raw:: <!--pause-->
+
+- As time elapses, :math:`\smash{R_F}` fluctuates and the value of the
+  FRA changes.
+
+.. raw:: <!--pause-->
+
+- Prior to :math:`\smash{T_1}`, the value of the FRA is computed by
+  substituting :math:`\smash{R_F}` for :math:`\smash{R_M}` and
+  computing the present value:
+
+  .. math::
+
+     \smash{L(R_K-R_F)(T_2-T_1)e^{-R_2T_2}.}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{R_2}` is the continuously compounded risk-free rate.
+
+FRA Valuation Example
+==============================================================================
+It is currently Jan 1, 2010.
+
+.. raw:: <!--pause-->
+
+- On Jan 1, 2009, a company entered into an FRA to receive 5.8\%
+  (semi-annual compounding) and pay LIBOR on \$100m between July 1,
+  2011 and Dec 31, 2011.
+
+.. raw:: <!--pause-->
+
+- The current LIBOR forward rate for July 1 - Dec 31, 2011 is 5\%
+  (semi-annual compounding).
+  
+.. raw:: <!--pause-->
+
+- The 2-year risk-free interest rate (continuous compounding) is 4\%.
+
+.. raw:: <!--pause-->
+
+- The value of the FRA on Jan 1, 2010 is:
+
+  .. math::
+
+     \smash{100,000,000 \times(0.058 - 0.050) \times 0.5 \times
+     e^{-0.04\times 2} = \$369,200.}

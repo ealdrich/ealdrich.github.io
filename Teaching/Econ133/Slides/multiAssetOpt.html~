@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Portfolio Optimization with Many Risky Assets &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="up" title="Portfolio Optimization" href="portfolios.html" />
+    <link rel="next" title="Index Models" href="indexModels.html" />
+    <link rel="prev" title="Portfolio Optimization" href="portfolioOpt.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="portfolio-optimization-with-many-risky-assets">
+<h1>Portfolio Optimization with Many Risky Assets</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="portfolio-returns">
+<h2>Portfolio Returns</h2>
+<p>Suppose you can now invest in an arbitrary number (<span class="math">\(N\)</span>) of risky
+assets.</p>
+<ul class="to-build simple">
+<li>Index the assets by <span class="math">\(i = 1, \ldots, N\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Let <span class="math">\(\omega_i\)</span> be the fraction of income invested in asset <span class="math">\(i\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will always assume that <span class="math">\(\sum_{i=1}^N \omega_i = 1\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will denote the return to asset <span class="math">\(i\)</span> by <span class="math">\(r_i\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The portfolio return is expressed as</li>
+</ul>
+<div class="to-build math">
+\[r_p = \sum_{i=1}^N \omega_i r_i.\]</div>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="portfolio-moments">
+<h2>Portfolio Moments</h2>
+<p>From the properties of expectation and variance, we can compute the
+mean and variance of the portfolio return.</p>
+<ul class="to-build simple">
+<li>Recognize that the <span class="math">\(N\)</span> asset returns, <span class="math">\(r_i\)</span>, are random
+variables.</li>
+</ul>
+<ul class="to-build simple">
+<li>Denote the means of <span class="math">\(r_i\)</span> as <span class="math">\(\mu_i\)</span>.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Portfolio Moments</h2>
+<ul class="simple">
+<li>The <span class="math">\(N \times N\)</span> covariance matrix of the returns contains the
+variances, <span class="math">\(\sigma^2_i\)</span>, and covariances, <span class="math">\(Cov(r_i,
+r_j) = \sigma_{ij}\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\Sigma_P &amp; = \left[\begin{array}{cccc} \sigma^2_1 &amp;
+\sigma_{12} &amp; \cdots &amp; \sigma_{1N} \\ \sigma_{21} &amp;
+\sigma^2_2 &amp; \cdots &amp; \sigma_{2N} \\ \vdots &amp; \vdots &amp;
+\ddots &amp; \vdots \\ \sigma_{N1} &amp; \sigma_{N2} &amp; \cdots &amp;
+\sigma^2_N \end{array}\right]\end{split}\]</div>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Portfolio Moments</h2>
+<p>Thus resulting moments of the portfolio are</p>
+<div class="to-build math">
+\[\begin{split}\mu_p &amp; = \sum_{i=1}^N \omega_i \mu_i \\\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\sigma^2_p &amp; = \sum_{i=1}^N \omega^2_i \sigma^2_i +
+2 \sum_{i=1}^{N-1} \sum_{j=i+1}^N \omega_i \omega_j \sigma_{ij}.\end{split}\]</div>
+<p class="to-build">What are other ways to express <span class="math">\(\sigma^2_p\)</span>?</p>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="optimization-risky-mv-frontier">
+<h2>Optimization: Risky MV Frontier</h2>
+<p>To determine the set of efficient risky portfolios (the risky
+frontier), the investor solves</p>
+<div class="to-build math">
+\[\min_{\{\omega_i\}_{i=1}^{N-1}} \sigma^2_P =
+\sum_{i=1}^N \omega^2_i \sigma^2_i + 2 \sum_{i=1}^{N-1}
+\sum_{j=i+1}^N \omega_i \omega_j \sigma_{ij}\]</div>
+<p class="to-build">subject to</p>
+<div class="to-build math">
+\[\mu_p = \sum_{i=1}^N \omega_i \mu_i\]</div>
+<p class="to-build">where <span class="math">\(\mu_p\)</span> is some prespecified value of the portfolio mean
+return.</p>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Optimization: Risky MV Frontier</h2>
+<p>Note that</p>
+<ul class="to-build simple">
+<li>The optimization problem has <span class="math">\(N-1\)</span> choice variables:
+<span class="math">\(\{\omega_i\}_{i=1}^{N-1}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\omega_N\)</span> is not a choice variable because it is found from
+the constraint: <span class="math">\(\omega_N = 1 - \sum_{i=1}^{N-1} \omega_i\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>This is a challenging problem that is only tractable with linear
+algebra (we won't solve it).</li>
+</ul>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="risky-minimum-variance-frontier">
+<h2>Risky Minimum-Variance Frontier</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/pg211_1.jpg"><img alt="_images/pg211_1.jpg" class="align-center" src="_images/pg211_1.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Risky Minimum-Variance Frontier</h2>
+<p>The frontier generated by multiple risky assets is known as the risky
+minimum-variance (MV) frontier.</p>
+<ul class="to-build simple">
+<li>The lower portion of the frontier is inefficient since a higher mean
+portfolio exists with the same volatility on the upper portion of
+the frontier.</li>
+</ul>
+<ul class="to-build simple">
+<li>The efficient MV frontier is generated by allowing investment in a
+risk-free asset and finding the CAL which is tangent to the risky
+efficient MV frontier.</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="efficient-minimum-variance-frontier">
+<h2>Efficient Minimum-Variance Frontier</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/pg212_2.jpg"><img alt="_images/pg212_2.jpg" class="align-center" src="_images/pg212_2.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="optimization-efficient-mv-frontier">
+<h2>Optimization: Efficient MV Frontier</h2>
+<p>To determine the tangency portfolio, the investor solves the same
+problem as before</p>
+<div class="to-build math">
+\[\max_{\mu_p, \sigma_p} SR_p = \frac{\mu_p - r_f}{\sigma_p}\]</div>
+<p class="to-build">subject to</p>
+<div class="to-build math">
+\[\mu_p = \sum_{i=1}^N \omega_i \mu_i\]</div>
+<div class="to-build math">
+\[\sigma_p = \sqrt{\sum_{i=1}^N \omega^2_i \sigma^2_i + 2
+\sum_{i=1}^{N-1} \sum_{j=i+1}^N \omega_i \omega_j \sigma_{ij}}.\]</div>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="optimization-investor-choice">
+<h2>Optimization: Investor Choice</h2>
+<p>So far we have specified two optimization problems:</p>
+<ol class="to-build arabic simple">
+<li>To determine the risky minimum-variance frontier by minimizing
+variance subject to a particular expected return.</li>
+</ol>
+<ol class="to-build arabic simple" start="2">
+<li>To determine the tangency portfolio, by maximizing the Sharpe
+Ratio subject to constraints on the mean and standard
+deviation.</li>
+</ol>
+<p class="to-build">Neither of these made use of preferences.  A final optimization
+problem would be the same as before:</p>
+<ol class="to-build arabic simple" start="3">
+<li>Maximize utility, <span class="math">\(U(\mu_p, \sigma_p)\)</span>, subject to investing
+in the tangency portfolio and a risk-free asset.</li>
+</ol>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="estimation">
+<h2>Estimation</h2>
+<p>In practice we must estimate <span class="math">\(\mu_i\)</span>, <span class="math">\(\sigma^2_i\)</span> and
+<span class="math">\(\sigma_{ij}\)</span> for <span class="math">\(i=1,\ldots,N\)</span> and <span class="math">\(j=i+1,\ldots,N\)</span>.</p>
+<ul class="to-build simple">
+<li>A total of <span class="math">\(N\)</span> estimates of means.</li>
+</ul>
+<ul class="to-build simple">
+<li>How many variances and covariances must we estimate?</li>
+</ul>
+<ul class="to-build simple">
+<li>A total of <span class="math">\(N\)</span> elements on the diagonal (variances).</li>
+</ul>
+<ul class="to-build simple">
+<li>All of the elements above <em>or</em> below the diagonal (<em>not both</em>
+because of symmetry).</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Estimation</h2>
+<ul class="simple">
+<li>The resulting number of variance and covariance estimates is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}N + (N-1) + (N-2) + \ldots + 2 + 1 &amp; = \sum_{i=1}^N i =
+\frac{N(N+1)}{2}.\end{split}\]</div>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Estimation</h2>
+<p>The total number of estimates is</p>
+<div class="math">
+\[\begin{split}N + \frac{N(N+1)}{2} &amp; = \frac{N(N+3)}{2}.\end{split}\]</div>
+<ul class="to-build simple">
+<li>As an example, a portfolio of 50 stocks requires <span class="math">\(\frac{50
+\times 53}{2} = 1325\)</span> estimates.</li>
+</ul>
+<ul class="to-build simple">
+<li>The models of subsequent lectures will reduce this estimation
+burden.</li>
+</ul>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="portfolio-optimization-recipe">
+<h2>Portfolio Optimization Recipe</h2>
+<p>For an arbitrary number, <span class="math">\(N\)</span>, of risky assets:</p>
+<ol class="to-build arabic simple">
+<li>Specify (estimate) the return characteristics of all securities
+(means, variances and covariances).</li>
+</ol>
+<ol class="to-build arabic simple" start="2">
+<li>Establish the optimal risky portfolio.</li>
+</ol>
+<blockquote>
+<div><ul class="to-build simple">
+<li>Calculate the weights for the tangency portfolio.</li>
+</ul>
+<ul class="to-build simple">
+<li>Compute mean and std. deviation of the tangency portfolio.</li>
+</ul>
+</div></blockquote>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Portfolio Optimization Recipe</h2>
+<ol class="arabic simple" start="3">
+<li>Allocate funds between the optimal risky portfolio and the
+risk-free asset.</li>
+</ol>
+<blockquote>
+<div><ul class="to-build simple">
+<li>Calculate the fraction of the complete portfolio allocated to the
+tangency portfolio and to the risk-free asset.</li>
+</ul>
+<ul class="to-build simple">
+<li>Calculate the share of the complete portfolio invested in each
+asset of the tangency portfolio.</li>
+</ul>
+</div></blockquote>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="separation-property">
+<h2>Separation Property</h2>
+<p>All investors hold some combination of the same two assets: the
+risk-free asset and the tangency portfolio.</p>
+<ul class="to-build simple">
+<li>The optimal risky (tangency portfolio) is the same for all
+investors, regardless of preferences.</li>
+</ul>
+<ul class="to-build simple">
+<li>The tangency portfolio is simply determined by estimation and a
+mathematical formula.</li>
+</ul>
+<ul class="to-build simple">
+<li>Individual preferences determine the exact proportions of wealth
+each investor will allocate to the two assets.</li>
+</ul>
+<ul class="to-build simple">
+<li>This is known as <em>The Separation Property</em> (or <em>Two Fund
+Separation</em>).</li>
+</ul>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Separation Property</h2>
+<p>The separation property implies that portfolio choice can be separated
+into two independent steps:</p>
+<ul class="to-build simple">
+<li>Determining the optimal risky portfolio (preference independent).</li>
+</ul>
+<ul class="to-build simple">
+<li>Deciding what proportion of wealth to invest in the risk-free asset
+and the tangency portfolio (preference dependent).</li>
+</ul>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Separation Property</h2>
+<p>The separation property will not hold if</p>
+<ul class="to-build simple">
+<li>Individuals produce different estimates of asset return
+characteristics (since differing estimates will result in different
+tangency portfolios).</li>
+</ul>
+<ul class="to-build simple">
+<li>Individuals face different constraints (short-sale, tax, etc.).</li>
+</ul>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="the-power-of-diversification">
+<h2>The Power of Diversification</h2>
+<p>Let's formalize the benefits of diversification.  The variance of a
+portfolio of <span class="math">\(N\)</span> risky assets is</p>
+<div class="to-build math">
+\[\begin{split}\sigma^2_p &amp; = \sum_{i=1}^N \sum_{j=1}^N \omega_i \omega_j
+\sigma_{ij} = \sum_{i=1}^N \omega^2_i \sigma^2_i + 2
+\sum_{i=1}^{N-1} \sum_{j=i+1}^N \omega_i \omega_j \sigma_{ij}.\end{split}\]</div>
+<p class="to-build">In the case of an equally weighted portfolio,</p>
+<div class="to-build math">
+\[\begin{split}\sigma^2_p &amp; = \frac{1}{N^2} \sum_{i=1}^N \sigma^2_i
++ \frac{2}{N^2} \sum_{i=1}^{N-1} \sum_{j=i+1}^N \sigma_{ij} \\
+&amp; = \frac{1}{N} \overline{Var} + \frac{N-1}{N}
+\overline{Cov}.\end{split}\]</div>
+
+<div class="slide-no">21</div>
+
+</article>
+<article class="appear slide level-2" id="id10">
+<h2>The Power of Diversification</h2>
+<p>Where</p>
+<div class="to-build math">
+\[\begin{split}\overline{Var} &amp; = \frac{1}{N} \sum_{i=1}^N \sigma^2_i\end{split}\]</div>
+<p class="to-build">and</p>
+<div class="to-build math">
+\[\begin{split}\overline{Cov} &amp; = \frac{2}{N(N-1)} \sum_{i=1}^{N-1}
+\sum_{j=i+1}^N \sigma_{ij}.\end{split}\]</div>
+<p class="to-build">These are the average variance and covariance.</p>
+
+<div class="slide-no">22</div>
+
+</article>
+<article class="appear slide level-2" id="id11">
+<h2>The Power of Diversification</h2>
+<p>The limit of portfolio variance is</p>
+<div class="to-build math">
+\[\begin{split}\lim_{N \to \infty} \sigma^2_p &amp; = \lim_{N \to \infty} \frac{1}{N}
+\overline{Var} + \lim_{N \to \infty} \frac{N-1}{N}
+\overline{Cov} = \overline{Cov}.\end{split}\]</div>
+<ul class="to-build simple">
+<li>If the assets in the portfolio are uncorrelated or not correlated
+<em>on average</em> (<span class="math">\(\overline{Cov} = 0\)</span>), there is no limit to
+diversification: <span class="math">\(\sigma^2_p = 0\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If there are systemic sources of risk that affect all assets
+(<span class="math">\(\overline{Cov} &gt; 0\)</span>) there will be a lower bound on ability
+to diversify: <span class="math">\(\sigma^2_p &gt; 0\)</span>.</li>
+</ul>
+
+<div class="slide-no">23</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

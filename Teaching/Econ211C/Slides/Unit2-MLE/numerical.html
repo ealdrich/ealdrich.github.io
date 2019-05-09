@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Numerical Optimization &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Estimation" href="../estimation.html" />
+    <link rel="next" title="Forecasting" href="../forecasting.html" />
+    <link rel="prev" title="ARMA Maximum Likelihood Estimation" href="mleArma.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="numerical-optimization">
+
+<h1>Numerical Optimization</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="numerical-maximum-likelihood">
+
+<h2>Numerical Maximum Likelihood</h2>
+
+<p>Given, <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> and
+<span class="math">\(\smash{\boldsymbol{y}}\)</span>, suppose we can compute the value of a</p>
+<q>
+likelihood or log likelihood.</q>
+<ul class="simple">
+<li>Likelhood optimization is often very challenging.</li>
+</ul>
+<ul class="simple">
+<li>We may not be able to obtain analytical expressions for the MLEs,
+<span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Numerical optimization techniques will often help us find an
+approximate (not exact) MLE.</li>
+</ul>
+<ul class="simple">
+<li>We will need to set a tolerance level for the quality of our
+approximation.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="grid-search">
+
+<h2>Grid Search</h2>
+
+<p>Let <span class="math">\(\smash{\boldsymbol{\theta} \in \mathbb{R}^k}\)</span>.</p>
+<ul class="simple">
+<li>We can define a univariate grid of <span class="math">\(\smash{m_i}\)</span> points
+<span class="math">\(\smash{\theta_i \in \Theta^{(i)} = \{\theta_{i,1}, \ldots,
+\theta_{i,m_i}\}}\)</span> for <span class="math">\(\smash{i=1,\ldots,k}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Define <span class="math">\(\smash{\Theta = \Theta^{(1)} \otimes \Theta^{(2)}
+\otimes \cdots \otimes \Theta^{(k)}}\)</span>, which is the cartesian
+product of the <span class="math">\(\smash{k}\)</span> univariate grids.</li>
+</ul>
+<ul class="simple">
+<li>Often such grids are equally spaced, but this is certainly not
+required.</li>
+</ul>
+<ul class="simple">
+<li>Optimal location of grid points is an extremely important way to
+improve numerical efficiency.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Grid Search</h2>
+
+<p>To implement grid search, we simply evaluate the likelihood at each
+value in <span class="math">\(\smash{\Theta}\)</span>.</p>
+<ul class="simple">
+<li>Each value in <span class="math">\(\smash{\Theta}\)</span> defines a set of
+candidate parameter values.</li>
+</ul>
+<ul class="simple">
+<li>The approximated MLE is the point that achieves the highest
+likelihood or log likelihood value.</li>
+</ul>
+<p>Grid search is ineffective for large <span class="math">\(\smash{k}\)</span> because the
+number of grid points in <span class="math">\(\smash{\Theta}\)</span> grows
+exponentially.</p>
+<ul class="simple">
+<li>Doubling the number of points (for more accuracy) in each dimension
+results in <span class="math">\(\smash{2^k}\)</span> extra points.</li>
+</ul>
+<ul class="simple">
+<li>This is called the curse of dimensionality.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2><span class="math">\(\smash{AR(1)}\)</span> Grid Search</h2>
+
+<p>Suppose <span class="math">\(\smash{c=0}\)</span> and <span class="math">\(\smash{\sigma^2 = 1}\)</span>.</p>
+<ul class="simple">
+<li>In this case, <span class="math">\(\smash{\boldsymbol{\theta} = \phi}\)</span> and
+<span class="math">\(\smash{k=1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Under stationarity, we know <span class="math">\(\smash{|\phi| &lt; 1}\)</span>, so we might
+define an equally-spaced grid of values
+<span class="math">\(\smash{\{-0.99,-0.98,\ldots, 0.98,0.99\}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Given data <span class="math">\(\smash{\boldsymbol{y}}\)</span>, we can compute the exact
+or conditional likelihood for each <span class="math">\(\smash{\phi_i}\)</span> in the
+grid.</li>
+</ul>
+<ul class="simple">
+<li>The <span class="math">\(\smash{\phi_i}\)</span> that results in the highest likelihood
+value is the approximate MLE, which we denote
+<span class="math">\(\smash{\phi^*}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We can iteratively refine the grid around <span class="math">\(\smash{\phi^*}\)</span>
+until our tolerance is reached.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="binary-search">
+
+<h2>Binary Search</h2>
+
+<p>Binary search is an optimization method that is far more efficient
+than grid search, for <em>univariate</em> problems.</p>
+<ul class="simple">
+<li>It can only be used if the criterion function is concave.</li>
+</ul>
+<ul class="simple">
+<li>The algorithm is</li>
+</ul>
+<ol class="arabic simple">
+<li>Pick two adjacent points <span class="math">\(\smash{\theta_j}\)</span> and
+<span class="math">\(\smash{\theta_{j+1}}\)</span> in the middle of the grid and evaluate
+the likelihood.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>If <span class="math">\(\smash{\mathcal{L}(\theta_{j+1}) &lt;
+\mathcal{L}(\theta_j)}\)</span>, set the upper bound of the grid to be
+<span class="math">\(\smash{\theta_{j+1}}\)</span> and otherwise set the lower bound to be
+<span class="math">\(\smash{\theta_j}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>If the lower and upper bounds are separated by more than one grid
+point, return to step 1. Otherwise, stop.</li>
+</ol>
+<ul class="simple">
+<li>Golden search is similar to binary search. See Heer and
+Maussner (2009) for details.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="newton-s-method">
+
+<h2>Newton's Method</h2>
+
+<p>Newton's method is an iterative root finding algorithm, that uses
+derivative/gradient information:</p>
+<div class="math">
+\[\smash{x^{(i+1)} = x^{(i)} - f(x^{(i)})/f'(x^{(i)}).}\]</div>
+<p>The value <span class="math">\(\smash{x^{(n)}}\)</span> for large <span class="math">\(\smash{n}\)</span> is an
+approximation of the function root, <span class="math">\(\smash{x: f(x) = 0}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="newton-raphson">
+
+<h2>Newton-Raphson</h2>
+
+<p>Newton's method can also be used for optimization (not just root
+finding).</p>
+<ul class="simple">
+<li>Optimization is the same as root finding for the derivative
+function.</li>
+</ul>
+<ul class="simple">
+<li>The Newton-Raphson algorithm is</li>
+</ul>
+<div class="math">
+\[\smash{x^{(i+1)} = x^{(i)} - f'(x^{(i)})/f''(x^{(i)}).}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Newton-Raphson</h2>
+
+<p>Define</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\boldsymbol{g}(\boldsymbol{\theta}) &amp; = \nabla
+\ell(\boldsymbol{\theta}) = \frac{\partial
+\ell(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}} \\
+\mathcal{H}(\boldsymbol{\theta}) &amp; = \nabla^2
+\ell(\boldsymbol{\theta}) = \nabla
+\boldsymbol{g}(\boldsymbol{\theta}) = \frac{\partial^2
+\ell(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}^2},
+\end{align*}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\mathcal{H}(\boldsymbol{\theta})}\)</span> is positive
+definite:</p>
+<div class="math">
+\[\begin{split}\smash{\boldsymbol{x}^T \mathcal{H}(\boldsymbol{\theta})
+\boldsymbol{x} &gt; 0 \,\,\,\, \forall \boldsymbol{x} \in
+\mathbb{R}^k.}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>Newton-Raphson</h2>
+
+<p>We approximate <span class="math">\(\smash{\ell(\boldsymbol{\theta})}\)</span> with a
+second-order Taylor expansion around
+<span class="math">\(\smash{\boldsymbol{\theta}^{(0)}}\)</span>:</p>
+<div class="math">
+\[\smash{\tilde{\ell}(\boldsymbol{\theta}) =
+\ell(\boldsymbol{\theta}^{(0)})} +
+\boldsymbol{g}(\boldsymbol{\theta}^{(0)})^T (\boldsymbol{\theta} -
+\boldsymbol{\theta}^{(0)}) + \frac{1}{2} (\boldsymbol{\theta} -
+\boldsymbol{\theta}^{(0)})^T \mathcal{H}(\boldsymbol{\theta}^{(0)})
+(\boldsymbol{\theta} - \boldsymbol{\theta}^{(0)}).\]</div>
+<p>The Newton-Raphson method chooses
+<span class="math">\(\smash{\boldsymbol{\theta}^{(1)}}\)</span> to maximize
+<span class="math">\(\smash{\tilde{\ell}(\boldsymbol{\theta})}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{gather*}
+\nabla
+\tilde{\ell}(\boldsymbol{\theta})\Big|_{\boldsymbol{\theta}=\boldsymbol{\theta}^{(1)}}
+= \boldsymbol{g}(\boldsymbol{\theta}^{(0)}) +
+\mathcal{H}(\boldsymbol{\theta}^{(0)}) (\boldsymbol{\theta}^{(1)} -
+\boldsymbol{\theta}^{(0)}) = 0. \\
+\implies \boldsymbol{\theta}^{(1)} = \boldsymbol{\theta}^{(0)} -
+\mathcal{H}(\boldsymbol{\theta}^{(0)})^{-1}
+\boldsymbol{g}(\boldsymbol{\theta}^{(0)}).
+\end{gather*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id5">
+
+<h2>Newton-Raphson</h2>
+
+<p>The Newton-Raphson method begins with
+<span class="math">\(\smash{\boldsymbol{\theta}^{(0)}}\)</span> and iteratively computes</p>
+<div class="math">
+\[\smash{\boldsymbol{\theta}^{(i+1)} = \boldsymbol{\theta}^{(i)} -
+\mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}
+\boldsymbol{g}(\boldsymbol{\theta}^{(i)})}\]</div>
+<p>until <span class="math">\(\smash{||\boldsymbol{\theta}^{(i+1)} -
+\boldsymbol{\theta}^{(i)}|| &lt; \tau}\)</span>, where <span class="math">\(\smash{\tau}\)</span> is
+some tolerance level.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="id6">
+
+<h2>Newton-Raphson</h2>
+
+<ul class="simple">
+<li>Newton-Raphson converges fast if the likelihood is concave and the
+initial guess is good enough.</li>
+</ul>
+<ul class="simple">
+<li>A modified version of Newton-Raphson computes:</li>
+</ul>
+<div class="math">
+\[\smash{\boldsymbol{\theta}^{(i+1)} = \boldsymbol{\theta}^{(i)} -
+s \mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}
+\boldsymbol{g}(\boldsymbol{\theta}^{(i)})}\]</div>
+<p>for various values of <span class="math">\(\smash{s}\)</span> at each iteration and chooses
+<span class="math">\(\smash{\boldsymbol{\theta}^{(i+1)}}\)</span> that yields the largest
+likelihood value.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="quasi-newton-raphson">
+
+<h2>Quasi Newton-Raphson</h2>
+
+<p>Various modified Newton-Raphson methods have been proposed which
+substitute other positive definite matrices for
+<span class="math">\(\smash{\mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}}\)</span>.</p>
+<ul class="simple">
+<li>These are useful if
+<span class="math">\(\smash{\mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}}\)</span> is not
+possible to compute or invert.</li>
+</ul>
+<ul class="simple">
+<li>Typically these are slower but more robust.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="numerical-differentiation">
+
+<h2>Numerical Differentiation</h2>
+
+<p>If analytical derivatives are not possible, numerical derivatives are
+an option.</p>
+<ul class="simple">
+<li>The <span class="math">\(\smash{i}\)</span> th element of
+<span class="math">\(\smash{\boldsymbol{g}(\boldsymbol{\theta})}\)</span> can be
+approximated with:</li>
+</ul>
+<div class="math">
+\[\smash{g_i(\boldsymbol{\theta}) = \frac{1}{\Delta}
+\left(\ell(\theta_1,\ldots,\theta_i+\Delta,\ldots,\theta_k) -
+\ell(\theta_1,\ldots,\theta_i,\ldots,\theta_k)\right)},\]</div>
+<p>for some small <span class="math">\(\smash{\Delta}\)</span>.</p>
+<ul class="simple">
+<li>The hessian can be computed numerically from
+<span class="math">\(\smash{\boldsymbol{g}(\boldsymbol{\theta})}\)</span> in a similar
+manner.</li>
+</ul>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

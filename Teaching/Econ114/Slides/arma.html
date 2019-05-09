@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ARMA Processes &mdash; Econ 114 - Advanced Quantitative Methods</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
+    <link rel="up" title="Time Series" href="timeSeries.html" />
+    <link rel="next" title="Bayesian Methods" href="bayesian.html" />
+    <link rel="prev" title="Moving Average Processes" href="ma.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="arma-processes">
+<h1>ARMA Processes</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="process">
+<h2><span class="math">\(ARMA(p,q)\)</span> Process</h2>
+<p>Given white noise <span class="math">\(\{\varepsilon_t\}\)</span>, consider the
+process</p>
+<div class="to-build math">
+\[\begin{split}Y_t &amp; = c + \phi_1 Y_{t-1} + \ldots + \phi_p Y_{t-p} +
+\varepsilon_t + \theta_1 \varepsilon_{t-1} + \ldots \theta_q
+\varepsilon_{t-q},\end{split}\]</div>
+<p class="to-build">where <span class="math">\(c\)</span>, <span class="math">\(\{\phi_i\}_{i=1}^p\)</span> and
+<span class="math">\(\{\theta_i\}_{i=1}^q\)</span> are constants.</p>
+<ul class="to-build simple">
+<li>This is an <span class="math">\(ARMA(p,q)\)</span> process.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="expectation-of">
+<h2>Expectation of <span class="math">\(ARMA(p,q)\)</span></h2>
+<p>Assume <span class="math">\(Y_t\)</span> is weakly stationary.</p>
+<div class="to-build math">
+\[\begin{split}E[Y_t] &amp; = c + \phi_1 E[Y_{t-1}] + \ldots + \phi_p E[Y_{t-p}] \\
+&amp; \hspace{0.75in} + E[\varepsilon_t] + \theta_1 E[\varepsilon_{t-1}] + \ldots
++ \theta_q E[\varepsilon_{t-q}]\end{split}\]</div>
+<div class="to-build math">
+\[= c + \phi_1 E[Y_t] + \ldots + \phi_p E[Y_t] \hspace{0.8in}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow E[Y_t] &amp; = \frac{c}{1-\phi_1 - \ldots - \phi_p} =
+\mu. \hspace{1.75in}\end{split}\]</div>
+<ul class="to-build simple">
+<li>This is the same mean as an <span class="math">\(AR(p)\)</span> process with parameters
+<span class="math">\(c\)</span> and <span class="math">\(\{\phi_i\}_{i=1}^p\)</span>.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="autocovariances-of">
+<h2>Autocovariances of <span class="math">\(ARMA(p,q)\)</span></h2>
+<p>Given that <span class="math">\(\mu = c/(1-\phi_1 - \ldots - \phi_p)\)</span> for weakly
+stationary <span class="math">\(Y_t\)</span>:</p>
+<div class="to-build math">
+\[\begin{split}Y_t &amp; = \mu(1-\phi_1 - \ldots - \phi_p) + \phi_1
+Y_{t-1} + \ldots + \phi_p Y_{t-p} \\
+&amp; \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+\varepsilon_{t-q}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow &amp; (Y_t - \mu) = \phi_1(Y_{t-1} - \mu) +
+\ldots + \phi_p(Y_{t-p} - \mu) \\
+&amp; \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+\varepsilon_{t-q}.\end{split}\]</div>
+<div class="to-build math">
+\[\gamma_j = E\left[(Y_t - \mu) (Y_{t-j} - \mu)\right] \hspace{2.7in}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \phi_1 E\left[(Y_{t-1} - \mu) (Y_{t-j} - \mu)\right] + \ldots \\
+&amp; \hspace{0.5in} + \phi_p E\left[(Y_{t-p} - \mu) (Y_{t-j} -
+\mu)\right] \\
+&amp; \hspace{1in} + E\left[\varepsilon_t (Y_{t-j} - \mu)\right] +
+\theta_1 E\left[\varepsilon_{t-1} (Y_{t-j} - \mu)\right] \\
+&amp; \hspace{2.25in} + \ldots +
+\theta_q E\left[\varepsilon_{t-q} (Y_{t-j} - \mu)\right]\end{split}\]</div>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Autocovariances of <span class="math">\(ARMA(p,q)\)</span></h2>
+<ul class="simple">
+<li>For <span class="math">\(j &gt; q\)</span>, <span class="math">\(\gamma_j\)</span> will follow the same law of
+motion as for an <span class="math">\(AR(p)\)</span> process:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\gamma_j &amp; = \phi_1 \gamma_{j-1} + \ldots + \phi_p \gamma_{j-p}
+\,\,\,\,\, \text{ for } j = q+1, \ldots\end{split}\]</div>
+<ul class="to-build simple">
+<li>These values will not be the same as the <span class="math">\(AR(p)\)</span> values for
+<span class="math">\(j = q+1, \ldots\)</span>, since the initial <span class="math">\(\gamma_0, \ldots,
+\gamma_q\)</span> will differ.</li>
+</ul>
+<ul class="to-build simple">
+<li>The first <span class="math">\(q\)</span> autocovariances, <span class="math">\(\gamma_0, \ldots,
+\gamma_q\)</span>, of an <span class="math">\(ARMA(p,q)\)</span> will be more complicated than
+those of an <span class="math">\(AR(p)\)</span>.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="estimating-models">
+<h2>Estimating <span class="math">\(ARMA\)</span> Models</h2>
+<p>Estimation of an <span class="math">\(ARMA\)</span> model is done via maximum
+likelihood.</p>
+<ul class="to-build simple">
+<li>For an <span class="math">\(ARMA(p,q)\)</span> model, one would first specify a joint
+likelihood for the parameters <span class="math">\(\{\phi_1, \ldots, \phi_p,
+\theta_1, \ldots, \theta_q, \mu, \sigma^2\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Taking derivatives of the log likelihood with respect to each of the
+parameters would result in a system of equations that could be
+solved for the MLEs: <span class="math">\(\{\hat{\phi}_1, \ldots, \hat{\phi}_p,
+\hat{\theta}_1, \ldots, \hat{\theta}_q, \hat{\mu},
+\hat{\sigma}^2\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The exact likelihood is cumbersome and maximization requires
+specialize numerical methods.</li>
+</ul>
+<ul class="to-build simple">
+<li>The MLEs can be obtained with the <span class="math">\(\mathtt{arima}\)</span> function in
+<span class="math">\(\mathtt{R}\)</span>.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="which">
+<h2>Which <span class="math">\(ARMA\)</span>?</h2>
+<p>How do we know if an <span class="math">\(ARMA\)</span> model is appropriate and which
+<span class="math">\(ARMA\)</span> model to fit?</p>
+<ul class="to-build simple">
+<li>After fitting an <span class="math">\(ARMA\)</span> model, we can examine the residuals.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <span class="math">\(\mathtt{acf}\)</span> function in <span class="math">\(\mathtt{R}\)</span> can be used
+to compute empirical autocorrelations of the residuals.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the residuals are autocorrelated, the model is not a good
+fit. Consider changing the parameters <span class="math">\(p\)</span> and <span class="math">\(q\)</span> of the
+<span class="math">\(ARMA\)</span> or using another model.</li>
+</ul>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Which <span class="math">\(ARMA\)</span>?</h2>
+<p>The <span class="math">\(\mathtt{auto.arima}\)</span> function in <span class="math">\(\mathtt{R}\)</span>
+estimates a range of <span class="math">\(ARMA(p,q)\)</span> models and selects the one with
+the best fit.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\mathtt{auto.arima}\)</span> uses the <em>Akaike Information Criterion</em>
+(AIC) or the <em>Bayesian Information Criterion</em> (BIC) to select the
+model.</li>
+</ul>
+<ul class="to-build simple">
+<li>Minimizing AIC and BIC amounts to minimizing the sum of squared
+residuals, with a penalty term that is related to the number of
+model parameters.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Advanced Quantitative Methods',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

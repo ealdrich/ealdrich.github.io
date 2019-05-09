@@ -1,0 +1,204 @@
+==============================================================================
+GMM Optimal Weighting Matrix
+==============================================================================
+
+Moment Conditions' Covariance
+==============================================================================
+Suppose
+:math:`\smash{\{\boldsymbol{h}(\boldsymbol{\theta},
+\boldsymbol{Y}_{t})\}_{t=1}^{T}}` is strictly stationary and
+define 
+
+.. math::
+
+   \smash{\Gamma_{\nu} =
+   E[\boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{Y}_{t})
+   \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{Y}_{t-\nu})^{'}]}
+
+.. raw:: <!--pause-->
+
+and 
+
+.. math::
+
+   \begin{align}
+   S =  \sum_{\nu=-\infty}^{\infty} \Gamma_{\nu} = \Gamma_{0} +
+   \sum_{\nu=1}^{\infty} (\Gamma_{\nu} + \Gamma_{\nu}^{'}).
+   \end{align}
+
+Convergence in Distribution
+==============================================================================
+Asymptotic theory dictates 
+
+.. math::
+
+   \smash{\sqrt{T}(\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T}) -
+   E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})])
+   \overset{d}{\rightarrow} N(0,S)}
+
+where
+
+.. math::
+
+   \smash{ \sum_{t=1}^{T} \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T})
+   \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T})^{'}
+   \overset{p}{\rightarrow} S}.
+
+Optimal Weighting Matrix
+==============================================================================
+Another way to say this (intuitively):
+
+.. math::
+
+   \smash{\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)
+   \overset{approx}{\sim}
+   N\left(E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})],
+   \frac{S}{T}\right)}
+
+.. raw:: <!--pause-->
+
+The optimal GMM weighting matrix is :math:`\smash{S^{-1}}`:
+
+.. math::
+
+   \smash{Q_{T}(\boldsymbol{\theta}) =
+   \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)^{'}S^{-1}
+   \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)}.
+
+Optimal Matrix Estimation
+==============================================================================
+If :math:`\smash{\{\boldsymbol{h}(\boldsymbol{\theta_{0}},
+\boldsymbol{y}_{t})\}_{t=-\infty}^{\infty}}` is serially uncorrelated,
+:math:`\smash{S}` is consistently estimated by 
+
+.. math::
+
+   \smash{S_{T}^{*} = \frac{1}{T} \sum_{t=1}^{T}
+   \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t})
+   \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t})^{'}}.
+
+.. raw:: <!--pause-->
+
+If it is serially correlated,
+
+.. math::
+
+   \smash{S_{T}^{*} = \Gamma_{0,T}^{*} +  \sum_{\nu =1}^{q}\left(1 -
+   \frac{\nu}{q+1}\right)\left(\Gamma_{\nu,T}^{*} +
+   \Gamma_{\nu,T}^{* \hspace{3pt}'}\right)},
+
+where
+
+.. math::
+
+   \smash{\Gamma_{\nu,T}^{*} =  \frac{1}{T}  \sum_{t = \nu+1}^{T}
+   \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t})
+   \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t-\nu})^{'}}.
+
+Optimal Matrix Estimation
+==============================================================================
+Notice that :math:`\smash{S^{*}}` depends on
+:math:`\smash{\boldsymbol{\theta}_{0}}`, which is unknown.
+
+.. raw:: <!--pause-->
+
+- We substitute an estimate :math:`\smash{\hat{\boldsymbol{\theta}}}`
+  for :math:`\smash{\boldsymbol{\theta}_{0}}` in :math:`\smash{S^{*}}`
+  and denote the estimated value as :math:`\smash{\hat{S}}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\hat{S}}` may make use of appropriate definitions of
+  :math:`\smash{\hat{\Gamma}_{\nu,T}}` if there is serial
+  correlation.
+
+.. raw:: <!--pause-->
+
+Under certain regularity conditions
+
+.. math::
+
+   \smash{\hat{S} \overset{p}{\rightarrow} S}.
+
+Two Stage Estimation
+==============================================================================
+Note that we want to use :math:`\smash{\hat{S}^{-1}}` as the optimal
+weighting matrix to compute :math:`\smash{\hat{\boldsymbol{\theta}}}`,
+but that :math:`\smash{\hat{S}^{-1}}` depends on
+:math:`\smash{\hat{\boldsymbol{\theta}}}`.
+
+.. raw:: <!--pause-->
+
+- To compute optimal :math:`\smash{\hat{\boldsymbol{\theta}}_{gmm}}`,
+  first estimate :math:`\smash{\hat{\boldsymbol{\theta}}_{gmm}}` with
+  :math:`\smash{W_T = I_{r}}`.
+
+.. raw:: <!--pause-->
+
+- Use the initial :math:`\smash{\hat{\boldsymbol{\theta}}_{gmm}}` to
+  compute :math:`\smash{\hat{S}_{T}(\hat{\boldsymbol{\theta}}_{gmm})}`
+  and set :math:`\smash{W_T =
+  \hat{S}_{T}(\hat{\boldsymbol{\theta}}_{gmm})^{-1}}`.
+
+.. raw:: <!--pause-->
+
+- Compute :math:`\smash{\hat{\boldsymbol{\theta}}_{gmm}}` again.
+
+Two Stage Estimation
+==============================================================================
+How is the two-stage procedure better?
+
+.. raw:: <!--pause-->
+
+- That is, why is :math:`\smash{S^{-1}}` optimal?
+
+.. raw:: <!--pause-->
+
+- Using :math:`\smash{S^{-1}}` or a consistent estimate,
+  :math:`\smash{\hat{S}^{-1}}`, results in
+  :math:`\smash{\hat{\boldsymbol{\theta}}_{gmm}}` with less
+  estimation error.
+
+Asymptotic Distribution of GMM Estimator
+==============================================================================
+A central limit theorem exists for
+:math:`\smash{\hat{\boldsymbol{\theta}}_{gmm}}`:
+
+.. math::
+
+   \smash{\sqrt{T} (\hat{\boldsymbol{\theta}}_{gmm} -
+   \boldsymbol{\theta}_{0}) \overset{d}{\rightarrow} N(0,V)},
+
+where
+
+.. math::
+
+   \begin{gather}
+   V = (DS^{-1}D^{'})^{-1} \\
+   \frac{\partial \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T})}
+   {\partial\boldsymbol{\theta}} \bigg|_{\boldsymbol{\theta} =
+   \boldsymbol{\theta}_{0}} \overset{p}{\longrightarrow} D.
+   \end{gather}
+
+Asymptotic Distribution of GMM Estimator
+==============================================================================
+That is, for large :math:`\smash{T}`,
+
+.. math::
+
+   \smash{\hat{\boldsymbol{\theta}}_{gmm} \overset{approx}{\sim}
+   N(\boldsymbol{\theta}_{0},  \frac{\hat{V}_{T}}{T})},
+
+where,
+
+.. math::
+
+   \begin{align}
+   \hat{V}_{T} & = (\hat{D}_{T}\hat{S}_{T}^{-1}\hat{D}_{T}^{'})^{-1}
+   \\
+   \hat{D}_{T} & = \frac{\partial
+   \boldsymbol{g}_{T}(\boldsymbol{\theta}|
+   \boldsymbol{\mathcal{Y}_T})}{\partial
+   \boldsymbol{\theta}}\bigg|_{\boldsymbol{\theta} =
+   \hat{\boldsymbol{\theta}}}.
+   \end{align}

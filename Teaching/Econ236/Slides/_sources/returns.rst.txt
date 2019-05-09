@@ -1,0 +1,479 @@
+.. slideconf::
+   :slide_classes: appear
+
+
+==============================================================================
+Rates of Return
+==============================================================================
+
+
+Holding Period Return
+==============================================================================
+Consider a stock with beginning price :math:`\smash{P_0}`, ending
+price :math:`\smash{P_1}` and a dividend payment of
+:math:`\smash{d}`.
+
+.. raw:: <!--pause-->
+
+- The *holding period return* is 
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   HPR & = \frac{P_1 - P_0 + d}{P_0} \\
+   & = \underbrace{\frac{P_1 - P_0}{P_0}}_\text{capital gains yield} +
+   \underbrace{\frac{d}{P_0}}_\text{dividend yield}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+This definition can be used for assets other than stocks (e.g. a bond
+with a coupon payment).
+
+
+
+Holding Period Return Example
+==============================================================================
+- On Nov 9th 2012, Apple stock closed at :math:`\smash{P_0 = \$547.06}`.
+
+.. raw:: <!--pause-->
+
+- On Nov 12th, Apple payed a dividend of :math:`\smash{d = \$2.65}`
+  per share and the price closed at :math:`\smash{P_1 = \$542.83}`.
+
+.. raw:: <!--pause-->
+
+- What was the HPR?
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   HPR & = \frac{\$542.83 - \$547.06}{\$547.06} +
+   \frac{\$2.65}{\$547.06} \\
+   & = \frac{-\$4.23}{\$547.06} + \frac{\$2.65}{\$547.06} \\
+   & = \frac{-\$1.58}{\$547.06} \\
+   & = -0.00289.
+   \end{align*}
+   
+Gross and Net Returns
+==============================================================================
+Forget dividends or cash payouts for a moment.
+
+.. raw:: <!--pause-->
+
+- The *capital gains yield* is
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   \underbrace{\frac{P_1 - P_0}{P_0}}_\text{net return}\,\,\, & =
+   \underbrace{\frac{P_1}{P_0}}_\text{gross return} - \,\,\,\,\, 1.
+   \end{align*}
+
+Gross and Net Returns
+==============================================================================
+What's the difference between net and gross returns?  
+
+.. raw:: <!--pause-->
+
+- The net return is the fraction of your invested money that you gain
+  by holding the asset, excluding the original money.
+
+.. raw:: <!--pause-->
+
+- The gross return is the total gain, including your original
+  money. It is the factor by which you multiply your original invested
+  amount to determine the final invested amount.
+ 
+
+
+
+Multi-period Returns
+==============================================================================
+Suppose an asset has net returns
+:math:`\smash{\{r_t\}_{t=0}^{T}}`. Consider two forms of average
+returns:
+
+.. math::
+
+   \begin{align*}
+   \text{Arithmetic Average} & = \frac{1}{T} \sum_{t=0}^T r_t
+   \end{align*}
+
+.. raw:: <!--pause-->
+	 
+and 
+
+.. math::
+
+   \begin{align*}
+   \text{Geometric Average} & = \left(\prod_{t=0}^T
+   (1+r_t)\right)^{\frac{1}{T}}.
+   \end{align*}
+   
+.. raw:: <!--pause-->
+
+The geometric average is the *constant* return that would
+have to be earned each period to yield the same final value of the
+asset.
+
+
+
+Annualized Returns - EAR
+==============================================================================
+Suppose you enter into a contract to pay or receive a net rate of
+return :math:`\smash{r}` on an asset for each of :math:`\smash{n}`
+periods in a year.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{n=12}`  is a monthly contract.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{n=4}` is a quarterly contract.
+
+.. raw:: <!--pause-->
+
+- The Effective Annual Rate (EAR) is 
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   1 + \text{EAR} & = (1 + r)^n.
+   \end{align*}
+
+
+
+Annualized Returns - APR
+==============================================================================
+Suppose you enter into a contract to pay or receive a net rate of
+return :math:`\smash{r}` on an asset for each of :math:`\smash{n}`
+periods in a year.
+
+.. raw:: <!--pause-->
+
+- The Annual Percentage Rate (APR) is 
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   \text{APR} & = n \times r.
+   \end{align*}
+   
+.. raw:: <!--pause-->
+
+The APR ignores compounding (as seen in the following example).
+
+
+
+Annualized Returns - Example
+==============================================================================
+You invest \$100 in an asset that pays 5\% return each quarter for
+one year.
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \smash{Q1: \$100 \times 1.05 = \$105}
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \smash{Q2: \$105 \times 1.05 = \$110.25}
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \smash{Q3: \$110.25 \times 1.05 = \$115.76}
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \smash{Q4: \$115.76 \times 1.05 = \$121.55}
+
+Annualized Returns - Example
+==============================================================================
+.. math::
+
+   \smash{EAR: (1.05)^4 - 1 = 0.2155}
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \smash{APR: 0.05 \times 4 = 0.2}
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \smash{HPR: \frac{\$121.55 - \$100}{\$100} = 0.2155.}
+
+
+
+EAR and APR
+==============================================================================
+What is the relationship between EAR and APR?
+
+.. raw:: <!--pause-->
+	       
+Since :math:`r = \frac{\text{APR}}{n}` we have
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   1 +\text{EAR}  = \left(1 + \frac{APR}{n}\right)^n.
+
+.. raw:: <!--pause-->
+
+We can rearrange the equation above to get
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \text{APR} = \left[(1+\text{EAR})^{\frac{1}{n}} - 1\right]
+   \times n.
+
+
+
+Continuous Compounding
+==============================================================================
+Continuous compounding is what occurs when we allow the number of
+periods in the year, :math:`\smash{n}`, to become large.  
+
+.. raw:: <!--pause-->
+
+- For daily returns, :math:`\smash{n=365}`.  
+
+.. raw:: <!--pause-->
+
+- For hourly returns, :math:`\smash{n=8760}`.  
+
+.. raw:: <!--pause-->
+
+- For returns each minute, :math:`\smash{n=525,000}`.  
+
+.. raw:: <!--pause-->
+
+- For returns each second, :math:`\smash{n=31,536,000}`.
+
+
+
+
+Continuous Compounding
+==============================================================================
+Continuous compounding is the limit, when :math:`\smash{n =
+\infty}`. In this case  
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \lim_{n \to \infty} \left(1 + \frac{\text{APR}}{n}\right)^n =
+   e^{\text{APR}}.
+
+.. raw:: <!--pause-->
+
+So, under continuous compounding
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   1 + \text{EAR} & = e^{\text{APR}}
+   \end{align*}
+   
+.. raw:: <!--pause-->
+
+or
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   \text{APR} & = \ln(1+\text{EAR}).
+   \end{align*}
+
+
+Inflation
+==============================================================================
+Inflation is the increase of the general price level over
+time.  
+
+.. raw:: <!--pause-->
+
+- Inflation erodes the purchasing power of a given amount of
+  money over time.  
+
+.. raw:: <!--pause-->
+
+- In the presence of inflation, an asset that yields a return of
+  :math:`\smash{r}` doesn't actually generate :math:`\smash{r}` units
+  of additional real purchasing power for each dollar invested.
+
+
+
+
+Nominal vs. Real Returns
+==============================================================================
+In the previous slides we computed nominal returns.
+
+.. raw:: <!--pause-->
+
+- Let us momentarily change notation and refer to the nominal return
+  of an asset as :math:`\smash{R}`.
+
+.. raw:: <!--pause-->
+
+- Then the real return of the asset is the nominal return discounted
+  by inflation:
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   1+r = \frac{1+R}{1+\pi}.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{r}` is the net real return and :math:`\smash{\pi}` is
+  net inflation.
+
+
+Nominal vs. Real Returns
+==============================================================================
+- This relationship is approximated by 
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   r & \approx R - \pi.
+   \end{align*}
+   
+.. raw:: <!--pause-->
+
+See the proof on the next slide.
+
+
+
+Nominal vs. Real Returns - Proof
+==============================================================================
+The proof requires an approximation. For some small number
+:math:`\smash{\varepsilon > 0}`,
+
+.. math::
+
+   \begin{align*}
+   \ln(1+\varepsilon) & \approx \varepsilon.
+   \end{align*}
+   
+.. raw:: <!--pause-->
+
+Thus,
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   1+r & = \frac{1+R}{1+\pi} \\
+   \Rightarrow \ln(1+r) & = \ln\left(\frac{1+R}{1+\pi}\right) \\
+   \Rightarrow \ln(1+r) & = \ln(1+R) - \ln(1+\pi) \\
+   \Rightarrow r & \approx R - \pi.
+   \end{align*}
+
+Nominal vs. Real Returns - Example
+==============================================================================
+Suppose you can invest in a CD that pays 8% return over the next year
+and that inflation is 5% during the same period.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{R = 0.08}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\pi = 0.05}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{r \approx 0.08 - 0.05 = 0.03}`.
+
+.. raw:: <!--pause-->
+
+The actual real rate of return is
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   r = \frac{1.08}{1.05} - 1 = 0.0286.
+
+Expected Inflation
+==============================================================================
+In practice, future inflation is not known, even though the nominal
+rate of return may be known with certainty.
+
+.. raw:: <!--pause-->
+
+- Think of a fixed-income asset.
+
+.. raw:: <!--pause-->
+
+- In this case
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   R & = r + E[\pi].
+   \end{align*}
+   
+.. raw:: <!--pause-->
+
+- :math:`\smash{E[\pi]}` is expected inflation. 
+
+
+
+Expected Inflation
+==============================================================================
+- The returns to typical government bonds are nominal. 
+
+.. raw:: <!--pause-->
+
+- In 1997, the U.S. Treasury introduced "Treasury Inflation-Protected
+  Securities" (TIPS).
+
+.. raw:: <!--pause-->
+
+- These have coupon and principle payments that
+  are corrected for observed inflation over time.
+
+.. raw:: <!--pause-->
+
+- The difference between these rates of return on these two
+  instruments can be treated as a measure of expected inflation.
+
+

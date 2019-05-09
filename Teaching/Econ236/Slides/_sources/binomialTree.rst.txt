@@ -1,0 +1,707 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Binomial Trees
+==============================================================================
+
+Random Walk
+==============================================================================
+A *random walk* is a stochastic process the evolves in the following
+manner:
+
+.. math::
+
+   \begin{align}
+   Y_t & = Y_{t-1} + \varepsilon_t.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\varepsilon_t \sim N(0,1)}`, then
+  :math:`\smash{Y_t}` is a continuous random variable and is a
+  referred to as a Gaussian random walk.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\varepsilon_t}` is drawn from a discrete
+  distribution, then :math:`\smash{Y_t}` is also a discrete random
+  variable.
+
+.. raw:: <!--pause-->
+
+- We will refer to :math:`\smash{\varepsilon_t}` as the *innovation*
+  or *shock*.
+
+Binomial Distribution
+==============================================================================
+Suppose a random variable :math:`\smash{X}` can only take one of two
+values :math:`\smash{X_u}` and :math:`\smash{X_d}`.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{P(X = X_u) = p}` and :math:`\smash{P(X = X_d) =
+  1-p}`, then :math:`\smash{X}` follows a Bernoulli distribution with
+  parameter :math:`\smash{p}`.
+
+.. raw:: <!--pause-->
+
+- In notation: :math:`\smash{X \sim Bernoulli(p)}`.
+
+.. raw:: <!--pause-->
+
+- The sum of :math:`\smash{n}` independent Bernoulli random variables
+  is a Binomial random variable with parameters :math:`\smash{n}` and
+  :math:`\smash{p}`.
+
+.. raw:: <!--pause-->
+
+- In notation: if :math:`\smash{Y_t = \sum_{i=t-n}^t X_i}` then
+  :math:`\smash{Y_t \sim Binomial(n,p)}`.
+
+Bernoulli Random Walk
+==============================================================================
+A very simple model of stock prices assumes that they follow a random
+walk with Bernoulli innovations:
+
+.. math::
+
+   \begin{align}
+   P_t & = P_{t-1} + \varepsilon_t, \,\,\,\, \varepsilon_t \sim
+   Bernoulli(p).
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- Interpretation: The stock price can only move to one of two values
+  at each time period.
+
+.. raw:: <!--pause-->
+
+- This model is useful for valuing options on the asset.
+
+Binomial Tree Example
+==============================================================================
+Suppose a stock price is currently :math:`\smash{\$20}` and that in
+three months it will either be :math:`\smash{\$18}` or
+:math:`\smash{\$22}`.
+
+.. raw:: <!--pause-->
+
+- You would like to buy a call option with strike of
+  :math:`\smash{\$21}`.
+
+.. raw:: <!--pause-->
+
+- If the price moves up to :math:`\smash{\$22}`, the option will be
+  worth :math:`\smash{\$1}` at expiry.
+
+.. raw:: <!--pause-->
+
+- If the price moves down to :math:`\smash{\$18}`, the option will be
+  worthless.
+
+Binomial Tree Example
+==============================================================================
+  .. image:: BinomialTrees/binomialTree1.png
+     :width: 8in
+     :align: center
+
+A Riskless Portfolio
+==============================================================================
+Consider the following portfolio:
+
+.. raw:: <!--pause-->
+
+- Buy :math:`\smash{\Delta}` shares of the stock.
+
+.. raw:: <!--pause-->
+
+- Sell one call option.
+
+.. raw:: <!--pause-->
+
+- If the prices moves up, the value of the portfolio is
+  :math:`\smash{\$22 \Delta - 1}`.
+
+.. raw:: <!--pause-->
+
+- If the prices moves down, the value of the portfolio is
+  :math:`\smash{\$18 \Delta}`.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\Delta}` can be chosen so that :math:`\smash{\$22
+  \Delta - 1 = \$18 \Delta}`, the portfolio is risk free.
+
+A Riskless Portfolio
+==============================================================================
+Clearly, if :math:`\smash{\Delta = 0.25}` the payoffs are equal and
+the portfolio is riskless.
+
+.. raw:: <!--pause-->
+
+- Thus a portfolio which is long 0.25 shares and short 1 option is
+  riskless.
+
+.. raw:: <!--pause-->
+
+- If the prices moves up, the value of the portfolio is
+  :math:`\smash{\$22 \Delta - 1 = \$4.5}`.
+
+.. raw:: <!--pause-->
+
+- If the prices moves down, the value of the portfolio is
+  :math:`\smash{\$18 \Delta = \$4.5}`.
+
+.. raw:: <!--pause-->
+
+- Although it's not possible to buy 0.25 shares, you can buy 100
+  shares and short 400 calls.
+
+Value of the Riskless Portfolio
+==============================================================================
+Since the portfolio has no risk, it must earn the risk-free rate of
+return.
+
+.. raw:: <!--pause-->
+
+- Suppose the continuously compounded risk-free interest rate is 12\%
+  per annum.
+  
+.. raw:: <!--pause-->
+
+- The value of the portfolio today must be the present value of the
+  riskless :math:`\smash{\$4.5}` payoff:
+
+.. math::
+
+   \begin{align}
+   4.5 e^{-0.12 \times 3/12} & = 4.367.
+   \end{align}
+
+Value of the Riskless Portfolio
+==============================================================================
+- The cost of the portfolio is :math:`\smash{\$20 \Delta - f = 5 -f}`,
+  where :math:`\smash{f}` is the current price of the call.
+   
+.. raw:: <!--pause-->
+
+- The cost and value of the portfolio must be equal, otherwise an
+  arbitrage opportunity would exist:
+
+.. math::
+
+   \begin{align}
+   5 - f & = 4.367 \\
+   \Rightarrow f & = 0.633.
+   \end{align}
+
+One-Step Binomial Tree
+==============================================================================
+We can generalize the previous example.
+
+.. raw:: <!--pause-->
+
+- The current stock price is :math:`\smash{S_0}`.
+
+.. raw:: <!--pause-->
+
+- The current option price is :math:`\smash{f}`.
+
+.. raw:: <!--pause-->
+
+- Time periods are :math:`\smash{T}` years.
+
+.. raw:: <!--pause-->
+
+- At the end of the next time period, the stock price will be either
+  :math:`\smash{S_0 u}` or :math:`\smash{S_0 d}`, where
+  :math:`\smash{u > 1}` and :math:`\smash{d < 1}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{u-1}` represents a percentage increase and
+  :math:`\smash{d - 1}` represents a percentage decrease.
+
+.. raw:: <!--pause-->
+
+- The option values at the end of next time period are either
+  :math:`\smash{f_u}` or :math:`\smash{f_d}`.
+
+One-Step Binomial Tree
+==============================================================================
+  .. image:: BinomialTrees/binomialTree1General.png
+     :width: 8in
+     :align: center
+
+One-Step Portfolio
+==============================================================================
+Consider a portfolio that is long :math:`\smash{\Delta}` shares and
+short 1 call option.
+
+.. raw:: <!--pause-->
+
+- If the stock price moves up, the value is :math:`\smash{S_0 u
+  \Delta - f_u}`.
+
+.. raw:: <!--pause-->
+
+- If the stock price moves down, the value is :math:`\smash{S_0 d
+  \Delta - f_d}`.
+
+.. raw:: <!--pause-->
+
+- Find :math:`\smash{\Delta}` such that the payoffs are equal:
+
+.. math::
+
+   \begin{align}
+   \Delta & = \frac{f_u - f_d}{S_0 u - S_0 d}.
+   \end{align}
+
+One-Step Portfolio
+==============================================================================
+Since the payoffs are equivalent in each state, the portfolio is
+riskless.
+
+.. raw:: <!--pause-->
+
+- Suppose the continuously compounded risk-free rate is
+  :math:`\smash{r}`.
+
+.. raw:: <!--pause-->
+
+- The present value of the portfolio payoff is :math:`\smash{\left(S_0
+  u \Delta - f_u\right) e^{-rT}}`.
+
+.. raw:: <!--pause-->
+
+- The current cost of the portfolio is :math:`\smash{S_0 \Delta -
+  f}`.
+
+.. raw:: <!--pause-->
+
+Call Option Price
+==============================================================================
+Equating cost and value of the portfolio:
+
+.. math::
+
+   \begin{align}
+   S_0 \Delta - f & = \left(S_0 u \Delta - f_u\right) e^{-rT} \\
+   \Rightarrow f & = S_0 \Delta \left(1-u e^{-rT}\right) + f_u
+   e^{-rT} \\
+   & = S_0 \frac{f_u-f_d}{S_0 u - S_0 d} \left(1-u e^{-rT}\right) +
+   f_u e^{-rT} \\
+   & = \frac{f_u\left(1-d e^{-rT}\right) + f_d\left(u e^{-rT} -
+   1\right)}{u-d} \\
+   & = e^{-rT} \left(p f_u + (1-p) f_d\right),
+   \end{align}
+
+where :math:`\smash{p = \frac{e^{rT} - d}{u-d}}`.
+
+Revisiting One-Period Example
+==============================================================================
+Recall the previous example:
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{u = 1.1}`, :math:`\smash{d = 0.9}`, :math:`\smash{f_u
+  = 1}`, :math:`\smash{f_d = 0}`, :math:`\smash{r = 0.12}` and
+  :math:`\smash{T = 3/12}`.
+
+.. raw:: <!--pause-->
+
+- Thus :math:`\smash{p = \frac{e^{0.12\times 3/12} - 0.9}{1.1-0.9} =
+  0.6523}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{f = e^{-0.12 \times 0.25} \left(0.6523 \times 1 +
+  0.3477 \times 0\right) = 0.633}`.
+
+Two-Step Binomial Tree
+==============================================================================
+Consider a two-period example, where the stock price can move up or
+down during the first period, and then can move up or down during the
+second period.
+
+.. raw:: <!--pause-->
+
+- There will be either three or four possible stock prices at the end
+  of time two.
+
+.. raw:: <!--pause-->
+
+- We can solve the problem backwards:
+
+  - First solve for the prices of the options in each state of the
+    world at the end of period 1 (two separate problems).
+
+  - Use those prices to solve for the price at the current time
+    (single problem).
+
+Two-Step Binomial Tree
+==============================================================================
+  .. image:: BinomialTrees/binomialTree2General.png
+     :width: 8in
+     :align: center
+
+Two-Step Binomial Tree
+==============================================================================
+Let us now denote a time period as :math:`\smash{\Delta t}`.
+
+.. raw:: <!--pause-->
+
+- The value (price) of the call option at the end of the first period
+  in the high state is:
+
+.. math::
+
+   \begin{align}
+   f_u & = e^{-r \Delta t} \left(p f_{uu} + (1-p) f_{ud}\right)
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- The value (price) of the call option at the end of the first period
+  in the low state is:
+
+.. math::
+
+   \begin{align}
+   f_d & = e^{-r \Delta t} \left(p f_{ud} + (1-p) f_{dd}\right)
+   \end{align}
+
+Two-Step Binomial Tree
+==============================================================================
+- The value (price) of the call option at the current time is:
+
+.. math::
+
+   \begin{align}
+   f & = e^{-r \Delta t} \left(p f_{u} + (1-p) f_{d}\right) \\
+   & = e^{-2r \Delta t}\left(p^2 f_{uu} + 2*p(1-p) f_{ud} + (1-p)^2
+   f_{dd} \right).
+   \end{align}
+
+Two-Step Binomial Tree Example
+==============================================================================
+Continuing with the previous example: :math:`\smash{u = 1.1}`,
+:math:`\smash{d = 0.9}`, :math:`\smash{r = 0.12}` and
+:math:`\smash{\Delta t = 3/12}`.
+
+.. raw:: <!--pause-->
+
+- If the stock price moves up twice :math:`\smash{S_0 u^2 = 24.2}` and
+  :math:`\smash{f_{uu} = 3.2}`.
+
+.. raw:: <!--pause-->
+
+- If the stock price moves down twice :math:`\smash{S_0 d^2 = 16.2}`
+  and :math:`\smash{f_{dd} = 0}`.
+
+.. raw:: <!--pause-->
+
+- If the stock price moves up and down :math:`\smash{S_0 ud = 19.8}`
+  and :math:`\smash{f_{ud} = 0}`.
+
+Two-Step Binomial Tree Example
+==============================================================================
+Given the numbers above:
+
+.. math::
+
+   \begin{align}
+   f_u & = e^{-0.12 \times 0.25} \left(0.6523 \times 3.2 + 0.3477
+   \times 0 \right) = 2.0257 \\
+   f_d & = e^{-0.12 \times 0.25} \left(0.6523 \times 0 + 0.3477
+   \times 0 \right) = 0 \\
+   f & = e^{-0.12 \times 0.25} \left(0.6523 \times 2.0257 + 0.3477
+   \times 0 \right) = 1.2823.
+   \end{align}
+
+Valuing Put Options
+==============================================================================
+The foregoing treatment was not unique to call options.
+
+.. raw:: <!--pause-->
+
+- We likewise could have determine the number of shares necessary to
+  create a riskless portfolio that is long the stock and short a put.
+
+.. raw:: <!--pause-->
+
+- This would result in a symmetric solution for
+  :math:`\smash{\Delta}`, but using the final values of the put in
+  each state.
+
+.. raw:: <!--pause-->
+
+- The same formulas for the one- and two-period trees can be used to
+  value the option.
+
+  - The only difference is that the option payoffs at each node are
+    different than the call.
+
+Two-Step Put Option Example
+==============================================================================
+The current price of a stock is :math:`\smash{S_0 = \$50}`,
+:math:`\smash{u = 1.2}`, :math:`\smash{d = 0.8}`, :math:`\smash{r =
+0.05}` and :math:`\smash{\Delta t = 1}`. Consider a put with strike
+price :math:`\smash{\$52}`.
+
+.. raw:: <!--pause-->
+
+- If the stock price moves up twice :math:`\smash{S_0 u^2 = 72}` and
+  :math:`\smash{f_{uu} = 0}`.
+
+.. raw:: <!--pause-->
+
+- If the stock price moves down twice :math:`\smash{S_0 d^2 = 32}`
+  and :math:`\smash{f_{dd} = 20}`.
+
+.. raw:: <!--pause-->
+
+- If the stock price moves up and down :math:`\smash{S_0 ud = 48}`
+  and :math:`\smash{f_{ud} = 4}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{p = \frac{e^{r \Delta t} - d}{u-d} =
+  \frac{e^{0.05 \times 1} - 0.8}{1.2-0.8} = 0.6282}`.
+
+Two-Step Put Option Example
+==============================================================================
+Given the numbers above:
+
+.. math::
+
+   \begin{align}
+   f_u & = e^{-0.05 \times 1} \left(0.6282 \times 0 + 0.3718
+   \times 4 \right) = 1.4147 \\
+   f_d & = e^{-0.05 \times 1} \left(0.6282 \times 4 + 0.3718
+   \times 20 \right) = 9.4635 \\
+   f & = e^{-0.05 \times 1} \left(0.6282 \times 1.4147 + 0.3718
+   \times 9.4635 \right) = 4.1923.
+   \end{align}
+
+American Options
+==============================================================================
+To value an American option with a binomial tree:
+
+.. raw:: <!--pause-->
+
+- At each node, compute the value of the call implied by the
+  subsequent nodes (using the foregoing methods).
+
+.. raw:: <!--pause-->
+
+- Compute the value of immediate exercise.
+
+.. raw:: <!--pause-->
+
+- Assign the value as the maximum of these two quantities.
+
+.. raw:: <!--pause-->
+
+- Proceed in reverse fashion until the value is computed at the first
+  node, taking into account the possibilities of early exercise.
+
+American Option Example
+==============================================================================
+Suppose that the put in the previous example is an American option.
+
+.. raw:: <!--pause-->
+
+- If the stock price moves down, the value of immediate exercise is
+  :math:`\smash{\$12}`.
+
+.. raw:: <!--pause-->
+
+- This means :math:`\smash{f_d = \max(9.4626,12) = 12}`.
+
+.. raw:: <!--pause-->
+
+- As a result:
+
+.. math::
+
+   \begin{align}
+   f & = e^{-0.05 \times 1} \left(0.6282 \times 1.4147 + 0.3718
+   \times 12 \right) = 5.0894.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- Note that the value of the American option is greater than that of
+  the European option.
+
+Delta
+==============================================================================
+Recall that :math:`\smash{\Delta}` is the number of shares that must
+be purchased to create a riskless portfolio with a short option.
+
+.. raw:: <!--pause-->
+
+- It is the ratio of possible option values over the possible stock
+  prices.
+
+.. raw:: <!--pause-->
+
+- It is often written and referred to as *delta*.
+
+.. raw:: <!--pause-->
+
+- Following this investment strategy is called *delta hedging*.
+
+.. raw:: <!--pause-->
+
+- Call option deltas are positive and put option deltas are negative.
+
+Call Deltas
+==============================================================================
+In the two-period call option example:
+
+.. math::
+
+   \begin{align}
+   \Delta_0 & = \frac{2.0257 - 0}{22-18} = 0.5064 \\
+   \Delta_u & = \frac{3.2 - 0}{24.2-19.8} = 0.7273 \\
+   \Delta_d & = \frac{0 - 0}{19.8-16.2} = 0,
+   \end{align}
+
+where :math:`\smash{\Delta_0}` is the delta for the first time period
+and :math:`\smash{\Delta_u}` and :math:`\smash{\Delta_d}` are the
+deltas for the second periods if the price moves up and down.
+
+.. raw:: <!--pause-->
+
+- Notice that delta changes with time - i.e you need to rebalance your
+  portfolio to maintain a riskless hedge.
+
+.. raw:: <!--pause-->
+
+- This is called dynamic hedging.
+  
+Put Deltas
+==============================================================================
+In the two-period put option example:
+
+.. math::
+
+   \begin{align}
+   \Delta_0 & = \frac{1.4147 - 9.4636}{60-40} = -0.4024 \\
+   \Delta_u & = \frac{0-4}{72-48} = -0.1667 \\
+   \Delta_d & = \frac{4-20}{48-32} = -1.
+   \end{align}
+
+Stock Return Volatility
+==============================================================================
+Suppose :math:`\smash{\sigma^2}` is the annualized variance of the
+stock returns.
+
+.. raw:: <!--pause-->
+
+- Assuming the returns are independent, :math:`\smash{\Delta t
+  \sigma^2}` is a good approximation of the variance for period
+  :math:`\smash{\Delta t}`.
+
+.. raw:: <!--pause-->
+
+- This means a good approximation of the standard deviation, or
+  volatility, for period :math:`\smash{\Delta t}` is
+  :math:`\smash{\sqrt{\Delta t} \sigma}`.
+
+Binomial Tree Parameters
+==============================================================================
+Given the current stock price, :math:`\smash{S_0}`, the option strike
+price and the risk-free rate, :math:`\smash{r}`:
+
+.. raw:: <!--pause-->
+
+- The binomial tree is completely determined by three parameters:
+  :math:`\smash{u}`, :math:`\smash{d}` and :math:`\smash{\Delta t}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{u}` and :math:`\smash{d}` are often set so that
+  :math:`\smash{u = e^{\sigma \sqrt{\Delta t}}}` and :math:`\smash{d =
+  e^{-\sigma \sqrt{\Delta t}}}`.
+
+.. raw:: <!--pause-->
+
+- In doing so, it can be shown that the volatility of the returns in
+  the binomial tree approximate :math:`\smash{\sigma}`.
+
+Binomial Tree Parameters
+==============================================================================
+Simple binomial tree models with long time periods are unrealistic.
+
+.. raw:: <!--pause-->
+
+- We can simply increase the number of steps in the model.
+
+.. raw:: <!--pause-->
+
+- For example, for a three-month period with daily time steps, there
+  would be a total of roughly 66 period (22 trading days per month).
+
+.. raw:: <!--pause-->
+
+- For the recombining trees we considered above, this amounts to 66
+  possible terminal values and :math:`\smash{\sum_{i=1}^{65} i =
+  2145}` individual options nodes to value.
+
+.. raw:: <!--pause-->
+
+- For the non-recombining trees, this amounts to
+  :math:`\smash{2^{65}}` possible terminal values and
+  :math:`\smash{\sum_{i=1}^{65} 2^{i-1}}` individual options nodes to
+  value.
+
+Options on Other Assets
+==============================================================================
+We have only valued options on a stock that doesn't pay dividends.
+
+.. raw:: <!--pause-->
+
+- To value other assets, we only need to adjust the interest rate
+  :math:`\smash{r}` used in the calculation of :math:`\smash{p}` to
+  account for any earnings or costs associated with the underlying
+  asset.
+
+.. raw:: <!--pause-->
+
+- Discounting to present value is always done with :math:`\smash{r}`.
+
+Options on Other Assets
+==============================================================================
+For stock paying dividends:
+
+.. math::
+
+   \begin{align}
+   p & = \frac{e^{(r-q)\Delta t}-d}{u-d}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+For currencies:
+
+.. math::
+
+   \begin{align}
+   p & = \frac{e^{(r-r_f)\Delta t}-d}{u-d}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+For futures:
+
+.. math::
+
+   \begin{align}
+   p & = \frac{1-d}{u-d}.
+   \end{align}

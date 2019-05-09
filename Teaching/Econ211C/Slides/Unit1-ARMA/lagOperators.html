@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Lag Operators &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Linear Time Series Models" href="../linearTS.html" />
+    <link rel="next" title="Moving Average Processes" href="ma.html" />
+    <link rel="prev" title="Linear Time Series Models" href="../linearTS.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="lag-operators">
+
+<h1>Lag Operators</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="lag-operator">
+
+<h2>Lag Operator</h2>
+
+<p>Given a sequence of values, <span class="math">\(\smash{y_1, y_2, \ldots, y_t}\)</span>,
+indexed by time, the lag operator, <span class="math">\(\smash{L}\)</span>, is defined as</p>
+<div class="math">
+\[\smash{Ly_t = y_{t-1}.}\]</div>
+<ul class="simple">
+<li>The lag operator shifts a time value <span class="math">\(\smash{y_t}\)</span> back by one period.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{y_t}\)</span> can be thought of as the input of the operator
+and <span class="math">\(\smash{y_{t-1}}\)</span> as the output.</li>
+</ul>
+<ul class="simple">
+<li>The lag operator can be applied to all values in a series
+<span class="math">\(\smash{\{y_t\}_{t=1}^T}\)</span> and the result is a new series
+shifted back by one period: <span class="math">\(\smash{\{y_t\}_{t=0}^{T-1}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Lag Operator</h2>
+
+<p>Applying the lag operator twice:</p>
+<div class="math">
+\[\smash{L(Ly_t) = Ly_{t-1} = y_{t-2}.}\]</div>
+<ul class="simple">
+<li>We write <span class="math">\(\smash{L(Ly_t)}\)</span> as <span class="math">\(\smash{L^2 y_t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Applying recursively:</li>
+</ul>
+<div class="math">
+\[\smash{L^k y_t = y_{t-k}.}\]</div>
+<ul class="simple">
+<li>We will define <span class="math">\(\smash{L^0 = 1}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="useful-properties-of-the-lag-operator">
+
+<h2>Useful Properties of the Lag Operator</h2>
+
+<ul class="simple">
+<li>The lag operator is commutative:</li>
+</ul>
+<div class="math">
+\[\smash{L(\beta y_t) = \beta L y_t.}\]</div>
+<ul class="simple">
+<li>The lag operator is distributive:</li>
+</ul>
+<div class="math">
+\[\smash{L(x_t+y_t) = L z_t = z_{t-1} = x_{t-1} + y_{t-1} = L x_t + L
+y_t,}\]</div>
+<p>where <span class="math">\(\smash{z_t = x_t + y_t}\)</span>.</p>
+<ul class="simple">
+<li>The lag of a constant is the same constant:</li>
+</ul>
+<div class="math">
+\[\smash{Lc = c.}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="first-order-difference-equation">
+
+<h2>First-Order Difference Equation</h2>
+
+<p>Suppose we have a first-order difference equation:</p>
+<div class="math">
+\[\smash{y_t = \phi y_{t-1} + w_t.}\]</div>
+<p>In terms of the lag operator</p>
+<div class="math">
+\[\smash{(1-\phi L)y_t = w_t.}\]</div>
+<p>We can write</p>
+<div class="math">
+\[\smash{\phi(L)y_t = w_t,}\]</div>
+<p>where <span class="math">\(\smash{\phi(L) = (1-\phi L)}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>First-Order Difference Equation</h2>
+
+<p>Suppose the operator <span class="math">\(\smash{\phi(L) = (1-\phi L)}\)</span> has an inverse:</p>
+<div class="math">
+\[\smash{\phi(L)^{-1} = (1-\phi L)^{-1}.}\]</div>
+<ul class="simple">
+<li>The inverse is the operator such that</li>
+</ul>
+<div class="math">
+\[\smash{(1-\phi L)^{-1}(1-\phi L) = 1.}\]</div>
+<ul class="simple">
+<li>If an inverse operator exists,</li>
+</ul>
+<div class="math">
+\[\smash{y_t = \phi(L)^{-1} w_t = (1-\phi L)^{-1} w_t.}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="recursive-substitution-of-first-order-difference-equation">
+
+<h2>Recursive Substitution of First-Order Difference Equation</h2>
+
+<p>Applying recursive substitution to the first-order difference
+equation:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+y_t &amp; = \phi y_{t-1} + w_t \\
+&amp; = \phi(\phi y_{t-2} + w_{t-1}) + w_t \\
+&amp; = w_t + \phi w_{t-1} + \phi^2 y_{t-2} \\
+&amp; = w_t + \phi w_{t-1} + \phi^2 (\phi y_{t-3} + w_{t-2}) \\
+&amp; = w_t + \phi w_{t-1} + \phi^2 w_{t-2} + \phi^3 y_{t-3} \\
+&amp; \vdots \\
+&amp; = \sum_{i=0}^{\infty} \phi^i w_{t-i} = \sum_{i=0}^{\infty}
+\phi^i L^i w_t.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>The infinite recursive substitution can only be performed if
+<span class="math">\(\smash{|\phi| &lt; 1}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="inverse-of-lag-operator">
+
+<h2>Inverse of Lag Operator</h2>
+
+<p>Restating the previous result, for <span class="math">\(\smash{|\phi| &lt; 1}\)</span>:</p>
+<div class="math">
+\[\smash{y_t = \left(\sum_{i=0}^{\infty} \phi^i L^i\right) w_t.}\]</div>
+<p>Substituting:</p>
+<div class="math">
+\[\smash{w_t = (1-\phi L) y_t = (1-\phi L) \left(\sum_{i=0}^{\infty}
+\phi^i L^i\right) w_t.}\]</div>
+<p>So when <span class="math">\(\smash{|\phi| &lt; 1}\)</span>:</p>
+<div class="math">
+\[\smash{(1-\phi L)^{-1} = \sum_{i=0}^{\infty} \phi^i L^i.}\]</div>
+<p>That is, <span class="math">\(\smash{\sum_{i=0}^{\infty} \phi^i L^i}\)</span> is the inverse
+operator of <span class="math">\(\smash{(1-\phi L)}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="th-order-difference-equation">
+
+<h2><span class="math">\(\smash{p}\)</span> th-Order Difference Equation</h2>
+
+<p>Suppose we have a <span class="math">\(\smash{p}\)</span> th-order difference equation:</p>
+<div class="math">
+\[\smash{y_t = \phi_1 y_{t-1} + \phi_2 y_{t-2} + \ldots + \phi_p
+y_{t-p} + w_t.}\]</div>
+<p>In terms of the lag operator</p>
+<div class="math">
+\[\smash{(1-\phi_1 L - \phi_2 L^2 - \ldots - \phi_p L^p)y_t = w_t.}\]</div>
+<p>We can write</p>
+<div class="math">
+\[\smash{\phi(L)y_t = w_t,}\]</div>
+<p>where <span class="math">\(\smash{\phi(L) = (1-\phi_1 L - \phi_2 L^2 - \ldots -
+\phi_p L^p)}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="factoring-polynomials">
+
+<h2>Factoring Polynomials</h2>
+
+<p>In general, a <span class="math">\(\smash{p}\)</span> th-order, real-valued polynomial can
+be factored as</p>
+<div class="math">
+\[\smash{1-\phi_1 z - \phi_2 z^2 - \ldots - \phi_p z^p =
+(1-\lambda_1z)(1-\lambda_2z) \cdots (1-\lambda_pz).}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{\left\{\frac{1}{\lambda_i}\right\}_{i=1}^p}\)</span> are the <span class="math">\(\smash{p}\)</span>
+roots of the polynomial.</li>
+</ul>
+<ul class="simple">
+<li>Some of the roots may be complex and some may be identical.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="factoring-th-order-difference-equation">
+
+<h2>Factoring <span class="math">\(\smash{p}\)</span> th-Order Difference Equation</h2>
+
+<p>If we factor the <span class="math">\(\smash{p}\)</span> th-order lag polynomial in the same way as a
+real-valued polynomial:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+&amp; (1-\phi_1 L - \phi_2 L^2 - \ldots - \phi_p L^p)y_t \\
+&amp; \hspace{0.5in} = (1-\lambda_1 L)(1-\lambda_2 L) \cdots
+(1-\lambda_p L) y_t = w_t.
+\end{align*}\end{split}\]</div>
+<p>If <span class="math">\(\smash{|\lambda_i| &lt; 1}\)</span>,</p>
+<div class="math">
+\[\smash{(1 - \lambda_i L)^{-1} = \sum_{j=0}^{\infty} \lambda_i^j L^j,
+\,\,\,\,\, \forall i.}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Factoring <span class="math">\(\smash{p}\)</span> th-Order Difference Equation</h2>
+
+<p>In this case,</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+y_t &amp; = (1-\lambda_1 L)^{-1} (1-\lambda_2 L)^{-1} \cdots (1-\lambda_p
+L)^{-1} w_t \\
+&amp; = \left(\sum_{j=0}^{\infty} \lambda_1^j L^j\right)
+\left(\sum_{j=0}^{\infty} \lambda_2^j L^j\right) \cdots
+\left(\sum_{j=0}^{\infty} \lambda_p^j L^j\right) w_t.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>Factoring <span class="math">\(\smash{p}\)</span> th-Order Difference Equation</h2>
+
+<p>If we define</p>
+<div class="math">
+\[\begin{equation*}
+\theta(L) = \left(\sum_{j=0}^{\infty} \lambda_1^j L^j\right)
+\left(\sum_{j=0}^{\infty} \lambda_2^j L^j\right) \cdots
+\left(\sum_{j=0}^{\infty} \lambda_p^j L^j\right)
+\end{equation*}\]</div>
+<p>then</p>
+<div class="math">
+\[\begin{equation*}
+y_t = \theta(L) w_t.
+\end{equation*}\]</div>
+<ul class="simple">
+<li>Clearly, <span class="math">\(\smash{\phi(L)^{-1} = \theta(L)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Note that the inverse only exists when <span class="math">\(\smash{|\lambda_i| &lt; 1}\)</span>,
+<span class="math">\(\smash{\forall i}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>This can also be stated as: the inverse only exists when the roots
+of <span class="math">\(\smash{\phi(L)}\)</span> are greater than unity:
+<span class="math">\(\smash{\frac{1}{|\lambda_i|} &gt; 1}\)</span>, <span class="math">\(\smash{\forall i}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="vector-difference-equation">
+
+<h2>Vector Difference Equation</h2>
+
+<p>We can rewrite the <span class="math">\(\smash{p}\)</span> th-order difference equation as</p>
+<div class="math">
+\[\begin{equation*}
+{\bf y}_t = \Phi {\bf y}_{t-1} + {\bf w}_t,
+\end{equation*}\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\begin{equation*}
+{\bf y}_t = \left[\begin{array}{c} y_t \\ y_{t-1} \\ y_{t-2} \\
+\vdots \\ y_{t-p+1} \end{array} \right] \,\,\,\, \Phi =
+\left[\begin{array}{ccccc} \phi_1 &amp; \phi_2 &amp; \ldots &amp;
+\phi_{p-1} &amp; \phi_p \\ 1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp;
+\ldots &amp; 0 &amp; 0 \\ \vdots &amp; \vdots  &amp; \ddots &amp;
+\vdots  &amp; \vdots \\ 0 &amp; 0 &amp; \ldots &amp; 1 &amp; 0 \end{array}
+\right] \,\,\,\,\, {\bf w}_t = \left[\begin{array}{c} w_t \\ 0
+\\ 0 \\ \vdots \\ 0 \end{array} \right].
+\end{equation*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id5">
+
+<h2>Vector Difference Equation</h2>
+
+<p>It turns out that the values <span class="math">\(\smash{\{\lambda_i\}_{i=1}^p}\)</span> are the <span class="math">\(\smash{p}\)</span>
+eigenvalues of <span class="math">\(\smash{\Phi}\)</span>.</p>
+<ul class="simple">
+<li>So the eigenvalues of <span class="math">\(\smash{\Phi}\)</span> are the inverses of the roots of the
+lag polynomial <span class="math">\(\smash{\phi(L)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Hence, <span class="math">\(\smash{\phi(L)^{-1}}\)</span> exists if all <span class="math">\(\smash{p}\)</span> roots of <span class="math">\(\smash{\phi(L)}\)</span> lie
+<em>outside</em> the unit circle or all <span class="math">\(\smash{p}\)</span> eigenvalues of <span class="math">\(\smash{\Phi}\)</span> lie
+<em>inside</em> the unit circle.</li>
+</ul>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

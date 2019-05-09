@@ -1,0 +1,607 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Autoregressive Processes &mdash; Econ 114 - Advanced Quantitative Methods</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html"/>
+        <link rel="up" title="Time Series" href="timeSeries.html"/>
+        <link rel="next" title="Moving Average Processes" href="ma.html"/>
+        <link rel="prev" title="Stationarity" href="stationarity.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Econ 114
+        
+
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preliminaries.html">Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resampling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="timeSeries.html">Time Series</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html">Stationarity</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Autoregressive Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#process"><span class="math">\(AR(1)\)</span> Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recursive-substitution-of">Recursive Substitution of <span class="math">\(AR(1)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Recursive Substitution of <span class="math">\(AR(1)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expectation-of">Expectation of <span class="math">\(AR(1)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-useful-property">A Useful Property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variance-of">Variance of <span class="math">\(AR(1)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autocovariances-of">Autocovariances of <span class="math">\(AR(1)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autocorrelations-of">Autocorrelations of <span class="math">\(AR(1)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples-of-processes">Examples of <span class="math">\(AR(1)\)</span> Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autocorrelations"><span class="math">\(AR(1)\)</span> Autocorrelations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#random-walk">Random Walk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explosive">Explosive <span class="math">\(AR(1)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Examples of <span class="math">\(AR(1)\)</span> Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3"><span class="math">\(AR(1)\)</span> Autocorrelations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4"><span class="math">\(AR(p)\)</span> Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Expectation of <span class="math">\(AR(p)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Autocovariances of <span class="math">\(AR(p)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Autocovariances of <span class="math">\(AR(p)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Autocovariances of <span class="math">\(AR(p)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Autocorrelations of <span class="math">\(AR(p)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estimating-models">Estimating <span class="math">\(AR\)</span> Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Estimating <span class="math">\(AR\)</span> Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Estimating <span class="math">\(AR\)</span> Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#which">Which <span class="math">\(AR\)</span>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Which <span class="math">\(AR\)</span>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Which <span class="math">\(AR\)</span>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Which <span class="math">\(AR\)</span>?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arma.html">ARMA Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian Methods</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 114</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="timeSeries.html">Time Series</a> &raquo;</li>
+      
+    <li>Autoregressive Processes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/ar.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="autoregressive-processes">
+<h1>Autoregressive Processes<a class="headerlink" href="#autoregressive-processes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="process">
+<h2><span class="math">\(AR(1)\)</span> Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h2>
+<p>Given white noise <span class="math">\(\{\varepsilon_t\}\)</span>, consider the process</p>
+<div class="to-build math">
+\[\begin{split}Y_t &amp; = c + \phi Y_{t-1} + \varepsilon_t,\end{split}\]</div>
+<p class="to-build">where <span class="math">\(c\)</span> and <span class="math">\(\phi\)</span> are constants.</p>
+<ul class="to-build simple">
+<li>This is a <em>first-order autoregressive</em> or <span class="math">\(AR(1)\)</span> process.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\phi\)</span> can be thought of as a <em>memory</em> or <em>feedback</em>
+parameter and introduces serial correlation in <span class="math">\(Y_t\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>When <span class="math">\(\phi = 0\)</span>, <span class="math">\(Y_t\)</span> is white noise with drift - it
+has no memory or serial correlation.</li>
+</ul>
+</div>
+<div class="section" id="recursive-substitution-of">
+<h2>Recursive Substitution of <span class="math">\(AR(1)\)</span><a class="headerlink" href="#recursive-substitution-of" title="Permalink to this headline">¶</a></h2>
+<p>Applying recursive substitution:</p>
+<div class="to-build math">
+\[\begin{split}Y_t &amp; = c + \phi Y_{t-1} + \varepsilon_t \qquad \qquad \qquad
+\qquad \qquad \quad \enspace \,\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = c + \phi(c + \phi Y_{t-2} + \varepsilon_{t-1}) + \varepsilon_t
+\qquad \qquad \quad \; \;\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = c + \phi c + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2
+Y_{t-2} \qquad \qquad \quad \;\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = c + \phi c + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2 (c + \phi
+Y_{t-3} + \varepsilon_{t-2})\end{split}\]</div>
+</div>
+<div class="section" id="id1">
+<h2>Recursive Substitution of <span class="math">\(AR(1)\)</span><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[\begin{split}&amp; = c + \phi c + \phi^2 c + \varepsilon_t + \phi \varepsilon_{t-1} + \phi^2
+\varepsilon_{t-2} + \phi^3 Y_{t-3}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \vdots \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \: = \sum_{i=0}^{\infty} \phi^i c + \sum_{i=0}^{\infty} \phi^i
+\varepsilon_{t-i}. \qquad \qquad \qquad \qquad \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \, = \frac{c}{1-\phi} + \sum_{i=0}^{\infty} \phi^i
+\varepsilon_{t-i}. \qquad \qquad \qquad \qquad \qquad\end{split}\]</div>
+<ul class="to-build simple">
+<li>The infinite recursive substitution can only be performed if
+<span class="math">\(|\phi| &lt; 1\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="expectation-of">
+<h2>Expectation of <span class="math">\(AR(1)\)</span><a class="headerlink" href="#expectation-of" title="Permalink to this headline">¶</a></h2>
+<p>Assume <span class="math">\(Y_t\)</span> is weakly stationary: <span class="math">\(|\phi| &lt; 1\)</span>.</p>
+<div class="to-build math">
+\[\begin{split}E[Y_t] &amp; = c + \phi E[Y_{t-1}] + E[\varepsilon_t]\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = c + \phi E[Y_t] \quad \; \;\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow E[Y_t] &amp; = \frac{c}{1-\phi}.\end{split}\]</div>
+</div>
+<div class="section" id="a-useful-property">
+<h2>A Useful Property<a class="headerlink" href="#a-useful-property" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math">\(Y_t\)</span> is weakly stationary,</p>
+<div class="to-build math">
+\[\begin{split}Y_{t-j} - \mu &amp; = \sum_{i=0}^{\infty} \phi^i \varepsilon_{t-j-i}.\end{split}\]</div>
+<ul class="to-build simple">
+<li>That is, for <span class="math">\(j \geq 1\)</span>, <span class="math">\(Y_{t-j}\)</span> is a function of
+lagged  values of <span class="math">\(\varepsilon_t\)</span> and not <span class="math">\(\varepsilon_t\)</span> itself.</li>
+</ul>
+<ul class="to-build simple">
+<li>As a result, for <span class="math">\(j \geq 1\)</span></li>
+</ul>
+<div class="to-build math">
+\[\begin{split}E\left[(Y_{t-j}-\mu) \varepsilon_t\right] &amp; = \sum_{i=0}^{\infty} \phi^i
+E[\varepsilon_t \varepsilon_{t-j-i}] = 0.\end{split}\]</div>
+</div>
+<div class="section" id="variance-of">
+<h2>Variance of <span class="math">\(AR(1)\)</span><a class="headerlink" href="#variance-of" title="Permalink to this headline">¶</a></h2>
+<p>Given that <span class="math">\(\mu = c/(1-\phi)\)</span> for weakly stationary <span class="math">\(Y_t\)</span>:</p>
+<div class="to-build math">
+\[Y_t = \mu(1-\phi) + \phi Y_{t-1} + \varepsilon_t\]</div>
+<div class="to-build math">
+\[\Rightarrow (Y_t - \mu) = \phi(Y_{t-1} - \mu) + \varepsilon_t.\]</div>
+<p class="to-build">Squaring both sides and taking expectations:</p>
+<div class="to-build math">
+\[\begin{split}E\left[(Y_t-\mu)^2\right] &amp; = \phi^2
+E\left[(Y_{t-1}-\mu)^2\right] + 2\phi
+E\left[(Y_{t-1}-\mu)\varepsilon_t\right] + E[\varepsilon_t^2]\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \phi^2 E\left[(Y_t-\mu)^2\right] + \sigma^2 \qquad \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\Rightarrow (1-\phi^2) \gamma_0 = \sigma^2\]</div>
+<div class="to-build math">
+\[\Rightarrow \gamma_0 = \frac{\sigma^2}{1-\phi^2}\]</div>
+</div>
+<div class="section" id="autocovariances-of">
+<h2>Autocovariances of <span class="math">\(AR(1)\)</span><a class="headerlink" href="#autocovariances-of" title="Permalink to this headline">¶</a></h2>
+<p>For <span class="math">\(j \geq 1\)</span>,</p>
+<div class="to-build math">
+\[\begin{split}\gamma_j &amp; = E\left[(Y_t-\mu)(Y_{t-j}-\mu)\right] \qquad \qquad
+\qquad \qquad \enspace\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \phi E[(Y_{t-1}-\mu)(Y_{t-j} - \mu)] + E[\varepsilon_t (Y_{t-j} -
+\mu)]\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \enspace = \phi \gamma_{j-1} \qquad \qquad \qquad \qquad \qquad \qquad
+\qquad \,\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \vdots \qquad \qquad \qquad \qquad \qquad \qquad \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \enspace = \phi^j \gamma_0. \qquad \qquad \qquad \qquad \qquad \qquad
+\qquad \,\end{split}\]</div>
+</div>
+<div class="section" id="autocorrelations-of">
+<h2>Autocorrelations of <span class="math">\(AR(1)\)</span><a class="headerlink" href="#autocorrelations-of" title="Permalink to this headline">¶</a></h2>
+<p>The autocorrelations of an <span class="math">\(AR(1)\)</span> are</p>
+<div class="to-build math">
+\[\begin{split}\rho_j &amp; = \frac{\gamma_j}{\gamma_0} = \phi^j, \,\,\,\, \forall j
+\geq 0.\end{split}\]</div>
+<ul class="to-build simple">
+<li>Since we assumed <span class="math">\(|\phi| &lt; 1\)</span>, the autocorrelations decay
+exponentially as <span class="math">\(j\)</span> increases.</li>
+</ul>
+<ul class="to-build simple">
+<li>Note that if <span class="math">\(\phi \in (-1,0)\)</span>, the autocorrelations decay in
+an oscillatory fashion.</li>
+</ul>
+</div>
+<div class="section" id="examples-of-processes">
+<h2>Examples of <span class="math">\(AR(1)\)</span> Processes<a class="headerlink" href="#examples-of-processes" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/ar1ExampleSeries.png"><img alt="_images/ar1ExampleSeries.png" class="align-center" src="_images/ar1ExampleSeries.png" style="width: 7in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="autocorrelations">
+<h2><span class="math">\(AR(1)\)</span> Autocorrelations<a class="headerlink" href="#autocorrelations" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/ar1ExampleACF.png"><img alt="_images/ar1ExampleACF.png" class="align-center" src="_images/ar1ExampleACF.png" style="width: 7in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="random-walk">
+<h2>Random Walk<a class="headerlink" href="#random-walk" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(\phi = 1\)</span>:</p>
+<div class="to-build math">
+\[Y_t = c + Y_{t-1} + \varepsilon_t = \cdots = tc + Y_0 + \varepsilon_1 + \cdots
+\varepsilon_t.\]</div>
+<ul class="to-build simple">
+<li>Clearly <span class="math">\(E[Y_t] = tc + Y_0\)</span>, which is not independent of
+time.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(Var(Y_t) = t\sigma^2\)</span>, which increases linearly with time.</li>
+</ul>
+</div>
+<div class="section" id="explosive">
+<h2>Explosive <span class="math">\(AR(1)\)</span><a class="headerlink" href="#explosive" title="Permalink to this headline">¶</a></h2>
+<p>When <span class="math">\(|\phi| &gt; 1\)</span>, the autoregressive process is explosive.</p>
+<ul class="to-build simple">
+<li>Recall that <span class="math">\(Y_t = \frac{c}{1-\phi} + \sum_{i=0}^{\infty}
+\phi^i \varepsilon_{t-i}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Now <span class="math">\(|\phi^i|\)</span> increases with <span class="math">\(i\)</span> rather than decay.</li>
+</ul>
+<ul class="to-build simple">
+<li>Past values of <span class="math">\(\varepsilon_{t-i}\)</span> contribute greater amounts to
+<span class="math">\(Y_t\)</span> as <span class="math">\(i\)</span> increases.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Examples of <span class="math">\(AR(1)\)</span> Processes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/ar1ExampleSeriesAlt.png"><img alt="_images/ar1ExampleSeriesAlt.png" class="align-center" src="_images/ar1ExampleSeriesAlt.png" style="width: 7in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2><span class="math">\(AR(1)\)</span> Autocorrelations<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/ar1ExampleACFAlt.png"><img alt="_images/ar1ExampleACFAlt.png" class="align-center" src="_images/ar1ExampleACFAlt.png" style="width: 7in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2><span class="math">\(AR(p)\)</span> Process<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Given white noise <span class="math">\(\{\varepsilon_t\}\)</span>, consider the process</p>
+<div class="to-build math">
+\[\begin{split}Y_t &amp; = c + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \ldots + \phi_p
+Y_{t-p} + \varepsilon_t,\end{split}\]</div>
+<p class="to-build">where <span class="math">\(c\)</span> and <span class="math">\(\{\phi\}_{i=1}^p\)</span> are constants.</p>
+<ul class="to-build simple">
+<li>This is a <span class="math">\(p\)</span> <em>th-order autoregressive</em> or <span class="math">\(AR(p)\)</span>
+process.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>Expectation of <span class="math">\(AR(p)\)</span><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Assume <span class="math">\(Y_t\)</span> is weakly stationary.</p>
+<div class="to-build math">
+\[\begin{split}E[Y_t] &amp; = c + \phi_1 E[Y_{t-1}] + \ldots + \phi_p E[Y_{t-p}] +
+E[\varepsilon_t]\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = c + \phi_1 E[Y_t] + \ldots + \phi_p E[Y_t] \qquad \enspace\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow E[Y_t] &amp; = \frac{c}{1-\phi_1 - \ldots - \phi_p} =
+\mu.\end{split}\]</div>
+</div>
+<div class="section" id="id6">
+<h2>Autocovariances of <span class="math">\(AR(p)\)</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>Given that <span class="math">\(\mu = c/(1-\phi_1 - \ldots - \phi_p)\)</span> for weakly
+stationary <span class="math">\(Y_t\)</span>:</p>
+<div class="to-build math">
+\[Y_t = \mu(1-\phi_1 - \ldots - \phi_p) + \phi_1 Y_{t-1} + \ldots +
+\phi_p Y_{t-p} + \varepsilon_t\]</div>
+<div class="to-build math">
+\[\Rightarrow (Y_t - \mu) = \phi_1(Y_{t-1} - \mu) + \ldots +
+\phi_p(Y_{t-p} - \mu) + \varepsilon_t.\]</div>
+</div>
+<div class="section" id="id7">
+<h2>Autocovariances of <span class="math">\(AR(p)\)</span><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>Thus,</p>
+<div class="to-build math">
+\[\begin{split}\gamma_j &amp; = E\left[(Y_t - \mu) (Y_{t-j} - \mu)\right] \qquad \qquad
+\qquad \qquad \qquad \enspace\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \phi_1 E\left[(Y_{t-1} - \mu) (Y_{t-j} - \mu)\right] + \ldots
+\qquad \qquad \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \hspace{0.75in} + \phi_p E\left[(Y_{t-p} - \mu) (Y_{t-j} -
+  \mu)\right] + E\left[\varepsilon_t (Y_{t-j} - \mu)\right]\end{split}\]</div>
+<div class="to-build math" id="equation-gammas">
+<span class="eqno">(1)</span>\[\begin{split}&amp; = \begin{cases} \phi_1 \gamma_{j-1} + \ldots + \phi_p
+\gamma_{j-p} &amp; \text{ for } j = 1, \ldots \\ \phi_1
+\gamma_1 + \ldots + \phi_p \gamma_p + \sigma^2 &amp; \text{ for
+} j = 0. \end{cases} \enspace\end{split}\]</div>
+</div>
+<div class="section" id="id8">
+<h2>Autocovariances of <span class="math">\(AR(p)\)</span><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>For <span class="math">\(j = 0, 1, \ldots, p\)</span>, System <a href="#equation-gammas">(1)</a> is a system of
+<span class="math">\(p+1\)</span> equations with <span class="math">\(p+1\)</span> unknowns:
+<span class="math">\(\{\gamma_j\}_{j=0}^p\)</span>.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\{\gamma_j\}_{j=0}^p\)</span> can be solved for as functions of
+<span class="math">\(\{\phi_j\}_{j=1}^p\)</span> and <span class="math">\(\sigma^2\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>It can be shown that <span class="math">\(\{\gamma_j\}_{j=0}^p\)</span> are the first
+<span class="math">\(p\)</span> elements of the first column
+of <span class="math">\(\sigma^2 [I_{p^2} - \Phi \otimes \Phi]^{-1}\)</span>, where
+<span class="math">\(\otimes\)</span> denotes the Kronecker product.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\{\gamma_j\}_{j=p+1}^{\infty}\)</span> can then be determined using
+prior values of <span class="math">\(\gamma_j\)</span> and <span class="math">\(\{\phi_j\}_{j=1}^p\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h2>Autocorrelations of <span class="math">\(AR(p)\)</span><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>Dividing the autocovariances by <span class="math">\(\gamma_0\)</span>,</p>
+<div class="to-build math">
+\[\begin{split}\rho_j &amp; = \phi_1 \rho_{j-1} + \ldots + \phi_p
+\rho_{j-p} \,\,\,\,\,\, \text{ for } j = 1, 2, 3, \ldots\end{split}\]</div>
+</div>
+<div class="section" id="estimating-models">
+<h2>Estimating <span class="math">\(AR\)</span> Models<a class="headerlink" href="#estimating-models" title="Permalink to this headline">¶</a></h2>
+<p>Ideally, estimation of an <span class="math">\(AR\)</span> model is done via maximum
+likelihood.</p>
+<ul class="to-build simple">
+<li>For an <span class="math">\(AR(p)\)</span> model, one would first specify a joint
+likelihood for the parameters <span class="math">\({\phi_1, \ldots, \phi_p, c,
+\sigma^2}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Taking derivatives of the log likelihood with respect to each of the
+parameters would result in a system of equations that could be
+solved for the MLEs: <span class="math">\({\hat{\phi}_1, \ldots, \hat{\phi}_p,
+\hat{c}, \hat{\sigma}^2}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>Estimating <span class="math">\(AR\)</span> Models<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The exact likelihood is a bit cumbersome and maximization requires
+specialized numerical methods.</li>
+</ul>
+<ul class="to-build simple">
+<li>It turns out that the least squares estimates obtained by fitting a
+regression of <span class="math">\(Y_t\)</span> on <span class="math">\(Y_{t-1}, \ldots, Y_{t-p}\)</span> are
+almost identical to the MLEs (they are called the conditional
+MLEs).</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>Estimating <span class="math">\(AR\)</span> Models<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The exact MLEs can be obtained with the <span class="math">\(\mathtt{arima}\)</span>
+function in <span class="math">\(\mathtt{R}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The conditional (least squares) MLEs can be obtained with the
+<span class="math">\(\mathtt{lm}\)</span> function in <span class="math">\(\mathtt{R}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="which">
+<h2>Which <span class="math">\(AR\)</span>?<a class="headerlink" href="#which" title="Permalink to this headline">¶</a></h2>
+<p>How do we know if an <span class="math">\(AR\)</span> model is appropriate and which <span class="math">\(AR\)</span> model
+to fit?</p>
+<ul class="to-build simple">
+<li>After fitting an <span class="math">\(AR\)</span> model, we can examine the residuals.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <span class="math">\(\mathtt{acf}\)</span> function in <span class="math">\(\mathtt{R}\)</span> can be used
+to compute empirical autocorrelations of the residuals.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the residuals are autocorrelated, the model is not a good
+fit. Consider increasing the order of the <span class="math">\(AR\)</span> or using
+another model.</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h2>Which <span class="math">\(AR\)</span>?<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(Y_t\)</span> is an <span class="math">\(AR(2)\)</span> process:</p>
+<div class="to-build math">
+\[\begin{split}(Y_t - \mu) &amp; = \phi_1 (Y_{t-1} - \mu) + \phi_2 (Y_{t-2} - \mu) +
+\varepsilon_t.\end{split}\]</div>
+<ul class="to-build simple">
+<li>If we estimate an <span class="math">\(AR(1)\)</span> model using the data, then for large
+sample sizes <span class="math">\(\hat{\mu} \approx \mu\)</span> and <span class="math">\(\hat{\phi}
+\approx E[\hat{\phi}] = \phi^* \neq \phi_1\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h2>Which <span class="math">\(AR\)</span>?<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>The resulting residuals would be</p>
+<div class="to-build math">
+\[\begin{split}\hat{\varepsilon}_t &amp; = (Y_t - \mu) - \phi^*(Y_{t-1} - \mu) \qquad
+\qquad \qquad \qquad \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \phi_1(Y_{t-1} - \mu) + \phi_2(Y_{t-2} - \mu) + \varepsilon_t -
+\phi^*(Y_{t-1} - \mu)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \quad \enspace \, = (\phi_1 - \phi^*)(Y_{t-1} - \mu) + \phi_2(Y_{t-2} - \mu) +
+\varepsilon_t - \phi^*(Y_{t-1} - \mu).\end{split}\]</div>
+<ul class="to-build simple">
+<li>Even if <span class="math">\(\phi^* = \phi_1\)</span>, the residuals will
+exhibit autocorrelation, due to the presence of <span class="math">\(Y_{t-2}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h2>Which <span class="math">\(AR\)</span>?<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="math">\(\mathtt{auto.arima}\)</span> function in <span class="math">\(\mathtt{R}\)</span>
+estimates a range of <span class="math">\(AR(p)\)</span> models and selects the one with the
+best fit.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\mathtt{auto.arima}\)</span> uses the <em>Akaike Information Criterion</em>
+(AIC) or the <em>Bayesian Information Criterion</em> (BIC) to select the
+model.</li>
+</ul>
+<ul class="to-build simple">
+<li>Minimizing AIC and BIC amounts to minimizing the sum of
+squared residuals, with a penalty term that is related to the
+number of model parameters.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ma.html" class="btn btn-neutral float-right" title="Moving Average Processes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="stationarity.html" class="btn btn-neutral" title="Stationarity" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Eric M. Aldrich.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Advanced Quantitative Methods',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

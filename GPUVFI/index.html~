@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <script type="text/javascript" src="../rootDir.js">  </script>
+  <script type="text/javascript" src="../head.js">  </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-16069707-1', 'ealdrich.com');
+    ga('send', 'pageview');
+
+  </script>
+  <body>
+    <div><script type="text/javascript" src="../mainMenu.js">  </script></div>
+    <div class="outer">
+    <div style="text-align: left; margin-left: 40px">
+      <div id="section"> Value Function Iteration with a GPU </div>
+<div id="section"> Software</div>
+<p>The software is hosted at GitHub: <a class="body" href="https://github.com/ealdrich/VFI.git">VFI Repository Page</a>.</p>
+<p>The recommended method of obtaining the software is by cloning the repository&nbsp;with <a class="body" href="http://git-scm.com/">Git</a>. Otherwise, a ZIP archive can be downloaded from the repository page.</p>
+<p>&nbsp;The repository contains several different implementations of the problem described in the next section:</p>
+<ul>
+<li>Single-threaded, sequential C++, making use of the <a class="body" href="http://eigen.tuxfamily.org/index.php?title=Main_Page">Eigen template library</a> for linear algebra computations.</li>
+<li>Single-threaded, sequential Matlab. This is done to compare with what the majority of economists would use to solve the problem.</li>
+<li><a class="body" href="http://thrust.github.com/">Thrust</a>, using the OpenMP backend to solve the problem in parallel on several CPU cores.</li>
+<li><a class="body" href="http://thrust.github.com/">Thrust</a>, using the CUDA backend to solve the problem in parallel on the GPU.&nbsp;</li>
+<li>CUDA C.</li>
+</ul>
+<p>The side-by-side implementations allow users to learn the basics of massively parallel programming by comparing code with familiar benchmarks (Matlab or sequential&nbsp;C++).</p>
+<p>&nbsp;</p>
+<div id="section"> Problem Description</div>
+<p><a class="body" href="http://ideas.repec.org/p/pen/papers/10-014.html">Aldrich et al. (2011)</a> solves a neoclassical growth model wih value function iteration (VFI) on a GPU. The basic problem is summarized by the optimization problem \begin{equation} V(K,Z) = \max_c \left\{ \frac{C^{1-\gamma}}{1-\gamma} + \beta&nbsp;\mathbb{E}[V(K',Z')|Z]\right\} \label{bellman} \end{equation} subject to
+
+\[\begin{align}
+K' &amp; = Z K^{\alpha} + (1-\delta) K - C \label{rc} \\
+\log(Z') &amp; = \rho \log(Z) + \varepsilon, \text{  where  } \varepsilon \sim \mathcal{N}(0,\sigma^2). \label{tfp}
+\end{align}\]
+
+The state variables in this problem are capital, \(K\), and total factor of productivity (TFP), \(Z\).</p>
+<p>&nbsp;</p>
+<div id="section"> Algorithm</div>
+<div></div>
+<div id="_mcePaste"></div>
+<p>The VFI software solves the problem with the following algorithm.</p>
+<ol>
+<li>Fix some \(\tau &gt; 0\) which will determine convergence and set&nbsp;\(\epsilon = \tau+1\).</li>
+<li>Compute the deterministic steady-state level of capital,&nbsp;\(K_{ss}\), and set \(\underline{K} = 0.95K_{ss}\) and \(\overline{K} =&nbsp;1.05K_{ss}\). Discretize the state space for capital so that it is confined&nbsp;to a grid of \(N_k\) equally-spaced values between \(\underline{K}\) and&nbsp;\(\overline{K}\). Denote the grid by \(\mathcal{K}\).</li>
+<li>Use the method of <a class="body" href="http://ideas.repec.org/a/eee/ecolet/v20y1986i2p177-181.html">Tauchen (1986)</a> to discretize the state&nbsp;space for the log of TFP so that it is confined to a grid of \(N_z\)&nbsp;equally-spaced values between \(\underline{z}\) and&nbsp;\(\overline{z}\) (where \(z = \log(Z)\)). Denote the grid for TFP levels&nbsp;by \(\mathcal{Z}\)&nbsp;and the matrix of transition probabilities \(P\),&nbsp;where the probability of transitioning from \(Z\) to \(Z'\) is expressed&nbsp;as \(P(Z,Z')\).</li>
+<li>Guess initial values of the value function, \(V^0\), for each&nbsp;pair of possible values of the state variables, \(K\) and \(Z\)&nbsp;(i.e. \(V^0\) is an \(N_k \times N_z\) matrix). In particular, set \(V^0\)&nbsp;to be equal to the deterministic steady-state values of the value&nbsp;function.</li>
+<li><strong>while</strong> \(\epsilon &gt; \tau\) <strong>do</strong> </li>
+<li>&nbsp; &nbsp;<strong>for</strong>&nbsp;each&nbsp;\(K \in \mathcal{K}\) </li>
+<li>&nbsp; &nbsp; &nbsp; &nbsp;<strong>for</strong>&nbsp;each&nbsp;\(Z \in \mathcal{Z}\) </li>
+<li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>for</strong>&nbsp;each&nbsp;\(K' \in \mathcal{K}\) </li>
+<li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Compute \begin{align} C(K,Z,K') &amp;= Z K^{\alpha} + (1-\delta)K - K'\label{cons} \\ Exp(K,Z,K') &amp;= \sum_{Z' \in \mathcal{Z}} V^0(K',Z')*P(Z,Z') \label{Exp} \\ \tilde{V}(K,Z,K') &amp;= \frac{C(K,Z,K')^{1-\gamma}}{1-\gamma} +&nbsp;Exp(K,Z,K'). \label{continuation} \end{align}</li>
+<li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>end for</strong></li>
+<li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Set \begin{align} V(K,Z) &amp;= \max_{K'} \tilde{V}(K,Z,K'). \label{max} \end{align}</li>
+<li>&nbsp; &nbsp; &nbsp; &nbsp;<strong>end for</strong></li>
+<li>&nbsp; &nbsp;<strong><strong>end for</strong></strong></li>
+<li>&nbsp; &nbsp;Compute the difference between the updated value function and&nbsp;\(V^0\): \begin{align} \epsilon &amp;= ||V - V^0||_{\infty}. \end{align}</li>
+<li>&nbsp; &nbsp;Set \(V = V^0\).</li>
+<li><strong>end while</strong></li>
+</ol>
+<p>A&nbsp;basic implementation would involve computing the quantities in&nbsp;Equations \eqref{cons} - \eqref{continuation} in a serial fashion for&nbsp;each value of \(K' \in \mathcal{K}\) in the loop at&nbsp;Step 8. If either \(\mathcal{K}\) or \(\mathcal{Z}\) is a very dense grid,&nbsp;Step 8 may involve many thousands of serial&nbsp;calculations for each of the values in the loops at&nbsp;Steps 6 and 7.</p>
+<p>Alternatively, with many parallel processors available, the loops at&nbsp;Steps 6 and 7 could be eliminated and the&nbsp;sequence of instructions nested in Step 8 could be assigned&nbsp;to an individual processor and computed in parallel for each pair&nbsp;\((K,Z)\). The reason that&nbsp;parallelism can be exploited in this problem is that the computations&nbsp;nested within Steps 6 and 7 depend only on&nbsp;the concurrent \((K,Z)\) and not on other values in \(\mathcal{K}\) and&nbsp;\(\mathcal{Z}\).</p>
+<div></div>
+<p>&nbsp;</p>
+<div id="section"> Results</div>
+<p>This section reports timing results for solving the model on a 4U rackmount server with a single quad-core Intel Xeon 2.4 GHz CPU and two NVIDIA Tesla C2075 GPUs. Only one of the GPUs was utilized for computation of the Thrust/GPU and CUDA C implementations and all four cores of the CPU were used for the Thrust/OpenMP implementation. The model was solved using the parameter values below.</p>
+<p>\begin{array}{cccccc} \hline \beta &amp; \gamma &amp; \alpha &amp; \delta &amp; \rho &amp; \sigma \\ \hline 0.984 &amp; 2 &amp; 0.35 &amp; 0.01 &amp; 0.95 &amp; 0.005 \\ \hline \end{array}</p>
+<ul>
+</ul>
+<p>The following two tables report times for the implementations above. \(N_z = 4\) and \(N_k\) was incremented to assess&nbsp;the relative performance of the GPU for an increasingly dense grid of state space values. All results are computed in double precision and ratios are relative to C++ times. The first table reports results using a binary search algorithm for maximization, while the second table reports results for a naive grid search. The grid search method was able to exploit policy function iteration, only performing the maximization on the right-hand side of Equation \eqref{bellman} every 20 iterations of the value function. This was not possible for the binary search algorithm, since it did not preserve the concavity of the value function, which is crucial for binary search. For more details regarding the algorithms and solutions, see <a class="body" href="http://ideas.repec.org/p/pen/papers/10-014.html">Aldrich et al. (2011)</a>.</p>
+<p>\begin{array}{l|cccccccccc} \hline N_k &amp; 128 &amp; 256 &amp; 512 &amp; 1,024 &amp; 2,048 &amp; 4,096 &amp; 8,192 &amp; 16,384 &amp; 32,768 &amp; 65,536 \\ \hline \text{C++} &amp; 0.547 &amp; 1.35 &amp; 3.41 &amp; 9.05 &amp; 25.73 &amp; 84.58 &amp; 297.32 &amp; 1,114.95 &amp; 4,653.81 &amp; 19,421.90 \\ \hline \text{Matlab} &amp; 48.97 &amp; 98.36 &amp; 203.18 &amp; 426.57 &amp; 920.10 &amp; 2,077.24 &amp; 5,020.26 &amp; 16,129.32 &amp; 45,070.47 &amp; 140,341.10 \\ \text{Matlab Ratio} &amp; 89.55 &amp; 72.67 &amp; 59.50 &amp; 47.13 &amp; 35.76 &amp; 24.56 &amp; 16.89 &amp; 14.47 &amp; 9.68 &amp; 7.23 \\ \hline \text{Thrust/OpenMP} &amp; 0.118 &amp; 0.241 &amp; 0.519 &amp; 1.10 &amp; 2.37 &amp; 5.04 &amp; 10.81 &amp; 23.10 &amp; 49.53 &amp; 106.66 \\ \text{Thrust/OpenMP Ratio} &amp; 0.217 &amp; 0.178 &amp; 0.152 &amp; 0.121 &amp; 0.0920 &amp; 0.0595 &amp; 0.0364 &amp; 0.0207 &amp; 0.0106 &amp; 0.00549 \\ \hline \text{Thrust/CUDA Start} &amp; 6.75 &amp; 6.70 &amp; 6.74 &amp; 6.64 &amp; 6.72 &amp; 6.62 &amp; 6.72 &amp; 6.75 &amp; 6.66 &amp; 6.75 \\ \text{Thrust/CUDA Solution} &amp; 0.240 &amp; 0.273 &amp; 0.322 &amp; 0.392 &amp; 0.711 &amp; 1.20 &amp; 2.13 &amp; 4.26 &amp; 8.52 &amp; 17.21 \\ \text{Thrust/CUDA Total} &amp; 6.99 &amp; 6.97 &amp; 7.06 &amp; 7.03 &amp; 7.43 &amp; 7.82 &amp; 8.84 &amp; 11.01 &amp; 15.19 &amp; 23.96 \\ \text{Thrust/CUDA Solution Ratio} &amp; 0.439 &amp; 0.202 &amp; 0.0943 &amp; 0.0433 &amp; 0.0276 &amp; 0.0141 &amp; 0.00715 &amp; 0.00382 &amp; 0.00183 &amp; 0.000886 \\ \text{Thrust/CUDA Total Ratio} &amp; 12.78 &amp; 5.15 &amp; 2.07 &amp; 0.777 &amp; 0.289 &amp; 0.0924 &amp; 0.0297 &amp; 0.00987 &amp; 0.00326 &amp; 0.00123 \\ \hline \text{CUDA C Start} &amp; 6.97 &amp; 6.95 &amp; 6.90 &amp; 6.97 &amp; 6.94 &amp; 6.96 &amp; 6.96 &amp; 6.95 &amp; 6.94 &amp; 6.92 \\ \text{CUDA C Solution} &amp; 0.144 &amp; 0.156 &amp; 0.258 &amp; 0.416 &amp; 0.731 &amp; 1.51 &amp; 3.09 &amp; 6.48 &amp; 13.82 &amp; 29.27 \\ \text{CUDA C Total} &amp; 7.12 &amp; 7.11 &amp; 7.16 &amp; 7.38 &amp; 7.67 &amp; 8.47 &amp; 10.05 &amp; 13.42 &amp; 20.76 &amp; 36.19 \\ \text{CUDA C Solution Ratio} &amp; 0.263 &amp; 0.115 &amp; 0.076 &amp; 0.0460 &amp; 0.0284 &amp; 0.0178 &amp; 0.0104 &amp; 0.00581 &amp; 0.00297 &amp; 0.00151 \\ \text{CUDA C Total Ratio} &amp; 13.01 &amp; 5.25 &amp; 2.10 &amp; 0.816 &amp; 0.298 &amp; 0.100 &amp; 0.0338 &amp; 0.0120 &amp; 0.00446 &amp; 0.00186 \\ \hline \end{array}</p>
+<p>&nbsp;</p>
+<p>\begin{array}{l|ccccccccccccc} \hline N_k &amp; 128 &amp; 256 &amp; 512 &amp; 1,024 &amp; 2,048 &amp; 4,096 &amp; 8,192 &amp; 16,384 &amp; 32,768 &amp; 65,536 \\ \hline \text{C++} &amp; 0.137 &amp; 0.332 &amp; 0.900 &amp; 2.73 &amp; 9.17 &amp; 33.40 &amp; 126.72 &amp; 496.24 &amp; 1,977.93 &amp; 7,892.46 \\ \hline \text{Matlab} &amp; 11.18 &amp; 22.43 &amp; 45.23 &amp; 93.67 &amp; 204.50 &amp; 476.54 &amp; 1,212.05 &amp; 3,587.33 &amp; 11,189.66 &amp; 37,720.38 \\ \text{Matlab Ratio} &amp; 81.42 &amp; 67.59 &amp; 50.26 &amp; 34.28 &amp; 22.29 &amp; 14.27 &amp; 9.56 &amp; 7.23 &amp; 5.66 &amp; 4.78 \\ \hline \text{Thrust/OpenMP} &amp; 0.0607 &amp; 0.156 &amp; 0.490 &amp; 1.70 &amp; 6.37 &amp; 24.64 &amp; 96.95 &amp; 383.30 &amp; 1,524.40 &amp; 6,081.77 \\ \text{Thrust/OpenMP Ratio} &amp; 0.442 &amp; 0.471 &amp; 0.544 &amp; 0.621 &amp; 0.694 &amp; 0.738 &amp; 0.765 &amp; 0.772 &amp; 0.771 &amp; 0.771 \\ \hline \text{Thrust/CUDA Start} &amp; 6.73 &amp; 6.73 &amp; 6.69 &amp; 6.66 &amp; 6.72 &amp; 6.78 &amp; 6.77 &amp; 6.75 &amp; 6.74 &amp; 6.78 \\ \text{Thrust/CUDA Solution} &amp; 0.173 &amp; 0.234 &amp; 0.348 &amp; 0.628 &amp; 1.53 &amp; 4.23 &amp; 13.71 &amp; 53.33 &amp; 191.99 &amp; 774.87 \\ \text{Thrust/CUDA Total} &amp; 6.90 &amp; 6.97 &amp; 7.04 &amp; 7.29 &amp; 8.26 &amp; 11.02 &amp; 20.48 &amp; 60.08 &amp; 198.73 &amp; 781.65 \\ \text{Thrust/CUDA Solution Ratio} &amp; 1.26 &amp; 0.704 &amp; 0.387 &amp; 0.230 &amp; 0.167 &amp; 0.127 &amp; 0.108 &amp; 0.107 &amp; 0.0971 &amp; 0.0982 \\ \text{Thrust/CUDA Total Ratio} &amp; 50.26 &amp; 20.99 &amp; 7.83 &amp; 2.67 &amp; 0.900 &amp; 0.330 &amp; 0.162 &amp; 0.121 &amp; 0.100 &amp; 0.0990 \\ \hline \text{CUDA C Start} &amp; 6.94 &amp; 6.93 &amp; 6.95 &amp; 6.96 &amp; 6.81 &amp; 6.90 &amp; 6.92 &amp; 6.85 &amp; 6.97 &amp; 6.99 \\ \text{CUDA C Solution} &amp; 0.103 &amp; 0.134 &amp; 0.257 &amp; 0.664 &amp; 2.12 &amp; 7.81 &amp; 29.76 &amp; 116.80 &amp; 462.31 &amp; 1,844.37 \\ \text{CUDA C Total} &amp; 7.04 &amp; 7.07 &amp; 7.20 &amp; 7.62 &amp; 8.93 &amp; 14.71 &amp; 36.68 &amp; 123.65 &amp; 469.28 &amp; 1,851.36 \\ \text{CUDA C Solution Ratio} &amp; 0.750 &amp; 0.404 &amp; 0.286 &amp; 0.243 &amp; 0.231 &amp; 0.234 &amp; 0.235 &amp; 0.235 &amp; 0.234 &amp; 0.234 \\ \text{CUDA C Total Ratio} &amp; 51.26 &amp; 21.30 &amp; 8.01 &amp; 2.79 &amp; 0.974 &amp; 0.440 &amp; 0.289 &amp; 0.249 &amp; 0.237 &amp; 0.235 \\ \hline \end{array}</p>
+    </div>
+  </body>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="reStructuredText, demonstration, demo, parser" name="keywords" />
+<meta content="A demonstration of the reStructuredText markup language, containing examples of all basic constructs and many advanced constructs." lang="en" name="description" />
+
+    <title>1   reStructuredText Demonstration &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/slides.js"></script>
+    <script type="text/javascript" src="../../../../_static/sync.js"></script>
+    <script type="text/javascript" src="../../../../_static/controller.js"></script>
+    <script type="text/javascript" src="../../../../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../../../../index.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="restructuredtext-demonstration">
+
+<h1>1&nbsp;&nbsp;&nbsp;reStructuredText Demonstration</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="examples-of-syntax-constructs">
+
+<h2>1.1&nbsp;&nbsp;&nbsp;Examples of Syntax Constructs</h2>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body"><p class="first">David Goodger</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Address:</th><td class="field-body"><p class="first">123 Example Street
+Example, EX  Canada
+A1B 2C3</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Contact:</th><td class="field-body"><p class="first"><a class="reference external" href="mailto:docutils-develop&#37;&#52;&#48;lists&#46;sourceforge&#46;net">docutils-develop<span>&#64;</span>lists<span>&#46;</span>sourceforge<span>&#46;</span>net</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Authors:</th><td class="field-body"><p class="first">Me; Myself; I</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">organization:</th><td class="field-body"><p class="first">humankind</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">date:</th><td class="field-body"><p class="first">$Date: 2012-01-03 19:23:53 +0000 (Tue, 03 Jan 2012) $</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">status:</th><td class="field-body"><p class="first">This is a &quot;work in progress&quot;</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">revision:</th><td class="field-body"><p class="first">$Revision: 7302 $</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">version:</th><td class="field-body"><p class="first">1</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body"><p class="first">This document has been placed in the public domain. You
+may do with it as you wish. You may copy, modify,
+redistribute, reattribute, sell, buy, rent, lease,
+destroy, or improve it, quote it at length, excerpt,
+incorporate, collate, fold, staple, or mutilate it, or do
+anything else to it that your or anyone else's heart
+desires.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">field name:</th><td class="field-body"><p class="first">This is a generic bibliographic field.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">field name 2:</th><td class="field-body"><p class="first">Generic bibliographic fields may contain multiple body elements.</p>
+<p>Like this.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dedication:</th><td class="field-body"><p class="first">For Docutils users &amp; co-developers.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">abstract:</th><td class="field-body"><p class="first last">This document is a demonstration of the reStructuredText markup
+language, containing examples of all basic reStructuredText
+constructs and many advanced constructs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#restructuredtext-demonstration" id="id29">1&nbsp;&nbsp;&nbsp;reStructuredText Demonstration</a><ul class="auto-toc">
+<li><a class="reference internal" href="#examples-of-syntax-constructs" id="id30">1.1&nbsp;&nbsp;&nbsp;Examples of Syntax Constructs</a><ul class="auto-toc">
+<li><a class="reference internal" href="#structural-elements" id="id31">1.1.1&nbsp;&nbsp;&nbsp;Structural Elements</a><ul class="auto-toc">
+<li><a class="reference internal" href="#section-title" id="id32">1.1.1.1&nbsp;&nbsp;&nbsp;Section Title</a></li>
+<li><a class="reference internal" href="#transitions" id="id33">1.1.1.2&nbsp;&nbsp;&nbsp;Transitions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#body-elements" id="id34">1.1.2&nbsp;&nbsp;&nbsp;Body Elements</a><ul class="auto-toc">
+<li><a class="reference internal" href="#paragraphs" id="id35">1.1.2.1&nbsp;&nbsp;&nbsp;Paragraphs</a><ul class="auto-toc">
+<li><a class="reference internal" href="#inline-markup" id="id36">1.1.2.1.1&nbsp;&nbsp;&nbsp;Inline Markup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bullet-lists" id="id37">1.1.2.2&nbsp;&nbsp;&nbsp;Bullet Lists</a></li>
+<li><a class="reference internal" href="#enumerated-lists" id="id38">1.1.2.3&nbsp;&nbsp;&nbsp;Enumerated Lists</a></li>
+<li><a class="reference internal" href="#definition-lists" id="id39">1.1.2.4&nbsp;&nbsp;&nbsp;Definition Lists</a></li>
+<li><a class="reference internal" href="#field-lists" id="id40">1.1.2.5&nbsp;&nbsp;&nbsp;Field Lists</a></li>
+<li><a class="reference internal" href="#option-lists" id="id41">1.1.2.6&nbsp;&nbsp;&nbsp;Option Lists</a></li>
+<li><a class="reference internal" href="#literal-blocks" id="id42">1.1.2.7&nbsp;&nbsp;&nbsp;Literal Blocks</a></li>
+<li><a class="reference internal" href="#line-blocks" id="id43">1.1.2.8&nbsp;&nbsp;&nbsp;Line Blocks</a></li>
+<li><a class="reference internal" href="#block-quotes" id="id44">1.1.2.9&nbsp;&nbsp;&nbsp;Block Quotes</a></li>
+<li><a class="reference internal" href="#doctest-blocks" id="id45">1.1.2.10&nbsp;&nbsp;&nbsp;Doctest Blocks</a></li>
+<li><a class="reference internal" href="#tables" id="id46">1.1.2.11&nbsp;&nbsp;&nbsp;Tables</a></li>
+<li><a class="reference internal" href="#footnotes" id="id47">1.1.2.12&nbsp;&nbsp;&nbsp;Footnotes</a></li>
+<li><a class="reference internal" href="#citations" id="id48">1.1.2.13&nbsp;&nbsp;&nbsp;Citations</a></li>
+<li><a class="reference internal" href="#targets" id="id49">1.1.2.14&nbsp;&nbsp;&nbsp;Targets</a><ul class="auto-toc">
+<li><a class="reference internal" href="#duplicate-target-names" id="id50">1.1.2.14.1&nbsp;&nbsp;&nbsp;Duplicate Target Names</a></li>
+<li><a class="reference internal" href="#id18" id="id51">1.1.2.14.2&nbsp;&nbsp;&nbsp;Duplicate Target Names</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#directives" id="id52">1.1.2.15&nbsp;&nbsp;&nbsp;Directives</a><ul class="auto-toc">
+<li><a class="reference internal" href="#document-parts" id="id53">1.1.2.15.1&nbsp;&nbsp;&nbsp;Document Parts</a></li>
+<li><a class="reference internal" href="#images" id="id54">1.1.2.15.2&nbsp;&nbsp;&nbsp;Images</a></li>
+<li><a class="reference internal" href="#admonitions" id="id55">1.1.2.15.3&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+<li><a class="reference internal" href="#topics-sidebars-and-rubrics" id="id56">1.1.2.15.4&nbsp;&nbsp;&nbsp;Topics, Sidebars, and Rubrics</a></li>
+<li><a class="reference internal" href="#target-footnotes" id="id57">1.1.2.15.5&nbsp;&nbsp;&nbsp;Target Footnotes</a></li>
+<li><a class="reference internal" href="#replacement-text" id="id58">1.1.2.15.6&nbsp;&nbsp;&nbsp;Replacement Text</a></li>
+<li><a class="reference internal" href="#compound-paragraph" id="id59">1.1.2.15.7&nbsp;&nbsp;&nbsp;Compound Paragraph</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#substitution-definitions" id="id60">1.1.2.16&nbsp;&nbsp;&nbsp;Substitution Definitions</a></li>
+<li><a class="reference internal" href="#comments" id="id61">1.1.2.17&nbsp;&nbsp;&nbsp;Comments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id19" id="id62">1.1.3&nbsp;&nbsp;&nbsp;Field Lists</a></li>
+<li><a class="reference internal" href="#error-handling" id="id63">1.1.4&nbsp;&nbsp;&nbsp;Error Handling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+
+
+</article>
+<article class="slide level-3" id="structural-elements">
+
+<h3>1.1.1.2&nbsp;&nbsp;&nbsp;Transitions</h3>
+
+<div class="section level-4" id="section-title">
+<p>That's it, the text just above this line.</p>
+</div><div class="section level-4" id="transitions">
+<p>Here's a transition:</p>
+<hr class="docutils" />
+<p>It divides the section.</p>
+</div>
+
+
+
+</article>
+<article class="slide level-3" id="body-elements">
+
+<h3>1.1.2.17&nbsp;&nbsp;&nbsp;Comments</h3>
+
+<div class="section level-4" id="paragraphs">
+<p>A paragraph.</p>
+<div class="section level-5" id="inline-markup">
+<p>Paragraphs contain text and may contain inline markup: <em>emphasis</em>,
+<strong>strong emphasis</strong>, <code class="docutils literal"><span class="pre">inline</span> <span class="pre">literals</span></code>, standalone hyperlinks
+(<a class="reference external" href="http://www.python.org">http://www.python.org</a>), external hyperlinks (<a class="reference external" href="http://www.python.org/">Python</a> <a class="footnote-reference" href="#id25" id="id26">[5]</a>), internal
+cross-references (<a class="reference internal" href="#example">example</a>), external hyperlinks with embedded URIs
+(<a class="reference external" href="http://www.python.org">Python web site</a>), footnote references
+(manually numbered <a class="footnote-reference" href="#id6" id="id1">[1]</a>, anonymous auto-numbered <a class="footnote-reference" href="#id9" id="id2">[3]</a>, labeled
+auto-numbered <a class="footnote-reference" href="#label" id="id3">[2]</a>, or symbolic <a class="footnote-reference" href="#id10" id="id4">[*]</a>), citation references
+(<a class="reference internal" href="#cit2002" id="id5">[CIT2002]</a>), substitution references (<img alt="EXAMPLE" src="_themes/sphinx_rtd_theme/demo_docs/source/images/biohazard.png" />), and <span class="target" id="inline-hyperlink-targets">inline
+hyperlink targets</span> (see <a class="reference internal" href="#targets">Targets</a> below for a reference back to here).
+Character-level inline markup is also possible (although exceedingly
+ugly!) in <em>re</em><code class="docutils literal"><span class="pre">Structured</span></code><em>Text</em>.  Problems are indicated by
+<a href="#id21"><span class="problematic" id="id22">|problematic|</span></a> text (generated by processing errors; this one is
+intentional).</p>
+<p>The default role for interpreted text is <cite>Title Reference</cite>.  Here are
+some explicit interpreted text roles: a PEP reference (<span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0287"><strong>PEP 287</strong></a>); an
+RFC reference (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2822.html"><strong>RFC 2822</strong></a>); a <sub>subscript</sub>; a <sup>superscript</sup>;
+and explicit roles for <em>standard</em> <strong>inline</strong>
+<code class="docutils literal"><span class="pre">markup</span></code>.</p>
+<p>Let's test wrapping and whitespace significance in inline literals:
+<code class="docutils literal"><span class="pre">This</span> <span class="pre">is</span> <span class="pre">an</span> <span class="pre">example</span> <span class="pre">of</span> <span class="pre">--inline-literal</span> <span class="pre">--text,</span> <span class="pre">--including</span> <span class="pre">some--</span>
+<span class="pre">strangely--hyphenated-words.</span>&nbsp; <span class="pre">Adjust-the-width-of-your-browser-window</span>
+<span class="pre">to</span> <span class="pre">see</span> <span class="pre">how</span> <span class="pre">the</span> <span class="pre">text</span> <span class="pre">is</span> <span class="pre">wrapped.</span>&nbsp; <span class="pre">--</span> <span class="pre">----</span> <span class="pre">--------</span>&nbsp; <span class="pre">Now</span> <span class="pre">note</span>&nbsp;&nbsp;&nbsp; <span class="pre">the</span>
+<span class="pre">spacing</span>&nbsp;&nbsp;&nbsp; <span class="pre">between</span> <span class="pre">the</span>&nbsp;&nbsp;&nbsp; <span class="pre">words</span> <span class="pre">of</span>&nbsp;&nbsp;&nbsp; <span class="pre">this</span> <span class="pre">sentence</span>&nbsp;&nbsp;&nbsp; <span class="pre">(words</span>
+<span class="pre">should</span>&nbsp;&nbsp;&nbsp; <span class="pre">be</span> <span class="pre">grouped</span>&nbsp;&nbsp;&nbsp; <span class="pre">in</span> <span class="pre">pairs).</span></code></p>
+<p>If the <code class="docutils literal"><span class="pre">--pep-references</span></code> option was supplied, there should be a
+live link to PEP 258 here.</p>
+</div></div><div class="section level-4" id="bullet-lists">
+<ul>
+<li><p class="first">A bullet list</p>
+<ul class="simple">
+<li>Nested bullet list.</li>
+<li>Nested item 2.</li>
+</ul>
+</li>
+<li><p class="first">Item 2.</p>
+<p>Paragraph 2 of item 2.</p>
+<ul class="simple">
+<li>Nested bullet list.</li>
+<li>Nested item 2.<ul>
+<li>Third level.</li>
+<li>Item 2.</li>
+</ul>
+</li>
+<li>Nested item 3.</li>
+</ul>
+</li>
+</ul>
+</div><div class="section level-4" id="enumerated-lists">
+<ol class="arabic">
+<li><p class="first">Arabic numerals.</p>
+<ol class="loweralpha simple">
+<li>lower alpha)<ol class="lowerroman">
+<li>(lower roman)<ol class="upperalpha">
+<li>upper alpha.<ol class="upperroman">
+<li>upper roman)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p class="first">Lists that don't start at 1:</p>
+<ol class="arabic simple" start="3">
+<li>Three</li>
+<li>Four</li>
+</ol>
+<ol class="upperalpha simple" start="3">
+<li>C</li>
+<li>D</li>
+</ol>
+<ol class="lowerroman simple" start="3">
+<li>iii</li>
+<li>iv</li>
+</ol>
+</li>
+<li><p class="first">List items may also be auto-enumerated.</p>
+</li>
+</ol>
+</div><div class="section level-4" id="definition-lists">
+<dl class="docutils">
+<dt>Term</dt>
+<dd>Definition</dd>
+<dt>Term <span class="classifier-delimiter">:</span> <span class="classifier">classifier</span></dt>
+<dd><p class="first">Definition paragraph 1.</p>
+<p class="last">Definition paragraph 2.</p>
+</dd>
+<dt>Term</dt>
+<dd>Definition</dd>
+</dl>
+</div><div class="section level-4" id="field-lists">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">what:</th><td class="field-body"><p class="first">Field lists map field names to field bodies, like database
+records.  They are often part of an extension syntax.  They are
+an unambiguous variant of RFC 2822 fields.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">how arg1 arg2:</th><td class="field-body"><p class="first">The field marker is a colon, the field name, and a colon.</p>
+<p class="last">The field body may contain one or more body elements, indented
+relative to the field marker.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div><div class="section level-4" id="option-lists">
+<p>For listing command-line options:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a</span></kbd></td>
+<td>command-line option &quot;a&quot;</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-b <var>file</var></span></kbd></td>
+<td>options can have arguments
+and long descriptions</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--long</span></kbd></td>
+<td>options can be long also</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--input=<var>file</var></span></kbd></td>
+<td>long options can also have
+arguments</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--very-long-option</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><p class="first">The description can also start on the next line.</p>
+<p class="last">The description may contain multiple body elements,
+regardless of where it starts.</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-x</span>, <span class="option">-y</span>, <span class="option">-z</span></kbd></td>
+<td>Multiple options are an &quot;option group&quot;.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span>, <span class="option">--verbose</span></kbd></td>
+<td>Commonly-seen: short &amp; long options.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-1 <var>file</var></span>, <span class="option">--one=<var>file</var></span>, <span class="option">--two <var>file</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Multiple options with arguments.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">/V</span></kbd></td>
+<td>DOS/VMS-style options too</td></tr>
+</tbody>
+</table>
+<p>There must be at least two spaces between the option and the
+description.</p>
+</div><div class="section level-4" id="literal-blocks">
+<p>Literal blocks are indicated with a double-colon (&quot;::&quot;) at the end of
+the preceding paragraph (over there <code class="docutils literal"><span class="pre">--&gt;</span></code>).  They can be indented:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">literal_block</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;is left as-is&#39;</span>
+    <span class="n">spaces_and_linebreaks</span> <span class="o">=</span> <span class="s1">&#39;are preserved&#39;</span>
+    <span class="n">markup_processing</span> <span class="o">=</span> <span class="bp">None</span>
+</pre></div>
+</div>
+<p>Or they can be quoted without indentation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt; Great idea!
+&gt;
+&gt; Why didn&#39;t I think of that?
+</pre></div>
+</div>
+</div><div class="section level-4" id="line-blocks">
+<div class="line-block">
+<div class="line">This is a line block.  It ends with a blank line.</div>
+<div class="line-block">
+<div class="line">Each new line begins with a vertical bar (&quot;|&quot;).</div>
+<div class="line">Line breaks and initial indents are preserved.</div>
+</div>
+<div class="line">Continuation lines are wrapped portions of long lines;
+they begin with a space in place of the vertical bar.</div>
+<div class="line-block">
+<div class="line">The left edge of a continuation line need not be aligned with
+the left edge of the text above it.</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">This is a second line block.</div>
+<div class="line"><br /></div>
+<div class="line">Blank lines are permitted internally, but they must begin with a &quot;|&quot;.</div>
+</div>
+<p>Take it away, Eric the Orchestra Leader!</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">A one, two, a one two three four</div>
+<div class="line"><br /></div>
+<div class="line">Half a bee, philosophically,</div>
+<div class="line-block">
+<div class="line">must, <em>ipso facto</em>, half not be.</div>
+</div>
+<div class="line">But half the bee has got to be,</div>
+<div class="line-block">
+<div class="line"><em>vis a vis</em> its entity.  D'you see?</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">But can a bee be said to be</div>
+<div class="line-block">
+<div class="line">or not to be an entire bee,</div>
+<div class="line-block">
+<div class="line">when half the bee is not a bee,</div>
+<div class="line-block">
+<div class="line">due to some ancient injury?</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="line">Singing...</div>
+</div>
+</div></blockquote>
+</div><div class="section level-4" id="block-quotes">
+<p>Block quotes consist of indented body elements:</p>
+<q>
+My theory by A. Elk.  Brackets Miss, brackets.  This theory goes
+as follows and begins now.  All brontosauruses are thin at one
+end, much much thicker in the middle and then thin again at the
+far end.  That is my theory, it is mine, and belongs to me and I
+own it, and what it is too.</q>
+<div class="author">
+Anne Elk (Miss)</div>
+</div><div class="section level-4" id="doctest-blocks">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s1">&#39;Python-specific usage examples; begun with &quot;&gt;&gt;&gt;&quot;&#39;</span>
+<span class="go">Python-specific usage examples; begun with &quot;&gt;&gt;&gt;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s1">&#39;(cut and pasted from interactive Python sessions)&#39;</span>
+<span class="go">(cut and pasted from interactive Python sessions)</span>
+</pre></div>
+</div>
+</div><div class="section level-4" id="tables">
+<p>Here's a grid table followed by a simple table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="21%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Header row, column 1
+(header rows optional)</th>
+<th class="head">Header 2</th>
+<th class="head">Header 3</th>
+<th class="head">Header 4</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>body row 1, column 1</td>
+<td>column 2</td>
+<td>column 3</td>
+<td>column 4</td>
+</tr>
+<tr class="row-odd"><td>body row 2</td>
+<td colspan="3">Cells may span columns.</td>
+</tr>
+<tr class="row-even"><td>body row 3</td>
+<td rowspan="2">Cells may
+span rows.</td>
+<td colspan="2" rowspan="2"><ul class="first last simple">
+<li>Table cells</li>
+<li>contain</li>
+<li>body elements.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>body row 4</td>
+</tr>
+<tr class="row-even"><td>body row 5</td>
+<td colspan="2">Cells may also be
+empty: <code class="docutils literal"><span class="pre">--&gt;</span></code></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="31%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Inputs</th>
+<th class="head">Output</th>
+</tr>
+<tr class="row-even"><th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A or B</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>True</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="row-odd"><td>False</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr class="row-even"><td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+</div><div class="section level-4" id="footnotes">
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> <p>A footnote contains body elements, consistently indented by at
+least 3 spaces.</p>
+<p class="last">This is the footnote's second paragraph.</p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="label" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> Footnotes may be numbered, either manually (as in <a class="footnote-reference" href="#id6" id="id7">[1]</a>) or
+automatically using a &quot;#&quot;-prefixed label.  This footnote has a
+label so it can be referred to from multiple places, both as a
+footnote reference (<a class="footnote-reference" href="#label" id="id8">[2]</a>) and as a hyperlink reference
+(<a class="reference internal" href="#label">label</a>).</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[3]</a></td><td>This footnote is numbered automatically and anonymously using a
+label of &quot;#&quot; only.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[*]</a></td><td>Footnotes may also use symbols, specified with a &quot;*&quot; label.
+Here's a reference to the next footnote: <a class="footnote-reference" href="#id12" id="id11">[†]</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id11">[†]</a></td><td>This footnote shows the next symbol in the sequence.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[4]</td><td>Here's an unreferenced footnote, with a reference to a
+nonexistent footnote: <a href="#id71"><span class="problematic" id="id72"><span id="id14"></span>[5]_</span></a>.</td></tr>
+</tbody>
+</table>
+</div><div class="section level-4" id="citations">
+<table class="docutils citation" frame="void" id="cit2002" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[CIT2002]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id15">2</a>)</em> Citations are text-labeled footnotes. They may be
+rendered separately and differently from footnotes.</td></tr>
+</tbody>
+</table>
+<p>Here's a reference to the above, <a class="reference internal" href="#cit2002" id="id15">[CIT2002]</a>, and a [nonexistent]
+citation.</p>
+</div><div class="section level-4" id="targets">
+<p id="example">This paragraph is pointed to by the explicit &quot;example&quot; target. A
+reference can be found under <a class="reference internal" href="#inline-markup">Inline Markup</a>, above. <a class="reference internal" href="#inline-hyperlink-targets">Inline
+hyperlink targets</a> are also possible.</p>
+<p>Section headers are implicit targets, referred to by name. See
+<a class="reference internal" href="#targets">Targets</a>, which is a subsection of <a class="reference internal" href="#body-elements">Body Elements</a>.</p>
+<p>Explicit external targets are interpolated into references such as
+&quot;<a class="reference external" href="http://www.python.org/">Python</a> <a class="footnote-reference" href="#id25" id="id27">[5]</a>&quot;.</p>
+<p>Targets may be indirect and anonymous.  Thus <a class="reference internal" href="#targets">this phrase</a> may also
+refer to the <a class="reference internal" href="#targets">Targets</a> section.</p>
+<p>Here's a <a href="#id73"><span class="problematic" id="id74">`hyperlink reference without a target`_</span></a>, which generates an
+error.</p>
+<div class="section level-5" id="duplicate-target-names">
+<p>Duplicate names in section headers or other implicit targets will
+generate &quot;info&quot; (level-1) system messages.  Duplicate names in
+explicit targets will generate &quot;warning&quot; (level-2) system messages.</p>
+</div><div class="section level-5" id="id18">
+<p>Since there are two &quot;Duplicate Target Names&quot; section headers, we
+cannot uniquely refer to either of them by name.  If we try to (like
+this: <a href="#id75"><span class="problematic" id="id76">`Duplicate Target Names`_</span></a>), an error is generated.</p>
+</div></div><div class="section level-4" id="directives">
+<div class="contents local topic" id="contents">
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#document-parts" id="id64">1.1.2.15.1&nbsp;&nbsp;&nbsp;Document Parts</a></li>
+<li><a class="reference internal" href="#images" id="id65">1.1.2.15.2&nbsp;&nbsp;&nbsp;Images</a></li>
+<li><a class="reference internal" href="#admonitions" id="id66">1.1.2.15.3&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+<li><a class="reference internal" href="#topics-sidebars-and-rubrics" id="id67">1.1.2.15.4&nbsp;&nbsp;&nbsp;Topics, Sidebars, and Rubrics</a></li>
+<li><a class="reference internal" href="#target-footnotes" id="id68">1.1.2.15.5&nbsp;&nbsp;&nbsp;Target Footnotes</a></li>
+<li><a class="reference internal" href="#replacement-text" id="id69">1.1.2.15.6&nbsp;&nbsp;&nbsp;Replacement Text</a></li>
+<li><a class="reference internal" href="#compound-paragraph" id="id70">1.1.2.15.7&nbsp;&nbsp;&nbsp;Compound Paragraph</a></li>
+</ul>
+</div>
+<p>These are just a sample of the many reStructuredText Directives.  For
+others, please see
+<a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html">http://docutils.sourceforge.net/docs/ref/rst/directives.html</a>.</p>
+<div class="section level-5" id="document-parts">
+<p>An example of the &quot;contents&quot; directive can be seen above this section
+(a local, untitled table of <a class="reference internal" href="#contents">contents</a>) and at the beginning of the
+document (a document-wide <a class="reference internal" href="#table-of-contents">table of contents</a>).</p>
+</div><div class="section level-5" id="images">
+<p>An image directive (also clickable -- a hyperlink reference):</p>
+<a class="reference internal image-reference" href="#directives"><img alt="_themes/sphinx_rtd_theme/demo_docs/source/images/title.png" src="_themes/sphinx_rtd_theme/demo_docs/source/images/title.png" /></a>
+<p>A figure directive:</p>
+<div class="figure" id="id20">
+<img alt="reStructuredText, the markup syntax" src="_themes/sphinx_rtd_theme/demo_docs/source/images/title.png" />
+<p class="caption"><span class="caption-text">A figure is an image with a caption and/or a legend:</span></p>
+<div class="legend">
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>re</td>
+<td>Revised, revisited, based on 're' module.</td>
+</tr>
+<tr class="row-even"><td>Structured</td>
+<td>Structure-enhanced text, structuredtext.</td>
+</tr>
+<tr class="row-odd"><td>Text</td>
+<td>Well it is, isn't it?</td>
+</tr>
+</tbody>
+</table>
+<p>This paragraph is also part of the legend.</p>
+</div>
+</div>
+<p>A figure directive with center alignment</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_themes/sphinx_rtd_theme/demo_docs/source/images/title.png"><img alt="_themes/sphinx_rtd_theme/demo_docs/source/images/title.png" src="_themes/sphinx_rtd_theme/demo_docs/source/images/title.png" style="width: 300px;" /></a>
+</div>
+</div><div class="section level-5" id="admonitions">
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Directives at large.</p>
+</div>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Don't take any wooden nickels.</p>
+</div>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p class="last">Mad scientist at work!</p>
+</div>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">Does not compute.</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">It's bigger than a bread box.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<ul class="last simple">
+<li>Wash behind your ears.</li>
+<li>Clean up your room.</li>
+<li>Call your mother.</li>
+<li>Back up your data.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a note.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">15% if the service is good.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Strong prose may provoke extreme mental exertion.
+Reader discretion is strongly advised.</p>
+</div>
+<div class="admonition-and-by-the-way admonition">
+<p class="first admonition-title">And, by the way...</p>
+<p class="last">You can make up your own admonition too.</p>
+</div>
+</div><div class="section level-5" id="topics-sidebars-and-rubrics">
+<div class="sidebar">
+<p class="first sidebar-title">Sidebar Title</p>
+<p class="sidebar-subtitle">Optional Subtitle</p>
+<p>This is a sidebar.  It is for text outside the flow of the main
+text.</p>
+<p class="rubric">This is a rubric inside a sidebar</p>
+<p class="last">Sidebars often appears beside the main text with a border and
+background color.</p>
+</div>
+<div class="topic">
+<p class="topic-title first">Topic Title</p>
+<p>This is a topic.</p>
+</div>
+<p class="rubric">This is a rubric</p>
+</div><div class="section level-5" id="target-footnotes">
+<table class="docutils footnote" frame="void" id="id25" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[5]</td><td><em>(<a class="fn-backref" href="#id26">1</a>, <a class="fn-backref" href="#id27">2</a>, <a class="fn-backref" href="#id28">3</a>)</em> <a class="reference external" href="http://www.python.org/">http://www.python.org/</a></td></tr>
+</tbody>
+</table>
+</div><div class="section level-5" id="replacement-text">
+<p>I recommend you try <a class="reference external" href="http://www.python.org/">Python, <em>the</em> best language around</a> <a class="footnote-reference" href="#id25" id="id28">[5]</a>.</p>
+</div><div class="section level-5" id="compound-paragraph">
+<div class="compound">
+<p class="compound-first">This paragraph contains a literal block:</p>
+<div class="compound-middle highlight-python"><div class="highlight"><pre><span></span>Connecting... OK
+Transmitting data... OK
+Disconnecting... OK
+</pre></div>
+</div>
+<p class="compound-last">and thus consists of a simple paragraph, a literal block, and
+another simple paragraph.  Nonetheless it is semantically <em>one</em>
+paragraph.</p>
+</div>
+<p>This construct is called a <em>compound paragraph</em> and can be produced
+with the &quot;compound&quot; directive.</p>
+</div></div><div class="section level-4" id="substitution-definitions">
+<p>An inline image (<img alt="EXAMPLE" src="_themes/sphinx_rtd_theme/demo_docs/source/images/biohazard.png" />) example:</p>
+<p>(Substitution definitions are not visible in the HTML source.)</p>
+</div><div class="section level-4" id="comments">
+<p>Here's one:</p>
+<p>(View the HTML source to see the comment.)</p>
+</div>
+
+
+
+</article>
+<article class="slide level-3" id="id19">
+
+<h3>1.1.3&nbsp;&nbsp;&nbsp;Field Lists</h3>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Field List:</th><td class="field-body"><p class="first">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+ex ea commodo consequat.</p>
+<p class="last">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>some text</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Field List 2:</th><td class="field-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+</article>
+<article class="slide level-3" id="error-handling">
+
+<h3>1.1.4&nbsp;&nbsp;&nbsp;Error Handling</h3>
+
+<p>Any errors caught during processing will generate system messages.</p>
+<p><a href="#id23"><span class="problematic" id="id24">|*** Expect 6 errors (including this one). ***|</span></a></p>
+<p>There should be six messages in the following, auto-generated
+section, &quot;Docutils System Messages&quot;:</p>
+<p>demo.rst from: <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/demo.txt">http://docutils.sourceforge.net/docs/user/rst/demo.txt</a></p>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

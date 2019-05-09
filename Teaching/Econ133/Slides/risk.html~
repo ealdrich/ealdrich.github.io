@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Risk and Risk Premiums &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="up" title="Risk and Returns" href="riskReturns.html" />
+    <link rel="next" title="Portfolio Optimization" href="portfolios.html" />
+    <link rel="prev" title="Rates of Return" href="returns.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="risk-and-risk-premiums">
+<h1>Risk and Risk Premiums</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="probabilistic-returns">
+<h2>Probabilistic Returns</h2>
+<p>Since we don't know future returns, we will treat them as random
+variables.</p>
+<ul class="to-build simple">
+<li>We can model them as discrete random variables, taking one of a
+finite set of possible values in the future: <span class="math">\(r(s)\)</span>, <span class="math">\(s
+= 1, \ldots, S\)</span>.<ul class="to-build">
+<li>In this case the probability of each value is <span class="math">\(p(s)\)</span>,
+<span class="math">\(s=1,\ldots,S\)</span>.</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>We can model them as continuous random variables, taking one of an
+infinite set of possible values in the future: <span class="math">\(r(s)\)</span>,
+<span class="math">\(s \in \mathcal{S}\)</span> (e.g. <span class="math">\(\mathcal{S} = (-\infty, \infty)\)</span>).<ul class="to-build">
+<li>In this case the probability of each value (kind of) is
+<span class="math">\(f(s)\)</span>, <span class="math">\(s \in \mathcal{S}\)</span>.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="expected-returns">
+<h2>Expected Returns</h2>
+<p>Our best guess for the future return is the expected value:</p>
+<div class="to-build math">
+\[\begin{split}E[r] &amp; \equiv \mu = \sum_{s=1}^S r(s) p(s),\end{split}\]</div>
+<p class="to-build">or</p>
+<div class="to-build math">
+\[\begin{split}E[r] &amp; \equiv \mu = \int_{s \in \mathcal{S}} r(s) f(s) dr(s).\end{split}\]</div>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="return-volatility">
+<h2>Return Volatility</h2>
+<p>The amount of uncertainty in potential returns can be measured by the
+variance or standard deviation.</p>
+<ul class="to-build simple">
+<li>Volatility of returns specifically refers to standard deviation, NOT
+VARIANCE.</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}Std(r) &amp; \equiv \sigma = \sqrt{\sum_{s=1}^S (r(s) - \mu)^2 p(s)},\end{split}\]</div>
+<p class="to-build">or</p>
+<div class="to-build math">
+\[\begin{split}Std(r) &amp; \equiv \sigma = \sqrt{\int_{s \in \mathcal{S}} (r(s) -
+\mu_r)^2 f(s) dr(s)}.\end{split}\]</div>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="expectation-and-variance-example">
+<h2>Expectation and Variance Example</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="33%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Probability</th>
+<th class="head">Return</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Severe Recession</td>
+<td>0.05</td>
+<td>-0.37</td>
+</tr>
+<tr class="row-odd"><td>Mild Recession</td>
+<td>0.25</td>
+<td>-0.11</td>
+</tr>
+<tr class="row-even"><td>Normal Growth</td>
+<td>0.40</td>
+<td>0.14</td>
+</tr>
+<tr class="row-odd"><td>Boom</td>
+<td>0.30</td>
+<td>0.30</td>
+</tr>
+</tbody>
+</table>
+<p class="to-build">What are <span class="math">\(\mu\)</span> and <span class="math">\(\sigma\)</span>?</p>
+<div class="to-build math">
+\[\begin{split}\mu &amp; = 0.05*(-0.37) + 0.25*(-0.11) \\
+&amp; \qquad \qquad + 0.40*0.14 + 0.30*0.30 = 0.10\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}E[r^2] &amp; = 0.05*(-0.37)^2 + 0.25*(-0.11)^2 \\
+&amp; \qquad \qquad + 0.40*(0.14)^2 + 0.30*(0.30)^2 = 0.04471\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\sigma &amp; = \sqrt{E[r^2] - \mu^2} = 0.04471 - 0.10^2 = 0.03471\end{split}\]</div>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="assumption-of-normality">
+<h2>Assumption of Normality</h2>
+<p>It will often be convenient to assume asset returns are normally
+distributed.</p>
+<ul class="to-build simple">
+<li>In this case, we will treat returns as continuous random variables.</li>
+</ul>
+<ul class="to-build simple">
+<li>We can use the normal density function to compute probabilities of
+possible events.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will not assume that returns of different assets come from the
+same normal, but instead FROM DIFFERENT normal distributions.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="differing-normal-distributions">
+<h2>Differing Normal Distributions</h2>
+<p>As an example, suppose that</p>
+<ul class="to-build simple">
+<li>Amazon stock (AMZN) has an expected monthly return of 3% and a
+volatility (standard deviation) of 8%.</li>
+</ul>
+<ul class="to-build simple">
+<li>Coca-Cola stock (KO) has an expected monthly return of 1% and a
+volatility (standard deviation) of 4%.</li>
+</ul>
+<p class="to-build">What do their probability distributions look like?</p>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="amazon-distribution">
+<h2>Amazon Distribution</h2>
+<a class="reference internal image-reference" href="_images/amazon.png"><img alt="_images/amazon.png" class="align-center" src="_images/amazon.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="coca-cola-distribution">
+<h2>Coca-Cola Distribution</h2>
+<a class="reference internal image-reference" href="_images/amazon_coke.png"><img alt="_images/amazon_coke.png" class="align-center" src="_images/amazon_coke.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="implications-of-normality">
+<h2>Implications of Normality</h2>
+<p>The assumption of normality is convenient because</p>
+<ul class="to-build simple">
+<li>If we form a portfolio of assets that are normally distributed, then
+the distribution of the portfolio return is also normally
+distributed.<ul class="to-build">
+<li>Recall that if <span class="math">\(X_i \sim \mathcal{N}(\mu_i, \sigma_i)\)</span>,
+<span class="math">\(i = 1,\ldots,N\)</span>, then <span class="math">\(W = \sum_{i=1}^N w_i X_i\)</span> is
+also normally distributed (where <span class="math">\(w_i\)</span> are constant
+weights).</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>The mean and the variance (or standard deviation) fully characterize
+the distribution of returns.</li>
+</ul>
+<ul class="to-build simple">
+<li>The variance or standard deviation alone is an appropriate measure
+of risk (no other measure is needed).</li>
+</ul>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="estimating-means-and-volatilities">
+<h2>Estimating Means and Volatilities</h2>
+<p>Typically we don't know the true mean and standard deviation of Amazon
+and Coca-Cola.  What do we do?</p>
+<ul class="to-build simple">
+<li>Use historical data to estimate them.</li>
+</ul>
+<ul class="to-build simple">
+<li>Collect <span class="math">\(N+1\)</span> past prices of each asset for a particular
+interval of time (daily, monthly, quarterly, annually).</li>
+</ul>
+<ul class="to-build simple">
+<li>Compute <span class="math">\(N\)</span> returns using the formula</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}r_t &amp; = \frac{P_t - P_{t-1}}{P_{t-1}}.\end{split}\]</div>
+<p class="to-build">We don't include dividends in the return calculation above, because we
+use ADJUSTED closing prices, which account for dividend payments
+directly in the prices.</p>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Estimating Means and Volatilities</h2>
+<p>Compute the sample mean of returns</p>
+<div class="to-build math">
+\[\begin{split}\hat{\mu} &amp; = \frac{1}{N} \sum_{t=1}^N r_t.\end{split}\]</div>
+<p class="to-build">Compute the sample standard deviation of returns</p>
+<div class="to-build math">
+\[\begin{split}\hat{\sigma}^2 &amp; = \frac{1}{N-1} \sum_{t=1}^N (r_t -
+\hat{\mu})^2.\end{split}\]</div>
+<p class="to-build">The &quot;hats&quot; indicate that we have estimated <span class="math">\(\mu\)</span> and
+<span class="math">\(\sigma\)</span>: these are not the true, unknown values.</p>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="estimating-means-and-volatilities-example">
+<h2>Estimating Means and Volatilities - Example</h2>
+<p>Let's collect the <span class="math">\(N = 13\)</span> closing prices for Amazon and
+Coca-Cola between 3 Jan 2012 and 2 Jan 2013.</p>
+<ul class="to-build simple">
+<li>We will only keep the first closing price on the first trading day
+of each month.</li>
+</ul>
+<ul class="to-build simple">
+<li>We can then compute 12 monthly returns by computing the difference
+in month prices at the beginning of each month, dividing by the
+price of the previous month.</li>
+</ul>
+<ul class="to-build simple">
+<li>This will give us 12 returns that we can use to estimate the means
+and standard deviations.</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="amazon-monthly-prices">
+<h2>Amazon Monthly Prices</h2>
+<a class="reference internal image-reference" href="_images/amzn-monthly.png"><img alt="_images/amzn-monthly.png" class="align-center" src="_images/amzn-monthly.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="coca-cola-monthly-prices">
+<h2>Coca-Cola Monthly Prices</h2>
+<a class="reference internal image-reference" href="_images/ko-monthly.png"><img alt="_images/ko-monthly.png" class="align-center" src="_images/ko-monthly.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="computing-returns-and-moments">
+<h2>Computing Returns and Moments</h2>
+<a class="reference internal image-reference" href="_images/amzn-coke-xls.png"><img alt="_images/amzn-coke-xls.png" class="align-center" src="_images/amzn-coke-xls.png" style="width: 8.5in;" /></a>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="risk-free-returns">
+<h2>Risk-Free Returns</h2>
+<p>We will typically assume that a risk-free asset is available for
+purchase.</p>
+<ul class="to-build simple">
+<li>We will denote the risk-free return as <span class="math">\(r_f\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If an asset is risk free, its return is certain and has no
+variability:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}E[r_f] &amp; = r_f \\
+Var(r_f) &amp; = 0.\end{split}\]</div>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="t-bills-as-risk-free-assets">
+<h2>T-Bills as Risk-Free Assets</h2>
+<p>The return on a short-term government t-bill is usually considered
+risk free:</p>
+<ul class="to-build simple">
+<li>Although the price changes over time, the risk of default is
+extremely low.</li>
+</ul>
+<ul class="to-build simple">
+<li>Also, the holding period return can be determined at the beginning
+of the holding period (unlike other risky assets).</li>
+</ul>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="compensation-for-risk">
+<h2>Compensation for Risk</h2>
+<p>If you can invest in a risk-free asset, why would you purchase a
+risky asset instead?</p>
+<ul class="to-build simple">
+<li>Risky assets compensate for risk through higher expected
+return.</li>
+</ul>
+<ul class="to-build simple">
+<li>If risky assets didn't offer higher expected return, everyone would
+sell them, leading to a price decline today and a higher expected
+return:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\uparrow E[r_t] &amp; = \frac{E[P_t] - \downarrow
+P_{t-1}}{\downarrow P_{t-1}}\end{split}\]</div>
+<ul class="to-build simple">
+<li>There is no guarantee that the actual return will be higher -- only
+its expected value.</li>
+</ul>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="risk-premium-excess-returns">
+<h2>Risk Premium &amp; Excess Returns</h2>
+<p>The amount by which the expected return of some risky asset <span class="math">\(A\)</span>
+exceeds the risk-free return is known as the <em>risk premium</em>:</p>
+<div class="to-build math">
+\[\begin{split}\text{rp}_{A,t} &amp; = E[r_{A,t}] - r_{f,t}.\end{split}\]</div>
+<p class="to-build">The <em>excess return</em> measures the difference between a previously
+observed holding period return of <span class="math">\(A\)</span> and the risk-free:</p>
+<div class="to-build math">
+\[\begin{split}\text{er}_{A,t-1} &amp; = r_{A,t-1} - r_{f,t-1}.\end{split}\]</div>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Risk Premium &amp; Excess Returns</h2>
+<ul class="simple">
+<li>Note that excess returns can only be computed with past returns.</li>
+</ul>
+<ul class="to-build simple">
+<li>We estimate risk premia with the sample mean of historical excess
+returns.</li>
+</ul>
+
+<div class="slide-no">21</div>
+
+</article>
+<article class="appear slide level-2" id="sharpe-ratio">
+<h2>Sharpe Ratio</h2>
+<p>The <em>Sharpe Ratio</em> is a measure of how much risk premium investors
+require, per unit of risk:</p>
+<div class="to-build math">
+\[\begin{split}\text{SR}_{A,t} &amp; = \frac{\mu_{A,t} - r_{f,t}}{\sigma_{A,t}}\end{split}\]</div>
+<ul class="to-build simple">
+<li>The Sharpe Ratio is a measure of risk aversion.</li>
+</ul>
+<ul class="to-build simple">
+<li>It is often referred to as the price of risk.</li>
+</ul>
+<ul class="to-build simple">
+<li>The Sharpe Ratio for a broad market index of assets (like the
+S&amp;P 500) is referred to as the market price of risk.</li>
+</ul>
+<ul class="to-build simple">
+<li>The true Sharpe Ratio is unknown, since we don't know
+<span class="math">\(\mu_{A,t}\)</span> and <span class="math">\(\sigma_{A,t}\)</span>, but we can estimate
+these with historical returns.</li>
+</ul>
+
+<div class="slide-no">22</div>
+
+</article>
+<article class="appear slide level-2" id="risk-premium-example">
+<h2>Risk Premium Example</h2>
+<p>Suppose the monthly risk-free rate is 0.2%. What is the estimated
+risk premium and Sharpe Ratio for Amazon stock?</p>
+<div class="to-build math">
+\[rp_{AMZN} = 0.03 - 0.002 = 0.028\]</div>
+<div class="to-build math">
+\[SR_{AMZN} = \frac{rp_{AMZN}}{0.08} = 0.35\]</div>
+
+<div class="slide-no">23</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

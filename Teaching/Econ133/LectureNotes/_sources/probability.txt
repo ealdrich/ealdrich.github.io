@@ -446,7 +446,7 @@ Normal Distribution
 From `Wikipedia <http://en.wikipedia.org/wiki/Normal_distribution>`_:
 
 
-.. ifslides::
+  .. ifslides::
 
   .. image:: /_static/Normal_Distribution_PDF.png
      :width: 7.5in

@@ -1,0 +1,211 @@
+.. slideconf::
+   :slide_classes: appear
+
+================
+ ARMA Processes
+================
+
+
+:math:`ARMA(p,q)` Process
+=========================
+Given white noise :math:`\{\varepsilon_t\}`, consider the
+process
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_t & = c + \phi_1 Y_{t-1} + \ldots + \phi_p Y_{t-p} +
+   \varepsilon_t + \theta_1 \varepsilon_{t-1} + \ldots \theta_q
+   \varepsilon_{t-q},
+
+.. rst-class:: to-build
+
+where :math:`c`, :math:`\{\phi_i\}_{i=1}^p` and
+:math:`\{\theta_i\}_{i=1}^q` are constants.  
+
+.. rst-class:: to-build
+
+- This is an :math:`ARMA(p,q)` process.
+
+
+
+
+Expectation of :math:`ARMA(p,q)`
+================================
+Assume :math:`Y_t` is weakly stationary. 
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[Y_t] & = c + \phi_1 E[Y_{t-1}] + \ldots + \phi_p E[Y_{t-p}] \\
+   & \hspace{0.75in} + E[\varepsilon_t] + \theta_1 E[\varepsilon_{t-1}] + \ldots
+   + \theta_q E[\varepsilon_{t-q}]
+
+.. rst-class:: to-build
+
+.. math::
+
+   = c + \phi_1 E[Y_t] + \ldots + \phi_p E[Y_t] \hspace{0.8in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow E[Y_t] & = \frac{c}{1-\phi_1 - \ldots - \phi_p} =
+   \mu. \hspace{1.75in}
+
+.. rst-class:: to-build
+
+- This is the same mean as an :math:`AR(p)` process with parameters
+  :math:`c` and :math:`\{\phi_i\}_{i=1}^p`.
+
+
+
+
+Autocovariances of :math:`ARMA(p,q)`
+====================================
+Given that :math:`\mu = c/(1-\phi_1 - \ldots - \phi_p)` for weakly
+stationary :math:`Y_t`: 
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_t & = \mu(1-\phi_1 - \ldots - \phi_p) + \phi_1
+   Y_{t-1} + \ldots + \phi_p Y_{t-p} \\
+   & \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+   \varepsilon_{t-q}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow & (Y_t - \mu) = \phi_1(Y_{t-1} - \mu) +
+   \ldots + \phi_p(Y_{t-p} - \mu) \\
+   & \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+   \varepsilon_{t-q}.
+
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_j = E\left[(Y_t - \mu) (Y_{t-j} - \mu)\right] \hspace{2.7in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \phi_1 E\left[(Y_{t-1} - \mu) (Y_{t-j} - \mu)\right] + \ldots \\
+   & \hspace{0.5in} + \phi_p E\left[(Y_{t-p} - \mu) (Y_{t-j} -
+   \mu)\right] \\
+   & \hspace{1in} + E\left[\varepsilon_t (Y_{t-j} - \mu)\right] +
+   \theta_1 E\left[\varepsilon_{t-1} (Y_{t-j} - \mu)\right] \\
+   & \hspace{2.25in} + \ldots +
+   \theta_q E\left[\varepsilon_{t-q} (Y_{t-j} - \mu)\right]
+
+
+
+
+Autocovariances of :math:`ARMA(p,q)`
+====================================
+- For :math:`j > q`, :math:`\gamma_j` will follow the same law of
+  motion as for an :math:`AR(p)` process:
+  
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_j & = \phi_1 \gamma_{j-1} + \ldots + \phi_p \gamma_{j-p}
+   \,\,\,\,\, \text{ for } j = q+1, \ldots
+
+.. rst-class:: to-build
+
+- These values will not be the same as the :math:`AR(p)` values for
+  :math:`j = q+1, \ldots`, since the initial :math:`\gamma_0, \ldots,
+  \gamma_q` will differ.
+
+.. rst-class:: to-build
+
+- The first :math:`q` autocovariances, :math:`\gamma_0, \ldots,
+  \gamma_q`, of an :math:`ARMA(p,q)` will be more complicated than
+  those of an :math:`AR(p)`.
+
+
+
+
+Estimating :math:`ARMA` Models
+==============================
+Estimation of an :math:`ARMA` model is done via maximum
+likelihood.  
+
+.. rst-class:: to-build
+
+- For an :math:`ARMA(p,q)` model, one would first specify a joint
+  likelihood for the parameters :math:`\{\phi_1, \ldots, \phi_p,
+  \theta_1, \ldots, \theta_q, \mu, \sigma^2\}`.
+
+.. rst-class:: to-build
+
+- Taking derivatives of the log likelihood with respect to each of the
+  parameters would result in a system of equations that could be
+  solved for the MLEs: :math:`\{\hat{\phi}_1, \ldots, \hat{\phi}_p,
+  \hat{\theta}_1, \ldots, \hat{\theta}_q, \hat{\mu},
+  \hat{\sigma}^2\}`.
+
+.. rst-class:: to-build
+
+- The exact likelihood is cumbersome and maximization requires
+  specialize numerical methods.
+
+.. rst-class:: to-build
+
+- The MLEs can be obtained with the :math:`\mathtt{arima}` function in
+  :math:`\mathtt{R}`.
+
+
+
+
+Which :math:`ARMA`?
+===================
+How do we know if an :math:`ARMA` model is appropriate and which
+:math:`ARMA` model to fit?
+
+.. rst-class:: to-build
+
+- After fitting an :math:`ARMA` model, we can examine the residuals.
+
+.. rst-class:: to-build
+
+- The :math:`\mathtt{acf}` function in :math:`\mathtt{R}` can be used
+  to compute empirical autocorrelations of the residuals.
+
+.. rst-class:: to-build
+
+- If the residuals are autocorrelated, the model is not a good
+  fit. Consider changing the parameters :math:`p` and :math:`q` of the
+  :math:`ARMA` or using another model.
+
+
+
+
+Which :math:`ARMA`?
+===================
+The :math:`\mathtt{auto.arima}` function in :math:`\mathtt{R}`
+estimates a range of :math:`ARMA(p,q)` models and selects the one with
+the best fit.  
+
+.. rst-class:: to-build
+
+- :math:`\mathtt{auto.arima}` uses the *Akaike Information Criterion*
+  (AIC) or the *Bayesian Information Criterion* (BIC) to select the
+  model.
+
+.. rst-class:: to-build
+
+- Minimizing AIC and BIC amounts to minimizing the sum of squared
+  residuals, with a penalty term that is related to the number of
+  model parameters.
+

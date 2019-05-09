@@ -1,0 +1,685 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Bond Prices and Yields &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="up" title="Bonds" href="bonds.html" />
+    <link rel="next" title="The Term Structure of Interest Rates" href="termStructure.html" />
+    <link rel="prev" title="Bonds" href="bonds.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="bond-prices-and-yields">
+<h1>Bond Prices and Yields</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="bond-basics">
+<h2>Bond Basics</h2>
+<p>A bond is a financial asset used to facilitate borrowing and lending.</p>
+<ul class="to-build simple">
+<li>A borrower has an obligation to make pre-specified payments to the
+lender on specific dates.</li>
+</ul>
+<ul class="to-build">
+<li><p class="first">Bonds are generally referred to as fixed-income securities.</p>
+<ul class="to-build simple">
+<li>Historically, their payments have been  fixed.</li>
+</ul>
+<ul class="to-build simple">
+<li>In general, they can have variable payments, but those payments
+are determined by a formula.</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>At the end of the bond's maturity, the borrower pays the <em>face
+value</em>, or <em>par value</em> of the bond to the lender.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="coupons">
+<h2>Coupons</h2>
+<p>Typical coupon bonds require the borrower to make semiannual coupon
+payments to the lender.</p>
+<ul class="to-build simple">
+<li>The coupon rate is the total annual amount paid in coupons divided
+by the face value.</li>
+</ul>
+<ul class="to-build simple">
+<li>Zero-coupon bonds pay no coupons - they simply pay the face value at
+maturity.</li>
+</ul>
+<ul class="to-build simple">
+<li>The only way for such assets to be marketable is for their sale
+value to be below the face value.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="bond-example">
+<h2>Bond Example</h2>
+<p>Suppose a semiannual coupon bond has a face value of $1000 and a
+coupon rate of 8%.</p>
+<ul class="to-build simple">
+<li>The total amount of coupons paid annually is</li>
+</ul>
+<div class="to-build math">
+\[0.08*\$1000 = \$80.\]</div>
+<ul class="to-build simple">
+<li>Since coupons are paid semiannually, this amount is divided by two.</li>
+</ul>
+<ul class="to-build simple">
+<li>So a $40 coupon is paid every six months and $1000 is paid at
+maturity.</li>
+</ul>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="government-bonds">
+<h2>Government Bonds</h2>
+<p>U.S. Government debt assets fall into three categories.</p>
+<ul class="to-build simple">
+<li>Treasury bills (T-bills). These pay no coupons and mature in one
+year or less from the time of issue.</li>
+</ul>
+<ul class="to-build simple">
+<li>Treasury notes. These typically pay semiannual coupons and mature in
+2 to 10 years from the time of issue (typical maturities are 2, 5
+and 10 years).</li>
+</ul>
+<ul class="to-build simple">
+<li>Treasury bonds. These typically pay semiannual coupons and mature
+between 10 to 30 years from the time of issue.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Government Bonds</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1001_lg.jpg"><img alt="_images/bod34698_1001_lg.jpg" class="align-center" src="_images/bod34698_1001_lg.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="corporate-bonds">
+<h2>Corporate Bonds</h2>
+<p>U.S. corporations also issue bonds in order to borrow money. These
+debt instruments are generally quite similar to their government
+counterparts.</p>
+<div class="math">
+\[\qquad\]</div>
+<a class="reference internal image-reference" href="_images/bod34698_1002_lg.jpg"><img alt="_images/bod34698_1002_lg.jpg" class="align-center" src="_images/bod34698_1002_lg.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="treasury-inflation-protected-securities">
+<h2>Treasury Inflation Protected Securities</h2>
+<p>Typical bonds offer nominal returns that don't account for inflation.</p>
+<ul class="to-build simple">
+<li>TIPS are bonds whose face values (and hence their coupons) are
+indexed to the general level of prices.</li>
+</ul>
+<ul class="to-build simple">
+<li>If inflation is equal to 2% over the course of a year, the face
+value of the bond will also rise by 2%.</li>
+</ul>
+<ul class="to-build simple">
+<li>The result is a bond with no inflation risk and which should offer a
+rate of return that is equal to the real, risk-free rate.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="tips-example">
+<h2>TIPS Example</h2>
+<p>Consider the following bond.</p>
+<ul class="to-build simple">
+<li>Face value = $1000.</li>
+</ul>
+<ul class="to-build simple">
+<li>Coupon rate = 4%.</li>
+</ul>
+<ul class="to-build simple">
+<li>Annual coupon, with three years to maturity.</li>
+</ul>
+<ul class="to-build simple">
+<li>Inflation will be 2%, 3% and 1% for the next three years.</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>TIPS Example</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/table10_1_lg.jpg"><img alt="_images/table10_1_lg.jpg" class="align-center" src="_images/table10_1_lg.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>TIPS Example</h2>
+<p>We can compute the nominal and real rates of return.</p>
+<div class="to-build math">
+\[\begin{split}r_{nom} &amp; = \frac{\text{Interest} + \text{Price
+Appreciation}}{\text{Initial Price}}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \frac{40.80 + 20}{1000} \qquad \qquad \enspace \;\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = 0.0608 \qquad \qquad \quad \quad \; \,\end{split}\]</div>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>TIPS Example</h2>
+<div class="math">
+\[\begin{split}r_{real} &amp; = \frac{1+\text{Nominal Return}}{1+\text{Inflation}} - 1\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \frac{1.0608}{1.02} - 1 \qquad \quad \:\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = 0.04. \qquad \qquad \quad \enspace\end{split}\]</div>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>TIPS Example</h2>
+<p>The real rate of return is simply equal to the coupon rate.</p>
+<ul class="to-build simple">
+<li>Inflation has been eliminated since the bond's face value has
+implicitly incorporated it into the value by tying its face value to
+increases in prices.</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="strips">
+<h2>STRIPS</h2>
+<p>STRIPS stands for &quot;Separate Trading of Registered Interest and
+Principle of Securities&quot;.</p>
+<ul class="to-build simple">
+<li>It is a U.S. Treasury program which identifies bond payments as a
+separate securities.</li>
+</ul>
+<ul class="to-build">
+<li><p class="first">A coupon paying bond can be &quot;stripped&quot; into multiple assets - each
+coupon and the face value being marketed as individual zero-coupon
+bonds.</p>
+<ul class="to-build simple">
+<li>A 10 year, semiannual bond is comprised of 20 coupon payments and
+a final payment of the face value.</li>
+</ul>
+<ul class="to-build simple">
+<li>It could be stripped into 21 separate, zero-coupon assets with
+varying maturities.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="discounting-cash-flows">
+<h2>Discounting Cash Flows</h2>
+<p>A bond's value should be equal to the net present value of its cash flows.</p>
+<ul class="to-build simple">
+<li>Each payment should be discounted by the product of interest rates
+over the period of interest.</li>
+</ul>
+<ul class="to-build simple">
+<li>For a coupon payment in four years</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}PV &amp; = \frac{C}{(1+r_1)(1+r_2)(1+r_3)(1+r_4)}.\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(r_i\)</span> is the interest rate over year <span class="math">\(i\)</span>.</li>
+</ul>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Discounting Cash Flows</h2>
+<p>Assuming the interest rate is constant over all periods (<span class="math">\(r_i =
+r, \forall i\)</span>)</p>
+<div class="to-build math">
+\[\begin{split}PV &amp; = \frac{C}{(1+r)^4}.\end{split}\]</div>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="geometric-series">
+<h2>Geometric Series</h2>
+<p>The following mathematical result will be useful for deriving the
+value of a bond:</p>
+<ul class="to-build simple">
+<li>For <span class="math">\(|x| &lt; 1\)</span>,</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\sum_{i=0}^{\infty} a \, x^i &amp; = \frac{a}{1-x}.\end{split}\]</div>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="bond-pricing">
+<h2>Bond Pricing</h2>
+<p>Let <span class="math">\(F\)</span> = Face Value, <span class="math">\(C\)</span> = Coupon Payment and <span class="math">\(V\)</span> =
+Bond Value.</p>
+<ul class="to-build simple">
+<li>Then,</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}V &amp; = \frac{C}{1+r} + \frac{C}{(1+r)^2} + \frac{C}{(1+r)^3} +
+\ldots + \frac{C}{(1+r)^T} + \frac{F}{(1+r)^T}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \sum_{i=1}^T \frac{C}{(1+r)^i} + \frac{F}{(1+r)^T} \qquad
+\qquad \qquad \qquad \qquad \quad \enspace \,\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \sum_{i=1}^{\infty} \frac{C}{(1+r)^i} - \sum_{i=T+1}^{\infty}
+\frac{C}{(1+r)^i} + \frac{F}{(1+r)^T} \qquad \qquad \quad \enspace\end{split}\]</div>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Bond Pricing</h2>
+<div class="math">
+\[\begin{split}&amp; = \sum_{i=1}^{\infty} \frac{C}{(1+r)^i} - \frac{1}{(1+r)^T}
+\sum_{i=1}^{\infty} \frac{C}{(1+r)^i} + \frac{F}{(1+r)^T} \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\hspace{0.25in} &amp; = \left(\sum_{i=1}^{\infty}
+\frac{C}{(1+r)^i}\right) \left(1 - \frac{1}{(1+r)^T}\right) +
+\frac{F}{(1+r)^T} \qquad \qquad \,\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \frac{C}{1+r} \left(\sum_{i=0}^{\infty}
+\frac{1}{(1+r)^i}\right) \left(1 - \frac{1}{(1+r)^T}\right) +
+\frac{F}{(1+r)^T} \, \,\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \frac{C}{1+r} \left(\frac{1}{1-\frac{1}{1+r}}\right) \left(1 -
+\frac{1}{(1+r)^T}\right) + \frac{F}{(1+r)^T} \qquad \,\end{split}\]</div>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Bond Pricing</h2>
+<div class="math">
+\[\begin{split}&amp; = \frac{C}{1+r} \left(\frac{1}{\frac{1+r-1}{1+r}}\right)
+\left(1 - \frac{1}{(1+r)^T}\right) + \frac{F}{(1+r)^T} \; \;\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\hspace{0.25in} &amp; = \frac{C}{1+r} \frac{1+r}{r} \left(1 -
+\frac{1}{(1+r)^T}\right) + \frac{F}{(1+r)^T} \qquad \;\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \frac{C}{r} \left(1 - \frac{1}{(1+r)^T}\right) +
+\frac{F}{(1+r)^T}. \qquad \qquad\end{split}\]</div>
+<p class="to-build">We made use of the geometric series result,
+recognizing <span class="math">\(0 &lt; x = \frac{1}{1+r} &lt; 1\)</span>.</p>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="bond-value-formula">
+<h2>Bond Value Formula</h2>
+<p>The bond price formula can be decomposed as</p>
+<div class="to-build math" id="equation-bondprice">
+<span class="eqno">(1)</span>\[\begin{split}V &amp; = \frac{C}{r} \left(1 - \frac{1}{(1+r)^T}\right) +
+\frac{F}{(1+r)^T} \qquad \qquad \quad \enspace\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = C \times \underbrace{\left[\frac{1}{r} \left(1 -
+\frac{1}{(1+r)^T}\right)\right]}_{\text{Annuity factor}(r,T)} + F
+\times \underbrace{\left[\frac{1}{(1+r)^T}\right]}_{\text{PV
+factor}(r,T)}.\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(\text{Annuity factor}(r,T)\)</span> is the present value of a $1
+annuity that lasts for <span class="math">\(T\)</span> periods with interest rate
+<span class="math">\(r\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\text{PV factor}(r,T)\)</span> is the present value of $1 paid in
+<span class="math">\(T\)</span> periods.</li>
+</ul>
+
+<div class="slide-no">21</div>
+
+</article>
+<article class="appear slide level-2" id="value-vs-price">
+<h2>Value vs. Price</h2>
+<p>So far we have only computed the <em>present value</em> of the bond.</p>
+<ul class="to-build simple">
+<li>What is its price?</li>
+</ul>
+<ul class="to-build simple">
+<li>The bond price should be equal to the present value of payments.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the price was lower, you could buy the bond for <span class="math">\(P &lt; V\)</span> and
+receive the promised cash flow: your net gain would be <span class="math">\(V -
+P\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the price was higher, you could short the bond for <span class="math">\(P &gt; V\)</span>
+and pay the promised cash flow: your net gain would be <span class="math">\(P -
+V\)</span>.</li>
+</ul>
+
+<div class="slide-no">22</div>
+
+</article>
+<article class="appear slide level-2" id="bond-pricing-example">
+<h2>Bond Pricing Example</h2>
+<p>Consider a bond with the following characteristics.</p>
+<ul class="to-build simple">
+<li><span class="math">\(F = \$1000\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>30 years to maturity.</li>
+</ul>
+<ul class="to-build simple">
+<li>8% coupon rate.</li>
+</ul>
+<ul class="to-build simple">
+<li>Semiannual coupons.</li>
+</ul>
+<p class="to-build">Suppose the nominal interest rate is constant at 8% for the next 30
+years.  Note that</p>
+<ul class="to-build simple">
+<li>The coupon payment is $40 every six months.</li>
+</ul>
+<ul class="to-build simple">
+<li>There are 60, six-month time periods.</li>
+</ul>
+
+<div class="slide-no">23</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Bond Pricing Example</h2>
+<p>The bond price is</p>
+<div class="to-build math">
+\[\begin{split}P &amp; = \frac{\$40}{0.04}\left(1 - \frac{1}{1.04^{60}}\right) +
+\frac{\$1000}{1.04^{60}} = \$1000.\end{split}\]</div>
+<ul class="to-build simple">
+<li>If the annual interest rate equals the coupon rate, <span class="math">\(P = F\)</span>.</li>
+</ul>
+<p class="to-build">If <span class="math">\(r = 0.10\)</span>, then</p>
+<div class="to-build math">
+\[\begin{split}P &amp; = \frac{\$40}{0.05}\left(1 - \frac{1}{1.05^{60}}\right) +
+\frac{\$1000}{1.05^{60}} = \$810.71.\end{split}\]</div>
+
+<div class="slide-no">24</div>
+
+</article>
+<article class="appear slide level-2" id="prices-and-yields">
+<h2>Prices and Yields</h2>
+<p>The return for holding a bond is typically referred to as a <em>yield</em>.</p>
+<ul class="to-build simple">
+<li>A central feature of bonds is that prices and yields are negatively
+related.</li>
+</ul>
+<ul class="to-build simple">
+<li>Since a bond promises a fixed payment at maturity, you want to
+purchase for a very low price.</li>
+</ul>
+
+<div class="slide-no">25</div>
+
+</article>
+<article class="appear slide level-2" id="id10">
+<h2>Prices and Yields</h2>
+<p>Think of a zero-coupon bond that costs <span class="math">\(P\)</span> and pays <span class="math">\(F\)</span> at
+maturity.</p>
+<ul class="to-build simple">
+<li>The yield, <span class="math">\(y\)</span>, is the value such that <span class="math">\(P \times (1+y) = F\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}y &amp; = \frac{F}{P} - 1.\end{split}\]</div>
+<ul class="to-build simple">
+<li>Note that <span class="math">\(y\)</span> is a net return (not gross).</li>
+</ul>
+<ul class="to-build simple">
+<li>Since the bond price is in the denominator, <span class="math">\(y\)</span> and <span class="math">\(P\)</span>
+have an inverse relationship: higher prices mean lower yields.</li>
+</ul>
+<ul class="to-build simple">
+<li>This relationship holds for coupon bonds as well (as seen in the
+bond pricing formula in Equation <a href="#equation-bondprice">(1)</a>).</li>
+</ul>
+
+<div class="slide-no">26</div>
+
+</article>
+<article class="appear slide level-2" id="id11">
+<h2>Prices and Yields</h2>
+<p>Consider a zero-coupon bond with a face value of $1000 and one period
+until maturity.</p>
+<ul class="to-build simple">
+<li>If <span class="math">\(P = \$990\)</span>, the yield is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}y &amp; = \frac{\$1000}{\$990} - 1 = 0.01010.\end{split}\]</div>
+<ul class="to-build simple">
+<li>If <span class="math">\(P = \$995\)</span>, the yield is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}y &amp; = \frac{\$1000}{\$995} - 1 = 0.005025.\end{split}\]</div>
+
+<div class="slide-no">27</div>
+
+</article>
+<article class="appear slide level-2" id="coupon-rate-and-yield">
+<h2>Coupon Rate and Yield</h2>
+<p>We saw above that if the market interest rate <span class="math">\(r\)</span> is equal to
+the coupon rate, <span class="math">\(P = F\)</span>.</p>
+<ul class="to-build simple">
+<li>Consider two competing investments: put your money in a savings
+account that pays <span class="math">\(r\)</span> each period, or buy a bond.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the coupon rate is exactly equal to <span class="math">\(r\)</span>, then the bond
+exactly compensates you for market return and does not need to
+provide price appreciation.</li>
+</ul>
+
+<div class="slide-no">28</div>
+
+</article>
+<article class="appear slide level-2" id="id12">
+<h2>Coupon Rate and Yield</h2>
+<ul class="simple">
+<li>If the coupon rate is less than <span class="math">\(r\)</span>, the bond does not
+compensate you enough - to be competitive, it must sell at a
+discount (less than the face value).</li>
+</ul>
+<ul class="to-build simple">
+<li>If the coupon rate is greater than <span class="math">\(r\)</span>, the bond
+overcompensates you - to be competitive, it can sell at a premium
+(more than the face value).</li>
+</ul>
+
+<div class="slide-no">29</div>
+
+</article>
+<article class="appear slide level-2" id="id13">
+<h2>Coupon Rate and Yield</h2>
+<p>Why would a borrower sell a bond at a discount when <span class="math">\(r\)</span> is
+greater than the coupon rate?</p>
+<ul class="to-build simple">
+<li>Because nobody would buy the bond unless the price formula holds.</li>
+</ul>
+
+<div class="slide-no">30</div>
+
+</article>
+<article class="appear slide level-2" id="id14">
+<h2>Coupon Rate and Yield</h2>
+<p>Later, the bond price will fluctuate on the secondary market.</p>
+<ul class="to-build simple">
+<li>If the market rate rises, investors will sell the bond (because of
+its low coupon).<ul class="to-build">
+<li>The price will fall until the overall return is commensurate with
+the market return.</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>If the market rate falls, investors will buy the bond
+(because of its high coupon).<ul class="to-build">
+<li>The price will rise until the overall return is commensurate with
+the market return.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">31</div>
+
+</article>
+<article class="appear slide level-2" id="interest-rate-risk">
+<h2>Interest Rate Risk</h2>
+<p>Unfortunately, interest rates don't remain constant.</p>
+<ul class="to-build simple">
+<li>Suppose you purchase a bond for the face value when the coupon rate
+and market interest rates are equal.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the market rate suddenly rises, you will have your money tied up
+in an investment paying a rate that is too low (opportunity cost).</li>
+</ul>
+<ul class="to-build simple">
+<li>If you sell the bond on the secondary market, the price will be
+lower than the face (your purchase price) because <span class="math">\(r\)</span> is
+greater than the coupon rate.</li>
+</ul>
+
+<div class="slide-no">32</div>
+
+</article>
+<article class="appear slide level-2" id="id15">
+<h2>Interest Rate Risk</h2>
+<p>The opposite would be true if the market rate falls.</p>
+<ul class="to-build simple">
+<li>As a result, bond holders are subject to interest rate fluctuations,
+or interest rate risk.</li>
+</ul>
+
+<div class="slide-no">33</div>
+
+</article>
+<article class="appear slide level-2" id="maturity-risk">
+<h2>Maturity Risk</h2>
+<p>Interest rate risk is exacerbated over longer maturities.</p>
+<ul class="to-build simple">
+<li>Suppose the market interest rate moves after you purchase two bonds
+with 10 and 30 years to maturity.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the market rate rises you will suffer a greater loss on the 30
+year bond since your money is tied to it for a longer period.</li>
+</ul>
+<ul class="to-build simple">
+<li>As a result, prices of longer maturity bonds are more sensitive to
+interest rate movements.</li>
+</ul>
+
+<div class="slide-no">34</div>
+
+</article>
+<article class="appear slide level-2" id="id16">
+<h2>Maturity Risk</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/table10_2_lg.jpg"><img alt="_images/table10_2_lg.jpg" class="align-center" src="_images/table10_2_lg.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">35</div>
+
+</article>
+<article class="appear slide level-2" id="bond-prices-over-time">
+<h2>Bond Prices Over Time</h2>
+<p>As a bond approaches maturity, its price will approach the face
+value.</p>
+<ul class="to-build simple">
+<li>Fewer payments are subject to interest rate fluctuations.</li>
+</ul>
+<ul class="to-build simple">
+<li>This is true whether the bond sells at a premium or discount.</li>
+</ul>
+
+<div class="slide-no">36</div>
+
+</article>
+<article class="appear slide level-2" id="id17">
+<h2>Bond Prices Over Time</h2>
+<p>Consider buying a bond the day before maturity.</p>
+<blockquote>
+<div><ul class="to-build simple">
+<li>If a coupon is paid at maturity, you only receive a prorated share
+of the coupon (one day's worth).</li>
+</ul>
+<ul class="to-build simple">
+<li>Net of the prorated coupon, you should pay only the slightest
+discount to face value.</li>
+</ul>
+<ul class="to-build simple">
+<li>The slight discount arises because you can invest your money
+overnight and earn a small amount of interest.</li>
+</ul>
+</div></blockquote>
+
+<div class="slide-no">37</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

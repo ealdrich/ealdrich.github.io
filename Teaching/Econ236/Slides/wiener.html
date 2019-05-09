@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Wiener Processes &mdash; Econ 236</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Econ 236" href="index.html" />
+    <link rel="next" title="Black-Scholes-Merton Model" href="blackScholes.html" />
+    <link rel="prev" title="Binomial Trees" href="binomialTree.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="wiener-processes">
+
+<h1>Wiener Processes</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="stochastic-processes">
+
+<h2>Stochastic Processes</h2>
+
+<p>A stochastic process is a collection of random variables, indexed by time.</p>
+<ul class="simple">
+<li>More simply, it can be thought of as a single random variable that
+evolves dynamically with time.</li>
+</ul>
+<ul class="simple">
+<li>Stochastic processes can be discrete/continuous time: either they
+evolve discretely or continuously.</li>
+</ul>
+<ul class="simple">
+<li>They can be discrete/continuous value: at each time, they are drawn
+from either a discrete or continuous probability distribution.</li>
+</ul>
+<ul class="simple">
+<li>We will develop a continuous time/continuous value model for asset
+prices.<ul>
+<li>Note that we only observe discrete value and discrete time
+observations for actual asset prices.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="properties-of-expected-value">
+
+<h2>Properties of Expected Value</h2>
+
+<p>Given random variables <span class="math notranslate nohighlight">\(\smash{X}\)</span> and <span class="math notranslate nohighlight">\(\smash{Y}\)</span>, define
+a new random variable <span class="math notranslate nohighlight">\(\smash{Z = X + Y}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E[Z] &amp; = E\left[X + Y \right] = E[X] + E[Y].
+\end{align}\]</div>
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{E[X] = E[Y] = \mu}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E[Z] &amp; = E[X] + E[Y] = 2 \mu.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id1">
+
+<h2>Properties of Expected Value</h2>
+
+<p>Extending the prior result, given random variables
+<span class="math notranslate nohighlight">\(\smash{\left\{X_i\right\}_{i=1}^n}\)</span>, define a new random
+variable <span class="math notranslate nohighlight">\(\smash{Z = \sum_{i=1}^n X_i}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E[Z] &amp; = E\left[\sum_{i=1}^n X_i \right] = \sum_{i=1}^n E[X_i].
+\end{align}\]</div>
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{E[X_i] = \mu, \,\, i=1,\ldots,n}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+E[Z] &amp; = \sum_{i=1}^n E[X_i] = \sum_{i=1}^n \mu = n \mu.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="properties-of-variance">
+
+<h2>Properties of Variance</h2>
+
+<p>Given random variables <span class="math notranslate nohighlight">\(\smash{X}\)</span> and <span class="math notranslate nohighlight">\(\smash{Y}\)</span>, define
+a new random variable <span class="math notranslate nohighlight">\(\smash{Z = X + Y}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Var(Z) &amp; = Var\left(X + Y \right) = Var(X) + Var(Y) + 2 Cov(X,Y).
+\end{align}\]</div>
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{Var(X) = Var(Y) = \sigma^2}\)</span> and that they are
+independent <span class="math notranslate nohighlight">\(\smash{(Cov(X,Y)=0)}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+Var(Z) &amp; = Var(X) + Var(Y) = 2 \sigma^2 \\
+\Rightarrow Sd(Z) &amp; = \sqrt{Var(Z)} = \sqrt{2} \sigma.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id2">
+
+<h2>Properties of Variance</h2>
+
+<p>Extending the prior result, given random variables
+<span class="math notranslate nohighlight">\(\smash{\left\{X_i\right\}_{i=1}^n}\)</span>, define a new random
+variable <span class="math notranslate nohighlight">\(\smash{Z = \sum_{i=1}^n X_i}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Var(Z) &amp; = Var\left(\sum_{i=1}^n X_i \right) = \sum_{i=1}^n
+Var(X_i) + 2 \sum_{i=1}^{n-1} \sum_{j=i+1}^n Cov(X_i,X_j).
+\end{align}\]</div>
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{Var(X_i) = \sigma^2, \,\, i=1,\ldots,n}\)</span> and that
+each random variable is independent of the others
+<span class="math notranslate nohighlight">\(\smash{(Cov(X_i,X_j)=0, \,\, i \neq j)}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+Var(Z) &amp; = \sum_{i=1}^n Var(X_i) = \sum_{i=1}^n \sigma^2 = n
+\sigma^2 \\
+\Rightarrow Sd(Z) &amp; = \sqrt{Var(Z)} = \sqrt{n} \sigma.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="normal-random-variables">
+
+<h2>Normal Random Variables</h2>
+
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{X_i \sim N(\mu,\sigma), \,\, i=1,\ldots, n}\)</span>.</p>
+<ul class="simple">
+<li>Define a new random variable <span class="math notranslate nohighlight">\(\smash{Z = \sum_{i=1}^n
+X_i}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We already know <span class="math notranslate nohighlight">\(\smash{E[Z] = n\mu}\)</span> and <span class="math notranslate nohighlight">\(\smash{Sd(Z)
+= \sqrt{n} \sigma}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>However, the sum of Normals is also Normal: <span class="math notranslate nohighlight">\(\smash{Z \sim
+N\left(n\mu, \sqrt{n} \sigma\right)}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="additive-normal-example">
+
+<h2>Additive Normal Example</h2>
+
+<p>Suppose the monthly return on an asset is Normally distributed for
+each month over the next year.</p>
+<ul>
+<li><p class="first">We will assume the expected value is 1% and standard deviation is
+5% and that returns across months are independent:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+R_i \stackrel{i.i.d.}{\sim} N(0.01,0.05), \,\,\,\, i =
+1,\ldots, 12.
+\end{align}\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li>The annual return is the sum of monthly returns: <span class="math notranslate nohighlight">\(\smash{R_a =
+\sum_{i=1}^{12} R_i}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The distribution of the annual return is <span class="math notranslate nohighlight">\(\smash{R_a \sim
+N(0.12,0.1732)}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id3">
+
+<h2>Additive Normal Example</h2>
+
+<p>Note that we can also work backwards.</p>
+<ul class="simple">
+<li>Suppose you know that the annual expected return is
+<span class="math notranslate nohighlight">\(\smash{\mu_a = 0.12}\)</span>, the annual standard deviation is
+<span class="math notranslate nohighlight">\(\smash{\sigma_a = 0.1732}\)</span> and that monthly returns are
+independent.</li>
+</ul>
+<ul>
+<li><p class="first">The monthly expected return and standard deviation are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\mu_m &amp; = \frac{\mu_a}{n} = \frac{0.12}{12} = 0.01 \\
+\sigma_m &amp; = \frac{\sigma_a}{\sqrt{n}} = \frac{0.1732}{\sqrt{12}}
+= 0.05.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="wiener-process">
+
+<h2>Wiener Process</h2>
+
+<p>A random variable <span class="math notranslate nohighlight">\(\smash{Z(t)}\)</span> follows a Wiener process if:</p>
+<ul>
+<li><p class="first">During a short time interval <span class="math notranslate nohighlight">\(\smash{\Delta t}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta Z(t) &amp; = Z(t) - Z(t-\Delta t) = \varepsilon \sqrt{\Delta
+t}, \,\,\, \varepsilon \sim N(0,1).
+\end{align}\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li>The values of <span class="math notranslate nohighlight">\(\smash{\Delta Z(t)}\)</span> for any two short
+intervals <span class="math notranslate nohighlight">\(\smash{\Delta t}\)</span>  are independent.</li>
+</ul>
+<ul class="simple">
+<li>As <span class="math notranslate nohighlight">\(\smash{\Delta t \to 0}\)</span>, we use the notation
+<span class="math notranslate nohighlight">\(\smash{dZ = \varepsilon \sqrt{dt}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="moments-of-the-wiener-process">
+
+<h2>Moments of the Wiener Process</h2>
+
+<p>What are the first two moments of <span class="math notranslate nohighlight">\(\smash{\Delta Z(t)}\)</span>?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E\left[\Delta Z(t)\right] &amp; = E\left[\varepsilon \sqrt{\Delta
+t}\right] = \sqrt{\Delta t} E\left[\varepsilon\right]
+= 0 \\
+Var\left(\Delta Z(t)\right) &amp; = Var\left(\varepsilon \sqrt{\Delta
+t}\right) = \Delta t Var\left(\varepsilon\right) = \Delta t \\
+Sd\left(\Delta Z(t)\right) &amp; = Sd\left(\varepsilon \sqrt{\Delta t}
+\right) = \sqrt{\Delta t} Sd\left(\varepsilon\right) = \sqrt{\Delta
+t}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="wiener-process-over-long-horizon">
+
+<h2>Wiener Process Over Long Horizon</h2>
+
+<p>Consider the evolution of <span class="math notranslate nohighlight">\(\smash{Z(t)}\)</span> over a longer horizon
+<span class="math notranslate nohighlight">\(\smash{T}\)</span>.</p>
+<ul class="simple">
+<li>Divide the time interval <span class="math notranslate nohighlight">\(\smash{(0,T)}\)</span> into
+<span class="math notranslate nohighlight">\(\smash{N}\)</span> small intervals of equal length
+<span class="math notranslate nohighlight">\(\smash{\Delta t}\)</span>.</li>
+</ul>
+<ul>
+<li><p class="first">Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Z(T) - Z(0) &amp; = \sum_{i=1}^N \varepsilon_i \sqrt{\Delta t},
+\,\,\, \varepsilon_i \stackrel{i.i.d.}{\sim} N(0,1).
+\end{align}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id4">
+
+<h2>Wiener Process Over Long Horizon</h2>
+
+<ul>
+<li><p class="first">The resulting moments are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E\left[Z(T) - Z(0)\right] &amp; = \sum_{i=1}^N \sqrt{\Delta t}
+E[\varepsilon_i] = 0 \\
+Var\left(Z(T) - Z(0)\right) &amp; = \sum_{i=1}^N \Delta t
+Var(\varepsilon_i) = T \\
+Sd\left(Z(T) - Z(0)\right) &amp; = \sum_{i=1}^N \sqrt{\Delta t}
+Sd(\varepsilon_i) = \sqrt{T}.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="wiener-process-sample-paths">
+
+<h2>Wiener Process Sample Paths</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/samplePathsSmall.png"><img alt="_images/samplePathsSmall.png" class="align-center" src="_images/samplePathsSmall.png" style="width: 4in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="generalized-wiener-process">
+
+<h2>Generalized Wiener Process</h2>
+
+<p>Consider the <em>generalized Wiener process</em>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+dX &amp; = a dt + b dZ.
+\end{align}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{a}\)</span> is the <em>drift rate</em> and <span class="math notranslate nohighlight">\(\smash{b^2}\)</span> is the
+<em>variance rate</em>.</li>
+</ul>
+<ul class="simple">
+<li>The basic Wiener process has drift rate zero and unit variance
+rate.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id5">
+
+<h2>Generalized Wiener Process</h2>
+
+<p>In discrete time, the generalize Wiener process is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta X &amp; = a \Delta t + b \varepsilon \sqrt{\Delta t}.
+\end{align}\]</div>
+<p>The moments are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E[\Delta X] &amp; = a \Delta t \\
+Var(\Delta X) &amp; = b^2 \Delta t \\
+Sd(\Delta X) &amp; = b \sqrt{\Delta t}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="wiener-process-comparison">
+
+<h2>Wiener Process Comparison</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/processComparison.png"><img alt="_images/processComparison.png" class="align-center" src="_images/processComparison.png" style="width: 8in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="ito-process">
+
+<h2>Ito Process</h2>
+
+<p>An <em>Ito process</em> is a generalization of a generalized Wiener process:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+dX &amp; = a(X,t) dt + b(X,t) dZ.
+\end{align}\]</div>
+<ul class="simple">
+<li>The drift rate and variance rate are functions of the process value
+and time - i.e. they are variable.</li>
+</ul>
+<p>In discrete time:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta X &amp; = a(X,t) \Delta t + b(X,t) \varepsilon \sqrt{\Delta t}.
+\end{align}\]</div>
+<ul class="simple">
+<li>The discrete time analog requires an approximation: the drift and
+variance rate are constant over small intervals <span class="math notranslate nohighlight">\(\smash{\Delta
+t}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="model-for-asset-prices">
+
+<h2>Model for Asset Prices</h2>
+
+<p>We will use an Ito process as a model for asset prices.</p>
+<ul class="simple">
+<li>We think of percentage returns as being constant for a particular
+asset.</li>
+</ul>
+<ul class="simple">
+<li>This means that the size of the moves (the drift) changes with the
+level of the price.</li>
+</ul>
+<ul class="simple">
+<li>Variance also typically changes with the level of asset prices.</li>
+</ul>
+<ul class="simple">
+<li>This means an Ito process is a better model than a generalized
+Wiener process.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id6">
+
+<h2>Model for Asset Prices</h2>
+
+<p>We will employ the following Ito process:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+dS &amp; = \mu S dt + \sigma S dZ.
+\end{align}\]</div>
+<ul class="simple">
+<li>The drift rate function takes the specific form:
+<span class="math notranslate nohighlight">\(\smash{a(S,t) = \mu S}\)</span>.<ul>
+<li>The drift rate increases proportionally with the asset price
+and does not depend on time.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>The variance rate function takes the specific form:
+<span class="math notranslate nohighlight">\(\smash{b^2(S,t) = \sigma^2 S^2}\)</span>.<ul>
+<li>The volatility, <span class="math notranslate nohighlight">\(\smash{b(S,t) = \sigma S}\)</span>, increases
+proportionally with the asset price and does not depend on time.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>This form of an Ito process is known as <em>geometric Brownian
+motion</em>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="geometric-brownian-motion">
+
+<h2>Geometric Brownian Motion</h2>
+
+<p>Geometric Brownian motion can also be written as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{dS}{S} &amp; = \mu dt + \sigma dZ.
+\end{align}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\frac{dS}{S}}\)</span> is effectively the return.</li>
+</ul>
+<ul class="simple">
+<li>Note that returns evolve as a generalized Wiener process (constant
+drift and variance rates).</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\mu}\)</span> and <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span> are the expected
+return and volatility of the asset.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id7">
+
+<h2>Geometric Brownian Motion</h2>
+
+<p>In discrete time, geometric Brownian motion is described as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{\Delta S}{S} &amp; = \mu \Delta t + \sigma \varepsilon
+\sqrt{\Delta t}.
+\end{align}\]</div>
+<p>This means <span class="math notranslate nohighlight">\(\smash{\frac{\Delta S}{S} \sim N(\mu \Delta t,
+\sigma \sqrt{\Delta t})}\)</span>.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="parameter-estimation">
+
+<h2>Parameter Estimation</h2>
+
+<p>We can estimate the parameters <span class="math notranslate nohighlight">\(\smash{\mu}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{\sigma}\)</span> from historical data.</p>
+<ul class="simple">
+<li>Set an interval of time, <span class="math notranslate nohighlight">\(\smash{\Delta t}\)</span> in years (days,
+weeks, months, etc).</li>
+</ul>
+<ul class="simple">
+<li>Collect <span class="math notranslate nohighlight">\(\smash{n+1}\)</span> price observations for the beginning and
+end of each interval.</li>
+</ul>
+<ul class="simple">
+<li>Compute <span class="math notranslate nohighlight">\(\smash{n}\)</span> returns for the invervals.</li>
+</ul>
+<ul class="simple">
+<li>Set <span class="math notranslate nohighlight">\(\smash{\hat{\mu}}\)</span> and <span class="math notranslate nohighlight">\(\smash{\hat{\sigma}}\)</span> to
+the sample mean and sample standard deviation of the returns.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\hat{\mu}}\)</span> is an estimate of <span class="math notranslate nohighlight">\(\smash{\mu \Delta
+t}\)</span>, <em>not</em> <span class="math notranslate nohighlight">\(\smash{\mu}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\hat{\sigma}}\)</span> is an estimate of <span class="math notranslate nohighlight">\(\smash{\sigma
+\sqrt{\Delta t}}\)</span>, <em>not</em> <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="simulating-geometric-brownian-motion">
+
+<h2>Simulating Geometric Brownian Motion</h2>
+
+<p>Let’s estimate the daily mean and standard deviation of Lockheed
+Martin (LMT) returns using data prior to January 1, 2015:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nf">getSymbols</span><span class="p">(</span><span class="s">&quot;LMT&quot;</span><span class="p">,</span><span class="n">src</span><span class="o">=</span><span class="s">&quot;yahoo&quot;</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="s">&quot;2010-01-01&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s">&quot;2014-12-31&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lmtRets</span> <span class="o">=</span> <span class="nf">dailyReturn</span><span class="p">(</span><span class="n">LMT</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">mu</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">lmtRets</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">sigma</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">lmtRets</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nf">cat</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">)</span>
+<span class="m">0.0008037858</span> <span class="m">0.01122918</span>
+</pre></div>
+</div>
+<p>We now simulate 1000 price paths of one year (250 trading days)
+starting on Jan 2, 2015:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">nSim</span> <span class="o">=</span> <span class="m">1000</span>
+<span class="o">&gt;</span> <span class="n">nDays</span> <span class="o">=</span> <span class="m">252</span>
+<span class="o">&gt;</span> <span class="n">S0</span> <span class="o">=</span> <span class="m">186.21</span> <span class="c1"># price on Jan 2, 2015</span>
+<span class="o">&gt;</span> <span class="n">S</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="n">nDays</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="n">nSim</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nf">for</span><span class="p">(</span><span class="n">ix</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">nSim</span><span class="p">){</span>
+<span class="o">+</span>    <span class="n">SVec</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">nDays</span><span class="p">)</span>
+<span class="o">+</span>    <span class="n">SVec[1]</span> <span class="o">=</span> <span class="n">S0</span>
+<span class="o">+</span>    <span class="nf">for</span><span class="p">(</span><span class="n">jx</span> <span class="n">in</span> <span class="m">2</span><span class="o">:</span><span class="n">nDays</span><span class="p">){</span>
+<span class="o">+</span>            <span class="n">DeltaS</span> <span class="o">=</span> <span class="n">mu</span><span class="o">*</span><span class="n">SVec[jx</span><span class="m">-1</span><span class="n">]</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">*</span><span class="n">SVec[jx</span><span class="m">-1</span><span class="n">]</span><span class="o">*</span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="o">+</span>            <span class="n">SVec[jx]</span> <span class="o">=</span> <span class="n">SVec[jx</span><span class="m">-1</span><span class="n">]</span><span class="o">+</span><span class="n">DeltaS</span>
+<span class="o">+</span>    <span class="p">}</span>
+<span class="o">+</span>     <span class="n">S[</span><span class="p">,</span><span class="n">ix]</span> <span class="o">=</span> <span class="n">SVec</span>
+<span class="o">+</span> <span class="p">}</span>
+<span class="o">&gt;</span> <span class="nf">matplot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0.3</span><span class="p">),</span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&#39;Simulated Price of LMT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id8">
+
+<h2>Simulating Geometric Brownian Motion</h2>
+
+<p>The closing price on Jan 4, 2016 was <span class="math notranslate nohighlight">\(\smash{\$211.61}\)</span>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/simulation.png"><img alt="_images/simulation.png" class="align-center" src="_images/simulation.png" style="width: 4in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="ito-s-lemma">
+
+<h2>Ito’s Lemma</h2>
+
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{X}\)</span> follows and Ito process:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+dX &amp; = a(X,t) dt + b(X,t) dZ.
+\end{align}\]</div>
+<p>For some function <span class="math notranslate nohighlight">\(\smash{G(X,t)}\)</span>, Ito’s lemma says:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+dG &amp; = \left(\frac{\partial G}{\partial X} a(X,t) + \frac{\partial
+G}{\partial t} + \frac{1}{2} \frac{\partial^2 G}{\partial X^2}
+b(X,t)^2 \right) dt + \frac{\partial G}{\partial X} b(X,t) dZ.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id9">
+
+<h2>Ito’s Lemma</h2>
+
+<p>Ito’s lemma says that <span class="math notranslate nohighlight">\(\smash{G(X,t)}\)</span> is an Ito process with
+drift and variance rates</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gather}
+\frac{\partial G}{\partial X} a(X,t) + \frac{\partial
+G}{\partial t} + \frac{\partial^2 G}{\partial X^2} b(X,t) \\
+\left(\frac{\partial G}{\partial X}\right)^2 b(X,t)^2.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="ito-s-lemma-for-geometric-brownian-motion">
+
+<h2>Ito’s Lemma for Geometric Brownian Motion</h2>
+
+<p>Recall our model for stock prices:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+dS &amp; = \mu S dt + \sigma S dZ.
+\end{align}\]</div>
+<p>In this case, Ito’s lemma says that <span class="math notranslate nohighlight">\(\smash{G(S,t)}\)</span> follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+dG &amp; = \left(\frac{\partial G}{\partial S} \mu S + \frac{\partial
+G}{\partial t} + \frac{1}{2} \frac{\partial^2 G}{\partial S^2}
+\sigma^2 S^2 \right) dt + \frac{\partial G}{\partial S} \sigma S
+dZ.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="application-to-forward-contracts">
+
+<h2>Application to Forward Contracts</h2>
+
+<p>Recall the formula for the value of a forward contract (given current
+time <span class="math notranslate nohighlight">\(\smash{t}\)</span> and horizon <span class="math notranslate nohighlight">\(\smash{T-t}\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+F = S e^{r(T-t)}.
+\end{align}\]</div>
+<ul class="simple">
+<li>In this case <span class="math notranslate nohighlight">\(\smash{F = G(S,t)}\)</span>.</li>
+</ul>
+<p>The derivatives are</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{\partial F}{\partial S} &amp; = e^{r(T-t)}, \,\,\,\,
+\frac{\partial^2 F}{\partial S^2}  = 0, \,\,\,\, \frac{\partial
+F}{\partial t} = -r Se^{r(T-t)}.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id10">
+
+<h2>Application to Forward Contracts</h2>
+
+<p>Following Ito’s lemma,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+dF &amp; = \left(e^{r(T-t)} \mu S - r S e^{r(T-t)} \right) dt +
+e^{r(T-t)} \sigma S dZ \\
+&amp; = (\mu - r) F dt + \sigma F dZ.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="distribution-of-prices">
+
+<h2>Distribution of Prices</h2>
+
+<p>What is the distribution of <span class="math notranslate nohighlight">\(\smash{S}\)</span> if it follows geometric
+Brownian motion?</p>
+<ul class="simple">
+<li>We know that returns, <span class="math notranslate nohighlight">\(\smash{\frac{dS}{S}}\)</span>, are Normal.</li>
+</ul>
+<p>Let’s use Ito’s lemma to derive the law of motion of
+<span class="math notranslate nohighlight">\(\smash{G(S,t) = \ln(S)}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\frac{\partial G}{\partial S} &amp; = \frac{1}{S} \,\,\,\,
+\frac{\partial^2 G}{\partial S^2} = -\frac{1}{S} \,\,\,\,
+\frac{\partial G}{\partial t} = 0 \\
+\Rightarrow dG &amp; = \left(\mu - \frac{\sigma^2}{2} \right) dt +
+\sigma dZ.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\ln(S)}\)</span> follows a generalized Wiener process with
+drift rate <span class="math notranslate nohighlight">\(\smash{\mu - \frac{\sigma^2}{2}}\)</span> and variance rate
+<span class="math notranslate nohighlight">\(\smash{\sigma^2}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id11">
+
+<h2>Distribution of Prices</h2>
+
+<p>The discrete analog to the process for <span class="math notranslate nohighlight">\(\smash{\Delta \ln(S)}\)</span>
+is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta \ln(S) &amp; = \left(\mu - \frac{\sigma^2}{2} \right) \Delta t +
+\sigma \varepsilon \sqrt{\Delta t}.
+\end{align}\]</div>
+<p>For <span class="math notranslate nohighlight">\(\smash{\Delta t = T}\)</span>, <span class="math notranslate nohighlight">\(\smash{\Delta \ln(S) =
+\ln(S_T) - \ln(S_0)}\)</span>, which results in:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\ln(S_T) - \ln(S_0) \sim N\left(\left(\mu -
+\frac{\sigma^2}{2}\right)T, \sigma \sqrt{T}\right) \\
+\Rightarrow \ln(S_T) \sim N\left(\ln(S_0) + \left(\mu -
+\frac{\sigma^2}{2}\right)T, \sigma \sqrt{T}\right) \\
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>This means that prices are <em>lognormally</em> distributed.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="lognormal-distribution">
+
+<h2>Lognormal Distribution</h2>
+
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{S_T \sim LN\left(\ln(S_0) + \left(\mu -
+\frac{\sigma^2}{2}\right)T, \sigma \sqrt{T}\right)}\)</span>.</p>
+<ul class="simple">
+<li>By defintion, this means <span class="math notranslate nohighlight">\(\smash{\ln(S_T) \sim
+N\left(\ln(S_0) + \left(\mu - \frac{\sigma^2}{2}\right)T, \sigma
+\sqrt{T}\right)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>It can be shown that the mean and variance of <span class="math notranslate nohighlight">\(\smash{S_T}\)</span>
+are</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E[S_T] &amp; = S_0 e^{\mu T} \\
+Var(S_T) &amp; = S_0^2 e^{2\mu T} \left(e^{\sigma^2 T}-1\right).
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="simulation-distribution">
+
+<h2>Simulation Distribution</h2>
+
+<p>We can check that our simulated geometric Brownian motion results in a
+lognormal distribution for LMT prices.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">lnMean</span> <span class="o">=</span> <span class="n">S0</span><span class="o">*</span><span class="nf">exp</span><span class="p">(</span><span class="n">mu</span><span class="o">*</span><span class="n">nDays</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lnSD</span> <span class="o">=</span> <span class="n">S0</span><span class="o">*</span><span class="nf">exp</span><span class="p">(</span><span class="n">mu</span><span class="o">*</span><span class="n">nDays</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">exp</span><span class="p">((</span><span class="n">sigma^2</span><span class="p">)</span><span class="o">*</span><span class="n">nDays</span><span class="p">)</span><span class="m">-1</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nf">cat</span><span class="p">(</span><span class="n">lnMean</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">S[nDays</span><span class="p">,</span><span class="n">]</span><span class="p">))</span>
+<span class="m">228.019</span> <span class="m">230.529</span>
+<span class="o">&gt;</span> <span class="nf">cat</span><span class="p">(</span><span class="n">lnSD</span><span class="p">,</span><span class="nf">sd</span><span class="p">(</span><span class="n">S[nDays</span><span class="p">,</span><span class="n">]</span><span class="p">))</span>
+<span class="m">40.97119</span> <span class="m">43.21174</span>
+</pre></div>
+</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id12">
+
+<h2>Simulation Distribution</h2>
+
+<p>We can also plot the theoretical lognormal and the empirical
+distribution of LMT prices.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">meanOfLog</span> <span class="o">=</span> <span class="nf">log</span><span class="p">(</span><span class="n">S0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="p">(</span><span class="n">sigma^2</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span><span class="n">nDays</span>
+<span class="o">&gt;</span> <span class="n">sdOfLog</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">nDays</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">priceGrid</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">lnMean</span><span class="m">+6</span><span class="o">*</span><span class="n">lnSD</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="m">10000</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">theoreticalDens</span> <span class="o">=</span> <span class="nf">dlnorm</span><span class="p">(</span><span class="n">priceGrid</span><span class="p">,</span><span class="n">meanOfLog</span><span class="p">,</span><span class="n">sdOfLog</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">empiricalDens</span> <span class="o">=</span> <span class="nf">density</span><span class="p">(</span><span class="n">S[nDays</span><span class="p">,</span><span class="n">]</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nf">plot</span><span class="p">(</span><span class="n">priceGrid</span><span class="p">,</span><span class="n">theoreticalDens</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;Prices&#39;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;Density&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nf">lines</span><span class="p">(</span><span class="n">empricalDens</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id13">
+
+<h2>Simulation Distribution</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/logNormDens.png"><img alt="_images/logNormDens.png" class="align-center" src="_images/logNormDens.png" style="width: 4in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

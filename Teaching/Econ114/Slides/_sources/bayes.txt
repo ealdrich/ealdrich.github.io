@@ -1,0 +1,841 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Bayes Theorem
+==============================================================================
+
+
+Sample Space
+==============================================================================
+Consider a random variable :math:`X`.  
+
+.. rst-class:: to-build
+
+- The set of all possible outcomes of :math:`X` is referred to as the
+  *sample space*.
+
+.. rst-class:: to-build
+
+- We will denote the sample space as :math:`\mathcal{S}`.
+
+.. rst-class:: to-build
+
+- Each outcome, :math:`x`, of the random variable :math:`X` is called
+  a member of :math:`\mathcal{S}`.
+
+.. rst-class:: to-build
+
+- In notation :math:`x \in \mathcal{S}`.
+
+
+
+
+Subsets
+==============================================================================
+A subset of :math:`\mathcal{S}` is a collection of outcomes.  
+
+.. rst-class:: to-build
+
+- If :math:`A` is a subset of :math:`\mathcal{S}`, we write :math:`A
+  \subset \mathcal{S}`.
+
+.. rst-class:: to-build
+
+- If :math:`B` is a subset of :math:`\mathcal{S}` and :math:`A` is a
+  subset of :math:`B`, we write :math:`A \subset B`.
+
+.. rst-class:: to-build
+
+- We also say that :math:`A` is *contained in* :math:`B`.
+
+.. rst-class:: to-build
+
+- We often refer to subsets of the sample space as *events*.
+
+.. rst-class:: to-build
+
+- The *empty set* is the subset with no elements and is denoted
+  :math:`\emptyset`.
+
+.. rst-class:: to-build
+
+- The empty set is an impossible event.
+
+
+
+
+Example of Subsets
+==============================================================================
+Let :math:`X` be the result of a fair die roll.  
+
+.. rst-class:: to-build
+
+- The sample space is :math:`\{1,2,3,4,5,6\}`.  
+
+.. rst-class:: to-build
+
+- Let :math:`B` be the event that :math:`X` is even: :math:`B =
+  \{2,4,6\}`.
+
+.. rst-class:: to-build
+
+- Let :math:`A` be the event that :math:`X` is 2 or 4: :math:`A =
+  \{2,4\}`.
+
+.. rst-class:: to-build
+
+- Clearly, :math:`A \subset B \subset \mathcal{S}`. 
+
+.. rst-class:: to-build
+  
+- Let :math:`C` be the event that :math:`X` is :math:`-1`.
+
+.. rst-class:: to-build
+
+- Clearly, :math:`C = \emptyset`.
+
+
+
+
+Union
+==============================================================================
+The *union* of two sets is the set containing all outcomes that belong
+to :math:`A` *or* :math:`B`.
+
+.. rst-class:: to-build
+
+- We write the union of :math:`A` and :math:`B` as :math:`A \cup B`.
+
+.. rst-class:: to-build
+
+- For the die roll example, if :math:`A = \{2,5\}` and :math:`B =
+  \{2,4,6\}`, then :math:`A \cup B = \{2,4,5,6\}`.
+
+.. rst-class:: to-build
+
+- The union of many sets is written as
+
+.. rst-class:: to-build
+
+.. math::
+
+   \bigcup_{i=1}^N A_i.
+
+
+
+
+Union
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/oneEvent.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/oneEvent.png
+     :width: 6in
+
+
+
+Union
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/twoEvents.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/twoEvents.png
+     :width: 6in
+
+
+
+
+Union
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/union.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/union.png
+     :width: 6in
+
+
+
+Intersection
+==============================================================================
+The *intersection* of two sets is the set containing all outcomes that
+belong to :math:`A` *and* :math:`B`.
+
+.. rst-class:: to-build
+
+- We write the intersection of :math:`A` and :math:`B` as :math:`A
+  \cap B`.
+
+.. rst-class:: to-build
+
+- For the die roll example, if :math:`A = \{2,5\}` and :math:`B =
+  \{2,4,6\}`, then :math:`A \cap B = \{2\}`.
+
+.. rst-class:: to-build
+  
+- The intersection of many sets is written as
+
+.. rst-class:: to-build
+
+.. math::
+
+   \bigcap_{i=1}^N A_i.
+
+
+
+
+Intersection
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/oneEvent.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/oneEvent.png
+     :width: 6in
+
+
+
+Intersection
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/twoEvents.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/twoEvents.png
+     :width: 6in
+
+
+
+Intersection
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/intersection.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/intersection.png
+     :width: 6in
+
+
+
+Complements
+==============================================================================
+The *complement* of :math:`A \subset \mathcal{S}` is the subset that
+contains all outcomes in :math:`\mathcal{S}` that are not in
+:math:`A`.
+
+.. rst-class:: to-build
+
+- We denote the complement by :math:`A^c`.  
+
+.. rst-class:: to-build
+
+- For the die roll example, if :math:`A = \{2,4,6\}`, then :math:`A^c
+  = \{1,3,5\}`.
+
+
+
+
+Complements
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/partition0.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/partition0.png
+     :width: 6in
+
+
+
+Complements
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/complement.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/complement.png
+     :width: 6in
+
+
+
+Complements
+==============================================================================
+Some important properties:
+
+.. rst-class:: to-build
+
+.. math::
+
+   (A^c)^c  = A
+
+.. rst-class:: to-build
+
+.. math::
+
+   \emptyset^c = \mathcal{S}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \mathcal{S^c} = \emptyset
+
+.. rst-class:: to-build
+
+.. math::
+
+   A \cup A^c = \mathcal{S}
+
+.. rst-class:: to-build
+
+.. math::
+
+   A \cap A^c = \emptyset.
+
+
+
+
+Disjoint Events
+==============================================================================
+Two events are *disjoint* or *mutually exclusive* if they have no
+outcomes in common.
+
+.. rst-class:: to-build
+
+- :math:`A` and :math:`B` are disjoint if :math:`A \cap B =
+  \emptyset`.
+
+.. rst-class:: to-build
+
+- By definition, any event and its complement are disjoint: :math:`A
+  \cap A^c = \emptyset`.
+
+.. rst-class:: to-build
+
+- For the die roll example, if :math:`A = \{2,5\}` and :math:`B =
+  \{4,6\}`, then :math:`A \cap B = \emptyset`.
+
+
+
+
+Probability
+==============================================================================
+Given :math:`A \subset \mathcal{S}`, denote the probability :math:`P(X
+\subset A) = P(A)`.  
+
+.. rst-class:: to-build
+
+- In the Venn diagram, :math:`P(A)` is the ratio of the area of
+  :math:`A` to the area of :math:`\mathcal{S}`.
+
+.. rst-class:: to-build
+
+- Note that :math:`P(\mathcal{S}) = 1`.  
+
+.. rst-class:: to-build
+
+- Note that :math:`P(\emptyset) = 0`.
+
+
+
+
+Probability of Intersections
+==============================================================================
+The probability that :math:`X` is in :math:`A` and :math:`B` is:
+
+.. rst-class:: to-build
+
+.. math::
+
+   P(A \cap B) & = P((X \subset A) \cap (X \subset B)).
+
+.. rst-class:: to-build
+
+- For the die roll example, if :math:`A = \{2,5\}` and :math:`B
+  = \{2,4,6\}`, then
+
+.. rst-class:: to-build
+
+.. math::
+
+   P(A \cap B) = P(X = 2) = \frac{1}{6}.
+
+
+
+
+Probability of Unions
+==============================================================================
+The probability that :math:`X` is in :math:`A` or :math:`B` is:
+
+.. rst-class:: to-build
+
+.. math::
+
+   P(A \cup B) = P((X \subset A) \cup (X \subset B)) \hspace{0.35in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.5in} = P(A) + P(B) - P(A \cap B).
+
+
+
+Probability of Unions
+==============================================================================
+For the die roll example, if :math:`A = \{2,5\}` and :math:`B =
+\{2,4,6\}`,
+  
+.. rst-class:: to-build
+
+.. math::
+
+   P(A) + P(B) - P(A \cap B) \hspace{1.5in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.47in} = P\left(\{2,5\}\right) +
+   P\left(\{2,4,6\}\right) - P\left(\{2\}\right)
+  
+.. rst-class:: to-build
+
+.. math::
+
+   = \frac{2}{6} + \frac{3}{6} - \frac{1}{6} \hspace{1.15in}
+  
+.. rst-class:: to-build
+
+.. math::
+
+   = \frac{4}{6} \hspace{1.85in}
+  
+.. rst-class:: to-build
+
+.. math::
+
+   = P\left(\{2,4,5,6\}\right) \hspace{0.95in}
+  
+.. rst-class:: to-build
+
+.. math::
+
+   = P(A \cup B). \hspace{1.3in}
+  
+
+
+
+
+Probability of Unions
+==============================================================================
+If :math:`A \cap B = \emptyset`,
+
+.. rst-class:: to-build
+
+.. math::
+
+   P(A \cup B) = P(A) + P(B),
+
+.. rst-class:: to-build
+
+since :math:`P(\emptyset) = 0`.  
+
+
+
+Probability of Unions
+==============================================================================
+For the die roll example, if :math:`A = \{2,5\}` and :math:`B =
+\{4,6\}`,
+  
+.. rst-class:: to-build
+
+.. math::
+
+   P(A) + P(B) - P(A \cap B) \hspace{1.5in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.47in} = P\left(\{2,5\}\right) + P\left(\{4,6\}\right) -
+   P\left(\emptyset\right)
+
+.. rst-class:: to-build
+
+.. math::
+
+   = \frac{2}{6} + \frac{2}{6} - 0 \hspace{0.88in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = \frac{4}{6} \hspace{1.53in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = P\left(\{2,4,5,6\}\right) \hspace{0.63in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = P(A \cup B). \hspace{0.97in}
+  
+
+
+
+
+Conditional Probability
+==============================================================================
+Suppose we know that event :math:`B` has occurred - that is, one of
+the outcomes in the subset :math:`B \subset \mathcal{S}` has occurred.
+
+.. rst-class:: to-build
+
+- How does this alter our view of the probability of event :math:`A`
+  occurring?
+
+.. rst-class:: to-build
+
+- Denote the probability of :math:`A`, conditional on :math:`B`
+  occurring, as :math:`P(A|B)`.
+
+.. rst-class:: to-build
+
+- If :math:`A \cap B = \emptyset`, we know :math:`P(A|B) = 0`. Why?
+
+
+
+
+Conditional Probability
+==============================================================================
+If :math:`A \cap B \neq \emptyset`
+  
+.. rst-class:: to-build
+
+.. math::
+
+    P(A|B) & = \frac{P(A \cap B)}{P(B)}.
+
+.. rst-class:: to-build
+  
+- :math:`P(A|B)` is the ratio of the area of :math:`A \cap B` to the
+  area of :math:`B`.
+
+.. rst-class:: to-build
+
+- That is, we reduce the sample space from :math:`\mathcal{S}` to
+  :math:`B`.
+
+
+
+
+Conditional Probability
+==============================================================================
+For the die roll example, if :math:`A = \{2,4\}` and :math:`B = \{2,4,6\}`,
+  
+.. rst-class:: to-build
+
+.. math::
+
+   P(A|B) = \frac{P(A \cap B)}{P(B)}
+   = \frac{\;\; \frac{2}{6} \;\;}{\frac{3}{6}}
+   = \frac{2}{3}.
+  
+.. rst-class:: to-build
+
+- Intuitively, if we know that 2,4 or 6 occurs, then the probability
+  that a 2 or 4 occurs should be :math:`\frac{2}{3}`.
+  
+
+
+
+Bayes' Theorem
+==============================================================================
+From the definition of conditional probability, 
+
+.. rst-class:: to-build
+
+.. math::  P(A|B) = \frac{P(A \cap B)}{P(B)} \quad \Rightarrow \quad
+	   P(A \cap B) = P(A|B) P(B).
+   :label: first
+
+.. rst-class:: to-build
+ 
+Likewise
+
+.. rst-class:: to-build
+
+.. math::  P(B|A) = \frac{P(A \cap B)}{P(A)} \quad \Rightarrow \quad
+	   P(A \cap B) = P(B|A) P(A).
+   :label: second
+ 
+
+
+
+Bayes' Theorem
+==============================================================================
+Equating :eq:`first` and :eq:`second`
+
+.. rst-class:: to-build
+
+.. math::  P(A|B) P(B) = P(B|A) P(A).
+   :label: third
+ 
+.. rst-class:: to-build
+
+Rearranging :eq:`third` gives *Bayes' Theorem*:
+
+.. rst-class:: to-build
+
+.. math:: P(B|A) = \frac{P(A|B) P(B)}{P(A)}.
+
+
+
+
+Bayes' Theorem
+==============================================================================
+For the die roll example, if :math:`A = \{2,4\}` and :math:`B =
+\{2,4,6\}`, we already know that
+
+.. rst-class:: to-build
+
+- :math:`P(A) = \frac{2}{6}`.  
+
+.. rst-class:: to-build
+
+- :math:`P(B) = \frac{3}{6}`.  
+
+.. rst-class:: to-build
+
+- :math:`P(A|B) = \frac{2}{3}`.  
+
+.. rst-class:: to-build
+
+Thus, 
+
+.. rst-class:: to-build
+
+.. math::
+
+   P(B|A) = \frac{P(A|B) P(B)}{P(A)} = \frac{\frac{2}{3} \times
+   \frac{3}{6}}{\frac{2}{6}} = \frac{\;\; \frac{2}{6}
+   \;\;}{\frac{2}{6}} = 1.
+
+
+
+
+Partitions
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/partition0.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/partition0.png
+     :width: 6in
+
+
+
+Partitions
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/partition1.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/partition1.png
+     :width: 6in
+
+
+
+Partitions
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/partition2.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/partition2.png
+     :width: 6in
+
+
+
+Partitions
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/partition3.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/partition3.png
+     :width: 6in
+
+
+
+Partitions
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/Bayes/partition5.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Bayes/partition5.png
+     :width: 6in
+
+
+
+Partitions
+==============================================================================
+Let :math:`B_1, B_2, \ldots, B_K` be :math:`K` subsets of
+:math:`\mathcal{S}`: :math:`B_i \subset \mathcal{S}` for :math:`i = 1,
+\ldots, K`.
+
+.. rst-class:: to-build
+
+- :math:`\{B_i\}_{i=1}^K` is a *partition* of :math:`\mathcal{S}` if
+  
+.. rst-class:: to-build
+
+.. math::
+
+   B_1 \cup B_2 \cup \cdots \cup B_K = \mathcal{S}
+
+.. rst-class:: to-build
+
+.. math::
+
+   B_i \cap B_j = \emptyset \quad \text{for} i \neq j.
+  
+.. rst-class:: to-build
+  
+- Note that :math:`A = (A \cap B_1) \cup \cdots \cup (A \cap B_K)`.
+
+
+
+Partitions
+==============================================================================
+Since :math:`(A \cap B_i) \cap (A \cap B_j) = \emptyset` for :math:`i
+\neq j`,
+
+.. rst-class:: to-build
+
+.. math::
+
+   P(A) = P\left((A \cap B_1) \cup \cdots \cup (A \cap B_K)\right)
+   \hspace{0.38in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = P(A \cap B_1) + \cdots + P(A \cap B_K)
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.55in} = P(A|B_1) P(B_1) + \cdots + P(A|B_K) P(B_K).
+
+
+
+
+
+Bayes' Theorem Extended
+==============================================================================
+Given a partition :math:`B_1, \ldots, B_K` of :math:`\mathcal{S}`, we
+can applied Bayes' Theorem to each subset of the partition:
+
+.. rst-class:: to-build
+
+.. math::
+
+   P(B_j|A) = \frac{P(A|B_j) P(B_j)}{P(A)} \hspace{1.98in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.3in} = \frac{P(A|B_j) P(B_j)}{P(A|B_1) P(B_1) + \cdots +
+   P(A|B_K) P(B_K)}.
+
+

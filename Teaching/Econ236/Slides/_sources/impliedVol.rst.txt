@@ -1,0 +1,92 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Implied Volatility and the Volatility Term Structure
+==============================================================================
+
+Implied Volatility
+==============================================================================
+Let :math:`\smash{C_{mkt}}` and :math:`\smash{P_{mkt}}` denote the
+market prices of call and put options. Recall that the implied
+volatility for strike :math:`\smash{X}` is defined as the value
+:math:`\smash{\sigma_{imp}}` such that
+
+.. math::
+
+   \begin{align}
+   C_{mkt} & = S_0 \Phi(d_1) - X e^{-rT} \Phi(d_2) \\
+   P_{mkt} & = X e^{-rT} \Phi(-d_2) - S_0 \Phi(-d_1)\\
+   d_1 & = \frac{\log(S_0/X) + (r+\sigma_{imp}^2/2)T}{\sigma_{imp} \sqrt{T}} \\
+   d_2 & = \frac{\log(S_0/X) + (r-\sigma_{imp}^2/2)T}{\sigma_{imp} \sqrt{T}} = d_1
+   - \sigma_{imp} \sqrt{T}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- That is, :math:`\smash{\sigma_{imp}}` is the value such that
+  :math:`\smash{C_{mkt} = C_{bs}}` and :math:`\smash{P_{mkt} =
+  P_{bs}}`.
+
+Put-Call Parity
+==============================================================================
+Both the BSM and market prices satisfy put-call parity:
+
+.. math::
+
+   \begin{align}
+   C_{mkt} + X e^{r_f} & = S_0 + P_{mkt} \\
+   C_{bs} + X e^{r_f} & = S_0 + P_{bs}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- As a result :math:`\smash{C_{mkt} - C_{bs} = P_{mkt} - P_{bs}}`.
+
+.. raw:: <!--pause-->
+
+- Thus, the implied vol for a particular strike that sets
+  :math:`\smash{C_{mkt} = C_{bs}}` is also the implied vol that sets
+  :math:`\smash{P_{mkt} = P_{bs}}` (for the same strike).
+
+
+Foreign Exchange Vol Smile
+==============================================================================
+.. image:: ImpliedVol/currencySmile.png
+   :width: 6in
+   :align: center
+
+Foreign Exchange Implied Distribution
+==============================================================================
+.. image:: ImpliedVol/currencyImpliedDist.png
+   :width: 6in
+   :align: center
+
+Evidence of Heavy Tails
+==============================================================================
+The first column of the following table shows the fraction of times
+over a 10-year period that 12 currencies experienced a daily move that
+exceeded various thresholds. The second column compares the
+theoretical probabilities of a lognormal distribution.
+
+.. image:: ImpliedVol/heavyTailTable.png
+   :width: 6in
+   :align: center
+	   
+Equities Exchange Vol Smile
+==============================================================================
+.. image:: ImpliedVol/equitySmile.png
+   :width: 6in
+   :align: center
+
+Equities Implied Distribution
+==============================================================================
+.. image:: ImpliedVol/equityImpliedDist.png
+   :width: 6in
+   :align: center
+
+Volatility Surface
+==============================================================================
+.. image:: ImpliedVol/volSurface.png
+   :width: 6in
+   :align: center

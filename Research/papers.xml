@@ -10,8 +10,8 @@
       link="PDF/aldrich-2013b.pdf">
       <title>GPU Computing in Economics</title>
       <journal>Handbook of Computational Economics</journal>
-      <year>2013</year>
-      <volume>Vol. 4</volume>
+      <year>2014</year>
+      <volume>Vol. 3</volume>
     </paper>
 
     <paper id="aldrich-gallant-2011"
@@ -86,7 +86,7 @@
 	<last>no</last>
       </coauthor>
       <coauthor colink="http://fds.duke.edu/db/Sanford/jacob.vigdor">
-	<name>Jacob L. Vigor</name>
+	<name>Jacob L. Vigdor</name>
 	<last>yes</last>
       </coauthor>
       <journal>Topics in Economic Analysis and Policy</journal>
@@ -99,6 +99,20 @@
   <pubtype>
 
     <value>Working Papers</value>
+
+    <paper id="tmsmd"
+      link="PDF/tmsmd.pdf">
+      <title>A Compound Multifractal Model for High-Frequency Asset Returns</title>
+      <coauthor>
+	<name>Indra Heckenbach</name>
+	<last>no</last>
+      </coauthor>
+      <coauthor colink="http://www.ucolick.org/~laugh/">
+	<name>Gregory Laughlin</name>
+	<last>yes</last>
+      </coauthor>
+      <year>August, 2014</year>
+    </paper>
 
     <paper id="aldrich-2011"
       link="http://ideas.repec.org/p/red/sed012/36.html">

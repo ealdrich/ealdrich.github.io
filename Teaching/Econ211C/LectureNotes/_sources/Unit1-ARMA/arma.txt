@@ -1,0 +1,204 @@
+==============================================================================
+ARMA Processes
+==============================================================================
+
+:math:`\smash{ARMA(p,q)}` Process
+==============================================================================
+Given white noise :math:`\smash{\{\varepsilon_t\}}`, consider the process
+
+.. math::
+
+   \smash{Y_t = c + \phi_1 Y_{t-1} + \ldots + \phi_p Y_{t-p} + \varepsilon_t +
+   \theta_1 \varepsilon_{t-1} + \ldots \theta_q \varepsilon_{t-q},}
+
+where :math:`\smash{c}`, :math:`\smash{\{\phi_i\}_{i=1}^p}` and
+:math:`\smash{\{\theta_i\}_{i=1}^q}` are constants.
+  
+.. raw:: <!--pause-->
+
+- This is an :math:`\smash{ARMA(p,q)}` process.
+
+:math:`\smash{ARMA(p,q)}` Process
+==============================================================================
+We can rewrite in terms of lag operators:
+
+.. math::
+
+   \begin{align}
+   \phi(L) Y_t & = c + \theta(L) \varepsilon_t,
+   \end{align}
+
+.. raw:: <!--pause-->
+
+where
+
+.. math::
+
+   \begin{align}
+   \phi(L) & = 1-\phi_1 L - \phi_2 L^2 - \ldots - \phi_p L^p \\
+   \theta(L) & = 1+\theta_1 L + \theta_2 L^2 + \ldots + \theta_q
+   L^q.
+   \end{align}
+  
+
+:math:`\smash{ARMA(p,q)}` as :math:`\smash{MA(\infty)}`
+==============================================================================
+Recall 
+
+- :math:`\smash{\phi(L) = (1-\lambda_1 L)(1-\lambda_2 L) \cdots
+  (1-\lambda_pL).}`
+
+.. raw:: <!--pause-->
+
+- If the roots, :math:`\smash{\frac{1}{|\lambda_i|} > 1}`, :math:`\smash{\forall i}`
+  then :math:`\smash{|\lambda_i| < 1}`, :math:`\smash{\forall i}` and
+
+.. math::
+
+   \begin{align*}
+   \phi(L)^{-1} & = (1-\lambda_1 L)^{-1}(1-\lambda_2
+   L)^{-1} \cdots (1-\lambda_pL)^{-1} \\
+   & = \left(\sum_{j=0}^{\infty} \lambda_1^j
+   L^j\right) \left(\sum_{j=0}^{\infty} \lambda_2^j L^j\right)
+   \cdots \left(\sum_{j=0}^{\infty} \lambda_p^j L^j\right).
+   \end{align*}
+  
+
+:math:`\smash{ARMA(p,q)}` as :math:`\smash{MA(\infty)}`
+==============================================================================
+Thus, if the roots of :math:`\smash{\phi(L)}` all lie outside the unit circle,
+
+.. math::
+
+   \begin{align*}
+   Y_t & = \mu + \psi(L) \varepsilon_t,
+   \end{align*} 
+
+where :math:`\smash{\mu = \phi(L)^{-1} c}` and :math:`\smash{\psi(L) = \phi(L)^{-1}
+\theta(L)}`.
+  
+.. raw:: <!--pause-->
+
+- This restriction on the roots of :math:`\smash{\phi(L)}` results in
+
+.. math::
+
+   \smash{\sum_{i=1}^{\infty} |\psi_i| < \infty.}
+
+.. raw:: <!--pause-->
+
+- Hence, :math:`\smash{Y_t}` is an :math:`\smash{MA(\infty)}` process and is weakly
+  stationary.
+
+.. raw:: <!--pause-->
+
+- The stationarity of an :math:`\smash{ARMA(p,q)}` depends only on
+  :math:`\smash{\{\phi_i\}_{i=1}^p}` and not on :math:`\smash{\{\theta_i\}_{i=1}^q}`.
+  
+
+Expectation of :math:`\smash{ARMA(p,q)}`
+==============================================================================
+Assume :math:`\smash{Y_t}` is weakly stationary: the roots of :math:`\smash{\phi(L)}`
+lie outside the unit circle.
+
+.. math::
+
+   \begin{align*}
+   \text{E}[Y_t] & = c + \phi_1 \text{E}[Y_{t-1}] + \ldots + \phi_p
+   \text{E}[Y_{t-p}] \\
+   & \hspace{0.75in} + \text{E}[\varepsilon_t] + \theta_1 \text{E}[\varepsilon_{t-1}] + \ldots
+   + \theta_q \text{E}[\varepsilon_{t-q}]\\
+   & = c + \phi_1 \text{E}[Y_t] + \ldots + \phi_p \text{E}[Y_t] \\
+   \Rightarrow \text{E}[Y_t] & = \frac{c}{1-\phi_1 -
+   \ldots - \phi_p} = \mu.
+   \end{align*}
+  
+.. raw:: <!--pause-->
+
+- This is the same mean as an :math:`\smash{AR(p)}` process with parameters
+  :math:`\smash{c}` and :math:`\smash{\{\phi_i\}_{i=1}^p}`.
+  
+
+Autocovariances of :math:`\smash{ARMA(p,q)}`
+==============================================================================
+Given that :math:`\smash{\mu = c/(1-\phi_1 - \ldots - \phi_p)}` for weakly
+stationary :math:`\smash{Y_t}`:
+
+.. math::
+
+   \begin{align*}
+   Y_t & = \mu(1-\phi_1 - \ldots - \phi_p) + \phi_1
+   Y_{t-1} + \ldots + \phi_p Y_{t-p} \\
+   & \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+   \varepsilon_{t-q} \\
+   \Rightarrow & (Y_t - \mu) = \phi_1(Y_{t-1} - \mu) +
+   \ldots + \phi_p(Y_{t-p} - \mu) \\
+   & \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+   \varepsilon_{t-q}.
+   \end{align*}
+
+   \begin{align*}
+   \gamma_j & = \text{E}\left[(Y_t - \mu) (Y_{t-j} -
+   \mu)\right] \\
+   & = \phi_1 \text{E}\left[(Y_{t-1} - \mu) (Y_{t-j} -
+   \mu)\right] + \ldots \\
+   & \hspace{0.5in} + \phi_p \text{E}\left[(Y_{t-p} - \mu) (Y_{t-j} -
+   \mu)\right] \\
+   & \hspace{1in} + \text{E}\left[\varepsilon_t (Y_{t-j} - \mu)\right] +
+   \theta_1 \text{E}\left[\varepsilon_{t-1} (Y_{t-j} - \mu)\right] \\
+   & \hspace{2.25in} + \ldots +
+   \theta_q \text{E}\left[\varepsilon_{t-q} (Y_{t-j} - \mu)\right]
+   \end{align*}
+
+Autocovariances of :math:`\smash{ARMA(p,q)}`
+==============================================================================
+  
+- For :math:`\smash{j > q}`, :math:`\smash{\gamma_j}` will follow the same law of
+  motion as for an :math:`\smash{AR(p)}` process:
+
+.. math::
+   \begin{align*}
+   \gamma_j & = \phi_1 \gamma_{j-1} + \ldots + \phi_p \gamma_{j-p}
+   \,\,\,\,\, \text{ for } j = q+1, \ldots
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- These values will not be the same as the :math:`\smash{AR(p)}` values for
+  :math:`\smash{j = q+1, \ldots}`, since the initial :math:`\smash{\gamma_0, \ldots,
+  \gamma_q}` will differ.
+
+.. raw:: <!--pause-->
+
+- The first :math:`\smash{q}` autocovariances, :math:`\smash{\gamma_0, \ldots,
+  \gamma_q}`, of an :math:`\smash{ARMA(p,q)}` will be more complicated than
+  those of an :math:`\smash{AR(p)}`.
+  
+Redundancy of :math:`\smash{ARMA(p,q)}`
+==============================================================================
+Factoring the polynomials :math:`\smash{\phi(L)}` and :math:`\smash{\theta(L)}`, an
+:math:`\smash{ARMA(p,q)}` can be written as
+
+.. math::
+
+   \begin{align*}
+   (1-\lambda_1 L) \cdots (1-\lambda_p L) (Y_t - \mu) & = (1 -
+   \eta_1 L) \cdots (1 - \eta_q L) \varepsilon_t.
+   \end{align*} 
+
+.. raw:: <!--pause-->
+
+- If two of the roots are identical, :math:`\smash{\lambda_i = \eta_j}`, both
+  polynomials can be divided by :math:`\smash{(1-\lambda_i L)}`.
+    
+.. raw:: <!--pause-->
+
+- The result would be an :math:`\smash{ARMA(p-1, q-1)}`:
+
+.. math::
+
+   \begin{align*}
+   (1-\phi_1^* L - \ldots - \phi_{p-1}^* L^{p-1}) (Y_t - \mu) & = (1 +
+   \theta_1^* L + \ldots + \theta_{q-1}^* L^{q-1}) \varepsilon_t.
+   \end{align*}
+  

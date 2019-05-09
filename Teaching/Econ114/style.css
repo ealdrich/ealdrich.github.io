@@ -5,7 +5,7 @@ html {
 body {
       background-color: #292626;
       background-image: url(Images/econ114back3.jpg);
-      background-size: 100%;
+      background-size: 100% 100%;
       background-repeat: no-repeat;
       background-attachment: fixed;
       margin: 0px 0px 0px 0px;
@@ -35,7 +35,7 @@ div.content {
 }
 
 div.outer {
-      width: 60%;
+      width: 80%;
       height: 100%;
       text-align: left;
       line-height: 25px;
@@ -137,4 +137,8 @@ span.scheduleTitle {
       font-family: 'Droid Serif';
       font-size: 18px;
       color: #333333;
+}
+th, td {
+    border-bottom: 1px solid #f2e9bb;
+    padding: 5px;
 }

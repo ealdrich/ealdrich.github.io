@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hedging with Futures &mdash; Econ 236</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Econ 236" href="index.html" />
+    <link rel="next" title="Futures on Interest Rates" href="interestFutures.html" />
+    <link rel="prev" title="Trading" href="trading.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="hedging-with-futures">
+
+<h1>Hedging with Futures</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="long-and-short-hedges">
+
+<h2>Long and Short Hedges</h2>
+
+<p>A hedge is an investment that limits the risk of another risky
+investment. It typically consists of an offsetting position.</p>
+<ul class="simple">
+<li>Futures are used to hedge against price fluctuations of an asset
+that must be bought or sold at a future date.</li>
+</ul>
+<ul class="simple">
+<li>A long hedge is used when you will purchase an asset in the
+future.</li>
+</ul>
+<ul class="simple">
+<li>A short hedge is used when you will sell an asset in the
+future.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="short-hedge-example">
+
+<h2>Short Hedge Example</h2>
+
+<p>Suppose it is May 15th and an oil producer has negotiated to sell
+1 million barrels of crude oil on Aug 15. <span class="math notranslate nohighlight">\(\smash{S_0 = \$80}\)</span>
+and <span class="math notranslate nohighlight">\(\smash{F_0 = \$79}\)</span>.</p>
+<ul class="simple">
+<li>The producer will gain/lose $10,000 for each 1 cent
+increase/decrease in the spot price.</li>
+</ul>
+<ul class="simple">
+<li>A hedge would consist of shorting 1000 futures contracts (for 1000
+barrels each) with expiration as close to Aug 15th as possible.</li>
+</ul>
+<ul class="simple">
+<li>Suppose <span class="math notranslate nohighlight">\(\smash{S_T = \$75}\)</span> on Aug 15 - what are total
+profits for the producer?</li>
+</ul>
+<ul class="simple">
+<li>Suppose <span class="math notranslate nohighlight">\(\smash{S_T = \$85}\)</span> on Aug 15 - what are total
+profits for the producer?</li>
+</ul>
+<p>Note that the producer will not want to deliver the barrels for the
+futures contract, but will close out early.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="long-hedge-example">
+
+<h2>Long Hedge Example</h2>
+
+<p>Suppose it is Jan 15th and a copper producer has negotiated to buy
+100,000 pounds of copper on May 15. <span class="math notranslate nohighlight">\(\smash{S_0 = 340}\)</span> cents
+and <span class="math notranslate nohighlight">\(\smash{F_0 = 320}\)</span> cents.</p>
+<ul class="simple">
+<li>The producer will gain/lose $1000 for each 1 cent
+decrease/increase in the spot price.</li>
+</ul>
+<ul class="simple">
+<li>A hedge would consist of buying 4 CME Group futures contracts (for
+25,000 pounds each) with expiration as close to May 15th as
+possible.</li>
+</ul>
+<ul class="simple">
+<li>Suppose <span class="math notranslate nohighlight">\(\smash{S_T = 320}\)</span> cents on May 15 - what is the
+total cost for the producer?</li>
+</ul>
+<ul class="simple">
+<li>Suppose <span class="math notranslate nohighlight">\(\smash{S_T = 305}\)</span> cents on May 15 - what is the
+total cost for the producer?</li>
+</ul>
+<p>Note that the producer will not want to take delivery for the
+futures contract, but will close out early.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="imperfect-hedging">
+
+<h2>Imperfect Hedging</h2>
+
+<p>It is typically difficult for an investor to exactly hedge a
+position.</p>
+<ol class="arabic simple">
+<li>A futures contract may not exist for the exact asset to be hedged.<ul>
+<li>E.g. VIX futures.</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>The expiration of the futures may not coincide with the end of the
+termination of the position in interest.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>The termination date of the underlying position may be unknown.</li>
+</ol>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="basis">
+
+<h2>Basis</h2>
+
+<p>For traders, the basis is defined as the difference between the
+futures and spot prices.</p>
+<ul class="simple">
+<li>Traditional definition: <span class="math notranslate nohighlight">\(\smash{b_t = S_t - F_t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>For financial assets: <span class="math notranslate nohighlight">\(\smash{b_t = F_t - S_t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Recall</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+F_t &amp; = e^{c(T-t)} S_t \\
+\Rightarrow b_t &amp; = S_t - F_t = \left(1-e^{c(T-t)}\right)S_t.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>Note that the basis can be positive or negative.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="basis-fluctuation">
+
+<h2>Basis Fluctuation</h2>
+
+<p>The basis can fluctuate through time.</p>
+<ul class="simple">
+<li>The futures price should converge to the spot price at expiry. This
+is a deterministic change in the basis related to shortening time
+window <span class="math notranslate nohighlight">\(\smash{T-t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The basis may also fluctuate due to random variation in the cost of
+carry, <span class="math notranslate nohighlight">\(\smash{c}\)</span>.<ul>
+<li>This is caused by random fluctuations in <span class="math notranslate nohighlight">\(\smash{r}\)</span>,
+<span class="math notranslate nohighlight">\(\smash{r_f}\)</span>, dividends, storage costs, etc.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="stylized-basis-fluctuation">
+
+<h2>Stylized Basis Fluctuation</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/basis.png"><img alt="_images/basis.png" class="align-center" src="_images/basis.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="actual-basis-fluctuation">
+
+<h2>Actual Basis Fluctuation</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/basisVariation.png"><img alt="_images/basisVariation.png" class="align-center" src="_images/basisVariation.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="hedging-and-basis">
+
+<h2>Hedging and Basis</h2>
+
+<p>Consider an arbitrary asset with the following spot and futures prices
+at <span class="math notranslate nohighlight">\(\smash{t_1}\)</span> and <span class="math notranslate nohighlight">\(\smash{t_2}\)</span>: <span class="math notranslate nohighlight">\(\smash{S_1 =
+\$2.50}\)</span>, <span class="math notranslate nohighlight">\(\smash{F_1 = \$2.20}\)</span>, <span class="math notranslate nohighlight">\(\smash{S_2 = \$2.00}\)</span>
+and <span class="math notranslate nohighlight">\(\smash{F_2 = \$1.90}\)</span>.</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{b_1 = \$0.30}\)</span> and <span class="math notranslate nohighlight">\(\smash{b_2 = \$0.10}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If you hold the asset and plan to sell at <span class="math notranslate nohighlight">\(\smash{t_2}\)</span>, how
+can you hedge?</li>
+</ul>
+<ul class="simple">
+<li>Profit: <span class="math notranslate nohighlight">\(\smash{S_2 + F_1 - F_2 = F_1 + b_2 = \$2.30}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If you need to purchase the asset at <span class="math notranslate nohighlight">\(\smash{t_2}\)</span>,
+how can you hedge?</li>
+</ul>
+<ul class="simple">
+<li>Cost: <span class="math notranslate nohighlight">\(\smash{S_2 + F_1 - F_2 = F_1 + b_2 = \$2.30}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="basis-risk">
+
+<h2>Basis Risk</h2>
+
+<p>Note that the profit/cost of the hedging strategies above is
+<span class="math notranslate nohighlight">\(\smash{F_1 + b_2}\)</span>.</p>
+<ul class="simple">
+<li>If <span class="math notranslate nohighlight">\(\smash{b_2}\)</span> is known at <span class="math notranslate nohighlight">\(\smash{t_1}\)</span>, then a
+perfect hedge could be designed.</li>
+</ul>
+<ul class="simple">
+<li>Basis change due to <span class="math notranslate nohighlight">\(\smash{t_2-t_1}\)</span> is perfectly
+foreseeable.</li>
+</ul>
+<ul class="simple">
+<li>Basis fluctuation due to random variations in <span class="math notranslate nohighlight">\(\smash{c}\)</span> is
+not perfectly foreseeable.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="contract-choice">
+
+<h2>Contract Choice</h2>
+
+<p>Perfect hedges typically don’t exist. Important decisions for the
+hedge include:</p>
+<ul class="simple">
+<li>An asset with a futures contract that closely approximates the asset
+to be hedged.</li>
+</ul>
+<ul class="simple">
+<li>Expiry close to the necessary terminal date of the hedge.</li>
+</ul>
+<ul class="simple">
+<li>Typically, expiry is chosen to be a month following hedge
+termination so that delivery doesn’t occur and rolling is
+unnecessary.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="example-hedging-yen">
+
+<h2>Example: Hedging Yen</h2>
+
+<p>Suppose it’s March 1st and you will receive 50 million Yen at end of
+July. Yen futures contracts are for delivery of 12.5 million
+Yen in Mar/Jun/Sep/Dec.</p>
+<ul class="simple">
+<li>How can you hedge?</li>
+</ul>
+<p>Assume the following spot and (Sep) futures prices
+(cents/Yen): <span class="math notranslate nohighlight">\(\smash{F_1 = 0.9800}\)</span>, <span class="math notranslate nohighlight">\(\smash{S_2 =
+0.9200}\)</span> and <span class="math notranslate nohighlight">\(\smash{F_2 = 0.9250}\)</span>.</p>
+<ul class="simple">
+<li>What is the price you pay for Yen?</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{F_1 + b_2 = 0.9800 + (0.9200 - 0.9250) = 0.9750}\)</span> per
+Yen.</li>
+</ul>
+<ul class="simple">
+<li>For 50 million Yen: <span class="math notranslate nohighlight">\(\smash{50,000,000 \times 0.9750 =
+48,750,000}\)</span> cents or <span class="math notranslate nohighlight">\(\smash{\$487,500}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="cross-hedging">
+
+<h2>Cross Hedging</h2>
+
+<p>A <em>cross hedge</em> occurs when the asset being hedged is different from
+the asset underlying a futures contract.</p>
+<ul class="simple">
+<li>Since the two assets may not be perfectly correlated, an adjustment
+must be made to determine the optimal number of futures contracts to
+hold.</li>
+</ul>
+<ul class="simple">
+<li>The optimal number of futures is determined via the <em>hedge ratio</em>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="hedge-ratio">
+
+<h2>Hedge Ratio</h2>
+
+<p>The optimal hedge ratio is defined as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+h^* &amp; = \rho \frac{\sigma_S}{\sigma_F} \\
+\sigma_S &amp; = Sd(\Delta S) \\
+\sigma_F &amp; = Sd(\Delta F).
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{h^*}\)</span> is the slope of a regression of
+<span class="math notranslate nohighlight">\(\smash{\Delta S}\)</span> on <span class="math notranslate nohighlight">\(\smash{\Delta F}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The hedge ratio is typically computed by estimating
+<span class="math notranslate nohighlight">\(\smash{\rho}\)</span>, <span class="math notranslate nohighlight">\(\smash{\sigma_S}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{\sigma_F}\)</span> with historical data.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="hedge-ratio-with-returns">
+
+<h2>Hedge Ratio with Returns</h2>
+
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\sigma_{r_S} &amp; = Sd(\Delta S/S) = Sd(\Delta S)/S \\
+\sigma_{r_F} &amp; = Sd(\Delta F/F) = Sd(\Delta F)/F
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\smash{r_S}\)</span> and <span class="math notranslate nohighlight">\(\smash{r_F}\)</span> are returns (not
+price changes).</p>
+<ul class="simple">
+<li>An alternate definition of the hedge ratio is:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gather}
+\tilde{h} = \rho \frac{\sigma_{r_S}}{\sigma_{r_F}} = \rho
+\frac{\sigma_S/S}{\sigma_F/F} = h^* \frac{F}{S} \\
+\Rightarrow h^* = \tilde{h} \frac{S}{F}.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="hedge-ratio-regression">
+
+<h2>Hedge Ratio Regression</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/hedgeRatioReg.png"><img alt="_images/hedgeRatioReg.png" class="align-center" src="_images/hedgeRatioReg.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id1">
+
+<h2>Hedge Ratio</h2>
+
+<p>Note that if the asset underlying the futures is identical to the
+asset being hedged:</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\rho = 1}\)</span>, <span class="math notranslate nohighlight">\(\smash{\sigma_S = \sigma_F}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{h^* = 1}\)</span>.</li>
+</ul>
+<p>If <span class="math notranslate nohighlight">\(\smash{\rho = 1}\)</span> and <span class="math notranslate nohighlight">\(\smash{\sigma_S = 2\sigma_F}\)</span>,
+you need to hedge with two futures.</p>
+<ul class="simple">
+<li>The assets are perfectly correlated, but price swings in the futures
+are only half as large as those for the asset being hedged.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="optimal-number-of-contracts">
+
+<h2>Optimal Number of Contracts</h2>
+
+<p>The optimal number of contracts to purchase for a cross hedge is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+N^* &amp; = h^* \frac{Q_S}{Q_F} = \tilde{h} \frac{S Q_S}{F Q_F} =
+\tilde{h} \frac{V_S}{V_F}.
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\smash{Q_S}\)</span> is the size of the position being hedged,
+<span class="math notranslate nohighlight">\(\smash{Q_F}\)</span> is the size of a futures contract and
+<span class="math notranslate nohighlight">\(\smash{V_S}\)</span> and <span class="math notranslate nohighlight">\(\smash{V_F}\)</span> are their total valuations
+(shares times price).</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="hedge-ratio-example">
+
+<h2>Hedge Ratio Example</h2>
+
+<p>An airline company needs to purchase 2 millions gallons of jet fuel in
+1 month.</p>
+<ul class="simple">
+<li>CME Group heating oil futures are the best contract to use as a
+hedge.</li>
+</ul>
+<ul class="simple">
+<li>One contract is for delivery of 42,000 gallons of heating oil.</li>
+</ul>
+<ul class="simple">
+<li>The table on the following slide has historical data to estimate
+the optimal hedge ratio.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id2">
+
+<h2>Hedge Ratio Example</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/hedgeRatioData.png"><img alt="_images/hedgeRatioData.png" class="align-center" src="_images/hedgeRatioData.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id3">
+
+<h2>Hedge Ratio Example</h2>
+
+<p>Using the data:</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\hat{\rho} = 0.928}\)</span>, <span class="math notranslate nohighlight">\(\smash{\hat{\sigma}_S =
+0.0263}\)</span> and <span class="math notranslate nohighlight">\(\smash{\hat{\sigma}_F = 0.0313}\)</span>.</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{h}^* &amp; = \hat{\rho} \frac{\hat{\sigma_S}}{\hat{\sigma_F}} =
+0.928 \frac{0.0263}{0.0313} = 0.78
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{N}^* &amp; = \hat{h}^* \frac{Q_S}{Q_F} =
+0.78 \frac{2,000,000}{42,000} \approx 37.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="hedging-an-equity-portfolio">
+
+<h2>Hedging an Equity Portfolio</h2>
+
+<p>Suppose you want to hedge an equity portfolio which has some
+sensitivity to the market, <span class="math notranslate nohighlight">\(\smash{\beta}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+r_p &amp; = r_f + \beta (r_I - r_f) + \epsilon.
+\end{align}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{r_p}\)</span>, <span class="math notranslate nohighlight">\(\smash{r_I}\)</span> and <span class="math notranslate nohighlight">\(\smash{r_f}\)</span> are
+the portfolio, market index (S&amp;P 500) and risk-free returns,
+respectively.</li>
+</ul>
+<ul class="simple">
+<li>Since <span class="math notranslate nohighlight">\(\smash{\beta}\)</span> is the slope of the regression of excess
+returns, it is the hedge ratio, <span class="math notranslate nohighlight">\(\smash{\tilde{h}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="hedging-equity-portfolio-example">
+
+<h2>Hedging Equity Portfolio Example</h2>
+
+<p>Suppose:</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{P_{SP500} = 1000}\)</span>.</li>
+<li><span class="math notranslate nohighlight">\(\smash{P_{ES} = 1010}\)</span>.</li>
+<li>Portfolio Value <span class="math notranslate nohighlight">\(\smash{\$5,050,000}\)</span>.</li>
+<li><span class="math notranslate nohighlight">\(\smash{r_f = 0.04}\)</span> per annum.</li>
+<li>Index dividend yield <span class="math notranslate nohighlight">\(\smash{0.01}\)</span> per annum.</li>
+<li><span class="math notranslate nohighlight">\(\smash{\beta = 1.5}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id4">
+
+<h2>Hedging Equity Portfolio Example</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/equityIndexHedge.png"><img alt="_images/equityIndexHedge.png" class="align-center" src="_images/equityIndexHedge.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="why-hedge">
+
+<h2>Why Hedge?</h2>
+
+<p>Note that the index hedge results in a portfolio that earns grows at
+the risk-free rate.</p>
+<ul class="simple">
+<li>So why hedge?</li>
+</ul>
+<ul class="simple">
+<li>Perhaps you think your portfolio will earn positive <em>non-market</em>
+return (alpha) but don’t want to be exposed to the market.</li>
+</ul>
+<ul class="simple">
+<li>Perhaps you want to hold the portfolio for a long period of time,
+but need a brief reduction of risk exposure.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="changing-beta">
+
+<h2>Changing Beta</h2>
+
+<p>A complete hedge (as above) makes the effective beta zero.</p>
+<ul class="simple">
+<li>Suppose you simply want to change the beta of your portfolio to a
+new value, <span class="math notranslate nohighlight">\(\smash{\beta^*}\)</span>?</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+N^* = (\beta - \beta^*) \frac{V_P}{V_F}.
+\end{align}\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

@@ -1,0 +1,387 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Data Transformations
+==============================================================================
+
+
+Transformations
+==============================================================================
+Data often deviate from normality and exhibit characteristics
+(skewness, kurtosis) that are difficult to model.
+
+.. rst-class:: to-build
+
+- Transforming data using some functional form will often result in
+  observations that are easier to model.
+
+.. rst-class:: to-build
+
+- The most typical transformations are the natural logarithm and the
+  square root.
+
+
+
+Logarithmic Transformation
+==============================================================================
+Given independent and dependent variables, :math:`(x_t, y_t)`, the
+natural logarithm transformation is appropriate under several
+circumstances:
+
+.. rst-class:: to-build
+
+- :math:`y_t` is strictly positive (the log of a negative number does
+  not exist).
+
+.. rst-class:: to-build
+
+- :math:`y_t` increases exponentially (faster than linearly) as
+  :math:`x_t` increases.
+
+.. rst-class:: to-build
+
+- The variance in :math:`y_t` appears to depend on its mean
+  (heteroskedasticity).
+
+
+
+Logarithmic Transformation
+==============================================================================
+Consider the relationship
+
+.. math::
+
+   y_t = \exp(\beta x_t)\exp(\epsilon_t),
+
+where :math:`\epsilon_t \sim \mathcal{N}(0,\sigma)`.  
+
+.. rst-class:: to-build
+
+- If :math:`\epsilon_t \sim \mathcal{N}(0,\sigma)`, then
+  :math:`\exp(\epsilon_t) \sim \mathcal{LN}(0,\sigma)`.  
+
+.. rst-class:: to-build
+
+- In this case,
+
+.. rst-class:: to-build
+
+.. math::
+
+   E\left[\exp(\epsilon_t)\right] = \exp(0.5\sigma^2) \\
+
+.. rst-class:: to-build
+
+.. math::
+
+   Var\left(\exp(\epsilon_t)\right) = \left(\exp(\sigma^2)-1\right)
+   \exp(\sigma^2).
+
+
+
+Logarithmic Transformation
+==============================================================================
+Thus,
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[y_t] = \exp(\beta x_t) \exp(0.5 \sigma^2) \\
+
+.. rst-class:: to-build
+
+.. math::
+
+   Var(y_t) = \exp(2\beta x_t) \left(\exp(\sigma^2)-1\right) \exp(\sigma^2).
+
+.. rst-class:: to-build
+
+- That is, :math:`E[y_t]` grows exponentially with :math:`x_t` and
+  :math:`Var(y_t)` is heteroskedastic.
+
+
+
+Logarithmic Transformation
+==============================================================================
+Taking the natural logarithm
+
+.. rst-class:: to-build
+
+.. math::
+
+   \log(y_t) = \beta x_t + \epsilon_t,
+
+.. rst-class:: to-build
+
+- :math:`E\left[\log(y_t)\right]` grows linearly with :math:`x_t`.
+
+.. rst-class:: to-build
+
+- :math:`Var\left(\log(y_t)\right)` is homoskedastic.
+
+
+
+
+Logarithmic Transformation Example
+==============================================================================
+Given, :math:`\beta = 0.5` and :math:`\epsilon_t \sim
+\mathcal{N}(0,0.15)`, the plot below depicts
+
+.. math::
+
+  y_t & = \exp(\beta x_t)\exp(\epsilon_t) \\
+  \log(y_t) & = \beta x_t + \epsilon_t.
+
+  .. ifslides::
+
+  .. image:: /_static/Transform/logTransExample.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Transform/logTransExample.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    setwd("~/Dropbox/Academics/Teaching/Econ114/S2013/RScripts/")
+    library(quantmod)
+
+    # Number of observations
+    n = 500;
+
+    # Parameters driving the true relationship
+    beta = 0.5;
+    sigma = 0.15
+
+    # The independent variable
+    x = seq(0.1,10,length=n)
+
+    # Random shocks drawn for a normal
+    eps = rnorm(n,0,sigma);
+
+    # Create the independent variable based on specified model
+    y = exp(beta*x)*exp(eps)
+
+    # Plot levels of y and log of y
+    pdf(file="logTransExample.pdf", height=6, width=10)
+    par(mfrow=c(1,2))
+    plot(x, y, type='l', main="(a)")
+    plot(x, log(y), type='l', main="(b)")
+    graphics.off()
+
+
+Logarithmic Transformation Example
+==============================================================================
+Asset prices often display the characteristics that are suitable for a
+logarithmic transformation.
+
+  .. ifslides::
+
+  .. image:: /_static/Transform/hogTransExample.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Transform/hogTransExample.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    getSymbols("HOG", from="1993-01-01", to="2002-04-30")
+    pdf(file="hogTransExample.pdf", height=6, width=10)
+    par(mfrow=c(1,2))
+    plot(HOG$HOG.Adj, ylab="HOG Prices", main="(a)")
+    plot(log(HOG$HOG.Adj), ylab="Log HOG Prices", main="(b)")
+    graphics.off()
+
+
+
+Box-Cox Power Transformations
+==============================================================================
+Generally speaking, the set of transformations
+
+.. math::
+
+   y^{\alpha} = \begin{cases} \frac{y^{\alpha}-1}{\alpha} & \alpha
+   \neq 0 \\ \log(y) & \alpha = 0, \end{cases}
+
+Is known as the family of *Box-Cox power transformations*. 
+
+
+
+Correcting Skewness and Heteroskedasticity
+==============================================================================
+Suppose a set of data observations, :math:`y_t`, appear to be right
+skewed and have variance increasing with it's mean.  
+
+.. rst-class:: to-build
+
+- A concave transformation with :math:`\alpha < 1` will reduce the
+  skewness and stabilize the variance.
+
+.. rst-class:: to-build
+
+- The smaller the value of :math:`\alpha`, the greater the effect of
+  the transformation.
+
+.. rst-class:: to-build
+
+- Selecting :math:`\alpha < 1` too small may result in left skewness
+  or variance decreasing with the mean (or both).
+
+.. rst-class:: to-build
+  
+- The :math:`\alpha` that creates the most symmetric data may not be
+  the best for stabilizing variance - there may be a tradeoff.
+
+
+
+
+Box Cox Example
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/Transform/boxCoxExample1.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Transform/boxCoxExample1.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+
+Box Cox Example
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/Transform/boxCoxExample2.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Transform/boxCoxExample2.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+
+
+Geometry of Transformations
+==============================================================================
+Transformations can be beneficial because they stretch observations
+apart in some regions and push them together in other regions.  
+
+.. rst-class:: to-build
+
+- If data are right skewed, then a concave transformation will
+
+  .. rst-class:: to-build
+
+  - Stretch the distances between observations at the lower end of the
+    distribution.
+
+  .. rst-class:: to-build
+
+  - Compress the distances between observations at the upper end of
+    the distribution.
+  
+.. rst-class:: to-build
+
+- The degree of stretching and compressing will depend on the
+  derivatives of the transformation function.
+
+
+
+
+Geometry of Transformations
+==============================================================================
+For two values, :math:`x` and :math:`x'` close to each other, Taylor's
+theorem says
+
+.. math::
+
+   |h(x) - h(x')| & \approx h'(x) |x-x'|.
+
+.. rst-class:: to-build
+
+- :math:`h(x)` and :math:`h(x')` will be pushed apart where
+  :math:`h'(x)` is large.
+
+.. rst-class:: to-build
+
+- :math:`h(x)` and :math:`h(x')` will be pushed together where
+  :math:`h'(x)` is small.
+
+.. rst-class:: to-build
+
+- :math:`h'(x)` is a decreasing function of :math:`x` if :math:`h` is
+  concave.
+  
+
+
+
+Geometry of Transformations
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/Transform/transGeometry1.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Transform/transGeometry1.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+
+
+Geometry of Transformations
+==============================================================================
+Similarly, if the variance of a data set increases with its mean, a
+concave transformation will
+
+.. rst-class:: to-build
+
+- Push more variable values closer together (for large values of the
+  data).
+
+.. rst-class:: to-build
+
+- Push less variable values further apart (for small values of the
+  data).
+
+
+
+
+Geometry of Transformations
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/Transform/transGeometry2.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Transform/transGeometry2.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).

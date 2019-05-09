@@ -1,0 +1,334 @@
+.. slideconf::
+   :slide_classes: appear
+
+
+==============================================================================
+Trading
+==============================================================================
+
+Exchanges Today
+==============================================================================
+Modern financial exchanges are typically *electronic communications
+networks* or *ECNs*.
+
+.. raw:: <!--pause-->
+
+- They consist of large warehouses, populated by computer servers
+  that electronically match orders.
+
+.. raw:: <!--pause-->
+
+- These are referred to as *matching engines*.
+
+.. raw:: <!--pause-->
+
+- Since order execution speed is so important, many traders co-locate
+  their trading computers with the matching engines.
+
+Exchanges Today
+==============================================================================
+  .. ifslides::
+
+  .. image:: Trading/servers.jpg
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: Trading/servers.jpg
+     :width: 6in
+
+Major U.S. Exchanges
+==============================================================================
+- The `NYSE Arca <https://www.nyse.com/markets/nyse-arca>`_ matching
+  engine is located in Mahwah, NJ.
+
+.. raw:: <!--pause-->
+
+- The `Electronic Broking System (EBS) <http://www.ebs.com/>`_
+  currency exchange is located in Secausus, NJ.
+  
+.. raw:: <!--pause-->
+	 
+- The `Chicago Board Option Exchange (CBOE)
+  <http://bit.ly/1RZwjKb>`_ has co-located with EBS in Secaucus.
+
+.. raw:: <!--pause-->
+
+- The `Nasdaq <http://www.nasdaq.com/>`_ matching engine is located in
+  Carteret, NJ.
+
+.. raw:: <!--pause-->
+
+- The `CME Group <http://www.cmegroup.com/>`_ matching engine is
+  located in Aurora, IL.
+
+
+Exchanges Today
+==============================================================================
+  .. image:: Trading/exchangeMap.png
+     :width: 7.5in
+     :align: center
+
+Exchanges Today
+==============================================================================
+  .. image:: Trading/microwave.png
+     :width: 8.5in
+     :align: center
+
+Exchanges Today
+==============================================================================
+  .. image:: Trading/worldExchanges.png
+     :width: 8in
+     :align: center
+
+Market Makers
+==============================================================================
+Participants on exchanges include makers and takers.
+
+.. raw:: <!--pause-->
+
+- Makers are required to post both quotes to buy and sell assets on
+  the exchange.
+
+.. raw:: <!--pause-->
+
+- Quotes to buy are called *bids*.
+
+.. raw:: <!--pause-->
+
+- Quotes to sell are called *offers*.
+
+.. raw:: <!--pause-->
+
+- Typically there are many bids and offers posted on the exchange at
+  different prices.
+
+.. raw:: <!--pause-->
+
+- Market makers are compensated for providing quotes (also referred to
+  as *providing liquidity*).
+
+
+Takers
+==============================================================================
+Takers actively *take* orders that have been passively posted by
+market makers.
+
+.. raw:: <!--pause-->
+
+- When a taker wants to buy the asset, they buy at the lowest posted
+  offer quote.
+
+.. raw:: <!--pause-->
+
+- When a taker wants to sell an asset, they sell at the highest posted
+  bid quote.
+
+.. raw:: <!--pause-->
+
+- The difference between the highest bid quote and lowest offer quote
+  is known as the *spread*.
+
+
+Order Book Example: time 1
+==============================================================================
+  .. image:: Trading/orderBook1.png
+     :width: 7.5in
+     :align: center
+
+Order Book Example: time 2
+==============================================================================
+  .. image:: Trading/orderBook2.png
+     :width: 7.5in
+     :align: center
+
+Order Book Example: time 3
+==============================================================================
+  .. image:: Trading/orderBook3.png
+     :width: 7.5in
+     :align: center
+
+Order Book Example: time 4
+==============================================================================
+  .. image:: Trading/orderBook4.png
+     :width: 7.5in
+     :align: center
+
+Order Book Example: time 5
+==============================================================================
+  .. image:: Trading/orderBook5.png
+     :width: 7.5in
+     :align: center
+
+Information Flows
+==============================================================================
+Conventional wisdom is that information flows from the futures market
+to the equities (cash) market.
+
+  .. image:: Trading/cmeQuote.png
+     :width: 7.5in
+     :align: center
+
+SPY Liquidity Response to ES
+==============================================================================
+The following figure shows average net SPY liquidity response (shares
+added to offer minus shares added to bid) in each millisecond
+following ES liquidity change. 
+
+  .. image:: Trading/liqResponse.png
+     :width: 5.5in
+     :align: center
+
+Reasons for Information Flow
+==============================================================================
+- The standard explanation is leverage.
+
+.. raw:: <!--pause-->
+	 
+- Informed traders will first trade where they can obtain highest
+  leverage.
+
+.. raw:: <!--pause-->
+	 
+- The data also suggests that *relative price increment* is an
+  important determinant.
+
+SPY/E-mini Contract Specs
+==============================================================================
+E-mini:
+
+.. raw:: <!--pause-->
+
+- Quoted in S\&P 500 index points.
+
+.. raw:: <!--pause-->
+
+- Notional value of one contract is 50x the index.
+
+.. raw:: <!--pause-->
+
+- Minimum price increment is 0.25 index points.
+
+.. raw:: <!--pause-->
+
+SPY:
+
+.. raw:: <!--pause-->
+
+- Quoted at 1/10th the value of the S\&P 500 index.
+
+.. raw:: <!--pause-->
+
+- Notional value is equal to the price quotes.
+
+.. raw:: <!--pause-->
+
+- Minimum price increment is \$0.01.
+
+  - Equivalent to 0.10 index points.
+
+.. raw:: <!--pause-->
+
+E-mini tick size is 2.5x SPY tick size.
+
+E-mini/SPY Spreads
+==============================================================================
+  .. image:: Trading/spreads1.png
+     :width: 7.5in
+     :align: center
+
+E-mini/SPY Spreads
+==============================================================================
+  .. image:: Trading/spreads2.png
+     :width: 7.5in
+     :align: center
+
+E-mini/SPY Spreads
+==============================================================================
+  .. image:: Trading/spreads3.png
+     :width: 7.5in
+     :align: center
+
+E-mini/SPY Spreads
+==============================================================================
+  .. image:: Trading/spreads4.png
+     :width: 7.5in
+     :align: center
+
+Spread and Information Flow
+==============================================================================
+Differences in spreads creates arbitrage opportunities.
+
+.. raw:: <!--pause-->
+
+- The size of the spread differences determines size and frequency of
+  arbitrages.
+
+.. raw:: <!--pause-->
+
+- Large ES spread relative to SPY spread means big arbs most of the
+  time when a market maker is filled at CME.
+
+.. raw:: <!--pause-->
+
+- Less frequently, the SPY bid or offer will allow an arb in the
+  reverse direction.
+
+Implications
+==============================================================================
+- If maker is filled at ES bid and ES bid \< SPY bid: sell at SPY bid.
+
+  - SPY market responds to ES market.
+
+.. raw:: <!--pause-->
+	 
+- If maker is filled at ES offer and ES offer \> SPY offer: buy at
+  SPY offer.
+
+  - SPY market responds to ES market.
+
+.. raw:: <!--pause-->
+
+- If maker is filled at SPY bid and SPY bid \< ES bid: sell at ES bid.
+
+  - ES market responds to SPY market.
+
+.. raw:: <!--pause-->
+
+- If maker is filled at SPY offer and SPY offer \> ES offer: buy at
+  ES offer.
+
+  - ES market responds to SPY market.
+
+Empirical Results
+==============================================================================
+  .. image:: Trading/bidResponses.png
+     :width: 7.5in
+     :align: center
+
+Empirical Results
+==============================================================================
+  .. image:: Trading/offerResponses.png
+     :width: 7.5in
+     :align: center
+
+Notes on Results
+==============================================================================
+- The previous results are base on the trading record from Aug 2015.
+
+.. raw:: <!--pause-->
+	 
+- The data strongly support the model predictions.
+
+.. raw:: <!--pause-->
+
+- There are typically 10 times as many ES events as SPY events.
+
+.. raw:: <!--pause-->
+
+- Each SPY event is 10 times more influential than an ES event.
+
+.. raw:: <!--pause-->
+
+- What does this mean if you are designing and exchange?

@@ -1,0 +1,395 @@
+==============================================================================
+Vector Autoregression
+==============================================================================
+
+Definition
+==============================================================================
+A :math:`\smash{p}` th order vector autoregression generalizes a
+scalar :math:`\smash{AR(p)}`:
+
+.. math::
+
+   \smash{\boldsymbol{Y}_{t} = \boldsymbol{c} +
+   \Phi_{1}\boldsymbol{Y}_{t-1} + \Phi_{2}\boldsymbol{Y}_{t-2} +
+   \ldots + + \Phi_{p}\boldsymbol{Y}_{t-p} +
+   \boldsymbol{\varepsilon}_{t}}.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{Y_{t} = (Y_{1t},Y_{2t},\ldots,Y_{nt})^{'}}` is an
+  :math:`\smash{n \times 1}` vector of random variables.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{c} = (c_1,c_2,\ldots,c_n)^{'}}` is an
+  :math:`\smash{n \times 1}` vector of constants.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\Phi_{j}}` is an :math:`\smash{n \times n}` matrix of
+  autoregressive coefficients for :math:`\smash{j = 1,\ldots,p}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{\varepsilon}_{t} =
+  (\varepsilon_{1t},\ldots, \varepsilon_{nt})^{'} }` is a vector white
+  noise process:
+
+.. math::
+
+   \smash{E[\boldsymbol{\varepsilon}_{t}] = \boldsymbol{0}  \,\,\, \text{and}
+   \,\,\,
+   E[\boldsymbol{\varepsilon}_{t}\boldsymbol{\varepsilon}^{'}_{\tau}] =
+   \bigg\{\begin{array}{c} \Omega \hspace{10pt} t = \tau \\ 0
+   \hspace{10pt} \text{o/w} \\ \end{array}}.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{Y}_{t}}` is referred to as a
+  :math:`\smash{VAR(p)}`.
+
+:math:`\smash{AR(p)}` as :math:`\smash{VAR(1)}`
+==============================================================================
+Recall, an :math:`\smash{AR(p)}` can be written as a
+:math:`\smash{VAR(1)}`
+
+.. math::
+
+   \smash{\boldsymbol{Y}_{t} = \Phi \boldsymbol{Y}_{t-1} +
+   \boldsymbol{v}_{t}}
+
+where
+
+.. math::
+
+   \smash{\boldsymbol{Y}_{t} = \left[\begin{array}{c} Y_{t} \\ \vdots
+   \\ Y_{t-p+1} \\ \end{array} \right], \hspace{10pt}
+   \Phi = \left[\begin{array}{ccccc} \phi_{1} & \phi_{2}
+   & \ldots & \phi_{p-1} & \phi_{p} \\ 1 & 0 & \ldots & 0 & 0 \\
+   \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \ldots
+   & 1 & 0 \\ \end{array} \right], \hspace{10pt}
+   \boldsymbol{v}_{t} = \left[\begin{array}{c}
+   \varepsilon_{t} \\ 0 \\ 0 \\ \vdots \\ 0 \\ \end{array}
+   \right]}
+
+.. math::
+
+   \,\,
+
+
+Lag Operator Notation
+==============================================================================
+In lag operator notation,
+
+.. math::
+
+   \begin{align*}
+   \Phi(L) \boldsymbol{Y}_{t} & = \left[I_{n} - \Phi_{1}L -
+   \Phi_{2}L^{2} - \ldots - \Phi_{p}L^{p}\right]\boldsymbol{Y}_{t}
+   \\
+   & = \boldsymbol{c} + \boldsymbol{\varepsilon}_{t}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\Phi(L)}` is a matrix where each component is a scalar
+  lag polynomial.
+
+Weak Stationarity
+==============================================================================
+The concept of weak stationarity is unchanged:
+:math:`\smash{\boldsymbol{Y}_{t}}` is weakly stationary if
+
+.. math::
+
+   \smash{E[\boldsymbol{Y}_{t}] \,\,\, \text{and} \,\,\,
+   E[\boldsymbol{Y}_{t}\boldsymbol{Y}_{t-j}^{'}]}
+
+are independent of :math:`\smash{t \,\, \forall \,\, j}`
+
+Mean
+==============================================================================
+By weak stationarity,
+
+.. math::
+
+   \begin{align*}
+   E[\boldsymbol{Y}_{t}] & = \boldsymbol{\mu} = \boldsymbol{c} +
+   \Phi_{1}\boldsymbol{\mu} + \ldots + \Phi_{p}\boldsymbol{\mu} \\
+   \implies \boldsymbol{\mu} & = [I_{n} - \Phi_{1} - \ldots -
+   \Phi_{p}]^{-1}\boldsymbol{c}
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+Note that
+
+.. math::
+
+   \smash{\boldsymbol{\mu} = (\mu_{1},\mu_{2},\ldots,\mu_{n})^{'} \neq
+   (\mu,\mu,\ldots,\mu)^{'}}
+
+.. raw:: <!--pause-->
+
+Alternatively, we can re-express as a zero-mean process:
+
+.. math::
+
+   \smash{(\boldsymbol{Y}_{t} - \boldsymbol{\mu}) =
+   \Phi_{1}(\boldsymbol{Y}_{t-1} - \boldsymbol{\mu}) + \ldots +
+   \Phi_{p}(\boldsymbol{Y}_{t-p} - \boldsymbol{\mu}) +
+   \boldsymbol{\varepsilon}_{t}}.
+
+:math:`\smash{VAR(p)}` as :math:`\smash{VAR(1)}`
+==============================================================================
+We can write a :math:`\smash{VAR(p)}` as a :math:`\smash{VAR(1)}`:
+
+.. math::
+
+   \smash{\boldsymbol{\xi}_{t} = F\boldsymbol{\xi}_{t-1} +
+   \boldsymbol{v}_{t}}
+
+where
+
+.. math::
+
+   \smash{\boldsymbol{\xi}_{t} = \left[\begin{array}{c}
+   \boldsymbol{Y}_{t} - \boldsymbol{\mu} \\ \boldsymbol{Y}_{t-1} -
+   \boldsymbol{\mu} \\ \vdots \\ \boldsymbol{Y}_{t-p+1} -
+   \boldsymbol{\mu} \\ \end{array} \right], \,\,\,
+   F = \left[\begin{array}{ccccc} \Phi_{1} & \Phi_{2} &\ldots&
+   \Phi_{p-1} & \Phi_{p} \\ I_{n} & 0 & 0 & \ldots & 0 \\ 0 &
+   I_{n} &\ldots & 0 & 0 \\ \vdots & \vdots & \ddots & \vdots & \vdots
+   \\ 0 & 0 & \ldots & I_{n} & 0 \\
+   \end{array}\right], \,\,\,
+   \boldsymbol{v}_{t} = \left[\begin{array}{c}
+   \boldsymbol{\varepsilon}_{t} \\ 0 \\ 0 \\ \vdots \\ 0 \\
+   \end{array} \right]}.
+
+.. math::
+
+   \,\,
+
+
+:math:`\smash{VAR(p)}` as :math:`\smash{VAR(1)}`
+==============================================================================
+Clearly,
+
+.. math::
+
+   \smash{E[\boldsymbol{v}_{t}\boldsymbol{v}_{\tau}^{'}] =
+   \bigg\{\begin{array}{c} Q \hspace{10pt} t = \tau \\ 0 \hspace{10pt}
+   \text{o/w} \\ \end{array}}
+
+where
+
+.. math::
+
+   \smash{Q = \left[\begin{array}{cccc} \Omega & 0& \ldots & 0 \\ 0 &
+   0 & \ldots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 &
+   \ldots & 0 \\ \end{array} \right]_{np \times np}}.
+
+.. math::
+
+   \,\,
+
+
+Recursive Iteration
+==============================================================================
+Recursively iterating on the :math:`\smash{VAR(1)}`:
+
+.. math::
+
+   \smash{\boldsymbol{\xi}_{t+s} =  \boldsymbol{v}_{t+s} +
+   F\boldsymbol{v}_{t+s-1}  + F^{2}\boldsymbol{v}_{t+s-2}  + \ldots +
+   F^{s-1}\boldsymbol{v}_{t+1}  + F^{s}\xi_{t}}.
+
+.. raw:: <!--pause-->
+
+Assuming :math:`\smash{F}` is nonsingular, it can be decomposed as
+
+.. math::
+
+   \smash{F = T \Lambda T^{-1}}.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\Lambda}` is a diagonal matrix comprised of the
+  :math:`\smash{np}` eigenvalues of :math:`\smash{F}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{T}` is a matrix of eigenvectors as columns.
+
+Recursive Iteration
+==============================================================================
+Substituting the decomposition,
+
+.. math::
+
+   \begin{gather*}
+   F^2 = FF = (T \Lambda T^{-1})\,T \Lambda T^{-1} = T \Lambda^{2}
+   T^{-1} \\
+   \implies F^{s} =  T \Lambda^{s} T^{-1} \rightarrow 0 \,\,\,\,
+   \text{if} \,\,\,\, |\lambda_{k}| < 1 \,\,\,\, \text{for} \,\,\,\, k
+   = 1, \ldots, np.
+   \end{gather*}
+
+.. raw:: <!--pause-->
+
+If :math:`\smash{F^{s}\rightarrow 0}` as :math:`\smash{s\rightarrow
+\infty}`,
+
+.. raw:: <!--pause-->
+
+- The effect of :math:`\smash{\boldsymbol{\varepsilon}_{t}}` on
+  :math:`\smash{\boldsymbol{\xi}_{t+s}}` dies out as
+  :math:`\smash{s\rightarrow \infty}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{\xi}_{t}}` (and hence
+  :math:`\smash{\boldsymbol{Y}_{t}}`) is stationary and causal.
+
+.. raw:: <!--pause-->
+
+- Alternatively, :math:`\smash{\boldsymbol{Y}_{t}}` is stationary and
+  causal if the roots of :math:`\smash{[I_{n} - \Phi_{1}z -
+  \Phi_{2}z^{2} - \ldots - \Phi_{p}z^{p}]}` all lie outside the unit
+  circle.
+
+
+Vector :math:`\smash{MA(\infty)}` Representation
+==============================================================================
+If :math:`\smash{F^{s}\rightarrow 0}` as :math:`\smash{s\rightarrow
+\infty}`, then
+
+.. math:: 
+
+   \smash{\boldsymbol{\xi}_{t+s} =  \boldsymbol{v}_{t+s} +
+   F\boldsymbol{v}_{t+s-1}  + F^{2}\boldsymbol{v}_{t+s-2} +
+   F^{3}\boldsymbol{v}_{t+s-3}  + \ldots}
+
+which is a vector :math:`\smash{MA(\infty)}` process.
+
+Vector :math:`\smash{MA(\infty)}` Representation
+==============================================================================
+We can also write :math:`\smash{\boldsymbol{Y}_{t}}` alone as a vector
+:math:`\smash{MA(\infty)}`. First, recognize
+
+.. math::
+
+   \begin{align*}
+   \boldsymbol{Y}_{t+s} & = \boldsymbol{\mu} +
+   \boldsymbol{\varepsilon}_{t+s} + \Psi_{1}
+   \boldsymbol{\varepsilon}_{t+s-1} +  \Psi_{2}
+   \boldsymbol{\varepsilon}_{t+s-2} + \ldots + \Psi_{s-1}
+   \boldsymbol{\varepsilon}_{t+1} \\
+   & \hspace{0.5in} + F_{11}^{(s)}(\boldsymbol{Y}_{t} -
+   \boldsymbol{\mu}) + F_{12}^{(s)}(\boldsymbol{Y}_{t-1} -
+   \boldsymbol{\mu}) + \ldots + F_{1p}^{(s)}(\boldsymbol{Y}_{t-p+1} -
+   \boldsymbol{\mu}).
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\Psi_{j} = F_{11}^{(j)}}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{F_{1k}^{(j)}}` is comprised of rows 1 to
+  :math:`\smash{n}` and columns :math:`\smash{(k-1)n+1}` to
+  :math:`\smash{kn}` of matrix :math:`\smash{F^{j}}`.
+
+.. raw:: <!--pause-->
+
+- Note that the matrices :math:`\smash{(F \times
+  F)[1:n,1:n]}` and :math:`\smash{F[1:n,1:n] \times
+  F[1:n,1:n]}` are not the same.
+
+Vector :math:`\smash{MA(\infty)}` Representation
+==============================================================================
+Suppose all eigenvalues of :math:`\smash{F}` are inside the unit
+circle.
+
+.. raw:: <!--pause-->
+
+- Then :math:`\smash{F^{s}\rightarrow 0}` as
+  :math:`\smash{s\rightarrow \infty}`.
+
+.. raw:: <!--pause-->
+
+-  This means :math:`\smash{F_{1k}^{(s)}\rightarrow 0}` as
+   :math:`\smash{s\rightarrow \infty}`.
+
+.. raw:: <!--pause-->
+
+- In the limit
+
+.. math::
+
+   \begin{align*}
+   \boldsymbol{Y}_{t+s} & = \boldsymbol{\mu} +
+   \boldsymbol{\varepsilon}_{t+s} + \Psi_{1}
+   \boldsymbol{\varepsilon}_{t+s-1} +  \Psi_{2}
+   \boldsymbol{\varepsilon}_{t+s-2} + \ldots \\
+   & = \boldsymbol{\mu} +
+   \Psi(L)\boldsymbol{\varepsilon}_{t+s}.
+   \end{align*}
+
+Inverse of :math:`\smash{MA(\infty)}` Lag Polynomial
+==============================================================================
+In this case :math:`\smash{\Psi(L) = \Phi(L)^{-1}}` or
+
+.. math::
+
+   \smash{[1 - \Phi_{1}L - \Phi_{2}L^{2} - \ldots - \Phi_{p}L^{p}][1 +
+   \Psi_{1}L + \Psi_{2}L^{2} + \ldots] = I_{n}}.
+
+Representation with Uncorrelated Noise
+==============================================================================
+We can always write a stationary and causal :math:`\smash{VAR(p)}` as
+a vector :math:`\smash{MA(\infty)}` with a mutually uncorrelated white
+noise vector.
+
+.. raw:: <!--pause-->
+
+- Define :math:`\smash{\boldsymbol{u}_{t} =
+  H\boldsymbol{\varepsilon}_{t}\,\,\,\,}` such that
+  :math:`\smash{\,\,\,\,H \Omega H^{'} = D}`.
+
+.. raw:: <!--pause-->
+
+- Then
+
+.. math::
+
+   \begin{align*}
+   \boldsymbol{Y}_{t} & = \boldsymbol{\mu} +
+   H^{-1}H\boldsymbol{\varepsilon}_{t} +
+   \Psi_{1}(H^{-1}H)\boldsymbol{\varepsilon}_{t-1} + \ldots \\
+   & = \boldsymbol{\mu} + J_{0}\boldsymbol{u}_{t} +
+   J_{1}\boldsymbol{u}_{t-1} + J_{2}\boldsymbol{u}_{t-2} + \ldots
+   \end{align*}
+
+where :math:`\smash{J_{s} = \Psi_{s}H^{-1}}`.
+
+Representation with Uncorrelated Noise
+==============================================================================
+- In this case the leading matrix :math:`\smash{J_{0} \neq I_{n}}`.
+
+.. raw:: <!--pause-->
+
+- The noise vector is uncorrelated:
+
+.. math::
+
+   \begin{align*}
+   E[\boldsymbol{u}_{t}\boldsymbol{u}_{t}^{'}] & =
+   E[H\boldsymbol{\varepsilon}_{t} \boldsymbol{\varepsilon}_{t}^{'}
+   H^{'}] \\
+   & = H E[\boldsymbol{\varepsilon}_{t}\boldsymbol{\varepsilon}_{t}]
+   H^{'} \\
+   & = H \Omega H^{'} \\
+   & = D.
+   \end{align*}

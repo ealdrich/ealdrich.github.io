@@ -1,0 +1,462 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Moving Average Processes
+==============================================================================
+
+
+:math:`MA(1)`
+==============================================================================
+Given white noise :math:`\{\varepsilon_t\}`, consider the
+process
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_t = \mu + \varepsilon_t + \theta \varepsilon_{t-1},
+
+.. rst-class:: to-build
+
+where :math:`\mu` and :math:`\theta` are constants.  
+
+.. rst-class:: to-build
+
+- This is a *first-order moving average* or :math:`MA(1)` process.
+
+
+
+:math:`MA(1)` Mean and Variance
+==============================================================================
+The mean of the first-order moving average process is
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[Y_t] = E[\mu + \varepsilon_t + \theta \varepsilon_{t-1}] \hspace{0.65in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = \mu + E[\varepsilon_t] + \theta E[\varepsilon_{t-1}]
+
+.. rst-class:: to-build
+
+.. math::
+
+   = \mu. \hspace{1.27in}
+
+
+
+
+:math:`MA(1)` Autocovariances
+==============================================================================
+.. math::
+
+   \gamma_j & = E\left[(Y_t - \mu)(Y_{t-j} - \mu)\right] \hspace{2in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = E\left[(\varepsilon_t + \theta \varepsilon_{t-1})(\varepsilon_{t-j} + \theta
+   \varepsilon_{t-j-1})\right] \hspace{1.18in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = E[\varepsilon_t \varepsilon_{t-j} + \theta \varepsilon_t
+   \varepsilon_{t-j-1} + \theta \varepsilon_{t-1} \varepsilon_{t-j} +
+   \theta^2 \varepsilon_{t-1}\varepsilon_{t-j-1}]
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.49in} = E[\varepsilon_t \varepsilon_{t-j}] + \theta
+   E[\varepsilon_t \varepsilon_{t-j-1}] + \theta E[\varepsilon_{t-1}
+   \varepsilon_{t-j}] + \theta^2
+   E[\varepsilon_{t-1}\varepsilon_{t-j-1}].
+
+
+
+:math:`MA(1)` Autocovariances
+==============================================================================
+- If :math:`j = 0`
+    
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.2in} \gamma_0 = E[\varepsilon^2_t] + \theta
+   E[\varepsilon_t \varepsilon_{t-1}] + \theta E[\varepsilon_{t-1}
+   \varepsilon_t] + \theta^2 E[\varepsilon^2_{t-1}] =
+   (1+\theta^2)\sigma^2.
+  
+.. rst-class:: to-build
+
+- If :math:`j = 1`
+    
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.2in} \gamma_1 = E[\varepsilon_t \varepsilon_{t-1}] +
+   \theta E[\varepsilon_t \varepsilon_{t-2}] + \theta
+   E[\varepsilon^2_{t-1}] + \theta^2 E[\varepsilon_{t-1}
+   \varepsilon_{t-2}] = \theta \sigma^2.
+
+.. rst-class:: to-build
+  
+- If :math:`j > 1`, all of the expectations are zero:
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_j = 0.
+
+
+
+:math:`MA(1)` Stationarity
+==============================================================================
+Since the mean and autocovariances are independent of time, an
+:math:`MA(1)` is weakly stationary.  
+
+.. rst-class:: to-build
+
+- This is true *for all values of* :math:`\theta`.
+
+
+
+
+:math:`MA(1)` Autocorrelations
+==============================================================================
+The autocorrelations of an :math:`MA(1)` are 
+
+.. rst-class:: to-build
+
+- :math:`j = 0`: :math:`\hspace{0.7in} \rho_0 = 1` (*always*).
+
+.. rst-class:: to-build
+
+- :math:`j = 1`:
+
+.. rst-class:: to-build
+
+.. math::
+   
+   \rho_1 = \frac{\theta \sigma^2}{(1+\theta^2) \sigma^2} =
+   \frac{\theta}{1+\theta^2}
+
+.. rst-class:: to-build
+
+- :math:`j > 1`: :math:`\hspace{0.72in} \rho_j = 0`.
+
+.. rst-class:: to-build
+
+- If :math:`\theta > 0`, first-order lags of :math:`Y_t` are
+  *positively* autocorrelated.
+
+.. rst-class:: to-build
+
+- If :math:`\theta < 0`, first-order lags of :math:`Y_t` are
+  *negatively* autocorrelated.
+
+
+
+
+:math:`MA(1)` Autocorrelations
+==============================================================================
+.. ifslides::
+
+  .. image:: /_static/MA/ma1-acf.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/MA/ma1-acf.png
+     :width: 6in
+
+
+
+:math:`MA(q)`
+==============================================================================
+A :math:`q` *th-order moving average* or :math:`MA(q)` process is
+
+.. rst-class:: to-build
+
+.. math::
+
+   Y_t = \mu + \varepsilon_t + \theta_1 \varepsilon_{t-1} + \ldots + \theta_q
+   \varepsilon_{t-q},
+
+.. rst-class:: to-build
+
+where :math:`\mu, \theta_1, \ldots, \theta_q` are any real numbers.
+
+
+
+:math:`MA(q)` Mean
+==============================================================================
+As with the :math:`MA(1)`:
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[Y_t] = E[\mu + \varepsilon_t + \theta_1 \varepsilon_{t-1} + \ldots +
+   \theta_q \varepsilon_{t-q}] \hspace{0.85in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = \mu + E[\varepsilon_t] + \theta_1 E[\varepsilon_{t-1}] + \ldots + \theta_q
+   E[\varepsilon_{t-q}]
+
+.. rst-class:: to-build
+
+.. math::
+
+   = \mu. \hspace{2.55in}
+
+
+
+
+:math:`MA(q)` Autocovariances
+==============================================================================
+.. math::
+
+   \gamma_j & = E\left[(Y_t-\mu)(Y_{t-j}-\mu)\right] \hspace{0.8in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = E\big[(\varepsilon_t + \theta_1\varepsilon_{t-1} + \ldots + \theta_q
+   \varepsilon_{t-q})
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{1in} \times (\varepsilon_{t-j} + \theta_1\varepsilon_{t-j-1} +
+   \ldots + \theta_q \varepsilon_{t-j-q})\big].
+
+.. rst-class:: to-build
+
+- For :math:`j > q`, all of the products result in zero expectations:
+  :math:`\gamma_j = 0`, for :math:`j > q`.
+
+
+
+:math:`MA(q)` Autocovariances
+==============================================================================
+- For :math:`j = 0`, the squared terms result in nonzero expectations,
+  while the cross products lead to zero expectations:
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_0 = E[\varepsilon^2_t ] + \theta^2_1 E[\varepsilon^2_{t-1}] + \ldots +
+   \theta^2_q E[\varepsilon^2_{t-q}] = \left(1 + \sum_{j=1}^q
+   \theta^2_j\right) \sigma^2.
+
+
+
+:math:`MA(q)` Autocovariances
+==============================================================================
+- For :math:`j = \{1,2,\ldots,q\}`, the nonzero expectation terms are
+    
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_j = \theta_j E[\varepsilon^2_{t-j}] + \theta_{j+1}\theta_1
+   E[\varepsilon^2_{t-j-1}] \hspace{1.08in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.8in} + \theta_{j+2}\theta_2 E[\varepsilon^2_{t-j-2}] + \ldots +
+   \theta_{q}\theta_{q-j} E[\varepsilon^2_{t-q}]
+
+.. rst-class:: to-build
+
+.. math::
+
+   = (\theta_j  + \theta_{j+1}\theta_1 + \theta_{j+2}\theta_2 +
+   \ldots + \theta_q\theta_{q-j}) \sigma^2.
+    
+.. rst-class:: to-build
+
+The autocovariances can be stated concisely as
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_j = \begin{cases} (\theta_j  + \theta_{j+1}\theta_1 +
+   \theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j}) \sigma^2 &
+   \text{for } j = 0, 1, \ldots, q \\
+   0 & \text{for } j > q. \end{cases} \hspace{0.2in}
+
+.. rst-class:: to-build
+
+where :math:`\theta_0 = 1`.
+
+
+
+:math:`MA(q)` Autocorrelations
+==============================================================================
+The autocorrelations can be stated concisely as
+
+.. rst-class:: to-build
+
+.. math::
+
+   \rho_j = \begin{cases} \frac{\theta_j  + \theta_{j+1}\theta_1 +
+   \theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j}}{\theta^2_0
+   + \theta^2_1 + \theta^2_2 + \ldots + \theta^2_q} & \text{ for
+   } j = 0, 1, \ldots, q \\
+   0 & \text{ for } j > q. \end{cases}
+
+.. rst-class:: to-build
+  
+where :math:`\theta_0 = 1`.
+
+
+
+:math:`MA(2)` Example
+==============================================================================
+For an :math:`MA(2)` process
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_0 & = (1 + \theta^2_1 + \theta^2_2) \sigma^2
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_1 & = (\theta_1 + \theta_2 \theta_1) \sigma^2
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_2 & = \theta_2 \sigma^2
+
+.. rst-class:: to-build
+
+.. math::
+
+   \gamma_3 & = \gamma_4 = \ldots = 0.
+
+
+
+
+Estimating :math:`MA` Models
+==============================================================================
+Estimation of an :math:`MA` model is done via maximum likelihood.  
+
+.. rst-class:: to-build
+
+- For an :math:`MA(q)` model, one would first specify a joint
+  likelihood for the parameters :math:`\{\theta_1, \ldots,
+  \theta_q, \mu, \sigma^2\}`.
+
+.. rst-class:: to-build
+
+- Taking derivatives of the log likelihood with respect to each of the
+  parameters would result in a system of equations that could be
+  solved for the MLEs: :math:`\{\hat{\theta}_1, \ldots,
+  \hat{\theta}_q, \hat{\mu}, \hat{\sigma}^2\}`.
+
+.. rst-class:: to-build
+
+- The exact likelihood is a bit cumbersome and maximization requires
+  specialized numerical methods.
+
+.. rst-class:: to-build
+
+- The MLEs can be obtained with the :math:`\mathtt{arima}` function in
+  :math:`\mathtt{R}`.
+
+
+
+
+Which :math:`MA`?
+==============================================================================
+How do we know if an :math:`MA` model is appropriate and which
+:math:`MA` model to fit?  
+
+.. rst-class:: to-build
+
+- For an :math:`MA(q)`, we know that :math:`\gamma_j = 0` for :math:`j
+  > q`.
+
+.. rst-class:: to-build
+
+- We should only fit an :math:`MA` model if the autocorrelations drop
+  to zero for all :math:`j > q` for some value :math:`q`.
+
+.. rst-class:: to-build
+
+- The :math:`\mathtt{acf}` function in :math:`\mathtt{R}` can be used
+  to compute empirical autocorrelations of the data.
+
+.. rst-class:: to-build
+
+- The appropriate :math:`q` can then be obtained from the empirical
+  ACF.
+
+
+
+
+Which :math:`MA`?
+==============================================================================
+- After fitting an :math:`MA` model, we can examine the residuals.
+
+.. rst-class:: to-build
+
+- The :math:`\mathtt{acf}` function can be used to compute empirical
+  autocorrelations of the residuals.
+
+.. rst-class:: to-build
+
+- If the residuals are autocorrelated, the model is not a good
+  fit. Consider changing the order of the :math:`MA` or using another
+  model.
+
+
+
+
+Which :math:`MA`?
+==============================================================================
+The :math:`\mathtt{auto.arima}` function in :math:`\mathtt{R}`
+estimates a range of :math:`MA(q)` models and selects the one with the
+best fit.
+
+.. rst-class:: to-build
+
+- :math:`\mathtt{auto.arima}` uses the *Akaike Information Criterion*
+  (AIC) or the *Bayesian Information Criterion* (BIC) to select the
+  model.
+
+.. rst-class:: to-build
+
+- Minimizing AIC and BIC amounts to minimizing the sum of squared
+  residuals, with a penalty term that is related to the number of
+  model parameters.
+

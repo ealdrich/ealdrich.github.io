@@ -1,0 +1,697 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Index Models &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="next" title="Bonds" href="bonds.html" />
+    <link rel="prev" title="Portfolio Optimization with Many Risky Assets" href="multiAssetOpt.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="index-models">
+<h1>Index Models</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="motivation">
+<h2>Motivation</h2>
+<p>Recall that for portfolio optimization with <span class="math">\(N\)</span> assets we must
+estimate all means, variances and covariances:</p>
+<div class="to-build math">
+\[\begin{split}\# \,\, \text{of estimates} &amp; = \frac{N(N+3)}{2}.\end{split}\]</div>
+<p class="to-build">Suppose you have a dataset consisting of 5 years of monthly returns
+for each asset (i.e. 60 observations per asset):</p>
+<table border="1" class="to-build docutils">
+<colgroup>
+<col width="33%" />
+<col width="11%" />
+<col width="11%" />
+<col width="19%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><span class="math">\(N\)</span></th>
+<th class="head">50</th>
+<th class="head">100</th>
+<th class="head">1000</th>
+<th class="head">3000</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td># Estimates</td>
+<td>1325</td>
+<td>5150</td>
+<td>501,500</td>
+<td>4,504,500</td>
+</tr>
+<tr class="row-odd"><td>Data</td>
+<td>3000</td>
+<td>6000</td>
+<td>60,000</td>
+<td>180,000</td>
+</tr>
+</tbody>
+</table>
+<p class="to-build">Note: it is impossible to estimate <span class="math">\(P\)</span> parameters with <span class="math">\(N\)</span>
+data observations if <span class="math">\(N &lt; P\)</span>.</p>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Motivation</h2>
+<p>The return to an asset can <em>always</em> be decomposed into two parts:</p>
+<div class="to-build math">
+\[\begin{split}r_i &amp; = E[r_i] + \epsilon_i = \mu_i + \epsilon_i,\end{split}\]</div>
+<p class="to-build">where <span class="math">\(\epsilon_i\)</span> has zero mean (<span class="math">\(\mu_{\epsilon_i} = 0\)</span>)
+and standard deviation <span class="math">\(\sigma_{\epsilon_i}\)</span>.</p>
+<ul class="to-build simple">
+<li>The first term of the equation above is the expected return.</li>
+</ul>
+<ul class="to-build simple">
+<li>The second term is the unexpected, or unanticipated return (also
+referred to as a shock).</li>
+</ul>
+<ul class="to-build simple">
+<li>This decomposition is not dependent on a model or special
+assumptions.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="single-factor-model">
+<h2>Single-Factor Model</h2>
+<p>Suppose there is a market factor <span class="math">\(m\)</span> that influences the returns
+to all firms.</p>
+<ul class="to-build simple">
+<li>Assume we can further decompose the shock, <span class="math">\(\epsilon_i\)</span>, into
+two parts:</li>
+</ul>
+<div class="to-build math">
+\[\epsilon_i = \beta_i m + \varepsilon_i.\]</div>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Single-Factor Model</h2>
+<p>In this case the return can be written as a single-factor model:</p>
+<div class="to-build math" id="equation-sfm">
+<span class="eqno">(1)</span>\[\begin{split}r_i &amp; = \mu_i + \beta_i m + \varepsilon_i.\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(m\)</span> and <span class="math">\(\varepsilon_i\)</span> have means <span class="math">\(\mu_m = \mu_{\varepsilon_i}
+= 0\)</span>, standard deviations <span class="math">\(\sigma_m\)</span> and
+<span class="math">\(\sigma_{\varepsilon_i}\)</span>, and are uncorrelated (<span class="math">\(Cov(m, \varepsilon_i) = 0\)</span>).</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\epsilon_i\)</span> is still unanticipated since <span class="math">\(\mu_{\epsilon_i} = \mu_m + \mu_{\varepsilon_i} = 0\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\beta_i\)</span> is a measure of the sensitivity of <span class="math">\(r_i\)</span> to <span class="math">\(m\)</span>.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="decomposing-risk">
+<h2>Decomposing Risk</h2>
+<p>We can now compute variances using the model:</p>
+<div class="to-build math">
+\[\begin{split}\sigma^2_i &amp; \equiv Var(r_i) = Var(\mu_i + \beta_i m +
+\varepsilon_i) \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \qquad = \beta^2_i Var(m) + Var(\varepsilon_i) + 2\beta_iCov(m,\varepsilon_i)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \beta^2_i \sigma^2_m + \sigma^2_{\varepsilon_i}. \qquad \qquad
+\qquad \quad \,\end{split}\]</div>
+<ul class="to-build simple">
+<li>We made use of <span class="math">\(Var(\mu_i) = 0\)</span> and <span class="math">\(Cov(m,\varepsilon_i) = 0\)</span>.</li>
+</ul>
+<ul class="to-build">
+<li><p class="first"><span class="math">\(Var(r_i)\)</span> arises from two separate sources.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\beta^2_i \sigma^2_m\)</span>: risk due to <span class="math">\(m\)</span>. Since this is common to
+all assets, it is the systematic component.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\sigma^2_{\varepsilon_i}\)</span>: idiosyncratic component specific to each
+asset.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Decomposing Risk</h2>
+<p>We can use the model to compute covariances between assets:</p>
+<div class="to-build math">
+\[\begin{split}Cov(r_i,r_j) &amp; = Cov(\mu_i + \beta_i m + \varepsilon_i, \mu_j + \beta_j m + \varepsilon_j)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \beta_i \beta_j Cov(m,m) \qquad \quad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \beta_i \beta_j \sigma^2_m. \qquad \qquad \quad \enspace\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(Var(\mu_i) = Var(\mu_j) = Cov(\mu_i,\mu_j) = 0\)</span>, since <span class="math">\(\mu_i\)</span>
+and <span class="math">\(\mu_j\)</span> are constants.</li>
+</ul>
+<ul class="to-build simple">
+<li>We assumed <span class="math">\(Cov(\varepsilon_i, \varepsilon_j) = 0\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Intuitively, unanticipated shocks to different assets shouldn't be
+correlated.</li>
+</ul>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="using-an-index-as-a-factor">
+<h2>Using an Index as a Factor</h2>
+<p>So what <em>is</em> <span class="math">\(m\)</span>?</p>
+<ul class="to-build simple">
+<li>We would like to find a macroeconomic variable correlated with all
+assets.</li>
+</ul>
+<ul class="to-build simple">
+<li>It is common to use a market index portfolio, such as the S&amp;P 500
+(we expect the return of a broad index to be correlated with
+individual assets).</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Using an Index as a Factor</h2>
+<p>In particular, let's use <span class="math">\(m = r_m - \mu_m\)</span>, where <span class="math">\(r_m\)</span> is
+the return to the S&amp;P 500 (<span class="math">\(m\)</span> stands for market).</p>
+<ul class="to-build simple">
+<li>In this case</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}E[m] &amp; = E[r_m - \mu_m] \quad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \quad = E[r_m] - \mu_m \,\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \mu_m - \mu_m \,\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = 0. \qquad \enspace\end{split}\]</div>
+<ul class="to-build simple">
+<li>So our assumption of <span class="math">\(E[m] = 0\)</span> is satisfied.</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="single-index-model">
+<h2>Single-Index Model</h2>
+<p>Substituting this factor into the single-factor model of
+Equation <a href="#equation-sfm">(1)</a>:</p>
+<div class="to-build math">
+\[\begin{split}r_i &amp; = \mu_i + \beta_i (r_m - \mu_m) + \varepsilon_i.\end{split}\]</div>
+<p class="to-build">We then manipulate the equation:</p>
+<div class="to-build math">
+\[\begin{split}r_i &amp; = r_f - r_f + \mu_i + \beta_i(r_m - r_f + r_f - \mu_m) +
+\varepsilon_i \qquad \quad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = r_f + \underbrace{(\mu_i - r_f) - \beta_i (\mu_m -
+r_f)}_{\alpha_i} + \beta_i (r_m - r_f) + \varepsilon_i \,\end{split}\]</div>
+<div class="to-build math" id="equation-sim">
+<span class="eqno">(2)</span>\[\Rightarrow r_{i,e} = \alpha_i + \beta_i r_{m,i} + \varepsilon_i.\]</div>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Single-Index Model</h2>
+<p>Equation <a href="#equation-sim">(2)</a> is the single-index model.</p>
+<ul class="to-build simple">
+<li>Note: <span class="math">\(\alpha_i = rp_i - \beta_i rp_m\)</span>.</li>
+</ul>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="expected-return-beta-relationship">
+<h2>Expected Return-Beta Relationship</h2>
+<p>Taking expectations of Equation <a href="#equation-sim">(2)</a>, we find</p>
+<div class="to-build math">
+\[\begin{split}rp_i &amp; = \alpha_i + \beta_i rp_m,\end{split}\]</div>
+<p class="to-build">since <span class="math">\(E[\varepsilon_i] = 0\)</span>.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\beta_i\)</span> is known as the security <em>Beta</em> and is a measure of
+the sensitivity of asset <span class="math">\(i\)</span> to the market index.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\beta_i rp_m\)</span> is the systematic risk premium, since it is the
+premium one could expect for taking on systematic risk.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\alpha_i\)</span> is the non-market premium. It is the risk premium
+expected above that provided by the market.</li>
+</ul>
+<p class="to-build">In equilibrium we expect <span class="math">\(\alpha_i = 0\)</span>.</p>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="why-must-be-zero">
+<h2>Why <span class="math">\(\alpha\)</span> Must Be Zero</h2>
+<p>Why do we expect <span class="math">\(\alpha_i = 0\)</span>?</p>
+<ul class="to-build simple">
+<li>Suppose <span class="math">\(\alpha_i &gt; 0\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We expect individuals to buy more of asset <span class="math">\(i\)</span>, putting more
+weight on it in their individual portfolios relative to the market
+portfolio.</li>
+</ul>
+<ul class="to-build">
+<li><p class="first">If everyone did this, the market portfolio would put higher weight
+on asset <span class="math">\(i\)</span>.</p>
+<ul class="to-build simple">
+<li><em>Everyone</em> deviates from the market portfolio by holding more of
+asset <span class="math">\(i\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>But since <em>everyone</em> constitutes the market, the market portfolio
+shifts by the exact amount that they want to hold asset <span class="math">\(i\)</span>.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="single-index-regression">
+<h2>Single-Index Regression</h2>
+<p>We express the single-index model as a regression:</p>
+<div class="to-build math">
+\[\begin{split}r_{i,e}(t) &amp; = \alpha_i + \beta_i r_{m,e}(t) + \varepsilon_i(t),\end{split}\]</div>
+<p class="to-build">where the <span class="math">\(t\)</span> denotes that the relationship must hold for all
+observations through time.</p>
+<ul class="to-build simple">
+<li>We estimate the model by collecting historical
+observations for <span class="math">\(r_m\)</span>, <span class="math">\(r_i\)</span> and <span class="math">\(r_f\)</span> and then
+computing the regression  estimates for <span class="math">\(\alpha_i\)</span>
+and <span class="math">\(\beta_i\)</span>.</li>
+</ul>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="security-characteristic-line">
+<h2>Security Characteristic Line</h2>
+<p>The regression estimates of <span class="math">\(\alpha_i\)</span> and <span class="math">\(\beta_i\)</span> are denoted by
+<span class="math">\(\hat{\alpha}_i\)</span> and <span class="math">\(\hat{\beta}_i\)</span>.</p>
+<ul class="to-build simple">
+<li>The <em>fitted values</em> of the regression are</li>
+</ul>
+<div class="to-build math" id="equation-scl">
+<span class="eqno">(3)</span>\[\begin{split}\hat{r}_{i,e}(t) &amp; = \hat{\alpha}_i + \hat{\beta}_i r_{m,e}(t).\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(\hat{r}_{i,e}(t)\)</span> are the values of the regression line.</li>
+</ul>
+<ul class="to-build simple">
+<li>They are the values we <em>expect</em> <span class="math">\(r_{i,e}\)</span> to take for given
+values of <span class="math">\(r_{m,e}\)</span>.</li>
+</ul>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Security Characteristic Line</h2>
+<ul class="simple">
+<li>Residuals are not included since they are <em>unexpected</em> (deviations
+from the line).</li>
+</ul>
+<ul class="to-build simple">
+<li>Equation <a href="#equation-scl">(3)</a> is known as the <em>Security Characteristic Line</em> or
+SCL.</li>
+</ul>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="advantages-of-the-model">
+<h2>Advantages of the Model</h2>
+<p>Suppose we want to use the Index Model to produce the estimates
+required for portfolio optimization.</p>
+<ul class="to-build simple">
+<li>Assume there are <span class="math">\(N\)</span> assets in the portfolio.</li>
+</ul>
+<ul class="to-build simple">
+<li>From the model,</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\mu_{i,e} &amp; = \alpha_i + \beta_i \mu_{m,e}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\sigma^2_i &amp; = \beta^2_i \sigma^2_m + \sigma^2_{\varepsilon_i}\end{split}\]</div>
+<p class="to-build">and</p>
+<div class="to-build math">
+\[\begin{split}\sigma_{ij} &amp; = \beta_i \beta_j \sigma^2_m.\end{split}\]</div>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Advantages of the Model</h2>
+<p>Let's count the number of parameters we must estimate.</p>
+<ul class="to-build simple">
+<li><span class="math">\(N\)</span> estimates of <span class="math">\(\alpha_i\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(N\)</span> estimates of <span class="math">\(\beta_i\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(N\)</span> estimates of <span class="math">\(\sigma^2_{\varepsilon_i}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>One estimate of <span class="math">\(\mu_m\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>One estimate of <span class="math">\(\sigma_m\)</span>.</li>
+</ul>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Advantages of the Model</h2>
+<p>That's a total of <span class="math">\(3N+2\)</span> estimates.</p>
+<ul class="to-build simple">
+<li>We'll see this is much better than <span class="math">\(\frac{N(N+3)}{2}\)</span>
+estimates without the model.</li>
+</ul>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Advantages of the Model</h2>
+<p>Suppose you have a dataset consisting of 5 years of monthly returns
+for each asset (i.e. 60 observations per asset):</p>
+<table border="1" class="to-build docutils">
+<colgroup>
+<col width="50%" />
+<col width="8%" />
+<col width="8%" />
+<col width="15%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><span class="math">\(N\)</span></th>
+<th class="head">50</th>
+<th class="head">100</th>
+<th class="head">1000</th>
+<th class="head">3000</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td># Estimates No Model</td>
+<td>1325</td>
+<td>5150</td>
+<td>501,500</td>
+<td>4,504,500</td>
+</tr>
+<tr class="row-odd"><td># Estimates Index Model</td>
+<td>152</td>
+<td>302</td>
+<td>3002</td>
+<td>9002</td>
+</tr>
+<tr class="row-even"><td>Data</td>
+<td>3000</td>
+<td>6000</td>
+<td>60,000</td>
+<td>180,000</td>
+</tr>
+</tbody>
+</table>
+<p class="to-build">Clearly estimation is much more reasonable with the single-index model
+for large <span class="math">\(N\)</span>.</p>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="cost-of-the-model">
+<h2>Cost of the Model</h2>
+<p>The index model restricts the relationship among the asset variances
+and covariances to be of a specific form.</p>
+<ul class="to-build simple">
+<li>It is precisely this imposed structure that relieves us of the
+estimation burden.</li>
+</ul>
+<ul class="to-build simple">
+<li>However, it oversimplifies the true nature of the world.</li>
+</ul>
+<ul class="to-build simple">
+<li>For example, it dichotomizes security risk into two components:
+market and asset specific.</li>
+</ul>
+<ul class="to-build simple">
+<li>But neglects to account for industry specific risk, etc.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this sense, the model may fail to capture important aspects of
+market.</li>
+</ul>
+
+<div class="slide-no">21</div>
+
+</article>
+<article class="appear slide level-2" id="index-model-portfolios">
+<h2>Index Model Portfolios</h2>
+<p>Suppose you hold a portfolio of <span class="math">\(N\)</span> assets with
+weights <span class="math">\(\omega_i\)</span>, <span class="math">\(i=1,\ldots,N\)</span>.</p>
+<ul class="to-build simple">
+<li>Then</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}r_{p,e} &amp; = \sum_{i=1}^N \omega_i r_{i,e} = \sum_{i=1}^N \omega_i
+(\alpha_i + \beta_i r_{m,e} + \varepsilon_i) \qquad\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \,= \underbrace{\sum_{i=1}^N \omega_i \alpha_i}_{\alpha_p} +
+\underbrace{\left(\sum_{i=1}^N \omega_i \beta_i \right)}_{\beta_p}
+r_{m,e} + \underbrace{\sum_{i=1}^N \omega_i \varepsilon_i}_{\varepsilon_p}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \alpha_p + \beta_p r_{m,e} + \varepsilon_p. \qquad \qquad
+\qquad \quad\end{split}\]</div>
+
+<div class="slide-no">22</div>
+
+</article>
+<article class="appear slide level-2" id="index-model-portfolio-coefficients">
+<h2>Index Model Portfolio Coefficients</h2>
+<p>The mathematics highlight some very nice results.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\alpha_p\)</span>: The non-market return of the portfolio is a
+weighted average of the non-market returns of individual assets.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\beta_p\)</span>: The sensitivity of the portfolio to the market
+excess return is a weighted average of the sensitivities of
+individual assets.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\varepsilon_p\)</span>: The portfolio shock is a weighted average of
+individual shocks.</li>
+</ul>
+
+<div class="slide-no">23</div>
+
+</article>
+<article class="appear slide level-2" id="index-model-portfolio-risk">
+<h2>Index Model Portfolio Risk</h2>
+<p>Since the portfolio is described by a single index model, its risk can
+be decomposed as</p>
+<div class="to-build math">
+\[\begin{split}\sigma^2_p &amp; = \beta^2_p \sigma^2_m + \sigma^2_{\varepsilon_p}.\end{split}\]</div>
+<p class="to-build">Note that,</p>
+<div class="to-build math">
+\[\begin{split}\beta^2_p &amp; = \left(\sum_{i=1}^N \omega_i \beta_i\right)^2\end{split}\]</div>
+<p class="to-build"><em>not</em></p>
+<div class="to-build math">
+\[\begin{split}\beta^2_p &amp; = \sum_{i=1}^N \omega^2_i \beta^2_i.\end{split}\]</div>
+
+<div class="slide-no">24</div>
+
+</article>
+<article class="appear slide level-2" id="id10">
+<h2>Index Model Portfolio Risk</h2>
+<p>The variance of <span class="math">\(\varepsilon_p\)</span> can be written as</p>
+<div class="to-build math" id="equation-simsigeps1">
+<span class="eqno">(4)</span>\[\begin{split}\sigma^2_{\varepsilon_p} &amp; \equiv Var(\varepsilon_p) =
+        Var\left(\sum_{i=1}^N \omega_i \varepsilon_i \right)\end{split}\]</div>
+<div class="to-build math" id="equation-simsigeps2">
+<span class="eqno">(5)</span>\[\begin{split}&amp; = \sum_{i=1}^N \omega^2_i Var(\varepsilon_i) \qquad \quad \enspace\end{split}\]</div>
+<div class="to-build math" id="equation-simsigeps3">
+<span class="eqno">(6)</span>\[\begin{split}&amp; = \sum_{i=1}^N \omega^2_i \sigma^2_{\varepsilon_i} \qquad
+        \qquad \quad\end{split}\]</div>
+<p class="to-build">Equation <a href="#equation-simsigeps2">(5)</a> follows from Equation <a href="#equation-simsigeps1">(4)</a>
+because we assume that <span class="math">\(Cov(\varepsilon_i, \varepsilon_j) = 0\)</span> for <span class="math">\(i
+\neq j\)</span>.</p>
+
+<div class="slide-no">25</div>
+
+</article>
+<article class="appear slide level-2" id="index-model-diversification">
+<h2>Index Model Diversification</h2>
+<p>In the special case of an equally-weighted portfolio</p>
+<div class="to-build math">
+\[\sigma^2_{\varepsilon_p} = \frac{1}{N^2} \sum_{i=1}^N \sigma^2_{\varepsilon_i} = \frac{1}{N} \overline{\sigma^2_{\varepsilon_p}},\]</div>
+<p class="to-build">where</p>
+<div class="to-build math">
+\[\overline{\sigma^2_{\varepsilon_p}} = \frac{1}{N} \sum_{i=1}^N \sigma^2_{\varepsilon_i}.\]</div>
+<p class="to-build">Clearly,</p>
+<div class="to-build math">
+\[\begin{split}\lim_{N \to \infty} \overline{\sigma^2_{\varepsilon_p}} &amp; = 0.\end{split}\]</div>
+
+<div class="slide-no">26</div>
+
+</article>
+<article class="appear slide level-2" id="id11">
+<h2>Index Model Diversification</h2>
+<p>Recall</p>
+<div class="to-build math">
+\[\begin{split}\sigma^2_p &amp; = \beta^2_p \sigma^2_m + \sigma^2_{\varepsilon_p}.\end{split}\]</div>
+<p class="to-build">Thus,</p>
+<div class="to-build math">
+\[\begin{split}\lim_{N \to \infty} \sigma^2_p &amp; = \lim_{N \to \infty} \beta^2_p
+\sigma^2_m + \lim_{N \to \infty} \sigma^2_{\varepsilon_p}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \beta^2_p \sigma^2_m.\end{split}\]</div>
+
+<div class="slide-no">27</div>
+
+</article>
+<article class="appear slide level-2" id="id12">
+<h2>Index Model Diversification</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/pg254_1.jpg"><img alt="_images/pg254_1.jpg" class="align-center" src="_images/pg254_1.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">28</div>
+
+</article>
+<article class="appear slide level-2" id="index-model-example">
+<h2>Index Model Example</h2>
+<p>Let's estimate an index model.</p>
+<ul class="to-build simple">
+<li>Use SPY (S&amp;P 500 SPDR) as a surrogate for market returns.</li>
+</ul>
+<ul class="to-build simple">
+<li>Estimate the model for SWY (Safeway).</li>
+</ul>
+<ul class="to-build simple">
+<li>Download 5 years of monthly data from Yahoo Finance, between 1 Jan
+2007 and 31 Dec 2012.</li>
+</ul>
+<ul class="to-build simple">
+<li>Use adjusted closing prices to compute returns.</li>
+</ul>
+<ul class="to-build simple">
+<li>Estimate the regression.</li>
+</ul>
+
+<div class="slide-no">29</div>
+
+</article>
+<article class="appear slide level-2" id="id13">
+<h2>Index Model Example</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/spy-swy-tsplot.png"><img alt="_images/spy-swy-tsplot.png" class="align-center" src="_images/spy-swy-tsplot.png" style="width: 8in;" /></a>
+
+<div class="slide-no">30</div>
+
+</article>
+<article class="appear slide level-2" id="id14">
+<h2>Index Model Example</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="18%" />
+<col width="32%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Estimate</th>
+<th class="head">Standard Error</th>
+<th class="head">P-Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(\alpha\)</span></td>
+<td>0.003903</td>
+<td>0.007387</td>
+<td>0.599</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\beta\)</span></td>
+<td>0.7620</td>
+<td>0.1319</td>
+<td>1.92e-07</td>
+</tr>
+</tbody>
+</table>
+<p>The Adjusted <span class="math">\(R^2\)</span> is 0.3133.</p>
+
+<div class="slide-no">31</div>
+
+</article>
+<article class="appear slide level-2" id="id15">
+<h2>Index Model Example</h2>
+<a class="reference internal image-reference" href="_images/spy-swy-reg.png"><img alt="_images/spy-swy-reg.png" class="align-center" src="_images/spy-swy-reg.png" style="width: 6in;" /></a>
+
+<div class="slide-no">32</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Asset Allocation &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="up" title="Portfolio Optimization" href="portfolios.html" />
+    <link rel="next" title="Portfolio Optimization" href="portfolioOpt.html" />
+    <link rel="prev" title="Portfolio Optimization" href="portfolios.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="asset-allocation">
+<h1>Asset Allocation</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="utility">
+<h2>Utility</h2>
+<p>Investors usually care about maximizing utility.</p>
+<ul class="to-build simple">
+<li>Suppose all investors have utility function</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}U(\mu, \sigma) &amp; = \mu - \gamma \sigma^2.\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(\mu\)</span> and <span class="math">\(\sigma\)</span> are the mean and standard deviation
+of asset returns.</li>
+</ul>
+<ul class="to-build simple">
+<li>What is the utility of holding a risk-free asset <span class="math">\(U(\mu_f,
+\sigma_f)\)</span>?</li>
+</ul>
+<div class="to-build math">
+\[U(\mu_f ,\sigma_f) = r_f.\]</div>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="certainty-equivalent">
+<h2>Certainty Equivalent</h2>
+<p>For a risky portfolio, <span class="math">\(U(\mu_f, \sigma_f)\)</span> can be thought of as
+a certainty equivalent return.</p>
+<ul class="to-build simple">
+<li>The return that a risk-free asset would have to offer to provide the
+same utility level as a risky asset.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="risk-aversion">
+<h2>Risk Aversion</h2>
+<p>The parameter <span class="math">\(\gamma\)</span> is a measure of risk
+preference.</p>
+<ul class="to-build simple">
+<li>If <span class="math">\(\gamma &gt; 0\)</span> individuals are risk averse - volatility
+detracts from utility.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(\gamma = 0\)</span> individuals are risk neutral - volatility
+doesn't enter into the utility function.<ul class="to-build">
+<li>In this case, investors rank portfolios by their expected return
+and don't care about portfolio riskiness.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Risk Aversion</h2>
+<ul class="simple">
+<li>If <span class="math">\(\gamma &lt; 0\)</span> individuals are risk lovers - volatility is
+rewarded in the utility function.<ul class="to-build">
+<li>In this case, investors enjoy and get utility by taking on risk.</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>We will generally assume investors are risk averse, with the
+magnitude of <span class="math">\(\gamma\)</span> dictating the amount of risk aversion.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="mean-variance-criterion">
+<h2>Mean-Variance Criterion</h2>
+<p>Under this utility model, investors prefer higher expected returns
+and lower volatility.</p>
+<ul class="to-build simple">
+<li>Let portfolio <span class="math">\(A\)</span> have mean and volatility <span class="math">\(\mu_A\)</span> and
+<span class="math">\(\sigma_A\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Let portfolio <span class="math">\(B\)</span> have mean and volatility <span class="math">\(\mu_B\)</span> and
+<span class="math">\(\sigma_B\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(\mu_A \geq \mu_B\)</span> <em>and</em> <span class="math">\(\sigma_A \leq
+\sigma_B\)</span>, then <span class="math">\(A\)</span> is preferred to <span class="math">\(B\)</span>.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Mean-Variance Criterion</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/pg164_1.jpg"><img alt="_images/pg164_1.jpg" class="align-center" src="_images/pg164_1.jpg" style="width: 8.5in;" /></a>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="indifference-curves">
+<h2>Indifference Curves</h2>
+<p>Portfolios in quadrant I are preferred to <span class="math">\(P\)</span>, which is preferred to
+portfolios in quadrant IV.</p>
+<ul class="to-build simple">
+<li>What about quadrants II and III?</li>
+</ul>
+<ul class="to-build simple">
+<li>If a portfolio <span class="math">\(Q\)</span> has a mean and volatility that differ from
+<span class="math">\(P\)</span> but yields the same utility level, then either</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\mu_Q &gt; \mu_p \text{  and  } \sigma_Q &gt; \sigma_p\end{split}\]</div>
+<p class="to-build">or</p>
+<div class="to-build math">
+\[\begin{split}\mu_Q &lt; \mu_p \text{  and  } \sigma_Q &lt; \sigma_p.\end{split}\]</div>
+<ul class="to-build simple">
+<li>That is, Q must be in quadrants II or III.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Indifference Curves</h2>
+<ul class="simple">
+<li>The portfolios that yield the same utility as <span class="math">\(P\)</span> constitute
+an indifference curve.</li>
+</ul>
+<ul class="to-build simple">
+<li>We conclude that the indifference curve must cut through quadrants
+II and III.</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="indifference-curve-plot">
+<h2>Indifference Curve Plot</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/pg165_2.jpg"><img alt="_images/pg165_2.jpg" class="align-center" src="_images/pg165_2.jpg" style="width: 7in;" /></a>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="portfolios-of-assets">
+<h2>Portfolios of Assets</h2>
+<p>Suppose an individual can invest in two assets: a risky portfolio
+<span class="math">\(P\)</span> and a risk-free asset <span class="math">\(F\)</span>.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\omega\)</span> will be the fraction wealth invested in
+<span class="math">\(P\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(1-\omega\)</span> will be the fraction wealth invested in
+<span class="math">\(F\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will typically assume that portfolio weights sum to
+1.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(r_p\)</span> will denote the return on asset <span class="math">\(P\)</span>, with
+<span class="math">\(\mu_p = E[r_p]\)</span> and <span class="math">\(\sigma_p^2 = Var(r_p)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(r_f\)</span> will denote the return on asset <span class="math">\(F\)</span>, with
+<span class="math">\(\mu_f = r_f\)</span> and <span class="math">\(\sigma_f^2 = 0\)</span>.</li>
+</ul>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="portfolio-return">
+<h2>Portfolio Return</h2>
+<p>Let <span class="math">\(C\)</span> denote the portfolio that <em>combines</em> the two assets.</p>
+<ul class="to-build simple">
+<li><span class="math">\(C\)</span> is a weighted average of <span class="math">\(P\)</span> and <span class="math">\(F\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[C = \omega P + (1-\omega) F.\]</div>
+<ul class="to-build simple">
+<li>The return to <span class="math">\(C\)</span>, is</li>
+</ul>
+<div class="to-build math">
+\[r_c = \omega r_p + (1-\omega) r_f.\]</div>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Portfolio Return</h2>
+<p>By the linearity of expectations:</p>
+<div class="to-build math">
+\[\mu_c = E[r_c] \qquad \qquad \qquad\]</div>
+<div class="to-build math">
+\[\quad \enspace \, = \omega E[r_p] + (1 - \omega)E[r_f]\]</div>
+<div class="to-build math">
+\[= \omega \mu_p + (1-\omega) r_f \enspace \,\]</div>
+<div class="to-build math">
+\[= r_f + \omega(\mu_p - r_f). \enspace \,\]</div>
+<ul class="to-build simple">
+<li>The term in the parentheses is the risk premium of <span class="math">\(P\)</span>.</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="portfolio-volatility">
+<h2>Portfolio Volatility</h2>
+<p>According to the properties of variance,</p>
+<div class="to-build math">
+\[\sigma^2_c = Var(r_c) \qquad \qquad \qquad \qquad \qquad \qquad
+\qquad \qquad \enspace\]</div>
+<div class="to-build math">
+\[\quad \enspace \; \, = \omega^2 Var(r_p) + (1 - \omega)^2 Var(r_f) + 2
+\omega (1 - \omega) Cov(r_p, r_f)\]</div>
+<div class="to-build math">
+\[= \omega^2 Var(r_p) \qquad \qquad \qquad \qquad \qquad \qquad
+\quad \enspace \; \: \,\]</div>
+<div class="to-build math">
+\[= \omega^2 \sigma^2_p. \qquad \qquad \qquad \qquad \qquad \qquad
+\qquad \quad \enspace \; \,\]</div>
+<ul class="to-build simple">
+<li>The third equality follows because <span class="math">\(r_f\)</span> is a constant.</li>
+</ul>
+<ul class="to-build simple">
+<li>Thus,</li>
+</ul>
+<div class="to-build math">
+\[\sigma_c = \omega \sigma_p.\]</div>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="portfolios-and-risk-aversion">
+<h2>Portfolios and Risk Aversion</h2>
+<p>Portfolio <span class="math">\(C\)</span> earns a base return of <span class="math">\(r_f\)</span> plus the risk
+premium associated with <span class="math">\(P\)</span>, weighted by the amount of wealth
+the investor allocates to <span class="math">\(P\)</span>.</p>
+<ul class="to-build simple">
+<li>More risk averse investors (small <span class="math">\(\omega\)</span>) expect a rate of
+return closer to <span class="math">\(r_f\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Less risk averse investors (high <span class="math">\(\omega\)</span>) expect a rate
+closer to <span class="math">\(\mu_p - r_f\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>More risk averse investors have smaller portfolio volatilities.</li>
+</ul>
+<ul class="to-build simple">
+<li>Less risk averse investors have higher portfolio volatilities.</li>
+</ul>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="portfolio-weight">
+<h2>Portfolio Weight</h2>
+<p>Since <span class="math">\(\sigma_c = \omega \sigma_p\)</span>,</p>
+<div class="to-build math">
+\[\omega =\frac{\sigma_c}{\sigma_p}.\]</div>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="sharpe-ratio">
+<h2>Sharpe Ratio</h2>
+<p>Thus</p>
+<div class="to-build math">
+\[\mu_c = r_f + \omega (\mu_p - r_f) \qquad\]</div>
+<div class="to-build math">
+\[= r_f + \frac{\sigma_c}{\sigma_p} (\mu_p - r_f) \:\]</div>
+<div class="to-build math">
+\[= r_f + \frac{\mu_p - r_f}{\sigma_p} \sigma_c \enspace \; \,\]</div>
+<div class="to-build math">
+\[= r_f + \text{SR}_p \sigma_c. \qquad \enspace\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(\text{SR}_p\)</span> is the Sharpe Ratio of portfolio <span class="math">\(P\)</span>.</li>
+</ul>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="capital-allocation-line">
+<h2>Capital Allocation Line</h2>
+<p>The Capital Allocation Line (CAL) depicts the set of portfolios
+available to an investor (a budget constraint).</p>
+<ul class="to-build simple">
+<li>It plots pairs of <span class="math">\(\sigma_c\)</span> and <span class="math">\(\mu_c\)</span> that the
+investor can choose by selecting <span class="math">\(\omega\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>This is simply a plot of the equation</li>
+</ul>
+<div class="to-build math">
+\[\mu_c = r_f + \text{SR}_p \sigma_c.\]</div>
+<ul class="to-build simple">
+<li>Clearly, the intercept will be <span class="math">\(r_f\)</span> and the slope will be
+<span class="math">\(\text{SR}_p\)</span>.</li>
+</ul>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="capital-allocation-line-example">
+<h2>Capital Allocation Line Example</h2>
+<p>Suppose</p>
+<ul class="to-build simple">
+<li><span class="math">\(r_f = 0.07\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\mu_p = 0.15\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\sigma_p = 0.22\)</span>.</li>
+</ul>
+<p class="to-build">What is the CAL?</p>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="capital-allocation-line-plot">
+<h2>Capital Allocation Line Plot</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/pg172_1.jpg"><img alt="_images/pg172_1.jpg" class="align-center" src="_images/pg172_1.jpg" style="width: 7.5in;" /></a>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="simple-portfolio-choice">
+<h2>Simple Portfolio Choice</h2>
+<p>Individuals seek to maximize utility subject to the available choice
+set.</p>
+<div class="to-build math">
+\[\max_{\mu_c, \sigma_c} U(\mu_c, \sigma_c) = \max_{\mu_c, \sigma_c}
+\mu_c - \frac{1}{2} \gamma \sigma^2_c,\]</div>
+<p class="to-build">subject to</p>
+<div class="to-build math">
+\[\begin{split}\mu_c &amp; = r_f + \omega (\mu_p - r_f) \\
+\sigma_c &amp; = \omega \sigma_p.\end{split}\]</div>
+
+<div class="slide-no">21</div>
+
+</article>
+<article class="appear slide level-2" id="simple-portfolio-choice-cont">
+<h2>Simple Portfolio Choice (Cont.)</h2>
+<p>Substituting the constraints, the maximization problem becomes</p>
+<div class="to-build math">
+\[\max_{\omega} \left\{r_f + \omega (\mu_p - r_f) - \frac{1}{2}
+\gamma \omega^2 \sigma^2_p \right\}.\]</div>
+<p class="to-build">Taking the derivative of this equation w.r.t. <span class="math">\(\omega\)</span>,</p>
+<div class="to-build math">
+\[\mu_p - r_f  = \gamma \omega^* \sigma^2_p\]</div>
+<div class="to-build math">
+\[\Rightarrow \omega^* = \frac{\mu_p - r_f}{\gamma \sigma^2_p} =
+\frac{\text{SR}_p}{\gamma \sigma_p}.\]</div>
+
+<div class="slide-no">22</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Simple Portfolio Choice</h2>
+<p>Since the CAL is a choice set (budget constraint), we can find the
+optimal portfolio by observing where an indifference curve is
+tangent to the CAL.</p>
+<ul class="to-build simple">
+<li>Fix the utility value at <span class="math">\(\bar{U} = r_f\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Use the relation <span class="math">\(\bar{U} = \mu_c - \frac{1}{2} \gamma
+\sigma^2_c\)</span> to solve for <span class="math">\(\mu_c\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[\mu_c = \bar{U} + \frac{1}{2} \gamma \sigma^2_c.\]</div>
+
+<div class="slide-no">23</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Simple Portfolio Choice</h2>
+<ul class="simple">
+<li>Using this equation, we find the pairs of <span class="math">\(\mu_c\)</span> and
+<span class="math">\(\sigma_c\)</span> that corresponds to utility <span class="math">\(\bar{U}\)</span>, which we
+plot.</li>
+</ul>
+<ul class="to-build simple">
+<li>Repeat this process, increasing the values of <span class="math">\(\bar{U}\)</span> until a
+tangent indifference curve is found. The tangency corresponds to
+the optimal portfolio.</li>
+</ul>
+
+<div class="slide-no">24</div>
+
+</article>
+<article class="appear slide level-2" id="spreadsheet-optimization">
+<h2>Spreadsheet Optimization</h2>
+<p>Given <span class="math">\(\gamma=2\)</span>, <span class="math">\(\mu=0.15\)</span>, <span class="math">\(\sigma=0.22\)</span> and
+<span class="math">\(r_f=0.07\)</span>.</p>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/calSS.png"><img alt="_images/calSS.png" class="align-center" src="_images/calSS.png" style="width: 8in;" /></a>
+
+<div class="slide-no">25</div>
+
+</article>
+<article class="appear slide level-2" id="graphical-optimization">
+<h2>Graphical Optimization</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/pg177_2.jpg"><img alt="_images/pg177_2.jpg" class="align-center" src="_images/pg177_2.jpg" style="width: 6.5in;" /></a>
+
+<div class="slide-no">26</div>
+
+</article>
+<article class="appear slide level-2" id="capital-market-line">
+<h2>Capital Market Line</h2>
+<p>Consider a value-weighted portfolio of all assets in the
+market.</p>
+<ul class="to-build simple">
+<li>We will call this the market portfolio and denote it by
+<span class="math">\(M\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The CAL which connects <span class="math">\(r_f\)</span> with <span class="math">\(M\)</span> is called the
+<em>Capital Market Line</em> (CML).</li>
+</ul>
+<ul class="to-build simple">
+<li>Because the true market portfolio is unobserved, we use a
+proxy - a well diversified portfolio that provides a good
+representation of the entire market.</li>
+</ul>
+<ul class="to-build simple">
+<li>Typically we use the S&amp;P 500.</li>
+</ul>
+
+<div class="slide-no">27</div>
+
+</article>
+<article class="appear slide level-2" id="passive-vs-active-strategies">
+<h2>Passive vs. Active Strategies</h2>
+<p>Holding the market portfolio or a market proxy is known as a <em>passive
+strategy</em>.</p>
+<ul class="to-build simple">
+<li>It requires no security analysis.</li>
+</ul>
+<ul class="to-build simple">
+<li>An <em>active strategy</em> is one that requires individual security
+analysis.</li>
+</ul>
+
+<div class="slide-no">28</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

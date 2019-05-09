@@ -1,0 +1,708 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Prior and Posterior Distributions &mdash; Econ 114 - Advanced Quantitative Methods</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html"/>
+        <link rel="up" title="Bayesian Methods" href="bayesian.html"/>
+        <link rel="prev" title="Bayes Theorem" href="bayes.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Econ 114
+        
+
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preliminaries.html">Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeSeries.html">Time Series</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bayesian.html">Bayesian Methods</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bayes.html">Bayes Theorem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Prior and Posterior Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prior-distribution">Prior Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prior-distribution-and-likelihood">Prior Distribution and Likelihood</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#joint-density">Joint Density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#marginal-density">Marginal Density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Marginal Density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#posterior-distribution">Posterior Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bayesian-updating">Bayesian Updating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-note-on-proportionality">A Note on Proportionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">A Note on Proportionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">A Note on Proportionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conjugate-priors">Conjugate Priors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Conjugate Priors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-example">Normal Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Normal Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Normal Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Normal Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Normal Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Normal Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Normal Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moderate-prior">Moderate Prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Moderate Prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Moderate Prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uninformative-prior">Uninformative Prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Uninformative Prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Uninformative Prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#informative-prior">Informative Prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Informative Prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Informative Prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bayesian-parameter-estimates">Bayesian Parameter Estimates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frequentist-confidence-intervals">Frequentist Confidence Intervals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bayesian-credible-intervals">Bayesian Credible Intervals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#equal-tails-credible-interval">Equal-tails Credible Interval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Equal-tails Credible Interval</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 114</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="bayesian.html">Bayesian Methods</a> &raquo;</li>
+      
+    <li>Prior and Posterior Distributions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/priorpost.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="prior-and-posterior-distributions">
+<h1>Prior and Posterior Distributions<a class="headerlink" href="#prior-and-posterior-distributions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prior-distribution">
+<h2>Prior Distribution<a class="headerlink" href="#prior-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Bayes&#8217; Theorem can be used to model the distribution of parameters.</p>
+<ul class="to-build simple">
+<li>Recall that the likelihood of data <span class="math">\({\bf y}\)</span> can be
+expressed as <span class="math">\(f({\bf y}|{\bf \theta})\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\({\bf \theta}\)</span> is a vector of parameters.</li>
+</ul>
+<ul class="to-build simple">
+<li>In reality, we think of <span class="math">\({\bf \theta}\)</span> as a set of unknown
+values that are <em>not random</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>However, we treat <span class="math">\({\bf \theta}\)</span> as random because of our
+lack of knowledge.</li>
+</ul>
+<ul class="to-build simple">
+<li>That is, our lack of knowledge induces a distribution over
+<span class="math">\({\bf \theta}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="prior-distribution-and-likelihood">
+<h2>Prior Distribution and Likelihood<a class="headerlink" href="#prior-distribution-and-likelihood" title="Permalink to this headline">¶</a></h2>
+<p>The <em>prior distribution</em> <span class="math">\(\pi({\bf \theta})\)</span> expresses our
+beliefs about <span class="math">\({\bf \theta}\)</span> prior to observing data
+<span class="math">\({\bf y}\)</span>.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\pi({\bf \theta})\)</span> is different from the likelihood:
+<span class="math">\(f({\bf y}|{\bf \theta})\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\pi({\bf \theta})\)</span> is loosely interpreted as the
+probability of <span class="math">\({\bf \theta}\)</span> occurring before we observe
+data.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(f({\bf y}|{\bf \theta})\)</span> is loosely interpreted as the
+probability of the data occurring, given a specific value of the
+parameter vector <span class="math">\({\bf \theta}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="joint-density">
+<h2>Joint Density<a class="headerlink" href="#joint-density" title="Permalink to this headline">¶</a></h2>
+<p>The joint density of <span class="math">\({\bf y}\)</span> and <span class="math">\({\bf \theta}\)</span> is</p>
+<div class="to-build math">
+\[\begin{split}f({\bf y},{\bf \theta}) &amp; = f({\bf y}|{\bf \theta})
+\pi({\bf \theta}).\end{split}\]</div>
+<ul class="to-build simple">
+<li>This is analogous to the relationship we previously derived:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}P(A \cap B) &amp; = P(A|B)P(B).\end{split}\]</div>
+</div>
+<div class="section" id="marginal-density">
+<h2>Marginal Density<a class="headerlink" href="#marginal-density" title="Permalink to this headline">¶</a></h2>
+<p>The marginal density of <span class="math">\({\bf y}\)</span> is</p>
+<div class="to-build math">
+\[\begin{split}f({\bf y}) &amp; = \int f({\bf y},{\bf \theta}) d{\bf \theta}
+= \int f({\bf y}|{\bf \theta}) \pi({\bf \theta})
+d{\bf \theta}.\end{split}\]</div>
+</div>
+<div class="section" id="id1">
+<h2>Marginal Density<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>This is analogous to the relationship we previously derived:</li>
+</ul>
+<div class="to-build math">
+\[P(A) = P\left((A \cap B_1) \cup \cdots \cup (A \cap
+B_K)\right) \hspace{0.38in}\]</div>
+<div class="to-build math">
+\[= P(A \cap B_1) + \cdots + P(A \cap B_K)\]</div>
+<div class="to-build math">
+\[\hspace{0.53in} = P(A|B_1) P(B_1) + \cdots + P(A|B_K) P(B_K)\]</div>
+<div class="to-build math">
+\[= \sum_{i=1}^K P(A|B_i) P(B_i), \hspace{0.8in}\]</div>
+<p class="to-build">for a partition <span class="math">\(\{B_i\}_{i=1}^K\)</span>.</p>
+</div>
+<div class="section" id="posterior-distribution">
+<h2>Posterior Distribution<a class="headerlink" href="#posterior-distribution" title="Permalink to this headline">¶</a></h2>
+<p>According to Bayes&#8217; Theorem,</p>
+<div class="to-build math">
+\[\begin{split}\pi({\bf \theta}|{\bf y}) &amp; =
+\frac{f({\bf y}|{\bf \theta})
+\pi({\bf \theta})}{f({\bf y})} \hspace{0.92in}\end{split}\]</div>
+<div class="to-build math">
+\[= \frac{f({\bf y}|{\bf \theta})
+\pi({\bf \theta})}{\int f({\bf y}|{\bf \theta})
+\pi({\bf \theta}) d{\bf \theta}}.\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(\pi({\bf \theta}|{\bf y})\)</span> is referred to as the
+<em>posterior distribution</em> of <span class="math">\({\bf \theta}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\pi({\bf \theta}|{\bf y})\)</span> is loosely interpreted as the
+probability of <span class="math">\({\bf \theta}\)</span> after observing
+<span class="math">\({\bf y}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="bayesian-updating">
+<h2>Bayesian Updating<a class="headerlink" href="#bayesian-updating" title="Permalink to this headline">¶</a></h2>
+<p>Bayesian analysis is a method to use data to update our beliefs about
+<span class="math">\({\bf \theta}\)</span>.</p>
+<ul class="to-build simple">
+<li>We begin with a prior distribution <span class="math">\(\pi({\bf \theta})\)</span> which
+captures our views about the likelihood of <span class="math">\({\bf \theta}\)</span>
+taking particular values.</li>
+</ul>
+<ul class="to-build simple">
+<li>We specify a model for the probability density of the data, given
+<span class="math">\({\bf \theta}\)</span>: <span class="math">\(f({\bf y}|{\bf \theta})\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We use the likelihood to update our beliefs about
+<span class="math">\({\bf \theta}\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\pi({\bf \theta}|{\bf y}) &amp; =
+\frac{f({\bf y}|{\bf \theta}) \pi({\bf \theta})}{\int
+f({\bf y}|{\bf \theta}) \pi({\bf \theta})
+d{\bf \theta}}.\end{split}\]</div>
+<ul class="to-build simple">
+<li>If the data are very informative,
+<span class="math">\(\pi({\bf \theta}|{\bf y})\)</span> can be quite different from
+<span class="math">\(\pi({\bf \theta})\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="a-note-on-proportionality">
+<h2>A Note on Proportionality<a class="headerlink" href="#a-note-on-proportionality" title="Permalink to this headline">¶</a></h2>
+<p>Suppose</p>
+<div class="to-build math">
+\[w = ax\]</div>
+<div class="to-build math">
+\[y = bx\]</div>
+<div class="to-build math">
+\[z = wy\]</div>
+<p class="to-build">then</p>
+<div class="to-build math">
+\[w \propto x\]</div>
+<div class="to-build math">
+\[y \propto x\]</div>
+<div class="to-build math">
+\[z \propto x^2.\]</div>
+</div>
+<div class="section" id="id2">
+<h2>A Note on Proportionality<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>More generally, if</p>
+<div class="to-build math">
+\[w = g_w(x) h_w(u)\]</div>
+<div class="to-build math">
+\[y = g_y(x) h_y(u)\]</div>
+<div class="to-build math">
+\[z = wy\]</div>
+<p class="to-build">then</p>
+<div class="to-build math">
+\[w \propto g_w(x)\]</div>
+<div class="to-build math">
+\[y \propto g_y(x)\]</div>
+<div class="to-build math">
+\[z \propto g_w(x) g_y(x).\]</div>
+</div>
+<div class="section" id="id3">
+<h2>A Note on Proportionality<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Since <span class="math">\(f({\bf y})\)</span> is not a function of <span class="math">\({\bf \theta}\)</span>,</p>
+<div class="to-build math">
+\[\begin{split}\pi({\bf \theta}|{\bf y}) &amp; =
+\frac{f({\bf y}|{\bf \theta})\pi({\bf \theta})}{f({\bf y})}
+\propto f({\bf y}|{\bf \theta})\pi({\bf \theta}).\end{split}\]</div>
+<ul class="to-build simple">
+<li>It is often easier to work with only
+<span class="math">\(f({\bf y}|{\bf \theta})\pi({\bf \theta})\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="conjugate-priors">
+<h2>Conjugate Priors<a class="headerlink" href="#conjugate-priors" title="Permalink to this headline">¶</a></h2>
+<p>Our choice of <span class="math">\(\pi({\bf \theta})\)</span> and
+<span class="math">\(f({\bf y}|{\bf \theta})\)</span> may not yield an analytic solution
+for <span class="math">\(\pi({\bf \theta}|{\bf y})\)</span>.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\pi({\bf \theta}|{\bf y})\)</span> still exists, but it must be
+computed numerically.</li>
+</ul>
+<ul class="to-build simple">
+<li>However, when the likelihood and prior have similar forms, they
+result in tractable posteriors.</li>
+</ul>
+<ul class="to-build simple">
+<li>A <em>conjugate</em> prior is a distribution that results in a posterior of
+the same family when coupled with a particular likelihood.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Conjugate Priors<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>For example, if <span class="math">\(f({\bf y}|{\bf \theta})\)</span> is a binomial
+distribution and <span class="math">\(\pi({\bf \theta})\)</span> is a beta distribution,
+<span class="math">\(\pi({\bf \theta}|{\bf y})\)</span> will also be a beta
+distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>Alternatively, if <span class="math">\(f({\bf y}|{\bf \theta})\)</span> is a
+normal distribution and <span class="math">\(\pi({\bf \theta})\)</span> is a normal
+distribution, <span class="math">\(\pi({\bf \theta}|{\bf y})\)</span> will also be a
+normal distribution.</li>
+</ul>
+</div>
+<div class="section" id="normal-example">
+<h2>Normal Example<a class="headerlink" href="#normal-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(Y_1, \ldots, Y_n \stackrel{i.i.d.}{\sim}
+\mathcal{N}(\mu,\sigma^2)\)</span>, where <span class="math">\(\sigma^2\)</span> is <em>known</em> and
+<span class="math">\(\mu\)</span> is <em>unknown</em>.</p>
+<ul class="to-build simple">
+<li>Assume <span class="math">\(\pi(\mu)\)</span> is <span class="math">\(\mathcal{N}(\mu_0, \sigma^2_0)\)</span>, where
+<span class="math">\(\mu_0\)</span> and <span class="math">\(\sigma^2_0\)</span> are known parameters.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will see below that <span class="math">\(\sigma^2_0\)</span> provides a measure of how
+strong our beliefs are that <span class="math">\(\mu = \mu_0\)</span> prior to observing
+data.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>Normal Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>The prior is</p>
+<div class="to-build math">
+\[\begin{split}\pi(\mu) &amp; = \frac{1}{\sqrt{2\pi} \sigma_0} \exp
+\left\{-\frac{1}{2\sigma^2_0} (\mu - \mu_0)^2 \right\} \hspace{0.5in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\hspace{0.4in} &amp; = \frac{1}{\sqrt{2\pi} \sigma_0} \exp
+\left\{-\frac{1}{2\sigma^2_0} (\mu^2 - 2\mu\mu_0 + \mu^2_0)
+\right\}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \propto \exp \left\{\frac{\mu \mu_0}{\sigma^2_0} -
+  \frac{\mu^2}{2\sigma^2_0} \right\}. \hspace{1in}\end{split}\]</div>
+</div>
+<div class="section" id="id6">
+<h2>Normal Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>The likelihood is</p>
+<div class="to-build math">
+\[\begin{split}f(Y_1,\ldots, Y_n|\mu) &amp; = \prod_{i=1}^n \left[
+\frac{1}{\sqrt{2\pi} \sigma} \exp\left\{-\frac{1}{2\sigma^2}
+(Y_i - \mu)^2\right\}\right] \hspace{0.25in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \left(\frac{1}{2\pi \sigma^2}\right)^{n/2}
+\exp \left\{-\frac{1}{2\sigma^2} \sum_{i=1}^n (Y_i -
+\mu)^2\right\} \hspace{0.13in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\hspace{0.5in} &amp; = \left(\frac{1}{2\pi \sigma^2}\right)^{n/2}
+\exp\left\{-\frac{1}{2\sigma^2} \left(-2n\bar{Y}\mu + n\mu^2 -
+\sum_{i=1}^n Y_i^2\right)\right\}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; \propto \exp\left\{\frac{n\bar{Y}\mu}{\sigma^2} -
+\frac{n\mu^2}{2\sigma^2} \right\} \hspace{1.5in}\end{split}\]</div>
+</div>
+<div class="section" id="id7">
+<h2>Normal Example<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>The posterior is</p>
+<div class="to-build math">
+\[\begin{split}\pi(\mu|Y_1,\ldots,Y_n) &amp; \propto f(Y_1,\ldots,
+Y_n|\mu) \pi(\mu) \hspace{2in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\hspace{1.07in} &amp; \propto \exp\left\{\frac{n\bar{Y}\mu}{\sigma^2} -
+\frac{n\mu^2}{2\sigma^2} \right\} \exp \left\{\frac{\mu
+\mu_0}{\sigma^2_0} - \frac{\mu^2}{2\sigma^2_0} \right\}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\hspace{1.07in} &amp; = \exp \left\{\left(\frac{n\bar{Y}}{\sigma^2} +
+\frac{\mu_o}{\sigma^2_0}\right) \mu - \left(\frac{n}{2\sigma^2} +
+\frac{1}{2\sigma^2_0} \right) \mu^2\right\}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \exp\left\{A \mu - \frac{B}{2} \mu^2\right\} \hspace{0.63in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \exp\left\{-\frac{B}{2} \left(\mu^2 -
+\frac{2A}{B} \mu \right)\right\}\end{split}\]</div>
+</div>
+<div class="section" id="id8">
+<h2>Normal Example<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="to-build math">
+\[\begin{split}\hspace{0.65in} &amp; \propto \exp\left\{-\frac{B}{2}
+\left(\mu^2 - \frac{2A}{B} \mu \right)\right\}
+\exp\left\{-\frac{B}{2} \left(\frac{A}{B}\right)^2\right\}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \exp\left\{-\frac{B}{2} \left(\mu^2 -
+\frac{2A}{B} \mu + \left(\frac{A}{B}\right)^2 \right) \right\}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \exp\left\{-\frac{B}{2} \left(\mu -
+\frac{A}{B}\right)^2\right\}. \hspace{0.9in}\end{split}\]</div>
+</div>
+<div class="section" id="id9">
+<h2>Normal Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>We see that <span class="math">\(\pi(\mu|Y_1,\ldots,Y_n)\)</span> is
+<span class="math">\(\mathcal{N}\left(\frac{A}{B}, \frac{1}{B}\right)\)</span> where</p>
+<div class="to-build math">
+\[\begin{split}E[\mu|Y_1,\ldots,Y_n] &amp; = \frac{A}{B} =
+\frac{\frac{n\bar{Y}}{\sigma^2} +
+\frac{\mu_0}{\sigma^2_0}}{\frac{n}{\sigma^2} +
+\frac{1}{\sigma^2_0}}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}Var(\mu|Y_1,\ldots,Y_n) &amp; = \frac{1}{B} =
+\frac{1}{\frac{n}{\sigma^2} + \frac{1}{\sigma^2_0}}.\end{split}\]</div>
+</div>
+<div class="section" id="id10">
+<h2>Normal Example<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>If <span class="math">\(\sigma^2_0\)</span> is very small relative to
+<span class="math">\(\sigma^2/n\)</span>, <span class="math">\(E[\mu|Y_1,\ldots,Y_n] \approx \mu_0\)</span> and
+<span class="math">\(Var(\mu|Y_1,\ldots,Y_n) \approx \sigma^2_0\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this case, the prior is very precise and contains a lot of
+information - the data doesn&#8217;t add much to prior knowledge.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(\sigma^2/n\)</span> is very small relative to
+<span class="math">\(\sigma^2_0\)</span>, <span class="math">\(E[\mu|Y_1,\ldots,Y_n] \approx \bar{Y}\)</span> and
+<span class="math">\(Var(\mu|Y_1,\ldots,Y_n) \approx \frac{\sigma^2}{n}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this case, the prior is very imprecise and contains very little
+information - the data is very informative and adds a lot to prior
+knowledge.</li>
+</ul>
+</div>
+<div class="section" id="moderate-prior">
+<h2>Moderate Prior<a class="headerlink" href="#moderate-prior" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/midPrior1.png"><img alt="_images/midPrior1.png" class="align-center" src="_images/midPrior1.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h2>Moderate Prior<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/midPrior2.png"><img alt="_images/midPrior2.png" class="align-center" src="_images/midPrior2.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h2>Moderate Prior<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/midPrior3.png"><img alt="_images/midPrior3.png" class="align-center" src="_images/midPrior3.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="uninformative-prior">
+<h2>Uninformative Prior<a class="headerlink" href="#uninformative-prior" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/badPrior1.png"><img alt="_images/badPrior1.png" class="align-center" src="_images/badPrior1.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h2>Uninformative Prior<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/badPrior2.png"><img alt="_images/badPrior2.png" class="align-center" src="_images/badPrior2.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id14">
+<h2>Uninformative Prior<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/badPrior3.png"><img alt="_images/badPrior3.png" class="align-center" src="_images/badPrior3.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="informative-prior">
+<h2>Informative Prior<a class="headerlink" href="#informative-prior" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/goodPrior1.png"><img alt="_images/goodPrior1.png" class="align-center" src="_images/goodPrior1.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id15">
+<h2>Informative Prior<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/goodPrior2.png"><img alt="_images/goodPrior2.png" class="align-center" src="_images/goodPrior2.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id16">
+<h2>Informative Prior<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/goodPrior3.png"><img alt="_images/goodPrior3.png" class="align-center" src="_images/goodPrior3.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="bayesian-parameter-estimates">
+<h2>Bayesian Parameter Estimates<a class="headerlink" href="#bayesian-parameter-estimates" title="Permalink to this headline">¶</a></h2>
+<p>The most common Bayesian parameter estimates are</p>
+<ul class="to-build simple">
+<li>The mean of the posterior distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>The mode of the posterior distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>The median of the posterior distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>For large <span class="math">\(n\)</span>, the the mode is approximately equal to the
+MLE.</li>
+</ul>
+</div>
+<div class="section" id="frequentist-confidence-intervals">
+<h2>Frequentist Confidence Intervals<a class="headerlink" href="#frequentist-confidence-intervals" title="Permalink to this headline">¶</a></h2>
+<p>When constructing typical confidence intervals:</p>
+<ul class="to-build simple">
+<li>Parameters are viewed as fixed and data as random.</li>
+</ul>
+<ul class="to-build simple">
+<li>The interval is random because the data is random.</li>
+</ul>
+<ul class="to-build simple">
+<li>We interpret the interval as containing the true parameter with some
+probability <em>before the data are observed</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Once the data are observed, the computed interval either contains or
+does not contain the true parameter.</li>
+</ul>
+<ul class="to-build simple">
+<li>We interpret a 95% confidence interval in the following way:
+if we could draw 100 samples similar to the one we have, roughly
+95 of the associated confidence intervals should contain the true
+parameter.</li>
+</ul>
+</div>
+<div class="section" id="bayesian-credible-intervals">
+<h2>Bayesian Credible Intervals<a class="headerlink" href="#bayesian-credible-intervals" title="Permalink to this headline">¶</a></h2>
+<p>Bayesian credible intervals are the Bayesian equivalent to frequentist
+confidence intervals.</p>
+<ul class="to-build simple">
+<li>In the Bayesian paradigm, the parameters are viewed as random while
+the data are fixed.</li>
+</ul>
+<ul class="to-build simple">
+<li>An interval based on the posterior distribution has a natural
+interpration as a probability of containing the true parameter,
+<em>even after the data have been observed</em>.</li>
+</ul>
+</div>
+<div class="section" id="equal-tails-credible-interval">
+<h2>Equal-tails Credible Interval<a class="headerlink" href="#equal-tails-credible-interval" title="Permalink to this headline">¶</a></h2>
+<p>The most basic <span class="math">\(1-\alpha\)</span> credible interval is formed by computing
+the <span class="math">\(\alpha/2\)</span> and <span class="math">\(1-\alpha/2\)</span> quantiles of the posterior
+distribution.</p>
+<ul class="to-build simple">
+<li>For example, suppose <span class="math">\(\alpha = 0.05\)</span>: you want to compute a
+95% credible interval.</li>
+</ul>
+<ul class="to-build simple">
+<li>Determine the 0.025 and 0.975 quantiles.</li>
+</ul>
+<ul class="to-build simple">
+<li>These are the values corresponding to 2.5% of the distribution in
+the lower tail and 2.5% of the distribution in the upper tail.</li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h2>Equal-tails Credible Interval<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/credInt.png"><img alt="_images/credInt.png" class="align-center" src="_images/credInt.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="bayes.html" class="btn btn-neutral" title="Bayes Theorem" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Eric M. Aldrich.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Advanced Quantitative Methods',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

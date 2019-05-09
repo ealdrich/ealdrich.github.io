@@ -1,0 +1,542 @@
+==============================================================================
+Moving Average Processes
+==============================================================================
+
+White Noise Revisited
+==============================================================================
+White noise, :math:`\smash{\{\varepsilon_t\}_{t=-\infty}^{\infty}}`, is a
+fundamental building block of canonical time series processes.
+
+.. math::
+
+   \begin{gather*}
+   E[\varepsilon_t] = 0, \,\,\, \forall t \\
+   E[\varepsilon^2_t] = \sigma^2, \,\,\, \forall t \\
+   E[\varepsilon_t \varepsilon_{\tau}] = 0, \,\,\, \text{ for } t \neq \tau.
+   \end{gather*}
+  
+.. raw:: <!--pause-->
+
+- We will often use the abbreviation
+  :math:`\smash{\{\varepsilon_t\}}`.
+  
+
+
+:math:`\smash{MA(1)}`
+==============================================================================
+Given white noise :math:`\smash{\{\varepsilon_t\}}`, consider the process
+
+.. math::
+
+   \smash{Y_t  = \mu + \varepsilon_t + \theta \varepsilon_{t-1},}
+
+where :math:`\smash{\mu}` and :math:`\smash{\theta}` are constants.
+  
+.. raw:: <!--pause-->
+
+- This is a *first-order moving average* or :math:`\smash{MA(1)}`
+  process.
+
+.. raw:: <!--pause-->
+
+- We can rewrite in terms of the lag operator:
+
+.. math::
+
+   \smash{Y_t = \mu + \theta(L) \varepsilon_t,.}
+
+where :math:`\smash{\theta(L) = (1+\theta L)}`.
+  
+
+
+:math:`\smash{MA(1)}` Mean and Variance
+==============================================================================
+The mean of the first-order moving average process is
+
+.. math::
+
+   \begin{align}
+   \text{E}[Y_t] & = \text{E}[\mu + \varepsilon_t + \theta \varepsilon_{t-1}] \\
+   & = \mu + \text{E}[\varepsilon_t] + \theta \text{E}[\varepsilon_{t-1}] \\
+   & = \mu.
+   \end{align}
+
+
+:math:`\smash{MA(1)}` Autocovariances
+==============================================================================
+.. math::
+
+   \begin{align*}
+   \gamma_j & = \text{E}\left[(Y_t - \mu)(Y_{t-j} -
+   \mu)\right] \\
+   & = \text{E}\left[(\varepsilon_t + \theta \varepsilon_{t-1})(\varepsilon_{t-j} +
+   \theta \varepsilon_{t-j-1})\right] \\
+   & = \text{E}[\varepsilon_t \varepsilon_{t-j} + \theta \varepsilon_t \varepsilon_{t-j-1}
+   + \theta \varepsilon_{t-1} \varepsilon_{t-j} + \theta^2
+     \varepsilon_{t-1}\varepsilon_{t-j-1}] \\
+     & = \text{E}[\varepsilon_t \varepsilon_{t-j}] + \theta \text{E}[\varepsilon_t
+     \varepsilon_{t-j-1}] + \theta \text{E}[\varepsilon_{t-1} \varepsilon_{t-j}] + \theta^2
+     \text{E}[\varepsilon_{t-1}\varepsilon_{t-j-1}].
+   \end{align*}
+  
+:math:`\smash{MA(1)}` Autocovariances
+==============================================================================  
+- If :math:`\smash{j = 0}`
+
+.. math::
+
+   \smash{\gamma_0 = \text{E}[\varepsilon^2_t] + \theta
+   \text{E}[\varepsilon_t \varepsilon_{t-1}] + \theta
+   \text{E}[\varepsilon_{t-1} \varepsilon_t] + \theta^2
+   \text{E}[\varepsilon^2_{t-1}] = (1+\theta^2)\sigma^2.}
+    
+.. raw:: <!--pause-->
+
+- If :math:`\smash{j = 1}`
+
+.. math::
+
+   \smash{\gamma_1 = \text{E}[\varepsilon_t \varepsilon_{t-1}] +
+   \theta \text{E}[\varepsilon_t \varepsilon_{t-2}] + \theta
+   \text{E}[\varepsilon^2_{t-1}] + \theta^2 \text{E}[\varepsilon_{t-1}
+   \varepsilon_{t-2}] = \theta \sigma^2.}
+    
+.. raw:: <!--pause-->
+
+- If :math:`\smash{j > 1}`, all of the expectations are zero:
+  :math:`\smash{\gamma_j = 0}`.
+  
+
+
+:math:`\smash{MA(1)}` Stationarity and Ergodicity
+==============================================================================
+Since the mean and autocovariances are independent of time, an
+:math:`\smash{MA(1)}` is weakly stationary.  
+      
+.. raw:: <!--pause-->
+
+- This is true *for all values of* :math:`\smash{\theta}`.
+      
+.. raw:: <!--pause-->
+
+The condition for ergodicity of the mean also holds:
+
+.. math::
+
+   \begin{align*}
+   \sum_{j=0}^{\infty} |\gamma_j| & = \gamma_0 +
+   \gamma_1 \\
+   & = (1+\theta^2)\sigma^2 + \left|\theta
+   \sigma^2\right| < \infty.
+   \end{align*}
+  
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\{\varepsilon_t\}}` is *Gaussian* then
+  :math:`\smash{\{Y_t\}}` is also ergodic *for all moments*.
+    
+
+
+:math:`\smash{MA(1)}` Autocorrelations
+==============================================================================
+The autocorrelations of an :math:`\smash{MA(1)}` are 
+  
+.. raw:: <!--pause-->
+
+- :math:`\smash{j = 0}`: :math:`\smash{\rho_0 = 1}` (*always*).
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{j = 1}`:
+
+.. math::
+
+   \smash{\rho_1 = \frac{\theta \sigma^2}{(1+\theta^2) \sigma^2} =
+   \frac{\theta}{1+\theta^2}}.
+  
+.. raw:: <!--pause-->
+
+- :math:`\smash{j > 1}`: :math:`\smash{\rho_j = 0}`.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\theta > 0}`, first-order lags of
+  :math:`\smash{Y_t}` are *positively* autocorrelated.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\theta < 0}`, first-order lags of
+  :math:`\smash{Y_t}` are *negatively* autocorrelated.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\max\{\rho_1\} = 0.5}` and occurs when
+  :math:`\smash{\theta = 1}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\min\{\rho_1\} = -0.5}` and occurs when
+  :math:`\smash{\theta = -1}`.
+  
+:math:`\smash{MA(1)}` Example
+==============================================================================
+.. code::
+
+   #################################################################
+   # Simulate MA(1)
+   #################################################################
+
+   # Simulate MA(1)
+   N = 1000000;
+   sigma = 0.5;
+   eps = rnorm(N, 0, sigma);
+
+   # Simulate
+   mu = 0.61;
+   theta = 0.8;
+   y = mu + eps[2:N] + theta*eps[1:(N-1)];
+
+   # Plot
+   png(file="ma1ExampleSeries.png", height=800, width=1000)
+   plot(y, main=paste("MA(1), ",expression(theta)," = ",theta, sep=""),type="l")
+   dev.off()
+
+:math:`\smash{MA(1)}` Example
+==============================================================================
+.. image:: _static/ARMA/ma1ExampleSeries.png
+   :height: 6in
+   :align: center
+
+:math:`\smash{MA(1)}` Autocorrelations
+==============================================================================
+.. code::
+
+   #################################################################
+   # Plot ACF for MA(1)
+   #################################################################
+
+   # Plot the empirical acf
+   png(file="ma1ACF.png", height=800, width=1000)
+   acf(y, main="Autocorrelations for MA(1)")
+   dev.off()
+
+:math:`\smash{MA(1)}` Autocorrelations
+==============================================================================
+.. image:: _static/ARMA/ma1ACF.png
+   :width: 6in
+   :align: center
+
+:math:`\smash{MA(1)}` Autocorrelations
+==============================================================================
+.. code::
+
+   #################################################################
+   # Plot lag 1 autocorrelation for different MA(1)
+   #################################################################
+
+   # Construct a grid of first-order coefficients
+   N = 10000;
+   thetaGrid = seq(-3, 3, length=N);
+
+   # Compute the lag 1 autocorrelations
+   rho1 = thetaGrid/(1+thetaGrid^2);
+
+   # Plot
+   png(file="ma1Lag1.png", height=600, width=1000)
+   plot(thetaGrid, rho1, type='l', xlab=expression(theta), ylab=expression(rho[1]),
+        main="Lag 1 Autocorrelation for MA(1)")
+   abline(h=0);
+   abline(h=0.5, lty=3);
+   abline(h=-0.5, lty=3);
+   dev.off()
+
+:math:`\smash{MA(1)}` Autocorrelations
+==============================================================================
+.. image:: _static/ARMA/ma1Lag1.png
+   :width: 6in
+   :align: center
+
+:math:`\smash{MA(1)}` Autocorrelations
+==============================================================================
+From the figure above we see that there are two values of
+:math:`\smash{\theta}` that generate each value of
+      :math:`\smash{\rho_1}`.
+  
+.. raw:: <!--pause-->
+
+- In fact, :math:`\smash{\theta}` and :math:`\smash{1/\theta}`
+  correspond to the same  :math:`\smash{\rho_1}`:
+
+.. math::
+
+  \smash{\rho_1 = \frac{1/\theta}{1+(1/\theta)^2} =
+  \frac{\theta^2}{\theta^2} \frac{1/\theta}{1+(1/\theta)^2} =
+  \frac{\theta}{1+\theta^2}.}
+
+:math:`\smash{MA(1)}` Autocorrelations
+==============================================================================
+Consider:
+ 
+.. math::
+
+   \begin{align}
+   Y_t & = \varepsilon_t + 0.5 \varepsilon_{t-1} \\
+   Y_t & = \varepsilon_t + 2 \varepsilon_{t-1}.
+   \end{align}
+    
+.. raw:: <!--pause-->
+
+Then:
+
+.. math::
+   
+   \smash{\rho_1 = \frac{0.5}{1+0.5^2} = \frac{2}{1+2^2} = 0.4.}
+  
+
+
+:math:`\smash{MA(q)}`
+==============================================================================
+A :math:`\smash{q}` th-order moving average or :math:`\smash{MA(q)}`
+process is
+
+.. math::
+
+   \smash{Y_t = \mu + \varepsilon_t + \theta_1 \varepsilon_{t-1} +
+   \ldots + \theta_q \varepsilon_{t-q},}
+
+where :math:`\smash{\mu, \theta_1, \ldots, \theta_q}` are any real
+numbers.
+  
+.. raw:: <!--pause-->
+
+- We can rewrite in terms of the lag operator:
+
+.. math::
+
+   \smash{Y_t = \mu + \theta(L) \varepsilon_t,}
+
+where :math:`\smash{\theta(L) = (1+\theta_1 L^1 + \ldots + \theta_q
+L^q)}`.
+  
+
+
+:math:`\smash{MA(q)}` Mean
+==============================================================================
+As with the :math:`\smash{MA(1)}`:
+
+.. math::
+
+   \begin{align*}
+   \text{E}[Y_t] & = \text{E}[\mu + \varepsilon_t + \theta_1 \varepsilon_{t-1}
+   + \ldots + \theta_q \varepsilon_{t-q}] \\
+   & = \mu + \text{E}[\varepsilon_t] + \theta_1 \text{E}[\varepsilon_{t-1}] +
+   \ldots + \theta_q \text{E}[\varepsilon_{t-q}] \\
+   & = \mu.
+   \end{align*}
+
+
+:math:`\smash{MA(q)}` Autocovariances
+==============================================================================
+.. math::
+
+   \begin{align*}
+   \gamma_j & = \text{E}\left[(Y_t-\mu)(Y_{t-j}-\mu)\right]
+   \\
+   & = \text{E}\big[(\varepsilon_t + \theta_1\varepsilon_{t-1} + \ldots +
+   \theta_q \varepsilon_{t-q}) \\
+   & \hspace{1in} \times (\varepsilon_{t-j} + \theta_1\varepsilon_{t-j-1} +
+   \ldots + \theta_q \varepsilon_{t-j-q})\big].
+   \end{align*}
+  
+  
+.. raw:: <!--pause-->
+
+- For :math:`\smash{j > q}`, all of the products result in zero
+  expectations: :math:`\smash{\gamma_j = 0}`, for :math:`\smash{j >
+  q}`.
+
+.. raw:: <!--pause-->
+
+- For :math:`\smash{j = 0}`, the squared terms result in nonzero
+  expectations, while the cross products lead to zero expectations:
+
+  .. math::
+
+     \smash{\gamma_0 = \text{E}[\varepsilon^2_t ] + \theta^2_1
+     \text{E}[\varepsilon^2_{t-1}] + \ldots + \theta^2_q
+     \text{E}[\varepsilon^2_{t-q}] = \left(1 + \sum_{j=1}^q
+     \theta^2_j\right) \sigma^2.}
+  
+
+
+:math:`\smash{MA(q)}` Autocovariances
+==============================================================================
+  
+- For :math:`\smash{j = \{1,2,\ldots,q\}}`, the nonzero expectation
+  terms are
+
+.. math::
+
+   \begin{align*}
+   \gamma_j & = \theta_j\text{E}[\varepsilon^2_{t-j}] +
+   \theta_{j+1}\theta_1 \text{E}[\varepsilon^2_{t-j-1}] \\
+   & \hspace{0.8in} + \theta_{j+2}\theta_2 \text{E}[\varepsilon^2_{t-j-2}] +
+   \ldots + \theta_{q}\theta_{q-j} \text{E}[\varepsilon^2_{t-q}] \\
+   & = (\theta_j  + \theta_{j+1}\theta_1 +
+   \theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j})
+   \sigma^2.
+   \end{align*}
+  
+.. raw:: <!--pause-->
+
+The autocovariances can be stated concisely as
+
+.. math::
+
+   \begin{align*}
+   \gamma_j & = \begin{cases} (\theta_j\theta_0  + \theta_{j+1}\theta_1 +
+   \theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j}) \sigma^2 &
+   \text{ for } j = 0, 1, \ldots, q \\
+   0 & \text{ for } j > q. \end{cases}
+   \end{align*}
+
+where :math:`\smash{\theta_0 = 1}`.
+
+
+:math:`\smash{MA(q)}` Autocorrelations
+==============================================================================
+The autocorrelations can be stated concisely as
+
+.. math::
+
+   \begin{align*}
+   \rho_j & = \begin{cases} \frac{\theta_j\theta_0  + \theta_{j+1}\theta_1 +
+   \theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j}}{\theta^2_0
+   + \theta^2_1 + \theta^2_2 + \ldots + \theta^2_q} & \text{ for
+     } j = 0, 1, \ldots, q \\
+     0 & \text{ for } j > q. \end{cases}
+     \end{align*}  
+
+where :math:`\smash{\theta_0 = 1}`.
+
+
+:math:`\smash{MA(2)}` Example
+==============================================================================
+For an :math:`\smash{MA(2)}` process
+
+.. math::
+
+   \begin{align*}
+   \gamma_0 & = (1 + \theta^2_1 + \theta^2_2) \sigma^2 \\
+   \gamma_1 & = (\theta_1 + \theta_2 \theta_1) \sigma^2 \\
+   \gamma_2 & = \theta_2 \sigma^2 \\
+   \gamma_3 & = \gamma_4 = \ldots = 0.
+   \end{align*}
+
+
+:math:`\smash{MA(q)}` Stationarity and Ergodicity
+==============================================================================
+Since the mean and autocovariances are independent of time, an
+:math:`\smash{MA(q)}` is weakly stationary.
+  
+.. raw:: <!--pause-->
+
+- This is true *for all values of*
+  :math:`\smash{\{\theta_j\}_{j=1}^q}`.
+  
+.. raw:: <!--pause-->
+
+The condition for ergodicity of the mean also holds:
+
+.. math::
+
+   \smash{\sum_{j=0}^{\infty} |\gamma_j| = \sum_{j=0}^q |\gamma_j| <
+   \infty.}
+  
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\{\varepsilon_t\}}` is *Gaussian* then
+  :math:`\smash{\{Y_t\}}` is also ergodic *for all moments*.
+    
+
+
+:math:`\smash{MA(\infty)}`
+==============================================================================
+If :math:`\smash{\theta_0 = 1}`, the :math:`\smash{MA(q)}` process can
+be written as
+
+.. math::
+
+   \smash{Y_t = \mu + \sum_{j=0}^q \theta_j \varepsilon_{t-j}.}
+  
+.. raw:: <!--pause-->
+
+- If we take the limit :math:`\smash{q \to \infty}`:
+
+.. math::
+
+  \smash{Y_t = \mu + \sum_{j=0}^{\infty} \theta_j \varepsilon_{t-j} =
+  \mu + \theta(L) \varepsilon_t,}
+  
+where :math:`\smash{\theta(L) = \sum_{j=0}^{\infty} \theta_j L^j}`.
+
+.. raw:: <!--pause-->
+
+- It can be shown that an :math:`\smash{MA(\infty)}` process is weakly
+  stationary if
+
+.. math::
+
+  \smash{\sum_{j=0}^{\infty} \theta^2_j < \infty.}
+  
+
+
+:math:`\smash{MA(\infty)}`
+==============================================================================
+Since absolute summability implies square summability
+
+.. math::
+
+   \smash{\sum_{j=0}^{\infty} |\theta_j| \Rightarrow \sum_{j=0}^{\infty} \theta^2_j,}
+
+.. raw:: <!--pause-->
+
+an :math:`\smash{MA(\infty)}` process satisfying absolute summability
+is also weakly stationary.
+    
+.. raw:: <!--pause-->
+
+- In general
+
+.. math::
+
+   \smash{\sum_{j=0}^{\infty} \theta^2_j \nRightarrow
+   \sum_{j=0}^{\infty} |\theta_j|.}
+
+
+:math:`\smash{MA(\infty)}` Moments
+==============================================================================
+Following the same reasoning as above,
+
+.. math::
+
+   \begin{gather*}
+   \text{E}[Y_t] = \mu \\
+   \gamma_j = \sigma^2 \sum_{i=0}^{\infty}
+   \theta_{j+i} \theta_i.
+   \end{gather*}
+  
+.. raw:: <!--pause-->
+
+- :math:`\smash{\sum_{j=0}^{\infty} |\theta_j| \Rightarrow
+  \sum_{j=0}^{\infty} |\gamma_j|}`.
+
+.. raw:: <!--pause-->
+
+- So if the :math:`\smash{MA(\infty)}` has absolutely summable
+  coefficients, it is ergodic for the mean.
+
+.. raw:: <!--pause-->
+
+- Further, if :math:`\smash{\{\varepsilon_t\}}` is *Gaussian* then
+  :math:`\smash{\{Y_t\}}` is also ergodic *for all moments*.

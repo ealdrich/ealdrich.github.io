@@ -1,0 +1,583 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Rates of Return &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html"/>
+        <link rel="up" title="Risk and Returns" href="riskReturns.html"/>
+        <link rel="next" title="Risk and Risk Premiums" href="risk.html"/>
+        <link rel="prev" title="Risk and Returns" href="riskReturns.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Econ 133</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="probability.html">Probability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#random-variables">Random Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#probability-mass-function">Probability Mass Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#probability-density-function">Probability Density Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-distributions">Properties of Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#cumulative-distribution-function">Cumulative Distribution Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#expected-value">Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id1">Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-expectation">Properties of Expectation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-expectation-proof">Properties of Expectation - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#variance">Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id2">Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#standard-deviation">Standard Deviation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#covariance">Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id3">Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-variance">Properties of Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-variance-proof">Properties of Variance - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-covariance">Properties of Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#correlation">Correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#normal-distribution">Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#normal-density">Normal Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id4">Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#standard-normal-distribution">Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#standard-normal-distribution-proof">Standard Normal Distribution - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id5">Standard Normal Distribution - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sum-of-normals">Sum of Normals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sample-mean">Sample Mean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sample-mean-cont">Sample Mean (Cont.)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sample-variance">Sample Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#other-sample-moments">Other Sample Moments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="markets.html">Markets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assetClasses.html">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexes.html">Indexes and Funds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html">Trading</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="riskReturns.html">Risk and Returns</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Rates of Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="risk.html">Risk and Risk Premiums</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="portfolios.html">Portfolio Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allocation.html">Asset Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolioOpt.html">Portfolio Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiAssetOpt.html">Portfolio Optimization with Many Risky Assets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="indexModels.html">Index Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id1">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#single-factor-model">Single-Factor Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id2">Single-Factor Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#decomposing-risk">Decomposing Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id3">Decomposing Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#using-an-index-as-a-factor">Using an Index as a Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id4">Using an Index as a Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#single-index-model">Single-Index Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id5">Single-Index Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#expected-return-beta-relationship">Expected Return-Beta Relationship</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#why-must-be-zero">Why <span class="math">\(\alpha\)</span> Must Be Zero</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#single-index-regression">Single-Index Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#security-characteristic-line">Security Characteristic Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id6">Security Characteristic Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#advantages-of-the-model">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id7">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id8">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id9">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#cost-of-the-model">Cost of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-portfolios">Index Model Portfolios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-portfolio-coefficients">Index Model Portfolio Coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-portfolio-risk">Index Model Portfolio Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id10">Index Model Portfolio Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-diversification">Index Model Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id11">Index Model Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id12">Index Model Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-example">Index Model Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id13">Index Model Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id14">Index Model Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id15">Index Model Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bonds.html">Bonds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bondPrices.html">Bond Prices and Yields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="termStructure.html">The Term Structure of Interest Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-options">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id1">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id2">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id3">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-example">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id4">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-options">Put Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id5">Put Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-example">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id6">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#moneyness">Moneyness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#american-vs-european">American vs. European</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#notation">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-buyer">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id7">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id8">Call Option Payoff (Buyer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-seller">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id9">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-payoff-buyer">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id10">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id11">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#speculation-and-hedging">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id12">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id13">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id14">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id15">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id16">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id17">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id18">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id19">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id20">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#covered-call">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id21">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#straddle">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id22">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id23">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#spread">Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#bullish-spread">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id24">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#collar">Collar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put-alternative">Protective Put Alternative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity">Put Call Parity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity-example">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id25">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id26">Put Call Parity Example</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 133</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="riskReturns.html">Risk and Returns</a> &raquo;</li>
+      
+    <li>Rates of Return</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/returns.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="rates-of-return">
+<h1>Rates of Return<a class="headerlink" href="#rates-of-return" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="holding-period-return">
+<h2>Holding Period Return<a class="headerlink" href="#holding-period-return" title="Permalink to this headline">¶</a></h2>
+<p>Consider a stock with beginning price <span class="math">\(P_0\)</span>, ending price
+<span class="math">\(P_1\)</span> and a dividend payment of <span class="math">\(d\)</span>.</p>
+<ul class="to-build simple">
+<li>The <em>holding period return</em> is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}HPR &amp; = \frac{P_1 - P_0 + d}{P_0} \\\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \underbrace{\frac{P_1 - P_0}{P_0}}_\text{capital gains yield} +
+\underbrace{\frac{d}{P_0}}_\text{dividend yield}.\end{split}\]</div>
+<p class="to-build">This definition can be used for assets other than stocks (e.g. a bond
+with a coupon payment).</p>
+</div>
+<div class="section" id="holding-period-return-example">
+<h2>Holding Period Return Example<a class="headerlink" href="#holding-period-return-example" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>On Nov 9th 2012, Apple stock closed at <span class="math">\(P_0 = \$547.06\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>On Nov 12th, Apple payed a dividend of <span class="math">\(d = \$2.65\)</span> per share
+and the price closed at <span class="math">\(P_1 = \$542.83\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>What was the HPR?</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}HPR &amp; = \frac{\$542.83 - \$547.06}{\$547.06} + \frac{\$2.65}{\$547.06}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \frac{-\$4.23}{\$547.06} + \frac{\$2.65}{\$547.06}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \frac{-\$1.58}{\$547.06} = -0.00289.\end{split}\]</div>
+</div>
+<div class="section" id="gross-and-net-returns">
+<h2>Gross and Net Returns<a class="headerlink" href="#gross-and-net-returns" title="Permalink to this headline">¶</a></h2>
+<p>Forget dividends or cash payouts for a moment.</p>
+<ul class="to-build simple">
+<li>The <em>capital gains yield</em> is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\underbrace{\frac{P_1 - P_0}{P_0}}_\text{net return}\,\,\, &amp; =
+\underbrace{\frac{P_1}{P_0}}_\text{gross return} - \,\,\,\,\, 1.\end{split}\]</div>
+</div>
+<div class="section" id="id1">
+<h2>Gross and Net Returns<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>What&#8217;s the difference between net and gross returns?</p>
+<ul class="to-build simple">
+<li>The net return is the fraction of your invested money that you gain
+by holding the asset, excluding the original money.</li>
+</ul>
+<ul class="to-build simple">
+<li>The gross return is the total gain, including your original
+money. It is the factor by which you multiply your original invested
+amount to determine the final invested amount.</li>
+</ul>
+</div>
+<div class="section" id="multi-period-returns">
+<h2>Multi-period Returns<a class="headerlink" href="#multi-period-returns" title="Permalink to this headline">¶</a></h2>
+<p>Suppose an asset has net returns <span class="math">\(\{r_t\}_{t=0}^{T}\)</span>. Consider two
+forms of average returns:</p>
+<div class="to-build math">
+\[\begin{split}\text{Arithmetic Average} &amp; = \frac{1}{T} \sum_{t=0}^T r_t\end{split}\]</div>
+<p class="to-build">and</p>
+<div class="to-build math">
+\[\begin{split}\text{Geometric Average} &amp; = \left(\prod_{t=0}^T
+(1+r_t)\right)^{\frac{1}{T}}.\end{split}\]</div>
+<p class="to-build">The geometric average is the <em>constant</em> return that would
+have to be earned each period to yield the same final value of the
+asset.</p>
+</div>
+<div class="section" id="annualized-returns-ear">
+<h2>Annualized Returns - EAR<a class="headerlink" href="#annualized-returns-ear" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you enter into a contract to pay or receive a net rate of
+return <span class="math">\(r\)</span> on an asset for each of <span class="math">\(n\)</span> periods in a year.</p>
+<ul class="to-build simple">
+<li><span class="math">\(n=12\)</span>  is a monthly contract.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(n=4\)</span> is a quarterly contract.</li>
+</ul>
+<ul class="to-build simple">
+<li>The Effective Annual Rate (EAR) is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}1 + \text{EAR} &amp; = (1 + r)^n.\end{split}\]</div>
+</div>
+<div class="section" id="annualized-returns-apr">
+<h2>Annualized Returns - APR<a class="headerlink" href="#annualized-returns-apr" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you enter into a contract to pay or receive a net rate of
+return <span class="math">\(r\)</span> on an asset for each of <span class="math">\(n\)</span> periods in a year.</p>
+<ul class="to-build simple">
+<li>The Annual Percentage Rate (APR) is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\text{APR} &amp; = n \times r.\end{split}\]</div>
+<p class="to-build">The APR ignores compounding (as seen in the following example).</p>
+</div>
+<div class="section" id="annualized-returns-example">
+<h2>Annualized Returns - Example<a class="headerlink" href="#annualized-returns-example" title="Permalink to this headline">¶</a></h2>
+<p>You invest $100 in an asset that pays 5% return each quarter for
+one year.</p>
+<div class="to-build math">
+\[Q1: \$100 \times 1.05 = \$105\]</div>
+<div class="to-build math">
+\[Q2: \$105 \times 1.05 = \$110.25\]</div>
+<div class="to-build math">
+\[Q3: \$110.25 \times 1.05 = \$115.76\]</div>
+<div class="to-build math">
+\[Q4: \$115.76 \times 1.05 = \$121.55\]</div>
+<div class="to-build math">
+\[EAR: (1.05)^4 - 1 = 0.2155\]</div>
+<div class="to-build math">
+\[APR: 0.05 \times 4 = 0.2\]</div>
+<div class="to-build math">
+\[HPR: \frac{\$121.55 - \$100}{\$100} = 0.2155.\]</div>
+</div>
+<div class="section" id="ear-and-apr">
+<h2>EAR and APR<a class="headerlink" href="#ear-and-apr" title="Permalink to this headline">¶</a></h2>
+<p>What is the relationship between EAR and APR?</p>
+<ul class="to-build simple">
+<li>Since</li>
+</ul>
+<div class="to-build math">
+\[r = \frac{\text{APR}}{n}\]</div>
+<p class="to-build">we have</p>
+<div class="to-build math">
+\[\begin{split}1 +\text{EAR} &amp; = \left(1 + \frac{APR}{n}\right)^n.\end{split}\]</div>
+<p class="to-build">We can rearrange the equation above to get</p>
+<div class="to-build math">
+\[\begin{split}\text{APR} &amp; = \left[(1+\text{EAR})^{\frac{1}{n}} - 1\right]
+\times n.\end{split}\]</div>
+</div>
+<div class="section" id="continuous-compounding">
+<h2>Continuous Compounding<a class="headerlink" href="#continuous-compounding" title="Permalink to this headline">¶</a></h2>
+<p>Continuous compounding is what occurs when we allow the number of
+periods in the year, <span class="math">\(n\)</span>, to become large.</p>
+<ul class="to-build simple">
+<li>For daily returns, <span class="math">\(n=365\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>For hourly returns, <span class="math">\(n=8760\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>For returns each minute, <span class="math">\(n=525,000\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>For returns each second, <span class="math">\(n=31,536,000\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Continuous Compounding<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Continuous compounding is the limit, when <span class="math">\(n = \infty\)</span>. In this
+case</p>
+<div class="to-build math">
+\[\lim_{n \to \infty} \left(1 + \frac{\text{APR}}{n}\right)^n =
+e^{\text{APR}}.\]</div>
+<p class="to-build">So, under continuous compounding</p>
+<div class="to-build math">
+\[\begin{split}1 + \text{EAR} &amp; = e^{\text{APR}}\end{split}\]</div>
+<p class="to-build">or</p>
+<div class="to-build math">
+\[\begin{split}\text{APR} &amp; = \ln(1+\text{EAR}).\end{split}\]</div>
+</div>
+<div class="section" id="inflation">
+<h2>Inflation<a class="headerlink" href="#inflation" title="Permalink to this headline">¶</a></h2>
+<p>Inflation is the increase of the general price level over
+time.</p>
+<ul class="to-build simple">
+<li>Inflation erodes the purchasing power of a given amount of
+money over time.</li>
+</ul>
+<ul class="to-build simple">
+<li>In the presence of inflation, an asset that yields a return of
+<span class="math">\(r\)</span> doesn&#8217;t actually generate <span class="math">\(r\)</span> units of additional real
+purchasing power for each dollar invested.</li>
+</ul>
+</div>
+<div class="section" id="nominal-vs-real-returns">
+<h2>Nominal vs. Real Returns<a class="headerlink" href="#nominal-vs-real-returns" title="Permalink to this headline">¶</a></h2>
+<p>In the previous slides we computed nominal returns.</p>
+<ul class="to-build simple">
+<li>Let us momentarily change notation and refer to the nominal return
+of an asset as <span class="math">\(R\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Then the real return of the asset is the nominal return discounted
+by inflation:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}1+r &amp; = \frac{1+R}{1+\pi}.\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(r\)</span> is the net real return and <span class="math">\(\pi\)</span> is net inflation.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>Nominal vs. Real Returns<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>This relationship is approximated by</li>
+</ul>
+<div class="to-build math">
+\[r \approx R - \pi.\]</div>
+<p class="to-build">See the proof on the next slide.</p>
+</div>
+<div class="section" id="nominal-vs-real-returns-proof">
+<h2>Nominal vs. Real Returns - Proof<a class="headerlink" href="#nominal-vs-real-returns-proof" title="Permalink to this headline">¶</a></h2>
+<p>The proof requires an approximation. For some small number <span class="math">\(\epsilon &gt;
+0\)</span>,</p>
+<div class="math">
+\[\begin{split}\ln(1+\epsilon) &amp; \approx \epsilon.\end{split}\]</div>
+<p class="to-build">Thus,</p>
+<div class="to-build math">
+\[\begin{split}1+r &amp; = \frac{1+R}{1+\pi}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow \ln(1+r) &amp; = \ln\left(\frac{1+R}{1+\pi}\right)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow \ln(1+r) &amp; = \ln(1+R) - \ln(1+\pi)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow r &amp; \approx R - \pi.\end{split}\]</div>
+</div>
+<div class="section" id="nominal-vs-real-returns-example">
+<h2>Nominal vs. Real Returns - Example<a class="headerlink" href="#nominal-vs-real-returns-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you can invest in a CD that pays 8% return over the next year
+and that inflation is 5% during the same period.</p>
+<ul class="to-build simple">
+<li><span class="math">\(R = 0.08\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\pi = 0.05\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(r \approx 0.08 - 0.05 = 0.03\)</span>.</li>
+</ul>
+<p class="to-build">The actual real rate of return is</p>
+<div class="to-build math">
+\[r = \frac{1.08}{1.05} - 1 = 0.0286.\]</div>
+</div>
+<div class="section" id="expected-inflation">
+<h2>Expected Inflation<a class="headerlink" href="#expected-inflation" title="Permalink to this headline">¶</a></h2>
+<p>In practice, future inflation is not known, even though the nominal
+rate of return may be known with certainty.</p>
+<ul class="to-build simple">
+<li>Think of a fixed-income asset.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this case</li>
+</ul>
+<div class="to-build math">
+\[R = r + E[\pi].\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(E[\pi]\)</span> is expected inflation.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Expected Inflation<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The returns to typical government bonds are nominal.</li>
+</ul>
+<ul class="to-build simple">
+<li>In 1997, the U.S. Treasury introduced &#8220;Treasury Inflation-Protected
+Securities&#8221; (TIPS).</li>
+</ul>
+<ul class="to-build simple">
+<li>These have coupon and principle payments that
+are corrected for observed inflation over time.</li>
+</ul>
+<ul class="to-build simple">
+<li>The difference between these rates of return on these two
+instruments can be treated as a measure of expected inflation.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="risk.html" class="btn btn-neutral float-right" title="Risk and Risk Premiums">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="riskReturns.html" class="btn btn-neutral" title="Risk and Returns"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Security Markets and Financial Institutions',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

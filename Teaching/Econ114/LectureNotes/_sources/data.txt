@@ -1,0 +1,13 @@
+Exploratory Data Analysis
+=========================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 1
+
+   kde
+
+   quantiles
+
+   transform

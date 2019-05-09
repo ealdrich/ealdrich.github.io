@@ -1,0 +1,357 @@
+==============================================================================
+Lag Operators
+==============================================================================
+
+Lag Operator
+==============================================================================
+Given a sequence of values, :math:`\smash{y_1, y_2, \ldots, y_t}`,
+indexed by time, the lag operator, :math:`\smash{L}`, is defined as
+
+.. math::
+
+   \smash{Ly_t = y_{t-1}.}
+
+.. raw:: <!--pause-->
+
+- The lag operator shifts a time value :math:`\smash{y_t}` back by one period.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{y_t}` can be thought of as the input of the operator
+  and :math:`\smash{y_{t-1}}` as the output.
+
+.. raw:: <!--pause-->
+
+- The lag operator can be applied to all values in a series
+  :math:`\smash{\{y_t\}_{t=1}^T}` and the result is a new series
+  shifted back by one period: :math:`\smash{\{y_t\}_{t=0}^{T-1}}`.
+
+
+Lag Operator
+==============================================================================
+Applying the lag operator twice:
+
+.. math::
+
+   \smash{L(Ly_t) = Ly_{t-1} = y_{t-2}.}
+
+.. raw:: <!--pause-->
+
+- We write :math:`\smash{L(Ly_t)}` as :math:`\smash{L^2 y_t}`.
+
+.. raw:: <!--pause-->
+
+- Applying recursively:
+
+.. math::
+
+   \smash{L^k y_t = y_{t-k}.}
+
+.. raw:: <!--pause-->
+
+- We will define :math:`\smash{L^0 = 1}`.
+
+
+Useful Properties of the Lag Operator
+==============================================================================
+- The lag operator is commutative:
+
+.. math::
+
+   \smash{L(\beta y_t) = \beta L y_t.}
+
+.. raw:: <!--pause-->
+
+- The lag operator is distributive:
+
+.. math::
+
+   \smash{L(x_t+y_t) = L z_t = z_{t-1} = x_{t-1} + y_{t-1} = L x_t + L
+   y_t,}
+
+where :math:`\smash{z_t = x_t + y_t}`.
+
+.. raw:: <!--pause-->
+
+- The lag of a constant is the same constant:
+
+.. math::
+
+   \smash{Lc = c.}
+
+
+First-Order Difference Equation
+==============================================================================
+Suppose we have a first-order difference equation:
+
+.. math::
+
+   \smash{y_t = \phi y_{t-1} + w_t.}
+
+.. raw:: <!--pause-->
+
+In terms of the lag operator
+
+.. math::
+
+   \smash{(1-\phi L)y_t = w_t.}
+
+.. raw:: <!--pause-->
+
+We can write
+
+.. math::
+
+   \smash{\phi(L)y_t = w_t,}
+
+where :math:`\smash{\phi(L) = (1-\phi L)}`.
+
+
+First-Order Difference Equation
+==============================================================================
+Suppose the operator :math:`\smash{\phi(L) = (1-\phi L)}` has an inverse:
+
+.. math::
+
+   \smash{\phi(L)^{-1} = (1-\phi L)^{-1}.}
+  
+.. raw:: <!--pause-->
+
+- The inverse is the operator such that
+
+.. math::
+
+   \smash{(1-\phi L)^{-1}(1-\phi L) = 1.}
+  
+.. raw:: <!--pause-->
+
+- If an inverse operator exists,
+
+.. math::
+
+   \smash{y_t = \phi(L)^{-1} w_t = (1-\phi L)^{-1} w_t.}
+
+
+Recursive Substitution of First-Order Difference Equation
+==============================================================================
+Applying recursive substitution to the first-order difference
+equation:
+
+.. math::
+
+   \begin{align}
+   y_t & = \phi y_{t-1} + w_t \\
+   & = \phi(\phi y_{t-2} + w_{t-1}) + w_t \\
+   & = w_t + \phi w_{t-1} + \phi^2 y_{t-2} \\
+   & = w_t + \phi w_{t-1} + \phi^2 (\phi y_{t-3} + w_{t-2}) \\
+   & = w_t + \phi w_{t-1} + \phi^2 w_{t-2} + \phi^3 y_{t-3} \\
+   & \vdots \\
+   & = \sum_{i=0}^{\infty} \phi^i w_{t-i} = \sum_{i=0}^{\infty}
+   \phi^i L^i w_t.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- The infinite recursive substitution can only be performed if
+  :math:`\smash{|\phi| < 1}`.
+
+
+Inverse of Lag Operator
+==============================================================================
+Restating the previous result, for :math:`\smash{|\phi| < 1}`:
+
+.. math::
+
+   \smash{y_t = \left(\sum_{i=0}^{\infty} \phi^i L^i\right) w_t.}
+
+.. raw:: <!--pause-->
+
+Substituting:
+
+.. math::
+
+   \smash{w_t = (1-\phi L) y_t = (1-\phi L) \left(\sum_{i=0}^{\infty}
+   \phi^i L^i\right) w_t.}
+
+.. raw:: <!--pause-->
+
+So when :math:`\smash{|\phi| < 1}`:
+
+.. math::
+
+   \smash{(1-\phi L)^{-1} = \sum_{i=0}^{\infty} \phi^i L^i.}
+
+.. raw:: <!--pause-->
+
+That is, :math:`\smash{\sum_{i=0}^{\infty} \phi^i L^i}` is the inverse
+operator of :math:`\smash{(1-\phi L)}`.
+
+
+:math:`\smash{p}` th-Order Difference Equation
+==============================================================================
+Suppose we have a :math:`\smash{p}` th-order difference equation:
+
+.. math::
+
+   \smash{y_t = \phi_1 y_{t-1} + \phi_2 y_{t-2} + \ldots + \phi_p
+   y_{t-p} + w_t.}
+
+.. raw:: <!--pause-->
+
+In terms of the lag operator
+
+.. math::
+
+   \smash{(1-\phi_1 L - \phi_2 L^2 - \ldots - \phi_p L^p)y_t = w_t.}
+
+.. raw:: <!--pause-->
+
+We can write
+
+.. math::
+
+   \smash{\phi(L)y_t = w_t,}
+
+where :math:`\smash{\phi(L) = (1-\phi_1 L - \phi_2 L^2 - \ldots -
+\phi_p L^p)}`.
+
+
+Factoring Polynomials
+==============================================================================
+In general, a :math:`\smash{p}` th-order, real-valued polynomial can
+be factored as
+
+.. math::
+
+   \smash{1-\phi_1 z - \phi_2 z^2 - \ldots - \phi_p z^p =
+   (1-\lambda_1z)(1-\lambda_2z) \cdots (1-\lambda_pz).}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\left\{\frac{1}{\lambda_i}\right\}_{i=1}^p}` are the :math:`\smash{p}`
+  roots of the polynomial.
+
+.. raw:: <!--pause-->
+
+- Some of the roots may be complex and some may be identical.
+
+
+Factoring :math:`\smash{p}` th-Order Difference Equation
+==============================================================================
+If we factor the :math:`\smash{p}` th-order lag polynomial in the same way as a
+real-valued polynomial:
+
+.. math::
+
+   \begin{align*}
+   & (1-\phi_1 L - \phi_2 L^2 - \ldots - \phi_p L^p)y_t \\
+   & \hspace{0.5in} = (1-\lambda_1 L)(1-\lambda_2 L) \cdots
+   (1-\lambda_p L) y_t = w_t.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+If :math:`\smash{|\lambda_i| < 1}`,
+
+.. math::
+
+   \smash{(1 - \lambda_i L)^{-1} = \sum_{j=0}^{\infty} \lambda_i^j L^j,
+   \,\,\,\,\, \forall i.}
+
+Factoring :math:`\smash{p}` th-Order Difference Equation
+==============================================================================
+In this case,
+
+.. math::
+
+   \begin{align*}
+   y_t & = (1-\lambda_1 L)^{-1} (1-\lambda_2 L)^{-1} \cdots (1-\lambda_p
+   L)^{-1} w_t \\
+   & = \left(\sum_{j=0}^{\infty} \lambda_1^j L^j\right)
+   \left(\sum_{j=0}^{\infty} \lambda_2^j L^j\right) \cdots
+   \left(\sum_{j=0}^{\infty} \lambda_p^j L^j\right) w_t.
+   \end{align*}
+
+
+Factoring :math:`\smash{p}` th-Order Difference Equation
+==============================================================================
+If we define
+
+.. math::
+
+   \begin{equation*}
+   \theta(L) = \left(\sum_{j=0}^{\infty} \lambda_1^j L^j\right)
+   \left(\sum_{j=0}^{\infty} \lambda_2^j L^j\right) \cdots
+   \left(\sum_{j=0}^{\infty} \lambda_p^j L^j\right)
+   \end{equation*}
+
+.. raw:: <!--pause-->
+
+then
+
+.. math::
+
+   \begin{equation*}
+   y_t = \theta(L) w_t.
+   \end{equation*}
+
+.. raw:: <!--pause-->
+
+- Clearly, :math:`\smash{\phi(L)^{-1} = \theta(L)}`.
+
+.. raw:: <!--pause-->
+
+- Note that the inverse only exists when :math:`\smash{|\lambda_i| < 1}`,
+  :math:`\smash{\forall i}`.
+
+.. raw:: <!--pause-->
+
+- This can also be stated as: the inverse only exists when the roots
+  of :math:`\smash{\phi(L)}` are greater than unity:
+  :math:`\smash{\frac{1}{|\lambda_i|} > 1}`, :math:`\smash{\forall i}`.
+
+
+Vector Difference Equation
+==============================================================================
+We can rewrite the :math:`\smash{p}` th-order difference equation as
+
+.. math::
+
+   \begin{equation*}
+   {\bf y}_t = \Phi {\bf y}_{t-1} + {\bf w}_t,
+   \end{equation*}
+
+.. raw:: <!--pause-->
+
+where
+
+.. math::
+
+   \begin{equation*}
+   {\bf y}_t = \left[\begin{array}{c} y_t \\ y_{t-1} \\ y_{t-2} \\
+   \vdots \\ y_{t-p+1} \end{array} \right] \,\,\,\, \Phi =
+   \left[\begin{array}{ccccc} \phi_1 & \phi_2 & \ldots &
+   \phi_{p-1} & \phi_p \\ 1 & 0 & \ldots & 0 & 0 \\ 0 & 1 &
+   \ldots & 0 & 0 \\ \vdots & \vdots  & \ddots & 
+   \vdots  & \vdots \\ 0 & 0 & \ldots & 1 & 0 \end{array}
+   \right] \,\,\,\,\, {\bf w}_t = \left[\begin{array}{c} w_t \\ 0
+   \\ 0 \\ \vdots \\ 0 \end{array} \right].
+   \end{equation*}
+
+
+Vector Difference Equation
+==============================================================================
+It turns out that the values :math:`\smash{\{\lambda_i\}_{i=1}^p}` are the :math:`\smash{p}`
+eigenvalues of :math:`\smash{\Phi}`.
+
+.. raw:: <!--pause-->
+
+- So the eigenvalues of :math:`\smash{\Phi}` are the inverses of the roots of the
+  lag polynomial :math:`\smash{\phi(L)}`.
+
+.. raw:: <!--pause-->
+
+- Hence, :math:`\smash{\phi(L)^{-1}}` exists if all :math:`\smash{p}` roots of :math:`\smash{\phi(L)}` lie
+  *outside* the unit circle or all :math:`\smash{p}` eigenvalues of :math:`\smash{\Phi}` lie
+  *inside* the unit circle.
+

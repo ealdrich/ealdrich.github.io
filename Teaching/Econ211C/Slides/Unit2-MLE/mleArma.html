@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ARMA Maximum Likelihood Estimation &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Estimation" href="../estimation.html" />
+    <link rel="next" title="Numerical Optimization" href="numerical.html" />
+    <link rel="prev" title="Maximum Likelihood Estimation" href="mle.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="arma-maximum-likelihood-estimation">
+
+<h1>ARMA Maximum Likelihood Estimation</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="likelihood">
+
+<h2><span class="math">\(\smash{AR(p)}\)</span> Likelihood</h2>
+
+<p>Recall a Gaussian <span class="math">\(AR(p)\)</span> process:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Y_t &amp; = c + \phi_1 Y_{t-1} + \ldots + \phi_p Y_{t-p} +
+\varepsilon_t, \,\,\,\, \varepsilon_t \stackrel{i.i.d.}{\sim}
+\mathcal{N}(0,\sigma^2).
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>In this case <span class="math">\(\smash{\boldsymbol{\theta} =
+(c,\phi_1,\ldots,\phi_p,\sigma^2)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We will suppose that <span class="math">\(\smash{\{Y_t\}}\)</span> is stationary and
+causal.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2><span class="math">\(\smash{AR(p)}\)</span> Likelihood</h2>
+
+<p>Suppose we know that <span class="math">\(\smash{Y_{t-1} = y_{t-1}, Y_{t-2} =
+y_{t-2}, \ldots, Y_{t-p} = y_{t-p}}\)</span> for <span class="math">\(\smash{t &gt; p}\)</span>. Then</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+Y_t = c + \phi_1 y_{t-1} + \ldots + \phi_p y_{t-p} +
+\varepsilon_t \\
+\text{E}[Y_t|Y_{t-1},\ldots,Y_{t-p},\boldsymbol{\theta}] = c +
+\phi_1 y_{t-1} + \ldots + \phi_p y_{t-p} \\
+\text{Var}(Y_t|Y_{t-1},\ldots,Y_{t-p},\boldsymbol{\theta}) =
+\sigma^2.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2><span class="math">\(\smash{AR(p)}\)</span> Likelihood</h2>
+
+<p>Thus,</p>
+<div class="math">
+\[\begin{align}
+Y_t|Y_{t-1},\ldots,Y_{t-p} \sim \mathcal{N}(c+\phi_1 y_{t-1} +
+\ldots + \phi_p y_{t-p}, \sigma^2),
+\end{align}\]</div>
+<p>which means</p>
+<div class="math">
+\[\begin{split}\begin{align}
+f_{Y_t|Y_{t-1},\ldots,Y_{t-p}} &amp; (y_t|y_{t-1},\ldots,y_{t-p},
+\boldsymbol{\theta}) \\
+&amp; = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp
+\left\{-\frac{1}{2\sigma^2}(y_t - c - \phi_1 y_{t-1} - \ldots -
+\phi_p y_{t-p})^2\right\}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2><span class="math">\(\smash{AR(p)}\)</span> Likelihood</h2>
+
+<p>The likelihood of <span class="math">\(\smash{\boldsymbol{Y}_T = \{Y_t\}}\)</span> is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mathcal{L}(\boldsymbol{\theta}|\boldsymbol{y}_T) &amp; =
+f_{\boldsymbol{Y}_T}(\boldsymbol{y}_T|\boldsymbol{\theta}) \\
+&amp; = f_{\boldsymbol{Y}_p}(\boldsymbol{y}_p|\boldsymbol{\theta})
+\prod_{t=p+1}^T
+f_{Y_t|Y_{t-1},\ldots,Y_{t-p}}(y_t|y_{t-1},\ldots,y_{t-p},\boldsymbol{\theta})
+\end{align}\end{split}\]</div>
+<p>where
+<span class="math">\(\smash{f_{\boldsymbol{Y}_p}(\boldsymbol{y}_p|\boldsymbol{\theta})}\)</span>
+is the joint density of <span class="math">\(\smash{\boldsymbol{Y}_T =
+\{Y_t\}_{t=1}^p}\)</span>.</p>
+<ul class="simple">
+<li>Maximizing this likelihood results in a set of nonlinear equations
+in <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> and
+<span class="math">\(\smash{\boldsymbol{y}_T}\)</span>, and must be solved numerically.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="conditional-likelihood">
+
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional Likelihood</h2>
+
+<p>We can approximate the <span class="math">\(\smash{AR(p)}\)</span> likelihood with only the
+product of conditional densities:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mathcal{L}(\boldsymbol{\theta}|\boldsymbol{y}_T) &amp; \approx
+\prod_{t=p+1}^T
+f_{Y_t|Y_{t-1},\ldots,Y_{t-p}}(y_t|y_{t-1},\ldots,y_{t-p},\boldsymbol{\theta})
+\\
+&amp; = \prod_{t=p+1}^T \frac{1}{\sqrt{2 \pi \sigma^2}} \exp
+\left\{-\frac{1}{2\sigma^2}(y_t - c - \phi_1 y_{t-1} - \ldots -
+\phi_p y_{t-p})^2\right\} \\
+&amp; = \left(2 \pi \sigma^2\right)^{-\frac{T-p}{2}} \exp
+\left\{-\frac{1}{2\sigma^2} \sum_{t=p+1}^T (y_t - c - \phi_1
+y_{t-1} - \ldots - \phi_p y_{t-p})^2\right\}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="conditional-log-likelihood">
+
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional Log Likelihood</h2>
+
+<p>The conditional log likelihood of the <span class="math">\(\smash{AR(p)}\)</span> is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\ell(\boldsymbol{\theta}|\boldsymbol{y}_T) &amp; = -\frac{T-p}{2}
+\log(2\pi) -\frac{T-p}{2} \log(\sigma^2) -\frac{1}{2\sigma^2}
+\sum_{t=p+1}^T (y_t - c - \phi_1 y_{t-1} - \ldots - \phi_p
+y_{t-p})^2.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>Maximizing the conditional log likelihood with respect to
+<span class="math">\(\smash{c,\phi_1,\ldots,\phi_p}\)</span>, conditional on
+<span class="math">\(\smash{\sigma^2}\)</span>, is the same as minimizing</li>
+</ul>
+<div class="math">
+\[\smash{\sum_{t=p+1}^T (y_t - c - \phi_1 y_{t-1} - \ldots - \phi_p
+y_{t-p})^2.}\]</div>
+<ul class="simple">
+<li>Hence, the MLEs are the same as the least squares estimates.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="conditional-mles">
+
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional MLEs</h2>
+
+<p>Since the MLEs and LS estimates are the same, we can solve for the
+MLEs by simply running a regression</p>
+<div class="math">
+\[\smash{\boldsymbol{y} = X \boldsymbol{\beta} +
+\boldsymbol{e},}\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\boldsymbol{\beta} = \left[\begin{array}{c} c \\ \phi_{1} \\ \vdots
+\\ \phi_{p} \end{array} \right] \hspace{5pt} X =
+\left[\begin{array}{ccccc} 1 &amp; y_{T-1} &amp; y_{T-2} &amp; \ldots &amp; y_{T-p}
+\\ \vdots &amp;\vdots &amp;\vdots &amp;\vdots &amp;\vdots \\ 1 &amp; y_{p} &amp; y_{p-1} &amp;
+\ldots &amp; y_{1} \end{array}\right] \hspace{5pt}
+\boldsymbol{y} =\left[\begin{array}{c} y_{T} \\ \vdots \\ y_{p+1}
+\\ \end{array} \right] \hspace{5pt} \boldsymbol{e} =
+\left[\begin{array}{c} e_{T} \\ \vdots \\ e_{p+1} \\
+\end{array}\right].\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional MLEs</h2>
+
+<p>Differentiating the log likelihood with respect to <span class="math">\(\smash{\sigma^{2}}\)</span>,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{\partial l}{\partial \sigma^{2}}\Big|_{\hat{\sigma}^{2}} &amp;
+= - \frac{T-p}{2\hat{\sigma}^{2}} +
+\frac{1}{2\hat{\sigma}^{4}} \sum_{t=p+1}^{T}(y_{t}-c-\phi
+y_{t-1}-\ldots-\phi_{p}y_{t-p})^{2} = 0 \\
+\implies \hat{\sigma}^{2} &amp; = \frac{1}{T-p}
+\sum_{t=p+1}^{T}(y_{t}-c-\phi y_{t-1}-\ldots-\phi_{p}y_{t-p})^{2}
+\\
+&amp; \approx \frac{1}{T-p} \sum_{t=p+1}^{T}(y_{t}-\hat{c}-\hat{\phi}
+y_{t-1}-\ldots-\hat{\phi_p} y_{t-p})^{2}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>This is the usual regression estimator of <span class="math">\(\smash{\sigma^2}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id5">
+
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional MLEs</h2>
+
+<ul class="simple">
+<li>Assuming Gaussianity doesn't impact the consistency of our
+estimates.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\boldsymbol{\varepsilon}}\)</span> is not Gaussian, then
+<span class="math">\(\smash{\hat{\boldsymbol{\beta}}}\)</span> is the Quasi Maximum
+Likelihood Estimate because the model is misspecified.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id6">
+
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Likelihood</h2>
+
+<p>Recall a Gaussian <span class="math">\(\smash{MA(q)}\)</span> process:</p>
+<div class="math">
+\[Y_t = \mu + \varepsilon_{t} + \psi_1 \varepsilon_{t-1} + \psi_2
+\varepsilon_{t-2} + \ldots + \psi_q \varepsilon_{t-q},
+\hspace{5pt} \varepsilon_{t} \overset{i.i.d.}{\sim} \mathcal{N}(0,\sigma^{2})\]</div>
+<ul class="simple">
+<li>Now, <span class="math">\(\smash{\boldsymbol{\theta} = (\mu,\psi_1,\ldots,\psi_q,\sigma^{2})^{'}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id7">
+
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Likelihood</h2>
+
+<p>If <span class="math">\(\smash{\varepsilon_{t-q}, \ldots, \varepsilon_{t-1}}\)</span>
+are known with certainty then</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Y_t &amp; \sim \mathcal{N}(\mu + \psi_1 \varepsilon_{t-1} + \ldots +
+\psi_q \varepsilon_{t-q}, \sigma^2) \\
+\implies f_{Y_t|\varepsilon_{t-q}, \ldots,
+\varepsilon_{t-1}} &amp; (y_t|\varepsilon_{t-q}, \ldots,
+\varepsilon_{t-1}) \\
+&amp; = \frac{1}{\sqrt{2\pi \sigma^2}}
+\exp\left\{-\frac{1}{2\sigma^2} (y_t - \mu - \psi_1
+\varepsilon_{t-1} - \ldots - \psi_q \varepsilon_{t-q})^2 \right\}
+\\
+&amp; = \frac{1}{\sqrt{2\pi \sigma^2}}
+\exp\left\{-\frac{1}{2\sigma^2} \varepsilon_t^2 \right\}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id8">
+
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Likelihood</h2>
+
+<p>Assume <span class="math">\(\smash{\varepsilon_{0} = \varepsilon_{-1} =
+\varepsilon_{-2} = \ldots = \varepsilon_{-q+1} = 0}\)</span> and iteratively
+compute</p>
+<div class="math">
+\[\smash{\varepsilon_t = y_t - \mu - \psi_1 \varepsilon_{t-1} -
+\ldots - \psi_q \varepsilon_{t-q}, \,\,\,\, \text{for} \,\,\,\, t =
+1,\ldots,T}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id9">
+
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Likelihood</h2>
+
+<p>Then the likelihood is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mathcal{L}(\boldsymbol{\theta}|\boldsymbol{y}_T,
+\boldsymbol{\varepsilon}_0 = \boldsymbol{0}) &amp; =
+f_{Y_1,\ldots,Y_T|\boldsymbol{\varepsilon}_0}(y_1,\ldots,y_T|
+\boldsymbol{\varepsilon}_0, \boldsymbol{\theta}) \\
+&amp; = f_{Y_1|\boldsymbol{\varepsilon}_0}(y_1|\boldsymbol{\varepsilon}_0,
+\boldsymbol{\theta}) \prod_{t=2}^T f_{Y_t|Y_1,\ldots,Y_t,
+\boldsymbol{\varepsilon}_0}(y_t|y_1,\ldots,y_t,\boldsymbol{\varepsilon}_0,
+\boldsymbol{\theta}) \\
+&amp; = \prod_{t=1}^T \frac{1}{\sqrt{2\pi \sigma^2}}
+\exp\left\{-\frac{1}{2\sigma^2} \varepsilon_t^2 \right\} \\
+&amp; = \frac{1}{(2\pi \sigma^2)^{\frac{T}{2}}}
+\exp\left\{-\frac{1}{2\sigma^2} \sum_{t=1}^T \varepsilon_t^2
+\right\}
+\end{align}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\boldsymbol{\varepsilon}_0 =
+\{\varepsilon_t\}_{t=-q+1}^{0}}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="id10">
+
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Log Likelihood</h2>
+
+<p>The log likelihood is</p>
+<div class="math">
+\[\smash{\ell(\boldsymbol{\theta}|\boldsymbol{y}_T,
+\boldsymbol{\varepsilon}_0 = \boldsymbol{0}) = -\frac{T}{2}
+\log(2\pi) - \frac{T}{2} \log(\sigma^2) - \frac{1}{2\sigma^2}
+\sum_{t=1}^T \varepsilon_t^2.}\]</div>
+<ul class="simple">
+<li>The MLEs cannot be found analytically.</li>
+</ul>
+<p>The rough numerical algorithm is</p>
+<ol class="arabic simple">
+<li>Guess values for <span class="math">\(\smash{\boldsymbol{\theta} = (\mu,
+\psi_1,\ldots,\psi_q,\sigma^2)^{'}}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Assume <span class="math">\(\smash{\varepsilon_{0} = \varepsilon_{-1} =
+\varepsilon_{-2} = \ldots = \varepsilon_{-q+1} = 0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Iteratively compute <span class="math">\(\smash{\{\varepsilon\}_{t=1}^T}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>Evaluate the log likelihood for
+<span class="math">\(\smash{\{\varepsilon\}_{t=1}^T}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li>Update <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> and return to step 2
+until convergence.</li>
+</ol>
+
+
+
+
+</article>
+<article class="slide level-2" id="id11">
+
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Log Likelihood</h2>
+
+<p>The conditional log likelihood function can only be used with the
+invertible representation of the <span class="math">\(\smash{MA(q)}\)</span>.</p>
+<ul class="simple">
+<li>If a non-invertible representation is used, it can be shown (via
+backward recursion on <span class="math">\(\smash{\varepsilon_t}\)</span>) that the
+assumption of <span class="math">\(\smash{\boldsymbol{\varepsilon}_0 =
+\boldsymbol{0}}\)</span> is explosive.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="cond-likelihood">
+
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> Cond. Likelihood</h2>
+
+<p>Recall a Gaussian <span class="math">\(\smash{ARMA(p,q)}\)</span> process:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Y_t &amp; = c + \phi_1 y_{t-1} + \ldots + \phi_p y_{t-p} \\
+&amp; \hspace{0.7in} +
+\varepsilon_{t} + \psi_1 \varepsilon_{t-1} + \psi_2
+\varepsilon_{t-2} + \ldots + \psi_q \varepsilon_{t-q},
+\hspace{5pt} \varepsilon_{t} \overset{i.i.d.}{\sim}
+\mathcal{N}(0,\sigma^{2}).
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id12">
+
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> Cond. Likelihood</h2>
+
+<p>To form the conditional likelihood, we combine the methods of the
+<span class="math">\(\smash{AR(p)}\)</span> and <span class="math">\(\smash{MA(q)}\)</span>:</p>
+<ol class="arabic simple">
+<li>Condition on <span class="math">\(\smash{y_0 = y_{-1} = \ldots = y_{-p+1} = \mu =
+\frac{c}{1-\phi_1 - \ldots - \phi_p}}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Condition on <span class="math">\(\smash{\varepsilon_0 = \varepsilon_{-1} =
+\ldots = \varepsilon_{-q+1} = 0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Recursively compute <span class="math">\(\smash{\{\varepsilon_t\}_{t=1}^T}\)</span> using
+<span class="math">\(\smash{\{y_t\}_{t=1}^T}\)</span>,
+<span class="math">\(\smash{\{\varepsilon_t\}_{t=-q+1}^0}\)</span> and
+<span class="math">\(\smash{\{y_t\}_{t=-p+1}^0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>Compute the log likelihood as</li>
+</ol>
+<div class="math">
+\[\smash{\ell(\boldsymbol{\theta}|\boldsymbol{y}_T,
+\boldsymbol{\varepsilon}_0 = \boldsymbol{0}) = -\frac{T}{2}
+\log(2\pi) - \frac{T}{2} \log(\sigma^2) - \frac{1}{2\sigma^2}
+\sum_{t=1}^T \varepsilon_t^2.}\]</div>
+<p>The <span class="math">\(\smash{MA}\)</span> polynomial must be invertible in order to use
+the conditional log likelihood for estimation.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="id13">
+
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> Cond. Likelihood</h2>
+
+<p>Alternatively, we could start the recursions at <span class="math">\(\smash{t=p+1}\)</span>
+without an initial condition on <span class="math">\(\smash{\{y_t\}_{t=-p+1}^0}\)</span>.</p>
+<ol class="arabic simple">
+<li>Condition on <span class="math">\(\smash{\varepsilon_p = \varepsilon_{p-1} =
+\ldots = \varepsilon_{p-q+1} = 0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Recursively compute <span class="math">\(\smash{\{\varepsilon_t\}_{t=p+1}^T}\)</span>
+using <span class="math">\(\smash{\{y_t\}_{t=1}^T}\)</span> and
+<span class="math">\(\smash{\{\varepsilon_t\}_{t=p-q+1}^0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Compute the log likelihood as</li>
+</ol>
+<div class="math">
+\[\smash{\ell(\boldsymbol{\theta}|\boldsymbol{y}_T,
+\boldsymbol{\varepsilon}_0 = \boldsymbol{0}) = -\frac{T-p}{2}
+\log(2\pi) - \frac{T-p}{2} \log(\sigma^2) - \frac{1}{2\sigma^2}
+\sum_{t=p+1}^T \varepsilon_t^2.}\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

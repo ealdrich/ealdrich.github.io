@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Numerical Optimization &mdash; Econ 211C 2016.03.29 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
+        <link rel="up" title="Estimation" href="../estimation.html"/>
+        <link rel="next" title="Forecasting" href="../forecasting.html"/>
+        <link rel="prev" title="ARMA Maximum Likelihood Estimation" href="mleArma.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../estimation.html">Estimation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mle.html">Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Econ 211C</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../estimation.html">Estimation</a> &raquo;</li>
+      
+    <li>Numerical Optimization</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/Unit2-MLE/numerical.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="numerical-optimization">
+<h1>Numerical Optimization<a class="headerlink" href="#numerical-optimization" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="numerical-maximum-likelihood">
+<h2>Numerical Maximum Likelihood<a class="headerlink" href="#numerical-maximum-likelihood" title="Permalink to this headline">¶</a></h2>
+<p>Given, <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> and
+<span class="math">\(\smash{\boldsymbol{y}}\)</span>, suppose we can compute the value of a</p>
+<blockquote>
+<div>likelihood or log likelihood.</div></blockquote>
+<ul class="simple">
+<li>Likelhood optimization is often very challenging.</li>
+</ul>
+<ul class="simple">
+<li>We may not be able to obtain analytical expressions for the MLEs,
+<span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Numerical optimization techniques will often help us find an
+approximate (not exact) MLE.</li>
+</ul>
+<ul class="simple">
+<li>We will need to set a tolerance level for the quality of our
+approximation.</li>
+</ul>
+</div>
+<div class="section" id="grid-search">
+<h2>Grid Search<a class="headerlink" href="#grid-search" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math">\(\smash{\boldsymbol{\theta} \in \mathbb{R}^k}\)</span>.</p>
+<ul class="simple">
+<li>We can define a univariate grid of <span class="math">\(\smash{m_i}\)</span> points
+<span class="math">\(\smash{\theta_i \in \Theta^{(i)} = \{\theta_{i,1}, \ldots,
+\theta_{i,m_i}\}}\)</span> for <span class="math">\(\smash{i=1,\ldots,k}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Define <span class="math">\(\smash{\Theta = \Theta^{(1)} \otimes \Theta^{(2)}
+\otimes \cdots \otimes \Theta^{(k)}}\)</span>, which is the cartesian
+product of the <span class="math">\(\smash{k}\)</span> univariate grids.</li>
+</ul>
+<ul class="simple">
+<li>Often such grids are equally spaced, but this is certainly not
+required.</li>
+</ul>
+<ul class="simple">
+<li>Optimal location of grid points is an extremely important way to
+improve numerical efficiency.</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>Grid Search<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>To implement grid search, we simply evaluate the likelihood at each
+value in <span class="math">\(\smash{\Theta}\)</span>.</p>
+<ul class="simple">
+<li>Each value in <span class="math">\(\smash{\Theta}\)</span> defines a set of
+candidate parameter values.</li>
+</ul>
+<ul class="simple">
+<li>The approximated MLE is the point that achieves the highest
+likelihood or log likelihood value.</li>
+</ul>
+<p>Grid search is ineffective for large <span class="math">\(\smash{k}\)</span> because the
+number of grid points in <span class="math">\(\smash{\Theta}\)</span> grows
+exponentially.</p>
+<ul class="simple">
+<li>Doubling the number of points (for more accuracy) in each dimension
+results in <span class="math">\(\smash{2^k}\)</span> extra points.</li>
+</ul>
+<ul class="simple">
+<li>This is called the curse of dimensionality.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><span class="math">\(\smash{AR(1)}\)</span> Grid Search<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(\smash{c=0}\)</span> and <span class="math">\(\smash{\sigma^2 = 1}\)</span>.</p>
+<ul class="simple">
+<li>In this case, <span class="math">\(\smash{\boldsymbol{\theta} = \phi}\)</span> and
+<span class="math">\(\smash{k=1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Under stationarity, we know <span class="math">\(\smash{|\phi| &lt; 1}\)</span>, so we might
+define an equally-spaced grid of values
+<span class="math">\(\smash{\{-0.99,-0.98,\ldots, 0.98,0.99\}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Given data <span class="math">\(\smash{\boldsymbol{y}}\)</span>, we can compute the exact
+or conditional likelihood for each <span class="math">\(\smash{\phi_i}\)</span> in the
+grid.</li>
+</ul>
+<ul class="simple">
+<li>The <span class="math">\(\smash{\phi_i}\)</span> that results in the highest likelihood
+value is the approximate MLE, which we denote
+<span class="math">\(\smash{\phi^*}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We can iteratively refine the grid around <span class="math">\(\smash{\phi^*}\)</span>
+until our tolerance is reached.</li>
+</ul>
+</div>
+<div class="section" id="binary-search">
+<h2>Binary Search<a class="headerlink" href="#binary-search" title="Permalink to this headline">¶</a></h2>
+<p>Binary search is an optimization method that is far more efficient
+than grid search, for <em>univariate</em> problems.</p>
+<ul class="simple">
+<li>It can only be used if the criterion function is concave.</li>
+</ul>
+<ul class="simple">
+<li>The algorithm is</li>
+</ul>
+<ol class="arabic simple">
+<li>Pick two adjacent points <span class="math">\(\smash{\theta_j}\)</span> and
+<span class="math">\(\smash{\theta_{j+1}}\)</span> in the middle of the grid and evaluate
+the likelihood.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>If <span class="math">\(\smash{\mathcal{L}(\theta_{j+1}) &lt;
+\mathcal{L}(\theta_j)}\)</span>, set the upper bound of the grid to be
+<span class="math">\(\smash{\theta_{j+1}}\)</span> and otherwise set the lower bound to be
+<span class="math">\(\smash{\theta_j}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>If the lower and upper bounds are separated by more than one grid
+point, return to step 1. Otherwise, stop.</li>
+</ol>
+<ul class="simple">
+<li>Golden search is similar to binary search. See Heer and
+Maussner (2009) for details.</li>
+</ul>
+</div>
+<div class="section" id="newton-s-method">
+<h2>Newton&#8217;s Method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">¶</a></h2>
+<p>Newton&#8217;s method is an iterative root finding algorithm, that uses
+derivative/gradient information:</p>
+<div class="math">
+\[\smash{x^{(i+1)} = x^{(i)} - f(x^{(i)})/f'(x^{(i)}).}\]</div>
+<p>The value <span class="math">\(\smash{x^{(n)}}\)</span> for large <span class="math">\(\smash{n}\)</span> is an
+approximation of the function root, <span class="math">\(\smash{x: f(x) = 0}\)</span>.</p>
+</div>
+<div class="section" id="newton-raphson">
+<h2>Newton-Raphson<a class="headerlink" href="#newton-raphson" title="Permalink to this headline">¶</a></h2>
+<p>Newton&#8217;s method can also be used for optimization (not just root
+finding).</p>
+<ul class="simple">
+<li>Optimization is the same as root finding for the derivative
+function.</li>
+</ul>
+<ul class="simple">
+<li>The Newton-Raphson algorithm is</li>
+</ul>
+<div class="math">
+\[\smash{x^{(i+1)} = x^{(i)} - f'(x^{(i)})/f''(x^{(i)}).}\]</div>
+</div>
+<div class="section" id="id3">
+<h2>Newton-Raphson<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Define</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\boldsymbol{g}(\boldsymbol{\theta}) &amp; = \nabla
+\ell(\boldsymbol{\theta}) = \frac{\partial
+\ell(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}} \\
+\mathcal{H}(\boldsymbol{\theta}) &amp; = \nabla^2
+\ell(\boldsymbol{\theta}) = \nabla
+\boldsymbol{g}(\boldsymbol{\theta}) = \frac{\partial^2
+\ell(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}^2},
+\end{align*}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\mathcal{H}(\boldsymbol{\theta})}\)</span> is positive
+definite:</p>
+<div class="math">
+\[\begin{split}\smash{\boldsymbol{x}^T \mathcal{H}(\boldsymbol{\theta})
+\boldsymbol{x} &gt; 0 \,\,\,\, \forall \boldsymbol{x} \in
+\mathbb{R}^k.}\end{split}\]</div>
+</div>
+<div class="section" id="id4">
+<h2>Newton-Raphson<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>We approximate <span class="math">\(\smash{\ell(\boldsymbol{\theta})}\)</span> with a
+second-order Taylor expansion around
+<span class="math">\(\smash{\boldsymbol{\theta}^{(0)}}\)</span>:</p>
+<div class="math">
+\[\smash{\tilde{\ell}(\boldsymbol{\theta}) =
+\ell(\boldsymbol{\theta}^{(0)})} +
+\boldsymbol{g}(\boldsymbol{\theta}^{(0)})^T (\boldsymbol{\theta} -
+\boldsymbol{\theta}^{(0)}) + \frac{1}{2} (\boldsymbol{\theta} -
+\boldsymbol{\theta}^{(0)})^T \mathcal{H}(\boldsymbol{\theta}^{(0)})
+(\boldsymbol{\theta} - \boldsymbol{\theta}^{(0)}).\]</div>
+<p>The Newton-Raphson method chooses
+<span class="math">\(\smash{\boldsymbol{\theta}^{(1)}}\)</span> to maximize
+<span class="math">\(\smash{\tilde{\ell}(\boldsymbol{\theta})}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{gather*}
+\nabla
+\tilde{\ell}(\boldsymbol{\theta})\Big|_{\boldsymbol{\theta}=\boldsymbol{\theta}^{(1)}}
+= \boldsymbol{g}(\boldsymbol{\theta}^{(0)}) +
+\mathcal{H}(\boldsymbol{\theta}^{(0)}) (\boldsymbol{\theta}^{(1)} -
+\boldsymbol{\theta}^{(0)}) = 0. \\
+\implies \boldsymbol{\theta}^{(1)} = \boldsymbol{\theta}^{(0)} -
+\mathcal{H}(\boldsymbol{\theta}^{(0)})^{-1}
+\boldsymbol{g}(\boldsymbol{\theta}^{(0)}).
+\end{gather*}\end{split}\]</div>
+</div>
+<div class="section" id="id5">
+<h2>Newton-Raphson<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>The Newton-Raphson method begins with
+<span class="math">\(\smash{\boldsymbol{\theta}^{(0)}}\)</span> and iteratively computes</p>
+<div class="math">
+\[\smash{\boldsymbol{\theta}^{(i+1)} = \boldsymbol{\theta}^{(i)} -
+\mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}
+\boldsymbol{g}(\boldsymbol{\theta}^{(i)})}\]</div>
+<p>until <span class="math">\(\smash{||\boldsymbol{\theta}^{(i+1)} -
+\boldsymbol{\theta}^{(i)}|| &lt; \tau}\)</span>, where <span class="math">\(\smash{\tau}\)</span> is
+some tolerance level.</p>
+</div>
+<div class="section" id="id6">
+<h2>Newton-Raphson<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Newton-Raphson converges fast if the likelihood is concave and the
+initial guess is good enough.</li>
+</ul>
+<ul class="simple">
+<li>A modified version of Newton-Raphson computes:</li>
+</ul>
+<div class="math">
+\[\smash{\boldsymbol{\theta}^{(i+1)} = \boldsymbol{\theta}^{(i)} -
+s \mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}
+\boldsymbol{g}(\boldsymbol{\theta}^{(i)})}\]</div>
+<p>for various values of <span class="math">\(\smash{s}\)</span> at each iteration and chooses
+<span class="math">\(\smash{\boldsymbol{\theta}^{(i+1)}}\)</span> that yields the largest
+likelihood value.</p>
+</div>
+<div class="section" id="quasi-newton-raphson">
+<h2>Quasi Newton-Raphson<a class="headerlink" href="#quasi-newton-raphson" title="Permalink to this headline">¶</a></h2>
+<p>Various modified Newton-Raphson methods have been proposed which
+substitute other positive definite matrices for
+<span class="math">\(\smash{\mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}}\)</span>.</p>
+<ul class="simple">
+<li>These are useful if
+<span class="math">\(\smash{\mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}}\)</span> is not
+possible to compute or invert.</li>
+</ul>
+<ul class="simple">
+<li>Typically these are slower but more robust.</li>
+</ul>
+</div>
+<div class="section" id="numerical-differentiation">
+<h2>Numerical Differentiation<a class="headerlink" href="#numerical-differentiation" title="Permalink to this headline">¶</a></h2>
+<p>If analytical derivatives are not possible, numerical derivatives are
+an option.</p>
+<ul class="simple">
+<li>The <span class="math">\(\smash{i}\)</span> th element of
+<span class="math">\(\smash{\boldsymbol{g}(\boldsymbol{\theta})}\)</span> can be
+approximated with:</li>
+</ul>
+<div class="math">
+\[\smash{g_i(\boldsymbol{\theta}) = \frac{1}{\Delta}
+\left(\ell(\theta_1,\ldots,\theta_i+\Delta,\ldots,\theta_k) -
+\ell(\theta_1,\ldots,\theta_i,\ldots,\theta_k)\right)},\]</div>
+<p>for some small <span class="math">\(\smash{\Delta}\)</span>.</p>
+<ul class="simple">
+<li>The hessian can be computed numerically from
+<span class="math">\(\smash{\boldsymbol{g}(\boldsymbol{\theta})}\)</span> in a similar
+manner.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../forecasting.html" class="btn btn-neutral float-right" title="Forecasting">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mleArma.html" class="btn btn-neutral" title="ARMA Maximum Likelihood Estimation"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

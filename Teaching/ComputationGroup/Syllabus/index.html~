@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <script type="text/javascript" src="../rootDir.js">  </script>
+  <script type="text/javascript" src="../head.js">  </script>
+  <body>
+    <div><script type="text/javascript" src="../mainMenu.js">  </script></div>
+    <div>
+     <div class="outer">
+       <div class="content">
+         <div id="section">Description</div>
+         <div>
+	   The aim of the UCSC computational economics reading group is to teach
+	   students how to compute equilibria in economic models that cannot be solved
+	   analytically. In the Fall quarter, the reading group will focus on the basics
+	   of computation: solving nonlinear equations, optimization, integration and
+	   function approximation. In the Winter quarter we will use these numerical
+	   tools to solve dynamic models, including standard macroeconomic models.
+         </div>
+	 <div>
+         <div id="section">Course Materials</div>
+         <div>
+	   The primary textbooks for the reading group are
+	   <a class="body" href="http://amzn.to/1wuKElq">Numerical Methods in Economics</a>,
+	   <a class="body" href="http://amzn.to/1tp5cPn">Applied Computational Economics and Finance</a>,
+	   and <a class="body" href="http://amzn.to/1syAilq">Dynamic General Equilibrium Modeling</a>.
+	   The first book is the most complete reference, the second provides a softer introduction 
+	   to most topics and the third contains a number of nice macroeconomic examples.
+	   <a class="body" href="../LectureNotes/">Lecture slides</a> will be prepared and presented
+	   by students and will be made available on this site.
+         </div>
+         <div id="section">Participation</div>
+         <div>
+	   Attendance is mandatory. In addition, students must participate in a lottery to
+	   determine the student presenters each week. Students are expected to present
+	   assigned materials each week, with illustrating examples, as well as to ask
+	   questions and participate in discussions during the workshop. Instructors will
+	   be present to help answer questions rather than to lecture.
+         </div>
+         <div id="section">Topics</div>
+	 <ol>
+           <li>Week 1: Nonlinar Equations (Miranda and Fackler, Ch. 3)</li>
+           <li>Week 2: Optimization (Miranda and Fackler, Ch. 4)</li>
+           <li>Week 3: Integration (Miranda and Fackler, Ch. 5)</li>
+           <li>Week 4: Interpolation and Approximation I (Miranda and Fackler, Ch. 6.1-6.4</li>
+           <li>Week 4: Interpolation and Approximation II (Miranda and Fackler, Ch. 6.5-6.9</li>
+         </ol>
+       </div>
+     </div>
+   </div>
+  </body>
+</html>

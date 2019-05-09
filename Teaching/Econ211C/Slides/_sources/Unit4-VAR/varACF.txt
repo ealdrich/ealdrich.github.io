@@ -1,0 +1,280 @@
+==============================================================================
+Autocovariances of Vector Processes
+==============================================================================
+
+Vector Autocovariance
+==============================================================================
+Given an :math:`\smash{n}` -dimensional, weakly stationary vector
+process, :math:`\smash{\boldsymbol{Y}_{t}}`, the :math:`\smash{j}` th
+autocovariance matix is defined as:
+
+.. math::
+
+   \smash{\Gamma_{j,t} =
+   E[(\boldsymbol{Y}_{t}-\boldsymbol{\mu})(\boldsymbol{Y}_{t-j} -
+   \boldsymbol{\mu})^{'}]}.
+
+.. raw:: <!--pause-->
+
+Since :math:`\smash{Y_{1,t}}` is different from
+:math:`\smash{Y_{2,t}}`, :math:`\smash{\Gamma_{j} \neq \Gamma_{-j}}`:
+
+.. math::
+
+   \smash{\Gamma_{j}(1,2) = Cov(Y_{1,t},Y_{2,t-j}) \neq
+   Cov(Y_{1,t},Y_{2,t+j}) = \Gamma_{-j}(1,2).}
+
+Vector Autocovariance
+==============================================================================
+It is true that :math:`\smash{\Gamma_{j} = \Gamma_{-j}^{'}}`:
+
+.. math::
+
+   \smash{\Gamma_{j}(1,2) = Cov(Y_{1,t},Y_{2,t-j}) =
+   Cov(Y_{2,t},Y_{1,t+j}) = \Gamma_{-j}(2,1).}
+
+.. raw:: <!--pause-->
+
+- Stationarity does impose :math:`\smash{Cov(Y_{1,t},Y_{2,t-j}) =
+  Cov(Y_{1,t+j},Y_{2,t})}`.
+
+Vector MA(q) Process
+==============================================================================
+A vector moving average process of order :math:`\smash{q}` is
+
+.. math::
+
+   \boldsymbol{Y}_{t} = \boldsymbol{\mu} + \boldsymbol{\varepsilon}_{t} +
+   \Theta_{1}\boldsymbol{\varepsilon}_{t-1} +
+   \Theta_{2}\boldsymbol{\varepsilon}_{t-2} + \ldots +
+   \Theta_{q}\boldsymbol{\varepsilon}_{t-q}, \,\,\,
+   \boldsymbol{\varepsilon}_{t}\overset{i.i.d}{\sim}
+   WN(\boldsymbol{0},\Omega),
+
+where :math:`\smash{\Theta_{j}}` is an :math:`\smash{N \times N}`
+matrix of :math:`\smash{MA}` coefficients for :math:`\smash{j =
+1,\ldots,q}`.
+
+.. raw:: <!--pause-->
+
+- We can define :math:`\smash{\Theta_{0} = I_{n}}`.
+
+.. raw:: <!--pause-->
+
+- Clearly :math:`\smash{E[\boldsymbol{Y}_{t}] = \boldsymbol{\mu}
+  \,\,\, \forall \, t}`.
+
+Vector MA(q) Autocovariances
+==============================================================================
+The jth autocovariance matrix is: 
+
+.. math::
+
+   \begin{align}
+   \Gamma_{j} & =
+   E[(\boldsymbol{Y}_{t}-\boldsymbol{\mu})(\boldsymbol{Y}_{t-j} -
+   \boldsymbol{\mu})^{'}] \\
+   & = E[(\Theta_{0}\boldsymbol{\varepsilon}_{t} +
+   \Theta_{1}\boldsymbol{\varepsilon}_{t-1} + \ldots +
+   \Theta_{q}\boldsymbol{\varepsilon}_{t-q}) \\
+   & \hspace{1.5in} \times (\Theta_{0}\boldsymbol{\varepsilon}_{t-j} +
+   \Theta_{1}\boldsymbol{\varepsilon}_{t-j-1} + \ldots +
+   \Theta_{q}\boldsymbol{\varepsilon}_{t-j-q})^{'}]
+   \end{align}
+
+Vector MA(q) Autocovariances
+==============================================================================
+- For :math:`\smash{|j| > q: \Gamma_{j} = \boldsymbol{0}_{N \times N}}`.
+
+.. raw:: <!--pause-->
+
+- For :math:`\smash{j = 0}:`
+
+.. math::
+
+   \begin{align}
+   \Gamma_{0} & = \Theta_{0}\Omega \Theta_{0}^{'} + \Theta_{1} \Omega
+   \Theta_{1}^{'} + \ldots + \Theta_{q} \Omega \Theta_{q}^{'} \\
+   & = \sum_{i=0}^{q} \Theta_{i} \Omega \Theta_{i}^{'}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- For :math:`\smash{j = 1,\ldots,q}`:
+
+.. math::
+
+   \begin{align}
+   \Gamma_{j} & = \Theta_{j}\Omega \Theta_{0}^{'} + \Theta_{j+1}
+   \Omega \Theta_{1}^{'} + \ldots + \Theta_{q} \Omega \Theta_{q-j}^{'}
+   \\
+   & = \sum_{i=0}^{q-j} \Theta_{j+i}\Omega \Theta_{i}^{'}.
+   \end{align}
+
+Vector MA(q) Autocovariances
+==============================================================================
+- For :math:`\smash{j = -1,\ldots, -q}`:
+
+.. math::
+
+   \begin{align}
+   \Gamma_{j} & = \Theta_{0}\Omega \Theta_{-j}^{'} + \Theta_{1} \Omega
+   \Theta_{-j+1}^{'} + \ldots + \Theta_{q+j} \Omega \Theta_{q}^{'} \\
+   & = \sum_{i=0}^{q+j} \Theta_{i}\Omega \Theta_{-j+i}^{'}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\Gamma_{j}^{'} = \Gamma_{-j}}`.
+
+.. raw:: <!--pause-->
+
+- Because 1st and 2nd moments of :math:`\smash{\boldsymbol{Y}_{t}}`
+  are independent of time, the vector :math:`\smash{MA(q)}` process is
+  weakly stationary.
+
+Vector :math:`\smash{MA(\infty)}` Autocovariances
+==============================================================================
+The vector :math:`\smash{MA(\infty)}` is the limit of the vector
+:math:`\smash{MA(q)}`:
+
+.. math::
+
+   \smash{\boldsymbol{Y}_{t} = \boldsymbol{\mu} +
+   \boldsymbol{\varepsilon}_{t} + \Theta_{1}\boldsymbol{\varepsilon}_{t-1} +
+   \Theta_{2}\boldsymbol{\varepsilon}_{t-2} + \ldots}
+
+.. raw:: <!--pause-->
+
+- The sequence of matrices
+  :math:`\smash{\{\Theta_{s}\}_{s=0}^{\infty}}` is absolutely summable
+  if each component sequence is absolutely summable.
+
+Vector :math:`\smash{MA(\infty)}` Autocovariances
+==============================================================================
+If :math:`\smash{\{\Theta_{s}\}_{s=0}^{\infty}}` is absolutely
+summable:
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{E[\boldsymbol{Y}_{t}] = \boldsymbol{\mu}}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\Gamma_{j} = \sum_{i=0}^{\infty}
+  \Theta_{j+i}\Omega \Theta_{i}^{'}, \,\,\,\, j = 0,1,2,...}`
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{Y}_{t}}` is ergodic for 1st and 2nd
+  moments.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{Y}_{t}}` is stationary.
+
+Vector :math:`\smash{VAR(p)}` Autocovariances
+==============================================================================
+When a stationary :math:`\smash{VAR(p)}` is expressed as a vector
+:math:`\smash{MA(\infty)}`, it satisfies the absolute summability
+condition.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\Theta_{s} = F^{s}= T\Lambda^{s} T^{-1}}`.
+
+.. raw:: <!--pause-->
+
+- The component-wise sum of absolute values over :math:`\smash{s =
+  0,1,2,...}` will be a weighted average of absolute values of
+  eigenvalues raised to powers.
+
+.. raw:: <!--pause-->
+
+- Because of stationarity, :math:`\smash{|\lambda_{i}| < 1, i =
+  1,...,np}`, which means :math:`\smash{\{F^{s}\}_{s=0}^{\infty}}` is
+  absolutely summable.
+
+Vector :math:`\smash{VAR(p)}` Autocovariances
+==============================================================================
+Recall that a :math:`\smash{VAR(p)}` can be expressed as:
+
+.. math::
+
+   \smash{\boldsymbol{\xi}_{t} = F\boldsymbol{\xi}_{t-1} +
+   \boldsymbol{v}_{t}}
+
+.. raw:: <!--pause-->
+
+In this case
+
+.. math::
+
+   \smash{\Sigma = E[\boldsymbol{\xi}_{t}\boldsymbol{\xi}_{t}^{'}] =
+   \left[\begin{array}{cccc} \Gamma_{0} & \Gamma_{1} & \ldots &
+   \Gamma_{p-1} \\ \Gamma_{1}^{'} & \Gamma_{0} & \ldots & \Gamma_{p-2}
+   \\ \vdots & \vdots & \ddots & \vdots \\\Gamma_{p-1}^{'} &
+   \Gamma_{p-2}^{'} & \ldots & \Gamma_{0} \\ \end{array} \right]}.
+
+.. math::
+
+   \,\,
+
+Vector :math:`\smash{VAR(p)}` Autocovariances
+==============================================================================
+By the definition of :math:`\smash{\boldsymbol{\xi}_{t}}`,
+
+.. math::
+
+   \begin{align}
+   \Sigma & = E[\boldsymbol{\xi}_{t}\boldsymbol{\xi}_{t}^{'}] \\
+   & = E\left[(F\boldsymbol{\xi}_{t-1} +
+   \boldsymbol{v}_{t})(F\boldsymbol{\xi}_{t-1} +
+   \boldsymbol{v}_{t})^{'}\right] \\
+   & = F\underset{\Sigma}{\underbrace{E[\boldsymbol{\xi}_{t-1}
+   \boldsymbol{\xi}_{t-1}^{'}]}}F^{'} +
+   \underset{Q}{\underbrace{E[\boldsymbol{v}_{t}\boldsymbol{v}_{t}^{'}]}}
+   \\
+   & = F\Sigma F^{'} + Q.
+   \end{align}
+
+Using the Vec Operator
+==============================================================================
+In general
+
+.. math::
+
+   \smash{Vec(ABC) = C^{'}\bigotimes A \cdot Vec(B)}.
+
+.. raw:: <!--pause-->
+
+Thus,
+
+.. math::
+
+   \begin{gather}
+   Vec(\Sigma) = F \bigotimes F\cdot Vec(\Sigma) + Vec(Q) \\
+   \implies Vec(\Sigma) = [I - F\bigotimes F]^{-1} \cdot Vec(Q).
+   \end{gather}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{F \bigotimes F}` is an :math:`\smash{(np)^{2} \times
+  (np)^{2}}` matrix.
+
+.. raw:: <!--pause-->
+
+- Because all eigenvalues of :math:`\smash{F}` lie inside the unit
+  circle, so do all eigenvalues of :math:`\smash{F\bigotimes F}`,
+  which means :math:`\smash{F\bigotimes F}` is invertible.
+
+Vector :math:`\smash{VAR(p)}` Autocovariances
+==============================================================================
+.. math::
+
+   \begin{align}
+   \Sigma_{j} & = E[\boldsymbol{\xi}_{t}\boldsymbol{\xi}_{t-j}^{'}] \\
+   & = FE[\boldsymbol{\xi}_{t-1}\boldsymbol{\xi}_{t-j}^{'}] \\
+   & = F\Sigma_{j-1}, j= 1,2,3,... \\
+   \implies \Sigma_{j} & = F^{j}\Sigma.
+   \end{align}

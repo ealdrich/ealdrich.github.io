@@ -1,0 +1,540 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Heavy-Tailed Distributions &mdash; Econ 114 - Advanced Quantitative Methods</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html"/>
+        <link rel="up" title="Distributions" href="distributions.html"/>
+        <link rel="next" title="Maximum Likelihood Estimation" href="mle.html"/>
+        <link rel="prev" title="Moments" href="moments.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Econ 114
+        
+
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preliminaries.html">Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Exploratory Data Analysis</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="distributions.html">Distributions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="moments.html">Moments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Heavy-Tailed Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Heavy-Tailed Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generalized-error-distributions">Generalized Error Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Generalized Error Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Generalized Error Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exponential-tails">Exponential Tails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Exponential Tails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generalized-error-distribution-examples">Generalized Error Distribution Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-law-distributions">Power-Law Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polynomial-tails">Polynomial Tails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Polynomial Tails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distribution"><span class="math">\(t\)</span>-Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6"><span class="math">\(t\)</span> -Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison-of-gen-error-and-dist">Comparison of Gen. Error and <span class="math">\(t\)</span>- Dist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Comparison of Gen. Error and <span class="math">\(t\)</span>- Dist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#discrete-mixtures">Discrete Mixtures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Discrete Mixtures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Discrete Mixtures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Discrete Mixtures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#continuous-mixtures">Continuous Mixtures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Continuous Mixtures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mle.html">Maximum Likelihood Estimation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeSeries.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian Methods</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 114</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="distributions.html">Distributions</a> &raquo;</li>
+      
+    <li>Heavy-Tailed Distributions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/heavyDist.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="heavy-tailed-distributions">
+<h1>Heavy-Tailed Distributions<a class="headerlink" href="#heavy-tailed-distributions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Heavy-Tailed Distributions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Observed data often do not conform to a Normal
+distribution.</p>
+<ul class="to-build simple">
+<li>In many cases, extreme values are more likely than would be dictated
+by a Normal.</li>
+</ul>
+<ul class="to-build simple">
+<li>This is especially true of financial data.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this lecture, we will study several examples of distributions
+with heavy tails, which assign higher probability to extreme
+values.</li>
+</ul>
+</div>
+<div class="section" id="generalized-error-distributions">
+<h2>Generalized Error Distributions<a class="headerlink" href="#generalized-error-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that <span class="math">\(X\)</span> follows a <em>Generalized Error Distribution</em>
+with shape parameter <span class="math">\(\nu: \,\, X \sim GED(\nu)\)</span>.</p>
+<ul class="to-build simple">
+<li>Then for <span class="math">\(x \in (-\infty, \infty)\)</span>,</li>
+</ul>
+<div class="to-build math">
+\[f_{X}(x|\nu) = \kappa(\nu) \exp\left\{-\frac{1}{2}
+\left|\frac{x}{\lambda_{\nu}}\right|^{\nu}\right\}, \text{where}\]</div>
+<div class="to-build math">
+\[\lambda_{\nu} = \left(\frac{2^{-2/\nu}
+\Gamma(\nu^{-1})}{\Gamma(3/\nu)}\right)^{1/2} \,\,\,\,\,\,
+\text{and} \,\,\,\,\,\, \kappa(\nu) = \frac{\nu}{\lambda_{\nu}
+2^{1+\frac{1}{\nu}} \Gamma(\nu^{-1})}.\]</div>
+</div>
+<div class="section" id="id2">
+<h2>Generalized Error Distributions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><span class="math">\(\lambda_{\nu}\)</span> and <span class="math">\(\kappa(\nu)\)</span> are constants and are
+chosen so that the density integrates to unity and has unit
+variance.</li>
+</ul>
+<ul class="to-build simple">
+<li>The shape parameter <span class="math">\(\nu &gt; 0\)</span> determines tail weight.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>Generalized Error Distributions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>For many distributions, the scaling constants are simply a
+nuisance.</p>
+<ul class="to-build simple">
+<li>We can focus attention on only the part of the function
+that relates to values of the random variable.</li>
+</ul>
+<ul class="to-build simple">
+<li>Disregarding constants, we say that the density is <em>proportional</em>
+to:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}f_{X}(x|\nu) &amp; \propto \exp\left\{
+-\left|\frac{x}{\theta}\right|^{\nu}\right\}.\end{split}\]</div>
+<ul class="to-build simple">
+<li>As <span class="math">\(x \to \infty\)</span>, <span class="math">\(-|x|^{\nu} \to -\infty\)</span> faster for
+larger values of <span class="math">\(\nu\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>This means that as <span class="math">\(x \to \infty\)</span>, <span class="math">\(f_{X}(x|\nu) \to 0\)</span>
+faster for larger values of <span class="math">\(\nu\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="exponential-tails">
+<h2>Exponential Tails<a class="headerlink" href="#exponential-tails" title="Permalink to this headline">¶</a></h2>
+<p>For generalized error distributions, larger values of <span class="math">\(\nu\)</span>
+correspond to lighter tails and smaller values to heavier tails.</p>
+<ul class="to-build simple">
+<li>We say that the generalized error distribution has <em>exponential
+tails</em>, since the tails diminish exponentially as <span class="math">\(x \to
+\infty\)</span> and <span class="math">\(x \to -\infty\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Exponential Tails<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/expTails.png"><img alt="_images/expTails.png" class="align-center" src="_images/expTails.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="generalized-error-distribution-examples">
+<h2>Generalized Error Distribution Examples<a class="headerlink" href="#generalized-error-distribution-examples" title="Permalink to this headline">¶</a></h2>
+<p>Special cases of generalized error distributions:</p>
+<ul class="to-build simple">
+<li><span class="math">\(\nu = 2\)</span>: <span class="math">\(\mathcal{N}(0,1)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\nu = 1\)</span>: Double-exponential distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>The double-exponential distribution has heavier tails than a
+standard normal since its shape parameter is smaller.</li>
+</ul>
+<ul class="to-build simple">
+<li>Heavier tails that the double-exponential are obtained with
+<span class="math">\(\nu &lt; 1\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="power-law-distributions">
+<h2>Power-Law Distributions<a class="headerlink" href="#power-law-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that <span class="math">\(X\)</span> follows a <em>Power-Law Distribution</em> with shape
+parameter <span class="math">\(\alpha: \,\, X \sim PL(\alpha)\)</span>.</p>
+<ul class="to-build simple">
+<li>Then for <span class="math">\(x \in (-\infty, \infty)\)</span>,</li>
+</ul>
+<div class="to-build math">
+\[f_{X}(x|\alpha) = A x^{-(1+\alpha)} \propto x^{-(1+\alpha)}.\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(A\)</span> is chosen so that the density integrates to unity.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\alpha &gt; 0\)</span>, otherwise the density will integrate to
+<span class="math">\(\infty\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The power-law distribution has a polynomial tail, because the tails
+diminish at a polynomial rate as <span class="math">\(x \to \infty\)</span> and <span class="math">\(x
+\to -\infty\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="polynomial-tails">
+<h2>Polynomial Tails<a class="headerlink" href="#polynomial-tails" title="Permalink to this headline">¶</a></h2>
+<p>The parameter <span class="math">\(\alpha\)</span> is referred to as the <em>tail index</em>.</p>
+<ul class="to-build simple">
+<li>As <span class="math">\(x \to \infty\)</span>, <span class="math">\(x^{-(1+\alpha)} \to 0\)</span> faster for
+larger values of <span class="math">\(\alpha\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>This means that larger values of <span class="math">\(\alpha\)</span> correspond to
+lighter tails and smaller values to heavier tails.</li>
+</ul>
+<ul class="to-build simple">
+<li>A power-law distribution has heavier tails than a generalized error
+distribution:</li>
+</ul>
+<div class="to-build math">
+\[\frac{\exp\left(-\left|\frac{x}{\theta}\right|^{\nu}\right)}{|x|^{-(1+\alpha)}}
+\to 0 \,\,\,\,\, \text{as} \,\,\,\,\, |x| \to \infty.\]</div>
+</div>
+<div class="section" id="id5">
+<h2>Polynomial Tails<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/polyTails.png"><img alt="_images/polyTails.png" class="align-center" src="_images/polyTails.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="distribution">
+<h2><span class="math">\(t\)</span>-Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline">¶</a></h2>
+<p>The density of a <span class="math">\(t\)</span> -distribution is</p>
+<div class="math">
+\[\begin{split}f_{t,\nu}(y) &amp; =
+\left[\frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi \nu}
+ \Gamma\left(\frac{\nu}{2}\right)}\right] \frac{1}{\left(1 +
+ y^2/\nu\right)^{\frac{\nu+1}{2}}},\end{split}\]</div>
+<p>where</p>
+<div class="to-build math">
+\[\begin{split}\Gamma(t) &amp; = \int_0^{\infty} x^{t-1} \exp(-x)dx, \,\,\,\,\,\, t
+&gt; 0.\end{split}\]</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="math">\(t\)</span> -Distribution<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>Note that for large values of <span class="math">\(|y|\)</span>,</p>
+<div class="math">
+\[f_{t,\nu}(y) \propto \frac{1}{\left(1 +
+y^2/\nu\right)^{\frac{\nu+1}{2}}} \stackrel{\sim}{\propto}
+\frac{1}{\left(y^2/\nu\right)^{\frac{\nu+1}{2}}} \propto |y|^{-(\nu+1)}.\]</div>
+<ul class="to-build simple">
+<li>This means the <span class="math">\(t\)</span>-distribution has polynomial tails with tail
+index <span class="math">\(\nu\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Smaller values of <span class="math">\(\nu\)</span> correspond to heavier tails.</li>
+</ul>
+</div>
+<div class="section" id="comparison-of-gen-error-and-dist">
+<h2>Comparison of Gen. Error and <span class="math">\(t\)</span>- Dist<a class="headerlink" href="#comparison-of-gen-error-and-dist" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/heavyCompTail.png"><img alt="_images/heavyCompTail.png" class="align-center" src="_images/heavyCompTail.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+<p>This plot was taken directly from Ruppert (2011).</p>
+</div>
+<div class="section" id="id7">
+<h2>Comparison of Gen. Error and <span class="math">\(t\)</span>- Dist<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/heavyCompCenter.png"><img alt="_images/heavyCompCenter.png" class="align-center" src="_images/heavyCompCenter.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+<p>This plot was taken directly from Ruppert (2011).</p>
+</div>
+<div class="section" id="discrete-mixtures">
+<h2>Discrete Mixtures<a class="headerlink" href="#discrete-mixtures" title="Permalink to this headline">¶</a></h2>
+<p>Consider a distribution that is 90% <span class="math">\(\mathcal{N}(0,1)\)</span> and 10%
+<span class="math">\(\mathcal{N}(0,25)\)</span>.</p>
+<ul class="to-build simple">
+<li>Generate <span class="math">\(X \sim \mathcal{N}(0,1)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Generate <span class="math">\(U \sim Unif(0,1)\)</span>, with <span class="math">\(U\)</span> independent of
+<span class="math">\(X\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Set <span class="math">\(Y = X\)</span> if <span class="math">\(U &lt; 0.9\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Set <span class="math">\(Y = 5X\)</span> if <span class="math">\(U \geq 0.9\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h2>Discrete Mixtures<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>We say that <span class="math">\(Y\)</span> follows a <em>finite</em> or <em>discrete normal mixture
+distribution</em>.</p>
+<ul class="to-build simple">
+<li>Roughly 90% of the time it is drawn from a
+<span class="math">\(\mathcal{N}(0,1)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Roughly 10% of the time it is drawn from a
+<span class="math">\(\mathcal{N}(0,25)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The individual normal distributions are called the
+<em>component</em> distributions of <span class="math">\(Y\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>This random variable could be used to model a market with two
+<em>regimes</em>: low volatility and high volatility.</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h2>Discrete Mixtures<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>The variance of <span class="math">\(Y\)</span> is</p>
+<div class="math">
+\[\begin{split}Var(Y) &amp; = 0.9 \times 1 + 0.1 \times 25 = 3.4.\end{split}\]</div>
+<ul class="to-build simple">
+<li>Consider <span class="math">\(Z \sim \mathcal{N}(0,\sqrt{3.4}) =
+\mathcal{N}(0,1.84)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The distributions of <span class="math">\(Y\)</span> and <span class="math">\(Z\)</span> are <em>very</em>
+different.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(f_Y\)</span> has much heavier tails than <span class="math">\(f_Z\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>For example, the probability of observing the value 6 (3.25
+standard deviations from the mean) is essentially zero for
+<span class="math">\(Z\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>However, 10% of the time, the value 6 is only 6/5 = 1.2
+standard deviations from the mean for <span class="math">\(Y\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>Discrete Mixtures<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/normalMix.png"><img alt="_images/normalMix.png" class="align-center" src="_images/normalMix.png" style="width: 5.5in;" /></a>
+</div></blockquote>
+<p>This plot was taken directly from Ruppert (2011).</p>
+</div>
+<div class="section" id="continuous-mixtures">
+<h2>Continuous Mixtures<a class="headerlink" href="#continuous-mixtures" title="Permalink to this headline">¶</a></h2>
+<p>In general, <span class="math">\(Y\)</span> follows a <em>normal scale mixture distribution</em> if</p>
+<div class="math">
+\[\begin{split}Y &amp; = \mu + \sqrt{U} Z,\end{split}\]</div>
+<p class="to-build">where</p>
+<ul class="to-build simple">
+<li><span class="math">\(\mu\)</span> is a constant.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(Z \sim \mathcal{N}(0,1)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(U\)</span> is a positive random variable giving the variance of each
+normal component.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(Z\)</span> and <span class="math">\(U\)</span> are independent.</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>Continuous Mixtures<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>If <span class="math">\(U\)</span> is continuous, <span class="math">\(Y\)</span> follows a <em>continuous scale
+mixture distribution</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(f_U\)</span> is known as the <em>mixing
+distribution</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>A finite normal mixture has exponential
+tails.</li>
+</ul>
+<ul class="to-build simple">
+<li>A continuous normal mixture can have polynomial tails if the
+mixing distribution has heavy enough tails.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <span class="math">\(t\)</span> -distribution is an example of a continuous normal
+mixture.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mle.html" class="btn btn-neutral float-right" title="Maximum Likelihood Estimation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="moments.html" class="btn btn-neutral" title="Moments" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Eric M. Aldrich.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Advanced Quantitative Methods',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

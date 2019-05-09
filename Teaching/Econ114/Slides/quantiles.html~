@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sample Quantiles &mdash; Econ 114 - Advanced Quantitative Methods</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
+    <link rel="up" title="Exploratory Data Analysis" href="data.html" />
+    <link rel="next" title="Data Transformations" href="transform.html" />
+    <link rel="prev" title="Kernel Density Estimation" href="kde.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="sample-quantiles">
+<h1>Sample Quantiles</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="empirical-density-function">
+<h2>Empirical Density Function</h2>
+<p>Suppose <span class="math">\(y_1, y_2, \ldots, y_n\)</span> is a data sample from a true CDF
+<span class="math">\(F\)</span>.</p>
+<ul class="to-build simple">
+<li>The <em>empirical density function</em> (EDF), <span class="math">\(F_n(y)\)</span>, is the
+proportion of the sample that is less than or equal to <span class="math">\(y\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[F_n(y) = \frac{\sum_{i=1}^n I\{y_i \leq y\}}{n},\]</div>
+<p class="to-build">where</p>
+<div class="to-build math">
+\[\begin{split}I\{y_i \leq y\} = \begin{cases} 1 &amp; \text{if } y_i \leq y \\ 0 &amp;
+\text{otherwise}. \end{cases}\end{split}\]</div>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="edf-example">
+<h2>EDF Example</h2>
+<p>The figure below compares the EDF of a sample of 150 observations
+drawn from a <span class="math">\(N(0,1)\)</span> with the true CDF.</p>
+<a class="reference internal image-reference" href="_images/edfExample.png"><img alt="_images/edfExample.png" class="align-center" src="_images/edfExample.png" style="width: 7.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="order-statistics">
+<h2>Order Statistics</h2>
+<p><em>Order statistics</em> are the values <span class="math">\(y_1, y_2, \ldots, y_n\)</span>
+ordered from smallest to largest.</p>
+<ul class="to-build simple">
+<li>Order statistics are denoted by <span class="math">\(y_{(1)}, y_{(2)}, \ldots
+y_{(n)}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The parentheses in the subscripts differentiate them from the
+unordered sample.</li>
+</ul>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="quantiles">
+<h2>Quantiles</h2>
+<p>The <span class="math">\(q\)</span> <em>quantile</em> of a distribution is the value <span class="math">\(y\)</span> such
+that</p>
+<div class="math">
+\[\begin{split}F_Y(y) &amp; = q \,\,\,\,\, \Rightarrow \,\,\,\,\, y = F_Y^{-1}(q).\end{split}\]</div>
+<ul class="to-build simple">
+<li>Note that <span class="math">\(q \in (0,1)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Quantiles are often called <span class="math">\(100q\)</span> th <em>percentiles</em>.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Quantiles</h2>
+<p>Special quantiles:</p>
+<ul class="to-build simple">
+<li>Median: <span class="math">\(q = 0.5\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Quartiles: <span class="math">\(q = \{0.25, 0.5, 0.75\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Quintiles: <span class="math">\(q = \{0.2, 0.4, 0.6, 0.8\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Deciles: <span class="math">\(q = \{0.1, 0.2, \ldots, 0.8, 0.9\}\)</span>.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Sample Quantiles</h2>
+<p>The <span class="math">\(q\)</span> <em>sample quantile</em> of a distribution is the value
+<span class="math">\(y_{(k)}\)</span> such that</p>
+<div class="math">
+\[\begin{split}F_n(y_{(k)}) &amp; \leq q.\end{split}\]</div>
+<ul class="to-build simple">
+<li>This is simply the value <span class="math">\(y_{(k)}\)</span> where <span class="math">\(k\)</span> is
+<span class="math">\(qn\)</span> rounded down to the nearest integer.</li>
+</ul>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="normal-probability-plots">
+<h2>Normal Probability Plots</h2>
+<p>We are often interested in determining whether our data are drawn
+from a normal distribution.</p>
+<ul class="to-build">
+<li><p class="first">If the data is normally distributed, then the <span class="math">\(q\)</span> sample
+quantiles will be approximately equal to <span class="math">\(\mu + \sigma
+\Phi^{-1}(q)\)</span>.</p>
+<ul class="to-build">
+<li><dl class="first docutils">
+<dt><span class="math">\(\mu\)</span> and <span class="math">\(\sigma\)</span> are the true (unobserved) mean and</dt>
+<dd><p class="first last">standard deviation of the data.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\Phi\)</span> is the standard normal CDF.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Normal Probability Plots</h2>
+<p>Hence, a plot of the sample quantiles vs. <span class="math">\(\Phi^{-1}\)</span> should be
+roughly linear.</p>
+<ul class="to-build simple">
+<li>In practice this is accomplished by plotting <span class="math">\(y_{(i)}\)</span>
+vs. <span class="math">\(\Phi(i/(n+1))\)</span>, for <span class="math">\(i=1,\ldots, n\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Deviations from linearity suggest nonnormality.</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Normal Probability Plots</h2>
+<p>There is no consensus as to which axis should represent the sample
+quantiles in a normal probability plot.</p>
+<ul class="to-build simple">
+<li>Interpretation of the plot will depend on the choice of axes
+for sample and theoretical quantiles.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will always place sample quantiles on the <span class="math">\(x\)</span>
+axis.</li>
+</ul>
+<ul class="to-build simple">
+<li>In R, the argument 'datax' of the function
+'qqnorm' must be set to 'TRUE' (by default, it is
+'FALSE').</li>
+</ul>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="interpreting-normal-probability-plots">
+<h2>Interpreting Normal Probability Plots</h2>
+<p>With the sample quantiles on the <span class="math">\(x\)</span> axis:</p>
+<ul class="to-build simple">
+<li>A convex curve indicates <em>left skewness</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>A concave curve indicates <em>right skewness</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>A convex-concave curve indicates <em>heavy tails</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>A concave-convex curve indicates <em>light tails</em>.</li>
+</ul>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="normal-probability-plot-illustrations">
+<h2>Normal Probability Plot Illustrations</h2>
+<a class="reference internal image-reference" href="_images/normPlotIllustration.png"><img alt="_images/normPlotIllustration.png" class="align-center" src="_images/normPlotIllustration.png" style="width: 7.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="normal-prob-plots-for-normal-data">
+<h2>Normal Prob. Plots for Normal Data</h2>
+<a class="reference internal image-reference" href="_images/normPlotExample1.png"><img alt="_images/normPlotExample1.png" class="align-center" src="_images/normPlotExample1.png" style="width: 4.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="normal-prob-plots-for-lognormal-data">
+<h2>Normal Prob. Plots for Lognormal Data</h2>
+<a class="reference internal image-reference" href="_images/normPlotExample2.png"><img alt="_images/normPlotExample2.png" class="align-center" src="_images/normPlotExample2.png" style="width: 4.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="plots-of-lognormal-densities">
+<h2>Plots of Lognormal Densities</h2>
+<a class="reference internal image-reference" href="_images/lognormExamples.png"><img alt="_images/lognormExamples.png" class="align-center" src="_images/lognormExamples.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="normal-prob-plots-for-data">
+<h2>Normal Prob. Plots for <span class="math">\(t\)</span> Data</h2>
+<a class="reference internal image-reference" href="_images/normPlotExample3.png"><img alt="_images/normPlotExample3.png" class="align-center" src="_images/normPlotExample3.png" style="width: 4.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="plots-of-densities">
+<h2>Plots of <span class="math">\(t\)</span> Densities</h2>
+<a class="reference internal image-reference" href="_images/tdistExamples.png"><img alt="_images/tdistExamples.png" class="align-center" src="_images/tdistExamples.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="normal-probability-plots-vs-kdes">
+<h2>Normal Probability Plots vs. KDEs</h2>
+<p>If the relationship between theoretical and sample quantiles is
+complex, the KDE is a better tool to understand deviations from
+normality.</p>
+<a class="reference internal image-reference" href="_images/trimodalKDE.png"><img alt="_images/trimodalKDE.png" class="align-center" src="_images/trimodalKDE.png" style="width: 7.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="qq-plots">
+<h2>QQ Plots</h2>
+<p>Normal probability plots are special examples of
+<em>quantile-quantile</em> (QQ) plots.</p>
+<ul class="to-build simple">
+<li>A QQ plot is a plot of quantiles from one sample or
+distribution against the quantiles of another sample or
+distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>For example, we could compare the quantiles of S&amp;P 500
+daily returns against a <span class="math">\(t\)</span> distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>Alternatively, we could compare the quantiles of S&amp;P 500
+daily returns against other financial data.</li>
+</ul>
+<ul class="to-build simple">
+<li>QQ plots of multiple datasets indicate which distribution is
+more/less left/right skewed or which has heavier/lighter
+tails.</li>
+</ul>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="s-p-500-returns-and-distributions">
+<h2>S&amp;P 500 Returns and <span class="math">\(t\)</span> Distributions</h2>
+<a class="reference internal image-reference" href="_images/sp500QQ.png"><img alt="_images/sp500QQ.png" class="align-center" src="_images/sp500QQ.png" style="width: 3.75in;" /></a>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="s-p-500-returns-dm-dollar-and-risk-free">
+<h2>S&amp;P 500 Returns, DM/Dollar and Risk-free</h2>
+<a class="reference internal image-reference" href="_images/sp-dm-rf-qq.png"><img alt="_images/sp-dm-rf-qq.png" class="align-center" src="_images/sp-dm-rf-qq.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">21</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Advanced Quantitative Methods',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

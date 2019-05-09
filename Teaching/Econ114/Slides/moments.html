@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Moments &mdash; Econ 114 - Advanced Quantitative Methods</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
+    <link rel="up" title="Distributions" href="distributions.html" />
+    <link rel="next" title="Heavy-Tailed Distributions" href="heavyDist.html" />
+    <link rel="prev" title="Distributions" href="distributions.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="moments">
+<h1>Moments</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Moments</h2>
+<p>Given a random variable <span class="math">\(X\)</span>:</p>
+<ul class="to-build simple">
+<li>The <span class="math">\(k\)</span> -th <em>moment</em> of <span class="math">\(X\)</span> is</li>
+</ul>
+<div class="to-build math">
+\[E[X^k] = \int_{-\infty}^{\infty} x^k f(x) dx.\]</div>
+<ul class="to-build simple">
+<li>The <span class="math">\(k\)</span> -th <em>central moment</em> of <span class="math">\(X\)</span> is</li>
+</ul>
+<div class="to-build math">
+\[\mu_k = E\left[\left(X-E[X]\right)^k\right] =
+\int_{-\infty}^{\infty} \left(x-E[X]\right)^k f(x) dx.\]</div>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Moments</h2>
+<p>Some special cases for <em>any</em> random variable
+<span class="math">\(X\)</span>:</p>
+<ul class="to-build simple">
+<li>The first moment of <span class="math">\(X\)</span> is its mean.</li>
+</ul>
+<ul class="to-build simple">
+<li>The first <em>central</em> moment of <span class="math">\(X\)</span> is zero.</li>
+</ul>
+<ul class="to-build simple">
+<li>The second <em>central</em> moment of <span class="math">\(X\)</span> is its variance.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="sample-moments">
+<h2>Sample Moments</h2>
+<p>Given realizations <span class="math">\(x_1, \ldots, x_n\)</span> of a random variable
+<span class="math">\(X\)</span>,</p>
+<ul class="to-build simple">
+<li>The moments of <span class="math">\(X\)</span> can be approximated by replacing
+expectations with simple averages:</li>
+</ul>
+<div class="to-build math">
+\[\hat{\mu}_k = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^k,
+\,\,\,\,\,\, \text{where} \,\,\,\,\,\, \bar{x} = \frac{1}{n}
+\sum_{i=1}^n x_i.\]</div>
+<ul class="to-build simple">
+<li>For example, the sample variance is</li>
+</ul>
+<div class="to-build math">
+\[\hat{\mu}_2 = \hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2.\]</div>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="skewness">
+<h2>Skewness</h2>
+<p><em>Skewness</em> measures the degree of asymmetry of a distribution.</p>
+<ul class="to-build simple">
+<li>Formally, skewness is defined as</li>
+</ul>
+<div class="to-build math">
+\[Sk = E\left[\left(\frac{X - E[X]}{\sigma}\right)^3\right] = \frac{\mu_3}{\sigma^3}.\]</div>
+<ul class="to-build simple">
+<li>Zero skewness corresponds to a symmetric distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>Positive skewness indicates a relatively long right tail.</li>
+</ul>
+<ul class="to-build simple">
+<li>Negative skewness indicates a relatively long left tail.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="skewness-example">
+<h2>Skewness Example</h2>
+<a class="reference internal image-reference" href="_images/skewExamples.png"><img alt="_images/skewExamples.png" class="align-center" src="_images/skewExamples.png" style="width: 7.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="kurtosis">
+<h2>Kurtosis</h2>
+<p><em>Kurtosis</em> measures the extent to which probability is concentrated in
+the center and tails of a distribution rather than the &quot;shoulders&quot;.</p>
+<ul class="to-build simple">
+<li>Formally, kurtosis is defined as</li>
+</ul>
+<div class="to-build math">
+\[Kur  = E\left[\left(\frac{X - E[Y]}{\sigma}\right)^4\right] =
+\frac{\mu_4}{\sigma^4}.\]</div>
+<ul class="to-build simple">
+<li>High values of kurtosis indicate heavy tails and low values indicate
+light tails.</li>
+</ul>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Kurtosis</h2>
+<ul class="simple">
+<li>For skewed distributions, kurtosis may measure both asymmetry and
+tail weight.</li>
+</ul>
+<ul class="to-build simple">
+<li>For symmetric distributions, kurtosis only measures tail weight.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Kurtosis</h2>
+<p>The Kurtosis of a <em>all</em> normal distributions is 3.</p>
+<ul class="to-build simple">
+<li><em>Excess Kurtosis</em>, <span class="math">\(Kur - 3\)</span>, is a measure of the kurtosis of
+a distribution relative to that of a normal.</li>
+</ul>
+<ul class="to-build simple">
+<li>If excess kurtosis is positive, the distribution has heavier tails
+than a normal.</li>
+</ul>
+<ul class="to-build simple">
+<li>If excess kurtosis is negative, the distribution has lighter tails
+than a normal.</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="kurtosis-of-distribution">
+<h2>Kurtosis of <span class="math">\(t\)</span>-Distribution</h2>
+<p>Let <span class="math">\(t_{\nu}\)</span> denote a random variable that has a
+<span class="math">\(t\)</span>-distribution with <span class="math">\(\nu\)</span> degrees of freedom.</p>
+<ul class="to-build simple">
+<li>The kurtosis of <span class="math">\(t_{\nu}\)</span> exists only for <span class="math">\(\nu &gt; 4\)</span> and
+is equal to</li>
+</ul>
+<div class="to-build math">
+\[Kur(t_{\nu}) = 3 + \frac{6}{\nu-4}.\]</div>
+<ul class="to-build simple">
+<li>So, for a <span class="math">\(t_5\)</span>-distribution, the kurtosis is 9.</li>
+</ul>
+<ul class="to-build simple">
+<li>Clearly, as <span class="math">\(\nu \to \infty\)</span>, <span class="math">\(Kur(t_{\nu}) \to 3\)</span>,
+which is the kurtosis of a normal.</li>
+</ul>
+<ul class="to-build simple">
+<li>This makes sense because <span class="math">\(t_{\nu} \to \mathcal{N}(0,1)\)</span> as
+<span class="math">\(\nu \to \infty\)</span>.</li>
+</ul>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="kurtosis-example">
+<h2>Kurtosis Example</h2>
+<a class="reference internal image-reference" href="_images/tNormComp.png"><img alt="_images/tNormComp.png" class="align-center" src="_images/tNormComp.png" style="width: 8in;" /></a>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="sample-skewness-and-kurtosis">
+<h2>Sample Skewness and Kurtosis</h2>
+<p>Given realizations <span class="math">\(x_1, \ldots, x_n\)</span> of a random variable
+<span class="math">\(X\)</span>, skewness and kurtosis can be approximated by</p>
+<div class="to-build math">
+\[\widehat{SK} = \frac{1}{n} \sum_{i=1}^n \left(\frac{x_i -
+\bar{x}}{\hat{\sigma}}\right)^3\]</div>
+<div class="to-build math">
+\[\widehat{Kur} = \frac{1}{n} \sum_{i=1}^n \left(\frac{x_i -
+\bar{x}}{\hat{\sigma}}\right)^4.\]</div>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Sample Skewness and Kurtosis</h2>
+<p>Sample skewness and kurtosis can be used to diagnose normality.</p>
+<ul class="to-build simple">
+<li>However, sample skewness and kurtosis are heavily influenced by
+outliers.</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Sample Skewness and Kurtosis</h2>
+<ul class="simple">
+<li>Consider a random sample of 999 values drawn from a
+<span class="math">\(\mathcal{N}(0,1)\)</span> distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>The sample skewness and kurtosis are 0.0072 and 3.17, respectively.</li>
+</ul>
+<ul class="to-build simple">
+<li>These are close to the true values of 0 and 3.</li>
+</ul>
+<ul class="to-build simple">
+<li>If one outlier equal to 30 is added to the dataset, the sample
+skewness and kurtosis become 10.48 and 231.05, respectively.</li>
+</ul>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Sample Skewness and Kurtosis</h2>
+<a class="reference internal image-reference" href="_images/outlierNormQQ.png"><img alt="_images/outlierNormQQ.png" class="align-center" src="_images/outlierNormQQ.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="location-scale-and-shape-parameters">
+<h2>Location, Scale and Shape Parameters</h2>
+<ul class="simple">
+<li>A <em>location parameter</em> shifts a distribution to the right or left
+without changing the distribution's variability or shape.</li>
+</ul>
+<ul class="to-build simple">
+<li>A <em>scale parameter</em> changes the variability of a distribution
+without changing its location or shape.</li>
+</ul>
+<ul class="to-build simple">
+<li>A parameter is a scale parameter if it increases by <span class="math">\(|a|\)</span> when
+all data values are multiplied by <span class="math">\(a\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>A <em>shape</em> parameter is any parameter that is not changed by location
+and scale parameters.</li>
+</ul>
+<ul class="to-build simple">
+<li>Shape parameters dictate skewness and kurtosis.</li>
+</ul>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Location, Scale and Shape Parameters</h2>
+<p>Examples of location, scale and shape parameters:</p>
+<ul class="to-build simple">
+<li>The mean or median of any distribution are location parameters.</li>
+</ul>
+<ul class="to-build simple">
+<li>The standard deviation (alternatively, variance) or median absolute
+deviation of any distribution are scale parameters.</li>
+</ul>
+<ul class="to-build simple">
+<li>The degrees of freedom parameter of a <span class="math">\(t\)</span> distribution is a
+shape parameter.</li>
+</ul>
+
+<div class="slide-no">17</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Advanced Quantitative Methods',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

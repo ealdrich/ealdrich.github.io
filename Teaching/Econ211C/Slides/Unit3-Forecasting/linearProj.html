@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Linear Predictors &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Forecasting" href="../forecasting.html" />
+    <link rel="next" title="Forecasting ARMA Models" href="forecastARMA.html" />
+    <link rel="prev" title="Forecasting" href="../forecasting.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="linear-predictors">
+
+<h1>Linear Predictors</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="forecasting">
+
+<h2>Forecasting</h2>
+
+<p>Suppose we are interested in forecasting a random variable
+<span class="math">\(\smash{Y_{t+1}}\)</span> based on a set of variables
+<span class="math">\(\smash{\boldsymbol{X}_t}\)</span>.</p>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{X}_t}\)</span> might be comprised of
+<span class="math">\(\smash{m}\)</span> lags of <span class="math">\(\smash{Y_{t+1}}\)</span>:
+<span class="math">\(\smash{Y_t, Y_{t-1}, \ldots, Y_{t-m+1}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We can denote <span class="math">\(\smash{Y^*_{t+1|t}}\)</span> as the forecast of
+<span class="math">\(\smash{Y_{t+1}}\)</span> based on <span class="math">\(\smash{\boldsymbol{X}_t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We can choose <span class="math">\(\smash{Y^*_{t+1|t}}\)</span> to minimize some loss
+function, <span class="math">\(\smash{L\left(Y^*_{t+1|t}\right)}\)</span>, which evaluates
+the quality of <span class="math">\(\smash{Y^*_{t+1|t}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>A common choice is the quadratic loss function:</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+L\left(Y^*_{t+1|t}\right) &amp; = \text{E}\left[\left(Y_{t+1} -
+Y^*_{t+1|t}\right)^2\right].
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="mean-squared-error-loss">
+
+<h2>Mean Squared Error Loss</h2>
+
+<p>Quadratic loss is also known as <em>mean squared error</em>.</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+MSE\left(Y^*_{t+1|t}\right) &amp; = \text{E}\left[\left(Y_{t+1} -
+Y^*_{t+1|t}\right)^2\right].
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>The conditional expectation,
+<span class="math">\(\smash{\text{E}\left[Y_{t+1}|\boldsymbol{X}_t \right]}\)</span>
+minimizes <span class="math">\(\smash{MSE\left(Y^*_{t+1|t}\right)}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="mse-minimizer">
+
+<h2>MSE Minimizer</h2>
+
+<p>Let <span class="math">\(\smash{Y^*_{t+1|t} = g(\boldsymbol{X}_t)}\)</span>. Then</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\left[\left(Y_{t+1} -
+g(\boldsymbol{X}_t)\right)^2\right] &amp; = \text{E}\Big[\big(Y_{t+1} -
+\text{E}[Y_{t+1}|\boldsymbol{X}_t] \\
+&amp; \hspace{1in} + \text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+g(\boldsymbol{X}_t) \big)^2\Big] \\
+&amp; = \text{E}\left[\left(Y_{t+1} -
+\text{E}[Y_{t+1}|\boldsymbol{X}_t]\right)^2\right] \\
+&amp; \hspace{0.25in} +
+2\text{E}\Big[\big(Y_{t+1}-\text{E}[Y_{t+1}|\boldsymbol{X}_t]\big) \\
+&amp; \hspace{0.75in} \times
+\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big)\Big] \\
+&amp; \hspace{1in} +
+\text{E}\left[\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+g(\boldsymbol{X}_t)\big)^2\right]
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>MSE Minimizer</h2>
+
+<p>By the law of iterated expectations</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\Big[&amp;\big(Y_{t+1}-\text{E}[Y_{t+1}|\boldsymbol{X}_t]\big)
+\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big)\Big] \\
+&amp; \hspace{0.25in} = \text{E}\Big[ \text{E}\big[\left(Y_{t+1} -
+\text{E}[Y_{t+1}|\boldsymbol{X}_t]\right) \big| \boldsymbol{X}_t\big]
+\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big) \Big] \\
+&amp; \hspace{0.25in} = \text{E}\Big[
+\left(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - \text{E}[Y_{t+1}|\boldsymbol{X}_t]\right)
+\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big) \Big] \\
+&amp; \hspace{0.25in} = 0.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>This means that the second term of the equation on the previous
+slide is zero.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>MSE Minimizer</h2>
+
+<p>Substituting the previous result:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\left[\left(Y_{t+1} - g(\boldsymbol{X}_t)\right)^2\right] &amp; =
+\text{E}\left[\left(Y_{t+1} - \text{E}[Y_{t+1}|\boldsymbol{X}_t]\right)^2\right]
+\\
+&amp; \hspace{0.5in} +
+\text{E}\left[\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+g(\boldsymbol{X}_t)\big)^2\right]
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>Clearly the the <span class="math">\(\smash{MSE}\)</span> is minimized when</li>
+</ul>
+<div class="math">
+\[\smash{\text{E}\left[\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+g(\boldsymbol{X}_t)\big)^2\right] = 0.}\]</div>
+<ul class="simple">
+<li>This occurs when <span class="math">\(\smash{\text{E}[Y_{t+1}|\boldsymbol{X}_t] =
+g(\boldsymbol{X}_t)}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="linear-projection">
+
+<h2>Linear Projection</h2>
+
+<p>We can restrict our forecast to be a linear function of
+<span class="math">\(\smash{\boldsymbol{X}_t}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y^*_{t+1|t} &amp; = \boldsymbol{X}'_t \boldsymbol{\beta}.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>Let <span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span> be the value of
+<span class="math">\(\smash{\boldsymbol{\beta}}\)</span> so that the forecast error is
+<em>orthogonal</em> to or <em>uncorrelated</em> with
+<span class="math">\(\smash{\boldsymbol{X}_t}\)</span>:</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\Big[\boldsymbol{X}_t \underbrace{\left(Y_{t+1} - \boldsymbol{X}'_t
+\boldsymbol{\beta}^*\right)}_{\text{forecast error}} \Big] &amp; =
+\boldsymbol{0}.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>This is a <em>system</em> of equations.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span> minimizes the
+<span class="math">\(\smash{MSE}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Linear Projection</h2>
+
+<p>We can use the same steps as before to show that
+<span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span> minimizes <span class="math">\(\smash{MSE}\)</span>.</p>
+<ul class="simple">
+<li>Begin with an arbitrary linear forecasting rule,
+<span class="math">\(\smash{Y^*_{t+1|t} = \boldsymbol{X}'_t \boldsymbol{\gamma}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Show that</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+MSE\left( Y^*_{t+1|t} \right) &amp; =
+\text{E}\left[\left(Y_{t+1} - \boldsymbol{X}'_t \boldsymbol{\gamma}
+\right)^2\right] \\
+&amp; = \text{E}\left[\left(Y_{t+1} - \boldsymbol{X}'_t
+\boldsymbol{\beta}^* + \boldsymbol{X}'_t \boldsymbol{\beta}^* -
+\boldsymbol{X}'_t \boldsymbol{\gamma} \right)^2\right] \\
+&amp; = \text{E}\Big[\big(Y_{t+1} - \boldsymbol{X}'_t
+\boldsymbol{\beta}^*\big)^2\Big] + \text{E}\left[\left(\boldsymbol{X}'_t
+\boldsymbol{\beta}^* - \boldsymbol{X}'_t
+\boldsymbol{\gamma}\right)^2\right].
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>Hence, <span class="math">\(\smash{MSE}\)</span> is minimized when
+<span class="math">\(\smash{\boldsymbol{\gamma} = \boldsymbol{\beta}^*}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>Linear Projection</h2>
+
+<p><span class="math">\(\smash{Y^*_{t+1|t} = \boldsymbol{X}'_t \boldsymbol{\beta}^*}\)</span>
+is referred to as the <em>linear projection</em> of <span class="math">\(\smash{Y_{t+1}}\)</span>
+on <span class="math">\(\smash{\boldsymbol{X}_t}\)</span>.</p>
+<ul class="simple">
+<li>We will denote the linear projection as</li>
+</ul>
+<div class="math">
+\[\begin{equation*}
+\hat{P}(Y_{t+1}|\boldsymbol{X}_t) = \boldsymbol{X}'_t \boldsymbol{\beta}^*
+\,\,\,\,\,\,\, \text{or} \,\,\,\,\,\,\, \hat{Y}_{t+1|t} =
+\boldsymbol{X}'_t \boldsymbol{\beta}^*.
+\end{equation*}\]</div>
+<ul class="simple">
+<li>Clearly</li>
+</ul>
+<div class="math">
+\[\begin{equation*}
+MSE\left(\hat{P}(Y_{t+1}|\boldsymbol{X}_t)\right) \geq
+MSE\left(\text{E}[Y_{t+1}|\boldsymbol{X}_t]\right).
+\end{equation*}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="linear-projection-solution">
+
+<h2>Linear Projection Solution</h2>
+
+<p>Using the orthogonality condition:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\boldsymbol{\beta}^* &amp; = \text{E}\left[\boldsymbol{X}_t \boldsymbol{X}'_t\right]^{-1}
+\text{E}\left[\boldsymbol{X}_t Y_{t+1}\right].
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>Least squares projection is the sample analogue of the equation
+above.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="linear-projection-mse">
+
+<h2>Linear Projection MSE</h2>
+
+<p>Using our solution for <span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span>, we can
+solve for the MSE of the linear projection:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+MSE(Y^*_{t+1|t}) &amp; = \text{E}\left[\left(Y_{t+1}- \boldsymbol{X}'_t
+\boldsymbol{\beta}^*\right)^2\right] \\
+&amp; = \text{E}[Y^2_{t+1}] - 2\text{E}[Y_{t+1} \boldsymbol{X}'_t \boldsymbol{\beta}^*] +
+\text{E}[\boldsymbol{\beta}^{*'} \boldsymbol{X}_t \boldsymbol{X}'_t \boldsymbol{\beta}^*] \\
+&amp; = \text{E}[Y^2_{t+1}] - 2\text{E}[Y_{t+1} \boldsymbol{X}'_t] \text{E}\left[\boldsymbol{X}_t
+\boldsymbol{X}'_t\right]^{-1} \text{E}\left[\boldsymbol{X}_t Y_{t+1}\right] \\
+&amp; \hspace{0.85in} +
+\text{E}\left[Y_{t+1} \boldsymbol{X}'_t\right] \text{E}\left[\boldsymbol{X}_t
+\boldsymbol{X}'_t\right]^{-1} \text{E}[\boldsymbol{X}_t \boldsymbol{X}'_t] \\
+&amp; \hspace{1.6in} \times
+\text{E}\left[\boldsymbol{X}_t \boldsymbol{X}'_t\right]^{-1} \text{E}\left[\boldsymbol{X}_t
+Y_{t+1}\right] \\
+&amp; = \text{E}[Y^2_{t+1}] - \text{E}[Y_{t+1} \boldsymbol{X}'_t] \text{E}\left[\boldsymbol{X}_t
+\boldsymbol{X}'_t\right]^{-1} \text{E}\left[\boldsymbol{X}_t Y_{t+1}\right].
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="vector-linear-projection">
+
+<h2>Vector Linear Projection</h2>
+
+<p>Let <span class="math">\(\smash{\boldsymbol{Y}_{t+1}}\)</span> be an <span class="math">\(\smash{(n \times
+1)}\)</span> vector and <span class="math">\(\smash{\boldsymbol{X}_t}\)</span> an <span class="math">\(\smash{(m
+\times 1)}\)</span> vector.</p>
+<ul class="simple">
+<li>The linear projection of <span class="math">\(\smash{\boldsymbol{Y}_{t+1}}\)</span> on
+<span class="math">\(\smash{\boldsymbol{X}_t}\)</span> is</li>
+</ul>
+<div class="math">
+\[\begin{align*}
+\hat{P}(\boldsymbol{Y}'_{t+1}|\boldsymbol{X}_t) = \hat{\boldsymbol{Y}}'_{t+1|t}
+= \boldsymbol{X}'_t \boldsymbol{\beta}^*.
+\end{align*}\]</div>
+<p>where <span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span> is the <span class="math">\(\smash{(m \times n)}\)</span> matrix such that</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\Big[\boldsymbol{X}_t \left(\boldsymbol{Y}'_{t+1} - \boldsymbol{X}'_t
+\boldsymbol{\beta}^*\right)\Big] &amp; = \boldsymbol{0}.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>As in the univariate case</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+\boldsymbol{\beta}^* &amp; = \text{E}\left[\boldsymbol{X}_t \boldsymbol{X}'_t\right]^{-1}
+\text{E}\left[\boldsymbol{X}_t \boldsymbol{Y}'_{t+1}\right].
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

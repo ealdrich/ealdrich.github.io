@@ -1,0 +1,285 @@
+.. slideconf::
+
+==============================================================================
+Futures Markets
+==============================================================================
+
+
+Futures Contracts
+==============================================================================
+Futures contracts are forward contracts with the following
+differences:
+
+.. raw:: <!--pause-->
+
+- They are *exchange traded*.
+
+.. raw:: <!--pause-->
+
+- The contract is standardized (by the exchange).
+
+.. raw:: <!--pause-->
+
+- They are settled daily.
+
+
+Role of Exchanges
+==============================================================================
+Exchanged are centralized locations with the following features:
+
+.. raw:: <!--pause-->
+
+- They standardize contracts.
+  
+.. raw:: <!--pause-->
+
+- They aggregate supply and demand.
+
+.. raw:: <!--pause-->
+
+- They determine limitations on who can trade and how.
+
+.. raw:: <!--pause-->
+
+- They set limitations on borrowing and distribute risk by
+  requiring transactions to be routed through clearing houses.
+
+Exchanges
+==============================================================================
+`Major futures exchanges <http://bit.ly/1q8CJNi>`_ at present:
+
+.. raw:: <!--pause-->
+
+- `CME Group <http://www.cmegroup.com/>`_.
+
+.. raw:: <!--pause-->
+
+- `Intercontinental Exchange (ICE) <https://www.theice.com/index>`_.
+
+.. raw:: <!--pause-->
+
+- `Eurex <http://www.eurexchange.com/exchange-en/>`_.
+
+.. raw:: <!--pause-->
+
+- `National Stock Exchange of India <http://www.nseindia.com/>`_.
+
+Contract Specifications
+==============================================================================
+The futures exchange determines the following aspects of contracts:
+
+.. raw:: <!--pause-->
+
+- Price units.
+
+.. raw:: <!--pause-->
+
+- Price increments.
+
+.. raw:: <!--pause-->
+
+- Size units.
+
+.. raw:: <!--pause-->
+
+- When the contract trades.
+
+.. raw:: <!--pause-->
+
+- When the contract is settled.
+
+.. raw:: <!--pause-->
+
+- How the contract is settled.
+
+.. raw:: <!--pause-->
+
+- Margin.
+
+Example: E-mini S\&P 500 Contract
+==============================================================================
+The `E-mini S\&P 500 futures contract <http://bit.ly/Shu3DR>`_ is a
+contract on the S\&P 500 index.
+
+.. raw:: <!--pause-->
+
+- Note that the S\&P 500 is simply an index, not a traded asset.
+
+.. raw:: <!--pause-->
+
+- The price of the E-mini is quoted in S\&P 500 index points.
+
+.. raw:: <!--pause-->
+
+- The actual size of the contract is 50x the index.
+
+.. raw:: <!--pause-->
+
+- Margin for a single contract is \$5060.
+
+
+E-mini S\&P 500 Specifications
+==============================================================================
+.. image:: Futures/eminiSpecs1.png
+   :width: 6in
+   :align: center
+
+E-mini S\&P 500 Specifications
+==============================================================================
+.. image:: Futures/eminiSpecs2.png
+   :width: 6in
+   :align: center
+
+Futures Maturities
+==============================================================================
+Note that many futures contracts with different maturities on the same
+underlying can exist at the same time.
+
+.. raw:: <!--pause-->
+	 
+- For example, E-mini contracts expire on the third Friday of each
+  Mar/Jun/Sep/Dec.
+
+.. raw:: <!--pause-->
+
+- At any date, the next five contracts are available for trade.
+
+.. raw:: <!--pause-->
+
+- The contract closest to expiry is called the *front-month* contract
+  and is always the most liquid.
+  
+Delivery of Commodities
+==============================================================================
+For commodities, delivery is an important part of the specification.
+
+.. raw:: <!--pause-->
+
+- What type (grade) of the product can be delivered.
+
+.. raw:: <!--pause-->
+
+- Range of dates for delivery.
+
+Terminology
+==============================================================================
+- **Open interest**: Total number of contracts outstanding.
+
+.. raw:: <!--pause-->
+
+- **Trade volume**: The number of contracts traded.
+
+.. raw:: <!--pause-->
+
+- **Settlement price**: The last price before market close.
+
+.. raw:: <!--pause-->
+
+Volume vs. Open Interest
+==============================================================================
+- What is the difference between open interest and trade volume on a given day?
+
+.. raw:: <!--pause-->
+
+- When are trade occurs, what are the possible effects on open
+  interest?
+
+.. raw:: <!--pause-->
+
+- Can trade volume be greater than open interest during day?
+
+
+Margin
+==============================================================================
+When investors borrow money from a broker to purchase an asset, they
+are `buying on margin <http://bit.ly/1aJfOKG>`_.
+
+.. raw:: <!--pause-->
+
+- The *initial margin* is cash or marketable securities that an
+  investor gives to a broker in order to purchase an asset.
+
+.. raw:: <!--pause-->
+
+- The purchased securities are maintained in an account by the broker
+  and are monitored.
+
+  - Gains and losses on the securities are added to the value of the
+    account.
+
+.. raw:: <!--pause-->
+
+- The maintenance margin is a lower threshold for the value of the
+  account.
+
+  - When the value falls below, the investor must add cash or
+    securities up to initial margin.
+
+.. raw:: <!--pause-->
+
+- Margin accounts are typically settled daily.
+
+E-mini Margin
+==============================================================================
+For the E-mini:
+
+.. raw:: <!--pause-->
+
+- Initial margin is \$5225.
+
+.. raw:: <!--pause-->
+
+- Maintenance margin is \$4750.
+
+.. raw:: <!--pause-->
+
+- The settlement price on 6 April 2016 was 2060.25, or a notional
+  value of 50x2060.25 = \$103012.5.
+
+  - This implies a leverage ratio of
+    :math:`\smash{\frac{103012.5}{5225} = 19.71}`
+
+Example: Gold Futures
+==============================================================================
+Suppose that an investor buys two CME Group gold futures contracts
+(symbol `GC <http://bit.ly/23kLBhE>`_) for \$1450 (per troy ounce).
+
+.. raw:: <!--pause-->
+
+- Initially margin is \$6000 per contract.
+
+.. raw:: <!--pause-->
+
+- Maintenance margin is \$4500 per contract.
+
+.. raw:: <!--pause-->
+
+- The contract size is 100 troy ounces, which implies a notional value
+  of 1450*100 = \$145,000.
+
+.. raw:: <!--pause-->
+	 
+- The resulting leverage ratio is :math:`\smash{\frac{145000}{6000} =
+  24.17}`.
+
+Example: Gold Futures
+==============================================================================
+  .. image:: Futures/marginFlows.png
+     :width: 7.5in
+     :align: center
+
+
+
+.. Futures vs. Forwards
+.. ==============================================================================
+.. ====================================  ========================
+.. Forwards                              Futures
+.. ====================================  ========================
+.. Private contract between two parties  Exchange traded
+.. Non-standard contract                 Standard contract
+.. Usually one specified delivery date   Range of delivery dates
+.. Settled at end of contract            Settled daily
+.. Delivery usually occurs               Usually closed out early
+.. Some credit risk                      Virtually no credit risk
+.. ====================================  ========================
+

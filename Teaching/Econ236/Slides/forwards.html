@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Forward Contracts &mdash; Econ 236</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Econ 236" href="index.html" />
+    <link rel="next" title="Futures Markets" href="futures.html" />
+    <link rel="prev" title="Rates of Return" href="returns.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="forward-contracts">
+
+<h1>Forward Contracts</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-contract-definition">
+
+<h2>Forward Contract Definition</h2>
+
+<p><strong>Definition</strong>: A forward contract is an agreement to exchange an
+asset at a future date at a prespecified price.</p>
+<ul class="simple">
+<li>The contract settlement date is called the <em>expiration date</em>.</li>
+</ul>
+<ul class="simple">
+<li>The asset that is exchanged is called the <em>underlying asset</em>.</li>
+</ul>
+<ul class="simple">
+<li>The buyer holds the <em>long</em> position.</li>
+</ul>
+<ul class="simple">
+<li>The seller holds the <em>short</em> position.</li>
+</ul>
+<ul class="simple">
+<li>There is no initial payment or premium.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="delivery-and-settlement">
+
+<h2>Delivery and Settlement</h2>
+
+<p>There are two types of forward contract settlements.</p>
+<ul class="simple">
+<li><strong>Delivery</strong>: The long position pays the prespecified price to the
+short position, who delivers the asset.</li>
+</ul>
+<ul class="simple">
+<li><strong>Cash settlement</strong>: The long and short positions pay the net cash
+value to the other.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-example">
+
+<h2>Forward Example</h2>
+
+<p>Two parties contract to exchange a <span class="math notranslate nohighlight">\(\smash{\$100}\)</span> bond for
+<span class="math notranslate nohighlight">\(\smash{\$98}\)</span> at a future date.</p>
+<ul class="simple">
+<li>If the bond is worth <span class="math notranslate nohighlight">\(\smash{\$98.25}\)</span> at expiry, the short
+position pays <span class="math notranslate nohighlight">\(\smash{\$0.25}\)</span> to the long position at
+expiry.</li>
+</ul>
+<ul class="simple">
+<li>If the bond is worth <span class="math notranslate nohighlight">\(\smash{\$97.50}\)</span> at expiry, the long
+position pays <span class="math notranslate nohighlight">\(\smash{\$0.50}\)</span> to the short position at
+expiry.</li>
+</ul>
+<ul class="simple">
+<li>Cash-settled forwards are often called NDFs, or nondeliverable
+forwards.</li>
+</ul>
+<ul class="simple">
+<li>Usually, cash settlement is used for underlying assets that are
+difficult to exchange (think of a stock index).</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="market-prices">
+
+<h2>Market Prices</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/wsjFutures.png"><img alt="_images/wsjFutures.png" class="align-center" src="_images/wsjFutures.png" style="width: 8in;" /></a>
+</div></blockquote>
+<p>For current data, visit the <a class="reference external" href="http://www.wsj.com/mdc/public/page/mdc_commodities.html?refresh=on">WSJ</a>
+or <a class="reference external" href="http://www.cmegroup.com/market-data/volume-open-interest/exchange-volume.html">CME Group</a>
+homepages.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="early-termination">
+
+<h2>Early Termination</h2>
+
+<p>Suppose one party in a forward contract wishes to terminate early.</p>
+<ul class="simple">
+<li>She could engage in another forward contract on the opposite side.</li>
+</ul>
+<ul class="simple">
+<li>Depending on market conditions, the new contract may be written at a
+new price.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="early-termination-example">
+
+<h2>Early Termination Example</h2>
+
+<p>Suppose a trader enters a long forward contract position
+to exchange a barrel of crude oil on 13 Feb 2015 and decides to
+terminate the contract on 16 Feb 2015.</p>
+<ul class="simple">
+<li>On 13 Feb, the forward price is $52.78 per barrel.</li>
+</ul>
+<ul class="simple">
+<li>On 16 Feb, the forward price is $52.73 per barrel.</li>
+</ul>
+<ul class="simple">
+<li>She can write a forward contract for $52.73 on 16 Feb.</li>
+</ul>
+<ul class="simple">
+<li>Note that she takes a $0.05 loss and is still exposed to risk of
+default on two different contracts.</li>
+</ul>
+<ul class="simple">
+<li>Alternatively, she can ask her original counterparty to accept the
+present value of $0.05 to terminate.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="notation">
+
+<h2>Notation</h2>
+
+<p>We will use the following notation:</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{S_0}\)</span>: Spot price of the underlying asset today.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{F_0}\)</span>: Forward price of the underlying asset today.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{T}\)</span>: Time until delivery.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{r}\)</span>: Risk-free rate of interest for maturity <span class="math notranslate nohighlight">\(\smash{T}\)</span>.</li>
+</ul>
+<p>Note that any units (minutes, hours, days, weeks, months, years) may
+be used for <span class="math notranslate nohighlight">\(\smash{T}\)</span>, but that the interest rate,
+<span class="math notranslate nohighlight">\(\smash{r}\)</span>, must be adjusted accordingly.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-valuation">
+
+<h2>Forward Valuation</h2>
+
+<p>The price of a forward contract with maturity <span class="math notranslate nohighlight">\(\smash{T}\)</span> for an
+asset with price <span class="math notranslate nohighlight">\(\smash{S_0}\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+F_0 &amp; = S_0 e^{rT}.
+\end{align*}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{r}\)</span> is the risk-free interest rate over period
+<span class="math notranslate nohighlight">\(\smash{T}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math notranslate nohighlight">\(\smash{r}\)</span> is constant, <span class="math notranslate nohighlight">\(\smash{F_0}\)</span> is a
+deterministic function of the spot sprice, and has nothing to do
+with the unknown, future price of the asset.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{e^{rT}}\)</span> is known as the <em>basis</em>.</li>
+</ul>
+<ul class="simple">
+<li><strong>Intuition</strong>: the foward holder must pay the holder of the spot
+contract for interest that would have been earned.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-valuation-example">
+
+<h2>Forward Valuation Example</h2>
+
+<p>Suppose you would like to purchase a 3-month forward contract on
+Coca-Cola (<a class="reference external" href="http://yhoo.it/1pVyJAn">KO</a>) stock on 1 Mar 2016. What
+is the value of the forward (assuming the stock never pays dividends)?</p>
+<ul class="simple">
+<li>Set <span class="math notranslate nohighlight">\(\smash{T = 0.25}\)</span> (i.e. time units of 1 year).</li>
+</ul>
+<ul class="simple">
+<li>Use <a class="reference external" href="http://yhoo.it/1Ro1Qq4">Yahoo Finance</a> to determine
+<span class="math notranslate nohighlight">\(\smash{S_0 = \$43.35}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Use <a class="reference external" href="http://bit.ly/1UqSs7E">Quandl</a> to determine the (annualized)
+yield on the 3-month U.S. Treasury Bill: <span class="math notranslate nohighlight">\(\smash{r =
+0.0033}\)</span>.</li>
+</ul>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+F_0 &amp; = S_0 e^{rT} = \$43.35 e^{0.0033 \times 0.25} = \$43.39.
+\end{align*}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-valuation-with-income">
+
+<h2>Forward Valuation with Income</h2>
+
+<p>Suppose the underlying asset provides income with present value
+<span class="math notranslate nohighlight">\(\smash{I}\)</span>.</p>
+<ul class="simple">
+<li>This may be a single payment or a stream of payments, all
+appropriately discounted:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+I &amp; = \frac{d}{1+\frac{r}{m}} +
+\frac{d}{\left(1+\frac{r}{m}\right)^2} + \cdots +
+\frac{d}{\left(1+\frac{r}{m}\right)^{mT}}.
+\end{align*}\]</div>
+<ul class="simple">
+<li>This assumes <span class="math notranslate nohighlight">\(\smash{m}\)</span> equally spaced payments of equal size
+during interval <span class="math notranslate nohighlight">\(\smash{T}\)</span>.</li>
+</ul>
+<p>The value of a forward contract is now:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+F_0 &amp; = (S_0 - I) e^{rT}.
+\end{align*}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-valuation-with-yield">
+
+<h2>Forward Valuation with Yield</h2>
+
+<p>Suppose the underlying asset provides income yield (continuously
+compounded) <span class="math notranslate nohighlight">\(\smash{q}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+F_0 &amp; = S_0 e^{(r-q)T}.
+\end{align*}\]</div>
+<ul class="simple">
+<li><strong>Intuition</strong>: the holder of the spot contract now pays interest
+(implicitly), but earns income. The foward holder must compensate
+the spot holder for interest, net of income earned over period
+<span class="math notranslate nohighlight">\(\smash{T}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-valuation-with-yield-example">
+
+<h2>Forward Valuation with Yield Example</h2>
+
+<p>Reconsider the previous example for Coca-Cola stock.</p>
+<ul class="simple">
+<li>Now assume that KO has an annualized dividend yield of 3%.</li>
+</ul>
+<p>The forward price is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+F_0 &amp; = S_0 e^{(r-q)T} \\
+&amp; = \$43.35 e^{(0.0033 - 0.03) \times 0.25} \\
+&amp; = \$43.06.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-valuation-for-currency">
+
+<h2>Forward Valuation for Currency</h2>
+
+<p>Suppose the underlying asset is a currency, and that the risk-free
+interest rate in the foreign market is <span class="math notranslate nohighlight">\(\smash{r_f}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+F_0 &amp; = S_0 e^{(r-r_f)T}.
+\end{align*}\]</div>
+<ul class="simple">
+<li>The foreign interest is income and the rate is the income yield.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="curreny-forward-example">
+
+<h2>Curreny Forward Example</h2>
+
+<p>What is the value of a 6-month forward contract for Canadian dollars
+(CAD) on 1 Mar 2016?</p>
+<ul class="simple">
+<li>Set <span class="math notranslate nohighlight">\(\smash{T = 0.5}\)</span> (i.e. time units of 1 year).</li>
+</ul>
+<ul class="simple">
+<li>Use <a class="reference external" href="http://bit.ly/1RwxRIY">Quandl</a> to determine the spot exchange
+rate for USD/CAD: <span class="math notranslate nohighlight">\(\smash{S_0 = \$1.34}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Use <a class="reference external" href="http://bit.ly/1ShZeq6">Quandl</a> to determine the (annualized)
+yield on the 3-month Canadian Treasury Bill: <span class="math notranslate nohighlight">\(\smash{r_f =
+0.0047}\)</span>. We already determined that <span class="math notranslate nohighlight">\(\smash{r = 0.0033}\)</span>.</li>
+</ul>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+F_0 &amp; = S_0 e^{(r-r_f)T} = \$1.34 e^{(0.0033 - 0.0047) \times 0.5}
+= \$1.339.
+\end{align*}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-valuation-for-commodities">
+
+<h2>Forward Valuation for Commodities</h2>
+
+<p>Suppose that the underlying is a physical asset that must be
+stored. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+F_0 &amp; = (S_0 + U) e^{rT}.
+\end{align*}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+F_0 &amp; = S_0 e^{(r+u)T}.
+\end{align*}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{U}\)</span> is the present value of storage costs.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{u}\)</span> is the annual storage cost expressed as a fraction
+of commodity value.</li>
+</ul>
+<ul class="simple">
+<li>Note that storage costs are like negative income.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="cost-of-carry">
+
+<h2>Cost of Carry</h2>
+
+<p>The foregoing compounding rates are referred to as <em>the cost of
+carry</em>, <span class="math notranslate nohighlight">\(\smash{c}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+F_0 &amp; = S_0 e^{cT}.
+\end{align*}\]</div>
+<ul class="simple">
+<li>The cost of carry includes interest rate and storage costs, minus
+income.</li>
+</ul>
+<ul class="simple">
+<li>For a stock index that pays a dividend yield, <span class="math notranslate nohighlight">\(\smash{c =
+r-q}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>For a foreign currency, <span class="math notranslate nohighlight">\(\smash{c = r - r_f}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>For a commodity that provides income, <span class="math notranslate nohighlight">\(\smash{c = r - q +
+u}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

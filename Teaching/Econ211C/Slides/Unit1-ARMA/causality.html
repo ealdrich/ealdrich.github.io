@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Causality and Invertibility &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Linear Time Series Models" href="../linearTS.html" />
+    <link rel="next" title="Estimation" href="../estimation.html" />
+    <link rel="prev" title="ARMA Processes" href="arma.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="causality-and-invertibility">
+
+<h1>Causality and Invertibility</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="causality">
+
+<h2>Causality</h2>
+
+<p>Suppose <span class="math">\(\smash{\{Y_t\}}\)</span> is an <span class="math">\(\smash{AR(1)}\)</span> process:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_t &amp; = \phi Y_{t-1} + \varepsilon_t.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>We have shown that when <span class="math">\(\smash{|\phi| &lt; 1}\)</span>,
+<span class="math">\(\smash{\{Y_t\}}\)</span> is stationary.</li>
+</ul>
+<ul class="simple">
+<li>What if <span class="math">\(\smash{|\phi| &gt; 1}\)</span>?</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Causality</h2>
+
+<p>Let's run the <span class="math">\(\smash{AR}\)</span> recursion forward:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_{t-1} &amp; = \frac{1}{\phi} Y_t - \frac{1}{\phi} \varepsilon_t =
+\frac{1}{\phi} \left(\frac{1}{\phi} Y_{t+1} - \frac{1}{\phi}
+\varepsilon_{t+1}\right) - \frac{1}{\phi} \varepsilon_t \\
+&amp; = - \frac{1}{\phi} \varepsilon_t - \left(\frac{1}{\phi}\right)^2
+\varepsilon_{t+1} + \left(\frac{1}{\phi}\right)^2 Y_{t+1} \\
+&amp; \vdots \\
+&amp; = - \sum_{j=0}^{\infty} \left(\frac{1}{\phi}\right)^{j+1}
+\varepsilon_{t+j} \\
+&amp; = - \left(\sum_{j=0}^{\infty} \left(\frac{1}{\phi}\right)^{j+1}
+L^{-j}\right) \varepsilon_t.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Causality</h2>
+
+<p>The previous sum converges, so <span class="math">\(\smash{Y_t}\)</span> is stationary.</p>
+<ul class="simple">
+<li>However it is not a function of past <span class="math">\(\smash{\varepsilon_t}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Causality</h2>
+
+<p>A process <span class="math">\(\smash{\{X_t\}}\)</span> is a causal function of
+<span class="math">\(\smash{\{W_t\}}\)</span> if <span class="math">\(\smash{\exists \psi(L) = \psi_0 +
+\psi_1L^1 + \ldots}\)</span> such that <span class="math">\(\smash{x_t = \psi(L) w_t}\)</span> and
+<span class="math">\(\smash{\sum_{j=0}^{\infty} |\psi_j| &lt; \infty}\)</span>.</p>
+<ul class="simple">
+<li>An <span class="math">\(\smash{AR(1)}\)</span> is causal only if <span class="math">\(\smash{|\phi|
+&lt; 1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>However it is stationary as long as <span class="math">\(\smash{|\phi|
+\neq 1}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="causality-of">
+
+<h2>Causality of <span class="math">\(\smash{AR(p)}\)</span></h2>
+
+<p>Suppose <span class="math">\(\smash{\{Y_t\}}\)</span> is an <span class="math">\(\smash{AR(p)}\)</span> process
+with lag polynomial <span class="math">\(\smash{\phi(L)}\)</span>.</p>
+<ul class="simple">
+<li>If all roots of <span class="math">\(\smash{\phi(L)}\)</span> are inside or outside the
+unit circle, <span class="math">\(\smash{\{Y_t\}}\)</span> is stationary.</li>
+</ul>
+<ul class="simple">
+<li>If any root of <span class="math">\(\smash{\phi(L)}\)</span> is on the unit circle,
+<span class="math">\(\smash{\{Y_t\}}\)</span> is not stationary.</li>
+</ul>
+<ul class="simple">
+<li>If all roots of <span class="math">\(\smash{\phi(L)}\)</span> are outside the unit circle,
+<span class="math">\(\smash{\phi(L)^{-1}}\)</span> exists and <span class="math">\(\smash{\{Y_t\}}\)</span> is
+stationary and causal.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="invertibility">
+
+<h2>Invertibility</h2>
+
+<p>Suppose <span class="math">\(\smash{\{Y_t\}}\)</span> is an <span class="math">\(\smash{MA(q)}\)</span> process:</p>
+<div class="math">
+\[\smash{Y_t = \mu + \theta(L) \varepsilon_t,}\]</div>
+<p>where <span class="math">\(\smash{\theta(L) = 1+\theta_1 L^1 + \ldots + \theta_q
+L^q}\)</span>.</p>
+<ul class="simple">
+<li>We say <span class="math">\(\smash{\{Y_t\}}\)</span> is <em>invertible</em> if
+<span class="math">\(\smash{\theta(L)^{-1}}\)</span> exists.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>Invertibility</h2>
+
+<p>The <span class="math">\(\smash{MA(q)}\)</span> lag polynomial can be factored as</p>
+<div class="math">
+\[\smash{\theta(L) = 1+\theta_1 L^1 + \ldots + \theta_q L^q =
+(1-\eta_1 L)\cdots(1-\eta_q L).}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{\left\{\frac{1}{\eta_i}\right\}_{i=1}^q}\)</span> are the
+roots of <span class="math">\(\smash{\theta(L)}\)</span>.</li>
+</ul>
+<p>Suppose <span class="math">\(\smash{|\eta_i| &lt; 1 \,\, \forall i}\)</span>. Then</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+(1-\eta_i L)^{-1} &amp; = \sum_{j=0}^{\infty} \eta^j_i L^j \,\,\,\,
+\forall i \\
+\theta(L)^{-1} &amp; = \left(\sum_{j=0}^{\infty} \eta^j_1 L^j\right)
+\cdots \left(\sum_{j=0}^{\infty} \eta^j_q L^j\right).
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="stationarity-invertibility">
+
+<h2>Stationarity/Invertibility</h2>
+
+<p>We previously showed that an <span class="math">\(\smash{MA(q)}\)</span> is <em>always</em>
+stationary, regardless of the roots of <span class="math">\(\smash{\theta(L)}\)</span>.</p>
+<ul class="simple">
+<li>It is only invertible if all of the roots of
+<span class="math">\(\smash{\theta(L)}\)</span> lie outside the unit circle.</li>
+</ul>
+<ul class="simple">
+<li>In this case</li>
+</ul>
+<div class="math">
+\[\smash{\varepsilon_t = \theta(L)^{-1} Y_t}.\]</div>
+<ul class="simple">
+<li>That is, <span class="math">\(\smash{\{\varepsilon_t\}}\)</span> is a causal function of
+<span class="math">\(\smash{\{Y_t\}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="inverting-an">
+
+<h2>Inverting an <span class="math">\(\smash{MA(q)}\)</span></h2>
+
+<p>Given an <span class="math">\(\smash{MA(q)}\)</span> process,</p>
+<div class="math">
+\[\smash{Y_t = \mu + \theta(L) \varepsilon_t, \,\,\,\, \varepsilon_t
+\stackrel{i.i.d.}{\sim} WN(0,\sigma^2)},\]</div>
+<p>suppose, without loss of generality,</p>
+<ul class="simple">
+<li><span class="math">\(\smash{|\eta_i| &lt; 1}\)</span> for <span class="math">\(\smash{i=1,\ldots,m}\)</span></li>
+<li><span class="math">\(\smash{|\eta_i| &gt; 1}\)</span> for <span class="math">\(\smash{i=m+1,\ldots,q}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id5">
+
+<h2>Inverting an <span class="math">\(\smash{MA(q)}\)</span></h2>
+
+<p>Create a new process</p>
+<div class="math">
+\[\smash{\widetilde{Y}_t = \mu + \tilde{\theta}(L) \tilde{\varepsilon}_t,
+\,\,\,\, \tilde{\varepsilon}_t \stackrel{i.i.d.}{\sim}
+WN(0,\sigma^2 \eta^2_{m+1} \cdots \eta^2_q),}\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\tilde{\theta}(L) &amp; = 1+\tilde{\theta}_1 L^1 + \ldots +
+\tilde{\theta}_q L^q \\
+&amp; = \left(1-\eta_1 L\right) \cdots
+\left(1-\eta_mL\right) \cdot \left(1-\frac{1}{\eta_{m+1}}L\right)
+\cdots \left(1 - \frac{1}{\eta_q}L\right).
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id6">
+
+<h2>Inverting an <span class="math">\(\smash{MA(q)}\)</span></h2>
+
+<p>It can be shown that <span class="math">\(\smash{\widetilde{Y}_t}\)</span> has the same first
+and second moments as <span class="math">\(\smash{Y_t}\)</span>.</p>
+<ul class="simple">
+<li><span class="math">\(\smash{\widetilde{Y}_t}\)</span> is known as the invertible represenation
+of the <span class="math">\(\smash{MA(q)}\)</span> process.</li>
+</ul>
+<ul class="simple">
+<li>Note that every <span class="math">\(\smash{MA(q)}\)</span> process has an invertible
+representation so long as none of the roots of
+<span class="math">\(\smash{\theta(L)}\)</span> lie on the unit circle.</li>
+</ul>
+<ul class="simple">
+<li>If an invertible representation exists, it is unique.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="causality-and-invertibility-of-an">
+
+<h2>Causality and Invertibility of an <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<p>The notions of stationarity, causality and invertibility extend to an
+<span class="math">\(\smash{ARMA(p,q)}\)</span> process:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\phi(L) Y_t &amp; = c + \theta(L) \varepsilon_t.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>If none of the roots of <span class="math">\(\smash{\phi(L)}\)</span> lie on the unit
+circle, <span class="math">\(\smash{\{Y_t\}}\)</span> is stationary.</li>
+</ul>
+<ul class="simple">
+<li>If all of the roots of <span class="math">\(\smash{\phi(L)}\)</span> lie outside the unit
+circle, <span class="math">\(\smash{\{Y_t\}}\)</span> is causal.</li>
+</ul>
+<ul class="simple">
+<li>If none of the roots of <span class="math">\(\smash{\theta(L)}\)</span> lie on the unit
+circle, <span class="math">\(\smash{\{Y_t\}}\)</span> has a unique invertible
+representation.</li>
+</ul>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

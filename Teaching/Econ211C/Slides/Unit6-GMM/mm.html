@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Method of Moments &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Generalized Method of Moments" href="../gmmIndex.html" />
+    <link rel="next" title="Generalized Method of Moments" href="gmm.html" />
+    <link rel="prev" title="Generalized Method of Moments" href="../gmmIndex.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="method-of-moments">
+
+<h1>Method of Moments</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Method of Moments</h2>
+
+<p>Suppose <span class="math">\(\smash{\{y_{t}\}_{t=1}^{T}}\)</span> is an i.i.d. sample of
+random variable <span class="math">\(\smash{Y}\)</span> from density
+<span class="math">\(\smash{f_{Y}(y|\boldsymbol{\theta})}\)</span>.</p>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{\theta}}\)</span> is a <span class="math">\(\smash{(k \times
+1)}\)</span> dimensional vector of parameters.</li>
+</ul>
+<p>Suppose <span class="math">\(\smash{k}\)</span> population moments can be written as
+functions of <span class="math">\(\smash{\boldsymbol{\theta}}\)</span>:</p>
+<div class="math">
+\[\smash{E[Y_{t}^{i}] = \mu_{i}(\boldsymbol{\theta}), \,\,\, i =
+i_{1}, i_{2}, \ldots , i_{k}.}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Method of Moments</h2>
+
+<p>The method of moments estimator,
+<span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{mm}}\)</span>, of
+<span class="math">\(\smash{\boldsymbol{\theta}}\)</span> is the value:</p>
+<div class="math">
+\[\smash{\mu_{i}(\hat{\theta}_{mm}) =  \frac{1}{T}
+\sum_{t=1}^{T} y_{t}^{i}, \,\,\, i = i_{1}, i_{2},\ldots,i_{k}}.\]</div>
+<ul class="simple">
+<li>Note that if you need to estimate <span class="math">\(\smash{k}\)</span> parameters, you
+must specify exactly <span class="math">\(\smash{k}\)</span> moments.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="example-normal">
+
+<h2>Example: Normal</h2>
+
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{\theta} = (\mu,\sigma^{2})'}\)</span></li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{k = 2}\)</span></li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{E[Y^{1}] = \mu}\)</span></li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{E[Y^{2}] = Var(Y) + E[Y]^{2} = \sigma^{2} + \mu^2}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="example-beta-distribution">
+
+<h2>Example: Beta Distribution</h2>
+
+<p>Suppose <span class="math">\(\smash{Y\sim \text{Beta}(\alpha,\beta)}\)</span>:</p>
+<div class="math">
+\[\smash{f_{Y}(y|\alpha,\beta) =  \frac{\Gamma(\alpha +
+\beta)}{\Gamma(\alpha)\Gamma(\beta)}y^{\alpha-1}(1-y)^{\beta-1}}.\]</div>
+<p>In this case, <span class="math">\(\smash{\boldsymbol{\theta} = (\alpha,\beta)'}\)</span>
+and:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mu_{1} &amp; = E[Y^{1}] =  \frac{\alpha}{\alpha + \beta} \\
+\sigma^{2} &amp; = Var(Y) = \frac{\alpha \beta}{(\alpha +
+\beta)^{2}(\alpha + \beta + 1)} \\
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Example: Beta Distribution</h2>
+
+<div class="math">
+\[\begin{split}\begin{align}
+\implies \mu_{2} &amp; = E[Y^{2}] \\
+&amp; = Var(Y) + E[Y^{1}]^{2} \\
+&amp; = \frac{\alpha \beta}{(\alpha + \beta)^{2}(\alpha + \beta + 1)} +
+\frac{\alpha^{2}}{(\alpha + \beta)^{2}} \\
+&amp; = \frac{\alpha \beta + \alpha^{2}(\alpha + \beta +1)}{(\alpha +
+\beta)^{2}(\alpha + \beta + 1)}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>Example: Beta Distribution</h2>
+
+<p>Solve for <span class="math">\(\smash{\beta}\)</span> using <span class="math">\(\smash{\mu_{1}}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+\alpha = \mu_{1}(\alpha + \beta) \\
+\implies \alpha = \mu_{1}\alpha + \mu_{1}\beta \\
+\implies \alpha(1-\mu_{1}) = \mu_{1}\beta \\
+\implies \beta =  \frac{\alpha(1-\mu_{1})}{\mu_{1}}.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id5">
+
+<h2>Example: Beta Distribution</h2>
+
+<p>From the relationship <span class="math">\(\smash{\alpha = \mu_{1}(\alpha + \beta)}\)</span>
+we have:</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+(\alpha + \beta) = \frac{\alpha}{\mu_{1}} \\
+(\alpha + \beta +1) =  \frac{\alpha}{\mu_{1}} +  1 =
+\frac{\alpha + \mu_{1}}{\mu_{1}}.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id6">
+
+<h2>Example: Beta Distribution</h2>
+
+<p>Now substitute for <span class="math">\(\smash{\beta}\)</span>,
+<span class="math">\(\smash{(\alpha+\beta)}\)</span> and <span class="math">\(\smash{(\alpha+\beta+1)}\)</span> in
+<span class="math">\(\smash{\mu_{2}}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mu_{2} &amp; = \frac{\alpha^{2}\left(
+\frac{1-\mu_{1}}{\mu_{1}}\right) + \alpha^{2}\left( \frac{\alpha
++\mu_{1}}{\mu_{1}}\right)}{ \frac{\alpha^{2}}{\mu^2_{1}}\cdot
+\frac{\alpha + \mu_{1}}{\mu_{1}}} \\
+&amp; =  \frac{1 - \mu_{1} + \alpha + \mu_{1}}{ \frac{\alpha +
+\mu_{1}}{\mu_{1}^{2}}} \\
+&amp; = \frac{(1+\alpha)\mu_{1}^{2}}{\alpha + \mu_{1}}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id7">
+
+<h2>Example: Beta Distribution</h2>
+
+<div class="math">
+\[\begin{split}\begin{align}
+\implies \alpha \mu_{2} + \mu_{1}\mu_{2} &amp; = \mu_{1}^{2}+\alpha
+\mu_{1}^{2} \\
+\implies \alpha(\mu_{2}-\mu_{1}^{2}) &amp; = \mu_{1}^{2} -
+\mu_{1}\mu_{2} \\
+\implies \alpha =  \frac{\mu_{1}^{2} -
+\mu_{1}\mu_{2}}{\underset{\sigma^{2}}{\underbrace{\mu_{2}-\mu_{1}^{2}}}}
+&amp; = \frac{\mu_{1}^{2} - \mu_{1}\mu_{2} + \mu_{1}^{3} -
+\mu_{1}^{3}}{\sigma^{2}} \\
+&amp; = \frac{\mu_{1}^{2}(1-\mu_{1}) -
+\mu_{1}\overset{\sigma^{2}}{\overbrace{(\mu_{2}-\mu_{1}^{2})}}}{\sigma^{2}}
+\\
+&amp; = \frac{\mu_{1}^{2}(1-\mu_{1})}{\sigma^{2}}-\mu_{1}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id8">
+
+<h2>Example: Beta Distribution</h2>
+
+<p>Thus,</p>
+<div class="math">
+\[\smash{\beta =  \frac{\alpha(1-\mu_{1})}{\mu_{1}} =
+\frac{\mu_{1}(1-\mu_{1})^{2}}{\sigma^{2}} - (1-\mu_{1})}.\]</div>
+<p>The result is,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\hat{\alpha}_{mm} &amp; =
+\frac{\hat{\mu}_{1}^{2}(1-\hat{\mu}_{1})}{\hat{\sigma^{2}}} -
+\hat{\mu}_{1} \\
+\hat{\beta}_{mm} &amp; =
+\frac{\hat{\mu}_{1}(1-\hat{\mu}_{1})^{2}}{\hat{\sigma^{2}}} -
+(1-\hat{\mu}_{1}).
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id9">
+
+<h2>Example: Beta Distribution</h2>
+
+<p>Where,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\hat{\mu}_{1} &amp; = \frac{1}{T}  \sum_{t=1}^{T} y_{t} \\
+\hat{\mu}_{2} &amp; = \frac{1}{T}  \sum_{t=1}^{T} y_{t}^{2} \\
+\hat{\sigma}^{2} &amp; = \hat{\mu}_{2} - \hat{\mu}_{1}^{2}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="example-t-distribution">
+
+<h2>Example: t distribution</h2>
+
+<p>Suppose <span class="math">\(\smash{Y\sim t(\nu)}\)</span>:</p>
+<div class="math">
+\[\smash{f_{Y}(y|\nu) =  \frac{\Gamma \left( \frac{\nu +
+1}{2}\right)}{(\pi \nu)^{1/2}\Gamma \left( \frac{\nu}{2}\right)}
+\left(1 +  \frac{y^{2}}{\nu}\right)^{-\frac{\nu +1}{2}}}.\]</div>
+<p>In this case <span class="math">\(\smash{\boldsymbol{\theta} = \nu}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="id10">
+
+<h2>Example: t distribution</h2>
+
+<p>If <span class="math">\(\smash{\nu &gt; 2}\)</span>,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mu_{2} &amp; = \frac{\nu}{\nu -2} \\
+\implies \nu &amp; = \nu \mu_{2} - 2\mu_{2} \\
+\implies \nu &amp; = \frac{2 \mu_{2}}{\mu_{2} - 1} \\
+\implies \hat{\nu}_{mm} &amp; = \frac{2 \hat{\mu}_{2}}{\hat{\mu}_{2}
+-1},
+\end{align}\end{split}\]</div>
+<p>where</p>
+<div class="math">
+\[\smash{\hat{\mu}_{2} =  \frac{1}{T}  \sum_{t=1}^{T} y_{t}^{2}}.\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

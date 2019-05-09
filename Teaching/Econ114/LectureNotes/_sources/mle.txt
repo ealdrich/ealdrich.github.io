@@ -1,0 +1,777 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Maximum Likelihood Estimation
+==============================================================================
+
+
+Estimating Parameters of Distributions
+==============================================================================
+We almost never know the true distribution of a data sample.
+
+.. rst-class:: to-build
+
+- We might hypothesize a family of distributions that capture broad
+  characteristics of the data (locations, scale and shape).  
+
+.. rst-class:: to-build
+
+- However, there may be a set of one or more parameters of the
+  distribution that we don't know.
+
+.. rst-class:: to-build
+
+- Typically we use the data to estimate the unknown parameters.
+
+
+
+Joint Densities
+==============================================================================
+Suppose we have a collection of random variables :math:`{\bf Y} =
+(Y_1, \ldots, Y_n)'`.
+
+.. rst-class:: to-build
+
+- We view a data sample of size :math:`n` as one realization of each
+  random variable: :math:`{\bf y} = (y_1, \ldots, y_n)'`.
+
+.. rst-class:: to-build
+  
+- The *joint cumulative density* of :math:`{\bf Y}` is
+
+.. rst-class:: to-build
+
+.. math::
+
+   F_{{\bf Y}}({\bf y}) & = P(Y_1 \leq y_1, \ldots, Y_n \leq
+   y_n).
+
+
+
+Joint Densities
+==============================================================================
+- The *joint probability density* of :math:`{\bf Y}` is
+
+.. math::
+
+   f_{{\bf Y}}({\bf y}) & = \frac{\partial^n
+   F_{{\bf Y}}({\bf y})}{\partial Y_1 \ldots \partial Y_n}.
+
+.. rst-class:: to-build
+
+since
+
+.. rst-class:: to-build
+
+.. math::
+
+   F_{{\bf Y}}({\bf y})& = \int_{-\infty}^{y_1}\ldots
+   \int_{-\infty}^{y_n} f_{{\bf Y}}({\bf a}) \,\, da_1 \ldots
+   da_n.
+
+
+
+Independence
+==============================================================================
+When :math:`Y_1, \ldots, Y_n` are independent of each other and have
+identical distributions:
+
+.. rst-class:: to-build
+
+- We say that they are *independent and identically distributed*, or
+  i.i.d.
+
+.. rst-class:: to-build
+
+- When :math:`Y_1, \ldots, Y_n` are i.i.d., they have the same
+  marginal densities:
+
+.. rst-class:: to-build
+
+.. math::
+
+   f_{Y_1}(y) & = \ldots = f_{Y_n}(y).
+
+
+
+Independence
+==============================================================================
+Further, when :math:`Y_1, \ldots, Y_n` are i.i.d.
+
+.. math::
+
+   f_{{\bf Y}}({\bf y}) & = f_{Y_1}(y_1) \cdot f_{Y_2}(y_2)
+   \cdots f_{Y_n}(y_n) = \prod_{i=1}^n f_{Y_i}(y_i).
+
+.. rst-class:: to-build
+
+- This is analogous to the computation of joint probabilities.
+
+.. rst-class:: to-build
+
+- For independent events :math:`A`, :math:`B` and :math:`C`,
+
+.. rst-class:: to-build
+
+.. math::
+
+   P(A \cap B \cap C) & = P(A)P(B)P(C).
+
+
+
+Maximum Likelihood Estimation
+==============================================================================
+One of the most important and powerful methods of parameter estimation
+is *maximum likelihood estimation*.  It requires
+
+.. rst-class:: to-build
+
+- A data sample: :math:`{\bf y} = (y_1, \ldots, y_n)'`.
+
+.. rst-class:: to-build
+
+- A joint probability density:
+
+.. rst-class:: to-build
+
+.. math::
+
+   f_{{\bf Y}}({\bf y}|{\bf \theta}) & = \prod_{i=1}^n
+   f_{Y_i}(y_i|{\bf \theta}).
+
+.. rst-class:: to-build
+
+where :math:`{\bf \theta}` is a vector of parameters.
+
+
+
+Likelihood
+==============================================================================
+:math:`f_{{\bf Y}}({\bf y}|{\bf \theta})` is loosely interpreted
+as the probability of observing data sample :math:`{\bf y}`, given a
+functional form for the density of :math:`Y_1, \ldots, Y_n` and given
+a set of parameters :math:`{\bf \theta}`.  
+
+.. rst-class:: to-build
+
+- We can reverse the notion and think of :math:`{\bf y}` as being
+  fixed and :math:`{\bf \theta}` some unknown variable. 
+  
+.. rst-class:: to-build
+
+- In this case we write :math:`\mathcal{L}({\bf \theta}|{\bf y}) =
+  f_{{\bf Y}}({\bf y}|{\bf \theta})`.  
+
+.. rst-class:: to-build
+
+- We refer to :math:`\mathcal{L}({\bf \theta}|{\bf y})` as the
+  likelihood.  
+
+.. rst-class:: to-build
+
+- Fixing :math:`{\bf y}`, maximum likelihood estimation chooses the
+  value of :math:`{\bf \theta}` that maximizes
+  :math:`\mathcal{L}({\bf \theta}|{\bf y}) =
+  f_{{\bf Y}}({\bf y}|{\bf \theta})`.
+
+
+
+
+Likelihood Maximization
+==============================================================================
+Given :math:`{\bf \theta} = (\theta_1, \ldots, \theta_p)'`, we
+maximize :math:`\mathcal{L}({\bf \theta}|{\bf y})` by  
+
+.. rst-class:: to-build
+
+- Differentiating with respect to each :math:`\theta_i`, :math:`i = 1,
+  \ldots, p`.
+
+.. rst-class:: to-build
+
+- Setting the resulting derivatives equal to zero.  
+
+.. rst-class:: to-build
+
+- Solving for the values :math:`\hat{\theta}_i`, :math:`i = 1, \ldots,
+  p`, that make all of the derivatives zero.
+
+
+
+
+Log Likelihood
+==============================================================================
+It is often easier to work with the logarithm of the likelihood
+function.
+
+.. rst-class:: to-build
+
+- By the properties of logarithms 
+
+.. rst-class:: to-build
+
+.. math::
+
+   \ell({\bf \theta}|{\bf y}) & =
+   \log\left(\mathcal{L}({\bf \theta}|{\bf y})\right)
+
+.. rst-class:: to-build
+
+.. math::
+
+   \qquad \enspace & = \log \left(f_{{\bf Y}}({\bf y}|{\bf \theta})\right)
+
+.. rst-class:: to-build
+
+.. math::
+
+   \qquad \enspace \qquad & = \log \left(\prod_{i=1}^n
+   f_{Y_i}(y_i|{\bf \theta})\right)
+
+.. rst-class:: to-build
+
+.. math::
+
+   \qquad \qquad & = \sum_{i=1}^n \log\left(f_{Y_i}(y_i|{\bf
+   \theta})\right).
+
+
+
+Log Likelihood
+==============================================================================
+- Maximizing :math:`\ell({\bf \theta}|{\bf y})` is the same as
+  maximizing :math:`\mathcal{L}({\bf \theta}|{\bf y})` since
+  :math:`\log` is a monotonic transformation.
+
+.. rst-class:: to-build
+
+- A derivative of :math:`\mathcal{L}` will involve many chain-rule
+  products, whereas a derivative of :math:`\ell` will simply be a sum
+  of derivatives.
+
+
+
+MLE Example
+==============================================================================
+Suppose we have a dataset :math:`{\bf y} = (y_1, \ldots, y_n)`,
+where :math:`Y_1, \ldots, Y_n \stackrel{i.i.d.}{\sim} \mathcal{N}(\mu,
+\sigma^2)`.
+
+.. rst-class:: to-build
+
+- We will assume :math:`\mu` is *unknown* and :math:`\sigma` is
+  *known*.
+
+.. rst-class:: to-build
+
+- So, :math:`{\bf \theta} = \mu` (it is a single value, rather than
+  a vector).
+
+
+
+MLE Example
+==============================================================================
+- The likelihood is
+
+.. math::
+
+   \mathcal{L}(\mu|{\bf y}) & = f_{{\bf Y}}({\bf y}|\mu) \qquad \qquad
+   \qquad \qquad \qquad \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \prod_{i=1}^n f_{Y_i}(y_i|\mu) \qquad \qquad \qquad \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+   \quad & = \prod_{i=1}^n \frac{1}{\sqrt{2\pi \sigma^2}} \exp
+   \left\{-\frac{1}{2} \frac{(y_i - \mu)^2}{\sigma^2} \right\}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \qquad \enspace & = \frac{1}{(2\pi \sigma^2)^{n/2}} \exp
+   \left\{-\frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \mu)^2 \right\}.
+
+
+
+MLE Example
+==============================================================================
+The log likelihood is
+
+.. math::
+
+  \ell(\mu|{\bf y}) & = -\frac{n}{2} \log(2\pi) - \frac{n}{2}
+  \log(\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \mu)^2.
+
+
+
+MLE Example
+==============================================================================
+- The MLE, :math:`\hat{\mu}`, is the value that sets :math:`\frac{d}{d
+  \mu} \ell(\mu|{\bf y}) = 0`:
+
+.. rst-class:: to-build
+
+.. math::
+
+   \frac{d}{d \mu} \ell(\mu|{\bf y}) \bigg|_{\hat{\mu}} =
+   \frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \hat{\mu}) = 0
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow \sum_{i=1}^n (y_i - \hat{\mu}) = 0
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow \sum_{i=1}^n \hat{\mu} = \sum_{i=1}^n y_i
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Rightarrow \hat{\mu} = \bar{y} = \frac{1}{n} \sum_{i=1}^n y_i.
+
+
+
+MLE Example: :math:`n=1`, Unknown :math:`\mu`
+==============================================================================
+Suppose we have only one observation: :math:`y_1`.  
+
+.. rst-class:: to-build
+
+- If we specialize the previous result:
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{\mu} & = y_1.
+
+.. rst-class:: to-build
+
+- The density :math:`f_{Y_1}(y_1|\mu)` gives the probability of
+  observing some data value :math:`y_1`, conditional on some *known*
+  parameter :math:`\mu`.
+
+.. rst-class:: to-build
+
+- This is a normal distribution with mean :math:`\mu` and variance
+  :math:`\sigma^2`.
+
+
+MLE Example: :math:`n=1`, Unknown :math:`\mu`
+==============================================================================
+- The likelihood :math:`\mathcal{L}(\mu|y_1)` gives the probability of
+  :math:`\mu`, conditional on some observed data value :math:`y_1`.
+
+.. rst-class:: to-build
+
+- This is a normal distribution with mean :math:`y_1` and variance
+  :math:`\sigma^2`.
+
+
+
+MLE Example: :math:`n=1`
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/MLE/densExample.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/MLE/densExample.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    #######################################################################################
+    # Plot likelihood for normal data with unknown mean
+    #######################################################################################
+
+    # Generate the true normal density
+    mu = 10;
+    sig = 15;
+    xGrid = seq(mu-5*sig, mu+5*sig, length=10000)
+    trueDens = dnorm(xGrid, mu, sig)
+
+    # A couple of possible data values
+    y11 = 30;
+    y12 = -17.7;
+
+    # Plot the true normal distribution with possible data values
+    plot(xGrid, trueDens, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+	 yaxt='n', bty='L')
+    axis(1, labels=c(expression(mu), expression(y[1]), expression(y[1])),
+         at=c(mu, y11, y12))
+    abline(v=mu)
+    segments(y11, 0, y11, dnorm(y11, mu, sig), lty=2)
+    segments(y12, 0, y12, dnorm(y12, mu, sig), lty=2)
+    dev.copy(pdf, file="densExample.pdf", height=8, width=10)
+    dev.off()
+
+
+
+MLE Example: :math:`n=1`, Unknown :math:`\mu`
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/MLE/likeExample.png
+     :width: 5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/MLE/likeExample.png
+     :width: 6in
+
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    # Plot several densities for fixed data observation
+    mu1 = -33
+    mu2 = 27
+    dens1 = dnorm(xGrid, mu1, sig)
+    dens2 = dnorm(xGrid, mu2, sig)
+    par(mfrow=c(2,1))
+    plot(xGrid, trueDens, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+         yaxt='n', bty='L')
+    axis(1, labels=c(expression(mu^1), expression(mu^2), expression(mu^2), expression(y[1])),
+         at=c(mu, mu1, mu2, y12))
+    lines(xGrid, dens1)
+    lines(xGrid, dens2)
+    abline(v=mu)
+    abline(v=mu1)
+    abline(v=mu2)
+    segments(y12, 0, y12, dnorm(y12, mu, sig), lty=2)
+    segments(y12, 0, y12, dnorm(y12, mu1, sig), lty=3)
+    segments(y12, 0, y12, dnorm(y12, mu2, sig), lty=4)
+
+    # Plot the resulting likelihood
+    like = dnorm(xGrid, y12, sig)
+    plot(xGrid, like, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+         yaxt='n', bty='L')
+    axis(1, labels=c(expression(mu^1), expression(mu^2), expression(mu^2), expression(y[1])),
+         at=c(mu, mu1, mu2, y12))
+    abline(v=y12)
+    segments(mu, 0, mu, dnorm(mu, y12, sig), lty=2)
+    segments(mu1, 0, mu1, dnorm(mu1, y12, sig), lty=2)
+    segments(mu2, 0, mu2, dnorm(mu2, y12, sig), lty=2)
+    dev.copy(pdf, file="likeExample.pdf", height=10, width=8)
+    dev.off()
+
+
+
+MLE Example: :math:`n=1`, Unknown :math:`\sigma`
+==============================================================================
+Let's continue with the assumption of one data observation, :math:`y_1`.  
+
+.. rst-class:: to-build
+
+- If :math:`\mu` is known but :math:`\sigma` is unknown, the density
+  of the data, :math:`y_1`, is still normal.
+
+.. rst-class:: to-build
+
+- However, the likelihood is
+
+.. rst-class:: to-build
+
+.. math::
+
+   \mathcal{L}(\sigma^2|y_1) = \frac{\alpha}{\sigma^2}
+   \exp\left\{-\frac{\beta}{\sigma^2}\right\}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \alpha = \frac{1}{\sqrt{2\pi}}, \qquad \beta =
+   \frac{(y_1-\mu)^2}{2}.
+
+.. rst-class:: to-build
+
+- The likelihood for :math:`\sigma^2` is *not* normal, but *inverse
+  gamma*.
+
+
+
+
+MLE Example: :math:`n=1`, Unknown :math:`\sigma`
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/MLE/likeExample2.png
+     :width: 5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/MLE/likeExample2.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    #######################################################################################
+    # Plot likelihood for normal data with unknown sd
+    #######################################################################################
+
+    # Plot several densities for fixed data observation
+    sig1 = 50
+    sig2 = 25
+    dens1 = dnorm(xGrid, mu, sig1)
+    dens2 = dnorm(xGrid, mu, sig2)
+    par(mfrow=c(2,1))
+    yMax = max(max(trueDens), max(dens1), max(dens2))
+    plot(xGrid, trueDens, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+         yaxt='n', bty='L', ylim=c(0,yMax))
+    axis(1, labels=c(expression(mu), expression(y[1])), at=c(mu, y12))
+    lines(xGrid, dens1)
+    lines(xGrid, dens2)
+    abline(v=mu)
+    segments(y12, 0, y12, dnorm(y12, mu, sig), lty=2)
+    segments(y12, 0, y12, dnorm(y12, mu, sig1), lty=3)
+    segments(y12, 0, y12, dnorm(y12, mu, sig2), lty=4)
+    xDist = max(xGrid)-mu
+    text(c(mu+0.29*xDist, mu+0.4*xDist, mu+0.7*xDist), c(0.66, 0.4, 0.23)*yMax,
+         labels=c(expression(sigma[1]^2), expression(sigma[2]^2), expression(sigma[3]^2)))
+
+    # Plot the resulting likelihood (which is an inverse gamma)
+    alpha = -0.5
+    beta = ((y12 - mu)^2)/2
+    scale = 1/sqrt(2*pi)
+    sigGrid = seq(0.01,3000,length=10000)
+    like = scale*(sigGrid^(-alpha-1))*exp(-beta/sigGrid)
+    likeTrue = scale*(sig^(-2*alpha-2))*exp(-beta/sig^2)
+    like1 = scale*(sig1^(-2*alpha-2))*exp(-beta/sig1^2)
+    like2 = scale*(sig2^(-2*alpha-2))*exp(-beta/sig2^2)
+    plot(sigGrid, like, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+         yaxt='n', bty='L')
+    axis(1, labels=c(expression(sigma[1]^2), expression(sigma[2]^2), expression(sigma[3]^2)),
+         at=c(sig^2, sig1^2, sig2^2))
+    segments(sig^2, min(like), sig^2, likeTrue, lty=2)
+    segments(sig1^2, min(like), sig1^2, like1, lty=2)
+    segments(sig2^2, min(like), sig2^2, like2, lty=2)
+    dev.copy(pdf, file="likeExample2.pdf", height=10, width=8)
+    dev.off()
+
+
+
+MLE Accuracy
+==============================================================================
+Maximum likelihood estimation results in estimates of true unknown
+parameters.
+
+.. rst-class:: to-build
+
+- What is the probability that our estimates are identical to the true
+  population parameters?
+
+.. rst-class:: to-build
+
+- Our estimates are imprecise and contain error. 
+
+.. rst-class:: to-build
+  
+- We would like to quantify the precision of our estimates with
+  standard errors.
+
+.. rst-class:: to-build
+
+- We will use the *Fisher Information* to compute standard errors.
+
+
+
+
+Fisher Information
+==============================================================================
+Suppose our likelihood is a function of a single parameter,
+:math:`\theta`: :math:`\mathcal{L}(\theta|{\bf y})`.
+
+.. rst-class:: to-build
+
+- The Fisher Information is
+
+.. rst-class:: to-build
+
+.. math::
+
+   \mathcal{I}(\theta) & = - E\left[\frac{d^2}{d \theta^2}
+   \ell(\theta|{\bf y}) \right].
+
+.. rst-class:: to-build
+
+- The observed Fisher Information is
+
+.. rst-class:: to-build
+
+.. math::
+
+   \widetilde{\mathcal{I}}(\theta) & = - \frac{d^2}{d \theta^2}
+   \ell(\theta|{\bf y}).
+
+
+Fisher Information
+==============================================================================
+- Observed Fisher Information does not take an expectation, which may
+  be difficult to compute.
+
+.. rst-class:: to-build
+
+- Since :math:`\ell(\theta|{\bf y})` is often a sum of many terms,
+  :math:`\widetilde{\mathcal{I}}(\theta)` will converge to
+  :math:`\mathcal{I}(\theta)` for large samples.
+
+
+
+MLE Central Limit Theorem
+==============================================================================
+Under certain conditions, a central limit theorem holds for the MLE,
+:math:`\hat{\theta}`.
+
+.. rst-class:: to-build
+
+- For infinitely large samples :math:`{\bf y}`,
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{\theta} \sim \mathcal{N}(\theta, \mathcal{I}(\theta)^{-1}).
+
+.. rst-class:: to-build
+
+- For large samples, :math:`\hat{\theta}` is normally distributed
+  *regardless* of the distribution of the data, :math:`{\bf y}`.
+
+
+
+MLE Central Limit Theorem
+==============================================================================
+- :math:`\hat{\theta}` is also normally distributed for large samples
+  even if :math:`\mathcal{L}(\theta|{\bf y})` is some other
+  distribution.
+
+.. rst-class:: to-build
+
+- Hence, for large samples,
+
+.. rst-class:: to-build
+
+.. math::
+
+   Var(\hat{\theta}) & = \frac{1}{\mathcal{I}(\theta)} \qquad
+   \Rightarrow \qquad Std(\hat{\theta}) =
+   \frac{1}{\sqrt{\mathcal{I}(\theta)}}.
+
+
+
+MLE Standard Errors
+==============================================================================
+Since we don't know the true :math:`\theta`, we approximate
+
+.. math::
+
+   Std(\hat{\theta}) & \approx
+   \frac{1}{\sqrt{\mathcal{I}(\hat{\theta})}}.
+
+.. rst-class:: to-build
+
+- Alternatively, to avoid computing the expectation, we could use the
+  approximation
+
+.. rst-class:: to-build
+
+.. math::
+
+   Std(\hat{\theta}) & \approx
+   \frac{1}{\sqrt{\widetilde{\mathcal{I}}(\hat{\theta})}}.
+
+
+
+MLE Standard Errors
+==============================================================================  
+- In reality, we never have an infinite sample size.  
+
+.. rst-class:: to-build
+
+- For finite samples, these values are approximations of the standard
+  error of :math:`\hat{\theta}`.
+
+
+
+MLE Variance Example
+==============================================================================
+Let's return to the example where :math:`Y_1, \ldots, Y_n
+\stackrel{i.i.d.}{\sim} \mathcal{N}(\mu, \sigma^2)`, with known
+:math:`\sigma`.
+
+.. rst-class:: to-build
+
+- The log likelihood is
+
+.. rst-class:: to-build
+
+.. math::
+
+   \ell(\mu|{\bf y}) & = -\frac{n}{2} \log(2\pi) - \frac{n}{2}
+   \log(\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \mu)^2.
+
+.. rst-class:: to-build
+
+- The resulting derivatives are
+
+.. rst-class:: to-build
+
+.. math::
+
+   \frac{\partial \ell(\mu|{\bf y})}{\partial \mu} & =
+   \frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \mu),  \qquad
+   \frac{\partial^2 \ell(\mu|{\bf y})}{\partial \mu^2} =
+   -\frac{n}{\sigma^2}.
+
+
+
+MLE Variance Example
+==============================================================================
+In this case the Fisher Information is identical to the observed
+Fisher Information:
+
+.. math::
+
+   \mathcal{I}(\mu) & = -E\left[-\frac{n}{\sigma^2}\right] =
+   \frac{n}{\sigma^2} = \widetilde{\mathcal{I}}(\mu).
+
+.. rst-class:: to-build
+
+- Since :math:`\mathcal{I}(\mu)` doesn't depend on :math:`\mu`, we
+  don't need to resort to an approximation with :math:`\hat{\mu} =
+  \bar{{\bf y}}`.
+
+.. rst-class:: to-build
+
+- The result is
+
+.. rst-class:: to-build
+
+.. math::
+   Std(\hat{\mu})  & = \frac{1}{\sqrt{\mathcal{I}(\mu)}} =
+   \frac{\sigma}{\sqrt{n}}.

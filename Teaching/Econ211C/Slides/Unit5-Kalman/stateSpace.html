@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>State Space Models &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="The Kalman Filter" href="../kalman.html" />
+    <link rel="next" title="The Kalman Filter" href="kalmanFilter.html" />
+    <link rel="prev" title="The Kalman Filter" href="../kalman.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="state-space-models">
+
+<h1>State Space Models</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="state-space-representation">
+
+<h2>State Space Representation</h2>
+
+<p>A state space model is a dynamic system of equations</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\boldsymbol{\xi}_{t+1} &amp; = F\boldsymbol{\xi}_{t} +
+\boldsymbol{v}_{t+1} \\
+\boldsymbol{Y}_{t} &amp; = A^{'}\boldsymbol{x}_{t} +
+H^{'}\boldsymbol{\xi}_{t} + \boldsymbol{w}_{t} \\
+E[\boldsymbol{v}_{t}\boldsymbol{v}_{\tau}^{'}] &amp; =
+\bigg\{\begin{array}{c} Q \hspace{10pt} t = \tau \\ \boldsymbol{0}
+\hspace{10pt} \text{o/w} \\ \end{array} \\
+E[\boldsymbol{w}_{t}\boldsymbol{w}_{\tau}^{'}] &amp; =
+\bigg\{\begin{array}{c} R \hspace{10pt} t = \tau \\ \boldsymbol{0}
+\hspace{10pt} \text{o/w} \\ \end{array} \\
+E[\boldsymbol{v}_{t}\boldsymbol{w}_{\tau}^{'}] &amp; = \boldsymbol{0}
+\hspace{4pt} \forall \hspace{4pt} t,\tau.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>State Space Representation</h2>
+
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> is a vector of <span class="math">\(\smash{n}\)</span>
+variables observed at <span class="math">\(\smash{t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span> is a vector of
+<span class="math">\(\smash{r}\)</span> unobserved variables at <span class="math">\(\smash{t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{x}_{t}}\)</span> is a vector of exogenous or
+predetermined variables at <span class="math">\(\smash{t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The first equation of the system is the state equation.</li>
+</ul>
+<ul class="simple">
+<li>The second equation of the system is the observation equation.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{v}_{t}}\)</span> and
+<span class="math">\(\smash{\boldsymbol{w}_{t}}\)</span> are vector WN processes and
+mutually uncorrelated at all lags.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="mutually-uncorrelated-errors">
+
+<h2>Mutually Uncorrelated Errors</h2>
+
+<p>If we assume
+<span class="math">\(\smash{E[\boldsymbol{v}_{t}\boldsymbol{\xi}_{1}^{'}] =
+E[\boldsymbol{w}_{t}\boldsymbol{\xi}_{1}^{'}] = \boldsymbol{0} } \,\,
+\forall t &gt; 1\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E[\boldsymbol{v}_{t} \boldsymbol{\xi}_{\tau}^{'}]
+&amp; = E[\boldsymbol{v}_{t}(\boldsymbol{v}_{\tau}^{'} +
+\boldsymbol{v}_{\tau - 1}^{'}F^{'} + \ldots +
+\boldsymbol{\xi}_{1}^{'}F^{\tau-1 \hspace{2pt} '})]  =
+\boldsymbol{0} \hspace{4pt}
+\forall \hspace{4pt} \tau &lt; t \\
+E[\boldsymbol{v}_{t} \boldsymbol{Y}_{\tau}^{'}] &amp; =
+E[\boldsymbol{v}_{t}(A^{'} \boldsymbol{x}_{\tau} +
+H^{'}\boldsymbol{\xi}_{\tau} + \boldsymbol{w}_{\tau})^{'}] = \boldsymbol{0}
+\hspace{4pt} \forall \hspace{4pt} \tau &lt; t.
+\end{align}\end{split}\]</div>
+<p>Similarly,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E[\boldsymbol{w}_{t} \boldsymbol{\xi}_{\tau}^{'}] &amp; = \boldsymbol{0}
+\hspace{4pt} \forall \hspace{4pt} \tau &lt; t \\
+E[\boldsymbol{w}_{t} \boldsymbol{Y}_{\tau}^{'}] &amp; = \boldsymbol{0} \hspace{4pt}
+\forall \hspace{4pt} \tau &lt; t.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="example">
+
+<h2>Example <span class="math">\(\smash{AR(p)}\)</span></h2>
+
+<p>The standard form of an <span class="math">\(\smash{AR(p)}\)</span>:</p>
+<div class="math">
+\[\smash{Y_{t+1} - \mu = \phi_{1}(Y_{t} - \mu) + \phi_{2}(Y_{t-1} -
+\mu) + \ldots + \phi_{p}(Y_{t-p+1} - \mu) + \varepsilon_{t+1}}.\]</div>
+<p>Define:</p>
+<div class="math">
+\[\begin{split}\smash{\boldsymbol{\xi}_{t} = \left[\begin{array}{c} Y_{t} - \mu \\
+Y_{t-1} - \mu \\ \vdots \\ Y_{t-p+1} - \mu \\ \end{array}
+\right], \,\,\,\,\, F = \left[\begin{array}{ccccc} \phi_{1} &amp;
+\phi_{2} &amp; \ldots &amp; \phi_{p-1} &amp; \phi_{p} \\ 1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0
+\\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\ 0 &amp; 0 &amp; \ldots &amp; 1
+&amp; 0 \\ \end{array} \right], \,\,\,\,\, \boldsymbol{v}_{t} =
+\left[\begin{array}{c} \varepsilon_{t} \\ 0 \\ 0 \\ \vdots \\ 0 \\
+\end{array} \right],}\end{split}\]</div>
+<div class="math">
+\[\,\,\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Example <span class="math">\(\smash{AR(p)}\)</span></h2>
+
+<div class="math">
+\[\begin{split}\begin{gather}
+\boldsymbol{Y}_{t} = Y_{t}, \hspace{10pt} A^{'} = \mu, \hspace{10pt}
+\boldsymbol{x}_{t} = 1, \hspace{10pt} H^{'} = [1 \hspace{3pt} 0
+\hspace{3pt} \ldots \hspace{3pt} 0], \hspace{10pt}
+\boldsymbol{w}_{t} = 0, \hspace{10pt} R =0, \\
+Q = \left[\begin{array}{cccc} \sigma^{2} &amp; 0&amp; \ldots &amp; 0 \\ 0 &amp; 0 &amp;
+\ldots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \ldots &amp;
+0\\ \end{array} \right].
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<p>The standard form of an <span class="math">\(\smash{ARMA(p,q)}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Y_{t+1} - \mu &amp; = \phi_{1}(Y_{t}- \mu) + \ldots +
+\phi_{r}(Y_{t-r+1}- \mu) \\
+&amp; \hspace{2in} + \varepsilon_{t+1} + \theta_{1}\varepsilon_{t} +
+\ldots + \theta_{r-1}\varepsilon_{t-r+2}
+\end{align}\end{split}\]</div>
+<p>where <span class="math">\(\smash{r = \text{max}\{p,q+1\}}\)</span> and
+<span class="math">\(\smash{\phi_{j} = 0}\)</span> for <span class="math">\(\smash{j&gt;p}\)</span> and
+<span class="math">\(\smash{\theta_{j} = 0}\)</span> for <span class="math">\(\smash{j &gt; q}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<p>Define:</p>
+<div class="math">
+\[\begin{split}\boldsymbol{\xi}_{t} = \left[\begin{array}{c} Y_{t}- \mu \\
+\phi_{2}(Y_{t-1}-\mu) + \ldots + \phi_{r}(Y_{t-r+1} - \mu) +
+\theta_{1}\varepsilon_{t} + \ldots +
+\theta_{r-1}\varepsilon_{t-r+2} \\ \phi_{3}(Y_{t-1}-\mu) + \ldots +
+\phi_{r}(Y_{t-r+2} - \mu) + \theta_{2}\varepsilon_{t} + \ldots +
+\theta_{r-1}\varepsilon_{t-r+3} \\ \vdots \\ \phi_{r}(Y_{t-1} -
+\mu) + \theta_{r-1}\varepsilon_{t} \\ \end{array} \right],\end{split}\]</div>
+<div class="math">
+\[\,\,\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id5">
+
+<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<div class="math">
+\[\begin{split}\begin{gather}
+F = \left[\begin{array}{ccccc} \phi_{1} &amp; 1 &amp; 0 &amp; \ldots &amp; 0
+\\ \phi_{2} &amp; 0 &amp; 1 &amp; \ldots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp;
+\ddots &amp; \vdots \\ \phi_{r-1} &amp; 0 &amp; 0 &amp; \ldots &amp; 1 \\ \phi_{r} &amp; 0
+&amp; 0 &amp; \ldots &amp; 0 \\ \end{array} \right], \,\,\,\,\,
+\boldsymbol{v}_{t} = \left[\begin{array}{c} \varepsilon_{t} \\
+\theta_{1}\varepsilon_{t} \\ \vdots \\ \theta_{r-2}\varepsilon_{t} \\
+\theta_{r-1}\varepsilon_{t} \\ \end{array}\right], \\
+\boldsymbol{Y}_{t} = Y_{t}, \hspace{10pt} A^{'} = \mu, \hspace{10pt}
+\boldsymbol{x}_{t} = 1, \hspace{10pt} H^{'} = [1 \hspace{3pt} 0
+\hspace{3pt} \ldots \hspace{3pt} 0], \hspace{10pt}
+\boldsymbol{w}_{t} = 0, \hspace{10pt} R = 0.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id6">
+
+<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<p>Alternatively, define <span class="math">\(\smash{\boldsymbol{\xi}_t = (\xi_t,
+\xi_{t-1}, \ldots, \xi_{t-r+1})^{'}}\)</span> and</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+F =
+\left[\begin{array}{ccccc} \phi_1 &amp; \phi_2 &amp; \ldots &amp;
+\phi_{r-1} &amp; \phi_r \\ 1 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp;
+\ldots &amp; 0 &amp; 0 \\ \vdots &amp; \vdots  &amp; \ddots &amp;
+\vdots  &amp; \vdots \\ 0 &amp; 0 &amp; \ldots &amp; 1 &amp; 0 \end{array}
+\right], \,\,\,\,\, \boldsymbol{v}_t = \left[\begin{array}{c}
+\varepsilon_t \\ 0 \\ 0 \\ \vdots \\ 0 \end{array} \right], \\
+\boldsymbol{Y}_{t} = Y_{t}, \hspace{10pt} A^{'} = \mu, \hspace{10pt}
+\boldsymbol{x}_{t} = 1, \hspace{10pt} H^{'} = [1 \hspace{3pt} \theta_1
+\hspace{3pt} \ldots \hspace{3pt} \theta_{r-1}], \hspace{10pt}
+\boldsymbol{w}_{t} = 0, \hspace{10pt} R =0, \\
+Q = \left[\begin{array}{cccc} \sigma^{2} &amp; 0&amp; \ldots &amp; 0 \\ 0 &amp; 0 &amp;
+\ldots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \ldots &amp;
+0\\ \end{array} \right].
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id7">
+
+<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<p>Then, by the state equation</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+\boldsymbol{\xi}_t = F \boldsymbol{\xi}_{t-1} + \boldsymbol{v}_t \\
+\implies \phi_r(L) \xi_t = \varepsilon_t,
+\end{gather}\end{split}\]</div>
+<p>and the observation equation</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+\boldsymbol{Y}_t = A^{'} \boldsymbol{x}_t + H^{'}
+\boldsymbol{\xi}_t + \boldsymbol{w}_t \\
+\implies (Y_t - \mu) = \theta_r(L) \xi_t.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id8">
+
+<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<p>Combining these two equations,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\phi_r(L) (Y_t-\mu) &amp; = \theta_r(L) \phi_r(L) \xi_t \\
+&amp; = \theta_r(L) \varepsilon_t,
+\end{align}\end{split}\]</div>
+<p>which is the equation for an <span class="math">\(\smash{ARMA(p,q)}\)</span>.</p>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

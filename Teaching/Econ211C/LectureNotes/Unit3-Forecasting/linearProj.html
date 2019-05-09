@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Linear Predictors &mdash; Econ 211C 2016.03.29 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
+        <link rel="up" title="Forecasting" href="../forecasting.html"/>
+        <link rel="next" title="Forecasting ARMA Models" href="forecastARMA.html"/>
+        <link rel="prev" title="Forecasting" href="../forecasting.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Econ 211C</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../forecasting.html">Forecasting</a> &raquo;</li>
+      
+    <li>Linear Predictors</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/Unit3-Forecasting/linearProj.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="linear-predictors">
+<h1>Linear Predictors<a class="headerlink" href="#linear-predictors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="forecasting">
+<h2>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we are interested in forecasting a random variable
+<span class="math">\(\smash{Y_{t+1}}\)</span> based on a set of variables
+<span class="math">\(\smash{\boldsymbol{X}_t}\)</span>.</p>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{X}_t}\)</span> might be comprised of
+<span class="math">\(\smash{m}\)</span> lags of <span class="math">\(\smash{Y_{t+1}}\)</span>:
+<span class="math">\(\smash{Y_t, Y_{t-1}, \ldots, Y_{t-m+1}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We can denote <span class="math">\(\smash{Y^*_{t+1|t}}\)</span> as the forecast of
+<span class="math">\(\smash{Y_{t+1}}\)</span> based on <span class="math">\(\smash{\boldsymbol{X}_t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We can choose <span class="math">\(\smash{Y^*_{t+1|t}}\)</span> to minimize some loss
+function, <span class="math">\(\smash{L\left(Y^*_{t+1|t}\right)}\)</span>, which evaluates
+the quality of <span class="math">\(\smash{Y^*_{t+1|t}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>A common choice is the quadratic loss function:</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+L\left(Y^*_{t+1|t}\right) &amp; = \text{E}\left[\left(Y_{t+1} -
+Y^*_{t+1|t}\right)^2\right].
+\end{align*}\end{split}\]</div>
+</div>
+<div class="section" id="mean-squared-error-loss">
+<h2>Mean Squared Error Loss<a class="headerlink" href="#mean-squared-error-loss" title="Permalink to this headline">¶</a></h2>
+<p>Quadratic loss is also known as <em>mean squared error</em>.</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+MSE\left(Y^*_{t+1|t}\right) &amp; = \text{E}\left[\left(Y_{t+1} -
+Y^*_{t+1|t}\right)^2\right].
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>The conditional expectation,
+<span class="math">\(\smash{\text{E}\left[Y_{t+1}|\boldsymbol{X}_t \right]}\)</span>
+minimizes <span class="math">\(\smash{MSE\left(Y^*_{t+1|t}\right)}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="mse-minimizer">
+<h2>MSE Minimizer<a class="headerlink" href="#mse-minimizer" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math">\(\smash{Y^*_{t+1|t} = g(\boldsymbol{X}_t)}\)</span>. Then</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\left[\left(Y_{t+1} -
+g(\boldsymbol{X}_t)\right)^2\right] &amp; = \text{E}\Big[\big(Y_{t+1} -
+\text{E}[Y_{t+1}|\boldsymbol{X}_t] \\
+&amp; \hspace{1in} + \text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+g(\boldsymbol{X}_t) \big)^2\Big] \\
+&amp; = \text{E}\left[\left(Y_{t+1} -
+\text{E}[Y_{t+1}|\boldsymbol{X}_t]\right)^2\right] \\
+&amp; \hspace{0.25in} +
+2\text{E}\Big[\big(Y_{t+1}-\text{E}[Y_{t+1}|\boldsymbol{X}_t]\big) \\
+&amp; \hspace{0.75in} \times
+\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big)\Big] \\
+&amp; \hspace{1in} +
+\text{E}\left[\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+g(\boldsymbol{X}_t)\big)^2\right]
+\end{align*}\end{split}\]</div>
+</div>
+<div class="section" id="id1">
+<h2>MSE Minimizer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>By the law of iterated expectations</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\Big[&amp;\big(Y_{t+1}-\text{E}[Y_{t+1}|\boldsymbol{X}_t]\big)
+\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big)\Big] \\
+&amp; \hspace{0.25in} = \text{E}\Big[ \text{E}\big[\left(Y_{t+1} -
+\text{E}[Y_{t+1}|\boldsymbol{X}_t]\right) \big| \boldsymbol{X}_t\big]
+\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big) \Big] \\
+&amp; \hspace{0.25in} = \text{E}\Big[
+\left(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - \text{E}[Y_{t+1}|\boldsymbol{X}_t]\right)
+\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big) \Big] \\
+&amp; \hspace{0.25in} = 0.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>This means that the second term of the equation on the previous
+slide is zero.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>MSE Minimizer<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Substituting the previous result:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\left[\left(Y_{t+1} - g(\boldsymbol{X}_t)\right)^2\right] &amp; =
+\text{E}\left[\left(Y_{t+1} - \text{E}[Y_{t+1}|\boldsymbol{X}_t]\right)^2\right]
+\\
+&amp; \hspace{0.5in} +
+\text{E}\left[\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+g(\boldsymbol{X}_t)\big)^2\right]
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>Clearly the the <span class="math">\(\smash{MSE}\)</span> is minimized when</li>
+</ul>
+<div class="math">
+\[\smash{\text{E}\left[\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+g(\boldsymbol{X}_t)\big)^2\right] = 0.}\]</div>
+<ul class="simple">
+<li>This occurs when <span class="math">\(\smash{\text{E}[Y_{t+1}|\boldsymbol{X}_t] =
+g(\boldsymbol{X}_t)}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="linear-projection">
+<h2>Linear Projection<a class="headerlink" href="#linear-projection" title="Permalink to this headline">¶</a></h2>
+<p>We can restrict our forecast to be a linear function of
+<span class="math">\(\smash{\boldsymbol{X}_t}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y^*_{t+1|t} &amp; = \boldsymbol{X}'_t \boldsymbol{\beta}.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>Let <span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span> be the value of
+<span class="math">\(\smash{\boldsymbol{\beta}}\)</span> so that the forecast error is
+<em>orthogonal</em> to or <em>uncorrelated</em> with
+<span class="math">\(\smash{\boldsymbol{X}_t}\)</span>:</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\Big[\boldsymbol{X}_t \underbrace{\left(Y_{t+1} - \boldsymbol{X}'_t
+\boldsymbol{\beta}^*\right)}_{\text{forecast error}} \Big] &amp; =
+\boldsymbol{0}.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>This is a <em>system</em> of equations.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span> minimizes the
+<span class="math">\(\smash{MSE}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>Linear Projection<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>We can use the same steps as before to show that
+<span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span> minimizes <span class="math">\(\smash{MSE}\)</span>.</p>
+<ul class="simple">
+<li>Begin with an arbitrary linear forecasting rule,
+<span class="math">\(\smash{Y^*_{t+1|t} = \boldsymbol{X}'_t \boldsymbol{\gamma}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Show that</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+MSE\left( Y^*_{t+1|t} \right) &amp; =
+\text{E}\left[\left(Y_{t+1} - \boldsymbol{X}'_t \boldsymbol{\gamma}
+\right)^2\right] \\
+&amp; = \text{E}\left[\left(Y_{t+1} - \boldsymbol{X}'_t
+\boldsymbol{\beta}^* + \boldsymbol{X}'_t \boldsymbol{\beta}^* -
+\boldsymbol{X}'_t \boldsymbol{\gamma} \right)^2\right] \\
+&amp; = \text{E}\Big[\big(Y_{t+1} - \boldsymbol{X}'_t
+\boldsymbol{\beta}^*\big)^2\Big] + \text{E}\left[\left(\boldsymbol{X}'_t
+\boldsymbol{\beta}^* - \boldsymbol{X}'_t
+\boldsymbol{\gamma}\right)^2\right].
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>Hence, <span class="math">\(\smash{MSE}\)</span> is minimized when
+<span class="math">\(\smash{\boldsymbol{\gamma} = \boldsymbol{\beta}^*}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Linear Projection<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\smash{Y^*_{t+1|t} = \boldsymbol{X}'_t \boldsymbol{\beta}^*}\)</span>
+is referred to as the <em>linear projection</em> of <span class="math">\(\smash{Y_{t+1}}\)</span>
+on <span class="math">\(\smash{\boldsymbol{X}_t}\)</span>.</p>
+<ul class="simple">
+<li>We will denote the linear projection as</li>
+</ul>
+<div class="math">
+\[\begin{equation*}
+\hat{P}(Y_{t+1}|\boldsymbol{X}_t) = \boldsymbol{X}'_t \boldsymbol{\beta}^*
+\,\,\,\,\,\,\, \text{or} \,\,\,\,\,\,\, \hat{Y}_{t+1|t} =
+\boldsymbol{X}'_t \boldsymbol{\beta}^*.
+\end{equation*}\]</div>
+<ul class="simple">
+<li>Clearly</li>
+</ul>
+<div class="math">
+\[\begin{equation*}
+MSE\left(\hat{P}(Y_{t+1}|\boldsymbol{X}_t)\right) \geq
+MSE\left(\text{E}[Y_{t+1}|\boldsymbol{X}_t]\right).
+\end{equation*}\]</div>
+</div>
+<div class="section" id="linear-projection-solution">
+<h2>Linear Projection Solution<a class="headerlink" href="#linear-projection-solution" title="Permalink to this headline">¶</a></h2>
+<p>Using the orthogonality condition:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\boldsymbol{\beta}^* &amp; = \text{E}\left[\boldsymbol{X}_t \boldsymbol{X}'_t\right]^{-1}
+\text{E}\left[\boldsymbol{X}_t Y_{t+1}\right].
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>Least squares projection is the sample analogue of the equation
+above.</li>
+</ul>
+</div>
+<div class="section" id="linear-projection-mse">
+<h2>Linear Projection MSE<a class="headerlink" href="#linear-projection-mse" title="Permalink to this headline">¶</a></h2>
+<p>Using our solution for <span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span>, we can
+solve for the MSE of the linear projection:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+MSE(Y^*_{t+1|t}) &amp; = \text{E}\left[\left(Y_{t+1}- \boldsymbol{X}'_t
+\boldsymbol{\beta}^*\right)^2\right] \\
+&amp; = \text{E}[Y^2_{t+1}] - 2\text{E}[Y_{t+1} \boldsymbol{X}'_t \boldsymbol{\beta}^*] +
+\text{E}[\boldsymbol{\beta}^{*'} \boldsymbol{X}_t \boldsymbol{X}'_t \boldsymbol{\beta}^*] \\
+&amp; = \text{E}[Y^2_{t+1}] - 2\text{E}[Y_{t+1} \boldsymbol{X}'_t] \text{E}\left[\boldsymbol{X}_t
+\boldsymbol{X}'_t\right]^{-1} \text{E}\left[\boldsymbol{X}_t Y_{t+1}\right] \\
+&amp; \hspace{0.85in} +
+\text{E}\left[Y_{t+1} \boldsymbol{X}'_t\right] \text{E}\left[\boldsymbol{X}_t
+\boldsymbol{X}'_t\right]^{-1} \text{E}[\boldsymbol{X}_t \boldsymbol{X}'_t] \\
+&amp; \hspace{1.6in} \times
+\text{E}\left[\boldsymbol{X}_t \boldsymbol{X}'_t\right]^{-1} \text{E}\left[\boldsymbol{X}_t
+Y_{t+1}\right] \\
+&amp; = \text{E}[Y^2_{t+1}] - \text{E}[Y_{t+1} \boldsymbol{X}'_t] \text{E}\left[\boldsymbol{X}_t
+\boldsymbol{X}'_t\right]^{-1} \text{E}\left[\boldsymbol{X}_t Y_{t+1}\right].
+\end{align*}\end{split}\]</div>
+</div>
+<div class="section" id="vector-linear-projection">
+<h2>Vector Linear Projection<a class="headerlink" href="#vector-linear-projection" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math">\(\smash{\boldsymbol{Y}_{t+1}}\)</span> be an <span class="math">\(\smash{(n \times
+1)}\)</span> vector and <span class="math">\(\smash{\boldsymbol{X}_t}\)</span> an <span class="math">\(\smash{(m
+\times 1)}\)</span> vector.</p>
+<ul class="simple">
+<li>The linear projection of <span class="math">\(\smash{\boldsymbol{Y}_{t+1}}\)</span> on
+<span class="math">\(\smash{\boldsymbol{X}_t}\)</span> is</li>
+</ul>
+<div class="math">
+\[\begin{align*}
+\hat{P}(\boldsymbol{Y}'_{t+1}|\boldsymbol{X}_t) = \hat{\boldsymbol{Y}}'_{t+1|t}
+= \boldsymbol{X}'_t \boldsymbol{\beta}^*.
+\end{align*}\]</div>
+<p>where <span class="math">\(\smash{\boldsymbol{\beta}^*}\)</span> is the <span class="math">\(\smash{(m \times n)}\)</span> matrix such that</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}\Big[\boldsymbol{X}_t \left(\boldsymbol{Y}'_{t+1} - \boldsymbol{X}'_t
+\boldsymbol{\beta}^*\right)\Big] &amp; = \boldsymbol{0}.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>As in the univariate case</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+\boldsymbol{\beta}^* &amp; = \text{E}\left[\boldsymbol{X}_t \boldsymbol{X}'_t\right]^{-1}
+\text{E}\left[\boldsymbol{X}_t \boldsymbol{Y}'_{t+1}\right].
+\end{align*}\end{split}\]</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="forecastARMA.html" class="btn btn-neutral float-right" title="Forecasting ARMA Models">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../forecasting.html" class="btn btn-neutral" title="Forecasting"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

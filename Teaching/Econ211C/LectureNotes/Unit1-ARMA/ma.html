@@ -1,0 +1,671 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Moving Average Processes &mdash; Econ 211C 2016.03.29 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
+        <link rel="up" title="Linear Time Series Models" href="../linearTS.html"/>
+        <link rel="next" title="Autoregressive Processes" href="ar.html"/>
+        <link rel="prev" title="Lag Operators" href="lagOperators.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Econ 211C</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../linearTS.html">Linear Time Series Models</a> &raquo;</li>
+      
+    <li>Moving Average Processes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/Unit1-ARMA/ma.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="moving-average-processes">
+<h1>Moving Average Processes<a class="headerlink" href="#moving-average-processes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="white-noise-revisited">
+<h2>White Noise Revisited<a class="headerlink" href="#white-noise-revisited" title="Permalink to this headline">¶</a></h2>
+<p>White noise, <span class="math">\(\smash{\{\varepsilon_t\}_{t=-\infty}^{\infty}}\)</span>, is a
+fundamental building block of canonical time series processes.</p>
+<div class="math">
+\[\begin{split}\begin{gather*}
+E[\varepsilon_t] = 0, \,\,\, \forall t \\
+E[\varepsilon^2_t] = \sigma^2, \,\,\, \forall t \\
+E[\varepsilon_t \varepsilon_{\tau}] = 0, \,\,\, \text{ for } t \neq \tau.
+\end{gather*}\end{split}\]</div>
+<ul class="simple">
+<li>We will often use the abbreviation
+<span class="math">\(\smash{\{\varepsilon_t\}}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2><span class="math">\(\smash{MA(1)}\)</span><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Given white noise <span class="math">\(\smash{\{\varepsilon_t\}}\)</span>, consider the process</p>
+<div class="math">
+\[\smash{Y_t  = \mu + \varepsilon_t + \theta \varepsilon_{t-1},}\]</div>
+<p>where <span class="math">\(\smash{\mu}\)</span> and <span class="math">\(\smash{\theta}\)</span> are constants.</p>
+<ul class="simple">
+<li>This is a <em>first-order moving average</em> or <span class="math">\(\smash{MA(1)}\)</span>
+process.</li>
+</ul>
+<ul class="simple">
+<li>We can rewrite in terms of the lag operator:</li>
+</ul>
+<div class="math">
+\[\smash{Y_t = \mu + \theta(L) \varepsilon_t,.}\]</div>
+<p>where <span class="math">\(\smash{\theta(L) = (1+\theta L)}\)</span>.</p>
+</div>
+<div class="section" id="mean-and-variance">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Mean and Variance<a class="headerlink" href="#mean-and-variance" title="Permalink to this headline">¶</a></h2>
+<p>The mean of the first-order moving average process is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\text{E}[Y_t] &amp; = \text{E}[\mu + \varepsilon_t + \theta \varepsilon_{t-1}] \\
+&amp; = \mu + \text{E}[\varepsilon_t] + \theta \text{E}[\varepsilon_{t-1}] \\
+&amp; = \mu.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="autocovariances">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Autocovariances<a class="headerlink" href="#autocovariances" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[\begin{split}\begin{align*}
+\gamma_j &amp; = \text{E}\left[(Y_t - \mu)(Y_{t-j} -
+\mu)\right] \\
+&amp; = \text{E}\left[(\varepsilon_t + \theta \varepsilon_{t-1})(\varepsilon_{t-j} +
+\theta \varepsilon_{t-j-1})\right] \\
+&amp; = \text{E}[\varepsilon_t \varepsilon_{t-j} + \theta \varepsilon_t \varepsilon_{t-j-1}
++ \theta \varepsilon_{t-1} \varepsilon_{t-j} + \theta^2
+  \varepsilon_{t-1}\varepsilon_{t-j-1}] \\
+  &amp; = \text{E}[\varepsilon_t \varepsilon_{t-j}] + \theta \text{E}[\varepsilon_t
+  \varepsilon_{t-j-1}] + \theta \text{E}[\varepsilon_{t-1} \varepsilon_{t-j}] + \theta^2
+  \text{E}[\varepsilon_{t-1}\varepsilon_{t-j-1}].
+\end{align*}\end{split}\]</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Autocovariances<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>If <span class="math">\(\smash{j = 0}\)</span></li>
+</ul>
+<div class="math">
+\[\smash{\gamma_0 = \text{E}[\varepsilon^2_t] + \theta
+\text{E}[\varepsilon_t \varepsilon_{t-1}] + \theta
+\text{E}[\varepsilon_{t-1} \varepsilon_t] + \theta^2
+\text{E}[\varepsilon^2_{t-1}] = (1+\theta^2)\sigma^2.}\]</div>
+<ul class="simple">
+<li>If <span class="math">\(\smash{j = 1}\)</span></li>
+</ul>
+<div class="math">
+\[\smash{\gamma_1 = \text{E}[\varepsilon_t \varepsilon_{t-1}] +
+\theta \text{E}[\varepsilon_t \varepsilon_{t-2}] + \theta
+\text{E}[\varepsilon^2_{t-1}] + \theta^2 \text{E}[\varepsilon_{t-1}
+\varepsilon_{t-2}] = \theta \sigma^2.}\]</div>
+<ul class="simple">
+<li>If <span class="math">\(\smash{j &gt; 1}\)</span>, all of the expectations are zero:
+<span class="math">\(\smash{\gamma_j = 0}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="stationarity-and-ergodicity">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Stationarity and Ergodicity<a class="headerlink" href="#stationarity-and-ergodicity" title="Permalink to this headline">¶</a></h2>
+<p>Since the mean and autocovariances are independent of time, an
+<span class="math">\(\smash{MA(1)}\)</span> is weakly stationary.</p>
+<ul class="simple">
+<li>This is true <em>for all values of</em> <span class="math">\(\smash{\theta}\)</span>.</li>
+</ul>
+<p>The condition for ergodicity of the mean also holds:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\sum_{j=0}^{\infty} |\gamma_j| &amp; = \gamma_0 +
+\gamma_1 \\
+&amp; = (1+\theta^2)\sigma^2 + \left|\theta
+\sigma^2\right| &lt; \infty.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\{\varepsilon_t\}}\)</span> is <em>Gaussian</em> then
+<span class="math">\(\smash{\{Y_t\}}\)</span> is also ergodic <em>for all moments</em>.</li>
+</ul>
+</div>
+<div class="section" id="autocorrelations">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Autocorrelations<a class="headerlink" href="#autocorrelations" title="Permalink to this headline">¶</a></h2>
+<p>The autocorrelations of an <span class="math">\(\smash{MA(1)}\)</span> are</p>
+<ul class="simple">
+<li><span class="math">\(\smash{j = 0}\)</span>: <span class="math">\(\smash{\rho_0 = 1}\)</span> (<em>always</em>).</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{j = 1}\)</span>:</li>
+</ul>
+<div class="math">
+\[\smash{\rho_1 = \frac{\theta \sigma^2}{(1+\theta^2) \sigma^2} =
+\frac{\theta}{1+\theta^2}}.\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{j &gt; 1}\)</span>: <span class="math">\(\smash{\rho_j = 0}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\theta &gt; 0}\)</span>, first-order lags of
+<span class="math">\(\smash{Y_t}\)</span> are <em>positively</em> autocorrelated.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\theta &lt; 0}\)</span>, first-order lags of
+<span class="math">\(\smash{Y_t}\)</span> are <em>negatively</em> autocorrelated.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\max\{\rho_1\} = 0.5}\)</span> and occurs when
+<span class="math">\(\smash{\theta = 1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\min\{\rho_1\} = -0.5}\)</span> and occurs when
+<span class="math">\(\smash{\theta = -1}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="example">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span></span><span class="c1">#################################################################</span>
+<span class="c1"># Simulate MA(1)</span>
+<span class="c1">#################################################################</span>
+
+<span class="c1"># Simulate MA(1)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000000</span><span class="p">;</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="n">rnorm</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">);</span>
+
+<span class="c1"># Simulate</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.61</span><span class="p">;</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">eps</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta</span><span class="o">*</span><span class="n">eps</span><span class="p">[</span><span class="mi">1</span><span class="p">:(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)];</span>
+
+<span class="c1"># Plot</span>
+<span class="n">png</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="s2">&quot;ma1ExampleSeries.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="n">paste</span><span class="p">(</span><span class="s2">&quot;MA(1), &quot;</span><span class="p">,</span><span class="n">expression</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="s2">&quot; = &quot;</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">),</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;l&quot;</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/ma1ExampleSeries.png"><img alt="../_images/ma1ExampleSeries.png" class="align-center" src="../_images/ma1ExampleSeries.png" style="height: 6in;" /></a>
+</div>
+<div class="section" id="id4">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Autocorrelations<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span></span><span class="c1">#################################################################</span>
+<span class="c1"># Plot ACF for MA(1)</span>
+<span class="c1">#################################################################</span>
+
+<span class="c1"># Plot the empirical acf</span>
+<span class="n">png</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="s2">&quot;ma1ACF.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">acf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s2">&quot;Autocorrelations for MA(1)&quot;</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Autocorrelations<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/ma1ACF.png"><img alt="../_images/ma1ACF.png" class="align-center" src="../_images/ma1ACF.png" style="width: 6in;" /></a>
+</div>
+<div class="section" id="id6">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Autocorrelations<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span></span><span class="c1">#################################################################</span>
+<span class="c1"># Plot lag 1 autocorrelation for different MA(1)</span>
+<span class="c1">#################################################################</span>
+
+<span class="c1"># Construct a grid of first-order coefficients</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+<span class="n">thetaGrid</span> <span class="o">=</span> <span class="n">seq</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">N</span><span class="p">);</span>
+
+<span class="c1"># Compute the lag 1 autocorrelations</span>
+<span class="n">rho1</span> <span class="o">=</span> <span class="n">thetaGrid</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">thetaGrid</span><span class="o">^</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1"># Plot</span>
+<span class="n">png</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="s2">&quot;ma1Lag1.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">thetaGrid</span><span class="p">,</span> <span class="n">rho1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="n">expression</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">ylab</span><span class="o">=</span><span class="n">expression</span><span class="p">(</span><span class="n">rho</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+     <span class="n">main</span><span class="o">=</span><span class="s2">&quot;Lag 1 Autocorrelation for MA(1)&quot;</span><span class="p">)</span>
+<span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Autocorrelations<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/ma1Lag1.png"><img alt="../_images/ma1Lag1.png" class="align-center" src="../_images/ma1Lag1.png" style="width: 6in;" /></a>
+</div>
+<div class="section" id="id8">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Autocorrelations<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>From the figure above we see that there are two values of
+<span class="math">\(\smash{\theta}\)</span> that generate each value of</p>
+<blockquote>
+<div><span class="math">\(\smash{\rho_1}\)</span>.</div></blockquote>
+<ul class="simple">
+<li>In fact, <span class="math">\(\smash{\theta}\)</span> and <span class="math">\(\smash{1/\theta}\)</span>
+correspond to the same  <span class="math">\(\smash{\rho_1}\)</span>:</li>
+</ul>
+<div class="math">
+\[\smash{\rho_1 = \frac{1/\theta}{1+(1/\theta)^2} =
+\frac{\theta^2}{\theta^2} \frac{1/\theta}{1+(1/\theta)^2} =
+\frac{\theta}{1+\theta^2}.}\]</div>
+</div>
+<div class="section" id="id9">
+<h2><span class="math">\(\smash{MA(1)}\)</span> Autocorrelations<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>Consider:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Y_t &amp; = \varepsilon_t + 0.5 \varepsilon_{t-1} \\
+Y_t &amp; = \varepsilon_t + 2 \varepsilon_{t-1}.
+\end{align}\end{split}\]</div>
+<p>Then:</p>
+<div class="math">
+\[\smash{\rho_1 = \frac{0.5}{1+0.5^2} = \frac{2}{1+2^2} = 0.4.}\]</div>
+</div>
+<div class="section" id="id10">
+<h2><span class="math">\(\smash{MA(q)}\)</span><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>A <span class="math">\(\smash{q}\)</span> th-order moving average or <span class="math">\(\smash{MA(q)}\)</span>
+process is</p>
+<div class="math">
+\[\smash{Y_t = \mu + \varepsilon_t + \theta_1 \varepsilon_{t-1} +
+\ldots + \theta_q \varepsilon_{t-q},}\]</div>
+<p>where <span class="math">\(\smash{\mu, \theta_1, \ldots, \theta_q}\)</span> are any real
+numbers.</p>
+<ul class="simple">
+<li>We can rewrite in terms of the lag operator:</li>
+</ul>
+<div class="math">
+\[\smash{Y_t = \mu + \theta(L) \varepsilon_t,}\]</div>
+<p>where <span class="math">\(\smash{\theta(L) = (1+\theta_1 L^1 + \ldots + \theta_q
+L^q)}\)</span>.</p>
+</div>
+<div class="section" id="mean">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Mean<a class="headerlink" href="#mean" title="Permalink to this headline">¶</a></h2>
+<p>As with the <span class="math">\(\smash{MA(1)}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}[Y_t] &amp; = \text{E}[\mu + \varepsilon_t + \theta_1 \varepsilon_{t-1}
++ \ldots + \theta_q \varepsilon_{t-q}] \\
+&amp; = \mu + \text{E}[\varepsilon_t] + \theta_1 \text{E}[\varepsilon_{t-1}] +
+\ldots + \theta_q \text{E}[\varepsilon_{t-q}] \\
+&amp; = \mu.
+\end{align*}\end{split}\]</div>
+</div>
+<div class="section" id="id11">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Autocovariances<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[\begin{split}\begin{align*}
+\gamma_j &amp; = \text{E}\left[(Y_t-\mu)(Y_{t-j}-\mu)\right]
+\\
+&amp; = \text{E}\big[(\varepsilon_t + \theta_1\varepsilon_{t-1} + \ldots +
+\theta_q \varepsilon_{t-q}) \\
+&amp; \hspace{1in} \times (\varepsilon_{t-j} + \theta_1\varepsilon_{t-j-1} +
+\ldots + \theta_q \varepsilon_{t-j-q})\big].
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>For <span class="math">\(\smash{j &gt; q}\)</span>, all of the products result in zero
+expectations: <span class="math">\(\smash{\gamma_j = 0}\)</span>, for <span class="math">\(\smash{j &gt;
+q}\)</span>.</li>
+</ul>
+<ul>
+<li><p class="first">For <span class="math">\(\smash{j = 0}\)</span>, the squared terms result in nonzero
+expectations, while the cross products lead to zero expectations:</p>
+<div class="math">
+\[\smash{\gamma_0 = \text{E}[\varepsilon^2_t ] + \theta^2_1
+\text{E}[\varepsilon^2_{t-1}] + \ldots + \theta^2_q
+\text{E}[\varepsilon^2_{t-q}] = \left(1 + \sum_{j=1}^q
+\theta^2_j\right) \sigma^2.}\]</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Autocovariances<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>For <span class="math">\(\smash{j = \{1,2,\ldots,q\}}\)</span>, the nonzero expectation
+terms are</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+\gamma_j &amp; = \theta_j\text{E}[\varepsilon^2_{t-j}] +
+\theta_{j+1}\theta_1 \text{E}[\varepsilon^2_{t-j-1}] \\
+&amp; \hspace{0.8in} + \theta_{j+2}\theta_2 \text{E}[\varepsilon^2_{t-j-2}] +
+\ldots + \theta_{q}\theta_{q-j} \text{E}[\varepsilon^2_{t-q}] \\
+&amp; = (\theta_j  + \theta_{j+1}\theta_1 +
+\theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j})
+\sigma^2.
+\end{align*}\end{split}\]</div>
+<p>The autocovariances can be stated concisely as</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\gamma_j &amp; = \begin{cases} (\theta_j\theta_0  + \theta_{j+1}\theta_1 +
+\theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j}) \sigma^2 &amp;
+\text{ for } j = 0, 1, \ldots, q \\
+0 &amp; \text{ for } j &gt; q. \end{cases}
+\end{align*}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\theta_0 = 1}\)</span>.</p>
+</div>
+<div class="section" id="id13">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Autocorrelations<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>The autocorrelations can be stated concisely as</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\rho_j &amp; = \begin{cases} \frac{\theta_j\theta_0  + \theta_{j+1}\theta_1 +
+\theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j}}{\theta^2_0
++ \theta^2_1 + \theta^2_2 + \ldots + \theta^2_q} &amp; \text{ for
+  } j = 0, 1, \ldots, q \\
+  0 &amp; \text{ for } j &gt; q. \end{cases}
+  \end{align*}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\theta_0 = 1}\)</span>.</p>
+</div>
+<div class="section" id="id14">
+<h2><span class="math">\(\smash{MA(2)}\)</span> Example<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p>For an <span class="math">\(\smash{MA(2)}\)</span> process</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\gamma_0 &amp; = (1 + \theta^2_1 + \theta^2_2) \sigma^2 \\
+\gamma_1 &amp; = (\theta_1 + \theta_2 \theta_1) \sigma^2 \\
+\gamma_2 &amp; = \theta_2 \sigma^2 \\
+\gamma_3 &amp; = \gamma_4 = \ldots = 0.
+\end{align*}\end{split}\]</div>
+</div>
+<div class="section" id="id15">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Stationarity and Ergodicity<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p>Since the mean and autocovariances are independent of time, an
+<span class="math">\(\smash{MA(q)}\)</span> is weakly stationary.</p>
+<ul class="simple">
+<li>This is true <em>for all values of</em>
+<span class="math">\(\smash{\{\theta_j\}_{j=1}^q}\)</span>.</li>
+</ul>
+<p>The condition for ergodicity of the mean also holds:</p>
+<div class="math">
+\[\begin{split}\smash{\sum_{j=0}^{\infty} |\gamma_j| = \sum_{j=0}^q |\gamma_j| &lt;
+\infty.}\end{split}\]</div>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\{\varepsilon_t\}}\)</span> is <em>Gaussian</em> then
+<span class="math">\(\smash{\{Y_t\}}\)</span> is also ergodic <em>for all moments</em>.</li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h2><span class="math">\(\smash{MA(\infty)}\)</span><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math">\(\smash{\theta_0 = 1}\)</span>, the <span class="math">\(\smash{MA(q)}\)</span> process can
+be written as</p>
+<div class="math">
+\[\smash{Y_t = \mu + \sum_{j=0}^q \theta_j \varepsilon_{t-j}.}\]</div>
+<ul class="simple">
+<li>If we take the limit <span class="math">\(\smash{q \to \infty}\)</span>:</li>
+</ul>
+<div class="math">
+\[\smash{Y_t = \mu + \sum_{j=0}^{\infty} \theta_j \varepsilon_{t-j} =
+\mu + \theta(L) \varepsilon_t,}\]</div>
+<p>where <span class="math">\(\smash{\theta(L) = \sum_{j=0}^{\infty} \theta_j L^j}\)</span>.</p>
+<ul class="simple">
+<li>It can be shown that an <span class="math">\(\smash{MA(\infty)}\)</span> process is weakly
+stationary if</li>
+</ul>
+<div class="math">
+\[\begin{split}\smash{\sum_{j=0}^{\infty} \theta^2_j &lt; \infty.}\end{split}\]</div>
+</div>
+<div class="section" id="id17">
+<h2><span class="math">\(\smash{MA(\infty)}\)</span><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<p>Since absolute summability implies square summability</p>
+<div class="math">
+\[\smash{\sum_{j=0}^{\infty} |\theta_j| \Rightarrow \sum_{j=0}^{\infty} \theta^2_j,}\]</div>
+<p>an <span class="math">\(\smash{MA(\infty)}\)</span> process satisfying absolute summability
+is also weakly stationary.</p>
+<ul class="simple">
+<li>In general</li>
+</ul>
+<div class="math">
+\[\smash{\sum_{j=0}^{\infty} \theta^2_j \nRightarrow
+\sum_{j=0}^{\infty} |\theta_j|.}\]</div>
+</div>
+<div class="section" id="moments">
+<h2><span class="math">\(\smash{MA(\infty)}\)</span> Moments<a class="headerlink" href="#moments" title="Permalink to this headline">¶</a></h2>
+<p>Following the same reasoning as above,</p>
+<div class="math">
+\[\begin{split}\begin{gather*}
+\text{E}[Y_t] = \mu \\
+\gamma_j = \sigma^2 \sum_{i=0}^{\infty}
+\theta_{j+i} \theta_i.
+\end{gather*}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{\sum_{j=0}^{\infty} |\theta_j| \Rightarrow
+\sum_{j=0}^{\infty} |\gamma_j|}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>So if the <span class="math">\(\smash{MA(\infty)}\)</span> has absolutely summable
+coefficients, it is ergodic for the mean.</li>
+</ul>
+<ul class="simple">
+<li>Further, if <span class="math">\(\smash{\{\varepsilon_t\}}\)</span> is <em>Gaussian</em> then
+<span class="math">\(\smash{\{Y_t\}}\)</span> is also ergodic <em>for all moments</em>.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ar.html" class="btn btn-neutral float-right" title="Autoregressive Processes">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lagOperators.html" class="btn btn-neutral" title="Lag Operators"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

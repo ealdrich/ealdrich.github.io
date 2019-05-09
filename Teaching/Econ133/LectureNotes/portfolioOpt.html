@@ -1,0 +1,679 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Portfolio Optimization &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html"/>
+        <link rel="up" title="Portfolio Optimization" href="portfolios.html"/>
+        <link rel="next" title="Portfolio Optimization with Many Risky Assets" href="multiAssetOpt.html"/>
+        <link rel="prev" title="Asset Allocation" href="allocation.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Econ 133</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="probability.html">Probability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#random-variables">Random Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#probability-mass-function">Probability Mass Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#probability-density-function">Probability Density Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-distributions">Properties of Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#cumulative-distribution-function">Cumulative Distribution Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#expected-value">Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id1">Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-expectation">Properties of Expectation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-expectation-proof">Properties of Expectation - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#variance">Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id2">Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#standard-deviation">Standard Deviation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#covariance">Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id3">Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-variance">Properties of Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-variance-proof">Properties of Variance - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-covariance">Properties of Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#correlation">Correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#normal-distribution">Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#normal-density">Normal Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id4">Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#standard-normal-distribution">Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#standard-normal-distribution-proof">Standard Normal Distribution - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id5">Standard Normal Distribution - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sum-of-normals">Sum of Normals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sample-mean">Sample Mean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sample-mean-cont">Sample Mean (Cont.)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sample-variance">Sample Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#other-sample-moments">Other Sample Moments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="markets.html">Markets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assetClasses.html">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexes.html">Indexes and Funds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html">Trading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="riskReturns.html">Risk and Returns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="returns.html">Rates of Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="risk.html">Risk and Risk Premiums</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="portfolios.html">Portfolio Optimization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allocation.html">Asset Allocation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Portfolio Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiAssetOpt.html">Portfolio Optimization with Many Risky Assets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="indexModels.html">Index Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id1">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#single-factor-model">Single-Factor Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id2">Single-Factor Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#decomposing-risk">Decomposing Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id3">Decomposing Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#using-an-index-as-a-factor">Using an Index as a Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id4">Using an Index as a Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#single-index-model">Single-Index Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id5">Single-Index Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#expected-return-beta-relationship">Expected Return-Beta Relationship</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#why-must-be-zero">Why <span class="math">\(\alpha\)</span> Must Be Zero</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#single-index-regression">Single-Index Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#security-characteristic-line">Security Characteristic Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id6">Security Characteristic Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#advantages-of-the-model">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id7">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id8">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id9">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#cost-of-the-model">Cost of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-portfolios">Index Model Portfolios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-portfolio-coefficients">Index Model Portfolio Coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-portfolio-risk">Index Model Portfolio Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id10">Index Model Portfolio Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-diversification">Index Model Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id11">Index Model Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id12">Index Model Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-example">Index Model Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id13">Index Model Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id14">Index Model Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id15">Index Model Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bonds.html">Bonds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bondPrices.html">Bond Prices and Yields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="termStructure.html">The Term Structure of Interest Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-options">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id1">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id2">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id3">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-example">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id4">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-options">Put Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id5">Put Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-example">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id6">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#moneyness">Moneyness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#american-vs-european">American vs. European</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#notation">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-buyer">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id7">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id8">Call Option Payoff (Buyer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-seller">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id9">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-payoff-buyer">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id10">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id11">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#speculation-and-hedging">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id12">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id13">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id14">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id15">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id16">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id17">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id18">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id19">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id20">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#covered-call">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id21">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#straddle">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id22">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id23">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#spread">Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#bullish-spread">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id24">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#collar">Collar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put-alternative">Protective Put Alternative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity">Put Call Parity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity-example">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id25">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id26">Put Call Parity Example</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 133</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="portfolios.html">Portfolio Optimization</a> &raquo;</li>
+      
+    <li>Portfolio Optimization</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/portfolioOpt.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="portfolio-optimization">
+<h1>Portfolio Optimization<a class="headerlink" href="#portfolio-optimization" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="types-of-risk">
+<h2>Types of Risk<a class="headerlink" href="#types-of-risk" title="Permalink to this headline">¶</a></h2>
+<p>We classify risk using two broad categories.</p>
+<ul class="to-build simple">
+<li>Systematic risk (also called market or non-diversifiable risk) which
+is common to all assets in the market.</li>
+</ul>
+<ul class="to-build simple">
+<li>Idiosyncratic risk (also called firm-specific, non-systematic or
+diversifiable risk) which is unique to a particular asset.</li>
+</ul>
+</div>
+<div class="section" id="benefits-of-diversification">
+<h2>Benefits of Diversification<a class="headerlink" href="#benefits-of-diversification" title="Permalink to this headline">¶</a></h2>
+<p>Idiosyncratic risk can be eliminated through portfolio
+diversification.</p>
+<ul class="to-build simple">
+<li>Imagine holding one stock in your portfolio. The risk of your
+portfolio will be equal to the sum of the stock&#8217;s systematic and
+idiosyncratic risks.</li>
+</ul>
+<ul class="to-build simple">
+<li>Now add another stock to the portfolio. If the two stocks are
+perfectly correlated, then they will always move together and your
+portfolio will have the same risk properties as before.</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>Benefits of Diversification<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">What if the idiosyncratic components of the two stocks are
+uncorrelated?</p>
+<ul class="to-build simple">
+<li>Systematic shocks will cause them to move together.</li>
+</ul>
+<ul class="to-build simple">
+<li>Idiosyncratic shocks will occur at different times and magnitudes,
+so the stocks will not move together as much.</li>
+</ul>
+<ul class="to-build simple">
+<li>Sometimes when one falls in price another will rise price,
+counteracting each other and reducing risk.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Benefits of Diversification<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">What if the idiosyncratic components of the two stocks are
+negatively correlated?</p>
+<ul class="to-build simple">
+<li>Systematic shocks will cause them to move together.</li>
+</ul>
+<ul class="to-build simple">
+<li>Idiosyncratic shocks will cause them to move in opposite
+directions, reducing risk.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="limits-to-diversification">
+<h2>Limits to Diversification<a class="headerlink" href="#limits-to-diversification" title="Permalink to this headline">¶</a></h2>
+<p>Adding more and more assets to a portfolio compounds the
+diversification effect.</p>
+<ul class="to-build simple">
+<li>In theory, it should be possible to eliminate all idiosyncratic risk
+by increasing the number of assets in a portfolio.</li>
+</ul>
+<ul class="to-build simple">
+<li>Systematic risk, however, cannot be eliminated since it is common to
+all assets.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>Limits to Diversification<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\qquad\)</span></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/bod34698_0601_lg.jpg"><img alt="_images/bod34698_0601_lg.jpg" class="align-center" src="_images/bod34698_0601_lg.jpg" style="width: 8in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="portfolios-of-two-risky-assets">
+<h2>Portfolios of Two Risky Assets<a class="headerlink" href="#portfolios-of-two-risky-assets" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you can invest in two risky assets.</p>
+<ul class="to-build simple">
+<li>A debt asset (bonds) denoted by <span class="math">\(D\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>An equity asset (stocks) denoted by <span class="math">\(E\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\omega_d\)</span> is the fraction of wealth invested in <span class="math">\(D\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\omega_e\)</span> is the fraction of wealth invested in <span class="math">\(E\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We require <span class="math">\(\omega_d + \omega_e = 1\)</span>, so that <span class="math">\(\omega_e
+= 1 - \omega_d\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="returns-to-portfolios-of-risky-assets">
+<h2>Returns to Portfolios of Risky Assets<a class="headerlink" href="#returns-to-portfolios-of-risky-assets" title="Permalink to this headline">¶</a></h2>
+<p>Suppose the returns to <span class="math">\(D\)</span> and <span class="math">\(E\)</span> are <span class="math">\(r_d\)</span> and
+<span class="math">\(r_e\)</span>, respectively.</p>
+<ul class="to-build simple">
+<li>The portfolio return is the weighted average of returns</li>
+</ul>
+<div class="to-build math">
+\[r_p  = \omega_d r_d + \omega_e r_e.\]</div>
+<ul class="to-build simple">
+<li>By the properties of expectations, the portfolio expected return is</li>
+</ul>
+<div class="to-build math">
+\[\mu_p = \omega_d \mu_d + \omega_e \mu_e.\]</div>
+<ul class="to-build simple">
+<li>By the properties of variance, the portfolio variance is</li>
+</ul>
+<div class="to-build math">
+\[\sigma^2_p = \omega^2_d \sigma^2_d + \omega^2_e \sigma^2_e + 2
+\omega_d \omega_e Cov(r_d, r_e).\]</div>
+</div>
+<div class="section" id="covariance-matrix">
+<h2>Covariance Matrix<a class="headerlink" href="#covariance-matrix" title="Permalink to this headline">¶</a></h2>
+<p>It is often useful to express the variance and covariance information
+in matrix form</p>
+<div class="to-build math">
+\[\begin{split}\Sigma = \left[\begin{array}{cc} \sigma^2_d &amp; \sigma_{d,e}
+      \\ \sigma_{e,d} &amp; \sigma^2_e \end{array} \right],\end{split}\]</div>
+<p class="to-build">where <span class="math">\(\sigma_{d,e} = \sigma_{e,d} = Cov(r_d, r_e)\)</span>.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\Sigma\)</span> is referred to as a covariance matrix.</li>
+</ul>
+<ul class="to-build simple">
+<li>It can be generalized to more than two assets.</li>
+</ul>
+<ul class="to-build simple">
+<li>The diagonal terms always represent variances.</li>
+</ul>
+<ul class="to-build simple">
+<li>The off-diagonal terms represent covariances.</li>
+</ul>
+</div>
+<div class="section" id="correlation">
+<h2>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h2>
+<p>Define <span class="math">\(\rho_{xy} = Corr(X,Y)\)</span>.  Then recall that</p>
+<div class="to-build math">
+\[\rho_{xy} = \frac{Cov(X,Y)}{\sigma_x \sigma_y}.\]</div>
+<ul class="to-build simple">
+<li>Hence, <span class="math">\(Cov(X,Y) = \rho_{xy} \sigma_x \sigma_y\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Remember that <span class="math">\(\rho_{xy} \in [-1,1]\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="portfolio-variance">
+<h2>Portfolio Variance<a class="headerlink" href="#portfolio-variance" title="Permalink to this headline">¶</a></h2>
+<p>The previous relationship allows us to write portfolio variance as</p>
+<div class="math">
+\[\begin{split}\sigma^2_p &amp; = \omega^2_d \sigma^2_d + \omega^2_e \sigma^2_e + 2
+\omega_d \omega_e \rho_{de} \sigma_d \sigma_e.\end{split}\]</div>
+<ul class="to-build simple">
+<li>Since <span class="math">\(\rho_{de} \in [-1,1]\)</span>, <span class="math">\(\sigma^2_p\)</span> is greatest
+when <span class="math">\(\rho_{de} = 1\)</span>.  Why?</li>
+</ul>
+<ul class="to-build simple">
+<li>Note that when <span class="math">\(\rho_{de} = 1\)</span>,</li>
+</ul>
+<div class="to-build math">
+\[\sigma^2_p = (\omega_d \sigma_d + \omega_e \sigma_e)^2\]</div>
+<div class="to-build math">
+\[\Rightarrow \sigma_p = \omega_d \sigma_d + \omega_e \sigma_e.\]</div>
+</div>
+<div class="section" id="portfolio-standard-deviation">
+<h2>Portfolio Standard Deviation<a class="headerlink" href="#portfolio-standard-deviation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>In this special case, the portfolio standard deviation is the
+weighted average of asset standard deviations.</li>
+</ul>
+<ul class="to-build simple">
+<li>So the maximal possible portfolio standard deviation is the
+simple weighted average of component standard deviations.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Portfolio Variance<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Note that</p>
+<ul class="to-build simple">
+<li><span class="math">\(\mu_p\)</span> is the weighted average of asset means.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\sigma_p\)</span> is less than the weighted average of asset
+volatilities when <span class="math">\(\rho_{de} \neq 1\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>So the risk-return properties of the portfolio are better than those
+of the component assets.</li>
+</ul>
+</div>
+<div class="section" id="portfolio-variance-lower-bound">
+<h2>Portfolio Variance Lower Bound<a class="headerlink" href="#portfolio-variance-lower-bound" title="Permalink to this headline">¶</a></h2>
+<p>Portfolio variance is made smaller with smaller values of
+<span class="math">\(\rho_{de}\)</span>.</p>
+<ul class="to-build simple">
+<li>When <span class="math">\(\rho_{de} = -1\)</span>,</li>
+</ul>
+<div class="to-build math">
+\[\sigma^2_p = (\omega_d \sigma_d - \omega_e \sigma_e)^2\]</div>
+<div class="to-build math">
+\[\Rightarrow \sigma_p = |\omega_d \sigma_d - \omega_e \sigma_e|.\]</div>
+<ul class="to-build simple">
+<li>If we choose <span class="math">\(\omega_d = \frac{\sigma_e}{\sigma_e + \sigma_d}\)</span>
+(and <span class="math">\(\omega_e = 1-\omega_d\)</span>) then <span class="math">\(\sigma_p = 0\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>This means that if assets are perfectly negatively correlated, the
+portfolio has zero variance.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>Portfolio Variance Lower Bound<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/pg205_1.jpg"><img alt="_images/pg205_1.jpg" class="align-center" src="_images/pg205_1.jpg" style="width: 6.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="portfolio-frontier">
+<h2>Portfolio Frontier<a class="headerlink" href="#portfolio-frontier" title="Permalink to this headline">¶</a></h2>
+<p>The lines in the figure above are known as <em>portfolio opportunity
+sets</em> or <em>portfolio frontiers</em>.</p>
+<ul class="to-build simple">
+<li>Since individuals prefer less risk and greater return, frontiers
+that are bowed to the northwest are better.</li>
+</ul>
+<ul class="to-build simple">
+<li>Clearly, the frontiers are better for smaller values of
+<span class="math">\(\rho_{de}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="portfolios-of-three-assets">
+<h2>Portfolios of Three Assets<a class="headerlink" href="#portfolios-of-three-assets" title="Permalink to this headline">¶</a></h2>
+<p>Assume you can invest your money in three assets:</p>
+<ul class="to-build simple">
+<li>Two risky assets.</li>
+</ul>
+<ul class="to-build simple">
+<li>A risk-free asset.</li>
+</ul>
+<p class="to-build">The portfolio frontier now consists of</p>
+<ul class="to-build simple">
+<li>The curved frontier between the two risky assets. We will call this
+the <em>risky frontier</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Every capital allocation line (CAL) connecting the risk-free to a
+portfolio on the risky frontier.</li>
+</ul>
+<ul class="to-build simple">
+<li>Steeper CALs are better since they offer portfolios of equivalent
+expected return with lower standard deviation.</li>
+</ul>
+</div>
+<div class="section" id="efficient-frontier">
+<h2>Efficient Frontier<a class="headerlink" href="#efficient-frontier" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/pg206_1.jpg"><img alt="_images/pg206_1.jpg" class="align-center" src="_images/pg206_1.jpg" style="width: 6.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="optimal-cal">
+<h2>Optimal CAL<a class="headerlink" href="#optimal-cal" title="Permalink to this headline">¶</a></h2>
+<p>The optimal CAL is the steepest possible line that intersects both the
+risk-free asset and a portfolio on the risky frontier.</p>
+<ul class="to-build simple">
+<li>The slope of the CAL is the Sharpe Ratio of the risky portfolio it
+intersects.</li>
+</ul>
+<ul class="to-build simple">
+<li>So the investor&#8217;s optimization problem is</li>
+</ul>
+<div class="to-build math">
+\[\max_{\omega} SR_p = \frac{\mu_p - r_f}{\sigma_p} \quad \text{subject to}\]</div>
+<div class="to-build math">
+\[\mu_p = \omega_d \mu_d + (1-\omega_d) \mu_e\]</div>
+<div class="to-build math">
+\[\sigma_p = \sqrt{\omega^2_d \sigma^2_d + (1-\omega_d)^2
+\sigma^2_e + 2 \omega_d (1-\omega_d) \rho_{de} \sigma_d
+\sigma_e}.\]</div>
+</div>
+<div class="section" id="id6">
+<h2>Optimal CAL<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>To solve the problem we</p>
+<ul class="to-build simple">
+<li>Substitute the constraints.</li>
+</ul>
+<ul class="to-build simple">
+<li>Take the derivative with respect to <span class="math">\(\omega_d\)</span> and set the
+derivative equal to zero.</li>
+</ul>
+<ul class="to-build simple">
+<li>Perform some tedious algebra.</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>Optimal CAL<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>The solution is</p>
+<div class="to-build math">
+\[\begin{split}\omega_d^* &amp; = \frac{rp_d \sigma^2_e - rp_e
+\rho_{de} \sigma_d \sigma_e}{rp_e \sigma^2_d +
+rp_d \sigma^2_e - (rp_e + rp_d) \rho_{de}
+\sigma_d \sigma_e}.\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(rp_d = \mu_d - r_f\)</span> and <span class="math">\(rp_e = \mu_e - r_f\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The optimal portfolio <span class="math">\(T\)</span> is known as the <em>tangency
+portfolio</em>.</li>
+</ul>
+</div>
+<div class="section" id="tangeny-portfolio">
+<h2>Tangeny Portfolio<a class="headerlink" href="#tangeny-portfolio" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/pg208_1.jpg"><img alt="_images/pg208_1.jpg" class="align-center" src="_images/pg208_1.jpg" style="width: 6.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h2>Optimal CAL<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>The optimal CAL is the investor&#8217;s efficient choice set, since it
+offers minimal variance portfolios for every choice of expected
+return.</p>
+<ul class="to-build simple">
+<li>We have said nothing about which portfolio the investor will
+actually consume; we have only identified the set from which the
+investor will choose.</li>
+</ul>
+<ul class="to-build simple">
+<li>We must combine the optimal CAL with a specification of preferences
+to determine the investor&#8217;s actual choice.</li>
+</ul>
+<ul class="to-build simple">
+<li>The portfolio choice problem with three assets now reduces to the
+simple problem of choosing between one risky asset (the tangency
+portfolio) and the risk-free asset.</li>
+</ul>
+</div>
+<div class="section" id="investor-choice">
+<h2>Investor Choice<a class="headerlink" href="#investor-choice" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s assume again that agents&#8217; utility is given by</p>
+<div class="to-build math">
+\[\begin{split}U(\mu, \sigma) &amp; = \mu - \frac{1}{2} \gamma \sigma^2.\end{split}\]</div>
+<p class="to-build">Recall that when allocating wealth between a risky asset <span class="math">\(P\)</span> and
+a risk-free asset, the optimal portfolio weight, <span class="math">\(\tau\)</span>, is</p>
+<div class="to-build math">
+\[\begin{split}\tau &amp; = \frac{\mu_p - r_f}{\gamma \sigma^2_p}.\end{split}\]</div>
+</div>
+<div class="section" id="id9">
+<h2>Investor Choice<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>If the agent invests in the tangency portfolio <span class="math">\(T\)</span> and the
+risk-free,</p>
+<div class="math">
+\[\tau = \frac{\mu_T - r_f}{\gamma  \sigma^2_T}.\]</div>
+<ul class="to-build simple">
+<li>Given that the tangency portfolio is a weighted average of assets
+<span class="math">\(D\)</span> and <span class="math">\(E\)</span>, with optimal weight <span class="math">\(\omega_d^*\)</span></li>
+</ul>
+<div class="to-build math">
+\[\begin{split}w_d &amp; = \tau \omega_d^* \\
+w_e &amp; = \tau (1-\omega_d^*).\end{split}\]</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="multiAssetOpt.html" class="btn btn-neutral float-right" title="Portfolio Optimization with Many Risky Assets">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allocation.html" class="btn btn-neutral" title="Asset Allocation"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Security Markets and Financial Institutions',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

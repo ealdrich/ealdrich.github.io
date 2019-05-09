@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Resampling &mdash; Econ 114 - Advanced Quantitative Methods</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
+    <link rel="next" title="Time Series" href="timeSeries.html" />
+    <link rel="prev" title="Maximum Likelihood Estimation" href="mle.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="resampling">
+<h1>Resampling</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="properties-of-estimators">
+<h2>Properties of Estimators</h2>
+<p>We've now seen that estimation is not enough.</p>
+<ul class="to-build simple">
+<li>We often want to know about properties of estimators.</li>
+</ul>
+<ul class="to-build simple">
+<li>For example, what is the standard error of an estimator?</li>
+</ul>
+<ul class="to-build simple">
+<li>Remember that before data is observed, an estimator is a random
+variable itself.</li>
+</ul>
+<ul class="to-build simple">
+<li>As an example, <span class="math">\(\bar{Y}\)</span> is a sum of random variables divided
+by a constant value.</li>
+</ul>
+<ul class="to-build simple">
+<li>Before <span class="math">\(\{Y_i\}_{i=1}^n\)</span> is observed, <span class="math">\(\bar{Y}\)</span> is
+random and has its own variance and standard deviation.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Resampling</h2>
+<p>It is often challenging or impossible to compute certain
+characteristics of estimators.</p>
+<ul class="to-build simple">
+<li>We would like to replace theoretical calculations with Monte Carlo
+simulation, which draws additional samples from the population.</li>
+</ul>
+<ul class="to-build simple">
+<li>Sampling from the true population is typically impossible.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Resampling</h2>
+<p>We substitute sampling from the true population with sampling from the
+observed sample.</p>
+<ul class="to-build simple">
+<li>This is referred to as <em>resampling</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the sample is a good representation of the true population, then
+sampling from the sample should approximate sampling from the
+population.</li>
+</ul>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="bootstrapping">
+<h2>Bootstrapping</h2>
+<p>Suppose the original sample has <span class="math">\(n\)</span> data observations.</p>
+<ul class="to-build simple">
+<li><em>Bootstrapping</em> involves drawing <span class="math">\(B\)</span> new samples of size
+<span class="math">\(n\)</span> from the original sample.</li>
+</ul>
+<ul class="to-build simple">
+<li>Each bootstrap sample is done with replacement.</li>
+</ul>
+<ul class="to-build simple">
+<li>Otherwise, the bootstrap samples would all be identical to the
+original sample (why?).</li>
+</ul>
+<ul class="to-build simple">
+<li>Drawing with replacement allows each bootstrap observation to be
+drawn in an <span class="math">\(i.i.d.\)</span> fashion from the sample.</li>
+</ul>
+<ul class="to-build simple">
+<li>So, the original sample plays the role of the population.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="bootstrap-estimates">
+<h2>Bootstrap Estimates</h2>
+<p>Let <span class="math">\(\theta\)</span> be a parameter of interest and let
+<span class="math">\(\hat{\theta}\)</span> denote an estimate of <span class="math">\(\theta\)</span> using a
+sample of data, <span class="math">\(\{y_i\}_{i=1}^n\)</span>.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\hat{\theta}\)</span> might be calculated by maximum likelihood
+estimation.</li>
+</ul>
+<ul class="to-build simple">
+<li>We could create <span class="math">\(B\)</span> new samples from <span class="math">\(\{y_i\}_{i=1}^n\)</span>
+by resampling with replacement.</li>
+</ul>
+<ul class="to-build simple">
+<li>For each new sample <span class="math">\(j = 1, \ldots, B\)</span>, we could compute
+<span class="math">\(\hat{\theta}^*_j\)</span> in the exact way <span class="math">\(\hat{\theta}\)</span> was
+computed with <span class="math">\(\{y_i\}_{i=1}^n\)</span>.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Bootstrap Estimates</h2>
+<ul class="simple">
+<li>One way to estimate <span class="math">\(E[\hat{\theta}]\)</span> is by averaging the
+bootstrap estimates:</li>
+</ul>
+<div class="to-build math">
+\[E[\hat{\theta}] \approx \bar{\hat{\theta}}^* = \frac{1}{B}
+\sum_{j=1}^B \hat{\theta}^*_j.\]</div>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="estimating-bias">
+<h2>Estimating Bias</h2>
+<p>True bias for an estimator is defined as</p>
+<div class="math">
+\[\text{BIAS}(\hat{\theta}) = E[\hat{\theta}] - \theta.\]</div>
+<ul class="to-build simple">
+<li>We can approximate the population average, <span class="math">\(E[\hat{\theta}]\)</span>,
+with a bootstrap average, <span class="math">\(\bar{\hat{\theta}}^*\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[\text{BIAS}_{\text{boot}}(\hat{\theta}) =
+\bar{\hat{\theta}}^* - \hat{\theta}.\]</div>
+<ul class="to-build simple">
+<li>We replaced the true population value, <span class="math">\(\theta\)</span>, with the
+sample value, <span class="math">\(\hat{\theta}\)</span>, since the sample substitutes for
+the population.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="estimating-standard-error">
+<h2>Estimating Standard Error</h2>
+<p>The true standard deviation of <span class="math">\(\hat{\theta}\)</span> can be estimated with
+the bootstrap estimates:</p>
+<div class="math">
+\[s_{\text{boot}}(\hat{\theta}) = \sqrt{\frac{1}{B-1} \sum_{j=1}^B
+\left(\hat{\theta}^*_j - \bar{\hat{\theta}}^* \right)^2}.\]</div>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="example-pareto-distribution">
+<h2>Example: Pareto Distribution</h2>
+<p>Suppose we have a sample of random variables drawn from a Pareto
+distribution:</p>
+<div class="math">
+\[Y_i \stackrel{i.i.d.}{\sim} \mathcal{P}(\alpha, \beta), \qquad
+i=1,\ldots, n.\]</div>
+<ul class="to-build simple">
+<li>The density of each <span class="math">\(Y_i\)</span> is</li>
+</ul>
+<div class="to-build math">
+\[f(y|\alpha, \beta) = \frac{\beta \alpha^\beta}{y^{\beta+1}}.\]</div>
+<ul class="to-build simple">
+<li>If <span class="math">\(Y_i \sim \mathcal{P}(\alpha, \beta)\)</span>, then <span class="math">\(\alpha &gt;
+0\)</span>, <span class="math">\(\beta &gt; 0\)</span> and <span class="math">\(Y_i &gt; \alpha\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\alpha\)</span> is a parameter dictating the minimum possible value
+of <span class="math">\(Y_i\)</span> and <span class="math">\(\beta\)</span> is a shape parameter.</li>
+</ul>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Example: Pareto Distribution</h2>
+<p>In the graph below, <span class="math">\(\beta = \kappa\)</span>.</p>
+<a class="reference internal image-reference" href="_images/paretoPDF.png"><img alt="_images/paretoPDF.png" class="align-center" src="_images/paretoPDF.png" style="width: 5.5in;" /></a>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Example: Pareto Distribution</h2>
+<p>The joint density of <span class="math">\({\bf Y} = (Y_1, \ldots, Y_n)'\)</span> is</p>
+<div class="to-build math">
+\[f_{{\bf Y}}({\bf y}|\alpha, \beta) = \prod_{i=1}^n
+f_{Y_i}(y_i|\alpha, \beta) \qquad \; \,\]</div>
+<div class="to-build math">
+\[= \prod_{i=1}^n \frac{\beta \alpha^\beta}{y_i^{\beta+1}}\]</div>
+<div class="to-build math">
+\[\quad \; \; = \frac{\beta^n \alpha^{n\beta}}{\prod_{i=1}^n
+y_i^{\beta+1}}.\]</div>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Example: Pareto Distribution</h2>
+<p>Assuming <span class="math">\(\alpha\)</span> is known, the log likelihood of <span class="math">\(\beta\)</span>
+is</p>
+<div class="to-build math">
+\[\ell (\beta|\alpha, {\bf y}) = \log(f_{{\bf Y}}({\bf y}|\alpha,
+\beta)) \qquad \qquad \qquad \qquad \qquad \qquad\]</div>
+<div class="to-build math">
+\[\quad \, = n \log(\beta) + n\beta \log(\alpha) - (1+\beta)
+\sum_{i=1}^n \log(y_i).\]</div>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Example: Pareto Distribution</h2>
+<p>The MLE, <span class="math">\(\hat{\beta}\)</span> is the value such that</p>
+<div class="to-build math">
+\[\frac{\partial \ell}{\partial \beta}\bigg|_{\beta = \hat{\beta}} =
+\frac{n}{\hat{\beta}} + n \log(\alpha) - \sum_{i=1}^n \log(y_i) = 0.\]</div>
+<div class="to-build math">
+\[\Rightarrow \hat{\beta} = \frac{n}{\sum_{i=1}^n \log(y_i) - n\log(\alpha)}.\]</div>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Example: Pareto Distribution</h2>
+<p>The second derivative of the log likelihood is</p>
+<div class="math">
+\[\begin{split}\frac{\partial^2 \ell}{\partial \beta^2} &amp; = -\frac{n}{\beta^2}.\end{split}\]</div>
+<ul class="to-build simple">
+<li>The observed Fisher information is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\tilde{\mathcal{I}}(\hat{\beta}) &amp; = -\frac{\partial^2
+\ell}{\partial \beta^2} \bigg|_{\beta = \hat{\beta}} =
+\frac{n}{\hat{\beta}^2}.\end{split}\]</div>
+<ul class="to-build simple">
+<li>The asymptotic standard error of <span class="math">\(\hat{\beta}\)</span> is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}Std(\hat{\beta}) &amp; \approx
+\sqrt{\tilde{\mathcal{I}}(\hat{\beta})^{-1}} =
+\frac{\hat{\beta}}{\sqrt{n}}.\end{split}\]</div>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Example: Pareto Distribution</h2>
+<p>Given a sample of <span class="math">\(n\)</span> observations from a Pareto distribution:</p>
+<ul class="to-build simple">
+<li>We can compute the MLE, <span class="math">\(\hat{\beta}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We can compute the asymptotic standard error
+<span class="math">\(\hat{\beta}/\sqrt{n}\)</span>.</li>
+</ul>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="id10">
+<h2>Example: Pareto Distribution</h2>
+<p>We can generate <span class="math">\(B\)</span> new samples by resampling.</p>
+<ul class="to-build simple">
+<li>For each new sample, we can compute <span class="math">\(\hat{\beta}_j\)</span>,
+<span class="math">\(j=1,\ldots,B\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We can compute the standard deviation of
+<span class="math">\(\{\hat{\beta}_j\}_{j=1}^B\)</span> and compare to the asymptotic
+standard error.</li>
+</ul>
+<ul class="to-build simple">
+<li>The bootstrap standard error will be a better estimate of variation
+than the asymptotic standard error when <span class="math">\(n\)</span> is small.</li>
+</ul>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="bootstrap-confidence-intervals">
+<h2>Bootstrap Confidence Intervals</h2>
+<p>Given a set of bootstrap estimates, <span class="math">\(\{\hat{\theta}^*_j\}_{j=1}^B\)</span>,
+we can form a <span class="math">\(1-\alpha\)</span> confidence interval with the normal
+approximation</p>
+<div class="to-build math">
+\[\left(\hat{\theta} - s_{\text{boot}}(\hat{\theta}) \, z_{\alpha/2},
+\,\, \hat{\theta} + s_{\text{boot}}(\hat{\theta}) \,
+z_{\alpha/2}\right)\]</div>
+<p class="to-build">where <span class="math">\(z_{\alpha/2}\)</span> is the <span class="math">\(\alpha\)</span> -upper quantile of the
+standard normal distribution.</p>
+<ul class="to-build simple">
+<li>Note that the interval is centered around <span class="math">\(\hat{\theta}\)</span>
+rather than <span class="math">\(\theta\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this case <span class="math">\(\hat{\theta}\)</span> is substituted for <span class="math">\(\theta\)</span>,
+just as the data sample is substituted for the true population.</li>
+</ul>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="id11">
+<h2>Bootstrap Confidence Intervals</h2>
+<p>Alternatively, we could compute the <span class="math">\(\alpha\)</span> and
+<span class="math">\(1-\alpha\)</span> empirical quantiles of the bootstrap estimates,
+<span class="math">\(\{\hat{\theta}^*_j\}_{j=1}^B\)</span>: <span class="math">\(q_{\alpha/2}\)</span> and
+<span class="math">\(q_{(1-\alpha)/2}\)</span>.</p>
+<ul class="to-build simple">
+<li>The resulting <span class="math">\(1-\alpha\)</span> confidence interval is</li>
+</ul>
+<div class="to-build math">
+\[\left(q_{\alpha/2}, q_{(1-\alpha)/2}\right).\]</div>
+
+<div class="slide-no">19</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Advanced Quantitative Methods',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

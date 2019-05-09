@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data Transformations &mdash; Econ 114 - Advanced Quantitative Methods</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
+    <link rel="up" title="Exploratory Data Analysis" href="data.html" />
+    <link rel="next" title="Distributions" href="distributions.html" />
+    <link rel="prev" title="Sample Quantiles" href="quantiles.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="data-transformations">
+<h1>Data Transformations</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="transformations">
+<h2>Transformations</h2>
+<p>Data often deviate from normality and exhibit characteristics
+(skewness, kurtosis) that are difficult to model.</p>
+<ul class="to-build simple">
+<li>Transforming data using some functional form will often result in
+observations that are easier to model.</li>
+</ul>
+<ul class="to-build simple">
+<li>The most typical transformations are the natural logarithm and the
+square root.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="logarithmic-transformation">
+<h2>Logarithmic Transformation</h2>
+<p>Given independent and dependent variables, <span class="math">\((x_t, y_t)\)</span>, the
+natural logarithm transformation is appropriate under several
+circumstances:</p>
+<ul class="to-build simple">
+<li><span class="math">\(y_t\)</span> is strictly positive (the log of a negative number does
+not exist).</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(y_t\)</span> increases exponentially (faster than linearly) as
+<span class="math">\(x_t\)</span> increases.</li>
+</ul>
+<ul class="to-build simple">
+<li>The variance in <span class="math">\(y_t\)</span> appears to depend on its mean
+(heteroskedasticity).</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Logarithmic Transformation</h2>
+<p>Consider the relationship</p>
+<div class="math">
+\[y_t = \exp(\beta x_t)\exp(\epsilon_t),\]</div>
+<p>where <span class="math">\(\epsilon_t \sim \mathcal{N}(0,\sigma)\)</span>.</p>
+<ul class="to-build simple">
+<li>If <span class="math">\(\epsilon_t \sim \mathcal{N}(0,\sigma)\)</span>, then
+<span class="math">\(\exp(\epsilon_t) \sim \mathcal{LN}(0,\sigma)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this case,</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}E\left[\exp(\epsilon_t)\right] = \exp(0.5\sigma^2) \\\end{split}\]</div>
+<div class="to-build math">
+\[Var\left(\exp(\epsilon_t)\right) = \left(\exp(\sigma^2)-1\right)
+\exp(\sigma^2).\]</div>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Logarithmic Transformation</h2>
+<p>Thus,</p>
+<div class="to-build math">
+\[\begin{split}E[y_t] = \exp(\beta x_t) \exp(0.5 \sigma^2) \\\end{split}\]</div>
+<div class="to-build math">
+\[Var(y_t) = \exp(2\beta x_t) \left(\exp(\sigma^2)-1\right) \exp(\sigma^2).\]</div>
+<ul class="to-build simple">
+<li>That is, <span class="math">\(E[y_t]\)</span> grows exponentially with <span class="math">\(x_t\)</span> and
+<span class="math">\(Var(y_t)\)</span> is heteroskedastic.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Logarithmic Transformation</h2>
+<p>Taking the natural logarithm</p>
+<div class="to-build math">
+\[\log(y_t) = \beta x_t + \epsilon_t,\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(E\left[\log(y_t)\right]\)</span> grows linearly with <span class="math">\(x_t\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(Var\left(\log(y_t)\right)\)</span> is homoskedastic.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="logarithmic-transformation-example">
+<h2>Logarithmic Transformation Example</h2>
+<p>Given, <span class="math">\(\beta = 0.5\)</span> and <span class="math">\(\epsilon_t \sim
+\mathcal{N}(0,0.15)\)</span>, the plot below depicts</p>
+<div class="math">
+\[\begin{split}y_t &amp; = \exp(\beta x_t)\exp(\epsilon_t) \\
+\log(y_t) &amp; = \beta x_t + \epsilon_t.\end{split}\]</div>
+<a class="reference internal image-reference" href="_images/logTransExample.png"><img alt="_images/logTransExample.png" class="align-center" src="_images/logTransExample.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Logarithmic Transformation Example</h2>
+<p>Asset prices often display the characteristics that are suitable for a
+logarithmic transformation.</p>
+<a class="reference internal image-reference" href="_images/hogTransExample.png"><img alt="_images/hogTransExample.png" class="align-center" src="_images/hogTransExample.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="box-cox-power-transformations">
+<h2>Box-Cox Power Transformations</h2>
+<p>Generally speaking, the set of transformations</p>
+<div class="math">
+\[\begin{split}y^{\alpha} = \begin{cases} \frac{y^{\alpha}-1}{\alpha} &amp; \alpha
+\neq 0 \\ \log(y) &amp; \alpha = 0, \end{cases}\end{split}\]</div>
+<p>Is known as the family of <em>Box-Cox power transformations</em>.</p>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="correcting-skewness-and-heteroskedasticity">
+<h2>Correcting Skewness and Heteroskedasticity</h2>
+<p>Suppose a set of data observations, <span class="math">\(y_t\)</span>, appear to be right
+skewed and have variance increasing with it's mean.</p>
+<ul class="to-build simple">
+<li>A concave transformation with <span class="math">\(\alpha &lt; 1\)</span> will reduce the
+skewness and stabilize the variance.</li>
+</ul>
+<ul class="to-build simple">
+<li>The smaller the value of <span class="math">\(\alpha\)</span>, the greater the effect of
+the transformation.</li>
+</ul>
+<ul class="to-build simple">
+<li>Selecting <span class="math">\(\alpha &lt; 1\)</span> too small may result in left skewness
+or variance decreasing with the mean (or both).</li>
+</ul>
+<ul class="to-build simple">
+<li>The <span class="math">\(\alpha\)</span> that creates the most symmetric data may not be
+the best for stabilizing variance - there may be a tradeoff.</li>
+</ul>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="box-cox-example">
+<h2>Box Cox Example</h2>
+<a class="reference internal image-reference" href="_images/boxCoxExample1.png"><img alt="_images/boxCoxExample1.png" class="align-center" src="_images/boxCoxExample1.png" style="width: 7.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Box Cox Example</h2>
+<a class="reference internal image-reference" href="_images/boxCoxExample2.png"><img alt="_images/boxCoxExample2.png" class="align-center" src="_images/boxCoxExample2.png" style="width: 7.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="geometry-of-transformations">
+<h2>Geometry of Transformations</h2>
+<p>Transformations can be beneficial because they stretch observations
+apart in some regions and push them together in other regions.</p>
+<ul class="to-build">
+<li><p class="first">If data are right skewed, then a concave transformation will</p>
+<ul class="to-build simple">
+<li>Stretch the distances between observations at the lower end of the
+distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>Compress the distances between observations at the upper end of
+the distribution.</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>The degree of stretching and compressing will depend on the
+derivatives of the transformation function.</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Geometry of Transformations</h2>
+<p>For two values, <span class="math">\(x\)</span> and <span class="math">\(x'\)</span> close to each other, Taylor's
+theorem says</p>
+<div class="math">
+\[\begin{split}|h(x) - h(x')| &amp; \approx h'(x) |x-x'|.\end{split}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(h(x)\)</span> and <span class="math">\(h(x')\)</span> will be pushed apart where
+<span class="math">\(h'(x)\)</span> is large.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(h(x)\)</span> and <span class="math">\(h(x')\)</span> will be pushed together where
+<span class="math">\(h'(x)\)</span> is small.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(h'(x)\)</span> is a decreasing function of <span class="math">\(x\)</span> if <span class="math">\(h\)</span> is
+concave.</li>
+</ul>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Geometry of Transformations</h2>
+<a class="reference internal image-reference" href="_images/transGeometry1.png"><img alt="_images/transGeometry1.png" class="align-center" src="_images/transGeometry1.png" style="width: 7.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Geometry of Transformations</h2>
+<p>Similarly, if the variance of a data set increases with its mean, a
+concave transformation will</p>
+<ul class="to-build simple">
+<li>Push more variable values closer together (for large values of the
+data).</li>
+</ul>
+<ul class="to-build simple">
+<li>Push less variable values further apart (for small values of the
+data).</li>
+</ul>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Geometry of Transformations</h2>
+<a class="reference internal image-reference" href="_images/transGeometry2.png"><img alt="_images/transGeometry2.png" class="align-center" src="_images/transGeometry2.png" style="width: 7.5in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">17</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Advanced Quantitative Methods',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

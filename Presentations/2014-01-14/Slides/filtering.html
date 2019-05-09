@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Filtering Methods for Volatility Estimation &mdash; Filtering Methods for Volatility Estimation  documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Filtering Methods for Volatility Estimation  documentation" href="index.html" />
+    <link rel="prev" title="Filter Methods for Volatility Estimation" href="index.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="filtering-methods-for-volatility-estimation">
+<h1>Filtering Methods for Volatility Estimation</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="motivation">
+<h2>Motivation</h2>
+<p>Volatility estimation has typically taken several forms:</p>
+<ul class="to-build simple">
+<li>Computing the sample variance of historical data.</li>
+</ul>
+<ul class="to-build simple">
+<li>Computing implied volatilities using options.</li>
+</ul>
+<ul class="to-build simple">
+<li>Computing model-based values using GARCH or SV models.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Motivation</h2>
+<p>Financial data has become more rich in the past two decades.</p>
+<ul class="to-build simple">
+<li>Intraday trades and quotes can be used to estimate volatility on a
+daily basis using only historical data (no model).</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="prices">
+<h2>Prices</h2>
+<p>Prices are typically modeled as a continuous time diffusion:</p>
+<div class="math">
+\[dp(t) = \mu(t) dt + \sigma(t) dW(t)\]</div>
+<p>where <span class="math">\(W(t)\)</span> is a standard Brownian motion.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\mu(t)\)</span> is the drift and <span class="math">\(\sigma(t)\)</span> is the spot
+volatility.</li>
+</ul>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="returns-and-volatility">
+<h2>Returns and Volatility</h2>
+<p>Returns are the integral of price changes:</p>
+<div class="math">
+\[r(t) = p(t) - p(t-1) = \int_{t-1}^t \mu(s) ds + \int_{t-1}^t
+\sigma(s) dW(s)\]</div>
+<p class="to-build">Hence, the integrated variance is return variance between
+<span class="math">\(t-1\)</span> and <span class="math">\(t\)</span>:</p>
+<div class="to-build math">
+\[IV(t) = \int_{t-1}^t \sigma^2(s) ds\]</div>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="realized-variance">
+<h2>Realized Variance</h2>
+<p>Realized variance (RV) is the intuitive discrete approximation to the
+integrated variance (IV).</p>
+<ul class="to-build simple">
+<li>Begin by dividing the time interval of interest, <span class="math">\((t-1,t)\)</span>,
+into subintervals of length <span class="math">\(\Delta\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The realized variance is the sum of squared deviations from the
+mean:</li>
+</ul>
+<div class="to-build math">
+\[RV(t,\Delta) = \sum_{j=1}^{1/\Delta} (r(t-1+j\Delta, t) -
+\hat{\mu}(t-1+j\Delta,t))^2.\]</div>
+<ul class="to-build simple">
+<li>For short time horizons <span class="math">\(\hat{\mu}\)</span> is considered to be zero.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="asymptotic-realized-variance">
+<h2>Asymptotic Realized Variance</h2>
+<p>For the stochastic process specified above,</p>
+<div class="math">
+\[RV(t,\Delta) \to IV(t)\]</div>
+<p>as <span class="math">\(\Delta \to 0\)</span>.</p>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="microstructure-noise">
+<h2>Microstructure Noise</h2>
+<p>Unfortunately, as <span class="math">\(\Delta \to 0\)</span>, observed price data no longer
+satisfy a diffusion process.</p>
+<ul class="to-build simple">
+<li>Bid/offer bounce induces a correlation structure and discreteness in
+the data that is typically referred to as <em>microstructure noise</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>This has provided limitations on the frequency at which returns data
+can be sampled when used for realized variance estimation.</li>
+</ul>
+<ul class="to-build simple">
+<li>The standard over the past decade has been to sample returns at
+5-minute intervals.</li>
+</ul>
+<ul class="to-build simple">
+<li>Sampling the data at finer frequencies can lead to severe bias in
+realized variance estimation.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="volatility-signature-plot">
+<h2>Volatility Signature Plot</h2>
+<a class="reference internal image-reference" href="_images/volSigPlot.png"><img alt="_images/volSigPlot.png" class="align-center" src="_images/volSigPlot.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="current-financial-data">
+<h2>Current Financial Data</h2>
+<p>High-frequency trading and algorithmic trading have generated a wealth
+of financial data in recent years.</p>
+<ul class="to-build simple">
+<li>Consider SPY, a very liquid ETF that tracks the S&amp;P 500.</li>
+</ul>
+<ul class="to-build simple">
+<li>The average daily volume for SPY over the last three months is
+104,626,000 shares.</li>
+</ul>
+<ul class="to-build simple">
+<li>This is comprised of roughly 250,000 individual daily trades (an
+average of 450 shares per trade, or so).</li>
+</ul>
+<ul class="to-build simple">
+<li>Given 23,400 seconds in the trading day between 9:30 A.M. and 4:00
+P.M., that amounts to roughly 10 trades per second or 1 trade every
+100 milliseconds.</li>
+</ul>
+<ul class="to-build simple">
+<li>Quote data is probably 10 times as dense.</li>
+</ul>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="data-loss">
+<h2>Data Loss</h2>
+<p>Consider 5-minute RV.</p>
+<ul class="to-build simple">
+<li>This estimator uses only 78 price observations over the course of
+the day to estimate daily volatility.</li>
+</ul>
+<ul class="to-build simple">
+<li>This represents a data loss of 99.97%</li>
+</ul>
+<ul class="to-build simple">
+<li>If we could optimally filter the microstructure noise, we could
+retain the informative part of each data point.</li>
+</ul>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="filtering-methods">
+<h2>Filtering methods</h2>
+<p>In the past couple of years, several papers have proposed filtering
+methods.</p>
+<ul class="to-build simple">
+<li>The most popular is the <em>realized kernel</em> estimator:</li>
+</ul>
+<div class="to-build math">
+\[RK(t,H) = \sum_{-H}^H k\left(\frac{h}{H+1}\right) \hat{\gamma}_h.\]</div>
+<ul class="to-build simple">
+<li>This is a special case of a smoothed estimator of the spectral
+density:</li>
+</ul>
+<div class="to-build math">
+\[\hat{S}(f) = \sum_{-(N-1)}^{N-1} k\left(\frac{h}{H+1}\right)
+\hat{\gamma}_h e^{-i2\pi f h \Delta t}.\]</div>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Filtering methods</h2>
+<p>In practice, realized kernel estimators have been implemented with
+Bartlett and Parzen filters.</p>
+<ul class="to-build simple">
+<li>The Bartlett and Parzen filters were proposed for spectral density
+estimation in 1950 and 1961, respectively.</li>
+</ul>
+<ul class="to-build simple">
+<li>New methods have been developed over the intervening decades.</li>
+</ul>
+<ul class="to-build simple">
+<li>For example, multitaper estimation or estimation via wavelets.</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="wavelets">
+<h2>Wavelets</h2>
+<p>A wavelet decomposition of a time series is an orthonormal, additive
+decomposition.</p>
+<ul class="to-build simple">
+<li>Wavelet coefficients can be thought of as weighted averages of
+adjacent times series values.</li>
+</ul>
+<ul class="to-build simple">
+<li>A wavelet decomposition is not unlike a spectral decomposition,
+except that the component series are related to varying time scales
+rather than varying frequencies.</li>
+</ul>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="wavelet-multiresolution-analysis">
+<h2>Wavelet Multiresolution Analysis</h2>
+<a class="reference internal image-reference" href="_images/waveDecomp.png"><img alt="_images/waveDecomp.png" class="align-center" src="_images/waveDecomp.png" style="width: 4.8in;" /></a>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Volatility Signature Plot</h2>
+<a class="reference internal image-reference" href="_images/volSigPlotWave.png"><img alt="_images/volSigPlotWave.png" class="align-center" src="_images/volSigPlotWave.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="conclusion">
+<h2>Conclusion</h2>
+<p>We believe that more advanced filtering methods may improve volatility
+estimation with intraday data.</p>
+<ul class="to-build simple">
+<li>Bias and variance properties of RV estimators may be improved.</li>
+</ul>
+<ul class="to-build simple">
+<li>They may more optimally filter microstructure noise.</li>
+</ul>
+<ul class="to-build simple">
+<li>Asymptotic convergence may be faster.</li>
+</ul>
+<ul class="to-build simple">
+<li>As a result, we may be able to use data at finer sampling
+frequencies and even use finely sampled data to estimate intraday
+volatility (not just daily volatility).</li>
+</ul>
+
+<div class="slide-no">17</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Moving Average Processes &mdash; Econ 114 - Advanced Quantitative Methods</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
+    <link rel="up" title="Time Series" href="timeSeries.html" />
+    <link rel="next" title="ARMA Processes" href="arma.html" />
+    <link rel="prev" title="Autoregressive Processes" href="ar.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="moving-average-processes">
+<h1>Moving Average Processes</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2><span class="math">\(MA(1)\)</span></h2>
+<p>Given white noise <span class="math">\(\{\varepsilon_t\}\)</span>, consider the
+process</p>
+<div class="to-build math">
+\[Y_t = \mu + \varepsilon_t + \theta \varepsilon_{t-1},\]</div>
+<p class="to-build">where <span class="math">\(\mu\)</span> and <span class="math">\(\theta\)</span> are constants.</p>
+<ul class="to-build simple">
+<li>This is a <em>first-order moving average</em> or <span class="math">\(MA(1)\)</span> process.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="mean-and-variance">
+<h2><span class="math">\(MA(1)\)</span> Mean and Variance</h2>
+<p>The mean of the first-order moving average process is</p>
+<div class="to-build math">
+\[E[Y_t] = E[\mu + \varepsilon_t + \theta \varepsilon_{t-1}] \hspace{0.65in}\]</div>
+<div class="to-build math">
+\[= \mu + E[\varepsilon_t] + \theta E[\varepsilon_{t-1}]\]</div>
+<div class="to-build math">
+\[= \mu. \hspace{1.27in}\]</div>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="autocovariances">
+<h2><span class="math">\(MA(1)\)</span> Autocovariances</h2>
+<div class="math">
+\[\begin{split}\gamma_j &amp; = E\left[(Y_t - \mu)(Y_{t-j} - \mu)\right] \hspace{2in}\end{split}\]</div>
+<div class="to-build math">
+\[= E\left[(\varepsilon_t + \theta \varepsilon_{t-1})(\varepsilon_{t-j} + \theta
+\varepsilon_{t-j-1})\right] \hspace{1.18in}\]</div>
+<div class="to-build math">
+\[= E[\varepsilon_t \varepsilon_{t-j} + \theta \varepsilon_t
+\varepsilon_{t-j-1} + \theta \varepsilon_{t-1} \varepsilon_{t-j} +
+\theta^2 \varepsilon_{t-1}\varepsilon_{t-j-1}]\]</div>
+<div class="to-build math">
+\[\hspace{0.49in} = E[\varepsilon_t \varepsilon_{t-j}] + \theta
+E[\varepsilon_t \varepsilon_{t-j-1}] + \theta E[\varepsilon_{t-1}
+\varepsilon_{t-j}] + \theta^2
+E[\varepsilon_{t-1}\varepsilon_{t-j-1}].\]</div>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2><span class="math">\(MA(1)\)</span> Autocovariances</h2>
+<ul class="simple">
+<li>If <span class="math">\(j = 0\)</span></li>
+</ul>
+<div class="to-build math">
+\[\hspace{0.2in} \gamma_0 = E[\varepsilon^2_t] + \theta
+E[\varepsilon_t \varepsilon_{t-1}] + \theta E[\varepsilon_{t-1}
+\varepsilon_t] + \theta^2 E[\varepsilon^2_{t-1}] =
+(1+\theta^2)\sigma^2.\]</div>
+<ul class="to-build simple">
+<li>If <span class="math">\(j = 1\)</span></li>
+</ul>
+<div class="to-build math">
+\[\hspace{0.2in} \gamma_1 = E[\varepsilon_t \varepsilon_{t-1}] +
+\theta E[\varepsilon_t \varepsilon_{t-2}] + \theta
+E[\varepsilon^2_{t-1}] + \theta^2 E[\varepsilon_{t-1}
+\varepsilon_{t-2}] = \theta \sigma^2.\]</div>
+<ul class="to-build simple">
+<li>If <span class="math">\(j &gt; 1\)</span>, all of the expectations are zero:</li>
+</ul>
+<div class="to-build math">
+\[\gamma_j = 0.\]</div>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="stationarity">
+<h2><span class="math">\(MA(1)\)</span> Stationarity</h2>
+<p>Since the mean and autocovariances are independent of time, an
+<span class="math">\(MA(1)\)</span> is weakly stationary.</p>
+<ul class="to-build simple">
+<li>This is true <em>for all values of</em> <span class="math">\(\theta\)</span>.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="autocorrelations">
+<h2><span class="math">\(MA(1)\)</span> Autocorrelations</h2>
+<p>The autocorrelations of an <span class="math">\(MA(1)\)</span> are</p>
+<ul class="to-build simple">
+<li><span class="math">\(j = 0\)</span>: <span class="math">\(\hspace{0.7in} \rho_0 = 1\)</span> (<em>always</em>).</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(j = 1\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[\rho_1 = \frac{\theta \sigma^2}{(1+\theta^2) \sigma^2} =
+\frac{\theta}{1+\theta^2}\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(j &gt; 1\)</span>: <span class="math">\(\hspace{0.72in} \rho_j = 0\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(\theta &gt; 0\)</span>, first-order lags of <span class="math">\(Y_t\)</span> are
+<em>positively</em> autocorrelated.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(\theta &lt; 0\)</span>, first-order lags of <span class="math">\(Y_t\)</span> are
+<em>negatively</em> autocorrelated.</li>
+</ul>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2><span class="math">\(MA(1)\)</span> Autocorrelations</h2>
+<a class="reference internal image-reference" href="_images/ma1-acf.png"><img alt="_images/ma1-acf.png" class="align-center" src="_images/ma1-acf.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2><span class="math">\(MA(q)\)</span></h2>
+<p>A <span class="math">\(q\)</span> <em>th-order moving average</em> or <span class="math">\(MA(q)\)</span> process is</p>
+<div class="to-build math">
+\[Y_t = \mu + \varepsilon_t + \theta_1 \varepsilon_{t-1} + \ldots + \theta_q
+\varepsilon_{t-q},\]</div>
+<p class="to-build">where <span class="math">\(\mu, \theta_1, \ldots, \theta_q\)</span> are any real numbers.</p>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="mean">
+<h2><span class="math">\(MA(q)\)</span> Mean</h2>
+<p>As with the <span class="math">\(MA(1)\)</span>:</p>
+<div class="to-build math">
+\[E[Y_t] = E[\mu + \varepsilon_t + \theta_1 \varepsilon_{t-1} + \ldots +
+\theta_q \varepsilon_{t-q}] \hspace{0.85in}\]</div>
+<div class="to-build math">
+\[= \mu + E[\varepsilon_t] + \theta_1 E[\varepsilon_{t-1}] + \ldots + \theta_q
+E[\varepsilon_{t-q}]\]</div>
+<div class="to-build math">
+\[= \mu. \hspace{2.55in}\]</div>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2><span class="math">\(MA(q)\)</span> Autocovariances</h2>
+<div class="math">
+\[\begin{split}\gamma_j &amp; = E\left[(Y_t-\mu)(Y_{t-j}-\mu)\right] \hspace{0.8in}\end{split}\]</div>
+<div class="to-build math">
+\[= E\big[(\varepsilon_t + \theta_1\varepsilon_{t-1} + \ldots + \theta_q
+\varepsilon_{t-q})\]</div>
+<div class="to-build math">
+\[\hspace{1in} \times (\varepsilon_{t-j} + \theta_1\varepsilon_{t-j-1} +
+\ldots + \theta_q \varepsilon_{t-j-q})\big].\]</div>
+<ul class="to-build simple">
+<li>For <span class="math">\(j &gt; q\)</span>, all of the products result in zero expectations:
+<span class="math">\(\gamma_j = 0\)</span>, for <span class="math">\(j &gt; q\)</span>.</li>
+</ul>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2><span class="math">\(MA(q)\)</span> Autocovariances</h2>
+<ul class="simple">
+<li>For <span class="math">\(j = 0\)</span>, the squared terms result in nonzero expectations,
+while the cross products lead to zero expectations:</li>
+</ul>
+<div class="to-build math">
+\[\gamma_0 = E[\varepsilon^2_t ] + \theta^2_1 E[\varepsilon^2_{t-1}] + \ldots +
+\theta^2_q E[\varepsilon^2_{t-q}] = \left(1 + \sum_{j=1}^q
+\theta^2_j\right) \sigma^2.\]</div>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2><span class="math">\(MA(q)\)</span> Autocovariances</h2>
+<ul class="simple">
+<li>For <span class="math">\(j = \{1,2,\ldots,q\}\)</span>, the nonzero expectation terms are</li>
+</ul>
+<div class="to-build math">
+\[\gamma_j = \theta_j E[\varepsilon^2_{t-j}] + \theta_{j+1}\theta_1
+E[\varepsilon^2_{t-j-1}] \hspace{1.08in}\]</div>
+<div class="to-build math">
+\[\hspace{0.8in} + \theta_{j+2}\theta_2 E[\varepsilon^2_{t-j-2}] + \ldots +
+\theta_{q}\theta_{q-j} E[\varepsilon^2_{t-q}]\]</div>
+<div class="to-build math">
+\[= (\theta_j  + \theta_{j+1}\theta_1 + \theta_{j+2}\theta_2 +
+\ldots + \theta_q\theta_{q-j}) \sigma^2.\]</div>
+<p class="to-build">The autocovariances can be stated concisely as</p>
+<div class="to-build math">
+\[\begin{split}\gamma_j = \begin{cases} (\theta_j  + \theta_{j+1}\theta_1 +
+\theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j}) \sigma^2 &amp;
+\text{for } j = 0, 1, \ldots, q \\
+0 &amp; \text{for } j &gt; q. \end{cases} \hspace{0.2in}\end{split}\]</div>
+<p class="to-build">where <span class="math">\(\theta_0 = 1\)</span>.</p>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2><span class="math">\(MA(q)\)</span> Autocorrelations</h2>
+<p>The autocorrelations can be stated concisely as</p>
+<div class="to-build math">
+\[\begin{split}\rho_j = \begin{cases} \frac{\theta_j  + \theta_{j+1}\theta_1 +
+\theta_{j+2}\theta_2 + \ldots + \theta_q\theta_{q-j}}{\theta^2_0
++ \theta^2_1 + \theta^2_2 + \ldots + \theta^2_q} &amp; \text{ for
+} j = 0, 1, \ldots, q \\
+0 &amp; \text{ for } j &gt; q. \end{cases}\end{split}\]</div>
+<p class="to-build">where <span class="math">\(\theta_0 = 1\)</span>.</p>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="example">
+<h2><span class="math">\(MA(2)\)</span> Example</h2>
+<p>For an <span class="math">\(MA(2)\)</span> process</p>
+<div class="to-build math">
+\[\begin{split}\gamma_0 &amp; = (1 + \theta^2_1 + \theta^2_2) \sigma^2\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\gamma_1 &amp; = (\theta_1 + \theta_2 \theta_1) \sigma^2\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\gamma_2 &amp; = \theta_2 \sigma^2\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\gamma_3 &amp; = \gamma_4 = \ldots = 0.\end{split}\]</div>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="estimating-models">
+<h2>Estimating <span class="math">\(MA\)</span> Models</h2>
+<p>Estimation of an <span class="math">\(MA\)</span> model is done via maximum likelihood.</p>
+<ul class="to-build simple">
+<li>For an <span class="math">\(MA(q)\)</span> model, one would first specify a joint
+likelihood for the parameters <span class="math">\(\{\theta_1, \ldots,
+\theta_q, \mu, \sigma^2\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Taking derivatives of the log likelihood with respect to each of the
+parameters would result in a system of equations that could be
+solved for the MLEs: <span class="math">\(\{\hat{\theta}_1, \ldots,
+\hat{\theta}_q, \hat{\mu}, \hat{\sigma}^2\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The exact likelihood is a bit cumbersome and maximization requires
+specialized numerical methods.</li>
+</ul>
+<ul class="to-build simple">
+<li>The MLEs can be obtained with the <span class="math">\(\mathtt{arima}\)</span> function in
+<span class="math">\(\mathtt{R}\)</span>.</li>
+</ul>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="which">
+<h2>Which <span class="math">\(MA\)</span>?</h2>
+<p>How do we know if an <span class="math">\(MA\)</span> model is appropriate and which
+<span class="math">\(MA\)</span> model to fit?</p>
+<ul class="to-build simple">
+<li>For an <span class="math">\(MA(q)\)</span>, we know that <span class="math">\(\gamma_j = 0\)</span> for <span class="math">\(j
+&gt; q\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>We should only fit an <span class="math">\(MA\)</span> model if the autocorrelations drop
+to zero for all <span class="math">\(j &gt; q\)</span> for some value <span class="math">\(q\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <span class="math">\(\mathtt{acf}\)</span> function in <span class="math">\(\mathtt{R}\)</span> can be used
+to compute empirical autocorrelations of the data.</li>
+</ul>
+<ul class="to-build simple">
+<li>The appropriate <span class="math">\(q\)</span> can then be obtained from the empirical
+ACF.</li>
+</ul>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Which <span class="math">\(MA\)</span>?</h2>
+<ul class="simple">
+<li>After fitting an <span class="math">\(MA\)</span> model, we can examine the residuals.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <span class="math">\(\mathtt{acf}\)</span> function can be used to compute empirical
+autocorrelations of the residuals.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the residuals are autocorrelated, the model is not a good
+fit. Consider changing the order of the <span class="math">\(MA\)</span> or using another
+model.</li>
+</ul>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="id10">
+<h2>Which <span class="math">\(MA\)</span>?</h2>
+<p>The <span class="math">\(\mathtt{auto.arima}\)</span> function in <span class="math">\(\mathtt{R}\)</span>
+estimates a range of <span class="math">\(MA(q)\)</span> models and selects the one with the
+best fit.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\mathtt{auto.arima}\)</span> uses the <em>Akaike Information Criterion</em>
+(AIC) or the <em>Bayesian Information Criterion</em> (BIC) to select the
+model.</li>
+</ul>
+<ul class="to-build simple">
+<li>Minimizing AIC and BIC amounts to minimizing the sum of squared
+residuals, with a penalty term that is related to the number of
+model parameters.</li>
+</ul>
+
+<div class="slide-no">19</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Advanced Quantitative Methods',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

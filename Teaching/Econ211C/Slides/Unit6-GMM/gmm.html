@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Generalized Method of Moments &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Generalized Method of Moments" href="../gmmIndex.html" />
+    <link rel="next" title="GMM Optimal Weighting Matrix" href="optMat.html" />
+    <link rel="prev" title="Method of Moments" href="mm.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="generalized-method-of-moments">
+
+<h1>Generalized Method of Moments</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="setup">
+
+<h2>Setup</h2>
+
+<p>Let <span class="math">\(\smash{\boldsymbol{Y}_t}\)</span> be an <span class="math">\(\smash{(n \times
+1)}\)</span> vector of random variables and
+<span class="math">\(\smash{\boldsymbol{\theta}}\)</span> a <span class="math">\(\smash{(k \times 1)}\)</span> vector
+of parameters governing the process
+<span class="math">\(\smash{\{\boldsymbol{Y}_{t}\}}\)</span>.</p>
+<ul class="simple">
+<li>Denote the true parameter vector as
+<span class="math">\(\smash{\boldsymbol{\theta}_{0}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="moment-conditions">
+
+<h2>Moment Conditions</h2>
+
+<p>Suppose we can specify an <span class="math">\(\smash{(r \times 1)}\)</span> vector valued
+function
+<span class="math">\(\smash{\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t}):
+(\mathbb{R}^{k} \times \mathbb{R}^{n}) \rightarrow
+\mathbb{R}^{r}}\)</span> such that:</p>
+<div class="math">
+\[\smash{E[\boldsymbol{h}(\boldsymbol{\theta}_{0},\boldsymbol{Y}_{t})]
+= 0, \,\,\, \text{where} \,\,\, r \ge k}.\]</div>
+<p>Define <span class="math">\(\smash{\boldsymbol{\mathcal{Y}}_t = (\boldsymbol{y}_1,
+\ldots, \boldsymbol{y}_t)}\)</span> and</p>
+<div class="math">
+\[\smash{\boldsymbol{g}_{T}(\boldsymbol{\theta}|
+\boldsymbol{\mathcal{Y}}_T) = \frac{1}{T} \sum_{t=1}^{T}
+\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})}.\]</div>
+<p>Note that <span class="math">\(\smash{\boldsymbol{g}_{T}(\boldsymbol{\theta}|
+\boldsymbol{\mathcal{Y}}_T): \mathbb{R}^{k} \rightarrow
+\mathbb{R}^{r}}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="gmm-estimator">
+
+<h2>GMM Estimator</h2>
+
+<p>We want to choose <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> such that the
+sample moments <span class="math">\(\smash{\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}_{gmm}|
+\boldsymbol{\mathcal{Y}}_T)}\)</span> are close to zero.</p>
+<ul class="simple">
+<li>If <span class="math">\(\smash{r = k}\)</span>, we can choose
+<span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> such that
+<span class="math">\(\smash{\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}_{gmm}|
+\boldsymbol{\mathcal{Y}}_T) = 0}\)</span> because we have
+<span class="math">\(\smash{k}\)</span> equations and <span class="math">\(\smash{k}\)</span> unknowns.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math">\(\smash{r &gt; k}\)</span> we have more equations than unknowns; in
+general there is no <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> such that
+<span class="math">\(\smash{\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}_{gmm}|
+\boldsymbol{\mathcal{Y}}_T) = 0}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>GMM Estimator</h2>
+
+<p>If <span class="math">\(\smash{r &gt; k}\)</span>, we minimize a quadratic form:</p>
+<div class="math">
+\[\smash{\underset{1 \times
+1}{\underbrace{Q_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)}}
+= \underset{(1 \times
+r)}{\underbrace{\boldsymbol{g}_{T}(\boldsymbol{\theta}|
+\boldsymbol{\mathcal{Y}}_T)'}}\underset{(r \times
+r)}{\underbrace{W_{T}}}\underset{(r \times
+1)}{\underbrace{\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)}}}.\]</div>
+<ul class="simple">
+<li>The matrix <span class="math">\(\smash{W_{T}}\)</span> places more weight on some moment
+conditions and less on others.</li>
+</ul>
+<ul class="simple">
+<li>We might have to use numerical optimization to minimze
+<span class="math">\(\smash{Q_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="example-t-distribution">
+
+<h2>Example: t-distribution</h2>
+
+<p>The method of moments estimator of the t-distribution is a special
+case of the GMM estimator.</p>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{Y}_{t}} = Y_t\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{\theta} = \nu}\)</span></li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{W_{T} = 1}\)</span></li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t})
+= Y_{t}^{2} -  \frac{\nu}{\nu - 2}}\)</span>.</li>
+</ul>
+<p>Note that</p>
+<div class="math">
+\[\smash{E[Y_{t}^{2}] =  \frac{\nu}{\nu-2}}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Example: t-distribution</h2>
+
+<div class="math">
+\[\begin{split}\begin{align}
+E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t})] &amp; =
+E\left[Y_{t}^{2} -  \frac{\nu}{\nu-2}\right] = 0 \\
+\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)
+&amp; = \frac{1}{T} \sum_{t=1}^{T} \left(y_{t}^{2} -  \frac{\nu}{\nu -
+2}\right).
+\end{align}\end{split}\]</div>
+<p>In this case, <span class="math">\(\smash{r = k = 1}\)</span>, and</p>
+<div class="math">
+\[\smash{Q_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T) =
+\left[ \frac{1}{T} \sum_{t=1}^{T} \left(y_{t}^{2} -
+\frac{\nu}{\nu - 2}\right)\right]^{2}}.\]</div>
+<p>Since <span class="math">\(\smash{r = k = 1}\)</span>, <span class="math">\(\smash{\hat{\nu}_{gmm}}\)</span> can
+be chosen such that
+<span class="math">\(\smash{Q_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T) =
+0}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="example-t-distribution-with">
+
+<h2>Example: t-distribution with <span class="math">\(\smash{r = 2}\)</span></h2>
+
+<p>Suppose we add a moment condition for the t-distribution.</p>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\nu &gt; 4}\)</span>, then</li>
+</ul>
+<div class="math">
+\[\smash{\mu_{4} = E[Y_{t}^{4}] =
+\frac{3\nu^{2}}{(\nu-2)(\nu-4)}}.\]</div>
+<ul class="simple">
+<li>In this case, <span class="math">\(\smash{ r = 2 &gt; 1 = k}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We now have more moment conditions than parameters.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Example: t-distribution with <span class="math">\(\smash{r = 2}\)</span></h2>
+
+<p>We map this problem into GMM form in the following way:</p>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{Y}_{t} = Y_t}\)</span></li>
+<li><span class="math">\(\smash{\boldsymbol{\theta} = \nu}\)</span></li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align}
+W_{T} &amp; = \left[\begin{array}{cc} 1 &amp; 0 \\ 0 &amp; 1 \\ \end{array}
+\right] \\
+\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t}) &amp; =
+\left[\begin{array}{c} Y_{t}^{2} -  \frac{\nu}{\nu - 2} \\
+Y_{t}^{4} -  \frac{3\nu^{2}}{(\nu-2)(\nu-4)} \\ \end{array}
+\right] \\
+\boldsymbol{g}_{T}(\boldsymbol{\theta} |
+\boldsymbol{\mathcal{Y}}_T) &amp; =  \frac{1}{T}
+\sum_{t=1}^{T} h(\boldsymbol{\theta},\boldsymbol{y}_{t}).
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>Example: t-distribution with <span class="math">\(\smash{r = 2}\)</span></h2>
+
+<p>The weighting matrix <span class="math">\(\smash{W_{T} = I_2}\)</span> places equal weight
+on the two moment conditions.</p>
+<ul class="simple">
+<li>We could alter this matrix to emphasize one condition more than
+another.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="gmm-consistency">
+
+<h2>GMM Consistency</h2>
+
+<p>If <span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> is strictly stationary and
+<span class="math">\(\smash{\boldsymbol{h}}\)</span> continuous, a law of large numbers will
+hold:</p>
+<div class="math">
+\[\smash{\boldsymbol{g}_{T}(\boldsymbol{\theta})
+\overset{p}{\rightarrow}
+E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t})]}.\]</div>
+<p>Under certain regularity  conditions, it can be shown that</p>
+<div class="math">
+\[\smash{\boldsymbol{\theta}_{gmm}  \overset{p}{\rightarrow}
+\boldsymbol{\theta}_{0}}.\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

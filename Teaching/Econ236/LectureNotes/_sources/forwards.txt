@@ -1,0 +1,412 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Forward Contracts
+==============================================================================
+
+
+Forward Contract Definition
+==============================================================================
+**Definition**: A forward contract is an agreement to exchange an
+asset at a future date at a prespecified price.
+
+.. raw:: <!--pause-->
+
+- The contract settlement date is called the *expiration date*.
+
+.. raw:: <!--pause-->
+
+- The asset that is exchanged is called the *underlying asset*.
+
+.. raw:: <!--pause-->
+
+- The buyer holds the *long* position.
+
+.. raw:: <!--pause-->
+
+- The seller holds the *short* position.
+
+.. raw:: <!--pause-->
+
+- There is no initial payment or premium.
+
+Delivery and Settlement
+=======================================================
+There are two types of forward contract settlements.
+
+.. raw:: <!--pause-->
+
+- **Delivery**: The long position pays the prespecified price to the
+  short position, who delivers the asset.
+
+.. raw:: <!--pause-->
+
+- **Cash settlement**: The long and short positions pay the net cash
+  value to the other.
+
+Forward Example
+==============================================================================
+Two parties contract to exchange a :math:`\smash{\$100}` bond for
+:math:`\smash{\$98}` at a future date.
+
+- If the bond is worth :math:`\smash{\$98.25}` at expiry, the short
+  position pays :math:`\smash{\$0.25}` to the long position at
+  expiry.
+
+.. raw:: <!--pause-->
+
+- If the bond is worth :math:`\smash{\$97.50}` at expiry, the long
+  position pays :math:`\smash{\$0.50}` to the short position at
+  expiry.
+
+.. raw:: <!--pause-->
+
+- Cash-settled forwards are often called NDFs, or nondeliverable
+  forwards.
+
+.. raw:: <!--pause-->
+
+- Usually, cash settlement is used for underlying assets that are
+  difficult to exchange (think of a stock index).
+
+Market Prices
+==============================================================================
+  .. image:: Forwards/wsjFutures.png
+     :width: 8in
+     :align: center
+
+For current data, visit the `WSJ
+<http://www.wsj.com/mdc/public/page/mdc_commodities.html?refresh=on>`_
+or `CME Group
+<http://www.cmegroup.com/market-data/volume-open-interest/exchange-volume.html>`_
+homepages.
+
+Early Termination
+==============================================================================
+Suppose one party in a forward contract wishes to terminate early.
+
+.. raw:: <!--pause-->
+
+- She could engage in another forward contract on the opposite side.
+
+.. raw:: <!--pause-->
+
+- Depending on market conditions, the new contract may be written at a
+  new price.
+
+Early Termination Example
+==============================================================================
+Suppose a trader enters a long forward contract position
+to exchange a barrel of crude oil on 13 Feb 2015 and decides to
+terminate the contract on 16 Feb 2015.
+
+.. raw:: <!--pause-->
+
+- On 13 Feb, the forward price is \$52.78 per barrel.
+
+.. raw:: <!--pause-->
+
+- On 16 Feb, the forward price is \$52.73 per barrel.
+
+.. raw:: <!--pause-->
+
+- She can write a forward contract for \$52.73 on 16 Feb.
+
+.. raw:: <!--pause-->
+
+- Note that she takes a \$0.05 loss and is still exposed to risk of
+  default on two different contracts.
+
+.. raw:: <!--pause-->
+
+- Alternatively, she can ask her original counterparty to accept the
+  present value of \$0.05 to terminate.
+
+Notation
+==============================================================================
+We will use the following notation:
+
+.. raw:: <!--pause-->
+	       
+- :math:`\smash{S_0}`: Spot price of the underlying asset today.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{F_0}`: Forward price of the underlying asset today.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{T}`: Time until delivery.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{r}`: Risk-free rate of interest for maturity :math:`\smash{T}`.
+
+.. raw:: <!--pause-->
+
+Note that any units (minutes, hours, days, weeks, months, years) may
+be used for :math:`\smash{T}`, but that the interest rate,
+:math:`\smash{r}`, must be adjusted accordingly.
+
+Forward Valuation
+==============================================================================
+The price of a forward contract with maturity :math:`\smash{T}` for an
+asset with price :math:`\smash{S_0}` is:
+
+.. math::
+
+   \begin{align*}
+   F_0 & = S_0 e^{rT}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{r}` is the risk-free interest rate over period
+  :math:`\smash{T}`.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{r}` is constant, :math:`\smash{F_0}` is a
+  deterministic function of the spot sprice, and has nothing to do
+  with the unknown, future price of the asset.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{e^{rT}}` is known as the *basis*.
+
+.. raw:: <!--pause-->
+
+- **Intuition**: the foward holder must pay the holder of the spot
+  contract for interest that would have been earned.
+
+Forward Valuation Example
+==============================================================================
+Suppose you would like to purchase a 3-month forward contract on
+Coca-Cola (`KO <http://yhoo.it/1pVyJAn>`_) stock on 1 Mar 2016. What
+is the value of the forward (assuming the stock never pays dividends)?
+
+.. raw:: <!--pause-->
+
+- Set :math:`\smash{T = 0.25}` (i.e. time units of 1 year).
+
+.. raw:: <!--pause-->
+
+- Use `Yahoo Finance <http://yhoo.it/1Ro1Qq4>`_ to determine
+  :math:`\smash{S_0 = \$43.35}`.
+
+.. raw:: <!--pause-->
+
+- Use `Quandl <http://bit.ly/1UqSs7E>`_ to determine the (annualized)
+  yield on the 3-month U.S. Treasury Bill: :math:`\smash{r =
+  0.0033}`.
+
+
+.. raw:: <!--pause-->
+	       
+Thus,
+
+.. raw:: <!--pause-->
+	       
+.. math::
+
+   \begin{align*}
+   F_0 & = S_0 e^{rT} = \$43.35 e^{0.0033 \times 0.25} = \$43.39.
+   \end{align*}
+
+Forward Valuation with Income
+==============================================================================
+Suppose the underlying asset provides income with present value
+:math:`\smash{I}`.
+
+.. raw:: <!--pause-->
+
+- This may be a single payment or a stream of payments, all
+  appropriately discounted:
+
+.. raw:: <!--pause-->
+	       
+.. math::
+   
+   \begin{align*}
+   I & = \frac{d}{1+\frac{r}{m}} +
+   \frac{d}{\left(1+\frac{r}{m}\right)^2} + \cdots +
+   \frac{d}{\left(1+\frac{r}{m}\right)^{mT}}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- This assumes :math:`\smash{m}` equally spaced payments of equal size
+  during interval :math:`\smash{T}`.
+
+.. raw:: <!--pause-->
+
+The value of a forward contract is now:
+
+.. raw:: <!--pause-->
+	       
+.. math::
+
+   \begin{align*}
+   F_0 & = (S_0 - I) e^{rT}.
+   \end{align*}
+
+Forward Valuation with Yield
+==============================================================================
+Suppose the underlying asset provides income yield (continuously
+compounded) :math:`\smash{q}`. Then:
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   F_0 & = S_0 e^{(r-q)T}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- **Intuition**: the holder of the spot contract now pays interest
+  (implicitly), but earns income. The foward holder must compensate
+  the spot holder for interest, net of income earned over period
+  :math:`\smash{T}`.
+
+Forward Valuation with Yield Example
+==============================================================================
+Reconsider the previous example for Coca-Cola stock.
+
+.. raw:: <!--pause-->
+
+- Now assume that KO has an annualized dividend yield of 3\%.
+
+.. raw:: <!--pause-->
+
+The forward price is
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   F_0 & = S_0 e^{(r-q)T} \\
+   & = \$43.35 e^{(0.0033 - 0.03) \times 0.25} \\
+   & = \$43.06.
+   \end{align*}
+
+Forward Valuation for Currency
+==============================================================================
+Suppose the underlying asset is a currency, and that the risk-free
+interest rate in the foreign market is :math:`\smash{r_f}`. Then:
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   F_0 & = S_0 e^{(r-r_f)T}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- The foreign interest is income and the rate is the income yield.
+
+Curreny Forward Example
+==============================================================================
+What is the value of a 6-month forward contract for Canadian dollars
+(CAD) on 1 Mar 2016?
+
+.. raw:: <!--pause-->
+
+- Set :math:`\smash{T = 0.5}` (i.e. time units of 1 year).
+
+.. raw:: <!--pause-->
+
+- Use `Quandl <http://bit.ly/1RwxRIY>`_ to determine the spot exchange
+  rate for USD/CAD: :math:`\smash{S_0 = \$1.34}`.
+
+.. raw:: <!--pause-->
+
+- Use `Quandl <http://bit.ly/1ShZeq6>`_ to determine the (annualized)
+  yield on the 3-month Canadian Treasury Bill: :math:`\smash{r_f =
+  0.0047}`. We already determined that :math:`\smash{r = 0.0033}`.
+
+.. raw:: <!--pause-->
+
+Thus,
+
+.. raw:: <!--pause-->
+	       
+.. math::
+
+   \begin{align*}
+   F_0 & = S_0 e^{(r-r_f)T} = \$1.34 e^{(0.0033 - 0.0047) \times 0.5}
+   = \$1.339.
+   \end{align*}
+
+Forward Valuation for Commodities 
+==============================================================================
+Suppose that the underlying is a physical asset that must be
+stored. Then:
+
+.. raw:: <!--pause-->
+	       
+.. math::
+
+   \begin{align*}
+   F_0 & = (S_0 + U) e^{rT}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+	       
+or
+
+.. raw:: <!--pause-->
+	       
+.. math::
+
+   \begin{align*}
+   F_0 & = S_0 e^{(r+u)T}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+	       
+- :math:`\smash{U}` is the present value of storage costs.
+
+.. raw:: <!--pause-->
+	       
+- :math:`\smash{u}` is the annual storage cost expressed as a fraction
+  of commodity value.
+
+.. raw:: <!--pause-->
+	       
+- Note that storage costs are like negative income.
+
+Cost of Carry
+==============================================================================
+The foregoing compounding rates are referred to as *the cost of
+carry*, :math:`\smash{c}`.
+
+.. math::
+   
+   \begin{align*}
+   F_0 & = S_0 e^{cT}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+	       
+- The cost of carry includes interest rate and storage costs, minus
+  income.
+
+.. raw:: <!--pause-->
+
+- For a stock index that pays a dividend yield, :math:`\smash{c =
+  r-q}`.
+
+.. raw:: <!--pause-->
+
+- For a foreign currency, :math:`\smash{c = r - r_f}`.
+
+.. raw:: <!--pause-->
+
+- For a commodity that provides income, :math:`\smash{c = r - q +
+  u}`.

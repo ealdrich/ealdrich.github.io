@@ -14,3 +14,14 @@ Contents:
 
    probability
 
+   markets
+
+   riskReturns
+
+   portfolios
+
+   indexModels
+
+   bonds
+
+   options

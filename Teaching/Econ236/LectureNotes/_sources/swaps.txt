@@ -1,0 +1,803 @@
+.. slideconf::
+   :slide_classes: appear
+
+
+==============================================================================
+Swaps
+==============================================================================
+
+Swaps
+==============================================================================
+A swap is an agreement to exchange cash flows in the future.
+
+.. raw:: <!--pause-->
+
+- It is an over-the-counter agreement.
+
+.. raw:: <!--pause-->
+
+- Dates, cash flows and timing of payments are variables of the
+  contract.
+
+.. raw:: <!--pause-->
+
+- The cash flows are typically determined by an interest rate or
+  exchange rate.
+
+Forward/Futures as Swap
+==============================================================================
+A forward or futures contract can be viewed as a simple swap:
+
+.. raw:: <!--pause-->
+
+- Suppose you buy an E-mini contract today for :math:`\smash{F =
+  2000}`.
+
+.. raw:: <!--pause-->
+
+- You are agreeing to a swap in which you pay :math:`\smash{50F}` and
+  receive :math:`\smash{50P}`, where :math:`\smash{P}` is the
+  settlement price of the contract.
+
+.. raw:: <!--pause-->
+
+Swaps are typically more complex, involving a stream of swapped cash
+flows.
+
+Interest Rate Swap
+==============================================================================
+Basic components of an interest rate swap:
+
+.. raw:: <!--pause-->
+
+- Notional principal.
+
+.. raw:: <!--pause-->
+
+- Fixed interest rate.
+
+.. raw:: <!--pause-->
+
+- Floating interest rate.
+
+.. raw:: <!--pause-->
+
+- Predetermined time period for cash flows.
+
+.. raw:: <!--pause-->
+
+One party pays fixed interest on the principal during the
+predetermined period and the other pays floating interest.
+
+LIBOR Swap
+==============================================================================
+Typically LIBOR is the floating rate used in interest rate swaps.
+
+.. raw:: <!--pause-->
+
+- A LIBOR swap is referred to as a ``Libor-for-fixed" swap.
+
+LIBOR Swap Example
+==============================================================================
+Suppose Microsoft and Intel engage in a 3-year swap on Mar 5, 2014.
+
+.. raw:: <!--pause-->
+
+- The notional principal is \$100 million.
+
+.. raw:: <!--pause-->
+
+- Payments made semi-annually.
+
+.. raw:: <!--pause-->
+
+- Microsoft pays 5\% fixed (per annum, semi-annual compounding).
+  
+.. raw:: <!--pause-->
+
+- Intel pays 6-month LIBOR (per annum, semi-annual compounding).
+  
+LIBOR Swap Diagram
+==============================================================================
+.. image:: Swaps/intelSwapDiagram.png
+   :width: 8in
+   :align: center
+
+LIBOR Swap Cash Flows
+==============================================================================
+.. image:: Swaps/liborSwapTable.png
+   :width: 8in
+   :align: center
+
+LIBOR Swap Cash Flows with Notional
+==============================================================================
+.. image:: Swaps/liborSwapBondTable.png
+   :width: 8in
+   :align: center
+
+LIBOR Swap Example
+==============================================================================
+- Microsoft pays \$2.5 million to Intel on Sep 5, 2014 and each
+  subsequent 6 months until Mar 5, 2017.
+
+.. raw:: <!--pause-->
+
+- On Sep 5, 2014, Intel pays Mar 5, 2014 LIBOR (4.2\%): \$2.1
+  million.
+
+.. raw:: <!--pause-->
+
+- Each subsequent 6 months, Intel pays the LIBOR rate from the date 6
+  months prior to the payment.
+
+.. raw:: <!--pause-->
+
+- The first exchange of payments is known at initiation of the swap.
+
+LIBOR Swap Cash Flows
+==============================================================================
+Typically only one party in the swap makes a payment of the difference
+between the two cash flows.
+
+.. raw:: <!--pause-->
+
+- In the previous example, Microsoft would pay \\$0.4 million on Sep
+  5, 2015 and \$0.1 million on Mar 5, 2015.
+
+.. raw:: <!--pause-->
+
+- Note that the principal is not exchanged at the end of the contract,
+  which is why it is called *notional*.
+
+.. raw:: <!--pause-->
+
+- If the notional were traded, the swap could be characterized as an
+  exchange of floating- and fixed-rate bonds.
+
+.. raw:: <!--pause-->
+
+  - In the previous example, Microsoft was long the floating bond and
+    short the fixed bond.
+
+Transforming a Liability
+==============================================================================
+A swap can transform a floating-rate loan into a fixed-rate loan and
+vice versa.
+
+.. raw:: <!--pause-->
+
+- If Microsoft has a floating-rate loan on \$100 million at LIBOR plus
+  10 basis points (1 basis point = 0.01%), the swap transforms it into
+  a loan of 5.1\% fixed.
+
+  1. Microsoft pays LIBOR plus 0.1\% to outside lenders.
+
+  2. It receives LIBOR from swap.
+
+  3. It pays 5\% to Intel.
+
+.. raw:: <!--pause-->
+
+- If Intel has a fixed-rate loan on \$100 million at 5.2\%, the swap
+  transforms it into a loan of LIBOR plus 20 basis points:
+
+  1. Intel pays 5.2\% to outside lenders.
+
+  2. It receives 5\% from swap.
+
+  3. It pays LIBOR to Microsoft.
+
+Transforming a Liability
+==============================================================================
+.. image:: Swaps/swapLiabilityDiagram.png
+   :width: 8in
+   :align: center
+
+Transforming a Asset
+==============================================================================
+A swap can transform a floating-rate asset into a fixed-rate asset and
+vice versa.
+
+.. raw:: <!--pause-->
+
+- If Microsoft holds \$100 million in bonds paying 4.7\% per annum,
+  the swap transforms the bonds into asset paying LIBOR minus 30 basis
+  points:
+
+  1. Microsoft receives 4.7\% from bonds.
+
+  2. It receives LIBOR from swap.
+
+  3. It pays 5\% to Intel.
+
+.. raw:: <!--pause-->
+
+- If Intel holds \$100 million in bonds paying LIBOR minus 20 basis
+  points, the swap transforms the bonds into an asset paying 4.8\%:
+
+  1. Intel receives LIBOR minus 0.2\% from bonds.
+
+  2. It receives 5\% from swap.
+
+  3. It pays LIBOR to Intel.
+
+Transforming a Liability
+==============================================================================
+.. image:: Swaps/swapAssetDiagram.png
+   :width: 8in
+   :align: center
+
+Financial Intermediaries
+==============================================================================
+Typically the parties to a swap connect via a banking intermediary.
+
+.. raw:: <!--pause-->
+
+- The bank earns a commission of 3\% or 4\% for providing the
+  service and assuming default risk.
+
+.. raw:: <!--pause-->
+
+- The individual swap parties don't know who is on the other side of
+  the transaction.
+
+.. raw:: <!--pause-->
+
+- In many cases, market makers enter into swaps with one party without
+  having an exact offsetting position.
+
+.. raw:: <!--pause-->
+
+- Market makers will post bid and offer (fixed) rates - the average of
+  bid and offer is the *swap rate*.
+
+Financial Intermediaries Diagram
+==============================================================================
+.. image:: Swaps/swapIntermediary1.png
+   :width: 8in
+   :align: center
+
+.. image:: Swaps/swapIntermediary2.png
+   :width: 8in
+   :align: center
+
+Market Maker Quotes
+==============================================================================
+.. image:: Swaps/marketMakerTable.png
+   :width: 8in
+   :align: center
+
+An Important Fact
+==============================================================================
+Recall the basic bond pricing formula:
+
+.. math::
+
+   \begin{align}
+   P & = \frac{c\times F}{r} \left(1 - \frac{1}{(1+r)^T}\right) +
+   \frac{F}{(1+r)^T}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{c}` is the coupon rate, expressed in terms of the
+  compounding period.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{r}` is the discount rate.
+
+.. raw:: <!--pause-->
+
+- Note that when :math:`\smash{c=r}`, :math:`\smash{P=F}`.
+
+  - This is because the income stream from the bond is equal (in
+    percentage terms) to the rate at which you discount.
+
+.. raw:: <!--pause-->
+
+- What if :math:`\smash{c>r}` or :math:`\smash{c<r}`?
+
+Swap Value: Floating Side
+==============================================================================
+The floating side of a swap is a bond that pays LIBOR.
+
+.. raw:: <!--pause-->
+
+- The bond is also discounted at LIBOR.
+
+.. raw:: <!--pause-->
+
+- This is a case where the coupon rate equals the discount rate.
+
+.. raw:: <!--pause-->
+
+- After each interest payment, the bond is equal to the face, or
+  notional principal, :math:`\smash{L}`.
+
+.. raw:: <!--pause-->
+
+- *Immediately* prior to the interest payment, :math:`\smash{k^*}`,
+  which is known at the beginning of the period, the bond is worth
+  :math:`\smash{L+k^*}`.
+
+.. raw:: <!--pause-->
+
+- If the payment is made at time :math:`\smash{t^*}`, we can discount
+  back to the present using the continuously compounded risk-free,
+  :math:`\smash{r^*}`:
+
+  .. math::
+
+     \begin{align}
+     B_{fl} & = (L+k^*) e^{-r^* t^*}.
+     \end{align}
+
+Swap Value Diagram
+==============================================================================
+.. image:: Swaps/swapValueDiagram.png
+   :width: 8in
+   :align: center
+
+Swap Value: Fixed Side
+==============================================================================
+The fixed side of a swap is a fixed-rate bond.
+
+.. raw:: <!--pause-->
+
+- The present value of the bond can be computed in the usual way,
+  using spot rates:
+
+  .. math::
+
+     \begin{align}
+     B_{fix} & = c e^{-r_1t_1} + c e^{-r_2t_2} + \ldots + (c+L)
+     e^{-r_nt_n}.
+     \end{align}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{c}` is the fixed payment and :math:`\smash{L}` is the
+  notional principal.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{n}` is the number of payment periods and
+  :math:`\smash{r_i, i=1,\ldots,n}` are the spot rates.
+
+Swap Value
+==============================================================================
+The resulting swap value is the difference in value of the fixed and
+floating bonds.
+
+.. raw:: <!--pause-->
+
+- For the party holding the long position in floating:
+
+  .. math::
+
+     \begin{align}
+     V_{swap} & = B_{fl} - B_{fix}.
+     \end{align}
+
+.. raw:: <!--pause-->
+
+- For the party holding the long position in fixed:
+
+  .. math::
+
+     \begin{align}
+     V_{swap} & = B_{fix} - B_{fl}.
+     \end{align}     
+
+Swap Value Example
+==============================================================================
+Some time ago you went long on the floating side of a swap, receiving
+6-month LIBOR on \$100 million principal and paying 3\% per annum
+(semi-annual compounding).
+
+.. raw:: <!--pause-->
+
+- The swap has 1.25 years remaining.
+
+.. raw:: <!--pause-->
+
+- Continuously compounded 3-, 9- and 15-month LIBOR rates are 2.8\%,
+  3.2\% and 3.4\%.
+
+.. raw:: <!--pause-->
+
+- 6-month LIBOR (compounded semi-annually) at last payment date was
+  2.9\%.
+
+Swap Value Example
+==============================================================================
+The fixed-side bond value (in millions of dollars) is:
+
+.. math::
+
+   \begin{align}
+   B_{fix} & = 1.5 e^{-0.028\times 0.25} + 1.5 e^{-0.032\times
+   0.75} + 101.5 e^{-0.034\times 1.25} = 100.2306.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+The floating-side bond value (in millions of dollars) is:
+
+.. math::
+
+   \begin{align}
+   B_{fl} & = 101.45 e^{-0.028\times 0.25} = 100.7423.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+The swap value (in millions of dollars) is:
+
+.. math::
+
+   \begin{align}
+   V_{swap} & = B_{fl} - B_{fix} = 100.7423 - 100.2306 = 0.5117.
+   \end{align}
+
+Swap Value Table
+==============================================================================
+.. image:: Swaps/swapValueTable.png
+   :width: 8in
+   :align: center
+
+Swap Value: FRA Portfolio
+==============================================================================
+Each swap payment can be considered an individual FRA.
+
+.. raw:: <!--pause-->
+
+- In the Intel/Microsoft example, the exchange on Mar 5, 2015 is an
+  FRA where 5% is traded for 6-month LIBOR, determined on Sep5, 2014,
+  etc.
+
+.. raw:: <!--pause-->
+
+- Since the future LIBOR rates are unknown, each FRA is valued using
+  the forward rates implied by the LIBOR zero curve.
+
+.. raw:: <!--pause-->
+
+- Hence, the swap can be valued as follows:
+
+  1. Compute forward rates using the LIBOR zero curve.
+
+  2. Compute cash flows assuming future LIBOR rates are equal to the
+     forward rates.
+
+  3. Discount the cash flows using the LIBOR zero curve.
+
+Swap Value Example: FRA Portfolio
+==============================================================================
+Continuing with the previous example:
+
+.. raw:: <!--pause-->
+
+- The LIBOR rate for the first cash receipt (at 3 months) is already
+  determined at 2.9\% per annum (semi-annual compounding).
+
+.. raw:: <!--pause-->
+
+- The forward rate (continuous compounding) for the period between 3
+  months and 9 months is
+
+  .. math::
+
+     \begin{align}
+     \frac{0.032 \times 0.75 + 0.028 \times 0.25}{0.5} & = 0.034.
+     \end{align}
+
+.. raw:: <!--pause-->
+
+- With semi-annual compounding (using EAR/APR relationship):
+
+  .. math::
+
+     \begin{align}
+     2(e^{0.034/2} - 1) & = 0.034291.
+     \end{align}
+
+Swap Value Example: FRA Portfolio
+==============================================================================
+- The forward rate for the period between 9 months and 15 months is
+
+  .. math::
+
+     \begin{align}
+     \frac{0.034 \times 1.25 + 0.032 \times 0.75}{0.5} & = 0.037.
+     \end{align}     
+
+.. raw:: <!--pause-->
+
+- With semi-annual compounding (using EAR/APR relationship):
+
+  .. math::
+
+     \begin{align}
+     2(e^{0.037/2} - 1) & = 0.037344.
+     \end{align}
+
+Swap Value Example: FRA Portfolio
+==============================================================================
+The swap cash flows are (in millions of dollars):
+
+.. math::
+
+   \begin{align}
+   0.5 \times 0.029 \times 100 - 1.5 & = 1.45 - 1.5 = -0.05 \\
+   0.5 \times 0.034291 \times 100 - 1.5 & = 1.7145 - 1.5 = 0.21455 \\
+   0.5 \times 0.037344 \times 100 - 1.5 & = 1.867 - 1.5 = 0.3672.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+The present value is:
+
+.. math::
+
+   \begin{align}
+   V_{swap} & = -0.05 e^{-0.028 \times 0.25} + 0.21455 e^{-0.032 \times
+   0.75} + 0.3672 e^{-0.034 \times 1.25} = 0.5117.
+   \end{align}
+
+Swap Value Example: FRA Table
+==============================================================================
+.. image:: Swaps/swapValueFRATable.png
+   :width: 8in
+   :align: center
+
+Currency Swaps
+==============================================================================
+In a *fixed-for-fixed currency swap* two parties exchange principal
+and fixed interest payments on two different currencies.
+
+.. raw:: <!--pause-->
+
+- Typically the principal is exchanged at initiation, where the
+  principal values are roughly equal, given the exchange rate.
+
+.. raw:: <!--pause-->
+
+- The principal values are exchanged again at the end, but may be
+  quite different (due to exchange rate fluctuations).
+
+Currency Swap Example
+==============================================================================
+Suppose IBM and BP enter into a 5-year currency swap on Feb 1, 2014.
+
+- IBM pays 5\% fixed in sterling and receives 6\% fixed in dollars.
+
+- Principal amounts are 15 million USD and 10 million GBP and
+  interest payments are once a year.
+
+Currency Swap Example
+==============================================================================
+.. image:: Swaps/currencySwapDiagram.png
+   :width: 8in
+   :align: center
+
+Currency Swap Example
+==============================================================================
+.. image:: Swaps/currencySwapTable.png
+   :width: 8in
+   :align: center
+
+Currency Swap: Transforming Liabilities and Assets
+==============================================================================
+Suppose IBM can issue USD bonds, but not GBP.
+
+.. raw:: <!--pause-->
+
+- The swap effectively transforms 15 million USD in debt to 10
+  million GBP in debt for IBM.
+
+.. raw:: <!--pause-->
+
+- Alternatively, suppose IBM has an opportunity to invest 10
+  million GBP at 5\% interest in the UK for 5 years, but feels the
+  dollar will strengthen.
+
+  - The swap effectively transforms the GBP investment into a USD
+    investment.
+
+Currency Swap Valuation: Bonds
+==============================================================================
+Let :math:`\smash{V_{swap}}` be the USD value of a swap where dollars
+are received and foreign currency paid:
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   V_{swap} & = B_D - S_0 B_F.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{B_F}` is the foreign currency bond value (denominated
+  in units of the foreign currency).
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{B_D}` is the USD bond value (denominated in USD).
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{S_0}` is the spot exchange rate (as USD per unit of
+  foreign currency).
+
+.. raw:: <!--pause-->
+
+The value of the swap where foreign currency is received and USD paid
+is the opposite:
+
+.. math::
+
+   \begin{align}
+   V_{swap} & = S_0 B_F - B_D.
+   \end{align}
+
+Currency Swap Valuation Example: Bonds
+==============================================================================
+You currently hold a swap in which you receive 5\% per annum on Yen
+and pay 8\% per annum on USD.
+
+.. raw:: <!--pause-->
+
+- The swap has 3 years remaining.
+
+.. raw:: <!--pause-->
+
+- Continuous compounded discount rates are 4\% per annum in Japan and
+  9\% per annum in the U.S.
+
+.. raw:: <!--pause-->
+
+- Principal values are 10 million USD and 1,200 million JPY.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{S_0}` = 1/110 USD/JPY.
+
+Currency Swap Valuation Example: Bonds
+==============================================================================
+The present value of JPY cash flows (in millions of JPY) is:
+
+.. math::
+
+   \begin{align}
+   60 e^{-0.04 \times 1} + 60 e^{-0.04 \times 2} + 1260 e^{-0.04 \times
+   3} = 1230.55.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+The present value of USD cash flows (in millions of USD) is:
+
+.. math::
+
+   \begin{align}
+   0.8 e^{-0.09 \times 1} + 0.8 e^{-0.09 \times 2} + 10.8 e^{-0.09 \times
+   3} = 9.6439.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+The value of the swap (in millions of USD) is:
+
+.. math::
+
+   \begin{align}
+   \frac{1230.55}{110} - 9.6439 & = 1.5430.
+   \end{align}
+
+Currency Swap Valuation Table: Bonds
+==============================================================================
+.. image:: Swaps/currencySwapValueBond.png
+   :width: 8in
+   :align: center
+
+Currency Swap Valuation: Forward Portfolio
+==============================================================================
+Each currency swap cash flow exchange is a single forward contract on
+foreign exchange.
+
+.. raw:: <!--pause-->
+
+- Recall the forward exchange rate is:
+
+  .. math::
+
+     \begin{align}
+     F_0 & = S_0 e^{(r-r_f)T}.
+     \end{align}
+
+.. raw:: <!--pause-->
+
+- The currency forwards are valued by assuming that the forward
+  exchange rates are realized.
+
+Currency Swap Valuation Example
+==============================================================================
+Continuing with the previous example:
+
+.. raw:: <!--pause-->
+
+- The JPY cash flows, in USD are:
+
+  .. math::
+
+     \begin{align}
+     \frac{60}{110} e^{(0.09-0.04)\times 1} & = 0.57342 \\
+     \frac{60}{110} e^{(0.09-0.04)\times 2} & = 0.60282 \\
+     \frac{1260}{110} e^{(0.09-0.04)\times 3} & = 13.30828.
+     \end{align}
+
+.. raw:: <!--pause-->
+
+- The present value of cash flows is:
+
+  .. math::
+
+     \begin{align}
+     (0.57342 - 0.8) e^{-0.09 \times 1} + (0.60282 - 0.8) e^{-0.09
+     \times 2} + (13.30828 - 10.8) e^{-0.09 \times 3} = 1.5430.
+     \end{align}
+
+Currency Swap Valuation Table: Forward Portfolio
+==============================================================================
+.. image:: Swaps/currencySwapValueForward.png
+   :width: 8in
+   :align: center
+
+Other Currency Swaps
+==============================================================================
+Other common currency swaps include:
+
+.. raw:: <!--pause-->
+
+- Fixed-for-floating.
+
+  - This can be regarded as portfolio of a fixed-for-fixed currency
+    swap and a fixed-for-floating interest rate swap.
+
+.. raw:: <!--pause-->
+
+- Floating-for-floating.
+
+  - This can be regarded as portfolio of a fixed-for-fixed currency
+    swap and two fixed-for-floating interest rate swaps.
+
+Other Swaps
+==============================================================================
+- Many variations of interest swaps exists with differing rates,
+  payment periods, principals, etc.
+
+.. raw:: <!--pause-->
+
+- Credit default swaps (CDS): annual premium is paid (spread) in
+  exchange for a cash payment if a company defaults.
+
+.. raw:: <!--pause-->
+
+- Equity swaps: returns on equity index swapped for LIBOR.
+
+.. raw:: <!--pause-->
+
+- Commodity swaps: series of forward commodity contracts.
+
+.. raw:: <!--pause-->
+
+- Volatility swaps: predetermined volatility swapped with realized
+  (historical) vol.
+
+.. raw:: <!--pause-->
+
+- Countless others: financial engineering at its finest.

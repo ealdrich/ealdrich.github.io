@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GMM Over-Identifying Restrictions &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Generalized Method of Moments" href="../gmmIndex.html" />
+    <link rel="prev" title="GMM Optimal Weighting Matrix" href="optMat.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="gmm-over-identifying-restrictions">
+
+<h1>GMM Over-Identifying Restrictions</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="criterion-function-limiting-distribution">
+
+<h2>Criterion Function Limiting Distribution</h2>
+
+<p>Since</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+\sqrt{T}\boldsymbol{g}_{T}(\boldsymbol{\theta}_{0})
+\stackrel{d}{\longrightarrow} N(0,S) \\
+\implies  (\sqrt{T}
+\boldsymbol{g}_{T}(
+\boldsymbol{\theta}_{0})^{'})S^{-1}(\sqrt{T}\boldsymbol{g}_{T}
+(\boldsymbol{\theta}_{0})) = T
+\boldsymbol{g}_{T}(\boldsymbol{\theta}_{0})^{'}S^{-1}
+\boldsymbol{g}_{T}(\boldsymbol{\theta}_{0})
+\overset{d}{\longrightarrow} \chi^{2}(r)
+\end{gather}\end{split}\]</div>
+<p>where <span class="math">\(\smash{r &gt; k}\)</span> is the number of moment conditions.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="estimated-criterion-function">
+
+<h2>Estimated Criterion Function</h2>
+
+<p>It turns out that</p>
+<div class="math">
+\[\smash{T
+\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})^{'}\hat{S}^{-1}
+\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})
+\overset{d}{\not\to} \chi^{2}(r)}.\]</div>
+<ul class="simple">
+<li>This is because <span class="math">\(\smash{k}\)</span> moment conditions will be set to
+zero exactly.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="exact-identification">
+
+<h2>Exact Identification</h2>
+
+<p>Consider <span class="math">\(\smash{r=k}\)</span>. In this case</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}) = 0 \\
+T \boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})^{'}\hat{S}^{-1}
+\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}) = 0.
+\end{gather}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{r-k}\)</span> of the moment conditions will be non-zero.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="over-identification">
+
+<h2>Over Identification</h2>
+
+<p>In general,</p>
+<div class="math">
+\[\smash{J_{T}(\hat{\boldsymbol{\theta}}) = T
+\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})^{'}\hat{S}^{-1}
+\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})
+\overset{d}{\longrightarrow} \chi^{2}(r-k)}.\]</div>
+<ul class="simple">
+<li>To test if our moment conditions are close to zero, we compute
+<span class="math">\(\smash{J_{T}(\hat{\boldsymbol{\theta}})}\)</span> and compare with a
+<span class="math">\(\smash{\chi^{2}(r-k)}\)</span> distribution.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math">\(\smash{J_{T}(\hat{\boldsymbol{\theta}})}\)</span> is far in the
+tail of the <span class="math">\(\smash{\chi^{2}(r-k)}\)</span> distribution, we might
+conclude that the model is misspecified.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="asset-pricing-with-gmm">
+
+<h2>Asset Pricing with GMM</h2>
+
+<p>Suppose an agent derives utility from consumption,
+<span class="math">\(\smash{c_{t}}\)</span>, and seeks to maximze the discounted sum of
+expected utility:</p>
+<div class="math">
+\[\smash{ \sum_{\tau = 0}^{\infty}
+\beta^{\tau}E[u(c_{t+\tau})|\Omega_{t}]},\]</div>
+<p>where <span class="math">\(\smash{u(c_{t})}\)</span> is the period utility function and
+satisfies:</p>
+<div class="math">
+\[\begin{split}\smash{ \frac{\partial u(c_{t})}{\partial c_{t}} &gt; 0 \,\,\, \text{and}
+\,\,\, \frac{\partial^{2} u(c_{t})}{\partial c_{t}^{2}} &lt; 0}.\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="equilibrium-conditions">
+
+<h2>Equilibrium Conditions</h2>
+
+<p>Suppose that the agent can purchase <span class="math">\(\smash{m}\)</span> assets paying
+gross returns <span class="math">\(\smash{(1 + r_{i,t+1})}\)</span> between periods
+<span class="math">\(\smash{t}\)</span> and <span class="math">\(\smash{t+1}\)</span>, for <span class="math">\(\smash{i =
+1,\ldots, m}\)</span>.</p>
+<ul class="simple">
+<li>The agent's portfolio must satisfy</li>
+</ul>
+<div class="math">
+\[\smash{u^{'}(c_{t}) = \beta E[(1+r_{i,t+1})u^{'}(c_{t+1}) |
+\Omega_{t}] \,\,\, \text{for} \,\,\, i=1,\ldots,m}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Equilibrium Conditions</h2>
+
+<p>The equilibrium conditions say that marginal utility of consuming an
+extra unit today should be equivalent to the expected marginal
+consumption gained by purchasing a unit of any asset.</p>
+<ul class="simple">
+<li>If these conditions didn't hold, the agent wouldn't be at an
+optimum.</li>
+</ul>
+<p>The portfolio conditions can be rewritten as:</p>
+<div class="math">
+\[\smash{E\left[\left(\beta
+\frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})
+-1\right)\bigg|\Omega_{t}\right] = 0 \,\,\, \text{for}
+i=1,\ldots,m}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Equilibrium Conditions</h2>
+
+<p>Given a vector <span class="math">\(\smash{\boldsymbol{x}_{t} \in \Omega_{t}}\)</span>, by
+the law of iterated expectations</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E\left[\underset{\boldsymbol{h}(\boldsymbol{\theta},
+\boldsymbol{y}_{t})}{\underbrace{\left(\beta
+\frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})
+-1\right)\boldsymbol{x}_{t}}} \right] &amp; =
+E\left[E\left[\left(\beta
+\frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})
+-1\right)\boldsymbol{x}_{t} \bigg|\Omega_{t}\right]\right] \\
+&amp; E\left[\underset{0}{\underbrace{E\left[\left(\beta
+\frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})
+-1\right) \bigg|\Omega_{t}\right]}} \boldsymbol{x}_{t} \right] = 0,
+\end{align}\end{split}\]</div>
+<p>for <span class="math">\(\smash{i=1,\ldots,m}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="stochastic-discount-factor">
+
+<h2>Stochastic Discount Factor</h2>
+
+<p>Economic theory says that all returns discounted by
+<span class="math">\(\smash{\beta \frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}}\)</span> should be
+identical:</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+E\left[\underset{m_{t,t+1}}{\underbrace{\beta
+\frac{u^{'}(c_{t+1})}{u^{'} (c_{t})}(1+r_{i,t+1})}}\right] = 1 \\
+\implies E[m_{t,t+1}(1+r_{i,t+1})] = 1.
+\end{gather}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{\beta
+\frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1}) - 1}\)</span> is a forecast
+error and should be uncorrelated with any variable
+<span class="math">\(\smash{\boldsymbol{x}_{t} \in \Omega_{t}}\)</span></li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="casting-as-gmm">
+
+<h2>Casting as GMM</h2>
+
+<p>This problem maps easily into GMM where</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+\boldsymbol{y}_{t} =
+(r_{1,+1},\ldots,r_{m,t+1},c_{t},c_{t+1},
+\boldsymbol{x}_{t}^{'})^{'} \\
+\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t}) =
+\left[\begin{array}{c} \left(1 - \beta
+\frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})\right)\boldsymbol{x}_{t}
+\\ \vdots \\ \left(1 - \beta
+\frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{m,t+1})\right)\boldsymbol{x}_{t}
+\\ \end{array} \right] \\
+\boldsymbol{g}_{T}(\boldsymbol{\theta}) =  \frac{1}{T}
+\sum_{t=0}^{T}
+\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t}).
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="weighting-matrix-for-asset-problem">
+
+<h2>Weighting Matrix for Asset Problem</h2>
+
+<p>Since the forecast errors in
+<span class="math">\(\smash{\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})}\)</span>
+are unpredictable, they exhibit no serial correlation.</p>
+<ul class="simple">
+<li>Thus, <span class="math">\(\smash{\boldsymbol{h}(\boldsymbol{\theta},
+\boldsymbol{y}_{t})}\)</span> exhibits no serial correlation.</li>
+</ul>
+<p>This means <span class="math">\(\smash{S}\)</span> can be simply be estimated by</p>
+<div class="math">
+\[\smash{\hat{S}_{T} =  \frac{1}{T}  \sum_{t=0}^{T}
+\boldsymbol{h}(\hat{\boldsymbol{\theta}}, \boldsymbol{y}_{t})
+\boldsymbol{h}(\hat{\boldsymbol{\theta}},\boldsymbol{y}_{t})^{'}}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="hansen-and-singleton-1982">
+
+<h2>Hansen and Singleton (1982)</h2>
+
+<p>Hansen and Singleton (1982) used GMM to estimate parameters of a model
+where</p>
+<div class="math">
+\[\begin{split}\smash{u(c_{t}) = \begin{cases} \frac{c_{t}^{1-\gamma}}{1-\gamma} &amp;
+\text{for} \,\,\, \gamma &gt; 0 \,\,\, \text{and} \,\,\, \gamma \neq 1
+\\ log(c_{t}) &amp; \text{for} \,\,\, \gamma = 1 \\ \end{cases}.}\end{split}\]</div>
+<ul class="simple">
+<li>In this case, <span class="math">\(\smash{\boldsymbol{\theta} =
+(\beta,\gamma)^{'}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Since forecast errors are uncorrelated with past returns and
+consumption, the lagged values of asset returns and aggregate
+consumption in <span class="math">\(\smash{\boldsymbol{x}_{t}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

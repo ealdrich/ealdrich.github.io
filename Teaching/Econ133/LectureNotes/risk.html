@@ -1,0 +1,635 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Risk and Risk Premiums &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html"/>
+        <link rel="up" title="Risk and Returns" href="riskReturns.html"/>
+        <link rel="next" title="Portfolio Optimization" href="portfolios.html"/>
+        <link rel="prev" title="Rates of Return" href="returns.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Econ 133</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="probability.html">Probability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#random-variables">Random Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#probability-mass-function">Probability Mass Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#probability-density-function">Probability Density Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-distributions">Properties of Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#cumulative-distribution-function">Cumulative Distribution Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#expected-value">Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id1">Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-expectation">Properties of Expectation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-expectation-proof">Properties of Expectation - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#variance">Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id2">Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#standard-deviation">Standard Deviation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#covariance">Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id3">Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-variance">Properties of Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-variance-proof">Properties of Variance - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#properties-of-covariance">Properties of Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#correlation">Correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#normal-distribution">Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#normal-density">Normal Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id4">Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#standard-normal-distribution">Standard Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#standard-normal-distribution-proof">Standard Normal Distribution - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#id5">Standard Normal Distribution - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sum-of-normals">Sum of Normals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sample-mean">Sample Mean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sample-mean-cont">Sample Mean (Cont.)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#sample-variance">Sample Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability.html#other-sample-moments">Other Sample Moments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="markets.html">Markets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assetClasses.html">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexes.html">Indexes and Funds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html">Trading</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="riskReturns.html">Risk and Returns</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="returns.html">Rates of Return</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Risk and Risk Premiums</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="portfolios.html">Portfolio Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allocation.html">Asset Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolioOpt.html">Portfolio Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiAssetOpt.html">Portfolio Optimization with Many Risky Assets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="indexModels.html">Index Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id1">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#single-factor-model">Single-Factor Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id2">Single-Factor Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#decomposing-risk">Decomposing Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id3">Decomposing Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#using-an-index-as-a-factor">Using an Index as a Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id4">Using an Index as a Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#single-index-model">Single-Index Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id5">Single-Index Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#expected-return-beta-relationship">Expected Return-Beta Relationship</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#why-must-be-zero">Why <span class="math">\(\alpha\)</span> Must Be Zero</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#single-index-regression">Single-Index Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#security-characteristic-line">Security Characteristic Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id6">Security Characteristic Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#advantages-of-the-model">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id7">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id8">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id9">Advantages of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#cost-of-the-model">Cost of the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-portfolios">Index Model Portfolios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-portfolio-coefficients">Index Model Portfolio Coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-portfolio-risk">Index Model Portfolio Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id10">Index Model Portfolio Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-diversification">Index Model Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id11">Index Model Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id12">Index Model Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#index-model-example">Index Model Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id13">Index Model Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id14">Index Model Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="indexModels.html#id15">Index Model Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bonds.html">Bonds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bondPrices.html">Bond Prices and Yields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="termStructure.html">The Term Structure of Interest Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-options">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id1">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id2">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id3">Call Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-example">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id4">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-options">Put Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id5">Put Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-example">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id6">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#moneyness">Moneyness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#american-vs-european">American vs. European</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#notation">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-buyer">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id7">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id8">Call Option Payoff (Buyer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-seller">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id9">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-payoff-buyer">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id10">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id11">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#speculation-and-hedging">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id12">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id13">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id14">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id15">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id16">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id17">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id18">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id19">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id20">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#covered-call">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id21">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#straddle">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id22">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id23">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#spread">Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#bullish-spread">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id24">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#collar">Collar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put-alternative">Protective Put Alternative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity">Put Call Parity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity-example">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id25">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id26">Put Call Parity Example</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 133</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="riskReturns.html">Risk and Returns</a> &raquo;</li>
+      
+    <li>Risk and Risk Premiums</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/risk.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="risk-and-risk-premiums">
+<h1>Risk and Risk Premiums<a class="headerlink" href="#risk-and-risk-premiums" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="probabilistic-returns">
+<h2>Probabilistic Returns<a class="headerlink" href="#probabilistic-returns" title="Permalink to this headline">¶</a></h2>
+<p>Since we don&#8217;t know future returns, we will treat them as random
+variables.</p>
+<ul class="to-build simple">
+<li>We can model them as discrete random variables, taking one of a
+finite set of possible values in the future: <span class="math">\(r(s)\)</span>, <span class="math">\(s
+= 1, \ldots, S\)</span>.<ul class="to-build">
+<li>In this case the probability of each value is <span class="math">\(p(s)\)</span>,
+<span class="math">\(s=1,\ldots,S\)</span>.</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>We can model them as continuous random variables, taking one of an
+infinite set of possible values in the future: <span class="math">\(r(s)\)</span>,
+<span class="math">\(s \in \mathcal{S}\)</span> (e.g. <span class="math">\(\mathcal{S} = (-\infty, \infty)\)</span>).<ul class="to-build">
+<li>In this case the probability of each value (kind of) is
+<span class="math">\(f(s)\)</span>, <span class="math">\(s \in \mathcal{S}\)</span>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="expected-returns">
+<h2>Expected Returns<a class="headerlink" href="#expected-returns" title="Permalink to this headline">¶</a></h2>
+<p>Our best guess for the future return is the expected value:</p>
+<div class="to-build math">
+\[\begin{split}E[r] &amp; \equiv \mu = \sum_{s=1}^S r(s) p(s),\end{split}\]</div>
+<p class="to-build">or</p>
+<div class="to-build math">
+\[\begin{split}E[r] &amp; \equiv \mu = \int_{s \in \mathcal{S}} r(s) f(s) dr(s).\end{split}\]</div>
+</div>
+<div class="section" id="return-volatility">
+<h2>Return Volatility<a class="headerlink" href="#return-volatility" title="Permalink to this headline">¶</a></h2>
+<p>The amount of uncertainty in potential returns can be measured by the
+variance or standard deviation.</p>
+<ul class="to-build simple">
+<li>Volatility of returns specifically refers to standard deviation, NOT
+VARIANCE.</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}Std(r) &amp; \equiv \sigma = \sqrt{\sum_{s=1}^S (r(s) - \mu)^2 p(s)},\end{split}\]</div>
+<p class="to-build">or</p>
+<div class="to-build math">
+\[\begin{split}Std(r) &amp; \equiv \sigma = \sqrt{\int_{s \in \mathcal{S}} (r(s) -
+\mu_r)^2 f(s) dr(s)}.\end{split}\]</div>
+</div>
+<div class="section" id="expectation-and-variance-example">
+<h2>Expectation and Variance Example<a class="headerlink" href="#expectation-and-variance-example" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="33%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Probability</th>
+<th class="head">Return</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Severe Recession</td>
+<td>0.05</td>
+<td>-0.37</td>
+</tr>
+<tr class="row-odd"><td>Mild Recession</td>
+<td>0.25</td>
+<td>-0.11</td>
+</tr>
+<tr class="row-even"><td>Normal Growth</td>
+<td>0.40</td>
+<td>0.14</td>
+</tr>
+<tr class="row-odd"><td>Boom</td>
+<td>0.30</td>
+<td>0.30</td>
+</tr>
+</tbody>
+</table>
+<p class="to-build">What are <span class="math">\(\mu\)</span> and <span class="math">\(\sigma\)</span>?</p>
+<div class="to-build math">
+\[\begin{split}\mu &amp; = 0.05*(-0.37) + 0.25*(-0.11) \\
+&amp; \qquad \qquad + 0.40*0.14 + 0.30*0.30 = 0.10\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}E[r^2] &amp; = 0.05*(-0.37)^2 + 0.25*(-0.11)^2 \\
+&amp; \qquad \qquad + 0.40*(0.14)^2 + 0.30*(0.30)^2 = 0.04471\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\sigma &amp; = \sqrt{E[r^2] - \mu^2} = 0.04471 - 0.10^2 = 0.03471\end{split}\]</div>
+</div>
+<div class="section" id="assumption-of-normality">
+<h2>Assumption of Normality<a class="headerlink" href="#assumption-of-normality" title="Permalink to this headline">¶</a></h2>
+<p>It will often be convenient to assume asset returns are normally
+distributed.</p>
+<ul class="to-build simple">
+<li>In this case, we will treat returns as continuous random variables.</li>
+</ul>
+<ul class="to-build simple">
+<li>We can use the normal density function to compute probabilities of
+possible events.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will not assume that returns of different assets come from the
+same normal, but instead FROM DIFFERENT normal distributions.</li>
+</ul>
+</div>
+<div class="section" id="differing-normal-distributions">
+<h2>Differing Normal Distributions<a class="headerlink" href="#differing-normal-distributions" title="Permalink to this headline">¶</a></h2>
+<p>As an example, suppose that</p>
+<ul class="to-build simple">
+<li>Amazon stock (AMZN) has an expected monthly return of 3% and a
+volatility (standard deviation) of 8%.</li>
+</ul>
+<ul class="to-build simple">
+<li>Coca-Cola stock (KO) has an expected monthly return of 1% and a
+volatility (standard deviation) of 4%.</li>
+</ul>
+<p class="to-build">What do their probability distributions look like?</p>
+</div>
+<div class="section" id="amazon-distribution">
+<h2>Amazon Distribution<a class="headerlink" href="#amazon-distribution" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/amazon.png"><img alt="_images/amazon.png" class="align-center" src="_images/amazon.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="coca-cola-distribution">
+<h2>Coca-Cola Distribution<a class="headerlink" href="#coca-cola-distribution" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/amazon_coke.png"><img alt="_images/amazon_coke.png" class="align-center" src="_images/amazon_coke.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="implications-of-normality">
+<h2>Implications of Normality<a class="headerlink" href="#implications-of-normality" title="Permalink to this headline">¶</a></h2>
+<p>The assumption of normality is convenient because</p>
+<ul class="to-build simple">
+<li>If we form a portfolio of assets that are normally distributed, then
+the distribution of the portfolio return is also normally
+distributed.<ul class="to-build">
+<li>Recall that if <span class="math">\(X_i \sim \mathcal{N}(\mu_i, \sigma_i)\)</span>,
+<span class="math">\(i = 1,\ldots,N\)</span>, then <span class="math">\(W = \sum_{i=1}^N w_i X_i\)</span> is
+also normally distributed (where <span class="math">\(w_i\)</span> are constant
+weights).</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>The mean and the variance (or standard deviation) fully characterize
+the distribution of returns.</li>
+</ul>
+<ul class="to-build simple">
+<li>The variance or standard deviation alone is an appropriate measure
+of risk (no other measure is needed).</li>
+</ul>
+</div>
+<div class="section" id="estimating-means-and-volatilities">
+<h2>Estimating Means and Volatilities<a class="headerlink" href="#estimating-means-and-volatilities" title="Permalink to this headline">¶</a></h2>
+<p>Typically we don&#8217;t know the true mean and standard deviation of Amazon
+and Coca-Cola.  What do we do?</p>
+<ul class="to-build simple">
+<li>Use historical data to estimate them.</li>
+</ul>
+<ul class="to-build simple">
+<li>Collect <span class="math">\(N+1\)</span> past prices of each asset for a particular
+interval of time (daily, monthly, quarterly, annually).</li>
+</ul>
+<ul class="to-build simple">
+<li>Compute <span class="math">\(N\)</span> returns using the formula</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}r_t &amp; = \frac{P_t - P_{t-1}}{P_{t-1}}.\end{split}\]</div>
+<p class="to-build">We don&#8217;t include dividends in the return calculation above, because we
+use ADJUSTED closing prices, which account for dividend payments
+directly in the prices.</p>
+</div>
+<div class="section" id="id1">
+<h2>Estimating Means and Volatilities<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Compute the sample mean of returns</p>
+<div class="to-build math">
+\[\begin{split}\hat{\mu} &amp; = \frac{1}{N} \sum_{t=1}^N r_t.\end{split}\]</div>
+<p class="to-build">Compute the sample standard deviation of returns</p>
+<div class="to-build math">
+\[\begin{split}\hat{\sigma}^2 &amp; = \frac{1}{N-1} \sum_{t=1}^N (r_t -
+\hat{\mu})^2.\end{split}\]</div>
+<p class="to-build">The &#8220;hats&#8221; indicate that we have estimated <span class="math">\(\mu\)</span> and
+<span class="math">\(\sigma\)</span>: these are not the true, unknown values.</p>
+</div>
+<div class="section" id="estimating-means-and-volatilities-example">
+<h2>Estimating Means and Volatilities - Example<a class="headerlink" href="#estimating-means-and-volatilities-example" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s collect the <span class="math">\(N = 13\)</span> closing prices for Amazon and
+Coca-Cola between 3 Jan 2012 and 2 Jan 2013.</p>
+<ul class="to-build simple">
+<li>We will only keep the first closing price on the first trading day
+of each month.</li>
+</ul>
+<ul class="to-build simple">
+<li>We can then compute 12 monthly returns by computing the difference
+in month prices at the beginning of each month, dividing by the
+price of the previous month.</li>
+</ul>
+<ul class="to-build simple">
+<li>This will give us 12 returns that we can use to estimate the means
+and standard deviations.</li>
+</ul>
+</div>
+<div class="section" id="amazon-monthly-prices">
+<h2>Amazon Monthly Prices<a class="headerlink" href="#amazon-monthly-prices" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/amzn-monthly.png"><img alt="_images/amzn-monthly.png" class="align-center" src="_images/amzn-monthly.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="coca-cola-monthly-prices">
+<h2>Coca-Cola Monthly Prices<a class="headerlink" href="#coca-cola-monthly-prices" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/ko-monthly.png"><img alt="_images/ko-monthly.png" class="align-center" src="_images/ko-monthly.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="computing-returns-and-moments">
+<h2>Computing Returns and Moments<a class="headerlink" href="#computing-returns-and-moments" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/amzn-coke-xls.png"><img alt="_images/amzn-coke-xls.png" class="align-center" src="_images/amzn-coke-xls.png" style="width: 8.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="risk-free-returns">
+<h2>Risk-Free Returns<a class="headerlink" href="#risk-free-returns" title="Permalink to this headline">¶</a></h2>
+<p>We will typically assume that a risk-free asset is available for
+purchase.</p>
+<ul class="to-build simple">
+<li>We will denote the risk-free return as <span class="math">\(r_f\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If an asset is risk free, its return is certain and has no
+variability:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}E[r_f] &amp; = r_f \\
+Var(r_f) &amp; = 0.\end{split}\]</div>
+</div>
+<div class="section" id="t-bills-as-risk-free-assets">
+<h2>T-Bills as Risk-Free Assets<a class="headerlink" href="#t-bills-as-risk-free-assets" title="Permalink to this headline">¶</a></h2>
+<p>The return on a short-term government t-bill is usually considered
+risk free:</p>
+<ul class="to-build simple">
+<li>Although the price changes over time, the risk of default is
+extremely low.</li>
+</ul>
+<ul class="to-build simple">
+<li>Also, the holding period return can be determined at the beginning
+of the holding period (unlike other risky assets).</li>
+</ul>
+</div>
+<div class="section" id="compensation-for-risk">
+<h2>Compensation for Risk<a class="headerlink" href="#compensation-for-risk" title="Permalink to this headline">¶</a></h2>
+<p>If you can invest in a risk-free asset, why would you purchase a
+risky asset instead?</p>
+<ul class="to-build simple">
+<li>Risky assets compensate for risk through higher expected
+return.</li>
+</ul>
+<ul class="to-build simple">
+<li>If risky assets didn&#8217;t offer higher expected return, everyone would
+sell them, leading to a price decline today and a higher expected
+return:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\uparrow E[r_t] &amp; = \frac{E[P_t] - \downarrow
+P_{t-1}}{\downarrow P_{t-1}}\end{split}\]</div>
+<ul class="to-build simple">
+<li>There is no guarantee that the actual return will be higher &#8211; only
+its expected value.</li>
+</ul>
+</div>
+<div class="section" id="risk-premium-excess-returns">
+<h2>Risk Premium &amp; Excess Returns<a class="headerlink" href="#risk-premium-excess-returns" title="Permalink to this headline">¶</a></h2>
+<p>The amount by which the expected return of some risky asset <span class="math">\(A\)</span>
+exceeds the risk-free return is known as the <em>risk premium</em>:</p>
+<div class="to-build math">
+\[\begin{split}\text{rp}_{A,t} &amp; = E[r_{A,t}] - r_{f,t}.\end{split}\]</div>
+<p class="to-build">The <em>excess return</em> measures the difference between a previously
+observed holding period return of <span class="math">\(A\)</span> and the risk-free:</p>
+<div class="to-build math">
+\[\begin{split}\text{er}_{A,t-1} &amp; = r_{A,t-1} - r_{f,t-1}.\end{split}\]</div>
+</div>
+<div class="section" id="id2">
+<h2>Risk Premium &amp; Excess Returns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Note that excess returns can only be computed with past returns.</li>
+</ul>
+<ul class="to-build simple">
+<li>We estimate risk premia with the sample mean of historical excess
+returns.</li>
+</ul>
+</div>
+<div class="section" id="sharpe-ratio">
+<h2>Sharpe Ratio<a class="headerlink" href="#sharpe-ratio" title="Permalink to this headline">¶</a></h2>
+<p>The <em>Sharpe Ratio</em> is a measure of how much risk premium investors
+require, per unit of risk:</p>
+<div class="to-build math">
+\[\begin{split}\text{SR}_{A,t} &amp; = \frac{\mu_{A,t} - r_{f,t}}{\sigma_{A,t}}\end{split}\]</div>
+<ul class="to-build simple">
+<li>The Sharpe Ratio is a measure of risk aversion.</li>
+</ul>
+<ul class="to-build simple">
+<li>It is often referred to as the price of risk.</li>
+</ul>
+<ul class="to-build simple">
+<li>The Sharpe Ratio for a broad market index of assets (like the
+S&amp;P 500) is referred to as the market price of risk.</li>
+</ul>
+<ul class="to-build simple">
+<li>The true Sharpe Ratio is unknown, since we don&#8217;t know
+<span class="math">\(\mu_{A,t}\)</span> and <span class="math">\(\sigma_{A,t}\)</span>, but we can estimate
+these with historical returns.</li>
+</ul>
+</div>
+<div class="section" id="risk-premium-example">
+<h2>Risk Premium Example<a class="headerlink" href="#risk-premium-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose the monthly risk-free rate is 0.2%. What is the estimated
+risk premium and Sharpe Ratio for Amazon stock?</p>
+<div class="to-build math">
+\[rp_{AMZN} = 0.03 - 0.002 = 0.028\]</div>
+<div class="to-build math">
+\[SR_{AMZN} = \frac{rp_{AMZN}}{0.08} = 0.35\]</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="portfolios.html" class="btn btn-neutral float-right" title="Portfolio Optimization">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="returns.html" class="btn btn-neutral" title="Rates of Return"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Security Markets and Financial Institutions',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

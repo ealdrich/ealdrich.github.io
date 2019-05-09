@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Black-Scholes-Merton Model &mdash; Econ 236</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Econ 236" href="index.html" />
+    <link rel="next" title="Implied Volatility and the Volatility Term Structure" href="impliedVol.html" />
+    <link rel="prev" title="Wiener Processes" href="wiener.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="black-scholes-merton-model">
+
+<h1>Black-Scholes-Merton Model</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="overview">
+
+<h2>Overview</h2>
+
+<p>The Black-Scholes-Merton (BSM) model provides a simple formula for
+computing the price of an option.</p>
+<ul class="simple">
+<li>It is derived in a fashion similar to the binomial option pricing
+model.</li>
+</ul>
+<ul class="simple">
+<li>A riskless portfolio is obtained by buying <span class="math notranslate nohighlight">\(\smash{\Delta}\)</span>
+shares of the underlying asset and shorting a single option.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\Delta}\)</span> represents <span class="math notranslate nohighlight">\(\smash{\frac{\partial
+C}{\partial S}}\)</span>, where <span class="math notranslate nohighlight">\(\smash{S}\)</span> is the price of the
+underlying and <span class="math notranslate nohighlight">\(\smash{C}\)</span> is the price of the option.</li>
+</ul>
+<ul class="simple">
+<li>Unlike the binomial model, the BSM model <span class="math notranslate nohighlight">\(\smash{\Delta}\)</span> is
+only valid for an infinitesimal length of time.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="bsm-assumptions">
+
+<h2>BSM Assumptions</h2>
+
+<p>The BSM model depends on the following assumptions.</p>
+<ul class="simple">
+<li>The price of the underlying asset follows geometric Brownian motion
+with parameters <span class="math notranslate nohighlight">\(\smash{\mu}\)</span> and <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span>.</li>
+<li>There is no restriction on short selling.</li>
+<li>There are no transaction costs or taxes.</li>
+<li>All assets are perfectly divisible.</li>
+<li>The underlying doesn’t pay dividends.</li>
+<li>There are no riskless arbitrage opportunities.</li>
+<li>Asset trading occurs continuously.</li>
+<li>The risk-free rate, <span class="math notranslate nohighlight">\(\smash{r}\)</span> is constant and the same for
+all maturities.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="bsm-and-ito-s-lemma">
+
+<h2>BSM and Ito’s Lemma</h2>
+
+<p>Suppose the price of an asset follows geometric Brownian motion:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+dS &amp; = \mu S dt + \sigma S dZ.
+\end{align}\]</div>
+<p>According to Ito’s lemma, the price of a derivative,
+<span class="math notranslate nohighlight">\(\smash{f}\)</span>, follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+df &amp; = \left(\frac{\partial f}{\partial S} \mu S + \frac{\partial
+f}{\partial t} + \frac{1}{2} \frac{\partial^2 f}{\partial S^2}
+\sigma^2 S^2 \right) dt + \frac{\partial f}{\partial S} \sigma S
+dZ.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="a-riskless-portfolio">
+
+<h2>A Riskless Portfolio</h2>
+
+<p>Consider a portfolio that is short one unit of the derivative and long
+<span class="math notranslate nohighlight">\(\smash{\frac{\partial f}{\partial S}}\)</span> units of the underlying:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\Pi &amp; = -f + \frac{\partial f}{\partial S} S \\
+\Rightarrow d \Pi &amp; = -df + \frac{\partial f}{\partial S} dS \\
+&amp; = \left(-\frac{\partial f}{\partial t} - \frac{1}{2}
+\frac{\partial^2 f}{\partial S^2} \sigma^2 S^2\right) dt.
+\end{align}\end{split}\]</div>
+<p>Note that the portfolio is not affected by <span class="math notranslate nohighlight">\(\smash{Z}\)</span>, so it is
+riskless.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id1">
+
+<h2>A Riskless Portfolio</h2>
+
+<ul class="simple">
+<li>The portfolio must earn the risk-free rate of return over period
+<span class="math notranslate nohighlight">\(\smash{dt}\)</span>.</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gather}
+d \Pi = r \Pi dt \\
+\Rightarrow \left(\frac{\partial f}{\partial t} + \frac{1}{2}
+\frac{\partial^2 f}{\partial S^2} \sigma^2 S^2\right) dt =
+r\left(f - \frac{\partial f}{\partial S} S\right) dt \\
+\Rightarrow rf = \frac{\partial f}{\partial t} + \frac{\partial
+f}{\partial S} rS + \frac{1}{2} \frac{\partial^2 f}{\partial S^2}
+\sigma^2 S^2.
+\end{gather}\end{split}\]</div>
+<ul class="simple">
+<li>This is the BSM differential equation.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="boundary-conditions">
+
+<h2>Boundary Conditions</h2>
+
+<p>The BSM differential equation is true for any derivative that depends
+on <span class="math notranslate nohighlight">\(\smash{S}\)</span>.</p>
+<ul class="simple">
+<li>Boundary conditions determine the price of a particular derivative.</li>
+</ul>
+<ul class="simple">
+<li>For example, the boundary condition for a call option is its
+terminal value: <span class="math notranslate nohighlight">\(\smash{f = \max(S-X,0)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Likewise, the boundary condition for a put option is its
+terminal value: <span class="math notranslate nohighlight">\(\smash{f = \max(X-S,0)}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="bsm-price-of-forward">
+
+<h2>BSM Price of Forward</h2>
+
+<p>Suppose that some time ago a forward contract was entered into with
+delivery price <span class="math notranslate nohighlight">\(\smash{K}\)</span> and maturity <span class="math notranslate nohighlight">\(\smash{T}\)</span>.</p>
+<ul class="simple">
+<li>Recall that at intermediate date <span class="math notranslate nohighlight">\(\smash{t}\)</span> the value of the
+forward is <span class="math notranslate nohighlight">\(\smash{f = S - K e^{-r(T-t)}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>It follows:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{\partial f}{\partial t} = -r K e^{-r(T-t)} \,\,\,\,
+\frac{\partial f}{\partial S} = 1 \,\,\,\, \frac{\partial^2
+f}{\partial S^2} = 0.
+\end{align}\]</div>
+<ul class="simple">
+<li>Substituting these into the BSM equation, <span class="math notranslate nohighlight">\(\smash{rf = rS - rK
+e^{-r(T-t)}}\)</span>, which is true.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="risk-neutral-valuation">
+
+<h2>Risk-Neutral Valuation</h2>
+
+<p>A basic principle of asset pricing is that investors demand higher
+expected return, <span class="math notranslate nohighlight">\(\smash{\mu}\)</span>, in the presence of higher
+volatility, <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span>.</p>
+<ul class="simple">
+<li>Note that <span class="math notranslate nohighlight">\(\smash{\mu}\)</span> doesn’t appear in the BSM differential
+equation.</li>
+</ul>
+<ul class="simple">
+<li>This means we can treat investors <em>as if</em> they are risk neutral.</li>
+</ul>
+<ul class="simple">
+<li>That is, we can value assets under the assumption that investors
+only demand expected return <span class="math notranslate nohighlight">\(\smash{r}\)</span>, even though they
+aren’t really risk neutral.</li>
+</ul>
+<ul class="simple">
+<li>The practical implication is that once we compute future asset
+payoffs, we can discount them at the risk-free rate (implicitly
+assuming this is the rate of return that investors demand).</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="bsm-option-pricing-formulas">
+
+<h2>BSM Option Pricing Formulas</h2>
+
+<p>The BSM option pricing formulas are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+C &amp; = S_0 \Phi(d_1) - X e^{-rT} \Phi(d_2) \\
+P &amp; = X e^{-rT} \Phi(-d_2) - S_0 \Phi(-d_1)\\
+d_1 &amp; = \frac{\log(S_0/X) + (r+\sigma^2/2)T}{\sigma \sqrt{T}} \\
+d_2 &amp; = \frac{\log(S_0/X) + (r-\sigma^2/2)T}{\sigma \sqrt{T}} = d_1
+- \sigma \sqrt{T}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>These satisfy the BSM differential equation.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\Phi(x)}\)</span> represents the standard Normal CDF:
+<span class="math notranslate nohighlight">\(\smash{P(X \leq x)}\)</span> when <span class="math notranslate nohighlight">\(\smash{X \sim N(0,1)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{C}\)</span> and <span class="math notranslate nohighlight">\(\smash{P}\)</span> are the prices of European
+call and put options on the underlying, <span class="math notranslate nohighlight">\(\smash{S}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="normal-cdf">
+
+<h2>Normal CDF</h2>
+
+<a class="reference internal image-reference" href="_images/normCDF.png"><img alt="_images/normCDF.png" class="align-center" src="_images/normCDF.png" style="width: 4in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="interpretation">
+
+<h2>Interpretation</h2>
+
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+P(S_T \geq X) &amp; = P\left(\log(S_T) \geq \log(X)\right) \\
+&amp; = P\left(\frac{\log(S_T) -
+E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)} \geq
+\frac{\log(X) -
+E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)}\right) \\
+&amp; = 1 - \Phi\left(\frac{\log(X) -
+E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)}\right) \\
+&amp; = \Phi\left(-\frac{\log(X) -
+E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)}\right) \\
+&amp; = \Phi(d_2).
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id2">
+
+<h2>Interpretation</h2>
+
+<p>The last equation above follows because, under risk-neutrality
+<span class="math notranslate nohighlight">\(\smash{E\left[\log(S_T)\right] = \log(S_0) + (r - \sigma^2/2)T}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{Sd\left(\log(S_T)\right) = \sigma \sqrt{T}}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+-\frac{\log(X) - E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)}
+&amp; = \frac{\log(S_0) + (r - \sigma^2/2)T - \log(X)}{\sigma
+\sqrt{T}} \\
+&amp; = \frac{\log(S_0/X) + (r - \sigma^2/2)T}{\sigma \sqrt{T}} \\
+&amp; = d_2.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id3">
+
+<h2>Interpretation</h2>
+
+<p><span class="math notranslate nohighlight">\(\smash{\Phi(d_1)}\)</span> is similar to <span class="math notranslate nohighlight">\(\smash{\Phi(d_2)}\)</span>, but
+slightly harder to interpret.</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{S_0\Phi(d_1) e^{rT}}\)</span> is the expected asset price
+(under risk neutrality), conditional on the asset expiring with
+<span class="math notranslate nohighlight">\(\smash{S_T \geq X}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The expected payoff of the call option is:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+S_0 \Phi(d_1) e^{rT} - X \Phi(d_2).
+\end{align}\]</div>
+<ul class="simple">
+<li>The present value of the call option expected payoff is:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+S_0 \Phi(d_1) - X e^{-rT} \Phi(d_2).
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="extreme-cases">
+
+<h2>Extreme Cases</h2>
+
+<p>Suppose the current stock price <span class="math notranslate nohighlight">\(\smash{S_0}\)</span> is very large
+relative to the strike <span class="math notranslate nohighlight">\(\smash{X}\)</span>.</p>
+<ul class="simple">
+<li>In this case <span class="math notranslate nohighlight">\(\smash{d_1}\)</span> and <span class="math notranslate nohighlight">\(\smash{d_2}\)</span> are very
+large.</li>
+</ul>
+<ul class="simple">
+<li>As a result <span class="math notranslate nohighlight">\(\smash{\Phi(d_1)}\)</span> and <span class="math notranslate nohighlight">\(\smash{\Phi(d_2)}\)</span>
+approach 1.</li>
+</ul>
+<ul class="simple">
+<li>This causes the call option value to be <span class="math notranslate nohighlight">\(\smash{S_0 - X
+e^{-rT}}\)</span>.<ul>
+<li>This is identical to a forward contract, which makes sense for a
+deep-in-the-money call.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Likewise <span class="math notranslate nohighlight">\(\smash{\Phi(-d_1)}\)</span> and <span class="math notranslate nohighlight">\(\smash{\Phi(-d_2)}\)</span>
+approach 0.</li>
+</ul>
+<ul class="simple">
+<li>This causes the put option value to be 0.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id4">
+
+<h2>Extreme Cases</h2>
+
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{\sigma \to 0}\)</span>.</p>
+<ul class="simple">
+<li>If <span class="math notranslate nohighlight">\(\smash{S_0 &gt; X e^{-rT}}\)</span>, then <span class="math notranslate nohighlight">\(\smash{d_1 \to
+\infty}\)</span> and <span class="math notranslate nohighlight">\(\smash{d_2 \to \infty}\)</span>, causing
+<span class="math notranslate nohighlight">\(\smash{\Phi(d_1) \to 1}\)</span> and <span class="math notranslate nohighlight">\(\smash{\Phi(d_2) \to 1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The result is a value of <span class="math notranslate nohighlight">\(\smash{S_0 - X e^{-rT} &gt; 0}\)</span>, which
+is identical to the riskless payoff <span class="math notranslate nohighlight">\(\smash{\max(S_0 e^{rT} -
+X,0)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Likewise, if <span class="math notranslate nohighlight">\(\smash{S_0 &lt; X e^{-rT}}\)</span>, then <span class="math notranslate nohighlight">\(\smash{d_1
+\to -\infty}\)</span> and <span class="math notranslate nohighlight">\(\smash{d_2 \to -\infty}\)</span>, causing
+<span class="math notranslate nohighlight">\(\smash{\Phi(d_1) \to 0}\)</span> and <span class="math notranslate nohighlight">\(\smash{\Phi(d_2) \to 0}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The result is a value of <span class="math notranslate nohighlight">\(\smash{0}\)</span>, which is identical to
+the riskless payoff <span class="math notranslate nohighlight">\(\smash{\max(S_0 e^{rT} - X,0)}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="implied-volatility">
+
+<h2>Implied Volatility</h2>
+
+<p>Volatility, <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span>, is the single parameter of the BSM
+model that is not directly observed.</p>
+<ul class="simple">
+<li>Typically, the BSM equation is not used to compute an option price,
+but to compute an <em>implied volatility</em>, given an option price.</li>
+</ul>
+<ul class="simple">
+<li>For example, if <span class="math notranslate nohighlight">\(\smash{C = 1.875}\)</span>, <span class="math notranslate nohighlight">\(\smash{S_0 = 21}\)</span>,
+<span class="math notranslate nohighlight">\(\smash{X = 20}\)</span>, <span class="math notranslate nohighlight">\(\smash{r = 0.1}\)</span> and <span class="math notranslate nohighlight">\(\smash{T
+= 0.25}\)</span>, what is the value that <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span> must take
+for the BSM equation to hold for a European call option?</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="vix-index">
+
+<h2>VIX Index</h2>
+
+<p>The VIX index is an index of implied volatilities for 30-day S&amp;P 500
+options (calls and puts).</p>
+<ul class="simple">
+<li>It is interpreted as the (annualized) one standard deviation move
+(in percentage) of the S&amp;P 500 index over the next 30 days.</li>
+</ul>
+<ul class="simple">
+<li>Options and futures trade on the VIX itself (as well as the S&amp;P
+500).</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="historical-vix">
+
+<h2>Historical VIX</h2>
+
+<a class="reference internal image-reference" href="_images/vixFigure.png"><img alt="_images/vixFigure.png" class="align-center" src="_images/vixFigure.png" style="width: 4in;" /></a>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

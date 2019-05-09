@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <script type="text/javascript" src="../rootDir.js">  </script>
+  <script type="text/javascript" src="../head.js">  </script>
+  <body>
+    <div><script type="text/javascript" src="../mainMenu.js">  </script></div>
+    <div>
+     <div class="outer">
+       <div class="content">
+         <div id="section">Week 1: Nonlinear Equations</div>
+         <div>
+	   Find the root of the nonlinear Euler Equation:
+	   $$R_f = \frac{1}{\beta} \left(\frac{c_{t+1}}{c_t}\right)^{\gamma},$$
+	   where \(\beta=0.99\), \(R_f = 1.04\) and \(\gamma=1.1\). Further, assume that
+	   $$c_{t+1} = \alpha_0 + \alpha_1 c_t,$$
+	   where \(\alpha_0 = 0.01\) and \(\alpha_1 = 1.02\). Find the root using the
+	   bisection method, function iteration, Newton's method and Broyden's method.
+	   <iframe width='100%' height='300' src='http://www.r-fiddle.org/#/embed?id=xhJImm9e&version=5' allowfullscreen='allowfullscreen' frameborder='0'></iframe>
+         </div>
+         <div id="section">Week 2: Optimization</div>
+         <div>
+	   Import the file <a class="body" href="spyRets.txt">spyRets.txt</a> into R. This file comprises transaction by
+	   transaction price differences (returns) for the asset <a class="body" href="http://bit.ly/1vhSxNo">SPY</a>. Assume that
+	   $$r_{spy} \sim \mathcal{N}(\mu,\sigma),$$
+	   where \(r_{spy}\) represents SPY returns and \(\mu\) and \(\sigma\) represent the unknown mean and
+	   standard deviation (not variance!) of \(r_{spy}\). Use the Newton-Raphson method and the BFGS method to find
+	   maximum likelihood estimates of \(\mu\) and \(\sigma\). Code the methods by hand - do not use any software
+	   libraries.
+	   <iframe width='100%' height='300' src='http://www.r-fiddle.org/#/fiddle?id=O8fy7JMC&version=1' allowfullscreen='allowfullscreen' frameborder='0'></iframe>
+         </div>
+         <div id="section">Week 3: Integration</div>
+         <div>
+	   Assume \(X \sim \mathcal{N}(5.2,7.37)\). Compute the first and second moments of \(X\) numerically using
+	   the 5-node trapezoid rule, 5-node Simpson rule, 5-node Gauss-Legendre rule 10,000 node and Monte Carlo integration.
+	   <iframe width='100%' height='300' src='http://www.r-fiddle.org/#/fiddle?id=emuMoBmG' allowfullscreen='allowfullscreen' frameborder='0'></iframe>
+         </div>
+       </div>
+     </div>
+   </div>
+  </body>
+</html>

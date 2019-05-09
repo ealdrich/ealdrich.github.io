@@ -1,0 +1,505 @@
+==============================================================================
+Autoregressive Processes
+==============================================================================
+
+:math:`\smash{AR(1)}` Process
+==============================================================================
+Given white noise :math:`\smash{\{\varepsilon_t\}}`, consider the process
+
+.. math::
+
+   \smash{Y_t = c + \phi Y_{t-1} + \varepsilon_t,}
+
+where :math:`\smash{c}` and :math:`\smash{\phi}` are constants.  
+  
+.. raw:: <!--pause-->
+
+- This is a *first-order autoregressive* or :math:`\smash{AR(1)}`
+  process.
+
+.. raw:: <!--pause-->
+
+- We can rewrite in terms of the lag operator:
+
+.. math::
+
+   \smash{(1-\phi L) Y_t = c + \varepsilon_t.}
+  
+
+
+:math:`\smash{AR(1)}` as :math:`\smash{MA(\infty)}`
+==============================================================================
+From our discussion of lag operators, we know that if
+:math:`\smash{|\phi| < 1}`
+
+.. math::
+
+  \begin{align*}
+    Y_t & = (1-\phi L)^{-1} c + (1-\phi L)^{-1} \varepsilon_t \\
+    & = \left(\sum_{i=0}^{\infty} \phi^i L^i\right) c +
+    \left(\sum_{i=0}^{\infty} \phi^i L^i\right) \varepsilon_t \\
+    & = \left(\sum_{i=0}^{\infty} \phi^i\right) c +
+    \left(\sum_{i=0}^{\infty} \phi^i L^i\right) \varepsilon_t \\
+    & = \frac{c}{1-\phi} + \theta(L) \varepsilon_t,
+  \end{align*}
+
+.. raw:: <!--pause-->
+
+where
+
+.. math::
+
+   \smash{\theta(L) = \sum_{i=0}^{\infty} \theta_i L^i =
+   \sum_{i=0}^{\infty} \phi^i L^i = \phi(L)^{-1}.}
+
+
+:math:`\smash{AR(1)}` as :math:`\smash{MA(\infty)}`
+==============================================================================
+Restating, when :math:`\smash{|\phi| < 1}`
+
+.. math::
+
+   \smash{Y_t = \frac{c}{1-\phi} + \theta(L) \varepsilon_t =
+      \frac{c}{1-\phi} + \sum_{i=0}^{\infty} \phi^i \varepsilon_{t-i}.}
+  
+.. raw:: <!--pause-->
+
+- This is an :math:`\smash{MA(\infty)}` with :math:`\smash{\mu =
+  c/(1-\phi)}` and :math:`\smash{\theta_i = \phi^i}`. 
+
+.. raw:: <!--pause-->
+
+- Note that :math:`\smash{|\phi| < 1}` implies
+
+.. math::
+
+   \smash{\sum_{j=0}^{\infty} |\theta_j| = \sum_{j=0}^{\infty}
+   |\phi|^j < \infty,}
+
+.. raw:: <!--pause-->
+
+which means that :math:`\smash{Y_t}` is weakly stationary.
+  
+
+Expectation of :math:`\smash{AR(1)}`
+==============================================================================
+Assume :math:`\smash{Y_t}` is weakly stationary: :math:`\smash{|\phi| < 1}`. 
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   \text{E}[Y_t] & = c + \phi \text{E}[Y_{t-1}] + \text{E}[\varepsilon_t] \\
+   & = c + \phi \text{E}[Y_t] \\
+   \Rightarrow \text{E}[Y_t] & = \frac{c}{1-\phi}.
+   \end{align*}
+
+
+A Useful Property
+==============================================================================
+If :math:`\smash{Y_t}` is weakly stationary,
+
+.. math::
+
+   \smash{Y_{t-j} - \mu = \sum_{i=0}^{\infty} \phi^i \varepsilon_{t-j-i}.}
+
+  
+.. raw:: <!--pause-->
+
+- That is, for :math:`\smash{j \geq 1}`, :math:`\smash{Y_{t-j}}` is a
+  function of lagged  values of :math:`\smash{\varepsilon_t}` and not
+  :math:`\smash{\varepsilon_t}` itself.
+
+.. raw:: <!--pause-->
+
+- As a result, for :math:`\smash{j \geq 1}`
+
+.. math::
+
+   \begin{align*}
+   \text{E}\left[(Y_{t-j}-\mu) \varepsilon_t\right] & = \sum_{i=0}^{\infty} \phi^i
+   \text{E}[\varepsilon_t \varepsilon_{t-j-i}] = 0.
+   \end{align*}
+  
+
+Variance of :math:`\smash{AR(1)}`
+==============================================================================
+Given that :math:`\smash{\mu = c/(1-\phi)}` for weakly stationary
+:math:`\smash{Y_t}`:
+
+.. math::
+
+   \begin{gather*}
+   Y_t = \mu(1-\phi) + \phi Y_{t-1} + \varepsilon_t \\
+   \Rightarrow (Y_t - \mu) = \phi(Y_{t-1} - \mu) +
+   \varepsilon_t.
+   \end{gather*}
+
+.. raw:: <!--pause-->
+
+Squaring both sides and taking expectations:
+
+.. math::
+
+   \begin{align*}
+   \text{E}\left[(Y_t-\mu)^2\right] & = \phi^2
+   \text{E}\left[(Y_{t-1}-\mu)^2\right] + 2\phi
+   \text{E}\left[(Y_{t-1}-\mu)\varepsilon_t\right] + \text{E}[\varepsilon_t^2] \\
+   & = \phi^2 \text{E}\left[(Y_t-\mu)^2\right] + \sigma^2
+   \end{align*}
+
+   \begin{gather*}
+   \Rightarrow (1-\phi^2) \gamma_0 = \sigma^2 \\
+   \Rightarrow \gamma_0 = \frac{\sigma^2}{1-\phi^2}
+   \end{gather*}
+
+
+Autocovariances of :math:`\smash{AR(1)}`
+==============================================================================
+For :math:`\smash{j \geq 1}`, 
+
+.. math::
+
+   \begin{align*}
+   \gamma_j & = \text{E}\left[(Y_t-\mu)(Y_{t-j}-\mu)\right] \\
+   & = \phi \text{E}[(Y_{t-1}-\mu)(Y_{t-j} - \mu)] + \text{E}[\varepsilon_t
+   (Y_{t-j} - \mu)] \\
+   & = \phi \gamma_{j-1} \\
+   & \vdots \\
+   & = \phi^j \gamma_0.
+   \end{align*}  
+
+
+Autocorrelations of :math:`\smash{AR(1)}`
+==============================================================================
+The autocorrelations of an :math:`\smash{AR(1)}` are
+
+.. math:: 
+
+   \smash{\rho_j = \frac{\gamma_j}{\gamma_0} = \phi^j, \,\,\,\,
+   \forall j \geq 0.}
+
+.. raw:: <!--pause-->
+
+- Since we assumed :math:`\smash{|\phi| < 1 }`, the autocorrelations
+  decay exponentially as :math:`\smash{j}` increases.
+
+.. raw:: <!--pause-->
+
+- Note that if :math:`\smash{\phi \in (-1,0)}`, the autocorrelations
+  decay in an oscillatory fashion.
+  
+
+
+Examples of :math:`\smash{AR(1)}` Processes
+==============================================================================
+.. code::
+
+   ###########################################################
+   # Simulate AR(1) processes for different values of phi
+   ###########################################################
+
+   # Number of simulated points
+   nSim = 1000000;
+
+   # Values of phi to consider
+   phi = c(-0.9, 0, 0.9, 0.99);
+
+   # Draw one set of shocks and use for each AR(1)
+   eps = rnorm(nSim, 0, 1);
+
+   # Matrix which stores each AR(1) in columns
+   y = matrix(0, nrow=nSim, ncol=length(phi));
+
+   # Each process is intialized at first shock
+   y[1,] = eps[1];
+
+   # Loop over each value of phi
+   for(j in 1:length(phi)){
+	
+       # Loop through the series, simulating the AR(1) values
+       for(i in 2:nSim){
+           y[i,j] = phi[j]*y[i-1,j]+eps[i]
+       }
+    }
+
+Examples of :math:`\smash{AR(1)}` Processes
+==============================================================================
+.. code::
+
+   ###########################################################
+   # Plot the AR(1) realizations for each phi
+   ###########################################################
+
+   # Only plot a subset of the whole simulation
+   plotInd = 1:1000
+   
+   # Specify a plot grid
+   png(file="ar1ExampleSeries.png", height=600, width=1000)
+   par(mfrow=c(2,2))
+
+   # Loop over each value of phi
+   for(j in 1:length(phi)){
+       plot(plotInd,y[plotInd,j], type='l', xlab='Time Index',
+            ylab="Y", main=paste(expression(phi), " = ", phi[j], sep=""))
+       abline(h=0)
+    }
+    graphics.off()
+
+Examples of :math:`\smash{AR(1)}` Processes
+==============================================================================
+.. image:: _static/ARMA/ar1ExampleSeries.png
+   :width: 12in
+   :align: center
+
+:math:`\smash{AR(1)}` Autocorrelations
+==============================================================================
+.. code::
+
+   ###########################################################
+   # Plot the sample ACFs for each AR(1) simulation
+   # For large nSim, sample ACFs are close to true ACFs
+   ###########################################################
+
+   # Specify a plot grid
+   png(file="ar1ExampleACF.png", height=600, width=1000)
+   par(mfrow=c(2,2))
+
+   # Loop over each value of phi
+   for(j in 1:length(phi)){
+       acf(y[,j], main=paste(expression(phi), " = ", phi[j], sep=""))
+   }
+   graphics.off()
+
+:math:`\smash{AR(1)}` Autocorrelations
+==============================================================================
+.. image:: _static/ARMA/ar1ExampleACF.png
+   :width: 6in
+   :align: center
+
+
+:math:`\smash{AR(p)}` Process
+==============================================================================
+Given white noise :math:`\smash{\{\varepsilon_t\}}`, consider the process
+
+.. math::
+
+   \smash{Y_t = c + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \ldots + \phi_p
+   Y_{t-p} + \varepsilon_t,}
+
+where :math:`\smash{c}` and :math:`\smash{\{\phi\}_{i=1}^p}` are
+constants.
+  
+.. raw:: <!--pause-->
+
+- This is a :math:`\smash{p}` *th-order autoregressive* or
+  :math:`\smash{AR(p)}` process.
+  
+.. raw:: <!--pause-->
+
+- We can rewrite in terms of the lag operator:
+
+.. math::
+
+   \smash{\phi(L) Y_t = c + \varepsilon_t.}
+
+where
+
+.. math::
+
+   \smash{\phi(L) = (1-\phi_1 L - \phi_2 L^2 - \ldots - \phi_p
+    L^p).}
+  
+
+:math:`\smash{AR(p)}` as :math:`\smash{MA(\infty)}`
+==============================================================================
+From our discussion of lag operators,
+
+.. math::
+
+   \smash{Y_t = \phi(L)^{-1} c + \phi(L)^{-1} \varepsilon_t,}
+
+if the roots of :math:`\smash{\phi(L)}` all lie outside the unit
+circle.
+  
+.. raw:: <!--pause-->
+
+- In this case, :math:`\smash{\phi(L) = (1-\lambda_1 L)(1-\lambda_2 L)
+  \cdots (1-\lambda_pL).}`
+
+.. raw:: <!--pause-->
+
+- If the roots, :math:`\smash{\frac{1}{|\lambda_i|} > 1}`,
+  :math:`\smash{\forall i}` then :math:`\smash{|\lambda_i| < 1}`,
+	:math:`\smash{\forall i}` and
+
+.. math::
+
+   \begin{align*}
+   \phi(L)^{-1} & = (1-\lambda_1 L)^{-1}(1-\lambda_2 L)^{-1}
+   \cdots (1-\lambda_pL)^{-1} \\
+   & = \left(\sum_{j=0}^{\infty} \lambda_1^j L^j\right)
+   \left(\sum_{j=0}^{\infty} \lambda_2^j L^j\right) \cdots
+   \left(\sum_{j=0}^{\infty} \lambda_p^j L^j\right).
+   \end{align*}
+  
+
+
+:math:`\smash{AR(p)}` as :math:`\smash{MA(\infty)}`
+==============================================================================
+For :math:`\smash{|\lambda_i| < 1}`, :math:`\smash{\forall i}`  
+  
+.. raw:: <!--pause-->
+
+- :math:`\smash{Y_t}` is an :math:`\smash{MA(\infty)}` with
+  :math:`\smash{\mu = \phi(L)^{-1} c}` and :math:`\smash{\theta(L) =
+	\phi(L)^{-1}}`.
+
+.. raw:: <!--pause-->
+
+- It can be shown that :math:`\smash{\sum_{i=1}^{\infty} |\theta_i| <
+  \infty}`.
+
+.. raw:: <!--pause-->
+
+- As a result, :math:`\smash{Y_t}` is weakly stationary.
+  
+
+Vector Autoregressive Process
+==============================================================================
+We can rewrite the :math:`\smash{AR(p)}` as
+
+.. math::
+
+   \smash{{\bf Y}_t = {\bf c} + \Phi {\bf Y}_{t-1} +
+   {\bf \varepsilon}_t,}
+
+.. raw:: <!--pause-->
+
+where
+
+.. math::
+   
+   \begin{equation*}
+   {\bf Y}_t = \left[\begin{array}{c} Y_t \\ Y_{t-1} \\ Y_{t-2}
+   \\ \vdots \\ Y_{t-p+1} \end{array} \right] \,\,\,\, \Phi =
+   \left[\begin{array}{ccccc} \phi_1 & \phi_2 & \ldots &
+   \phi_{p-1} & \phi_p \\ 1 & 0 & \ldots & 0 & 0 \\ 0 & 1 &
+   \ldots & 0 & 0 \\ \vdots & \vdots  & \ddots & 
+   \vdots  & \vdots \\ 0 & 0 & \ldots & 1 & 0 \end{array}
+   \right] \,\,\,\,\, {\bf \varepsilon}_t = \left[\begin{array}{c}
+   \varepsilon_t \\ 0 \\ 0 \\ \vdots \\ 0 \end{array} \right],
+   \end{equation*}
+
+and :math:`\smash{{\bf c} = (c,c,\ldots,c)'_{1 \times p}}`.
+
+
+Vector Autoregressive Process
+==============================================================================
+It turns out that the values :math:`\smash{\{\lambda_i\}_{i=1}^p}` are
+the :math:`\smash{p}` eigenvalues of :math:`\smash{\Phi}`.
+  
+.. raw:: <!--pause-->
+
+- So the eigenvalues of :math:`\smash{\Phi}` are the inverses of the
+  roots of the lag polynomial :math:`\smash{\phi(L)}`.
+
+.. raw:: <!--pause-->
+
+- Hence, :math:`\smash{\phi(L)^{-1}}` exists if all :math:`\smash{p}`
+  roots of :math:`\smash{\phi(L)}` lie *outside* the unit circle or
+  all :math:`\smash{p}` eigenvalues of :math:`\smash{\Phi}` lie
+  *inside* the unit circle.
+
+.. raw:: <!--pause-->
+
+- These conditions ensure weak stationarity of the
+  :math:`\smash{AR(p)}` process.
+  
+
+
+Expectation of :math:`\smash{AR(p)}`
+==============================================================================
+Assume :math:`\smash{Y_t}` is weakly stationary: the roots of
+:math:`\smash{\phi(L)}` lie outside the unit circle.
+
+.. math::
+
+   \begin{align*}
+   \text{E}[Y_t] & = c + \phi_1 \text{E}[Y_{t-1}] + \ldots + \phi_p
+   \text{E}[Y_{t-p}] + \text{E}[\varepsilon_t] \\
+   & = c + \phi_1 \text{E}[Y_t] + \ldots + \phi_p \text{E}[Y_t] \\
+   \Rightarrow \text{E}[Y_t] & = \frac{c}{1-\phi_1 -
+   \ldots - \phi_p} = \mu.
+   \end{align*}
+
+
+Autocovariances of :math:`\smash{AR(p)}`
+==============================================================================
+Given that :math:`\smash{\mu = c/(1-\phi_1 - \ldots - \phi_p)}` for weakly
+stationary :math:`\smash{Y_t}`: 
+
+.. math::
+
+   \begin{gather*}
+   Y_t = \mu(1-\phi_1 - \ldots - \phi_p) + \phi_1
+   Y_{t-1} + \ldots + \phi_p Y_{t-p} + \varepsilon_t \\
+   \Rightarrow (Y_t - \mu) = \phi_1(Y_{t-1} - \mu) +
+   \ldots + \phi_p(Y_{t-p} - \mu) + \varepsilon_t.
+   \end{gather*}
+
+.. raw:: <!--pause-->
+
+Thus,
+
+.. math::
+
+   \begin{align}
+   \gamma_j & = \text{E}\left[(Y_t - \mu) (Y_{t-j} -
+   \mu)\right] \nonumber \\
+   & = \phi_1 \text{E}\left[(Y_{t-1} - \mu) (Y_{t-j} -
+   \mu)\right] + \ldots \nonumber \\
+   & \hspace{0.75in} + \phi_p \text{E}\left[(Y_{t-p} - \mu) (Y_{t-j} -
+   \mu)\right] + \text{E}\left[\varepsilon_t (Y_{t-j} - \mu)\right] \nonumber \\
+   & = \begin{cases} \phi_1 \gamma_{j-1} + \ldots +
+   \phi_p \gamma_{j-p} & \text{ for } j = 1, \ldots \\ \phi_1
+   \gamma_1 + \ldots + \phi_p \gamma_p + \sigma^2 & \text{ for }
+   j = 0. \end{cases} \label{gammas}
+   \end{align}
+
+
+Autocovariances of :math:`\smash{AR(p)}`
+==============================================================================
+For :math:`\smash{j = 0, 1, \ldots, p}`, the equations above are a
+system of :math:`\smash{p+1}` equations with :math:`\smash{p+1}`
+unknowns: :math:`\smash{\{\gamma_j\}_{j=0}^p}`. 
+    
+.. raw:: <!--pause-->
+
+- :math:`\smash{\{\gamma_j\}_{j=0}^p}` can be solved for as functions
+  of :math:`\smash{\{\phi_j\}_{j=1}^p}` and :math:`\smash{\sigma^2}`.
+
+.. raw:: <!--pause-->
+
+- It can be shown that :math:`\smash{\{\gamma_j\}_{j=0}^p}` are the
+  first :math:`\smash{p}` elements of the first column of
+  :math:`\smash{\sigma^2 [I_{p^2} - \Phi \otimes \Phi]^{-1}}`, where
+	:math:`\smash{\otimes}` denotes the Kronecker product.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\{\gamma_j\}_{j=p+1}^{\infty}}` can then be determined
+  using prior values of :math:`\smash{\gamma_j}` and
+  :math:`\smash{\{\phi_j\}_{j=1}^p}`.
+
+
+
+Autocorrelations of :math:`\smash{AR(p)}`
+==============================================================================
+Dividing the autocovariances by :math:`\smash{\gamma_0}`,
+
+.. math::
+
+   \smash{\rho_j = \phi_1 \rho_{j-1} + \ldots + \phi_p
+   \rho_{j-p} \,\,\,\,\,\, \text{ for } j = 1, \ldots}

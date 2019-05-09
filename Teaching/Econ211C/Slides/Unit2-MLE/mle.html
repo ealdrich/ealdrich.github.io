@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Maximum Likelihood Estimation &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Estimation" href="../estimation.html" />
+    <link rel="next" title="ARMA Maximum Likelihood Estimation" href="mleArma.html" />
+    <link rel="prev" title="Estimation" href="../estimation.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="maximum-likelihood-estimation">
+
+<h1>Maximum Likelihood Estimation</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="estimating-parameters-of-distributions">
+
+<h2>Estimating Parameters of Distributions</h2>
+
+<p>We almost never know the true distribution of a data sample.</p>
+<ul class="simple">
+<li>We might hypothesize a family of distributions that capture broad
+characteristics of the data (locations, scale and shape).</li>
+</ul>
+<ul class="simple">
+<li>However, there may be a set of one or more parameters of the
+distribution that we don't know.</li>
+</ul>
+<ul class="simple">
+<li>Typically we use the data to estimate the unknown parameters,
+<span class="math">\(\smash{\boldsymbol{\theta}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="joint-cdf">
+
+<h2>Joint CDF</h2>
+
+<p>Suppose we have a collection of random variables <span class="math">\(\smash{{\bf Y}_T =
+(Y_1, \ldots, Y_T)'}\)</span>.</p>
+<ul class="simple">
+<li>We view a data sample of size <span class="math">\(\smash{T}\)</span> as one realization of each
+random variable: <span class="math">\(\smash{{\bf y}_T = (y_1, \ldots, y_T)'}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The <em>joint cumulative density</em> of <span class="math">\(\smash{{\bf Y}_T}\)</span> is</li>
+</ul>
+<div class="math">
+\[F_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) = P(Y_1 \leq y_1,
+\ldots, Y_T \leq y_T).\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="joint-density">
+
+<h2>Joint Density</h2>
+
+<ul class="simple">
+<li>The <em>joint probability density</em> of <span class="math">\(\smash{{\bf Y}_T}\)</span> is</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) &amp; = \frac{\partial^T
+F_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}{\partial Y_1 \ldots
+\partial Y_T}.
+\end{align*}\end{split}\]</div>
+<p>since</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+F_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})&amp; =
+\int_{-\infty}^{y_1}\ldots \int_{-\infty}^{y_T} f_{{\bf Y}_T}({\bf
+a}_T|\boldsymbol{\theta}) \,\, da_1 \ldots da_T.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="independence">
+
+<h2>Independence</h2>
+
+<p>When <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> are independent of each other
+and have identical distributions:</p>
+<ul class="simple">
+<li>We say that they are <em>independent and identically distributed</em>, or
+i.i.d.</li>
+</ul>
+<ul class="simple">
+<li>When <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> are i.i.d., they have the same
+marginal densities:</li>
+</ul>
+<div class="math">
+\[f_{Y_1}(y|\boldsymbol{\theta}) = \ldots = f_{Y_T}(y|\boldsymbol{\theta}).\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="joint-density-under-independence">
+
+<h2>Joint Density Under Independence</h2>
+
+<p>Further, when <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> are i.i.d.</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) &amp; = f_{Y_1}(y_1|\boldsymbol{\theta}) \cdot
+f_{Y_2}(y_2|\boldsymbol{\theta}) \cdots f_{Y_T}(y_T|\boldsymbol{\theta}) =
+\prod_{i=1}^T f_{Y_i}(y_i|\boldsymbol{\theta}).
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>This is analogous to the computation of joint probabilities.</li>
+</ul>
+<ul class="simple">
+<li>For independent events <span class="math">\(\smash{A}\)</span>, <span class="math">\(\smash{B}\)</span> and
+<span class="math">\(\smash{C}\)</span>,</li>
+</ul>
+<div class="math">
+\[\begin{align*}
+P(A \cap B \cap C) = P(A)P(B)P(C).
+\end{align*}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="bayes-rule">
+
+<h2>Bayes' Rule</h2>
+
+<p>Recall Bayes' Rule:</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+P(A|B) = \frac{P(A \cap B)}{P(B)} \\
+\Rightarrow P(A \cap B) = P(A|B)P(B).
+\end{gather}\end{split}\]</div>
+<p>Iterating:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+P(A \cap B \cap C) &amp; = P((A \cap B) \cap C) \\
+&amp; = P(A \cap B | C) P(C) \\
+&amp; = P(A|B,C)P(B|C)P(C).
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Bayes' Rule</h2>
+
+<p>The previous iteration generalizes to be:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+P\left(\bigcap_{i=1}^n A_i\right) &amp; = P(A_n|A_{n-1},\ldots,A_1) \\
+&amp; \hspace{0.5in} \times P(A_{n-1}|A_{n-2},\ldots,A_1) \cdots P(A_2|A_1) P(A_1) \\
+&amp; = P(A_1) \prod_{i=2}^n P(A_i|{\bf A}_{i-1})
+\end{align*}\end{split}\]</div>
+<p>where <span class="math">\(\smash{{\bf A_i} = (A_1,\ldots,A_i)'}\)</span></p>
+
+
+
+
+</article>
+<article class="slide level-2" id="general-joint-density">
+
+<h2>General Joint Density</h2>
+
+<p>Suppose <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> depend on each other sequentially.</p>
+<ul class="simple">
+<li>We use Bayes' Rule to obtain the joint density:</li>
+</ul>
+<div class="math">
+\[f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) =
+f_{Y_1}(y_1|\boldsymbol{\theta}) \prod_{t=2}^T f_{Y_t|{\bf
+Y}_{t-1}}(y_t|{\bf y}_{t-1},\boldsymbol{\theta}).\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Maximum Likelihood Estimation</h2>
+
+<p>One of the most important and powerful methods of parameter estimation
+is <em>maximum likelihood estimation</em>.  It requires</p>
+<ul class="simple">
+<li>A data sample: <span class="math">\(\smash{{\bf y} = (y_1, \ldots, y_T)'}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>A joint probability density:</li>
+</ul>
+<div class="math">
+\[f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) =
+f_{Y_1}(y_1|\boldsymbol{\theta}) \prod_{t=2}^T f_{Y_t|{\bf
+Y}_{t-1}}(y_t|{\bf y}_{t-1},\boldsymbol{\theta}).\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="likelihood">
+
+<h2>Likelihood</h2>
+
+<p><span class="math">\(\smash{f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}\)</span> is loosely interpreted
+as the probability of observing data sample <span class="math">\(\smash{{\bf y}_T}\)</span>, given a
+functional form for the density of <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> and given
+a set of parameters <span class="math">\(\smash{\boldsymbol{\theta}}\)</span>.</p>
+<ul class="simple">
+<li>We can reverse the notion and think of <span class="math">\(\smash{{\bf y}_T}\)</span> as being
+fixed and <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> some unknown variable.</li>
+</ul>
+<ul class="simple">
+<li>In this case we write <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf
+y}_T) = f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We refer to <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}\)</span> as
+the likelihood.</li>
+</ul>
+<ul class="simple">
+<li>Fixing <span class="math">\(\smash{{\bf y}_T}\)</span>, maximum likelihood estimation chooses the
+value of <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> that maximizes
+<span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T) =
+f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="likelihood-maximization">
+
+<h2>Likelihood Maximization</h2>
+
+<p>Given <span class="math">\(\smash{\boldsymbol{\theta} = (\theta_1, \ldots, \theta_p)'}\)</span>, we
+maximize <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}\)</span> by</p>
+<ul class="simple">
+<li>Differentiating with respect to each <span class="math">\(\smash{\theta_i}\)</span>, <span class="math">\(\smash{i = 1,
+\ldots, p}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Setting the resulting derivatives equal to zero.</li>
+</ul>
+<ul class="simple">
+<li>Solving for the values <span class="math">\(\smash{\hat{\theta}_i}\)</span>, <span class="math">\(\smash{i = 1, \ldots,
+p}\)</span>, that make all of the derivatives zero.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="log-likelihood">
+
+<h2>Log Likelihood</h2>
+
+<p>It is often easier to work with the logarithm of the likelihood
+function.</p>
+<ul class="simple">
+<li>By the properties of logarithms</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+\ell(\boldsymbol{\theta}|{\bf y}_T) &amp; =
+\log\left(\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)\right) \\
+&amp; = \log\left(f_{Y_1}(y_1|\boldsymbol{\theta}) \prod_{t=2}^T
+f_{Y_t|{\bf Y}_{t-1}}(y_t|{\bf y}_{t-1},\boldsymbol{\theta})
+\right) \\
+&amp; = \log\left(f_{Y_1}(y_1|\boldsymbol{\theta})\right) +
+\sum_{t=2}^T \log\left(f_{Y_t|{\bf Y}_{t-1}}(y_t|{\bf
+y}_{t-1},\boldsymbol{\theta})\right)
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Log Likelihood</h2>
+
+<ul class="simple">
+<li>Maximizing <span class="math">\(\smash{\ell(\boldsymbol{\theta}|{\bf y}_T)}\)</span> is the same
+as maximizing <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}\)</span>
+since <span class="math">\(\smash{\log}\)</span> is a monotonic transformation.</li>
+</ul>
+<ul class="simple">
+<li>A derivative of <span class="math">\(\smash{\mathcal{L}}\)</span> will involve many product-rule
+terms, whereas a derivative of <span class="math">\(\smash{\ell}\)</span> will simply be a sum
+of derivatives.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="mle-example">
+
+<h2>MLE Example</h2>
+
+<p>Suppose we have a dataset <span class="math">\(\smash{{\bf y}_n = (y_1, \ldots, y_n)}\)</span>,
+where</p>
+<div class="math">
+\[Y_1, \ldots, Y_n \stackrel{i.i.d.}{\sim} \mathcal{N}(\mu,\sigma^2).\]</div>
+<ul class="simple">
+<li>We will assume <span class="math">\(\smash{\mu}\)</span> is <em>unknown</em> and <span class="math">\(\smash{\sigma}\)</span> is
+<em>known</em>.</li>
+</ul>
+<ul class="simple">
+<li>So, <span class="math">\(\smash{\boldsymbol{\theta} = \mu}\)</span> (it is a single value, rather than
+a vector).</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>MLE Example</h2>
+
+<ul class="simple">
+<li>The likelihood is</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+\mathcal{L}(\mu|{\bf y}_n) &amp; = f_{{\bf Y}_n}({\bf y}_n|\mu) \\
+&amp; = \prod_{i=1}^n f_{Y_i}(y_i|\mu) \\
+&amp; = \prod_{i=1}^n \frac{1}{\sqrt{2\pi \sigma^2}} \exp
+\left\{-\frac{1}{2} \frac{(y_i - \mu)^2}{\sigma^2} \right\} \\
+&amp; = \frac{1}{(2\pi \sigma^2)^{n/2}} \exp \left\{-\frac{1}{2
+\sigma^2} \sum_{i=1}^n (y_i - \mu)^2 \right\}.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id5">
+
+<h2>MLE Example</h2>
+
+<p>The log likelihood is</p>
+<div class="math">
+\[\ell(\mu|{\bf y}_n) = -\frac{n}{2} \log(2\pi) - \frac{n}{2}
+\log(\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \mu)^2.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id6">
+
+<h2>MLE Example</h2>
+
+<ul class="simple">
+<li>The MLE, <span class="math">\(\smash{\hat{\mu}}\)</span>, is the value that sets <span class="math">\(\smash{\frac{d}{d
+\mu} \ell(\mu|{\bf y}) = 0}\)</span>:</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{gather}
+\frac{d}{d \mu} \ell(\mu|{\bf y}_n) \bigg|_{\hat{\mu}} =
+\frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \hat{\mu}) = 0 \\
+\Rightarrow \sum_{i=1}^n (y_i - \hat{\mu}) = 0 \\
+\Rightarrow \sum_{i=1}^n \hat{\mu} = \sum_{i=1}^n y_i \\
+\Rightarrow \hat{\mu} = \bar{y} = \frac{1}{n} \sum_{i=1}^n y_i.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="mle-example-unknown">
+
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\mu}\)</span></h2>
+
+<p>Suppose we have only one observation: <span class="math">\(\smash{y_1}\)</span>.</p>
+<ul class="simple">
+<li>If we specialize the previous result:</li>
+</ul>
+<div class="math">
+\[\begin{align}
+\hat{\mu} = y_1.
+\end{align}\]</div>
+<ul class="simple">
+<li>The density <span class="math">\(\smash{f_{Y_1}(y_1|\mu)}\)</span> gives the probability of
+observing some data value <span class="math">\(\smash{y_1}\)</span>, conditional on some <em>known</em>
+parameter <span class="math">\(\smash{\mu}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>This is a normal distribution with mean <span class="math">\(\smash{\mu}\)</span> and variance
+<span class="math">\(\smash{\sigma^2}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id7">
+
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\mu}\)</span></h2>
+
+<ul class="simple">
+<li>The likelihood <span class="math">\(\smash{\mathcal{L}(\mu|y_1)}\)</span> gives the probability of
+<span class="math">\(\smash{\mu}\)</span>, conditional on some observed data value <span class="math">\(\smash{y_1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>This is a normal distribution with mean <span class="math">\(\smash{y_1}\)</span> and variance
+<span class="math">\(\smash{\sigma^2}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id8">
+
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span></h2>
+
+<a class="reference internal image-reference" href="../_images/densExample.png"><img alt="../_images/densExample.png" class="align-center" src="../_images/densExample.png" style="width: 7.5in;" /></a>
+
+
+
+
+</article>
+<article class="slide level-2" id="id9">
+
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span></h2>
+
+<div class="code highlight-python"><div class="highlight"><pre><span></span><span class="c1">#######################################################################################</span>
+<span class="c1"># Plot likelihood for normal data with unknown mean</span>
+<span class="c1">#######################################################################################</span>
+
+<span class="c1"># Generate the true normal density</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="n">xGrid</span> <span class="o">=</span> <span class="n">seq</span><span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="mi">5</span><span class="o">*</span><span class="n">sig</span><span class="p">,</span> <span class="n">mu</span><span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="n">sig</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">trueDens</span> <span class="o">=</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># A couple of possible data values</span>
+<span class="n">y11</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="n">y12</span> <span class="o">=</span> <span class="o">-</span><span class="mf">17.7</span><span class="p">;</span>
+
+<span class="c1"># Plot the true normal distribution with possible data values</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">trueDens</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">xaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">yaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">xaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+     <span class="n">yaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">bty</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">expression</span><span class="p">(</span><span class="n">mu</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">expression</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span>
+     <span class="n">at</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">y11</span><span class="p">,</span> <span class="n">y12</span><span class="p">))</span>
+<span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">mu</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">y11</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y11</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y11</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="s2">&quot;densExample.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id10">
+
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\mu}\)</span></h2>
+
+<img alt="../_images/likeExample.png" class="align-center" src="../_images/likeExample.png" />
+
+
+
+
+</article>
+<article class="slide level-2" id="id11">
+
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\mu}\)</span></h2>
+
+<div class="code highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Plot several densities for fixed data observation</span>
+<span class="n">mu1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">33</span>
+<span class="n">mu2</span> <span class="o">=</span> <span class="mi">27</span>
+<span class="n">dens1</span> <span class="o">=</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="n">dens2</span> <span class="o">=</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">trueDens</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">xaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">yaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">xaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+     <span class="n">yaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">bty</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">expression</span><span class="p">(</span><span class="n">mu</span><span class="o">^</span><span class="mi">1</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">mu</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">mu</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span>
+     <span class="n">at</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">y12</span><span class="p">))</span>
+<span class="n">lines</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">dens1</span><span class="p">)</span>
+<span class="n">lines</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">dens2</span><span class="p">)</span>
+<span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">mu</span><span class="p">)</span>
+<span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">mu1</span><span class="p">)</span>
+<span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">mu2</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Plot the resulting likelihood</span>
+<span class="n">like</span> <span class="o">=</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">like</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">xaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">yaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">xaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+     <span class="n">yaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">bty</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">expression</span><span class="p">(</span><span class="n">mu</span><span class="o">^</span><span class="mi">1</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">mu</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">mu</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span>
+     <span class="n">at</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">y12</span><span class="p">))</span>
+<span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">y12</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">mu2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">mu2</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="s2">&quot;likeExample.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id12">
+
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\sigma}\)</span></h2>
+
+<p>Let's continue with the assumption of one data observation, <span class="math">\(\smash{y_1}\)</span>.</p>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\mu}\)</span> is known but <span class="math">\(\smash{\sigma}\)</span> is unknown, the density
+of the data, <span class="math">\(\smash{y_1}\)</span>, is still normal.</li>
+</ul>
+<ul class="simple">
+<li>However, the likelihood is</li>
+</ul>
+<div class="math">
+\[\mathcal{L}(\sigma^2|y_1) = \frac{\alpha}{\sigma^2}
+\exp\left\{-\frac{\beta}{\sigma^2}\right\}\]</div>
+<div class="math">
+\[\alpha = \frac{1}{\sqrt{2\pi}}, \qquad \beta =
+\frac{(y_1-\mu)^2}{2}.\]</div>
+<ul class="simple">
+<li>The likelihood for <span class="math">\(\smash{\sigma^2}\)</span> is <em>not</em> normal, but <em>inverse
+gamma</em>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id13">
+
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\sigma}\)</span></h2>
+
+<a class="reference internal image-reference" href="../_images/likeExample2.png"><img alt="../_images/likeExample2.png" class="align-center" src="../_images/likeExample2.png" style="width: 5in;" /></a>
+
+
+
+
+</article>
+<article class="slide level-2" id="id14">
+
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\sigma}\)</span></h2>
+
+<div class="code highlight-python"><div class="highlight"><pre><span></span><span class="c1">#######################################################################################</span>
+<span class="c1"># Plot likelihood for normal data with unknown sd</span>
+<span class="c1">#######################################################################################</span>
+
+<span class="c1"># Plot several densities for fixed data observation</span>
+<span class="n">sig1</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">sig2</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">dens1</span> <span class="o">=</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig1</span><span class="p">)</span>
+<span class="n">dens2</span> <span class="o">=</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig2</span><span class="p">)</span>
+<span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">yMax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">trueDens</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">dens1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">dens2</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">trueDens</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">xaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">yaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">xaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+     <span class="n">yaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">bty</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">yMax</span><span class="p">))</span>
+<span class="n">axis</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">expression</span><span class="p">(</span><span class="n">mu</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">at</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">y12</span><span class="p">))</span>
+<span class="n">lines</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">dens1</span><span class="p">)</span>
+<span class="n">lines</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">dens2</span><span class="p">)</span>
+<span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">mu</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig1</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig2</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">xDist</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xGrid</span><span class="p">)</span><span class="o">-</span><span class="n">mu</span>
+<span class="n">text</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">mu</span><span class="o">+</span><span class="mf">0.29</span><span class="o">*</span><span class="n">xDist</span><span class="p">,</span> <span class="n">mu</span><span class="o">+</span><span class="mf">0.4</span><span class="o">*</span><span class="n">xDist</span><span class="p">,</span> <span class="n">mu</span><span class="o">+</span><span class="mf">0.7</span><span class="o">*</span><span class="n">xDist</span><span class="p">),</span> <span class="n">c</span><span class="p">(</span><span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.23</span><span class="p">)</span><span class="o">*</span><span class="n">yMax</span><span class="p">,</span>
+     <span class="n">labels</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">expression</span><span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span><span class="p">)))</span>
+
+<span class="c1"># Plot the resulting likelihood (which is an inverse gamma)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="p">((</span><span class="n">y12</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">sigGrid</span> <span class="o">=</span> <span class="n">seq</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">3000</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">like</span> <span class="o">=</span> <span class="n">scale</span><span class="o">*</span><span class="p">(</span><span class="n">sigGrid</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="n">alpha</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span><span class="o">/</span><span class="n">sigGrid</span><span class="p">)</span>
+<span class="n">likeTrue</span> <span class="o">=</span> <span class="n">scale</span><span class="o">*</span><span class="p">(</span><span class="n">sig</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span><span class="o">/</span><span class="n">sig</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">like1</span> <span class="o">=</span> <span class="n">scale</span><span class="o">*</span><span class="p">(</span><span class="n">sig1</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span><span class="o">/</span><span class="n">sig1</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">like2</span> <span class="o">=</span> <span class="n">scale</span><span class="o">*</span><span class="p">(</span><span class="n">sig2</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span><span class="o">/</span><span class="n">sig2</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">sigGrid</span><span class="p">,</span> <span class="n">like</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">xaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">yaxs</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">xaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+     <span class="n">yaxt</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">bty</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+<span class="n">axis</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">expression</span><span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span> <span class="n">expression</span><span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span><span class="p">)),</span>
+     <span class="n">at</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="n">sig</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">sig1</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">sig2</span><span class="o">^</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">sig</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">like</span><span class="p">),</span> <span class="n">sig</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">likeTrue</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">sig1</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">like</span><span class="p">),</span> <span class="n">sig1</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">like1</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">segments</span><span class="p">(</span><span class="n">sig2</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">like</span><span class="p">),</span> <span class="n">sig2</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">like2</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="s2">&quot;likeExample2.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="mle-accuracy">
+
+<h2>MLE Accuracy</h2>
+
+<p>Maximum likelihood estimation results in estimates of true unknown
+parameters.</p>
+<ul class="simple">
+<li>What is the probability that our estimates are identical to the true
+population parameters?</li>
+</ul>
+<ul class="simple">
+<li>Our estimates are imprecise and contain error.</li>
+</ul>
+<ul class="simple">
+<li>We would like to quantify the precision of our estimates with
+standard errors.</li>
+</ul>
+<ul class="simple">
+<li>We will use the <em>Fisher Information</em> to compute standard errors.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="fisher-information">
+
+<h2>Fisher Information</h2>
+
+<p>Let <span class="math">\(\smash{\mathcal{H}(\boldsymbol{\theta}|{\bf y}_t) = \frac{d^2}{d
+\boldsymbol{\theta}^2} \ell(\boldsymbol{\theta}|{\bf y}_T)}\)</span>, the
+matrix of second derivatives of the log likelihood.</p>
+<ul class="simple">
+<li>The Fisher Information is</li>
+</ul>
+<div class="math">
+\[\mathcal{I}(\boldsymbol{\theta}) = - E\left[
+\mathcal{H}(\boldsymbol{\theta}|{\bf y}_t)\right].\]</div>
+<ul class="simple">
+<li>The observed Fisher Information is</li>
+</ul>
+<div class="math">
+\[\widetilde{\mathcal{I}}(\boldsymbol{\theta}) = -
+\mathcal{H}(\boldsymbol{\theta}|{\bf y}_t).\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id15">
+
+<h2>Fisher Information</h2>
+
+<ul class="simple">
+<li>Observed Fisher Information does not take an expectation, which may
+be difficult to compute.</li>
+</ul>
+<ul class="simple">
+<li>Since <span class="math">\(\smash{\ell(\boldsymbol{\theta}|{\bf y}_T)}\)</span> is often a sum of
+many terms, <span class="math">\(\smash{\widetilde{\mathcal{I}}(\boldsymbol{\theta})}\)</span>
+will converge to <span class="math">\(\smash{\mathcal{I}(\boldsymbol{\theta})}\)</span> for large
+samples.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="mle-central-limit-theorem">
+
+<h2>MLE Central Limit Theorem</h2>
+
+<p>Under certain conditions, a central limit theorem holds for the MLE,
+<span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</p>
+<ul class="simple">
+<li>For infinitely large samples <span class="math">\(\smash{{\bf y}_T}\)</span>,</li>
+</ul>
+<div class="math">
+\[\hat{\boldsymbol{\theta}} \sim \mathcal{N}(\boldsymbol{\theta},
+\mathcal{I}(\boldsymbol{\theta})^{-1}).\]</div>
+<ul class="simple">
+<li>For large samples, <span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span> is normally
+distributed <em>regardless</em> of the distribution of the data,
+<span class="math">\(\smash{{\bf y}_T}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id16">
+
+<h2>MLE Central Limit Theorem</h2>
+
+<ul class="simple">
+<li><span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span> is also normally distributed for
+large samples even if <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf
+y}_T)}\)</span> is some other distribution.</li>
+</ul>
+<ul class="simple">
+<li>Hence, for large samples,</li>
+</ul>
+<div class="math">
+\[Var(\hat{\theta}_i) =
+\frac{1}{\mathcal{I}(\boldsymbol{\theta})_{ii}} \qquad \Rightarrow
+\qquad Std(\hat{\theta}_i) =
+\frac{1}{\sqrt{\mathcal{I}(\boldsymbol{\theta})_{ii}}}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="mle-standard-errors">
+
+<h2>MLE Standard Errors</h2>
+
+<p>Since we don't know the true <span class="math">\(\smash{\boldsymbol{\theta}}\)</span>, we
+approximate</p>
+<div class="math">
+\[Std(\hat{\theta}_i) \approx
+\frac{1}{\sqrt{\mathcal{I}(\hat{\boldsymbol{\theta}})_{ii}}}.\]</div>
+<ul class="simple">
+<li>Alternatively, to avoid computing the expectation, we could use the
+approximation</li>
+</ul>
+<div class="math">
+\[Std(\hat{\theta}_i) \approx
+\frac{1}{\sqrt{\widetilde{\mathcal{I}}(\hat{\boldsymbol{\theta}})_{ii}}}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id17">
+
+<h2>MLE Standard Errors</h2>
+
+<ul class="simple">
+<li>In reality, we never have an infinite sample size.</li>
+</ul>
+<ul class="simple">
+<li>For finite samples, these values are approximations of the standard
+errors of the components of <span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="mle-variance-example">
+
+<h2>MLE Variance Example</h2>
+
+<p>Let's return to the example where <span class="math">\(\smash{Y_1, \ldots, Y_n
+\stackrel{i.i.d.}{\sim} \mathcal{N}(\mu, \sigma^2)}\)</span>, with known
+<span class="math">\(\smash{\sigma}\)</span>.</p>
+<ul class="simple">
+<li>The log likelihood is</li>
+</ul>
+<div class="math">
+\[\ell(\mu|{\bf y}_n) = -\frac{n}{2} \log(2\pi) - \frac{n}{2}
+\log(\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \mu)^2.\]</div>
+<ul class="simple">
+<li>The resulting derivatives are</li>
+</ul>
+<div class="math">
+\[\frac{\partial \ell(\mu|{\bf y}_n)}{\partial \mu} =
+\frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \mu),  \qquad
+\frac{\partial^2 \ell(\mu|{\bf y}_n)}{\partial \mu^2} =
+-\frac{n}{\sigma^2}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id18">
+
+<h2>MLE Variance Example</h2>
+
+<p>In this case the Fisher Information is identical to the observed
+Fisher Information:</p>
+<div class="math">
+\[\mathcal{I}(\mu) = -E\left[-\frac{n}{\sigma^2}\right] =
+\frac{n}{\sigma^2} = \widetilde{\mathcal{I}}(\mu).\]</div>
+<ul class="simple">
+<li>Since <span class="math">\(\smash{\mathcal{I}(\mu)}\)</span> doesn't depend on <span class="math">\(\smash{\mu}\)</span>, we
+don't need to resort to an approximation with <span class="math">\(\smash{\hat{\mu} =
+\bar{{\bf y}}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The result is</li>
+</ul>
+<div class="math">
+\[Std(\hat{\mu}) = \frac{1}{\sqrt{\mathcal{I}(\mu)}} =
+\frac{\sigma}{\sqrt{n}}.\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

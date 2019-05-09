@@ -1,0 +1,534 @@
+==============================================================================
+Forecasting ARMA Models
+==============================================================================
+
+Forecasting with Infinite Data
+==============================================================================
+Consider an :math:`\smash{ARMA}` process with
+:math:`\smash{MA(\infty)}` representation:
+
+.. math::
+
+   \begin{align*}
+   Y_t - \mu & = \psi(L) \varepsilon_t, \,\,\,\, \varepsilon_t
+   \stackrel{i.i.d.}{\sim}
+   WN(0,\sigma^2)
+   \end{align*}
+
+where
+
+.. math::
+
+   \begin{gather*}
+   \psi(L) = \sum_{j=0}^{\infty} \psi_{j}L^{j} \\
+   \sum_{j=0}^{\infty}|\psi_{j}| < \infty \\
+   \psi_{0} = 1.
+   \end{gather*}
+
+Forecasting with Infinite Data
+==============================================================================
+Suppose
+
+.. raw:: <!--pause-->
+
+- we observe an infinite history of
+  :math:`\{\smash{\varepsilon_{t}}\}` up to date :math:`\smash{t}`:
+  :math:`\smash{\{\varepsilon_{t},\varepsilon_{t-1},\varepsilon_{t-2},...\}}`.
+
+.. raw:: <!--pause-->
+
+- we know the :math:`\smash{MA}` parameters
+  :math:`\smash{\mu, \sigma, \{\psi_{j}\}_{j=0}^{\infty}}`.
+
+.. raw:: <!--pause-->
+
+Then
+
+.. math::
+
+   \begin{align*}
+   Y_{t+s} & = \mu + \varepsilon_{t+s} + \psi_{1}\varepsilon_{t+s-1} +
+   \ldots + \psi_{s-1}\varepsilon_{t+1} + \psi_{s}\varepsilon_{t} +
+   \psi_{s+1}\varepsilon_{t-1} + \ldots
+   \end{align*}
+
+
+Optimal Forecast
+==============================================================================
+The optimal forecast of :math:`\smash{Y_{t+s}}` in terms of MSE is:
+
+.. math::
+
+   \begin{align*}
+   E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] = \mu +
+   \psi_{s}\varepsilon_{t} + \psi_{s+1}\varepsilon_{t-1} + \ldots
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+Note, this is different from
+
+.. math::
+
+   \begin{align*}
+   Y_{t} & = \mu + \psi_{0}\varepsilon_{t} +
+   \psi_{1}\varepsilon_{t-1} + \ldots
+   \end{align*}
+
+
+Forecast Error
+==============================================================================
+The forecast error is:
+
+.. math::
+
+   \begin{align*}
+   Y_{t+s} & - E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] \\
+   & = \mu + \overbrace{\varepsilon_{t+s} +
+   \psi_{1}\varepsilon_{t+s-1} + \psi_{2}\varepsilon_{t+s-2} + \ldots
+   } + \psi_{s}\varepsilon_{t} + \psi_{s+1}\varepsilon_{t+1} +
+   \ldots \\
+   & \hspace{2in} - \mu - \psi_{s}\varepsilon_{t} -
+   \psi_{s+1}\varepsilon_{t-1} - \ldots \\
+   & = \varepsilon_{t+s} + \psi_{1}\varepsilon_{t+s-1}  + \ldots +
+   \psi_{s-1}\varepsilon_{t+1}
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+Since :math:`\smash{E[Y_{t+s} |
+\varepsilon_{t},\varepsilon_{t-1},\ldots]}` is linear in
+:math:`\smash{\{\varepsilon_{\tau}\}_{\tau=-\infty}^{t}}`
+it is both the optimal forecast and optimal linear forecast.
+
+Forecast as Linear Projection
+==============================================================================
+Hamilton refers to optimal linear forecasts as
+:math:`\smash{\hat{E}[Y_{t+s} |
+\varepsilon_{t},\varepsilon_{t-1},\ldots]}`.
+
+.. raw:: <!--pause-->
+
+- In this case
+
+.. math::
+
+   \begin{gather*}
+   E[Y_{t+s}|\varepsilon_{t},\ldots] =
+   \hat{E}[Y_{t+s}|\varepsilon_{t},\ldots] \\
+   \implies Y_{t+s|t}^{*} = \hat{Y}_{t+s|t}
+   \end{gather*}
+
+which is also a linear projection
+:math:`\smash{\hat{p}(Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots)}`.
+
+.. raw:: <!--pause-->
+
+- Clearly, the linear projection condition is satisfied for
+  :math:`\smash{j = t, t-1, \ldots}`
+
+.. math::
+
+   \begin{align*}
+   E[(Y_{t+s} & -
+   E[Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots])\varepsilon_{j}]
+   \\
+   & \hspace{1in} = E[(\varepsilon_{t+s} +
+   \psi_{1}\varepsilon_{t+s-1}  + \ldots +
+   \psi_{s-1}\varepsilon_{t+1})\varepsilon_{j}] = 0.
+   \end{align*}
+
+Forecast MSE
+==============================================================================
+The forecast MSE is:
+
+.. math::
+
+   \begin{align*}
+   E[(Y_{t+s} & -
+   E[Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots])^{2}] \\
+   & \hspace{1in} =
+   E[(\varepsilon_{t+s} + \psi_{1}\varepsilon_{t+s-1}  + \ldots +
+   \psi_{s-1}\varepsilon_{t+1})^{2}] \\
+   & \hspace{1in} =
+   \sigma^{2}\sum_{j=0}^{s-1}\psi_{j}^{2}.
+   \end{align*}
+
+Forecasting Conditional on Lagged :math:`\smash{Y_t}`
+==============================================================================
+Suppose we don't observe the full history of
+:math:`\smash{\varepsilon_{t}}`.
+
+.. raw:: <!--pause-->
+
+- Instead, we observe the full history of :math:`\smash{y_{t}:
+  y_{t},y_{t-1},y_{t-2},\ldots}`.
+
+.. raw:: <!--pause-->
+
+- We have an :math:`\smash{ARMA}` process with the same
+  :math:`\smash{MA}` representation as before.
+
+.. raw:: <!--pause-->
+
+If the :math:`\smash{MA(\infty)}` representation is invertible, we can
+write it as an :math:`\smash{AR(\infty)}`:
+
+.. math::
+
+   \begin{align*}
+   \eta(L)(Y_{t}-\mu) = \varepsilon_{t},
+   \end{align*}
+
+where :math:`\smash{\eta(L) = \psi^{-1}(L)}`.
+
+Computing Historical Values
+==============================================================================
+The history of :math:`\smash{\varepsilon_{t}}` can be constructed with
+the history of :math:`\smash{y_{t}}`:
+
+.. math::
+
+   \begin{align*}
+   \varepsilon_{t} & = \eta(L)(y_{t}-\mu) \\
+   \varepsilon_{t-1} & = \eta(L)(y_{t-1}-\mu) \\
+   \varepsilon_{t-2} & = \eta(L)(y_{t-2}-\mu) \\
+   & \vdots
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   \implies E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] & =
+   E[Y_{t+s}|y_{t},y_{t-1},\ldots] \\
+   & = \mu + (\psi_{s} + \psi_{s+1}L +
+   \psi_{s+2}L^{2}+\ldots)\varepsilon_{t} \\
+   & = \mu + (\psi_{s} + \psi_{s+1}L +
+   \psi_{s+2}L^{2}+\ldots)\eta(L)(y_{t}-\mu).
+   \end{align*}
+
+Example: :math:`\smash{AR(1)}`
+==============================================================================
+For an :math:`\smash{AR(1)}` with :math:`\smash{|\phi| < 1}`:
+
+.. math::
+
+   \begin{align*}
+   Y_{t} - \mu & = \psi(L)\varepsilon_{t},
+   \end{align*}
+
+where
+
+.. math::
+
+   \begin{align*}
+   \psi(L) & = (1 + \phi L + \phi^{2}L^{2}+ \ldots) = (1 + \psi_{1}
+   L + \psi_{2} L^2 + \ldots).
+   \end{align*}
+
+Example: :math:`\smash{AR(1)}`
+==============================================================================
+The optimal forecast :math:`\smash{s}` -periods ahead is
+
+.. math::
+
+   \begin{align*}
+   E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] & = \mu +
+   \psi_{s}\varepsilon_{t} + \psi_{s+1}\varepsilon_{t-1} + \ldots \\
+   & = \mu + \phi^{s}\varepsilon_{t} + \phi^{s+1}\varepsilon_{t-1} +
+   \phi^{s+2}\varepsilon_{t-2} + \ldots \\
+   & = \mu + \phi^{s}(\varepsilon_{t} + \phi\varepsilon_{t-1} +
+   \phi^{2}\varepsilon_{t-2}+...) \\
+   & = \mu + \phi^{s}(y_{t} - \mu)
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- The forecast decays toward :math:`\smash{\mu}` as :math:`\smash{s}`
+  increases.
+
+.. raw:: <!--pause-->
+
+- The MSE is :math:`\smash{\sigma^{2}\sum_{j=0}^{s-1}\phi^{2j}}`.
+
+.. raw:: <!--pause-->
+
+- As :math:`\smash{s\rightarrow \infty, MSE \rightarrow
+  \frac{\sigma^{2}}{1-\phi^{2}} = Var(Y_{t})}`.
+
+Forecasting with Finite Data
+==============================================================================
+In reality, we don't observe an infinite history of
+:math:`\smash{y_{t},y_{t-1},y_{t-2},\ldots}`.
+
+.. raw:: <!--pause-->
+
+- Suppose we have only a finite set of :math:`\smash{m}` past
+  observations of :math:`\smash{y_{t}:
+  y_{t},y_{t-1},\ldots,y_{t-m+1}}`.
+
+.. raw:: <!--pause-->
+
+- The optimal :math:`\smash{AR(p)}` forecast only makes use of the
+  past :math:`\smash{p}` observations if available
+  (i.e. :math:`\smash{p<m}`).
+
+.. raw:: <!--pause-->
+
+- If we want to forecast an :math:`\smash{MA}` or :math:`\smash{ARMA}`
+  (of arbitrary order), we need an infinite history to construct an
+  optimal forecast.
+
+Approximate Optimal Forecasts
+==============================================================================
+Start by setting all :math:`\smash{\varepsilon}` 's prior to time
+:math:`\smash{t-m+1}` equal to zero.
+
+.. math::
+
+   \begin{align*}
+   E[Y_{t+s}|y_{t},y_{t-1},\ldots] \approx
+   E[Y_{t+s}|y_{t},y_{t-1},\ldots,y_{t-m+1},\varepsilon_{t-m} = 0,
+   \varepsilon_{t-m-1} = 0, \ldots].
+   \end{align*}
+
+Example :math:`\smash{MA(q)}`
+==============================================================================
+Start with
+
+.. math::
+
+   \begin{gather*}
+   \hat{\varepsilon}_{t-m} =
+   \hat{\varepsilon}_{t-m-1} = \ldots = \hat{\varepsilon}_{t-m-q+1} = 0.
+   \end{gather*}
+
+.. raw:: <!--pause-->
+
+Calculate forward recursively
+
+.. math::
+
+   \begin{align*}
+   \hat{\varepsilon}_{t-m+1} & = (y_{t-m+1} - \mu) \\
+   \hat{\varepsilon}_{t-m+2} & = (y_{t-m+2} - \mu) - \theta_{1}
+   \hat{\varepsilon}_{t-m+1} \\
+   \hat{\varepsilon}_{t-m+3} & = (y_{t-m+3} - \mu) - \theta_{1}
+   \hat{\varepsilon}_{t-m+2} - \theta_{2}\hat{\varepsilon}_{t-m+1} \\
+   & \vdots
+   \end{align*}
+
+Example :math:`\smash{MA(q)}`
+==============================================================================
+With
+:math:`\smash{\hat{\varepsilon}_{t},\hat{\varepsilon}_{t-1},\ldots,\hat{\varepsilon}_{t-m+1}}`
+in hand we can compute forecasts
+
+.. math::
+
+   \begin{align*}
+   \hat{Y}_{t+s} & = \theta_{s}\hat{\varepsilon}_{t} +
+   \theta_{s+1}\hat{\varepsilon}_{t-1} + \ldots +
+   \theta_{q}\hat{\varepsilon}_{t-q+s}.
+   \end{align*}
+
+Exact Finite Sample Forecasts
+==============================================================================
+Another forecast approximation method is to simply project
+:math:`\smash{Y_{t+1} - \mu}` on :math:`\smash{\boldsymbol{X}_{t} =
+(Y_{t} -\mu, Y_{t-1}-\mu, \ldots, Y_{t-m+1} - \mu)^T}`.
+
+.. raw:: <!--pause-->
+
+That is
+
+.. math::
+
+   \begin{align*}
+   \hat{Y}_{t+1|t}^{(m)} - \mu & =
+   \boldsymbol{X}_{t}^{'}\boldsymbol{\beta}^{(m)} \\
+   & = \beta_{1}^{(m)}(Y_{t}-\mu) + \beta_{2}^{(m)}(Y_{t-1}-\mu) +
+   \ldots + \beta_{m}^{(m)}(Y_{t-m+1}-\mu).
+   \end{align*}
+
+Exact Finite Sample Forecasts
+==============================================================================
+.. math::
+
+   \begin{align*}
+   \boldsymbol{\beta}^{(m)} & =
+   E[\boldsymbol{X}_{t}\boldsymbol{X}_{t}^{'}]^{-1}E[\boldsymbol{X}_{t}(Y_{t+1}-\mu)]
+   = \left[ \begin{array}{ccccc} \gamma_{0} & \gamma_{1} & \gamma_{2}
+   & \ldots & \gamma_{m-1} \\ \gamma_{1} & \gamma_{0} & \gamma_{1} &
+   \ldots & \gamma_{m-2} \\ \gamma_{2} & \gamma_{1} & \gamma_{0} &
+   \ldots & \gamma_{m-3} \\ \vdots & \vdots & \vdots & \vdots & \vdots
+   \\ \gamma_{m-1} & \ldots & \ldots & \ldots & \gamma_{0} \\
+   \end{array} \right]^{-1} \left[ \begin{array}{c} \gamma_{1} \\
+   \gamma_{2} \\ \vdots \\ \gamma_{m} \\ \end{array} \right].
+   \end{align*}
+
+Exact Finite Sample Forecasts
+==============================================================================
+Similarly,
+
+.. math::
+
+   \begin{align*}
+   Y_{t+s|t}^{(m)} - \mu & =
+   \boldsymbol{X}_{t}^{'}\boldsymbol{\beta}^{(m,s)} \\
+   & = \beta_{1}^{(m,s)}(Y_{t}-\mu) +
+   \beta_{2}^{(m,s)}(Y_{t-1}-\mu) + \ldots +
+   \beta_{m}^{(m,s)}(Y_{t-m+1}-\mu).
+   \end{align*}
+
+Exact Finite Sample Forecasts
+==============================================================================
+.. math::
+
+   \begin{align*}
+   \boldsymbol{\beta}^{(m,s)} & =
+   E[\boldsymbol{X}_{t}\boldsymbol{X}_{t}^{'}]^{-1}E[\boldsymbol{X}_{t}(Y_{t+s}-\mu)]
+   \\
+   & = \left[ \begin{array}{ccccc} \gamma_{0} & \gamma_{1} &
+   \gamma_{2} & \ldots & \gamma_{m-1} \\ \gamma_{1} & \gamma_{0} &
+   \gamma_{1} & \ldots & \gamma_{m-2} \\ \gamma_{2} & \gamma_{1} &
+   \gamma_{0} & \ldots & \gamma_{m-3} \\ \vdots & \vdots & \vdots &
+   \vdots & \vdots \\ \gamma_{m-1} & \ldots & \ldots & \ldots &
+   \gamma_{0} \\ \end{array} \right]^{-1} \left[ \begin{array}{c}
+   \gamma_{s} \\ \gamma_{s+1} \\ \vdots \\ \gamma_{s+m-1} \\
+   \end{array} \right].
+   \end{align*}
+
+Example :math:`\smash{AMRA(1,1)}`
+==============================================================================
+Let :math:`\smash{\{Y_t\}}` be an :math:`\smash{ARMA(1,1)}` process
+with :math:`\smash{|\phi| <1}` and :math:`\smash{|\theta| < 1}`
+(causal and invertible).  Then:
+
+.. math::
+
+   \begin{align*}
+   (1-\phi L)(Y_{t} - \mu) & = (1 + \theta L)\varepsilon_{t} \\
+   \implies Y_{t} - \mu & = \psi(L)\varepsilon_{t}
+   \end{align*}
+
+where :math:`\smash{\,\,\psi (L) = (1-\phi L)^{-1}(1 + \theta
+L)}`.
+
+.. raw:: <!--pause-->
+
+- We can also write
+
+.. math::
+
+   \smash{\varepsilon_{t} = (1+\theta L)^{-1}(1-\phi L)(Y_{t} - \mu) =
+   \psi(L)^{-1}(Y_{t} - \mu)}.
+
+Example :math:`\smash{AMRA(1,1)}`
+==============================================================================
+Expanding the :math:`\smash{MA}` representation
+
+.. math::
+
+   \begin{align*}
+   \psi(L) & = (1+\phi L + \phi^{2}L^{2} + \ldots)(1 +\theta L) \\
+   & = 1 + (\phi + \theta)L + (\phi^{2} + \phi \theta)L^{2} + (\phi^{3} +
+   \phi^{2}\theta)L^{3} + \ldots \\
+   & = 1 + \sum_{j=1}^{\infty} (\phi^{j} + \phi^{j-1}\theta)L^{j} \\
+   \implies \psi_{m} & = \phi^{m} + \phi^{m-1}\theta.
+   \end{align*}
+
+Example :math:`\smash{AMRA(1,1)}`
+==============================================================================
+Let's define :math:`\smash{\psi_{s}(L)}` as the polynomial
+
+.. math::
+
+   \smash{\psi_{s}(L) = \psi_{s} + \psi_{s+1}L + \psi_{s+2}L^{2} +
+   \ldots}
+
+.. raw:: <!--pause-->
+
+This is different from :math:`\smash{\,\,\psi_{s}L^{s} +
+\psi_{s+1}L^{s+1} + \ldots}`
+
+Example :math:`\smash{AMRA(1,1)}`
+==============================================================================
+For the :math:`\smash{ARMA(1,1)}`,
+
+.. math::
+
+   \begin{align*}
+   \psi_{s}(L) & = (\phi^{s} + \phi^{s-1}\theta) +
+   (\phi^{s+1} + \phi^{s}\theta)L + (\phi^{s+2} +
+   \phi^{s+1}\theta)L^{2} + \ldots \\
+   & = \sum_{j=s}^{\infty} (\phi^{j} + \phi^{j-1}\theta)L^{j-s} \\
+   & = (\phi^{s} + \phi^{s-1}\theta)\sum_{j=0}^{\infty} \phi^{j}L^{j}
+   \\
+   & = (\phi^{s} + \phi^{s-1}\theta)(1 - \phi L)^{-1}.
+   \end{align*}
+
+Example :math:`\smash{AMRA(1,1)}`
+==============================================================================
+Recall, for an :math:`\smash{MA(\infty)}`, the optimal forecast is
+
+.. math::
+
+   \begin{align*}
+   \hat{Y}_{t+s|t} - \mu & = E[Y_{t+s} | \varepsilon_{t},
+   \varepsilon_{t-1}, \ldots] \\
+   & = \psi_{s}\varepsilon_{t} +
+   \psi_{s+1}\varepsilon_{t-1} + \psi_{s+2}\varepsilon_{t-2} + \ldots
+   = \psi_{s}(L)\varepsilon_{t}
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+So, for the :math:`\smash{ARMA(1,1)}`.
+
+.. math::
+
+   \begin{align*}
+   \hat{Y}_{t+s|t} - \mu & = (\phi^{s} + \phi^{s-1}\theta)(1-\phi
+   L)^{-1}\varepsilon_{t} \\
+   & = (\phi^{s} + \phi^{s-1}\theta)(1-\phi L)^{-1} (1-\phi L)(1+
+   \theta L)^{-1}(Y_{t}-\mu) \\
+   & = (\phi^{s} + \phi^{s-1}\theta)(1+\theta L)^{-1}(Y_{t} - \mu).
+   \end{align*}
+
+Example :math:`\smash{AMRA(1,1)}`
+==============================================================================
+Notice
+
+.. math::
+
+   \begin{align*}
+   \hat{Y}_{t+s|t} - \mu & = (\phi^{s} + \phi^{s-1}\theta)(1+\theta
+   L)^{-1}(Y_{t} - \mu) \\
+   & = \phi(\phi^{s-1} + \phi^{s-2}\theta)(1+\theta L)^{-1}(Y_{t} -
+   \mu) \\
+   & = \phi(\hat{Y}_{t+s-1|t} - \mu), \,\,\,\, \text{ if } s \geq 2,
+   \end{align*}
+
+which means the forecast decays toward :math:`\smash{\mu}`.
+
+Example :math:`\smash{AMRA(1,1)}`
+==============================================================================
+For :math:`\smash{s = 1}`,
+
+.. math::
+
+   \begin{align*}
+   \hat{Y}_{t+s|t} - \mu & = (\phi +\theta)(1 + \theta L)^{-1}(Y_{t} -
+   \mu) \\
+   & = (\phi + \phi \theta L - \phi\theta L + \theta)(1 + \theta
+   L)^{-1}(Y_{t}- \mu) \\
+   & = [\phi(1+\theta L) + \theta(1 - \phi L)](1+\theta L)^{-1}(Y_{t} -
+   \mu) \\
+   & = \phi(Y_{t} - \mu) + \theta(1 - \phi L)(1 + \theta
+   L)^{-1}(Y_{t} - \mu) \\
+   & = \phi(Y_{t} - \mu) + \theta\varepsilon_{t}.
+   \end{align*}
+

@@ -1,0 +1,1156 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Swaps &mdash; Econ 236 2016.03.28 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 236 2016.03.28 documentation" href="index.html"/>
+        <link rel="next" title="Options" href="options.html"/>
+        <link rel="prev" title="Forward Rate Agreements" href="fra.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Econ 236</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="returns.html">Rates of Return</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#holding-period-return">Holding Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#holding-period-return-example">Holding Period Return Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#gross-and-net-returns">Gross and Net Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id1">Gross and Net Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#multi-period-returns">Multi-period Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#annualized-returns-ear">Annualized Returns - EAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#annualized-returns-apr">Annualized Returns - APR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#annualized-returns-example">Annualized Returns - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id2">Annualized Returns - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#ear-and-apr">EAR and APR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#continuous-compounding">Continuous Compounding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id3">Continuous Compounding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#inflation">Inflation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#nominal-vs-real-returns">Nominal vs. Real Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id4">Nominal vs. Real Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#nominal-vs-real-returns-proof">Nominal vs. Real Returns - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#nominal-vs-real-returns-example">Nominal vs. Real Returns - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#expected-inflation">Expected Inflation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id5">Expected Inflation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forwards.html">Forward Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-contract-definition">Forward Contract Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#delivery-and-settlement">Delivery and Settlement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-example">Forward Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#market-prices">Market Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#early-termination">Early Termination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#early-termination-example">Early Termination Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#notation">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation">Forward Valuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-example">Forward Valuation Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-with-income">Forward Valuation with Income</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-with-yield">Forward Valuation with Yield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-with-yield-example">Forward Valuation with Yield Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-for-currency">Forward Valuation for Currency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#curreny-forward-example">Curreny Forward Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-for-commodities">Forward Valuation for Commodities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#cost-of-carry">Cost of Carry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="futures.html">Futures Markets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#futures-contracts">Futures Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#role-of-exchanges">Role of Exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#exchanges">Exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#contract-specifications">Contract Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#example-e-mini-s-p-500-contract">Example: E-mini S&amp;P 500 Contract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#e-mini-s-p-500-specifications">E-mini S&amp;P 500 Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#id1">E-mini S&amp;P 500 Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#futures-maturities">Futures Maturities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#delivery-of-commodities">Delivery of Commodities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#volume-vs-open-interest">Volume vs. Open Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#margin">Margin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#e-mini-margin">E-mini Margin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#example-gold-futures">Example: Gold Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#id2">Example: Gold Futures</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trading.html">Trading</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#exchanges-today">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id1">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#major-u-s-exchanges">Major U.S. Exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id2">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id3">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id4">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#market-makers">Market Makers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#takers">Takers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-1">Order Book Example: time 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-2">Order Book Example: time 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-3">Order Book Example: time 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-4">Order Book Example: time 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-5">Order Book Example: time 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#information-flows">Information Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#spy-liquidity-response-to-es">SPY Liquidity Response to ES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#reasons-for-information-flow">Reasons for Information Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#spy-e-mini-contract-specs">SPY/E-mini Contract Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#e-mini-spy-spreads">E-mini/SPY Spreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id5">E-mini/SPY Spreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id6">E-mini/SPY Spreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id7">E-mini/SPY Spreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#spread-and-information-flow">Spread and Information Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#implications">Implications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#empirical-results">Empirical Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id8">Empirical Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#notes-on-results">Notes on Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hedging.html">Hedging with Futures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#long-and-short-hedges">Long and Short Hedges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#short-hedge-example">Short Hedge Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#long-hedge-example">Long Hedge Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#imperfect-hedging">Imperfect Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#basis">Basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#basis-fluctuation">Basis Fluctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#stylized-basis-fluctuation">Stylized Basis Fluctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#actual-basis-fluctuation">Actual Basis Fluctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedging-and-basis">Hedging and Basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#basis-risk">Basis Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#contract-choice">Contract Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#example-hedging-yen">Example: Hedging Yen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#cross-hedging">Cross Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedge-ratio">Hedge Ratio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedge-ratio-with-returns">Hedge Ratio with Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedge-ratio-regression">Hedge Ratio Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#id1">Hedge Ratio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#optimal-number-of-contracts">Optimal Number of Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedge-ratio-example">Hedge Ratio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#id2">Hedge Ratio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#id3">Hedge Ratio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedging-an-equity-portfolio">Hedging an Equity Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedging-equity-portfolio-example">Hedging Equity Portfolio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#id4">Hedging Equity Portfolio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#why-hedge">Why Hedge?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#changing-beta">Changing Beta</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interestFutures.html">Futures on Interest Rates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#common-interest-rates">Common Interest Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#day-counts">Day Counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#t-bill-quotations">T-bill Quotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-bond-quotations">Treasury Bond Quotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#accrued-interest">Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-futures">Treasury Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#conversion-factors">Conversion Factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-futures-quotations">Treasury Futures Quotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#id1">Treasury Futures Quotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-futures-price">Treasury Futures Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-futures-price-example">Treasury Futures Price Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#id2">Treasury Futures Price Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#id3">Treasury Futures Price Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#id4">Treasury Futures Price Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#eurodollar-futures">Eurodollar Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#eurodollar-futures-quotes">Eurodollar Futures Quotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#eurodollar-futures-table">Eurodollar Futures Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#eurodollar-futures-example">Eurodollar Futures Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fra.html">Forward Rate Agreements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#zero-rates">Zero Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#zero-coupon-bond">Zero Coupon Bond</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#zero-curve">Zero Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#id1">Zero Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#forward-rates">Forward Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#forward-rate-example">Forward Rate Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#forward-rates-alternative">Forward Rates: Alternative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#notes-on-forward-rates">Notes on Forward Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#id2">Forward Rate Agreements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-example">FRA Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fras-vs-eurodollar-futures">FRAs vs Eurodollar Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-notation">FRA Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-cash-flows">FRA Cash Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-valuation">FRA Valuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-valuation-example">FRA Valuation Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Swaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Swaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forward-futures-as-swap">Forward/Futures as Swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interest-rate-swap">Interest Rate Swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libor-swap">LIBOR Swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libor-swap-example">LIBOR Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libor-swap-diagram">LIBOR Swap Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libor-swap-cash-flows">LIBOR Swap Cash Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libor-swap-cash-flows-with-notional">LIBOR Swap Cash Flows with Notional</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">LIBOR Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">LIBOR Swap Cash Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transforming-a-liability">Transforming a Liability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Transforming a Liability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transforming-a-asset">Transforming a Asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Transforming a Liability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#financial-intermediaries">Financial Intermediaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#financial-intermediaries-diagram">Financial Intermediaries Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#market-maker-quotes">Market Maker Quotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#an-important-fact">An Important Fact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap-value-floating-side">Swap Value: Floating Side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap-value-diagram">Swap Value Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap-value-fixed-side">Swap Value: Fixed Side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap-value">Swap Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap-value-example">Swap Value Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Swap Value Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap-value-table">Swap Value Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap-value-fra-portfolio">Swap Value: FRA Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap-value-example-fra-portfolio">Swap Value Example: FRA Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Swap Value Example: FRA Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">Swap Value Example: FRA Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap-value-example-fra-table">Swap Value Example: FRA Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#currency-swaps">Currency Swaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#currency-swap-example">Currency Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">Currency Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">Currency Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#currency-swap-transforming-liabilities-and-assets">Currency Swap: Transforming Liabilities and Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#currency-swap-valuation-bonds">Currency Swap Valuation: Bonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#currency-swap-valuation-example-bonds">Currency Swap Valuation Example: Bonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">Currency Swap Valuation Example: Bonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#currency-swap-valuation-table-bonds">Currency Swap Valuation Table: Bonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#currency-swap-valuation-forward-portfolio">Currency Swap Valuation: Forward Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#currency-swap-valuation-example">Currency Swap Valuation Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#currency-swap-valuation-table-forward-portfolio">Currency Swap Valuation Table: Forward Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-currency-swaps">Other Currency Swaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-swaps">Other Swaps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id1">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#underlying-assets">Underlying Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#options-exchanges">Options Exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#exchange-traded-options">Exchange-Traded Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#vix-options-specs">VIX Options Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#implications-of-options">Implications of Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#options-as-insurance">Options as Insurance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#obligation-of-sellers">Obligation of Sellers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-example">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id2">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-example">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id3">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#moneyness">Moneyness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#notation">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-buyer">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id4">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id5">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-seller">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id6">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-payoff-buyer">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id7">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id8">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#speculation-and-hedging">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id9">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id10">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id11">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id12">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id13">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id14">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id15">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id16">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id17">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#covered-call">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id18">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id19">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#straddle">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id20">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id21">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id22">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#spread">Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#bullish-spread">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id23">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#collar">Collar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put-alternative">Protective Put Alternative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id24">Protective Put Alternative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity">Put Call Parity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity-example">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id25">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id26">Put Call Parity Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="binomialTree.html">Binomial Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#random-walk">Random Walk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#binomial-distribution">Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#bernoulli-random-walk">Bernoulli Random Walk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#binomial-tree-example">Binomial Tree Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id1">Binomial Tree Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#a-riskless-portfolio">A Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id2">A Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#value-of-the-riskless-portfolio">Value of the Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id3">Value of the Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#one-step-binomial-tree">One-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id4">One-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#one-step-portfolio">One-Step Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id5">One-Step Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#call-option-price">Call Option Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#revisiting-one-period-example">Revisiting One-Period Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#two-step-binomial-tree">Two-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id6">Two-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id7">Two-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id8">Two-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#two-step-binomial-tree-example">Two-Step Binomial Tree Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id9">Two-Step Binomial Tree Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#valuing-put-options">Valuing Put Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#two-step-put-option-example">Two-Step Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id10">Two-Step Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#american-options">American Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#american-option-example">American Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#delta">Delta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#call-deltas">Call Deltas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#put-deltas">Put Deltas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#stock-return-volatility">Stock Return Volatility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#binomial-tree-parameters">Binomial Tree Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id11">Binomial Tree Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#options-on-other-assets">Options on Other Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id12">Options on Other Assets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wiener.html">Wiener Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#stochastic-processes">Stochastic Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#properties-of-expected-value">Properties of Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id1">Properties of Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#properties-of-variance">Properties of Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id2">Properties of Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#normal-random-variables">Normal Random Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#additive-normal-example">Additive Normal Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id3">Additive Normal Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#wiener-process">Wiener Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#moments-of-the-wiener-process">Moments of the Wiener Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#wiener-process-over-long-horizon">Wiener Process Over Long Horizon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id4">Wiener Process Over Long Horizon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#wiener-process-sample-paths">Wiener Process Sample Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#generalized-wiener-process">Generalized Wiener Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id5">Generalized Wiener Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#wiener-process-comparison">Wiener Process Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#ito-process">Ito Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#model-for-asset-prices">Model for Asset Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id6">Model for Asset Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#geometric-brownian-motion">Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id7">Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#parameter-estimation">Parameter Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#simulating-geometric-brownian-motion">Simulating Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id8">Simulating Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#ito-s-lemma">Ito&#8217;s Lemma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id9">Ito&#8217;s Lemma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#ito-s-lemma-for-geometric-brownian-motion">Ito&#8217;s Lemma for Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#application-to-forward-contracts">Application to Forward Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id10">Application to Forward Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#distribution-of-prices">Distribution of Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id11">Distribution of Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#lognormal-distribution">Lognormal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#simulation-distribution">Simulation Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id12">Simulation Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiener.html#id13">Simulation Distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="blackScholes.html">Black-Scholes-Merton Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#bsm-assumptions">BSM Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#bsm-and-ito-s-lemma">BSM and Ito&#8217;s Lemma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#a-riskless-portfolio">A Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#id1">A Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#boundary-conditions">Boundary Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#bsm-price-of-forward">BSM Price of Forward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#risk-neutral-valuation">Risk-Neutral Valuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#bsm-option-pricing-formulas">BSM Option Pricing Formulas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#normal-cdf">Normal CDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#interpretation">Interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#id2">Interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#id3">Interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#extreme-cases">Extreme Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#id4">Extreme Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#implied-volatility">Implied Volatility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#vix-index">VIX Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blackScholes.html#historical-vix">Historical VIX</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 236</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Swaps</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/swaps.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="swaps">
+<h1>Swaps<a class="headerlink" href="#swaps" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Swaps<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>A swap is an agreement to exchange cash flows in the future.</p>
+<ul class="simple">
+<li>It is an over-the-counter agreement.</li>
+</ul>
+<ul class="simple">
+<li>Dates, cash flows and timing of payments are variables of the
+contract.</li>
+</ul>
+<ul class="simple">
+<li>The cash flows are typically determined by an interest rate or
+exchange rate.</li>
+</ul>
+</div>
+<div class="section" id="forward-futures-as-swap">
+<h2>Forward/Futures as Swap<a class="headerlink" href="#forward-futures-as-swap" title="Permalink to this headline">¶</a></h2>
+<p>A forward or futures contract can be viewed as a simple swap:</p>
+<ul class="simple">
+<li>Suppose you buy an E-mini contract today for <span class="math">\(\smash{F =
+2000}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>You are agreeing to a swap in which you pay <span class="math">\(\smash{50F}\)</span> and
+receive <span class="math">\(\smash{50P}\)</span>, where <span class="math">\(\smash{P}\)</span> is the
+settlement price of the contract.</li>
+</ul>
+<p>Swaps are typically more complex, involving a stream of swapped cash
+flows.</p>
+</div>
+<div class="section" id="interest-rate-swap">
+<h2>Interest Rate Swap<a class="headerlink" href="#interest-rate-swap" title="Permalink to this headline">¶</a></h2>
+<p>Basic components of an interest rate swap:</p>
+<ul class="simple">
+<li>Notional principal.</li>
+</ul>
+<ul class="simple">
+<li>Fixed interest rate.</li>
+</ul>
+<ul class="simple">
+<li>Floating interest rate.</li>
+</ul>
+<ul class="simple">
+<li>Predetermined time period for cash flows.</li>
+</ul>
+<p>One party pays fixed interest on the principal during the
+predetermined period and the other pays floating interest.</p>
+</div>
+<div class="section" id="libor-swap">
+<h2>LIBOR Swap<a class="headerlink" href="#libor-swap" title="Permalink to this headline">¶</a></h2>
+<p>Typically LIBOR is the floating rate used in interest rate swaps.</p>
+<ul class="simple">
+<li>A LIBOR swap is referred to as a <a href="#id2"><span class="problematic" id="id3">``</span></a>Libor-for-fixed&#8221; swap.</li>
+</ul>
+</div>
+<div class="section" id="libor-swap-example">
+<h2>LIBOR Swap Example<a class="headerlink" href="#libor-swap-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose Microsoft and Intel engage in a 3-year swap on Mar 5, 2014.</p>
+<ul class="simple">
+<li>The notional principal is $100 million.</li>
+</ul>
+<ul class="simple">
+<li>Payments made semi-annually.</li>
+</ul>
+<ul class="simple">
+<li>Microsoft pays 5% fixed (per annum, semi-annual compounding).</li>
+</ul>
+<ul class="simple">
+<li>Intel pays 6-month LIBOR (per annum, semi-annual compounding).</li>
+</ul>
+</div>
+<div class="section" id="libor-swap-diagram">
+<h2>LIBOR Swap Diagram<a class="headerlink" href="#libor-swap-diagram" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/intelSwapDiagram.png"><img alt="_images/intelSwapDiagram.png" class="align-center" src="_images/intelSwapDiagram.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="libor-swap-cash-flows">
+<h2>LIBOR Swap Cash Flows<a class="headerlink" href="#libor-swap-cash-flows" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/liborSwapTable.png"><img alt="_images/liborSwapTable.png" class="align-center" src="_images/liborSwapTable.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="libor-swap-cash-flows-with-notional">
+<h2>LIBOR Swap Cash Flows with Notional<a class="headerlink" href="#libor-swap-cash-flows-with-notional" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/liborSwapBondTable.png"><img alt="_images/liborSwapBondTable.png" class="align-center" src="_images/liborSwapBondTable.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="id4">
+<h2>LIBOR Swap Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Microsoft pays $2.5 million to Intel on Sep 5, 2014 and each
+subsequent 6 months until Mar 5, 2017.</li>
+</ul>
+<ul class="simple">
+<li>On Sep 5, 2014, Intel pays Mar 5, 2014 LIBOR (4.2%): $2.1
+million.</li>
+</ul>
+<ul class="simple">
+<li>Each subsequent 6 months, Intel pays the LIBOR rate from the date 6
+months prior to the payment.</li>
+</ul>
+<ul class="simple">
+<li>The first exchange of payments is known at initiation of the swap.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>LIBOR Swap Cash Flows<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Typically only one party in the swap makes a payment of the difference
+between the two cash flows.</p>
+<ul class="simple">
+<li>In the previous example, Microsoft would pay \$0.4 million on Sep
+5, 2015 and $0.1 million on Mar 5, 2015.</li>
+</ul>
+<ul class="simple">
+<li>Note that the principal is not exchanged at the end of the contract,
+which is why it is called <em>notional</em>.</li>
+</ul>
+<ul class="simple">
+<li>If the notional were traded, the swap could be characterized as an
+exchange of floating- and fixed-rate bonds.</li>
+</ul>
+</div>
+<div class="section" id="transforming-a-liability">
+<h2>Transforming a Liability<a class="headerlink" href="#transforming-a-liability" title="Permalink to this headline">¶</a></h2>
+<p>A swap can transform a floating-rate loan into a fixed-rate loan and
+vice versa.</p>
+<ul class="simple">
+<li>If Microsoft has a floating-rate loan on $100 million at LIBOR plus
+10 basis points (1 basis point = 0.01%), the swap transforms it into
+a loan of 5.1% fixed.<ol class="arabic">
+<li>Microsoft pays LIBOR plus 0.1% to outside lenders.</li>
+<li>It receives LIBOR from swap.</li>
+<li>It pays 5% to Intel.</li>
+</ol>
+</li>
+</ul>
+<ul class="simple">
+<li>If Intel has a fixed-rate loan on $100 million at 5.2%, the swap
+transforms it into a loan of LIBOR plus 20 basis points:<ol class="arabic">
+<li>Intel pays 5.2% to outside lenders.</li>
+<li>It receives 5% from swap.</li>
+<li>It pays LIBOR to Microsoft.</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>Transforming a Liability<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/swapLiabilityDiagram.png"><img alt="_images/swapLiabilityDiagram.png" class="align-center" src="_images/swapLiabilityDiagram.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="transforming-a-asset">
+<h2>Transforming a Asset<a class="headerlink" href="#transforming-a-asset" title="Permalink to this headline">¶</a></h2>
+<p>A swap can transform a floating-rate asset into a fixed-rate asset and
+vice versa.</p>
+<ul class="simple">
+<li>If Microsoft holds $100 million in bonds paying 4.7% per annum,
+the swap transforms the bonds into asset paying LIBOR minus 30 basis
+points:<ol class="arabic">
+<li>Microsoft receives 4.7% from bonds.</li>
+<li>It receives LIBOR from swap.</li>
+<li>It pays 5% to Intel.</li>
+</ol>
+</li>
+</ul>
+<ul class="simple">
+<li>If Intel holds $100 million in bonds paying LIBOR minus 20 basis
+points, the swap transforms the bonds into an asset paying 4.8%:<ol class="arabic">
+<li>Intel receives LIBOR minus 0.2% from bonds.</li>
+<li>It receives 5% from swap.</li>
+<li>It pays LIBOR to Intel.</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>Transforming a Liability<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/swapAssetDiagram.png"><img alt="_images/swapAssetDiagram.png" class="align-center" src="_images/swapAssetDiagram.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="financial-intermediaries">
+<h2>Financial Intermediaries<a class="headerlink" href="#financial-intermediaries" title="Permalink to this headline">¶</a></h2>
+<p>Typically the parties to a swap connect via a banking intermediary.</p>
+<ul class="simple">
+<li>The bank earns a commission of 3% or 4% for providing the
+service and assuming default risk.</li>
+</ul>
+<ul class="simple">
+<li>The individual swap parties don&#8217;t know who is on the other side of
+the transaction.</li>
+</ul>
+<ul class="simple">
+<li>In many cases, market makers enter into swaps with one party without
+having an exact offsetting position.</li>
+</ul>
+<ul class="simple">
+<li>Market makers will post bid and offer (fixed) rates - the average of
+bid and offer is the <em>swap rate</em>.</li>
+</ul>
+</div>
+<div class="section" id="financial-intermediaries-diagram">
+<h2>Financial Intermediaries Diagram<a class="headerlink" href="#financial-intermediaries-diagram" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/swapIntermediary1.png"><img alt="_images/swapIntermediary1.png" class="align-center" src="_images/swapIntermediary1.png" style="width: 8in;" /></a>
+<a class="reference internal image-reference" href="_images/swapIntermediary2.png"><img alt="_images/swapIntermediary2.png" class="align-center" src="_images/swapIntermediary2.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="market-maker-quotes">
+<h2>Market Maker Quotes<a class="headerlink" href="#market-maker-quotes" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/marketMakerTable.png"><img alt="_images/marketMakerTable.png" class="align-center" src="_images/marketMakerTable.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="an-important-fact">
+<h2>An Important Fact<a class="headerlink" href="#an-important-fact" title="Permalink to this headline">¶</a></h2>
+<p>Recall the basic bond pricing formula:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+P &amp; = \frac{c\times F}{r} \left(1 - \frac{1}{(1+r)^T}\right) +
+\frac{F}{(1+r)^T}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{c}\)</span> is the coupon rate, expressed in terms of the
+compounding period.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{r}\)</span> is the discount rate.</li>
+</ul>
+<ul class="simple">
+<li>Note that when <span class="math">\(\smash{c=r}\)</span>, <span class="math">\(\smash{P=F}\)</span>.<ul>
+<li>This is because the income stream from the bond is equal (in
+percentage terms) to the rate at which you discount.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>What if <span class="math">\(\smash{c&gt;r}\)</span> or <span class="math">\(\smash{c&lt;r}\)</span>?</li>
+</ul>
+</div>
+<div class="section" id="swap-value-floating-side">
+<h2>Swap Value: Floating Side<a class="headerlink" href="#swap-value-floating-side" title="Permalink to this headline">¶</a></h2>
+<p>The floating side of a swap is a bond that pays LIBOR.</p>
+<ul class="simple">
+<li>The bond is also discounted at LIBOR.</li>
+</ul>
+<ul class="simple">
+<li>This is a case where the coupon rate equals the discount rate.</li>
+</ul>
+<ul class="simple">
+<li>After each interest payment, the bond is equal to the face, or
+notional principal, <span class="math">\(\smash{L}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><em>Immediately</em> prior to the interest payment, <span class="math">\(\smash{k^*}\)</span>,
+which is known at the beginning of the period, the bond is worth
+<span class="math">\(\smash{L+k^*}\)</span>.</li>
+</ul>
+<ul>
+<li><p class="first">If the payment is made at time <span class="math">\(\smash{t^*}\)</span>, we can discount
+back to the present using the continuously compounded risk-free,
+<span class="math">\(\smash{r^*}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+B_{fl} &amp; = (L+k^*) e^{-r^* t^*}.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+</div>
+<div class="section" id="swap-value-diagram">
+<h2>Swap Value Diagram<a class="headerlink" href="#swap-value-diagram" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/swapValueDiagram.png"><img alt="_images/swapValueDiagram.png" class="align-center" src="_images/swapValueDiagram.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="swap-value-fixed-side">
+<h2>Swap Value: Fixed Side<a class="headerlink" href="#swap-value-fixed-side" title="Permalink to this headline">¶</a></h2>
+<p>The fixed side of a swap is a fixed-rate bond.</p>
+<ul>
+<li><p class="first">The present value of the bond can be computed in the usual way,
+using spot rates:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+B_{fix} &amp; = c e^{-r_1t_1} + c e^{-r_2t_2} + \ldots + (c+L)
+e^{-r_nt_n}.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{c}\)</span> is the fixed payment and <span class="math">\(\smash{L}\)</span> is the
+notional principal.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{n}\)</span> is the number of payment periods and
+<span class="math">\(\smash{r_i, i=1,\ldots,n}\)</span> are the spot rates.</li>
+</ul>
+</div>
+<div class="section" id="swap-value">
+<h2>Swap Value<a class="headerlink" href="#swap-value" title="Permalink to this headline">¶</a></h2>
+<p>The resulting swap value is the difference in value of the fixed and
+floating bonds.</p>
+<ul>
+<li><p class="first">For the party holding the long position in floating:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+V_{swap} &amp; = B_{fl} - B_{fix}.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">For the party holding the long position in fixed:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+V_{swap} &amp; = B_{fix} - B_{fl}.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+</div>
+<div class="section" id="swap-value-example">
+<h2>Swap Value Example<a class="headerlink" href="#swap-value-example" title="Permalink to this headline">¶</a></h2>
+<p>Some time ago you went long on the floating side of a swap, receiving
+6-month LIBOR on $100 million principal and paying 3% per annum
+(semi-annual compounding).</p>
+<ul class="simple">
+<li>The swap has 1.25 years remaining.</li>
+</ul>
+<ul class="simple">
+<li>Continuously compounded 3-, 9- and 15-month LIBOR rates are 2.8%,
+3.2% and 3.4%.</li>
+</ul>
+<ul class="simple">
+<li>6-month LIBOR (compounded semi-annually) at last payment date was
+2.9%.</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h2>Swap Value Example<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>The fixed-side bond value (in millions of dollars) is:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+B_{fix} &amp; = 1.5 e^{-0.028\times 0.25} + 1.5 e^{-0.032\times
+0.75} + 101.5 e^{-0.034\times 1.25} = 100.2306.
+\end{align}\end{split}\]</div>
+<p>The floating-side bond value (in millions of dollars) is:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+B_{fl} &amp; = 101.45 e^{-0.028\times 0.25} = 100.7423.
+\end{align}\end{split}\]</div>
+<p>The swap value (in millions of dollars) is:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+V_{swap} &amp; = B_{fl} - B_{fix} = 100.7423 - 100.2306 = 0.5117.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="swap-value-table">
+<h2>Swap Value Table<a class="headerlink" href="#swap-value-table" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/swapValueTable.png"><img alt="_images/swapValueTable.png" class="align-center" src="_images/swapValueTable.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="swap-value-fra-portfolio">
+<h2>Swap Value: FRA Portfolio<a class="headerlink" href="#swap-value-fra-portfolio" title="Permalink to this headline">¶</a></h2>
+<p>Each swap payment can be considered an individual FRA.</p>
+<ul class="simple">
+<li>In the Intel/Microsoft example, the exchange on Mar 5, 2015 is an
+FRA where 5% is traded for 6-month LIBOR, determined on Sep5, 2014,
+etc.</li>
+</ul>
+<ul class="simple">
+<li>Since the future LIBOR rates are unknown, each FRA is valued using
+the forward rates implied by the LIBOR zero curve.</li>
+</ul>
+<ul class="simple">
+<li>Hence, the swap can be valued as follows:<ol class="arabic">
+<li>Compute forward rates using the LIBOR zero curve.</li>
+<li>Compute cash flows assuming future LIBOR rates are equal to the
+forward rates.</li>
+<li>Discount the cash flows using the LIBOR zero curve.</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="swap-value-example-fra-portfolio">
+<h2>Swap Value Example: FRA Portfolio<a class="headerlink" href="#swap-value-example-fra-portfolio" title="Permalink to this headline">¶</a></h2>
+<p>Continuing with the previous example:</p>
+<ul class="simple">
+<li>The LIBOR rate for the first cash receipt (at 3 months) is already
+determined at 2.9% per annum (semi-annual compounding).</li>
+</ul>
+<ul>
+<li><p class="first">The forward rate (continuous compounding) for the period between 3
+months and 9 months is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{0.032 \times 0.75 + 0.028 \times 0.25}{0.5} &amp; = 0.034.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">With semi-annual compounding (using EAR/APR relationship):</p>
+<div class="math">
+\[\begin{split}\begin{align}
+2(e^{0.034/2} - 1) &amp; = 0.034291.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h2>Swap Value Example: FRA Portfolio<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">The forward rate for the period between 9 months and 15 months is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{0.034 \times 1.25 + 0.032 \times 0.75}{0.5} &amp; = 0.037.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">With semi-annual compounding (using EAR/APR relationship):</p>
+<div class="math">
+\[\begin{split}\begin{align}
+2(e^{0.037/2} - 1) &amp; = 0.037344.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>Swap Value Example: FRA Portfolio<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>The swap cash flows are (in millions of dollars):</p>
+<div class="math">
+\[\begin{split}\begin{align}
+0.5 \times 0.029 \times 100 - 1.5 &amp; = 1.45 - 1.5 = -0.05 \\
+0.5 \times 0.034291 \times 100 - 1.5 &amp; = 1.7145 - 1.5 = 0.21455 \\
+0.5 \times 0.037344 \times 100 - 1.5 &amp; = 1.867 - 1.5 = 0.3672.
+\end{align}\end{split}\]</div>
+<p>The present value is:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+V_{swap} &amp; = -0.05 e^{-0.028 \times 0.25} + 0.21455 e^{-0.032 \times
+0.75} + 0.3672 e^{-0.034 \times 1.25} = 0.5117.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="swap-value-example-fra-table">
+<h2>Swap Value Example: FRA Table<a class="headerlink" href="#swap-value-example-fra-table" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/swapValueFRATable.png"><img alt="_images/swapValueFRATable.png" class="align-center" src="_images/swapValueFRATable.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="currency-swaps">
+<h2>Currency Swaps<a class="headerlink" href="#currency-swaps" title="Permalink to this headline">¶</a></h2>
+<p>In a <em>fixed-for-fixed currency swap</em> two parties exchange principal
+and fixed interest payments on two different currencies.</p>
+<ul class="simple">
+<li>Typically the principal is exchanged at initiation, where the
+principal values are roughly equal, given the exchange rate.</li>
+</ul>
+<ul class="simple">
+<li>The principal values are exchanged again at the end, but may be
+quite different (due to exchange rate fluctuations).</li>
+</ul>
+</div>
+<div class="section" id="currency-swap-example">
+<h2>Currency Swap Example<a class="headerlink" href="#currency-swap-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose IBM and BP enter into a 5-year currency swap on Feb 1, 2014.</p>
+<ul class="simple">
+<li>IBM pays 5% fixed in sterling and receives 6% fixed in dollars.</li>
+<li>Principal amounts are 15 million USD and 10 million GBP and
+interest payments are once a year.</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>Currency Swap Example<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/currencySwapDiagram.png"><img alt="_images/currencySwapDiagram.png" class="align-center" src="_images/currencySwapDiagram.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="id12">
+<h2>Currency Swap Example<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/currencySwapTable.png"><img alt="_images/currencySwapTable.png" class="align-center" src="_images/currencySwapTable.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="currency-swap-transforming-liabilities-and-assets">
+<h2>Currency Swap: Transforming Liabilities and Assets<a class="headerlink" href="#currency-swap-transforming-liabilities-and-assets" title="Permalink to this headline">¶</a></h2>
+<p>Suppose IBM can issue USD bonds, but not GBP.</p>
+<ul class="simple">
+<li>The swap effectively transforms 15 million USD in debt to 10
+million GBP in debt for IBM.</li>
+</ul>
+<ul class="simple">
+<li>Alternatively, suppose IBM has an opportunity to invest 10
+million GBP at 5% interest in the UK for 5 years, but feels the
+dollar will strengthen.<ul>
+<li>The swap effectively transforms the GBP investment into a USD
+investment.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="currency-swap-valuation-bonds">
+<h2>Currency Swap Valuation: Bonds<a class="headerlink" href="#currency-swap-valuation-bonds" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math">\(\smash{V_{swap}}\)</span> be the USD value of a swap where dollars
+are received and foreign currency paid:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+V_{swap} &amp; = B_D - S_0 B_F.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{B_F}\)</span> is the foreign currency bond value (denominated
+in units of the foreign currency).</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{B_D}\)</span> is the USD bond value (denominated in USD).</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{S_0}\)</span> is the spot exchange rate (as USD per unit of
+foreign currency).</li>
+</ul>
+<p>The value of the swap where foreign currency is received and USD paid
+is the opposite:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+V_{swap} &amp; = S_0 B_F - B_D.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="currency-swap-valuation-example-bonds">
+<h2>Currency Swap Valuation Example: Bonds<a class="headerlink" href="#currency-swap-valuation-example-bonds" title="Permalink to this headline">¶</a></h2>
+<p>You currently hold a swap in which you receive 5% per annum on Yen
+and pay 8% per annum on USD.</p>
+<ul class="simple">
+<li>The swap has 3 years remaining.</li>
+</ul>
+<ul class="simple">
+<li>Continuous compounded discount rates are 4% per annum in Japan and
+9% per annum in the U.S.</li>
+</ul>
+<ul class="simple">
+<li>Principal values are 10 million USD and 1,200 million JPY.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{S_0}\)</span> = 1/110 USD/JPY.</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h2>Currency Swap Valuation Example: Bonds<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>The present value of JPY cash flows (in millions of JPY) is:</p>
+<div class="math">
+\[\begin{align}
+60 e^{-0.04 \times 1} + 60 e^{-0.04 \times 2} + 1260 e^{-0.04 \times
+3} = 1230.55.
+\end{align}\]</div>
+<p>The present value of USD cash flows (in millions of USD) is:</p>
+<div class="math">
+\[\begin{align}
+0.8 e^{-0.09 \times 1} + 0.8 e^{-0.09 \times 2} + 10.8 e^{-0.09 \times
+3} = 9.6439.
+\end{align}\]</div>
+<p>The value of the swap (in millions of USD) is:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{1230.55}{110} - 9.6439 &amp; = 1.5430.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="currency-swap-valuation-table-bonds">
+<h2>Currency Swap Valuation Table: Bonds<a class="headerlink" href="#currency-swap-valuation-table-bonds" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/currencySwapValueBond.png"><img alt="_images/currencySwapValueBond.png" class="align-center" src="_images/currencySwapValueBond.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="currency-swap-valuation-forward-portfolio">
+<h2>Currency Swap Valuation: Forward Portfolio<a class="headerlink" href="#currency-swap-valuation-forward-portfolio" title="Permalink to this headline">¶</a></h2>
+<p>Each currency swap cash flow exchange is a single forward contract on
+foreign exchange.</p>
+<ul>
+<li><p class="first">Recall the forward exchange rate is:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+F_0 &amp; = S_0 e^{(r-r_f)T}.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li>The currency forwards are valued by assuming that the forward
+exchange rates are realized.</li>
+</ul>
+</div>
+<div class="section" id="currency-swap-valuation-example">
+<h2>Currency Swap Valuation Example<a class="headerlink" href="#currency-swap-valuation-example" title="Permalink to this headline">¶</a></h2>
+<p>Continuing with the previous example:</p>
+<ul>
+<li><p class="first">The JPY cash flows, in USD are:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{60}{110} e^{(0.09-0.04)\times 1} &amp; = 0.57342 \\
+\frac{60}{110} e^{(0.09-0.04)\times 2} &amp; = 0.60282 \\
+\frac{1260}{110} e^{(0.09-0.04)\times 3} &amp; = 13.30828.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">The present value of cash flows is:</p>
+<div class="math">
+\[\begin{align}
+(0.57342 - 0.8) e^{-0.09 \times 1} + (0.60282 - 0.8) e^{-0.09
+\times 2} + (13.30828 - 10.8) e^{-0.09 \times 3} = 1.5430.
+\end{align}\]</div>
+</li>
+</ul>
+</div>
+<div class="section" id="currency-swap-valuation-table-forward-portfolio">
+<h2>Currency Swap Valuation Table: Forward Portfolio<a class="headerlink" href="#currency-swap-valuation-table-forward-portfolio" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/currencySwapValueForward.png"><img alt="_images/currencySwapValueForward.png" class="align-center" src="_images/currencySwapValueForward.png" style="width: 8in;" /></a>
+</div>
+<div class="section" id="other-currency-swaps">
+<h2>Other Currency Swaps<a class="headerlink" href="#other-currency-swaps" title="Permalink to this headline">¶</a></h2>
+<p>Other common currency swaps include:</p>
+<ul class="simple">
+<li>Fixed-for-floating.<ul>
+<li>This can be regarded as portfolio of a fixed-for-fixed currency
+swap and a fixed-for-floating interest rate swap.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Floating-for-floating.<ul>
+<li>This can be regarded as portfolio of a fixed-for-fixed currency
+swap and two fixed-for-floating interest rate swaps.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="other-swaps">
+<h2>Other Swaps<a class="headerlink" href="#other-swaps" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Many variations of interest swaps exists with differing rates,
+payment periods, principals, etc.</li>
+</ul>
+<ul class="simple">
+<li>Credit default swaps (CDS): annual premium is paid (spread) in
+exchange for a cash payment if a company defaults.</li>
+</ul>
+<ul class="simple">
+<li>Equity swaps: returns on equity index swapped for LIBOR.</li>
+</ul>
+<ul class="simple">
+<li>Commodity swaps: series of forward commodity contracts.</li>
+</ul>
+<ul class="simple">
+<li>Volatility swaps: predetermined volatility swapped with realized
+(historical) vol.</li>
+</ul>
+<ul class="simple">
+<li>Countless others: financial engineering at its finest.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="options.html" class="btn btn-neutral float-right" title="Options">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fra.html" class="btn btn-neutral" title="Forward Rate Agreements"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2016.03.28',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

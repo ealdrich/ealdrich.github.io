@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Finance Preliminaries &mdash; Econ 211C 2016.03.29 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="index.html"/>
+        <link rel="next" title="Stationarity" href="stationarity.html"/>
+        <link rel="prev" title="Econ 211C" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-features-of-returns">Important Features of Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stationarity.html">Stationarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#time-series-observations">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#id1">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#moments">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#id2">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#sample-moments">Sample Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#id3">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#white-noise">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#id4">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#weak-stationarity">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#id5">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#id6">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#strict-stationarity">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#id7">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#ergodicity">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#id8">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html#id9">Ergodicity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linearTS.html">Linear Time Series Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="estimation.html">Estimation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit2-MLE/numerical.html">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forecasting.html">Forecasting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="varProcesses.html">Vector Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit4-VAR/var.html">Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit4-VAR/svar.html">Structural Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit4-VAR/impulseResponse.html">Impulse Response Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kalman.html">The Kalman Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit5-Kalman/stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 211C</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Finance Preliminaries</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/preliminaries.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="finance-preliminaries">
+<h1>Finance Preliminaries<a class="headerlink" href="#finance-preliminaries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Our objective is to learn the theory and application of
+time series methods.</p>
+<ul class="simple">
+<li>We will focus on financial time series applications.</li>
+</ul>
+<ul class="simple">
+<li>The methods in this course are broadly applicable to <em>any</em> type of
+time series.</li>
+</ul>
+<ul class="simple">
+<li>We will use the <a class="reference external" href="http://www.r-project.org/">R</a> programming
+environment to work with financial time series data.</li>
+</ul>
+<ul class="simple">
+<li>The <a class="reference external" href="http://www.quantmod.com/">quantmod</a> library will be especially useful:</li>
+</ul>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;quantmod&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="time-series-example">
+<h2>Time Series Example<a class="headerlink" href="#time-series-example" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s plot the historical prices for Facebook (FB).</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>quantmod<span class="p">)</span>
+<span class="o">&gt;</span> getSymbols<span class="p">(</span><span class="s">&quot;FB&quot;</span><span class="p">,</span>src<span class="o">=</span><span class="s">&quot;google&quot;</span><span class="p">,</span> from<span class="o">=</span><span class="s">&quot;2012-01-01&quot;</span><span class="p">,</span> to<span class="o">=</span><span class="s">&quot;2014-12-31&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> png<span class="p">(</span>filename<span class="o">=</span><span class="s">&quot;fb.png&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> chartSeries<span class="p">(</span>FB<span class="p">)</span>
+<span class="o">&gt;</span> dev.off<span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="plot-of-facebook-price">
+<h2>Plot of Facebook Price<a class="headerlink" href="#plot-of-facebook-price" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fb.png"><img alt="_images/fb.png" class="align-center" src="_images/fb.png" style="width: 6in;" /></a>
+</div>
+<div class="section" id="facebook-returns">
+<h2>Facebook Returns<a class="headerlink" href="#facebook-returns" title="Permalink to this headline">¶</a></h2>
+<p>To plot just the closing prices:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> chartSeries<span class="p">(</span>Cl<span class="p">(</span>FB<span class="p">))</span>
+<span class="o">&gt;</span> chartSeries<span class="p">(</span>FB<span class="o">$</span>FB.Close<span class="p">)</span>
+</pre></div>
+</div>
+<p>Or daily returns:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> chartSeries<span class="p">(</span>dailyReturn<span class="p">(</span>Cl<span class="p">(</span>FB<span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="plot-of-facebook-returns">
+<h2>Plot of Facebook Returns<a class="headerlink" href="#plot-of-facebook-returns" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fbRet.png"><img alt="_images/fbRet.png" class="align-center" src="_images/fbRet.png" style="width: 6in;" /></a>
+</div>
+<div class="section" id="one-period-return">
+<h2>One-Period Return<a class="headerlink" href="#one-period-return" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math">\(P_t\)</span> be the price of an asset at time <span class="math">\(t\)</span>.</p>
+<ul class="simple">
+<li>The <em>gross return</em> of the asset between dates <span class="math">\(t-1\)</span> and
+<span class="math">\(t\)</span> is:</li>
+</ul>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+R_t &amp; = \frac{P_t}{P_{t-1}}
+\,\,\,\, \text{or} \,\,\,\, P_t = P_{t-1} R_t.
+\end{align*}}\end{split}\]</div>
+<ul class="simple">
+<li>The <em>net return</em> is:</li>
+</ul>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+r_t &amp; = R_t - 1 = \frac{P_t}{P_{t-1}} - 1 = \frac{P_t -
+P_{t-1}}{P_{t-1}}.
+\end{align*}}\end{split}\]</div>
+<ul class="simple">
+<li>Note that the return can be computed between any two dates (i.e.
+daily, weekly, monthly, etc).</li>
+</ul>
+</div>
+<div class="section" id="multi-period-return">
+<h2>Multi-Period Return<a class="headerlink" href="#multi-period-return" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="math">\(k\)</span> -period gross return between dates <span class="math">\(t-k\)</span> and
+<span class="math">\(t\)</span> is:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+R_t(k) &amp; =
+\frac{P_t}{P_{t-k}} = \frac{P_t}{P_{t-1}} \times
+\frac{P_{t-1}}{P_{t-2}} \times
+\cdots \times \frac{P_{t-k+1}}{P_{t-k}} \\
+&amp; = R_t R_{t-1} \cdots R_{t-k+1} \\
+&amp; = \prod_{j=0}^{k-1} R_{t-j}.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>The <span class="math">\(k\)</span> -period net return is:</li>
+</ul>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+r_t(k) &amp; = \frac{P_t - P_{t-k}}{P_{t-k}}.
+\end{align*}}\end{split}\]</div>
+</div>
+<div class="section" id="logarithmic-approximation">
+<h2>Logarithmic Approximation<a class="headerlink" href="#logarithmic-approximation" title="Permalink to this headline">¶</a></h2>
+<p>In general, for any small value <span class="math">\(\smash{\varepsilon &gt; 0}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\ln(1+\varepsilon) &amp; \approx \varepsilon.
+\end{align*}\end{split}\]</div>
+<p>Thus,</p>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+\ln(R_t) &amp; = \ln(1+r_t) \approx r_t.
+\end{align*}}\end{split}\]</div>
+<p>Furthermore, by the definition of gross returns,</p>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+r_t &amp; \approx \ln(R_t) = \ln(P_t/P_{t-1}) = \ln(P_t) - \ln(P_{t-1}).
+\end{align*}}\end{split}\]</div>
+</div>
+<div class="section" id="approximation-for-multiperiod-returns">
+<h2>Approximation for Multiperiod Returns<a class="headerlink" href="#approximation-for-multiperiod-returns" title="Permalink to this headline">¶</a></h2>
+<p>A similar relationship holds for the <span class="math">\(k\)</span> -period net return:</p>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+r_t(k) &amp; \approx \ln(P_t) - \ln(P_{t-k}).
+\end{align*}}\end{split}\]</div>
+</div>
+<div class="section" id="time-intervals">
+<h2>Time Intervals<a class="headerlink" href="#time-intervals" title="Permalink to this headline">¶</a></h2>
+<p>The interval of time for returns is of vital importance for
+understanding the data.</p>
+<ul class="simple">
+<li>Daily returns are very different from weekly, monthly, annual,
+etc. returns.</li>
+</ul>
+<ul class="simple">
+<li>Intra-day returns at various time scales (millisecond, second,
+minute) are very different from each other.</li>
+</ul>
+</div>
+<div class="section" id="aggregating-trading-intervals">
+<h2>Aggregating Trading Intervals<a class="headerlink" href="#aggregating-trading-intervals" title="Permalink to this headline">¶</a></h2>
+<p>When aggregating returns, we consider the following.</p>
+<ul class="simple">
+<li>There are approximately 250 trading days in a year.</li>
+</ul>
+<ul class="simple">
+<li>There are approximately 22 trading days in a month.</li>
+</ul>
+<ul class="simple">
+<li>There are 5 trading days in a week.</li>
+</ul>
+<ul class="simple">
+<li>U.S. equities markets are open from 9:30 am to 4:00 pm Eastern time
+- 6.5 hours each day.</li>
+</ul>
+<ul class="simple">
+<li>Thus there are approximately 6.5 hours, or 390 minutes or 23,400
+seconds or 23,400,000 milliseconds in a trading day.</li>
+</ul>
+<ul class="simple">
+<li>Similarly, there are approximately 1625 trading hours, 97,500
+trading minutes, 5,850,000 trading seconds and 5,850,000,000 trading
+milliseconds in a year.</li>
+</ul>
+</div>
+<div class="section" id="aggregating-returns">
+<h2>Aggregating Returns<a class="headerlink" href="#aggregating-returns" title="Permalink to this headline">¶</a></h2>
+<p>To aggregate net returns, we simply add them:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+r_t(k) &amp; = \ln(P_t) - \ln(P_{t-k}) \\
+&amp; = \ln(P_t) - \ln(P_{t-1}) +
+\ln(P_{t-1}) - \ln(P_{t-2}) + \ln(P_{t-2}) \\
+&amp; \hspace{2in} - \ldots -
+\ln(P_{t-k+1}) + \ln(P_{t-k+1}) - \ln(P_{t-k}) \\
+&amp; = r_t + r_{t-1} + r_{t-2} + \ldots + r_{t-k+1} \\
+&amp; = \sum_{j=0}^{k-1} r_{t-j}.
+\end{align*}\end{split}\]</div>
+<p>For example, to annualize daily returns,</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+r_t(250) &amp; = \sum_{j=0}^{250} r_j.
+\end{align*}\end{split}\]</div>
+</div>
+<div class="section" id="example-of-aggregating-returns">
+<h2>Example of Aggregating Returns<a class="headerlink" href="#example-of-aggregating-returns" title="Permalink to this headline">¶</a></h2>
+<p>Get Exxon Mobile equities data for the week of March 23rd, 2015.</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> getSymbols<span class="p">(</span><span class="s">&quot;XOM&quot;</span><span class="p">,</span> from<span class="o">=</span><span class="s">&quot;2015-03-23&quot;</span><span class="p">,</span> to<span class="o">=</span><span class="s">&quot;2015-03-27&quot;</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;XOM&quot;</span>
+<span class="o">&gt;</span> XOM
+           XOM.Open XOM.High XOM.Low XOM.Close XOM.Volume XOM.Adjusted
+<span class="m">2015-03-23</span>    <span class="m">85.02</span>    <span class="m">85.78</span>   <span class="m">85.01</span>     <span class="m">85.43</span>   <span class="m">17163200</span>        <span class="m">85.43</span>
+<span class="m">2015-03-24</span>    <span class="m">85.30</span>    <span class="m">85.78</span>   <span class="m">84.50</span>     <span class="m">84.52</span>   <span class="m">10099500</span>        <span class="m">84.52</span>
+<span class="m">2015-03-25</span>    <span class="m">85.05</span>    <span class="m">85.57</span>   <span class="m">84.77</span>     <span class="m">84.86</span>   <span class="m">11816000</span>        <span class="m">84.86</span>
+<span class="m">2015-03-26</span>    <span class="m">85.30</span>    <span class="m">85.57</span>   <span class="m">84.09</span>     <span class="m">84.32</span>   <span class="m">14388500</span>        <span class="m">84.32</span>
+<span class="m">2015-03-27</span>    <span class="m">84.04</span>    <span class="m">84.05</span>   <span class="m">83.33</span>     <span class="m">83.58</span>   <span class="m">11094600</span>        <span class="m">83.58</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>What are the daily returns?</li>
+</ul>
+<ul class="simple">
+<li>What is the weekly return?</li>
+</ul>
+</div>
+<div class="section" id="asset-classes">
+<h2>Asset Classes<a class="headerlink" href="#asset-classes" title="Permalink to this headline">¶</a></h2>
+<p>There are several broad classes of assets traded in financial markets.</p>
+<ul class="simple">
+<li>Equities.</li>
+</ul>
+<ul class="simple">
+<li>Futures.</li>
+</ul>
+<ul class="simple">
+<li>Options.</li>
+</ul>
+<ul class="simple">
+<li>Bonds.</li>
+</ul>
+<ul class="simple">
+<li>Currencies.</li>
+</ul>
+</div>
+<div class="section" id="indices">
+<h2>Indices<a class="headerlink" href="#indices" title="Permalink to this headline">¶</a></h2>
+<p>Indices are synthetic portfolios of assets that are not
+typically traded.</p>
+<ul class="simple">
+<li>The S&amp;P 500 index is a portfolio of 500 equities <em>and is not
+traded</em>.</li>
+</ul>
+<ul class="simple">
+<li>To hold the S&amp;P 500 index, one can:<ul>
+<li>Purchase the 500 component equities in the correct proportions.</li>
+<li>Purchase shares in a mutual fund that tracks the index.</li>
+<li>Purchase shares of the SPY exchange traded fund (ETF).</li>
+<li>Purchase futures contracts on SPX.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="important-indices">
+<h2>Important Indices<a class="headerlink" href="#important-indices" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>S&amp;P 500 (SPX).</li>
+</ul>
+<ul class="simple">
+<li>VIX - portfolio of S&amp;P 500 options which represents the expected
+value of a one-standard deviation move in the S&amp;P 500 index over
+the next month (in annual terms).</li>
+</ul>
+<ul class="simple">
+<li>On March 30th, 2015, the closing value for VIX was 14.51 and the
+closing value for SPX 2086.24.</li>
+</ul>
+<ul class="simple">
+<li>Hence, the market expects the standard deviation of the SPX to be
+<span class="math">\(14.51/\sqrt{12} = 4.19\)</span> percent or  <span class="math">\(\smash{0.0419\times
+2086.24 = 87.39}\)</span> index points.</li>
+</ul>
+</div>
+<div class="section" id="important-assets">
+<h2>Important Assets<a class="headerlink" href="#important-assets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>SPY - SPX ETF.</li>
+</ul>
+<ul class="simple">
+<li>E-mini - Futures contract on the SPX.</li>
+</ul>
+<ul class="simple">
+<li>SPX Options.</li>
+</ul>
+<ul class="simple">
+<li>SPY Options.</li>
+</ul>
+<ul class="simple">
+<li>VIX Options.</li>
+</ul>
+<ul class="simple">
+<li>VIX Futures.</li>
+</ul>
+</div>
+<div class="section" id="vix">
+<h2>VIX<a class="headerlink" href="#vix" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>&gt; getSymbols(&quot;^VIX&quot;, from=&quot;2014-01-01&quot;, to=&quot;2015-03-27&quot;)
+&gt; chartSeries(Cl(VIX))
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/vix.png"><img alt="_images/vix.png" class="align-center" src="_images/vix.png" style="width: 6in;" /></a>
+</div>
+<div class="section" id="near-month-vx-futures">
+<h2>Near-Month VX Futures<a class="headerlink" href="#near-month-vx-futures" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>&gt; install.packages(&quot;Quandl&quot;)
+&gt; library(Quandl)
+&gt; VX1 = Quandl(&quot;OFDP/FUTURE_VX1&quot;,type=&quot;xts&quot;)
+&gt; chartSeries(VX1)
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/vx1.png"><img alt="_images/vx1.png" class="align-center" src="_images/vx1.png" style="width: 6in;" /></a>
+</div>
+<div class="section" id="e-mini-near-month-returns">
+<h2>E-mini Near-Month Returns<a class="headerlink" href="#e-mini-near-month-returns" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span></span>&gt; ES1 = Quandl(&quot;OFDP/FUTURE_ES1&quot;,start_date=&quot;2007-01-01&quot;,end_date=&quot;2015-03-27&quot;,type=&quot;xts&quot;)
+&gt; chartSeries(dailyReturn(ES1$Open))
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/es1.png"><img alt="_images/es1.png" class="align-center" src="_images/es1.png" style="width: 6in;" /></a>
+</div>
+<div class="section" id="important-features-of-returns">
+<h2>Important Features of Returns<a class="headerlink" href="#important-features-of-returns" title="Permalink to this headline">¶</a></h2>
+<p>What do you notice about the E-mini returns?</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stationarity.html" class="btn btn-neutral float-right" title="Stationarity">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Econ 211C"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

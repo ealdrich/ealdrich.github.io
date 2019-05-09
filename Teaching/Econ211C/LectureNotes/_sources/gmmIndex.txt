@@ -1,0 +1,15 @@
+Generalized Method of Moments
+=============================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 1
+
+   Unit6-GMM/mm
+
+   Unit6-GMM/gmm
+
+   Unit6-GMM/optMat
+
+   Unit6-GMM/restrict

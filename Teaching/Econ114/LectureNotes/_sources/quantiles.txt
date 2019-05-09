@@ -1,0 +1,503 @@
+.. slideconf::
+   :slide_classes: appear
+
+================
+Sample Quantiles
+================
+
+
+
+Empirical Density Function
+==========================
+Suppose :math:`y_1, y_2, \ldots, y_n` is a data sample from a true CDF
+:math:`F`.
+
+.. rst-class:: to-build
+
+-  The *empirical density function* (EDF), :math:`F_n(y)`, is the
+   proportion of the sample that is less than or equal to :math:`y`:
+
+.. rst-class:: to-build
+
+.. math::
+
+  F_n(y) = \frac{\sum_{i=1}^n I\{y_i \leq y\}}{n},
+
+.. rst-class:: to-build
+
+where
+
+.. rst-class:: to-build
+
+.. math::
+
+  I\{y_i \leq y\} = \begin{cases} 1 & \text{if } y_i \leq y \\ 0 &
+  \text{otherwise}. \end{cases}
+
+
+
+EDF Example
+===========
+The figure below compares the EDF of a sample of 150 observations
+drawn from a :math:`N(0,1)` with the true CDF.
+
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/edfExample.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/edfExample.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+Order Statistics
+================
+*Order statistics* are the values :math:`y_1, y_2, \ldots, y_n`
+ordered from smallest to largest.
+
+.. rst-class:: to-build
+
+-  Order statistics are denoted by :math:`y_{(1)}, y_{(2)}, \ldots
+   y_{(n)}`.
+
+.. rst-class:: to-build
+
+-  The parentheses in the subscripts differentiate them from the
+   unordered sample.
+
+
+
+Quantiles
+=========
+The :math:`q` *quantile* of a distribution is the value :math:`y` such
+that 
+
+.. math::
+
+   F_Y(y) & = q \,\,\,\,\, \Rightarrow \,\,\,\,\, y = F_Y^{-1}(q).
+
+.. rst-class:: to-build
+
+-  Note that :math:`q \in (0,1)`.
+
+.. rst-class:: to-build
+
+-  Quantiles are often called :math:`100q` th *percentiles*.
+
+
+Quantiles
+=========
+Special quantiles:
+
+.. rst-class:: to-build
+
+-  Median: :math:`q = 0.5`.
+
+.. rst-class:: to-build
+
+-  Quartiles: :math:`q = \{0.25, 0.5, 0.75\}`.
+
+.. rst-class:: to-build
+
+-  Quintiles: :math:`q = \{0.2, 0.4, 0.6, 0.8\}`.
+
+.. rst-class:: to-build
+
+-  Deciles: :math:`q = \{0.1, 0.2, \ldots, 0.8, 0.9\}`.
+
+
+
+Sample Quantiles
+================
+The :math:`q` *sample quantile* of a distribution is the value
+:math:`y_{(k)}` such that
+
+.. math::
+
+   F_n(y_{(k)}) & \leq q.
+
+.. rst-class:: to-build
+
+-  This is simply the value :math:`y_{(k)}` where :math:`k` is
+   :math:`qn` rounded down to the nearest integer.
+
+
+
+Normal Probability Plots
+========================
+We are often interested in determining whether our data are drawn
+from a normal distribution.
+
+.. rst-class:: to-build
+
+- If the data is normally distributed, then the :math:`q` sample
+  quantiles will be approximately equal to :math:`\mu + \sigma
+  \Phi^{-1}(q)`.
+
+  .. rst-class:: to-build
+
+  - :math:`\mu` and :math:`\sigma` are the true (unobserved) mean and
+     standard deviation of the data.
+
+  .. rst-class:: to-build
+
+  - :math:`\Phi` is the standard normal CDF.
+
+Normal Probability Plots
+========================
+Hence, a plot of the sample quantiles vs. :math:`\Phi^{-1}` should be
+roughly linear.
+
+.. rst-class:: to-build
+
+- In practice this is accomplished by plotting :math:`y_{(i)}`
+  vs. :math:`\Phi(i/(n+1))`, for :math:`i=1,\ldots, n`.
+
+.. rst-class:: to-build
+
+- Deviations from linearity suggest nonnormality.
+
+
+
+Normal Probability Plots
+========================
+There is no consensus as to which axis should represent the sample
+quantiles in a normal probability plot.
+
+.. rst-class:: to-build
+
+- Interpretation of the plot will depend on the choice of axes
+  for sample and theoretical quantiles.
+
+.. rst-class:: to-build
+
+- We will always place sample quantiles on the :math:`x`
+  axis.
+
+.. rst-class:: to-build
+
+- In R, the argument 'datax' of the function
+  'qqnorm' must be set to 'TRUE' (by default, it is
+  'FALSE').
+
+
+
+Interpreting Normal Probability Plots
+=====================================
+With the sample quantiles on the :math:`x` axis:
+
+.. rst-class:: to-build
+
+-  A convex curve indicates *left skewness*. 
+
+.. rst-class:: to-build
+
+-  A concave curve indicates *right skewness*.
+
+.. rst-class:: to-build
+
+-  A convex-concave curve indicates *heavy tails*.
+
+.. rst-class:: to-build
+
+-  A concave-convex curve indicates *light tails*.
+
+
+
+Normal Probability Plot Illustrations
+=====================================
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/normPlotIllustration.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/normPlotIllustration.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+Normal Prob. Plots for Normal Data
+========================================
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/normPlotExample1.png
+     :width: 4.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/normPlotExample1.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+Normal Prob. Plots for Lognormal Data
+===========================================
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/normPlotExample2.png
+     :width: 4.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/normPlotExample2.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+Plots of Lognormal Densities
+============================
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/lognormExamples.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/lognormExamples.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    ################################################################################
+    # Plot the Lognormal distribution for mu=0, sigma = 1, 0.5, 0.2
+    # If X is lognormal(mu, sigma), the ln(X) is normal(mu, sigma)
+    ################################################################################
+
+    # Specify the range of possible random variable values
+    support = seq(0,10,length=10000);
+
+    # Compute the density for each of the lognormals at each x value
+    d1 = dlnorm(support, 0, 1);
+    d2 = dlnorm(support, 0, 0.5);
+    d3 = dlnorm(support, 0, 0.2);
+
+    # Plot the lognormals
+    ymax = max(max(d1), max(d2), max(d3));
+    par(bg="white")
+    plot(support, d1, ylim=c(0,ymax), type='l', ylab="", xlab="x",
+	 main=expression(paste("Lognormal Densities with ", mu, " = 0", sep="")));
+    lines(support, d2, lty=2);
+    lines(support, d3, lty=3);
+    legend("topright", legend=c(expression(paste(sigma, " = 1", sep="")),
+           expression(paste(sigma, " = 0.5", sep="")),
+	   expression(paste(sigma, " = 0.2", sep=""))), lty=c(1,2,3))
+    dev.copy(png, file="lognormExamples.png", height=8, width=10, units='in', res=200)
+    graphics.off()
+
+
+Normal Prob. Plots for :math:`t` Data
+===========================================
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/normPlotExample3.png
+     :width: 4.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/normPlotExample3.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+Plots of :math:`t` Densities
+============================
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/tdistExamples.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/tdistExamples.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    ################################################################################
+    # Plot the t distribution for df = 4, 10, 30
+    ################################################################################
+
+    # Specify the range of possible random variable values
+    support = seq(-3,3,length=10000);
+
+    # Compute the density for each of the lognormals at each x value
+    d1 = dt(support, 4);
+    d2 = dt(support, 10);
+    d3 = dt(support, 30);
+
+    # Plot the t distributions
+    ymax = max(max(d1), max(d2), max(d3));
+    par(bg="white")
+    plot(support, d1, ylim=c(0,ymax), type='l', ylab="", xlab="x", main="t Densities");
+    lines(support, d2, lty=2);
+    lines(support, d3, lty=3);
+    legend("topright", legend=c("df = 4", "df = 10", "df = 30"), lty=c(1,2,3))
+    dev.copy(png, file="tdistExamples.png", height=8, width=10, units='in', res=200)
+    graphics.off()
+
+
+Normal Probability Plots vs. KDEs
+=================================
+If the relationship between theoretical and sample quantiles is
+complex, the KDE is a better tool to understand deviations from
+normality.
+
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/trimodalKDE.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/trimodalKDE.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+QQ Plots
+========
+Normal probability plots are special examples of
+*quantile-quantile* (QQ) plots.
+
+.. rst-class:: to-build
+- A QQ plot is a plot of quantiles from one sample or
+  distribution against the quantiles of another sample or
+  distribution.
+
+.. rst-class:: to-build
+
+- For example, we could compare the quantiles of S\&P 500
+  daily returns against a :math:`t` distribution.
+
+.. rst-class:: to-build
+
+- Alternatively, we could compare the quantiles of S\&P 500
+  daily returns against other financial data.
+
+.. rst-class:: to-build
+
+- QQ plots of multiple datasets indicate which distribution is
+  more/less left/right skewed or which has heavier/lighter
+  tails.
+
+
+
+
+S\&P 500 Returns and :math:`t` Distributions
+============================================
+.. ifnotslides::
+
+   To create the next two QQ plots, load the data by running the
+   following script.::
+
+     ################################################################################
+     # QQ plots
+     ################################################################################
+
+     # Install the Ecdat package if not already installed
+     #install.packages("Ecdat")
+     library(Ecdat);
+
+     # Get the DM/Dollar data
+     data(Garch);
+     dm = Garch$dm;
+
+     # Get risk-free rate data
+     data(Capm);
+     rf = Capm$rf;
+
+     # Get SP500 data
+     data(SP500);
+     r500 = SP500$r500
+
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/sp500QQ.png
+     :width: 3.75in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/sp500QQ.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    # QQ plots of SP500 returns against t distributions
+    n = length(r500);
+    qGrid = (1:n)/(n+1);
+    par(mfrow=c(3,2), bg="white")
+    qqnorm(r500, datax=TRUE, xlab="Data", ylab="Normal quantiles",
+	   main="(a) Normal probability plot")
+    qqline(r500, datax=TRUE)
+    qqplot(r500, qt(qGrid, df=1), xlab="Data", ylab="t quantiles",
+	   main="(b) t-prob plot, df=1")
+    qqline(r500, datax=TRUE, distribution=function(p){qt(p, df=1)})
+    qqplot(r500, qt(qGrid, df=2), xlab="Data", ylab="t quantiles",
+	   main="(c) t-prob plot, df=2")
+    qqline(r500, datax=TRUE, distribution=function(p){qt(p, df=2)})
+    qqplot(r500, qt(qGrid, df=4), xlab="Data", ylab="t quantiles",
+	   main="(d) t-prob plot, df=4")
+    qqline(r500, datax=TRUE, distribution=function(p){qt(p, df=4)})
+    qqplot(r500, qt(qGrid, df=8), xlab="Data", ylab="t quantiles",
+	   main="(e) t-prob plot, df=8")
+    qqline(r500, datax=TRUE, distribution=function(p){qt(p, df=8)})
+    qqplot(r500, qt(qGrid, df=15), xlab="Data", ylab="t quantiles",
+	   main="(f) t-prob plot, df=15")
+    qqline(r500, datax=TRUE, distribution=function(p){qt(p, df=15)})
+    dev.copy(png, file="sp500QQ.png", height=10, width=6, units='in', res=200)
+    graphics.off()
+
+S\&P 500 Returns, DM/Dollar and Risk-free
+=========================================
+  .. ifslides::
+
+  .. image:: /_static/Quantiles/sp-dm-rf-qq.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Quantiles/sp-dm-rf-qq.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    # QQ plots of SP500, DM and risk-free
+    par(mfrow=c(2,2), bg="white")
+    qqplot(r500, diff(dm), xlab="SP 500 Returns", ylab="Changes in DM", main="(a)")
+    abline(lm(quantile(diff(dm), c(0.25,0.75))~quantile(r500, c(0.25,0.75))))
+    qqplot(r500, diff(rf), xlab="SP 500 Returns", ylab="Changes in Risk-free", main="(b)")
+    abline(lm(quantile(diff(rf), c(0.25,0.75))~quantile(r500, c(0.25,0.75))))
+    qqplot(diff(rf), diff(dm), xlab="Changes in Risk-free", ylab="Changes in DM",
+           main="(c)")
+    abline(lm(quantile(diff(dm), c(0.25,0.75))~quantile(diff(rf), c(0.25,0.75))))
+    dev.copy(png, file="sp-dm-rf-qq.png", height=8, width=10, units='in', res=200)
+    graphics.off()

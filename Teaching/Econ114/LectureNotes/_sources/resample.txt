@@ -1,0 +1,429 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Resampling
+==============================================================================
+
+
+Properties of Estimators
+==============================================================================
+We've now seen that estimation is not enough.  
+
+.. rst-class:: to-build
+
+- We often want to know about properties of estimators.
+
+.. rst-class:: to-build
+
+- For example, what is the standard error of an estimator?
+
+.. rst-class:: to-build
+
+- Remember that before data is observed, an estimator is a random
+  variable itself.
+
+.. rst-class:: to-build
+
+- As an example, :math:`\bar{Y}` is a sum of random variables divided
+  by a constant value.
+
+.. rst-class:: to-build
+
+- Before :math:`\{Y_i\}_{i=1}^n` is observed, :math:`\bar{Y}` is
+  random and has its own variance and standard deviation.
+
+
+
+
+Resampling
+==============================================================================
+It is often challenging or impossible to compute certain
+characteristics of estimators.
+
+.. rst-class:: to-build
+
+- We would like to replace theoretical calculations with Monte Carlo
+  simulation, which draws additional samples from the population.
+
+.. rst-class:: to-build
+
+- Sampling from the true population is typically impossible.
+
+
+
+
+Resampling
+==============================================================================
+We substitute sampling from the true population with sampling from the
+observed sample.
+
+.. rst-class:: to-build
+
+- This is referred to as *resampling*. 
+
+.. rst-class:: to-build
+  
+- If the sample is a good representation of the true population, then
+  sampling from the sample should approximate sampling from the
+  population.
+
+
+
+
+Bootstrapping
+==============================================================================
+Suppose the original sample has :math:`n` data observations.  
+
+.. rst-class:: to-build
+
+- *Bootstrapping* involves drawing :math:`B` new samples of size
+  :math:`n` from the original sample.
+
+.. rst-class:: to-build
+
+- Each bootstrap sample is done with replacement. 
+
+.. rst-class:: to-build
+  
+- Otherwise, the bootstrap samples would all be identical to the
+  original sample (why?).
+
+.. rst-class:: to-build
+
+- Drawing with replacement allows each bootstrap observation to be
+  drawn in an :math:`i.i.d.` fashion from the sample.
+
+.. rst-class:: to-build
+  
+- So, the original sample plays the role of the population.
+
+
+
+
+Bootstrap Estimates
+==============================================================================
+Let :math:`\theta` be a parameter of interest and let
+:math:`\hat{\theta}` denote an estimate of :math:`\theta` using a
+sample of data, :math:`\{y_i\}_{i=1}^n`.  
+
+.. rst-class:: to-build
+
+- :math:`\hat{\theta}` might be calculated by maximum likelihood
+  estimation.
+
+.. rst-class:: to-build
+
+- We could create :math:`B` new samples from :math:`\{y_i\}_{i=1}^n`
+  by resampling with replacement.
+
+.. rst-class:: to-build
+
+- For each new sample :math:`j = 1, \ldots, B`, we could compute
+  :math:`\hat{\theta}^*_j` in the exact way :math:`\hat{\theta}` was
+  computed with :math:`\{y_i\}_{i=1}^n`.  
+
+
+
+
+Bootstrap Estimates
+==============================================================================
+- One way to estimate :math:`E[\hat{\theta}]` is by averaging the
+  bootstrap estimates:
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[\hat{\theta}] \approx \bar{\hat{\theta}}^* = \frac{1}{B}
+   \sum_{j=1}^B \hat{\theta}^*_j.
+
+
+
+
+Estimating Bias
+==============================================================================
+True bias for an estimator is defined as
+
+.. math::
+
+   \text{BIAS}(\hat{\theta}) = E[\hat{\theta}] - \theta.
+
+.. rst-class:: to-build
+
+- We can approximate the population average, :math:`E[\hat{\theta}]`,
+  with a bootstrap average, :math:`\bar{\hat{\theta}}^*`:
+
+.. rst-class:: to-build
+
+.. math::
+
+   \text{BIAS}_{\text{boot}}(\hat{\theta}) =
+   \bar{\hat{\theta}}^* - \hat{\theta}.
+
+.. rst-class:: to-build
+
+- We replaced the true population value, :math:`\theta`, with the
+  sample value, :math:`\hat{\theta}`, since the sample substitutes for
+  the population.
+
+
+
+
+Estimating Standard Error
+==============================================================================
+The true standard deviation of :math:`\hat{\theta}` can be estimated with
+the bootstrap estimates:
+
+.. math::
+
+   s_{\text{boot}}(\hat{\theta}) = \sqrt{\frac{1}{B-1} \sum_{j=1}^B
+   \left(\hat{\theta}^*_j - \bar{\hat{\theta}}^* \right)^2}.
+
+
+
+Example: Pareto Distribution
+==============================================================================
+Suppose we have a sample of random variables drawn from a Pareto
+distribution:
+
+.. math::
+
+   Y_i \stackrel{i.i.d.}{\sim} \mathcal{P}(\alpha, \beta), \qquad
+   i=1,\ldots, n.
+
+.. rst-class:: to-build
+
+- The density of each :math:`Y_i` is
+
+.. rst-class:: to-build
+
+.. math::
+
+   f(y|\alpha, \beta) = \frac{\beta \alpha^\beta}{y^{\beta+1}}.
+
+.. rst-class:: to-build
+
+- If :math:`Y_i \sim \mathcal{P}(\alpha, \beta)`, then :math:`\alpha >
+  0`, :math:`\beta > 0` and :math:`Y_i > \alpha`.
+
+.. rst-class:: to-build
+
+- :math:`\alpha` is a parameter dictating the minimum possible value
+  of :math:`Y_i` and :math:`\beta` is a shape parameter.
+
+
+
+
+Example: Pareto Distribution
+==============================================================================
+In the graph below, :math:`\beta = \kappa`.
+
+  .. ifslides::
+
+  .. image:: /_static/Resample/paretoPDF.png
+     :width: 5.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Resample/paretoPDF.png
+     :width: 6in
+
+
+
+
+Example: Pareto Distribution
+==============================================================================
+The joint density of :math:`{\bf Y} = (Y_1, \ldots, Y_n)'` is
+
+.. rst-class:: to-build
+
+.. math::
+
+   f_{{\bf Y}}({\bf y}|\alpha, \beta) = \prod_{i=1}^n
+   f_{Y_i}(y_i|\alpha, \beta) \qquad \; \,
+
+.. rst-class:: to-build
+
+.. math::
+
+  = \prod_{i=1}^n \frac{\beta \alpha^\beta}{y_i^{\beta+1}}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \quad \; \; = \frac{\beta^n \alpha^{n\beta}}{\prod_{i=1}^n
+   y_i^{\beta+1}}.
+
+
+
+
+Example: Pareto Distribution
+==============================================================================
+Assuming :math:`\alpha` is known, the log likelihood of :math:`\beta`
+is
+
+.. rst-class:: to-build
+
+.. math::
+
+    \ell (\beta|\alpha, {\bf y}) = \log(f_{{\bf Y}}({\bf y}|\alpha,
+    \beta)) \qquad \qquad \qquad \qquad \qquad \qquad
+
+.. rst-class:: to-build
+
+.. math::
+
+    \quad \, = n \log(\beta) + n\beta \log(\alpha) - (1+\beta)
+    \sum_{i=1}^n \log(y_i).
+
+
+
+
+
+Example: Pareto Distribution
+==============================================================================
+The MLE, :math:`\hat{\beta}` is the value such that
+
+.. rst-class:: to-build
+
+.. math::
+
+  \frac{\partial \ell}{\partial \beta}\bigg|_{\beta = \hat{\beta}} =
+  \frac{n}{\hat{\beta}} + n \log(\alpha) - \sum_{i=1}^n \log(y_i) = 0.
+
+.. rst-class:: to-build
+
+.. math::
+
+  \Rightarrow \hat{\beta} = \frac{n}{\sum_{i=1}^n \log(y_i) - n\log(\alpha)}.
+
+
+
+
+Example: Pareto Distribution
+==============================================================================
+The second derivative of the log likelihood is
+
+.. math::
+
+   \frac{\partial^2 \ell}{\partial \beta^2} & = -\frac{n}{\beta^2}.
+
+
+.. rst-class:: to-build
+
+- The observed Fisher information is
+
+.. rst-class:: to-build
+
+.. math::
+
+   \tilde{\mathcal{I}}(\hat{\beta}) & = -\frac{\partial^2
+   \ell}{\partial \beta^2} \bigg|_{\beta = \hat{\beta}} =
+   \frac{n}{\hat{\beta}^2}.
+
+.. rst-class:: to-build
+
+- The asymptotic standard error of :math:`\hat{\beta}` is
+
+.. rst-class:: to-build
+
+.. math::
+
+   Std(\hat{\beta}) & \approx
+   \sqrt{\tilde{\mathcal{I}}(\hat{\beta})^{-1}} =
+   \frac{\hat{\beta}}{\sqrt{n}}.
+
+
+
+
+Example: Pareto Distribution
+==============================================================================
+Given a sample of :math:`n` observations from a Pareto distribution:  
+
+.. rst-class:: to-build
+
+- We can compute the MLE, :math:`\hat{\beta}`.  
+
+.. rst-class:: to-build
+
+- We can compute the asymptotic standard error
+  :math:`\hat{\beta}/\sqrt{n}`.
+
+
+
+
+Example: Pareto Distribution
+==============================================================================
+We can generate :math:`B` new samples by resampling. 
+
+.. rst-class:: to-build
+  
+- For each new sample, we can compute :math:`\hat{\beta}_j`,
+  :math:`j=1,\ldots,B`.
+
+.. rst-class:: to-build
+
+- We can compute the standard deviation of
+  :math:`\{\hat{\beta}_j\}_{j=1}^B` and compare to the asymptotic
+  standard error.  
+
+.. rst-class:: to-build
+
+- The bootstrap standard error will be a better estimate of variation
+  than the asymptotic standard error when :math:`n` is small.
+
+
+
+
+Bootstrap Confidence Intervals
+==============================================================================
+Given a set of bootstrap estimates, :math:`\{\hat{\theta}^*_j\}_{j=1}^B`,
+we can form a :math:`1-\alpha` confidence interval with the normal
+approximation
+
+.. rst-class:: to-build
+
+.. math::
+
+   \left(\hat{\theta} - s_{\text{boot}}(\hat{\theta}) \, z_{\alpha/2},
+   \,\, \hat{\theta} + s_{\text{boot}}(\hat{\theta}) \,
+   z_{\alpha/2}\right)
+
+.. rst-class:: to-build
+
+where :math:`z_{\alpha/2}` is the :math:`\alpha` -upper quantile of the
+standard normal distribution.
+
+.. rst-class:: to-build
+
+- Note that the interval is centered around :math:`\hat{\theta}`
+  rather than :math:`\theta`.
+
+.. rst-class:: to-build
+
+- In this case :math:`\hat{\theta}` is substituted for :math:`\theta`,
+  just as the data sample is substituted for the true population.
+
+
+
+
+Bootstrap Confidence Intervals
+==============================================================================
+Alternatively, we could compute the :math:`\alpha` and
+:math:`1-\alpha` empirical quantiles of the bootstrap estimates,
+:math:`\{\hat{\theta}^*_j\}_{j=1}^B`: :math:`q_{\alpha/2}` and
+:math:`q_{(1-\alpha)/2}`.
+
+.. rst-class:: to-build
+
+- The resulting :math:`1-\alpha` confidence interval is
+
+.. rst-class:: to-build
+
+.. math::
+
+   \left(q_{\alpha/2}, q_{(1-\alpha)/2}\right).
+

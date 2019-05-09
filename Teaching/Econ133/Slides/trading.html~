@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Trading &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="up" title="Markets" href="markets.html" />
+    <link rel="next" title="Risk and Returns" href="riskReturns.html" />
+    <link rel="prev" title="Indexes and Funds" href="indexes.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="trading">
+<h1>Trading</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="exchanges">
+<h2>Exchanges</h2>
+<p>Most financial assets today are traded on exchanges.</p>
+<ul class="to-build simple">
+<li>The first stock exchange, the <a class="reference external" href="http://lat.ms/1jqdmAQ">Antwerp Bourse</a>, was established in Antwerp, Belgium in
+1460.</li>
+</ul>
+<ul class="to-build simple">
+<li>Others were established throughout Europe in the 1500s.</li>
+</ul>
+<ul class="to-build simple">
+<li>The oldest existing stock exchange is the <a class="reference external" href="http://en.wikipedia.org/wiki/Amsterdam_Stock_Exchange">Amsterdam Stock Exchange</a>,
+which was established in 1602.</li>
+</ul>
+<ul class="to-build simple">
+<li>The Amsterdam Stock Exchange merged with the Paris and Brussels
+exchanges in 2000 to form <a class="reference external" href="http://en.wikipedia.org/wiki/Euronext">Euronext</a>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Euronext merged with the <a class="reference external" href="http://en.wikipedia.org/wiki/New_York_Stock_Exchange">New York Stock Exchange (NYSE)</a> in 2007.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="early-trading">
+<h2>Early Trading</h2>
+<p>For centuries, trading of financial assets consisted of exchanging
+physical certificates.</p>
+<ul class="to-build simple">
+<li>The New York Stock Exchange was Conceived in 1792 under a buttonwood
+tree on Wall Street.</li>
+</ul>
+<ul class="to-build simple">
+<li>24 brokers signed an agreement to exclusively deal with each other.</li>
+</ul>
+<ul class="to-build simple">
+<li>They frequently met under the tree on Wall Street to conduct
+business.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Early Trading</h2>
+<a class="reference internal image-reference" href="_images/buttonwood.png"><img alt="_images/buttonwood.png" class="align-center" src="_images/buttonwood.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Early Trading</h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/stockCertificate.png"><img alt="_images/stockCertificate.png" class="align-center" src="_images/stockCertificate.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="electronic-trading">
+<h2>Electronic Trading</h2>
+<p>In the 1990s, several electronic exchanges were developed.</p>
+<ul class="to-build simple">
+<li>These are often referred to as <em>Electronic Communication Networks</em>
+or <a class="reference external" href="http://www.investopedia.com/terms/e/ecn.asp">ECNs</a>.</li>
+</ul>
+<ul class="to-build simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Island_Exchange">Island</a> was one of
+the first ECNs, later purchased by <a class="reference external" href="http://en.wikipedia.org/wiki/NASDAQ">Nasdaq</a>.</li>
+</ul>
+<ul class="to-build simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Archipelago_Exchange">Archipelago</a>
+was developed at roughly the same time and was later purchased by
+NYSE (hence the name, NYSE Arca).</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="high-frequency-trading">
+<h2>High-Frequency Trading</h2>
+<p>Originally electronic systems were simply used for quoting and
+displaying prices.</p>
+<ul class="to-build simple">
+<li>Trades were still executed by hand on the trading floor.</li>
+</ul>
+<ul class="to-build simple">
+<li>Eventually, traders started placing orders electronically.</li>
+</ul>
+<ul class="to-build simple">
+<li>This led to <em>algorithmic trading</em>: traders not only submitted
+orders electronically, but wrote software algorithms that
+executed trades intelligently, depending on market conditions.</li>
+</ul>
+<ul class="to-build simple">
+<li>Algorithmic trading has resulted in very fast execution, commonly
+referred to as <em>high-frequency trading</em>.</li>
+</ul>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="exchanges-today">
+<h2>Exchanges Today</h2>
+<p>Exchanges today no longer consist of open floors populated by traders
+yelling at each other.</p>
+<ul class="to-build simple">
+<li>They consist of large warehouses, populated by computer servers
+that electronically match orders.</li>
+</ul>
+<ul class="to-build simple">
+<li>These are referred to as <em>matching engines</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Since order execution speed is so important, many traders co-locate
+their trading computers with the matching engines.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Exchanges Today</h2>
+<ul class="simple">
+<li>The NYSE Arca matching engine is located in Secaucus, NY.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <a class="reference external" href="http://en.wikipedia.org/wiki/Chicago_Board_Options_Exchange">Chicago Board Option Exchange (CBOE)</a> has
+co-located with NYSE Arca in Secaucus.</li>
+</ul>
+<ul class="to-build simple">
+<li>The Nasdaq matching engine is located in Carteret, NJ.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <a class="reference external" href="http://en.wikipedia.org/wiki/CME_Group">Chicago Mercantile Exchange (CME)</a> matching engine is
+located in Aurora, IL.</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Exchanges Today</h2>
+<a class="reference internal image-reference" href="_images/exchangeMap.png"><img alt="_images/exchangeMap.png" class="align-center" src="_images/exchangeMap.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Exchanges Today</h2>
+<a class="reference internal image-reference" href="_images/microwave.png"><img alt="_images/microwave.png" class="align-center" src="_images/microwave.png" style="width: 8.5in;" /></a>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Exchanges Today</h2>
+<a class="reference internal image-reference" href="_images/worldExchanges.png"><img alt="_images/worldExchanges.png" class="align-center" src="_images/worldExchanges.png" style="width: 8in;" /></a>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="market-makers">
+<h2>Market Makers</h2>
+<p>Participants on exchanges include makers and takers.</p>
+<ul class="to-build simple">
+<li>Makers are required to post both quotes to buy and sell assets on
+the exchange.</li>
+</ul>
+<ul class="to-build simple">
+<li>Quotes to buy are called 'bids'.</li>
+</ul>
+<ul class="to-build simple">
+<li>Quotes to sell are called 'offers'.</li>
+</ul>
+<ul class="to-build simple">
+<li>Typically there are many bids and offers posted on the exchange at
+different prices.</li>
+</ul>
+<ul class="to-build simple">
+<li>Market makers are compensated for providing quotes (also referred to
+as <em>providing liquidity</em>).</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="takers">
+<h2>Takers</h2>
+<p>Takers actively <em>take</em> orders that have been passively posted by
+market makers.</p>
+<ul class="to-build simple">
+<li>When a taker wants to buy the asset, the buy at the lowest posted
+offer quote.</li>
+</ul>
+<ul class="to-build simple">
+<li>When a take wants to sell an asset, they sell at the highest posted
+bid quote.</li>
+</ul>
+<ul class="to-build simple">
+<li>The difference between the highest bid quote and lowest offer quote
+is known as the <em>spread</em>.</li>
+</ul>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="order-book-example-time-1">
+<h2>Order Book Example: time 1</h2>
+<a class="reference internal image-reference" href="_images/orderBook1.png"><img alt="_images/orderBook1.png" class="align-center" src="_images/orderBook1.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="order-book-example-time-2">
+<h2>Order Book Example: time 2</h2>
+<a class="reference internal image-reference" href="_images/orderBook2.png"><img alt="_images/orderBook2.png" class="align-center" src="_images/orderBook2.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="order-book-example-time-3">
+<h2>Order Book Example: time 3</h2>
+<a class="reference internal image-reference" href="_images/orderBook3.png"><img alt="_images/orderBook3.png" class="align-center" src="_images/orderBook3.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="order-book-example-time-4">
+<h2>Order Book Example: time 4</h2>
+<a class="reference internal image-reference" href="_images/orderBook4.png"><img alt="_images/orderBook4.png" class="align-center" src="_images/orderBook4.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="order-book-example-time-5">
+<h2>Order Book Example: time 5</h2>
+<a class="reference internal image-reference" href="_images/orderBook5.png"><img alt="_images/orderBook5.png" class="align-center" src="_images/orderBook5.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="buying-on-margin">
+<h2>Buying on Margin</h2>
+<p>When investors borrow money from a broker to purchase an asset, they
+are <a class="reference external" href="http://bit.ly/1aJfOKG">buying on margin</a>.</p>
+<ul class="to-build simple">
+<li>The margin is the proportion of the purchase price provided by the
+investor.</li>
+</ul>
+<ul class="to-build simple">
+<li>The purchased securities are maintained in an account by the broker
+and are monitored.</li>
+</ul>
+<ul class="to-build simple">
+<li>The Board of Governors has limited initial margins to be 50% of the
+initial purchase (i.e. investors must provide at least half of the
+funds for asset purchase).</li>
+</ul>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="margin-example">
+<h2>Margin Example</h2>
+<p>Suppose an investor has $6000 and would like to buy 100 shares of
+asset <span class="math">\(W\)</span>, currently selling for $100.</p>
+<ul class="to-build simple">
+<li>Since $10,000 is required for the purchase, the investor must
+borrow $4000 from a broker.</li>
+</ul>
+<ul class="to-build simple">
+<li>The initial balance sheet would be</li>
+</ul>
+<table border="1" class="to-build docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Assets</th>
+<th class="head">Liabilities and Owners' Equity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Value of Stock: $10000</td>
+<td>Loan from broker: $4000</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>Equity: $6000</td>
+</tr>
+</tbody>
+</table>
+<p class="to-build">Thus, the initial margin is <span class="math">\(\frac{\$6000}{\$10000} = 0.6\)</span>.</p>
+
+<div class="slide-no">21</div>
+
+</article>
+<article class="appear slide level-2" id="margin-example-cont">
+<h2>Margin Example (Cont.)</h2>
+<p>If the stock price falls to $70 per share, the balance sheet
+becomes</p>
+<table border="1" class="to-build docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Assets</th>
+<th class="head">Liabilities and Owners' Equity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Value of Stock: $7000</td>
+<td>Loan from broker: $4000</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>Equity: $3000</td>
+</tr>
+</tbody>
+</table>
+<p class="to-build">The resulting  margin is <span class="math">\(\frac{\$3000}{\$7000} = 0.43\)</span>.</p>
+
+<div class="slide-no">22</div>
+
+</article>
+<article class="appear slide level-2" id="maintenance-margin">
+<h2>Maintenance Margin</h2>
+<p>Brokers can set minimal margin requirements, known as maintenance
+margins.</p>
+<ul class="to-build simple">
+<li>If the asset value in the account falls too low, relative to
+the loan from the broker, the broker can issue a margin call.</li>
+</ul>
+<ul class="to-build simple">
+<li>This requires the investor to add cash to the account or liquidate
+some the stock.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the investor doesn't act accordingly, the broker then has
+the right to sell some of the stock to pay off enough of the loan
+to restore the margin to an acceptable level.</li>
+</ul>
+
+<div class="slide-no">23</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Maintenance Margin</h2>
+<p>For example, if a broker has a maintenance margin of 30%, the
+lowest the price could fall before a margin call is</p>
+<div class="to-build math">
+\[\frac{100P - 4000}{100P} = 0.3,\]</div>
+<p class="to-build">or P = $57.14.</p>
+
+<div class="slide-no">24</div>
+
+</article>
+<article class="appear slide level-2" id="why-margins">
+<h2>Why Margins?</h2>
+<p>Margins have the ability to magnify upside returns.</p>
+<ul class="to-build simple">
+<li>Suppose asset <span class="math">\(W\)</span> is selling for $100 and an investor
+believes its price will increase to $120 next period.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the investor buys $10,000 worth of stock, she will realize a
+return of 20% on her money (after one period her net worth will be
+$12,000).</li>
+</ul>
+
+<div class="slide-no">25</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Why Margins?</h2>
+<ul class="simple">
+<li>However, if the investor borrows an additional $10,000 at 5%
+interest, then she will earn a gross return of $4000 on the
+$20,000 invested.</li>
+</ul>
+<ul class="to-build simple">
+<li>After repaying $10,500 (loan plus interest), her net return will be</li>
+</ul>
+<div class="to-build math">
+\[\frac{(\$24, 000 - \$10, 500) - \$10, 000}{\$10,000} = 0.35.\]</div>
+<ul class="to-build simple">
+<li>So the investor was able to increase her return from 20% to 35% by
+earning a return on borrowed money.</li>
+</ul>
+
+<div class="slide-no">26</div>
+
+</article>
+<article class="appear slide level-2" id="id10">
+<h2>Why Margins?</h2>
+<p>While margins provide the ability to magnify returns, they also
+increase downside risk exposure.</p>
+<ul class="to-build simple">
+<li>Suppose that after borrowing $10,000 from the broker, the price of
+asset <span class="math">\(W\)</span> fell from $100 to $80.</li>
+</ul>
+<ul class="to-build simple">
+<li>The investor's gross return would be -$4000 on the $20,000
+invested.</li>
+</ul>
+
+<div class="slide-no">27</div>
+
+</article>
+<article class="appear slide level-2" id="id11">
+<h2>Why Margins?</h2>
+<ul class="simple">
+<li>After repayment of the loan, the investor's net return would be</li>
+</ul>
+<div class="to-build math">
+\[\frac{(\$16,000 - \$10,500) - \$10,000}{\$10,000} = -0.45.\]</div>
+<ul class="to-build simple">
+<li>If the investor hadn't borrowed money, she would have realized a net
+return of -0.2. So, by borrowing on margin she has magnified her
+loss from -20% to -45%.</li>
+</ul>
+
+<div class="slide-no">28</div>
+
+</article>
+<article class="appear slide level-2" id="short-sales">
+<h2>Short Sales</h2>
+<p><a class="reference external" href="http://bit.ly/1bgEB8X">Short sales</a> allow investors to profit from
+declines in stock prices.</p>
+<ul class="to-build simple">
+<li>To engage in a short sale, an investor borrows a share of a stock
+from a broker and sells it on the market.</li>
+</ul>
+<ul class="to-build simple">
+<li>The investor is then obligated to replace the share at a later date.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the stock price falls, the investor benefits from selling at a
+high price and repurchasing at a low price.</li>
+</ul>
+<ul class="to-build simple">
+<li>In between, the investor is responsible for paying the broker any
+dividends that are realized (since the broker would have received
+these if it hadn't lent the stock).</li>
+</ul>
+
+<div class="slide-no">29</div>
+
+</article>
+<article class="appear slide level-2" id="id13">
+<h2>Short Sales</h2>
+<ul class="simple">
+<li>When an investor engages in a short sale, we say that they are
+'short' the stock, or have taken the 'short position'.</li>
+</ul>
+<ul class="to-build simple">
+<li>Conversely, if an investor buys a stock (the usual transaction), we
+say they are 'long', or have taken the 'long position'.</li>
+</ul>
+
+<div class="slide-no">30</div>
+
+</article>
+<article class="appear slide level-2" id="short-sale-example">
+<h2>Short Sale Example</h2>
+<p>Suppose asset <span class="math">\(W\)</span> is selling for $100 and you think its price
+will fall.</p>
+<ul class="to-build simple">
+<li>You decide to borrow 1000 shares, selling them for $100 a piece,
+yielding a total sale value of $100,000.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the stock price falls to $80 per share next period, you can
+repurchase the 1000 shares for $80,000 and return them to the
+lender.</li>
+</ul>
+<ul class="to-build simple">
+<li>You earn a total of $20,000 in the process.</li>
+</ul>
+
+<div class="slide-no">31</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

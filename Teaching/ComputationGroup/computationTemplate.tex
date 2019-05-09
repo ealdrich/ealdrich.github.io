@@ -1,0 +1,128 @@
+% $Header: /cvsroot/latex-beamer/latex-beamer/solutions/generic-talks/generic-ornate-15min-45min.en.tex,v 1.5 2007/01/28 20:48:23 tantau Exp $
+
+\documentclass{beamer}
+
+\def\bmath#1{\mbox{\boldmath$#1$}}
+\def\E{\mbox{E}\,}
+\def\Var{\mbox{Var}\,}
+\def\Cov{\mbox{Cov}\,}
+\def\Corr{\mbox{Corr}\,}
+\def\Std{\mbox{Std}\,}
+\def\SR{\mbox{SR}\,}
+\def\plim{\stackrel{p}{\rightarrow}}
+\def\eps{\varepsilon}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+
+\setbeamertemplate{caption}[numbered]
+
+\mode<presentation>
+{
+  \usetheme{Rochester}
+  \usefonttheme{default}
+  %\setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\renewcommand{\sfdefault}{uop}
+
+\title{Title}
+
+\author[Aldrich]
+{Eric M. Aldrich}
+
+\institute{Department of Economics \\ University of California, Santa Cruz}
+
+\date[short date]{Date}
+
+\begin{document}
+{
+\begin{frame}
+  \titlepage
+\end{frame}
+}
+
+\begin{frame}{Overview}
+\begin{itemize}
+  \item A sample item.
+\end{itemize}
+\end{frame}
+
+\section{Introduction}
+
+\subsection{First Subsection}
+
+\begin{frame}{\underline{\textbf{Make Titles Informative}}}
+  \begin{itemize}
+  \item
+    Use \texttt{itemize} a lot.
+  \item
+    Use very short sentences or short phrases.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{\underline{\textbf{Make Titles Informative}}}
+  You can create overlays\dots
+  \begin{itemize}
+  \item using the \texttt{pause} command:
+    \begin{itemize}
+    \item
+      First item.
+      \pause
+    \item    
+      Second item.
+    \end{itemize}
+  \item
+    using overlay specifications:
+    \begin{itemize}
+    \item<3->
+      First item.
+    \item<4->
+      Second item.
+    \end{itemize}
+  \item
+    using the general \texttt{uncover} command:
+    \begin{itemize}
+      \uncover<5->{\item
+        First item.}
+      \uncover<6->{\item
+        Second item.}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Second Subsection}
+
+\begin{frame}{\underline{\textbf{Make Titles Informative}}}
+\end{frame}
+
+
+\section{Summary}
+
+\begin{frame}{\underline{\textbf{Summary}}}
+  \begin{itemize}
+  \item
+    The \alert{first main message} of your talk in one or two lines.
+  \item
+    The \alert{second main message} of your talk in one or two lines.
+  \item
+    Perhaps a \alert{third message}, but not more than that.
+  \end{itemize}
+  \vskip0pt plus.5fill
+  \begin{itemize}
+  \item
+    Outlook
+    \begin{itemize}
+    \item
+      Something you haven't solved.
+    \item
+      Something else you haven't solved.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\end{document}
+
+

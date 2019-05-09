@@ -1,0 +1,753 @@
+.. slideconf::
+   :slide_classes: appear
+
+
+==============================================================================
+Wiener Processes
+==============================================================================
+
+Stochastic Processes
+==============================================================================
+A stochastic process is a collection of random variables, indexed by time.
+
+.. raw:: <!--pause-->
+
+- More simply, it can be thought of as a single random variable that
+  evolves dynamically with time.
+
+.. raw:: <!--pause-->
+
+- Stochastic processes can be discrete/continuous time: either they
+  evolve discretely or continuously.
+
+.. raw:: <!--pause-->
+
+- They can be discrete/continuous value: at each time, they are drawn
+  from either a discrete or continuous probability distribution.
+
+.. raw:: <!--pause-->
+
+- We will develop a continuous time/continuous value model for asset
+  prices.
+
+  - Note that we only observe discrete value and discrete time
+    observations for actual asset prices.
+
+
+Properties of Expected Value
+==============================================================================
+Given random variables :math:`\smash{X}` and :math:`\smash{Y}`, define
+a new random variable :math:`\smash{Z = X + Y}`. Then:
+
+.. math::
+
+   \begin{align}
+   E[Z] & = E\left[X + Y \right] = E[X] + E[Y].
+   \end{align}
+
+.. raw:: <!--pause-->
+
+Suppose :math:`\smash{E[X] = E[Y] = \mu}`. Then:
+
+.. math::
+
+   \begin{align}
+   E[Z] & = E[X] + E[Y] = 2 \mu.
+   \end{align}
+
+Properties of Expected Value
+==============================================================================
+Extending the prior result, given random variables
+:math:`\smash{\left\{X_i\right\}_{i=1}^n}`, define a new random
+variable :math:`\smash{Z = \sum_{i=1}^n X_i}`. Then:
+
+.. math::
+
+   \begin{align}
+   E[Z] & = E\left[\sum_{i=1}^n X_i \right] = \sum_{i=1}^n E[X_i].
+   \end{align}
+
+.. raw:: <!--pause-->
+
+Suppose :math:`\smash{E[X_i] = \mu, \,\, i=1,\ldots,n}`. Then:
+
+.. math::
+
+   \begin{align}
+   E[Z] & = \sum_{i=1}^n E[X_i] = \sum_{i=1}^n \mu = n \mu.
+   \end{align}
+
+Properties of Variance
+==============================================================================
+Given random variables :math:`\smash{X}` and :math:`\smash{Y}`, define
+a new random variable :math:`\smash{Z = X + Y}`. Then:
+
+.. math::
+
+   \begin{align}
+   Var(Z) & = Var\left(X + Y \right) = Var(X) + Var(Y) + 2 Cov(X,Y).
+   \end{align}
+
+.. raw:: <!--pause-->
+
+Suppose :math:`\smash{Var(X) = Var(Y) = \sigma^2}` and that they are
+independent :math:`\smash{(Cov(X,Y)=0)}`. Then:
+
+.. math::
+
+   \begin{align}
+   Var(Z) & = Var(X) + Var(Y) = 2 \sigma^2 \\
+   \Rightarrow Sd(Z) & = \sqrt{Var(Z)} = \sqrt{2} \sigma.
+   \end{align}
+
+Properties of Variance
+==============================================================================
+Extending the prior result, given random variables
+:math:`\smash{\left\{X_i\right\}_{i=1}^n}`, define a new random
+variable :math:`\smash{Z = \sum_{i=1}^n X_i}`. Then:
+
+.. math::
+
+   \begin{align}
+   Var(Z) & = Var\left(\sum_{i=1}^n X_i \right) = \sum_{i=1}^n
+   Var(X_i) + 2 \sum_{i=1}^{n-1} \sum_{j=i+1}^n Cov(X_i,X_j).
+   \end{align}
+
+.. raw:: <!--pause-->
+
+Suppose :math:`\smash{Var(X_i) = \sigma^2, \,\, i=1,\ldots,n}` and that
+each random variable is independent of the others
+:math:`\smash{(Cov(X_i,X_j)=0, \,\, i \neq j)}`. Then:
+
+.. math::
+
+   \begin{align}
+   Var(Z) & = \sum_{i=1}^n Var(X_i) = \sum_{i=1}^n \sigma^2 = n
+   \sigma^2 \\
+   \Rightarrow Sd(Z) & = \sqrt{Var(Z)} = \sqrt{n} \sigma.
+   \end{align}
+
+Normal Random Variables
+==============================================================================
+Suppose :math:`\smash{X_i \sim N(\mu,\sigma), \,\, i=1,\ldots, n}`.
+
+.. raw:: <!--pause-->
+
+- Define a new random variable :math:`\smash{Z = \sum_{i=1}^n
+  X_i}`.
+
+.. raw:: <!--pause-->
+
+- We already know :math:`\smash{E[Z] = n\mu}` and :math:`\smash{Sd(Z)
+  = \sqrt{n} \sigma}`.
+
+.. raw:: <!--pause-->
+
+- However, the sum of Normals is also Normal: :math:`\smash{Z \sim
+  N\left(n\mu, \sqrt{n} \sigma\right)}`.
+
+Additive Normal Example
+==============================================================================
+Suppose the monthly return on an asset is Normally distributed for
+each month over the next year.
+
+.. raw:: <!--pause-->
+
+- We will assume the expected value is 1\% and standard deviation is
+  5\% and that returns across months are independent:
+
+  .. math::
+
+     \begin{align}
+     R_i \stackrel{i.i.d.}{\sim} N(0.01,0.05), \,\,\,\, i =
+     1,\ldots, 12.
+     \end{align}
+
+.. raw:: <!--pause-->
+
+- The annual return is the sum of monthly returns: :math:`\smash{R_a =
+  \sum_{i=1}^{12} R_i}`.
+
+.. raw:: <!--pause-->
+
+- The distribution of the annual return is :math:`\smash{R_a \sim
+  N(0.12,0.1732)}`.
+
+Additive Normal Example
+==============================================================================
+Note that we can also work backwards.
+
+.. raw:: <!--pause-->
+
+- Suppose you know that the annual expected return is
+  :math:`\smash{\mu_a = 0.12}`, the annual standard deviation is
+  :math:`\smash{\sigma_a = 0.1732}` and that monthly returns are
+  independent.
+
+.. raw:: <!--pause-->
+
+- The monthly expected return and standard deviation are:
+
+  .. math::
+
+     \begin{align}
+     \mu_m & = \frac{\mu_a}{n} = \frac{0.12}{12} = 0.01 \\
+     \sigma_m & = \frac{\sigma_a}{\sqrt{n}} = \frac{0.1732}{\sqrt{12}}
+     = 0.05.
+     \end{align}
+
+Wiener Process
+==============================================================================
+A random variable :math:`\smash{Z(t)}` follows a Wiener process if:
+
+.. raw:: <!--pause-->
+
+- During a short time interval :math:`\smash{\Delta t}`,
+
+  .. math::
+
+     \begin{align}
+     \Delta Z(t) & = Z(t) - Z(t-\Delta t) = \varepsilon \sqrt{\Delta
+     t}, \,\,\, \varepsilon \sim N(0,1).
+     \end{align}
+
+.. raw:: <!--pause-->
+
+- The values of :math:`\smash{\Delta Z(t)}` for any two short
+  intervals :math:`\smash{\Delta t}`  are independent.
+
+.. raw:: <!--pause-->
+
+- As :math:`\smash{\Delta t \to 0}`, we use the notation
+  :math:`\smash{dZ = \varepsilon \sqrt{dt}}`.
+
+Moments of the Wiener Process
+==============================================================================
+What are the first two moments of :math:`\smash{\Delta Z(t)}`?
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   E\left[\Delta Z(t)\right] & = E\left[\varepsilon \sqrt{\Delta
+   t}\right] = \sqrt{\Delta t} E\left[\varepsilon\right]
+   = 0 \\
+   Var\left(\Delta Z(t)\right) & = Var\left(\varepsilon \sqrt{\Delta
+   t}\right) = \Delta t Var\left(\varepsilon\right) = \Delta t \\
+   Sd\left(\Delta Z(t)\right) & = Sd\left(\varepsilon \sqrt{\Delta t}
+   \right) = \sqrt{\Delta t} Sd\left(\varepsilon\right) = \sqrt{\Delta
+   t}.
+   \end{align}
+
+Wiener Process Over Long Horizon
+==============================================================================
+Consider the evolution of :math:`\smash{Z(t)}` over a longer horizon
+:math:`\smash{T}`.
+
+.. raw:: <!--pause-->
+
+- Divide the time interval :math:`\smash{(0,T)}` into
+  :math:`\smash{N}` small intervals of equal length
+  :math:`\smash{\Delta t}`.
+
+.. raw:: <!--pause-->
+
+- Then:
+
+  .. math::
+
+     \begin{align}
+     Z(T) - Z(0) & = \sum_{i=1}^N \varepsilon_i \sqrt{\Delta t},
+     \,\,\, \varepsilon_i \stackrel{i.i.d.}{\sim} N(0,1).
+     \end{align}
+
+Wiener Process Over Long Horizon
+==============================================================================
+- The resulting moments are:
+
+  .. math::
+
+     \begin{align}
+     E\left[Z(T) - Z(0)\right] & = \sum_{i=1}^N \sqrt{\Delta t}
+     E[\varepsilon_i] = 0 \\
+     Var\left(Z(T) - Z(0)\right) & = \sum_{i=1}^N \Delta t
+     Var(\varepsilon_i) = T \\
+     Sd\left(Z(T) - Z(0)\right) & = \sum_{i=1}^N \sqrt{\Delta t}
+     Sd(\varepsilon_i) = \sqrt{T}.
+     \end{align}
+
+Wiener Process Sample Paths
+==============================================================================
+  .. image:: Wiener/samplePathsSmall.png
+     :width: 4in
+     :align: center
+
+Generalized Wiener Process
+==============================================================================
+Consider the *generalized Wiener process*:
+
+.. math::
+
+   \begin{align}
+   dX & = a dt + b dZ.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{a}` is the *drift rate* and :math:`\smash{b^2}` is the
+  *variance rate*.
+
+.. raw:: <!--pause-->
+
+- The basic Wiener process has drift rate zero and unit variance
+  rate.
+
+Generalized Wiener Process
+==============================================================================
+In discrete time, the generalize Wiener process is
+
+.. math::
+
+   \begin{align}
+   \Delta X & = a \Delta t + b \varepsilon \sqrt{\Delta t}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+The moments are:
+
+.. math::
+
+   \begin{align}
+   E[\Delta X] & = a \Delta t \\
+   Var(\Delta X) & = b^2 \Delta t \\
+   Sd(\Delta X) & = b \sqrt{\Delta t}.
+   \end{align}
+
+Wiener Process Comparison
+==============================================================================
+  .. image:: Wiener/processComparison.png
+     :width: 8in
+     :align: center
+
+Ito Process
+==============================================================================
+An *Ito process* is a generalization of a generalized Wiener process:
+
+.. math::
+
+   \begin{align}
+   dX & = a(X,t) dt + b(X,t) dZ.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- The drift rate and variance rate are functions of the process value
+  and time - i.e. they are variable.
+
+.. raw:: <!--pause-->
+
+In discrete time:
+
+.. math::
+
+   \begin{align}
+   \Delta X & = a(X,t) \Delta t + b(X,t) \varepsilon \sqrt{\Delta t}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- The discrete time analog requires an approximation: the drift and
+  variance rate are constant over small intervals :math:`\smash{\Delta
+  t}`.
+
+Model for Asset Prices
+==============================================================================
+We will use an Ito process as a model for asset prices.
+
+.. raw:: <!--pause-->
+
+- We think of percentage returns as being constant for a particular
+  asset.
+
+.. raw:: <!--pause-->
+
+- This means that the size of the moves (the drift) changes with the
+  level of the price.
+
+.. raw:: <!--pause-->
+
+- Variance also typically changes with the level of asset prices.
+
+.. raw:: <!--pause-->
+
+- This means an Ito process is a better model than a generalized
+  Wiener process.
+
+Model for Asset Prices
+==============================================================================
+We will employ the following Ito process:
+
+.. math::
+
+   \begin{align}
+   dS & = \mu S dt + \sigma S dZ.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- The drift rate function takes the specific form:
+  :math:`\smash{a(S,t) = \mu S}`.
+
+  - The drift rate increases proportionally with the asset price
+    and does not depend on time.
+
+.. raw:: <!--pause-->
+
+- The variance rate function takes the specific form:
+  :math:`\smash{b^2(S,t) = \sigma^2 S^2}`.
+
+  - The volatility, :math:`\smash{b(S,t) = \sigma S}`, increases
+    proportionally with the asset price and does not depend on time.
+
+.. raw:: <!--pause-->
+
+- This form of an Ito process is known as *geometric Brownian
+  motion*.
+
+Geometric Brownian Motion
+==============================================================================
+Geometric Brownian motion can also be written as:
+
+.. math::
+
+   \begin{align}
+   \frac{dS}{S} & = \mu dt + \sigma dZ.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\frac{dS}{S}}` is effectively the return.
+
+.. raw:: <!--pause-->
+
+- Note that returns evolve as a generalized Wiener process (constant
+  drift and variance rates).
+
+.. raw:: <!--pause-->
+	 
+- :math:`\smash{\mu}` and :math:`\smash{\sigma}` are the expected
+  return and volatility of the asset.
+
+Geometric Brownian Motion
+==============================================================================
+In discrete time, geometric Brownian motion is described as:
+
+.. math::
+
+   \begin{align}
+   \frac{\Delta S}{S} & = \mu \Delta t + \sigma \varepsilon
+   \sqrt{\Delta t}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+This means :math:`\smash{\frac{\Delta S}{S} \sim N(\mu \Delta t,
+\sigma \sqrt{\Delta t})}`.
+
+Parameter Estimation
+==============================================================================
+We can estimate the parameters :math:`\smash{\mu}` and
+:math:`\smash{\sigma}` from historical data.
+
+.. raw:: <!--pause-->
+
+- Set an interval of time, :math:`\smash{\Delta t}` in years (days,
+  weeks, months, etc).
+
+.. raw:: <!--pause-->
+
+- Collect :math:`\smash{n+1}` price observations for the beginning and
+  end of each interval.
+
+.. raw:: <!--pause-->
+
+- Compute :math:`\smash{n}` returns for the invervals.
+
+.. raw:: <!--pause-->
+
+- Set :math:`\smash{\hat{\mu}}` and :math:`\smash{\hat{\sigma}}` to
+  the sample mean and sample standard deviation of the returns.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\hat{\mu}}` is an estimate of :math:`\smash{\mu \Delta
+  t}`, *not* :math:`\smash{\mu}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\hat{\sigma}}` is an estimate of :math:`\smash{\sigma
+  \sqrt{\Delta t}}`, *not* :math:`\smash{\sigma}`.
+
+Simulating Geometric Brownian Motion
+==============================================================================
+Let's estimate the daily mean and standard deviation of Lockheed
+Martin (LMT) returns using data prior to January 1, 2015:
+
+.. code-block:: r
+
+   > library(quantmod)
+   > getSymbols("LMT",src="yahoo", from="2010-01-01", to="2014-12-31")
+   > lmtRets = dailyReturn(LMT)
+   > mu = mean(lmtRets)
+   > sigma = sd(lmtRets)
+   > cat(mu,sigma)
+   0.0008037858 0.01122918
+
+.. raw:: <!--pause-->
+
+We now simulate 1000 price paths of one year (250 trading days)
+starting on Jan 2, 2015:
+
+.. code-block:: r
+
+   > nSim = 1000
+   > nDays = 252
+   > S0 = 186.21 # price on Jan 2, 2015
+   > S = matrix(0,nrow=nDays,ncol=nSim)
+   > for(ix in 1:nSim){
+   + 	SVec = rep(0,nDays)
+   + 	SVec[1] = S0
+   + 	for(jx in 2:nDays){
+   + 		DeltaS = mu*SVec[jx-1] + sigma*SVec[jx-1]*rnorm(1)
+   + 		SVec[jx] = SVec[jx-1]+DeltaS
+   + 	}
+   +     S[,ix] = SVec
+   + }
+   > matplot(S,type='l',col=rgb(0,0,1,0.3),lty=1,ylab='',main='Simulated Price of LMT')
+
+Simulating Geometric Brownian Motion
+==============================================================================
+The closing price on Jan 4, 2016 was :math:`\smash{\$211.61}`.
+
+  .. image:: Wiener/simulation.png
+     :width: 4in
+     :align: center
+
+Ito's Lemma
+==============================================================================
+Suppose :math:`\smash{X}` follows and Ito process:
+
+.. math::
+
+   \begin{align}
+   dX & = a(X,t) dt + b(X,t) dZ.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+For some function :math:`\smash{G(X,t)}`, Ito's lemma says:
+
+.. math::
+
+   \begin{align}
+   dG & = \left(\frac{\partial G}{\partial X} a(X,t) + \frac{\partial
+   G}{\partial t} + \frac{1}{2} \frac{\partial^2 G}{\partial X^2}
+   b(X,t)^2 \right) dt + \frac{\partial G}{\partial X} b(X,t) dZ.
+   \end{align}
+
+Ito's Lemma
+==============================================================================
+Ito's lemma says that :math:`\smash{G(X,t)}` is an Ito process with
+drift and variance rates
+
+.. math::
+
+   \begin{gather}
+   \frac{\partial G}{\partial X} a(X,t) + \frac{\partial
+   G}{\partial t} + \frac{\partial^2 G}{\partial X^2} b(X,t) \\
+   \left(\frac{\partial G}{\partial X}\right)^2 b(X,t)^2.
+   \end{gather}
+
+Ito's Lemma for Geometric Brownian Motion
+==============================================================================
+Recall our model for stock prices:
+
+.. math::
+
+   \begin{align}
+   dS & = \mu S dt + \sigma S dZ.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+In this case, Ito's lemma says that :math:`\smash{G(S,t)}` follows:
+
+.. math::
+
+   \begin{align}
+   dG & = \left(\frac{\partial G}{\partial S} \mu S + \frac{\partial
+   G}{\partial t} + \frac{1}{2} \frac{\partial^2 G}{\partial S^2}
+   \sigma^2 S^2 \right) dt + \frac{\partial G}{\partial S} \sigma S
+   dZ.
+   \end{align}
+
+Application to Forward Contracts
+==============================================================================
+Recall the formula for the value of a forward contract (given current
+time :math:`\smash{t}` and horizon :math:`\smash{T-t}`):
+
+.. math::
+
+   \begin{align}
+   F = S e^{r(T-t)}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- In this case :math:`\smash{F = G(S,t)}`.
+
+.. raw:: <!--pause-->
+
+The derivatives are
+
+.. math::
+
+   \begin{align}
+   \frac{\partial F}{\partial S} & = e^{r(T-t)}, \,\,\,\,
+   \frac{\partial^2 F}{\partial S^2}  = 0, \,\,\,\, \frac{\partial
+   F}{\partial t} = -r Se^{r(T-t)}.
+   \end{align}
+
+Application to Forward Contracts
+==============================================================================
+Following Ito's lemma,
+
+.. math::
+
+   \begin{align}
+   dF & = \left(e^{r(T-t)} \mu S - r S e^{r(T-t)} \right) dt +
+   e^{r(T-t)} \sigma S dZ \\
+   & = (\mu - r) F dt + \sigma F dZ.
+   \end{align}
+
+Distribution of Prices
+==============================================================================
+What is the distribution of :math:`\smash{S}` if it follows geometric
+Brownian motion?
+
+.. raw:: <!--pause-->
+
+- We know that returns, :math:`\smash{\frac{dS}{S}}`, are Normal.
+
+.. raw:: <!--pause-->
+
+Let's use Ito's lemma to derive the law of motion of
+:math:`\smash{G(S,t) = \ln(S)}`:
+
+.. math::
+
+   \begin{align}
+   \frac{\partial G}{\partial S} & = \frac{1}{S} \,\,\,\,
+   \frac{\partial^2 G}{\partial S^2} = -\frac{1}{S} \,\,\,\,
+   \frac{\partial G}{\partial t} = 0 \\
+   \Rightarrow dG & = \left(\mu - \frac{\sigma^2}{2} \right) dt +
+   \sigma dZ.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\ln(S)}` follows a generalized Wiener process with
+  drift rate :math:`\smash{\mu - \frac{\sigma^2}{2}}` and variance rate
+  :math:`\smash{\sigma^2}`.
+
+Distribution of Prices
+==============================================================================
+The discrete analog to the process for :math:`\smash{\Delta \ln(S)}`
+is
+
+.. math::
+
+   \begin{align}
+   \Delta \ln(S) & = \left(\mu - \frac{\sigma^2}{2} \right) \Delta t +
+   \sigma \varepsilon \sqrt{\Delta t}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+For :math:`\smash{\Delta t = T}`, :math:`\smash{\Delta \ln(S) =
+\ln(S_T) - \ln(S_0)}`, which results in:
+
+.. math::
+
+   \begin{align}
+   \ln(S_T) - \ln(S_0) \sim N\left(\left(\mu -
+   \frac{\sigma^2}{2}\right)T, \sigma \sqrt{T}\right) \\
+   \Rightarrow \ln(S_T) \sim N\left(\ln(S_0) + \left(\mu -
+   \frac{\sigma^2}{2}\right)T, \sigma \sqrt{T}\right) \\
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- This means that prices are *lognormally* distributed.
+
+Lognormal Distribution
+==============================================================================
+Suppose :math:`\smash{S_T \sim LN\left(\ln(S_0) + \left(\mu -
+\frac{\sigma^2}{2}\right)T, \sigma \sqrt{T}\right)}`.
+
+.. raw:: <!--pause-->
+
+- By defintion, this means :math:`\smash{\ln(S_T) \sim
+  N\left(\ln(S_0) + \left(\mu - \frac{\sigma^2}{2}\right)T, \sigma
+  \sqrt{T}\right)}`.
+
+.. raw:: <!--pause-->
+
+- It can be shown that the mean and variance of :math:`\smash{S_T}`
+  are
+
+.. math::
+
+   \begin{align}
+   E[S_T] & = S_0 e^{\mu T} \\
+   Var(S_T) & = S_0^2 e^{2\mu T} \left(e^{\sigma^2 T}-1\right).
+   \end{align}
+
+Simulation Distribution
+==============================================================================
+We can check that our simulated geometric Brownian motion results in a
+lognormal distribution for LMT prices.
+
+.. raw:: <!--pause-->
+
+.. code-block:: r
+
+   > lnMean = S0*exp(mu*nDays)
+   > lnSD = S0*exp(mu*nDays)*sqrt(exp((sigma^2)*nDays)-1)
+   > cat(lnMean,mean(S[nDays,]))
+   228.019 230.529
+   > cat(lnSD,sd(S[nDays,]))
+   40.97119 43.21174
+
+Simulation Distribution
+==============================================================================
+We can also plot the theoretical lognormal and the empirical
+distribution of LMT prices.
+
+.. code-block:: r
+
+   > meanOfLog = log(S0) + (mu-(sigma^2)/2)*nDays
+   > sdOfLog = sigma*sqrt(nDays)
+   > priceGrid = seq(0,lnMean+6*lnSD,length=10000)
+   > theoreticalDens = dlnorm(priceGrid,meanOfLog,sdOfLog)
+   > empiricalDens = density(S[nDays,])
+   > plot(priceGrid,theoreticalDens,type='l',xlab='Prices',ylab='Density')
+   > lines(empricalDens,col='blue')
+
+Simulation Distribution
+==============================================================================
+  .. image:: Wiener/logNormDens.png
+     :width: 4in
+     :align: center

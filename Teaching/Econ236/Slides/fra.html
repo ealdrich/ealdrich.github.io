@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Forward Rate Agreements &mdash; Econ 236</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Econ 236" href="index.html" />
+    <link rel="next" title="Swaps" href="swaps.html" />
+    <link rel="prev" title="Futures on Interest Rates" href="interestFutures.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="forward-rate-agreements">
+
+<h1>Forward Rate Agreements</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="zero-rates">
+
+<h2>Zero Rates</h2>
+
+<p>A <em>zero rate</em> for maturity <span class="math notranslate nohighlight">\(\smash{T}\)</span> is the annual rate of
+interest earned on a <span class="math notranslate nohighlight">\(\smash{T}\)</span> period investment.</p>
+<ul class="simple">
+<li>There is a single payment at the end of the investment (no
+intermediate payments).</li>
+</ul>
+<ul class="simple">
+<li>It is sometimes called the <em>spot</em> rate.</li>
+</ul>
+<ul class="simple">
+<li>It is equivalent to the yield on a zero-coupon bond.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="zero-coupon-bond">
+
+<h2>Zero Coupon Bond</h2>
+
+<p>Suppose that the price of a 3-year zero-coupon bond is 97-05.</p>
+<ul>
+<li><p class="first">The continuously-compounded 3-year zero rate is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+97.15625 e^{r_3 3} &amp; = 100 \\
+\Rightarrow r_3 &amp; = \frac{1}{3} \left(\log(100) -
+\log(97.15625)\right) \\
+&amp; = 0.00961656.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="zero-curve">
+
+<h2>Zero Curve</h2>
+
+<a class="reference internal image-reference" href="_images/zeroRateTable.png"><img alt="_images/zeroRateTable.png" class="align-center" src="_images/zeroRateTable.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id1">
+
+<h2>Zero Curve</h2>
+
+<a class="reference internal image-reference" href="_images/zeroRatePlot.png"><img alt="_images/zeroRatePlot.png" class="align-center" src="_images/zeroRatePlot.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-rates">
+
+<h2>Forward Rates</h2>
+
+<p>Forward rates are future spot rates implied by current spot
+rates. Consider two investments:</p>
+<ul class="simple">
+<li>Investment 1: At <span class="math notranslate nohighlight">\(\smash{t_0}\)</span> invest $100 in a
+<span class="math notranslate nohighlight">\(\smash{t_2}\)</span> year zero
+coupon bond, earning <span class="math notranslate nohighlight">\(\smash{r_2}\)</span> (continuously compounded).</li>
+</ul>
+<ul class="simple">
+<li>Investment 2: At <span class="math notranslate nohighlight">\(\smash{t_0}\)</span> invest $100 in a
+<span class="math notranslate nohighlight">\(\smash{t_1}\)</span> year zero coupon bond (where <span class="math notranslate nohighlight">\(\smash{t_2 &gt;
+t_1}\)</span>), earning <span class="math notranslate nohighlight">\(\smash{r_1}\)</span>, and at
+<span class="math notranslate nohighlight">\(\smash{t_1}\)</span> roll the proceeds into a <span class="math notranslate nohighlight">\(\smash{t_2-t_1}\)</span>
+year zero coupon bond.</li>
+</ul>
+<ul class="simple">
+<li>The forward rate is the spot rate that would have to prevail
+at <span class="math notranslate nohighlight">\(\smash{t_1}\)</span> for the investments to be equal.</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gather}
+100e^{r_1\times t_1}e^{r_f \times (t_2-t_1)} = 100e^{r_2 \times t_2} \\
+\Rightarrow r_1 t_1 + r_f (t_2-t_1) = r_2 t_2 \\
+\Rightarrow r_f = \frac{r_2 t_2 - r_1 t_1}{t_2-t_1}.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-rate-example">
+
+<h2>Forward Rate Example</h2>
+
+<a class="reference internal image-reference" href="_images/forwardRateTable.png"><img alt="_images/forwardRateTable.png" class="align-center" src="_images/forwardRateTable.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-rates-alternative">
+
+<h2>Forward Rates: Alternative</h2>
+
+<p>Rearranging the forward rate formula:</p>
+<div class="math notranslate nohighlight">
+\[r_f = r_2 + (r_2-r_1) \frac{t_1}{t_2-t_1}.\]</div>
+<ul class="simple">
+<li>If the zero-curve is upward sloping between <span class="math notranslate nohighlight">\(\smash{t_1}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{t_2}\)</span>, <span class="math notranslate nohighlight">\(\smash{r_f &gt; r_2 &gt; r_1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If the zero-curve is downward sloping between <span class="math notranslate nohighlight">\(\smash{t_1}\)</span>
+and <span class="math notranslate nohighlight">\(\smash{t_2}\)</span>, <span class="math notranslate nohighlight">\(\smash{r_f &lt; r_2 &lt; r_1}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="notes-on-forward-rates">
+
+<h2>Notes on Forward Rates</h2>
+
+<ul class="simple">
+<li>Spot rates are <em>currently</em> available interest rates for
+investments of different maturities.</li>
+</ul>
+<ul class="simple">
+<li>Forward rates are <em>implied future</em> spot rates for a single
+maturity.</li>
+</ul>
+<ul class="simple">
+<li>Forward rates are not the same as future spot rates.<ul>
+<li>They are guaranteed rates for the future period, obtained by
+investing in current spot rates of differing maturities.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id2">
+
+<h2>Forward Rate Agreements</h2>
+
+<p>A Forward Rate Agreement (FRA) is a contract to fix an interest rate
+for borrowing/lending on a specific principal amount for a specific
+period of time.</p>
+<ul class="simple">
+<li>The contract is over the counter.</li>
+</ul>
+<ul class="simple">
+<li>The benchmark interest rate is typically LIBOR.</li>
+</ul>
+<ul class="simple">
+<li>If LIBOR is below the contracted rate at maturity, the borrower pays
+the interest differential on the principal to the lender and vice
+versa.</li>
+</ul>
+<ul class="simple">
+<li>The principal and time period are variables.</li>
+</ul>
+<ul class="simple">
+<li>Interest is due at end of period, but present value typically paid
+at beginning.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="fra-example">
+
+<h2>FRA Example</h2>
+
+<p>A company enters into an FRA to receive 4% on $100m for a 3-month
+period starting in 3 years.</p>
+<ul>
+<li><p class="first">If LIBOR is 4.5% in 3 years, cash flow to the lender at 3.25 years
+is:</p>
+<div class="math notranslate nohighlight">
+\[\smash{100,000,000 \times (0.04 - 0.045) \times 0.25 =
+-\$125,000.}\]</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">The present value is paid at year 3:</p>
+<div class="math notranslate nohighlight">
+\[- \frac{125,000}{1+0.045 \times 0.25} = -123,609.\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li>Note that for FRAs, interest rates are typically not quoted with
+continuous compounding, but with compounding frequency equal to term
+of agreement.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="fras-vs-eurodollar-futures">
+
+<h2>FRAs vs Eurodollar Futures</h2>
+
+<p>FRAs and Eurodollar futures are similar.</p>
+<ul class="simple">
+<li>Both fix an interest rate for a future period of time, tied to
+LIBOR.</li>
+</ul>
+<ul class="simple">
+<li>Eurodollar futures are exchange traded, $1m principal and 3-month
+LIBOR.</li>
+</ul>
+<ul class="simple">
+<li>FRAs are over the counter, variable principal, variable term.</li>
+</ul>
+<ul class="simple">
+<li>Eurodollar futures commit to pay the difference of principal and
+interest payment at beginning of period.</li>
+</ul>
+<ul class="simple">
+<li>FRAs commit to pay interest differential on principal at end of
+period.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="fra-notation">
+
+<h2>FRA Notation</h2>
+
+<p>Suppose an FRA is set so that company <span class="math notranslate nohighlight">\(\smash{X}\)</span> lends to
+<span class="math notranslate nohighlight">\(\smash{Y}\)</span> between <span class="math notranslate nohighlight">\(\smash{T_1}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{T_2}\)</span>.</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{R_K}\)</span>: Fixed interest rate set in FRA.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{R_F}\)</span>: Forward LIBOR rate (determined today) between
+<span class="math notranslate nohighlight">\(\smash{T_1}\)</span> and <span class="math notranslate nohighlight">\(\smash{T_2}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{R_M}\)</span>: Actual LIBOR observed at <span class="math notranslate nohighlight">\(\smash{T_1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{L}\)</span>: Principal.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="fra-cash-flows">
+
+<h2>FRA Cash Flows</h2>
+
+<p>At <span class="math notranslate nohighlight">\(\smash{T_2}\)</span> the cash flow from <span class="math notranslate nohighlight">\(\smash{Y}\)</span> to
+<span class="math notranslate nohighlight">\(\smash{X}\)</span> (possibly negative):</p>
+<div class="math notranslate nohighlight">
+\[\smash{L(R_K-R_M)(T_2-T_1)}\]</div>
+<p>If settled at time <span class="math notranslate nohighlight">\(\smash{T_1}\)</span>, the present value is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{L(R_K-R_M)(T_2-T_1)}{1+R_M(T_2-T_1)}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="fra-valuation">
+
+<h2>FRA Valuation</h2>
+
+<p>An FRA is worth zero if <span class="math notranslate nohighlight">\(\smash{R_K = R_F}\)</span>.</p>
+<ul class="simple">
+<li>At inception, <span class="math notranslate nohighlight">\(\smash{R_K}\)</span> is set equal to
+<span class="math notranslate nohighlight">\(\smash{R_F}\)</span> and the FRA has zero value.</li>
+</ul>
+<ul class="simple">
+<li>As time elapses, <span class="math notranslate nohighlight">\(\smash{R_F}\)</span> fluctuates and the value of the
+FRA changes.</li>
+</ul>
+<ul>
+<li><p class="first">Prior to <span class="math notranslate nohighlight">\(\smash{T_1}\)</span>, the value of the FRA is computed by
+substituting <span class="math notranslate nohighlight">\(\smash{R_F}\)</span> for <span class="math notranslate nohighlight">\(\smash{R_M}\)</span> and
+computing the present value:</p>
+<div class="math notranslate nohighlight">
+\[\smash{L(R_K-R_F)(T_2-T_1)e^{-R_2T_2}.}\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{R_2}\)</span> is the continuously compounded risk-free rate.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="fra-valuation-example">
+
+<h2>FRA Valuation Example</h2>
+
+<p>It is currently Jan 1, 2010.</p>
+<ul class="simple">
+<li>On Jan 1, 2009, a company entered into an FRA to receive 5.8%
+(semi-annual compounding) and pay LIBOR on $100m between July 1,
+2011 and Dec 31, 2011.</li>
+</ul>
+<ul class="simple">
+<li>The current LIBOR forward rate for July 1 - Dec 31, 2011 is 5%
+(semi-annual compounding).</li>
+</ul>
+<ul class="simple">
+<li>The 2-year risk-free interest rate (continuous compounding) is 4%.</li>
+</ul>
+<ul>
+<li><p class="first">The value of the FRA on Jan 1, 2010 is:</p>
+<div class="math notranslate nohighlight">
+\[\smash{100,000,000 \times(0.058 - 0.050) \times 0.5 \times
+e^{-0.04\times 2} = \$369,200.}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

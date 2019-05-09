@@ -1,0 +1,202 @@
+==============================================================================
+Structural Vector Autoregression
+==============================================================================
+
+Definition
+==============================================================================
+A :math:`\smash{p}` th order structural vector autoregression
+generalizes has the form:
+
+.. math::
+
+   \smash{B_0\boldsymbol{Y}_{t} = \boldsymbol{k} +
+   B_{1}\boldsymbol{Y}_{t-1} + B_{2}\boldsymbol{Y}_{t-2} +
+   \ldots + + B_{p}\boldsymbol{Y}_{t-p} +
+   \boldsymbol{u}_{t}}.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{Y_{t} = (Y_{1t},Y_{2t},\ldots,Y_{nt})^{'}}` is an
+  :math:`\smash{n \times 1}` vector of random variables.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{k} = (k_1,k_2,\ldots,k_n)^{'}}` is an
+  :math:`\smash{n \times 1}` vector of constants.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{B_{j}}` is an :math:`\smash{n \times n}` matrix of
+  autoregressive coefficients for :math:`\smash{j = 0,\ldots,p}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{u}_{t} =
+  (u_{1t},\ldots, u_{nt})^{'} }` is a vector white
+  noise process:
+
+.. math::
+
+   \smash{E[\boldsymbol{u}_{t}] = \boldsymbol{0}  \,\,\, \text{and}
+   \,\,\,
+   E[\boldsymbol{u}_{t}\boldsymbol{u}^{'}_{\tau}] =
+   \bigg\{\begin{array}{c} U \hspace{10pt} t = \tau \\ 0
+   \hspace{10pt} \text{o/w} \\ \end{array}}.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{Y}_{t}}` is referred to as a
+  :math:`\smash{SVAR(p)}`.
+
+Structural Models
+==============================================================================
+:math:`\smash{SVAR}` s
+
+.. raw:: <!--pause-->
+
+- Allow for contemporaneous relationships among the variables in
+  :math:`\smash{Y_{t}}`.
+
+	- Not only are the elements of :math:`\smash{Y_{it}}` related
+	  to :math:`\smash{Y_{1\tau},Y_{2\tau},\ldots,Y_{n\tau}}` for
+	  :math:`\smash{\tau = t-1, \ldots,t-p}`, but they are also
+	  related to :math:`\smash{Y_{1t},Y_{2t},\ldots,Y_{nt}}`.
+
+.. raw:: <!--pause-->
+	 
+- Such relationships allow for the expression of theoretical
+  (structural) economic model relationships.
+
+
+Example
+==============================================================================
+Consider the following bivariate model for asset returns,
+:math:`\smash{r_t}`, and order flow, :math:`\smash{x_t}`:
+
+.. math::
+
+   \begin{align*}
+   r_t & = \alpha_{x0} x_t + \alpha_{r1} r_{t-1} + \alpha_{x1} x_{t-1} +
+   \varepsilon_{rt} \\
+   x_t & = \beta_{r1} r_{t-1} + \beta_{x1} x_{t-1} + \varepsilon_{xt}.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{r_t}` is typically measured as the differences in log
+  prices.
+
+.. raw:: <!--pause-->
+	 
+- :math:`\smash{x_t}` is signed trade volume: total number of shares
+  traded at the offer (demand), less the total number of shares traded
+  on the bid (supply).
+
+.. raw:: <!--pause-->
+	 
+  - That is, order flow is a measure of net demand or upward price
+    preasure.
+
+.. raw:: <!--pause-->
+	 
+- Notice that :math:`\smash{r_t}` depends on :math:`\smash{x_t}` and
+  lags of both variables, whereas :math:`\smash{x_t}` only depends on
+  lags.
+
+Example
+==============================================================================
+The model can be expressed as
+
+.. math::
+
+   \begin{align}
+   \left[\begin{array}{cc} 1 & -\alpha_{x0} \\ 0 & 1 \end{array}
+   \right] \left[\begin{array}{c} r_t \\ x_t \end{array} \right] & =
+   \left[\begin{array}{cc} \alpha_{r1} & \alpha_{x1} \\ \beta_{r1} &
+   \beta_{x1} \end{array} \right] \left[\begin{array}{c} r_{t-1} \\
+   x_{t-1} \end{array} \right] + \left[\begin{array}{c} \varepsilon_{rt} \\
+   \varepsilon_{xt} \end{array} \right].
+   \end{align}
+
+:math:`\smash{SVAR}` as :math:`\smash{VAR}`
+==============================================================================
+Under the assumption that :math:`\smash{B_0}` is invertible, a
+:math:`\smash{SVAR}` can be expressed as a traditional
+:math:`\smash{VAR}`:
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   \boldsymbol{Y}_{t} & = B_0^{-1} \boldsymbol{k} +
+   B_0^{-1} B_{1}\boldsymbol{Y}_{t-1} + B_0^{-1}
+   B_{2}\boldsymbol{Y}_{t-2} + \ldots + B_0^{-1}
+   B_{p}\boldsymbol{Y}_{t-p} + B_0^{-1} \boldsymbol{u}_{t} \\
+   & = \boldsymbol{c} +
+   \Phi_{1}\boldsymbol{Y}_{t-1} + \Phi_{2}\boldsymbol{Y}_{t-2} +
+   \ldots + \Phi_{p}\boldsymbol{Y}_{t-p} +
+   \boldsymbol{\varepsilon}_{t}.
+   \end{align}
+   
+.. raw:: <!--pause-->
+	 
+- This is the reduced form representation of the
+  :math:`\smash{SVAR}`.
+
+:math:`\smash{VAR}` as :math:`\smash{SVAR}`	
+==============================================================================
+Recall that a :math:`\smash{VAR(p)}` can be expressed in terms of
+orthoganalized errors via its :math:`\smash{VMA(\infty)}`
+representation:
+
+.. math::
+
+   \begin{align*}
+   \boldsymbol{Y}_{t} & = \boldsymbol{\mu} +
+   H^{-1}H\boldsymbol{\varepsilon}_{t} +
+   \Psi_{1}(H^{-1}H)\boldsymbol{\varepsilon}_{t-1} + \ldots \\
+   & = \boldsymbol{\mu} + J_{0}\boldsymbol{u}_{t} +
+   J_{1}\boldsymbol{u}_{t-1} + J_{2}\boldsymbol{u}_{t-2} + \ldots
+   \end{align*}
+
+.. raw:: <!--pause-->
+	 
+- :math:`\smash{H}` is the matrix such that :math:`\smash{\,\,\,\,H
+  \Omega H^{'} = D}`, where :math:`\smash{\text{E}[\varepsilon_t
+  \varepsilon_t^{\prime}] = \Omega}`.
+
+.. raw:: <!--pause-->
+
+Consider the system
+
+.. math::
+
+   \smash{H \boldsymbol{Y}_{t} = H \boldsymbol{c} +
+   H \Phi_{1}\boldsymbol{Y}_{t-1} + H
+   \Phi_{2}\boldsymbol{Y}_{t-2} + \ldots + H
+   \Phi_{p}\boldsymbol{Y}_{t-p} + H
+   \boldsymbol{\varepsilon}_{t}}.
+
+.. raw:: <!--pause-->
+	 
+- This is a :math:`\smash{SVAR}` with :math:`\smash{B_0 =
+  H}`. :math:`\smash{B_i = H \Phi_i}` and orthogonal errors
+  :math:`\smash{\boldsymbol{u}_t = H \boldsymbol{\varepsilon}_t}`.
+
+Identification
+==============================================================================
+A :math:`\smash{SVAR}` is identified if the number of parameters in
+:math:`\smash{B_0}` and :math:`\smash{D}` are equal to those of
+:math:`\smash{\Omega}`.
+
+.. raw:: <!--pause-->
+
+- Since :math:`\smash{D}` is diagonal (:math:`\smash{n}` parameters),
+  :math:`\smash{B_0}` can have at most :math:`\smash{n(n-1)/2}`
+  parameters.
+
+.. raw:: <!--pause-->
+
+- For example, this condition is satisfied if :math:`\smash{B_0}` is
+  lower triangular (with ones on the diagonal).

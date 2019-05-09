@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ARMA Processes &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Linear Time Series Models" href="../linearTS.html" />
+    <link rel="next" title="Causality and Invertibility" href="causality.html" />
+    <link rel="prev" title="Autoregressive Processes" href="ar.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="arma-processes">
+
+<h1>ARMA Processes</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="process">
+
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> Process</h2>
+
+<p>Given white noise <span class="math">\(\smash{\{\varepsilon_t\}}\)</span>, consider the process</p>
+<div class="math">
+\[\smash{Y_t = c + \phi_1 Y_{t-1} + \ldots + \phi_p Y_{t-p} + \varepsilon_t +
+\theta_1 \varepsilon_{t-1} + \ldots \theta_q \varepsilon_{t-q},}\]</div>
+<p>where <span class="math">\(\smash{c}\)</span>, <span class="math">\(\smash{\{\phi_i\}_{i=1}^p}\)</span> and
+<span class="math">\(\smash{\{\theta_i\}_{i=1}^q}\)</span> are constants.</p>
+<ul class="simple">
+<li>This is an <span class="math">\(\smash{ARMA(p,q)}\)</span> process.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> Process</h2>
+
+<p>We can rewrite in terms of lag operators:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\phi(L) Y_t &amp; = c + \theta(L) \varepsilon_t,
+\end{align}\end{split}\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\phi(L) &amp; = 1-\phi_1 L - \phi_2 L^2 - \ldots - \phi_p L^p \\
+\theta(L) &amp; = 1+\theta_1 L + \theta_2 L^2 + \ldots + \theta_q
+L^q.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="as">
+
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> as <span class="math">\(\smash{MA(\infty)}\)</span></h2>
+
+<p>Recall</p>
+<ul class="simple">
+<li><span class="math">\(\smash{\phi(L) = (1-\lambda_1 L)(1-\lambda_2 L) \cdots
+(1-\lambda_pL).}\)</span></li>
+</ul>
+<ul class="simple">
+<li>If the roots, <span class="math">\(\smash{\frac{1}{|\lambda_i|} &gt; 1}\)</span>, <span class="math">\(\smash{\forall i}\)</span>
+then <span class="math">\(\smash{|\lambda_i| &lt; 1}\)</span>, <span class="math">\(\smash{\forall i}\)</span> and</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+\phi(L)^{-1} &amp; = (1-\lambda_1 L)^{-1}(1-\lambda_2
+L)^{-1} \cdots (1-\lambda_pL)^{-1} \\
+&amp; = \left(\sum_{j=0}^{\infty} \lambda_1^j
+L^j\right) \left(\sum_{j=0}^{\infty} \lambda_2^j L^j\right)
+\cdots \left(\sum_{j=0}^{\infty} \lambda_p^j L^j\right).
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> as <span class="math">\(\smash{MA(\infty)}\)</span></h2>
+
+<p>Thus, if the roots of <span class="math">\(\smash{\phi(L)}\)</span> all lie outside the unit circle,</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_t &amp; = \mu + \psi(L) \varepsilon_t,
+\end{align*}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\mu = \phi(L)^{-1} c}\)</span> and <span class="math">\(\smash{\psi(L) = \phi(L)^{-1}
+\theta(L)}\)</span>.</p>
+<ul class="simple">
+<li>This restriction on the roots of <span class="math">\(\smash{\phi(L)}\)</span> results in</li>
+</ul>
+<div class="math">
+\[\begin{split}\smash{\sum_{i=1}^{\infty} |\psi_i| &lt; \infty.}\end{split}\]</div>
+<ul class="simple">
+<li>Hence, <span class="math">\(\smash{Y_t}\)</span> is an <span class="math">\(\smash{MA(\infty)}\)</span> process and is weakly
+stationary.</li>
+</ul>
+<ul class="simple">
+<li>The stationarity of an <span class="math">\(\smash{ARMA(p,q)}\)</span> depends only on
+<span class="math">\(\smash{\{\phi_i\}_{i=1}^p}\)</span> and not on <span class="math">\(\smash{\{\theta_i\}_{i=1}^q}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="expectation-of">
+
+<h2>Expectation of <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<p>Assume <span class="math">\(\smash{Y_t}\)</span> is weakly stationary: the roots of <span class="math">\(\smash{\phi(L)}\)</span>
+lie outside the unit circle.</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\text{E}[Y_t] &amp; = c + \phi_1 \text{E}[Y_{t-1}] + \ldots + \phi_p
+\text{E}[Y_{t-p}] \\
+&amp; \hspace{0.75in} + \text{E}[\varepsilon_t] + \theta_1 \text{E}[\varepsilon_{t-1}] + \ldots
++ \theta_q \text{E}[\varepsilon_{t-q}]\\
+&amp; = c + \phi_1 \text{E}[Y_t] + \ldots + \phi_p \text{E}[Y_t] \\
+\Rightarrow \text{E}[Y_t] &amp; = \frac{c}{1-\phi_1 -
+\ldots - \phi_p} = \mu.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>This is the same mean as an <span class="math">\(\smash{AR(p)}\)</span> process with parameters
+<span class="math">\(\smash{c}\)</span> and <span class="math">\(\smash{\{\phi_i\}_{i=1}^p}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="autocovariances-of">
+
+<h2>Autocovariances of <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<p>Given that <span class="math">\(\smash{\mu = c/(1-\phi_1 - \ldots - \phi_p)}\)</span> for weakly
+stationary <span class="math">\(\smash{Y_t}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+Y_t &amp; = \mu(1-\phi_1 - \ldots - \phi_p) + \phi_1
+Y_{t-1} + \ldots + \phi_p Y_{t-p} \\
+&amp; \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+\varepsilon_{t-q} \\
+\Rightarrow &amp; (Y_t - \mu) = \phi_1(Y_{t-1} - \mu) +
+\ldots + \phi_p(Y_{t-p} - \mu) \\
+&amp; \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+\varepsilon_{t-q}.
+\end{align*}\end{split}\]\[\begin{split}\begin{align*}
+\gamma_j &amp; = \text{E}\left[(Y_t - \mu) (Y_{t-j} -
+\mu)\right] \\
+&amp; = \phi_1 \text{E}\left[(Y_{t-1} - \mu) (Y_{t-j} -
+\mu)\right] + \ldots \\
+&amp; \hspace{0.5in} + \phi_p \text{E}\left[(Y_{t-p} - \mu) (Y_{t-j} -
+\mu)\right] \\
+&amp; \hspace{1in} + \text{E}\left[\varepsilon_t (Y_{t-j} - \mu)\right] +
+\theta_1 \text{E}\left[\varepsilon_{t-1} (Y_{t-j} - \mu)\right] \\
+&amp; \hspace{2.25in} + \ldots +
+\theta_q \text{E}\left[\varepsilon_{t-q} (Y_{t-j} - \mu)\right]
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Autocovariances of <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<ul class="simple">
+<li>For <span class="math">\(\smash{j &gt; q}\)</span>, <span class="math">\(\smash{\gamma_j}\)</span> will follow the same law of
+motion as for an <span class="math">\(\smash{AR(p)}\)</span> process:</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+\gamma_j &amp; = \phi_1 \gamma_{j-1} + \ldots + \phi_p \gamma_{j-p}
+\,\,\,\,\, \text{ for } j = q+1, \ldots
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>These values will not be the same as the <span class="math">\(\smash{AR(p)}\)</span> values for
+<span class="math">\(\smash{j = q+1, \ldots}\)</span>, since the initial <span class="math">\(\smash{\gamma_0, \ldots,
+\gamma_q}\)</span> will differ.</li>
+</ul>
+<ul class="simple">
+<li>The first <span class="math">\(\smash{q}\)</span> autocovariances, <span class="math">\(\smash{\gamma_0, \ldots,
+\gamma_q}\)</span>, of an <span class="math">\(\smash{ARMA(p,q)}\)</span> will be more complicated than
+those of an <span class="math">\(\smash{AR(p)}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="redundancy-of">
+
+<h2>Redundancy of <span class="math">\(\smash{ARMA(p,q)}\)</span></h2>
+
+<p>Factoring the polynomials <span class="math">\(\smash{\phi(L)}\)</span> and <span class="math">\(\smash{\theta(L)}\)</span>, an
+<span class="math">\(\smash{ARMA(p,q)}\)</span> can be written as</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+(1-\lambda_1 L) \cdots (1-\lambda_p L) (Y_t - \mu) &amp; = (1 -
+\eta_1 L) \cdots (1 - \eta_q L) \varepsilon_t.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>If two of the roots are identical, <span class="math">\(\smash{\lambda_i = \eta_j}\)</span>, both
+polynomials can be divided by <span class="math">\(\smash{(1-\lambda_i L)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The result would be an <span class="math">\(\smash{ARMA(p-1, q-1)}\)</span>:</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align*}
+(1-\phi_1^* L - \ldots - \phi_{p-1}^* L^{p-1}) (Y_t - \mu) &amp; = (1 +
+\theta_1^* L + \ldots + \theta_{q-1}^* L^{q-1}) \varepsilon_t.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

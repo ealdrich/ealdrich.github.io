@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GMM Optimal Weighting Matrix &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Generalized Method of Moments" href="../gmmIndex.html" />
+    <link rel="next" title="GMM Over-Identifying Restrictions" href="restrict.html" />
+    <link rel="prev" title="Generalized Method of Moments" href="gmm.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="gmm-optimal-weighting-matrix">
+
+<h1>GMM Optimal Weighting Matrix</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="moment-conditions-covariance">
+
+<h2>Moment Conditions' Covariance</h2>
+
+<p>Suppose
+<span class="math">\(\smash{\{\boldsymbol{h}(\boldsymbol{\theta},
+\boldsymbol{Y}_{t})\}_{t=1}^{T}}\)</span> is strictly stationary and
+define</p>
+<div class="math">
+\[\smash{\Gamma_{\nu} =
+E[\boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{Y}_{t})
+\boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{Y}_{t-\nu})^{'}]}\]</div>
+<p>and</p>
+<div class="math">
+\[\begin{align}
+S =  \sum_{\nu=-\infty}^{\infty} \Gamma_{\nu} = \Gamma_{0} +
+\sum_{\nu=1}^{\infty} (\Gamma_{\nu} + \Gamma_{\nu}^{'}).
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="convergence-in-distribution">
+
+<h2>Convergence in Distribution</h2>
+
+<p>Asymptotic theory dictates</p>
+<div class="math">
+\[\smash{\sqrt{T}(\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T}) -
+E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})])
+\overset{d}{\rightarrow} N(0,S)}\]</div>
+<p>where</p>
+<div class="math">
+\[\smash{ \sum_{t=1}^{T} \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T})
+\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T})^{'}
+\overset{p}{\rightarrow} S}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="optimal-weighting-matrix">
+
+<h2>Optimal Weighting Matrix</h2>
+
+<p>Another way to say this (intuitively):</p>
+<div class="math">
+\[\smash{\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)
+\overset{approx}{\sim}
+N\left(E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})],
+\frac{S}{T}\right)}\]</div>
+<p>The optimal GMM weighting matrix is <span class="math">\(\smash{S^{-1}}\)</span>:</p>
+<div class="math">
+\[\smash{Q_{T}(\boldsymbol{\theta}) =
+\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)^{'}S^{-1}
+\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="optimal-matrix-estimation">
+
+<h2>Optimal Matrix Estimation</h2>
+
+<p>If <span class="math">\(\smash{\{\boldsymbol{h}(\boldsymbol{\theta_{0}},
+\boldsymbol{y}_{t})\}_{t=-\infty}^{\infty}}\)</span> is serially uncorrelated,
+<span class="math">\(\smash{S}\)</span> is consistently estimated by</p>
+<div class="math">
+\[\smash{S_{T}^{*} = \frac{1}{T} \sum_{t=1}^{T}
+\boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t})
+\boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t})^{'}}.\]</div>
+<p>If it is serially correlated,</p>
+<div class="math">
+\[\smash{S_{T}^{*} = \Gamma_{0,T}^{*} +  \sum_{\nu =1}^{q}\left(1 -
+\frac{\nu}{q+1}\right)\left(\Gamma_{\nu,T}^{*} +
+\Gamma_{\nu,T}^{* \hspace{3pt}'}\right)},\]</div>
+<p>where</p>
+<div class="math">
+\[\smash{\Gamma_{\nu,T}^{*} =  \frac{1}{T}  \sum_{t = \nu+1}^{T}
+\boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t})
+\boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t-\nu})^{'}}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Optimal Matrix Estimation</h2>
+
+<p>Notice that <span class="math">\(\smash{S^{*}}\)</span> depends on
+<span class="math">\(\smash{\boldsymbol{\theta}_{0}}\)</span>, which is unknown.</p>
+<ul class="simple">
+<li>We substitute an estimate <span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>
+for <span class="math">\(\smash{\boldsymbol{\theta}_{0}}\)</span> in <span class="math">\(\smash{S^{*}}\)</span>
+and denote the estimated value as <span class="math">\(\smash{\hat{S}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\hat{S}}\)</span> may make use of appropriate definitions of
+<span class="math">\(\smash{\hat{\Gamma}_{\nu,T}}\)</span> if there is serial
+correlation.</li>
+</ul>
+<p>Under certain regularity conditions</p>
+<div class="math">
+\[\smash{\hat{S} \overset{p}{\rightarrow} S}.\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="two-stage-estimation">
+
+<h2>Two Stage Estimation</h2>
+
+<p>Note that we want to use <span class="math">\(\smash{\hat{S}^{-1}}\)</span> as the optimal
+weighting matrix to compute <span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>,
+but that <span class="math">\(\smash{\hat{S}^{-1}}\)</span> depends on
+<span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</p>
+<ul class="simple">
+<li>To compute optimal <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span>,
+first estimate <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> with
+<span class="math">\(\smash{W_T = I_{r}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Use the initial <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> to
+compute <span class="math">\(\smash{\hat{S}_{T}(\hat{\boldsymbol{\theta}}_{gmm})}\)</span>
+and set <span class="math">\(\smash{W_T =
+\hat{S}_{T}(\hat{\boldsymbol{\theta}}_{gmm})^{-1}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Compute <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> again.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Two Stage Estimation</h2>
+
+<p>How is the two-stage procedure better?</p>
+<ul class="simple">
+<li>That is, why is <span class="math">\(\smash{S^{-1}}\)</span> optimal?</li>
+</ul>
+<ul class="simple">
+<li>Using <span class="math">\(\smash{S^{-1}}\)</span> or a consistent estimate,
+<span class="math">\(\smash{\hat{S}^{-1}}\)</span>, results in
+<span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> with less
+estimation error.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="asymptotic-distribution-of-gmm-estimator">
+
+<h2>Asymptotic Distribution of GMM Estimator</h2>
+
+<p>A central limit theorem exists for
+<span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span>:</p>
+<div class="math">
+\[\smash{\sqrt{T} (\hat{\boldsymbol{\theta}}_{gmm} -
+\boldsymbol{\theta}_{0}) \overset{d}{\rightarrow} N(0,V)},\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+V = (DS^{-1}D^{'})^{-1} \\
+\frac{\partial \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T})}
+{\partial\boldsymbol{\theta}} \bigg|_{\boldsymbol{\theta} =
+\boldsymbol{\theta}_{0}} \overset{p}{\longrightarrow} D.
+\end{gather}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Asymptotic Distribution of GMM Estimator</h2>
+
+<p>That is, for large <span class="math">\(\smash{T}\)</span>,</p>
+<div class="math">
+\[\smash{\hat{\boldsymbol{\theta}}_{gmm} \overset{approx}{\sim}
+N(\boldsymbol{\theta}_{0},  \frac{\hat{V}_{T}}{T})},\]</div>
+<p>where,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\hat{V}_{T} &amp; = (\hat{D}_{T}\hat{S}_{T}^{-1}\hat{D}_{T}^{'})^{-1}
+\\
+\hat{D}_{T} &amp; = \frac{\partial
+\boldsymbol{g}_{T}(\boldsymbol{\theta}|
+\boldsymbol{\mathcal{Y}_T})}{\partial
+\boldsymbol{\theta}}\bigg|_{\boldsymbol{\theta} =
+\hat{\boldsymbol{\theta}}}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

@@ -1,0 +1,376 @@
+.. slideconf::
+   :slide_classes: appear
+
+=========================
+Kernel Density Estimation
+=========================
+
+
+Data Samples
+============
+Suppose we are presented with a set of data observations :math:`y_1,
+y_2, \ldots, y_n`.
+
+.. rst-class:: to-build
+
+- In this course we will often assume that the observations are
+  realizations of random variables :math:`Y_1, Y_2, \ldots, Y_n`,
+  where :math:`Y_i \sim F`, :math:`\forall i`.
+
+.. rst-class:: to-build
+
+- That is, we will assume :math:`Y_i` all come from the same
+  distribution.
+
+.. rst-class:: to-build
+
+- In the case of financial data, we will also view the
+  observations :math:`y_1, y_2, \ldots, y_n` as being ordered by
+  time.
+
+.. rst-class:: to-build
+
+- This is referred to as a *time series*.
+
+.. ifnotslides::
+
+  The code for generating the plots of this section will be provided
+  below. To run the code, first load data into R with
+  the following script.::
+
+    # Load the Ecdat package which has the SP500 data used in the text
+    #install.packages("quantmod")
+    library(quantmod)
+
+    # Get the price data
+    getSymbols("^GSPC", from="1981-01-01", to="1991-04-30")
+
+    # Compute returns from difference of log adjusted closing prices
+    spRets = diff(log(GSPC$GSPC.Adjusted))
+    spRets = spRets[-1,]
+
+
+Time Series Data Example
+========================
+  .. ifslides::
+
+  .. image:: /_static/KDE/sp500TimeSeries.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/KDE/sp500TimeSeries.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    # Plot the time series
+    par(bg="white")
+    plot(spRets, main="SP500 Daily Returns")
+    dev.copy(png, file="sp500TimeSeries.png", height=6, width=10, units='in', res=200)
+    graphics.off()
+
+
+Histogram
+=========
+Suppose we have dataset :math:`y_1, y_2, \ldots, y_n` drawn from the
+same distribution :math:`F`.
+
+.. rst-class:: to-build
+
+-  We typically don't know :math:`F` and would like to estimate it
+   with the data.
+
+.. rst-class:: to-build
+
+-  A simple estimate of :math:`F` is obtained by a histogram.
+
+.. rst-class:: to-build
+
+A histogram:
+
+.. rst-class:: to-build
+
+-  Divides the possible values of the random variable(s) :math:`y`
+   into :math:`K` regions, called bins.
+
+.. rst-class:: to-build
+
+-  Counts the number of observations that fall into each bin.
+
+
+Histogram of SP500 Daily Returns
+================================
+  .. ifslides::
+
+  .. image:: /_static/KDE/sp500Hist.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/KDE/sp500Hist.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    # Plot histograms
+    par(mfrow=c(2,2), bg="white")
+    hist(spRets, breaks=30, xlab="SP500 daily returns", main="30 cells, full range")
+    hist(spRets, breaks=30, xlim=c(-0.04,0.04), xlab="SP500 daily returns",
+         main="30 cells, central range")
+    hist(spRets, breaks=20, xlim=c(-0.04,0.04), xlab="SP500 daily returns",
+         main="20 cells, central range")
+    hist(spRets, breaks=50, xlim=c(-0.04,0.04), xlab="SP500 daily returns",
+         main="50 cells, central range")
+    dev.copy(png, file="sp500Hist.png", height=8, width=10, units='in', res=200)
+    graphics.off()
+
+
+Kernel Density Estimation
+=========================
+Histograms are crude estimators of density functions. 
+
+.. rst-class:: to-build
+
+-  The *kernel density estimator* (KDE) is a better
+   estimator.
+
+.. rst-class:: to-build
+
+-  A KDE uses a kernel, which is a probability density function
+   symmetric about zero.
+
+.. rst-class:: to-build
+
+-  Often, the kernel is chosen to be a standard normal
+   density.
+
+.. rst-class:: to-build
+
+-  The kernel has *nothing* to do with the true density of
+   the data (i.e. choosing a normal kernel doesn't mean the data is
+   normally distributed).
+
+
+Kernel Density Estimation
+=========================
+
+Given random variables :math:`Y_1, Y_2, \ldots, Y_n`, the KDE is
+
+.. rst-class:: to-build 
+
+.. math::
+
+   \widehat{f(y)} = \frac{1}{nb} \sum_{i=1}^n K\left(\frac{Y_i - y}{b}
+   \right).
+
+
+Kernel Density Estimation
+=========================
+The KDE superimposes a density function (the kernel) over each data
+observation.
+
+.. rst-class:: to-build
+
+-  The bandwidth parameter :math:`b` dictates the width of the
+   kernel.
+
+.. rst-class:: to-build
+
+-  Larger values of :math:`b` mean that the kernels of adjacent
+   observations have a larger effect on the density estimate at a
+   particular observation, :math:`y_i`.
+
+.. rst-class:: to-build
+
+-  In this fashion, :math:`b` dictates the amount of data
+   *smoothing*.
+
+
+Illustration of KDE Estimator
+=============================
+  .. ifslides::
+
+  .. image:: /_static/KDE/kde-illustration.png
+     :width: 5.25in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/KDE/kde-illustration.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+Kernel Density Bandwidth
+========================
+Choosing :math:`b` requires a tradeoff between bias and
+variance.
+
+.. rst-class:: to-build
+
+-  Small values of :math:`b` detect fine features of the true
+   density but permit a lot of random variation.
+
+  .. rst-class:: to-build
+
+  -  The KDE has high variance and low bias.
+
+  .. rst-class:: to-build
+
+  -  If :math:`b` is too small, the KDE is *undersmoothed* or
+     *overfit* - it adheres too closely to the data.
+
+Kernel Density Bandwidth
+========================
+
+-  Large values of :math:`b` smooth over random variation but
+   obscure fine details of the distribution.
+
+  .. rst-class:: to-build
+
+  -  The KDE has low variance and high bias. 
+
+  .. rst-class:: to-build
+
+  -  If :math:`b` is too large, the KDE is *oversmoothed* or
+     *underfit* - it misses features of the true density.
+
+
+KDE of S\&P 500 Daily Returns
+=============================
+  .. ifslides::
+
+  .. image:: /_static/KDE/sp500KDE.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/KDE/sp500KDE.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    # Kernel density estimates
+    par(bg="white")
+    plot(density(spRets, adjust=1/3), lty=2, main="S&P 500 Daily Returns",
+                 xlim=c(-0.04,0.04))
+    lines(density(spRets))
+    lines(density(spRets, adjust=3), lty=3)
+    legend("topleft", legend=c("adjust=1", "adjust=1/3", "adjust=3"), lty=c(1,2,3))
+    dev.copy(png, file="sp500KDE.png", height=8, width=10, units='in', res=200)
+    graphics.off()
+
+
+KDE of S\&P 500 Daily Returns
+=============================
+The KDE of the S\&P 500 returns suggests a density that resembles a
+normal distribution.
+
+.. rst-class:: to-build
+
+-  We can compare the KDE with a normal distribution with :math:`\mu
+   = \hat{\mu}` and :math:`\sigma^2 = \hat{\sigma}^2`, where
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{\mu} = \frac{1}{n}\sum_{i=1}^n y_i
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{\mu})^2.
+
+
+KDE of S\&P 500 Daily Returns
+=============================
+
+-  We can also compare the KDE with a normal distribution with
+   :math:`\mu = \tilde{\mu}` and :math:`\sigma^2 = \tilde{\sigma}^2`
+
+.. rst-class:: to-build
+
+.. math::
+
+   \tilde{\mu} = \text{median}\left(\{Y_i\}_{i=1}^n\right)
+
+.. rst-class:: to-build
+
+.. math::
+
+   \tilde{\sigma}^2 & = \text{MAD}\left(\{Y_i\}_{i=1}^n\right) =
+   \text{median}\left(\{|y_i - \tilde{\mu}|\}_{i=1}^n\right).
+
+
+Comparison of KDE with Normal Densities
+=======================================
+  .. ifslides::
+
+  .. image:: /_static/KDE/sp500KDENorm.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/KDE/sp500KDENorm.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    # Comparison of KDE with normals
+    par(mfrow=c(1,2), bg="white")
+    normalDens = rnorm(1000000, mean(spRets), sd(spRets))
+    plot(density(spRets), xlim=c(-0.04,0.04), main="Standard Estimates")
+    lines(density(normalDens), lty=2)
+    legend("topleft", legend=c("Estimated density", "Normal density"),
+           lty=c(1,2), cex=0.7, bty='n')
+    normalDens = rnorm(1000000, median(spRets), mad(spRets))
+    plot(density(spRets), xlim=c(-0.04,0.04), main="Robust Estimates")
+    lines(density(normalDens), lty=2)
+    legend("topleft", legend=c("Estimated density", "Normal density"),
+           lty=c(1,2), cex=0.7, bty='n')
+    dev.copy(png, file="sp500KDENorm.png", height=6, width=10, units='in', res=200)
+    graphics.off()
+
+
+Comparison of KDE with Normal Densities
+=======================================
+Outlying observations in the S\&P 500 returns have great influence
+on the estimates :math:`\hat{\mu}` and :math:`\hat{\sigma}^2`. 
+
+.. rst-class:: to-build
+
+-  As a result, a :math:`N(\hat{\mu}, \hat{\sigma})` deviates
+   substantially from the KDE.
+
+.. rst-class:: to-build
+
+The median, :math:`\tilde{\mu}`, and median absolute deviation,
+:math:`\tilde{\sigma}^2`, are less sensitive (more robust) to
+outliers.
+
+.. rst-class:: to-build
+
+-  As a result, a :math:`N(\tilde{\mu}, \tilde{\sigma})` deviates
+   less from the KDE.
+
+.. rst-class:: to-build
+
+-  The fit is still not perfect - asset returns are often better
+   approximated with a heavy tailed distribution, like the
+   :math:`t`.

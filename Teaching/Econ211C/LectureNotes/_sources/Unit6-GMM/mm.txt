@@ -1,0 +1,225 @@
+==============================================================================
+Method of Moments
+==============================================================================
+
+Method of Moments
+==============================================================================
+Suppose :math:`\smash{\{y_{t}\}_{t=1}^{T}}` is an i.i.d. sample of
+random variable :math:`\smash{Y}` from density
+:math:`\smash{f_{Y}(y|\boldsymbol{\theta})}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{\theta}}` is a :math:`\smash{(k \times
+  1)}` dimensional vector of parameters.
+
+.. raw:: <!--pause-->
+
+Suppose :math:`\smash{k}` population moments can be written as
+functions of :math:`\smash{\boldsymbol{\theta}}`:
+
+.. math::
+
+   \smash{E[Y_{t}^{i}] = \mu_{i}(\boldsymbol{\theta}), \,\,\, i =
+   i_{1}, i_{2}, \ldots , i_{k}.}
+
+Method of Moments
+==============================================================================
+The method of moments estimator,
+:math:`\smash{\hat{\boldsymbol{\theta}}_{mm}}`, of
+:math:`\smash{\boldsymbol{\theta}}` is the value:
+
+.. math::
+
+   \smash{\mu_{i}(\hat{\theta}_{mm}) =  \frac{1}{T} 
+   \sum_{t=1}^{T} y_{t}^{i}, \,\,\, i = i_{1}, i_{2},\ldots,i_{k}}.
+
+.. raw:: <!--pause-->
+
+- Note that if you need to estimate :math:`\smash{k}` parameters, you
+  must specify exactly :math:`\smash{k}` moments.
+
+Example: Normal
+==============================================================================
+- :math:`\smash{\boldsymbol{\theta} = (\mu,\sigma^{2})'}`
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{k = 2}`
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{E[Y^{1}] = \mu}`
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{E[Y^{2}] = Var(Y) + E[Y]^{2} = \sigma^{2} + \mu^2}`.
+
+Example: Beta Distribution
+==============================================================================
+Suppose :math:`\smash{Y\sim \text{Beta}(\alpha,\beta)}`:
+
+.. math::
+
+   \smash{f_{Y}(y|\alpha,\beta) =  \frac{\Gamma(\alpha +
+   \beta)}{\Gamma(\alpha)\Gamma(\beta)}y^{\alpha-1}(1-y)^{\beta-1}}.
+
+.. raw:: <!--pause-->
+
+In this case, :math:`\smash{\boldsymbol{\theta} = (\alpha,\beta)'}`
+and:
+
+.. math::
+
+   \begin{align}
+   \mu_{1} & = E[Y^{1}] =  \frac{\alpha}{\alpha + \beta} \\
+   \sigma^{2} & = Var(Y) = \frac{\alpha \beta}{(\alpha +
+   \beta)^{2}(\alpha + \beta + 1)} \\
+   \end{align}
+
+Example: Beta Distribution
+==============================================================================
+
+.. math::
+
+   \begin{align}
+   \implies \mu_{2} & = E[Y^{2}] \\
+   & = Var(Y) + E[Y^{1}]^{2} \\
+   & = \frac{\alpha \beta}{(\alpha + \beta)^{2}(\alpha + \beta + 1)} +
+   \frac{\alpha^{2}}{(\alpha + \beta)^{2}} \\
+   & = \frac{\alpha \beta + \alpha^{2}(\alpha + \beta +1)}{(\alpha +
+   \beta)^{2}(\alpha + \beta + 1)}.
+   \end{align}
+
+Example: Beta Distribution
+==============================================================================
+Solve for :math:`\smash{\beta}` using :math:`\smash{\mu_{1}}`:
+
+.. math::
+
+   \begin{gather}
+   \alpha = \mu_{1}(\alpha + \beta) \\
+   \implies \alpha = \mu_{1}\alpha + \mu_{1}\beta \\
+   \implies \alpha(1-\mu_{1}) = \mu_{1}\beta \\
+   \implies \beta =  \frac{\alpha(1-\mu_{1})}{\mu_{1}}.
+   \end{gather}
+
+Example: Beta Distribution
+==============================================================================
+From the relationship :math:`\smash{\alpha = \mu_{1}(\alpha + \beta)}`
+we have:
+
+.. math::
+
+   \begin{gather}
+   (\alpha + \beta) = \frac{\alpha}{\mu_{1}} \\
+   (\alpha + \beta +1) =  \frac{\alpha}{\mu_{1}} +  1 =
+   \frac{\alpha + \mu_{1}}{\mu_{1}}.
+   \end{gather}
+
+Example: Beta Distribution
+==============================================================================
+Now substitute for :math:`\smash{\beta}`,
+:math:`\smash{(\alpha+\beta)}` and :math:`\smash{(\alpha+\beta+1)}` in
+:math:`\smash{\mu_{2}}`:
+
+.. math::
+
+   \begin{align}
+   \mu_{2} & = \frac{\alpha^{2}\left(
+   \frac{1-\mu_{1}}{\mu_{1}}\right) + \alpha^{2}\left( \frac{\alpha
+   +\mu_{1}}{\mu_{1}}\right)}{ \frac{\alpha^{2}}{\mu^2_{1}}\cdot
+   \frac{\alpha + \mu_{1}}{\mu_{1}}} \\
+   & =  \frac{1 - \mu_{1} + \alpha + \mu_{1}}{ \frac{\alpha +
+   \mu_{1}}{\mu_{1}^{2}}} \\
+   & = \frac{(1+\alpha)\mu_{1}^{2}}{\alpha + \mu_{1}}.
+   \end{align}
+
+Example: Beta Distribution
+==============================================================================
+.. math::
+
+   \begin{align}
+   \implies \alpha \mu_{2} + \mu_{1}\mu_{2} & = \mu_{1}^{2}+\alpha
+   \mu_{1}^{2} \\
+   \implies \alpha(\mu_{2}-\mu_{1}^{2}) & = \mu_{1}^{2} -
+   \mu_{1}\mu_{2} \\
+   \implies \alpha =  \frac{\mu_{1}^{2} -
+   \mu_{1}\mu_{2}}{\underset{\sigma^{2}}{\underbrace{\mu_{2}-\mu_{1}^{2}}}}
+   & = \frac{\mu_{1}^{2} - \mu_{1}\mu_{2} + \mu_{1}^{3} -
+   \mu_{1}^{3}}{\sigma^{2}} \\
+   & = \frac{\mu_{1}^{2}(1-\mu_{1}) -
+   \mu_{1}\overset{\sigma^{2}}{\overbrace{(\mu_{2}-\mu_{1}^{2})}}}{\sigma^{2}}
+   \\
+   & = \frac{\mu_{1}^{2}(1-\mu_{1})}{\sigma^{2}}-\mu_{1}.
+   \end{align}
+
+Example: Beta Distribution
+==============================================================================
+Thus,
+
+.. math::
+
+   \smash{\beta =  \frac{\alpha(1-\mu_{1})}{\mu_{1}} =
+   \frac{\mu_{1}(1-\mu_{1})^{2}}{\sigma^{2}} - (1-\mu_{1})}.
+
+.. raw:: <!--pause-->
+
+The result is,
+
+.. math::
+
+   \begin{align}
+   \hat{\alpha}_{mm} & =
+   \frac{\hat{\mu}_{1}^{2}(1-\hat{\mu}_{1})}{\hat{\sigma^{2}}} -
+   \hat{\mu}_{1} \\
+   \hat{\beta}_{mm} & =
+   \frac{\hat{\mu}_{1}(1-\hat{\mu}_{1})^{2}}{\hat{\sigma^{2}}} -
+   (1-\hat{\mu}_{1}).
+   \end{align}
+
+Example: Beta Distribution
+==============================================================================
+Where,
+
+.. math::
+
+   \begin{align}
+   \hat{\mu}_{1} & = \frac{1}{T}  \sum_{t=1}^{T} y_{t} \\
+   \hat{\mu}_{2} & = \frac{1}{T}  \sum_{t=1}^{T} y_{t}^{2} \\
+   \hat{\sigma}^{2} & = \hat{\mu}_{2} - \hat{\mu}_{1}^{2}.
+   \end{align}
+
+Example: t distribution
+==============================================================================
+Suppose :math:`\smash{Y\sim t(\nu)}`:
+
+.. math::
+
+   \smash{f_{Y}(y|\nu) =  \frac{\Gamma \left( \frac{\nu +
+   1}{2}\right)}{(\pi \nu)^{1/2}\Gamma \left( \frac{\nu}{2}\right)}
+   \left(1 +  \frac{y^{2}}{\nu}\right)^{-\frac{\nu +1}{2}}}.
+
+.. raw:: <!--pause-->
+
+In this case :math:`\smash{\boldsymbol{\theta} = \nu}`.
+
+Example: t distribution
+==============================================================================
+If :math:`\smash{\nu > 2}`,
+
+.. math::
+
+   \begin{align}
+   \mu_{2} & = \frac{\nu}{\nu -2} \\
+   \implies \nu & = \nu \mu_{2} - 2\mu_{2} \\
+   \implies \nu & = \frac{2 \mu_{2}}{\mu_{2} - 1} \\
+   \implies \hat{\nu}_{mm} & = \frac{2 \hat{\mu}_{2}}{\hat{\mu}_{2}
+   -1},
+   \end{align}
+
+where
+
+.. math::
+
+   \smash{\hat{\mu}_{2} =  \frac{1}{T}  \sum_{t=1}^{T} y_{t}^{2}}.

@@ -1,0 +1,11 @@
+Bayesian Methods
+================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 1
+
+   bayes
+
+   priorpost

@@ -1,0 +1,1012 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Wiener Processes &mdash; Econ 236 2016.03.28 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 236 2016.03.28 documentation" href="index.html"/>
+        <link rel="prev" title="Binomial Trees" href="binomialTree.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Econ 236</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="returns.html">Rates of Return</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#holding-period-return">Holding Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#holding-period-return-example">Holding Period Return Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#gross-and-net-returns">Gross and Net Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id1">Gross and Net Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#multi-period-returns">Multi-period Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#annualized-returns-ear">Annualized Returns - EAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#annualized-returns-apr">Annualized Returns - APR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#annualized-returns-example">Annualized Returns - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id2">Annualized Returns - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#ear-and-apr">EAR and APR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#continuous-compounding">Continuous Compounding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id3">Continuous Compounding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#inflation">Inflation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#nominal-vs-real-returns">Nominal vs. Real Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id4">Nominal vs. Real Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#nominal-vs-real-returns-proof">Nominal vs. Real Returns - Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#nominal-vs-real-returns-example">Nominal vs. Real Returns - Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#expected-inflation">Expected Inflation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="returns.html#id5">Expected Inflation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forwards.html">Forward Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-contract-definition">Forward Contract Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#delivery-and-settlement">Delivery and Settlement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-example">Forward Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#market-prices">Market Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#early-termination">Early Termination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#early-termination-example">Early Termination Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#notation">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation">Forward Valuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-example">Forward Valuation Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-with-income">Forward Valuation with Income</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-with-yield">Forward Valuation with Yield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-with-yield-example">Forward Valuation with Yield Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-for-currency">Forward Valuation for Currency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#curreny-forward-example">Curreny Forward Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#forward-valuation-for-commodities">Forward Valuation for Commodities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwards.html#cost-of-carry">Cost of Carry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="futures.html">Futures Markets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#futures-contracts">Futures Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#role-of-exchanges">Role of Exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#exchanges">Exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#contract-specifications">Contract Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#example-e-mini-s-p-500-contract">Example: E-mini S&amp;P 500 Contract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#e-mini-s-p-500-specifications">E-mini S&amp;P 500 Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#id1">E-mini S&amp;P 500 Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#futures-maturities">Futures Maturities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#delivery-of-commodities">Delivery of Commodities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#volume-vs-open-interest">Volume vs. Open Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#margin">Margin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#e-mini-margin">E-mini Margin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#example-gold-futures">Example: Gold Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futures.html#id2">Example: Gold Futures</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trading.html">Trading</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#exchanges-today">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id1">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#major-u-s-exchanges">Major U.S. Exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id2">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id3">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id4">Exchanges Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#market-makers">Market Makers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#takers">Takers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-1">Order Book Example: time 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-2">Order Book Example: time 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-3">Order Book Example: time 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-4">Order Book Example: time 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#order-book-example-time-5">Order Book Example: time 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#information-flows">Information Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#spy-liquidity-response-to-es">SPY Liquidity Response to ES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#reasons-for-information-flow">Reasons for Information Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#spy-e-mini-contract-specs">SPY/E-mini Contract Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#e-mini-spy-spreads">E-mini/SPY Spreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id5">E-mini/SPY Spreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id6">E-mini/SPY Spreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id7">E-mini/SPY Spreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#spread-and-information-flow">Spread and Information Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#implications">Implications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#empirical-results">Empirical Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#id8">Empirical Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading.html#notes-on-results">Notes on Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hedging.html">Hedging with Futures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#long-and-short-hedges">Long and Short Hedges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#short-hedge-example">Short Hedge Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#long-hedge-example">Long Hedge Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#imperfect-hedging">Imperfect Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#basis">Basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#basis-fluctuation">Basis Fluctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#stylized-basis-fluctuation">Stylized Basis Fluctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#actual-basis-fluctuation">Actual Basis Fluctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedging-and-basis">Hedging and Basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#basis-risk">Basis Risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#contract-choice">Contract Choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#example-hedging-yen">Example: Hedging Yen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#cross-hedging">Cross Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedge-ratio">Hedge Ratio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedge-ratio-with-returns">Hedge Ratio with Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedge-ratio-regression">Hedge Ratio Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#id1">Hedge Ratio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#optimal-number-of-contracts">Optimal Number of Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedge-ratio-example">Hedge Ratio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#id2">Hedge Ratio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#id3">Hedge Ratio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedging-an-equity-portfolio">Hedging an Equity Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#hedging-equity-portfolio-example">Hedging Equity Portfolio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#id4">Hedging Equity Portfolio Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#why-hedge">Why Hedge?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hedging.html#changing-beta">Changing Beta</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interestFutures.html">Futures on Interest Rates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#common-interest-rates">Common Interest Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#day-counts">Day Counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#t-bill-quotations">T-bill Quotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-bond-quotations">Treasury Bond Quotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#accrued-interest">Accrued Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-futures">Treasury Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#conversion-factors">Conversion Factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-futures-quotations">Treasury Futures Quotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#id1">Treasury Futures Quotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-futures-price">Treasury Futures Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#treasury-futures-price-example">Treasury Futures Price Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#id2">Treasury Futures Price Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#id3">Treasury Futures Price Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#id4">Treasury Futures Price Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#eurodollar-futures">Eurodollar Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#eurodollar-futures-quotes">Eurodollar Futures Quotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#eurodollar-futures-table">Eurodollar Futures Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interestFutures.html#eurodollar-futures-example">Eurodollar Futures Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fra.html">Forward Rate Agreements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#zero-rates">Zero Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#zero-coupon-bond">Zero Coupon Bond</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#zero-curve">Zero Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#id1">Zero Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#forward-rates">Forward Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#forward-rate-example">Forward Rate Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#forward-rates-alternative">Forward Rates: Alternative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#notes-on-forward-rates">Notes on Forward Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#id2">Forward Rate Agreements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-example">FRA Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fras-vs-eurodollar-futures">FRAs vs Eurodollar Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-notation">FRA Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-cash-flows">FRA Cash Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-valuation">FRA Valuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fra.html#fra-valuation-example">FRA Valuation Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="swaps.html">Swaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id1">Swaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#forward-futures-as-swap">Forward/Futures as Swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#interest-rate-swap">Interest Rate Swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#libor-swap">LIBOR Swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#libor-swap-example">LIBOR Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#libor-swap-diagram">LIBOR Swap Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#libor-swap-cash-flows">LIBOR Swap Cash Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#libor-swap-cash-flows-with-notional">LIBOR Swap Cash Flows with Notional</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id4">LIBOR Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id5">LIBOR Swap Cash Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#transforming-a-liability">Transforming a Liability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id6">Transforming a Liability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#transforming-a-asset">Transforming a Asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id7">Transforming a Liability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#financial-intermediaries">Financial Intermediaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#financial-intermediaries-diagram">Financial Intermediaries Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#market-maker-quotes">Market Maker Quotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#an-important-fact">An Important Fact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#swap-value-floating-side">Swap Value: Floating Side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#swap-value-diagram">Swap Value Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#swap-value-fixed-side">Swap Value: Fixed Side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#swap-value">Swap Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#swap-value-example">Swap Value Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id8">Swap Value Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#swap-value-table">Swap Value Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#swap-value-fra-portfolio">Swap Value: FRA Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#swap-value-example-fra-portfolio">Swap Value Example: FRA Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id9">Swap Value Example: FRA Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id10">Swap Value Example: FRA Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#swap-value-example-fra-table">Swap Value Example: FRA Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#currency-swaps">Currency Swaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#currency-swap-example">Currency Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id11">Currency Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id12">Currency Swap Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#currency-swap-transforming-liabilities-and-assets">Currency Swap: Transforming Liabilities and Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#currency-swap-valuation-bonds">Currency Swap Valuation: Bonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#currency-swap-valuation-example-bonds">Currency Swap Valuation Example: Bonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#id13">Currency Swap Valuation Example: Bonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#currency-swap-valuation-table-bonds">Currency Swap Valuation Table: Bonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#currency-swap-valuation-forward-portfolio">Currency Swap Valuation: Forward Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#currency-swap-valuation-example">Currency Swap Valuation Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#currency-swap-valuation-table-forward-portfolio">Currency Swap Valuation Table: Forward Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#other-currency-swaps">Other Currency Swaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swaps.html#other-swaps">Other Swaps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id1">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#underlying-assets">Underlying Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#options-exchanges">Options Exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#exchange-traded-options">Exchange-Traded Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#vix-options-specs">VIX Options Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#implications-of-options">Implications of Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#options-as-insurance">Options as Insurance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#obligation-of-sellers">Obligation of Sellers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-example">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id2">Call Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-example">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id3">Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#moneyness">Moneyness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#notation">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-buyer">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id4">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id5">Call Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#call-option-payoff-seller">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id6">Call Option Payoff (Seller)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-option-payoff-buyer">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id7">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id8">Put Option Payoff (Buyer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#speculation-and-hedging">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id9">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id10">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id11">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id12">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id13">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id14">Speculation and Hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id15">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id16">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id17">Protective Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#covered-call">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id18">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id19">Covered Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#straddle">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id20">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id21">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id22">Straddle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#spread">Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#bullish-spread">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id23">Bullish Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#collar">Collar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#protective-put-alternative">Protective Put Alternative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id24">Protective Put Alternative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity">Put Call Parity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#put-call-parity-example">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id25">Put Call Parity Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html#id26">Put Call Parity Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="binomialTree.html">Binomial Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#random-walk">Random Walk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#binomial-distribution">Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#bernoulli-random-walk">Bernoulli Random Walk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#binomial-tree-example">Binomial Tree Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id1">Binomial Tree Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#a-riskless-portfolio">A Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id2">A Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#value-of-the-riskless-portfolio">Value of the Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id3">Value of the Riskless Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#one-step-binomial-tree">One-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id4">One-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#one-step-portfolio">One-Step Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id5">One-Step Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#call-option-price">Call Option Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#revisiting-one-period-example">Revisiting One-Period Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#two-step-binomial-tree">Two-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id6">Two-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id7">Two-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id8">Two-Step Binomial Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#two-step-binomial-tree-example">Two-Step Binomial Tree Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id9">Two-Step Binomial Tree Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#valuing-put-options">Valuing Put Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#two-step-put-option-example">Two-Step Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id10">Two-Step Put Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#american-options">American Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#american-option-example">American Option Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#delta">Delta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#call-deltas">Call Deltas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#put-deltas">Put Deltas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#stock-return-volatility">Stock Return Volatility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#binomial-tree-parameters">Binomial Tree Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id11">Binomial Tree Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#options-on-other-assets">Options on Other Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binomialTree.html#id12">Options on Other Assets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Wiener Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stochastic-processes">Stochastic Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties-of-expected-value">Properties of Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Properties of Expected Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties-of-variance">Properties of Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Properties of Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#normal-random-variables">Normal Random Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additive-normal-example">Additive Normal Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Additive Normal Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wiener-process">Wiener Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moments-of-the-wiener-process">Moments of the Wiener Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wiener-process-over-long-horizon">Wiener Process Over Long Horizon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Wiener Process Over Long Horizon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limit-of-wiener-process">Limit of Wiener Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wiener-process-sample-paths">Wiener Process Sample Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generalized-wiener-process">Generalized Wiener Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Generalized Wiener Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wiener-process-comparison">Wiener Process Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ito-process">Ito Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-for-asset-prices">Model for Asset Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Model for Asset Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geometric-brownian-motion">Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulating-geometric-brownian-motion">Simulating Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Simulating Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ito-s-lemma">Ito&#8217;s Lemma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Ito&#8217;s Lemma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ito-s-lemma-for-geometric-brownian-motion">Ito&#8217;s Lemma for Geometric Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#application-to-forward-contracts">Application to Forward Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">Application to Forward Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distribution-of-prices">Distribution of Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">Distribution of Prices</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 236</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Wiener Processes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/weiner.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="wiener-processes">
+<h1>Wiener Processes<a class="headerlink" href="#wiener-processes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="stochastic-processes">
+<h2>Stochastic Processes<a class="headerlink" href="#stochastic-processes" title="Permalink to this headline">¶</a></h2>
+<p>A stochastic process is a collection of random variables, indexed by time.</p>
+<ul class="simple">
+<li>More simply, it can be thought of as a single random variable that
+evolves dynamically with time.</li>
+</ul>
+<ul class="simple">
+<li>Stochastic processes can be discrete/continuous time: either they
+evolve discretely or continuously.</li>
+</ul>
+<ul class="simple">
+<li>They can be discrete/continuous value: at each time, they are drawn
+from either a discrete or continuous probability distribution.</li>
+</ul>
+<ul class="simple">
+<li>We will develop a continuous time/continuous value model for asset
+prices.<ul>
+<li>Note that we only observe discrete value and discrete time
+observations for actual asset prices.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="properties-of-expected-value">
+<h2>Properties of Expected Value<a class="headerlink" href="#properties-of-expected-value" title="Permalink to this headline">¶</a></h2>
+<p>Given random variables <span class="math">\(\smash{X}\)</span> and <span class="math">\(\smash{Y}\)</span>, define
+a new random variable <span class="math">\(\smash{Z = X + Y}\)</span>. Then:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E[Z] &amp; = E\left[X + Y \right] = E[X] + E[Y].
+\end{align}\end{split}\]</div>
+<p>Suppose <span class="math">\(\smash{E[X] = E[Y] = \mu}\)</span>. Then:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E[Z] &amp; = E[X] + E[Y] = 2 \mu.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="id1">
+<h2>Properties of Expected Value<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Extending the prior result, given random variables
+<span class="math">\(\smash{\left\{X_i\right\}_{i=1}^n}\)</span>, define a new random
+variable <span class="math">\(\smash{Z = \sum_{i=1}^n X_i}\)</span>. Then:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E[Z] &amp; = E\left[\sum_{i=1}^n X_i \right] = \sum_{i=1}^n E[X_i].
+\end{align}\end{split}\]</div>
+<p>Suppose <span class="math">\(\smash{E[X_i] = \mu, \,\, i=1,\ldots,n}\)</span>. Then:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E[Z] &amp; = \sum_{i=1}^n E[X_i] = \sum_{i=1}^n \mu = n \mu.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="properties-of-variance">
+<h2>Properties of Variance<a class="headerlink" href="#properties-of-variance" title="Permalink to this headline">¶</a></h2>
+<p>Given random variables <span class="math">\(\smash{X}\)</span> and <span class="math">\(\smash{Y}\)</span>, define
+a new random variable <span class="math">\(\smash{Z = X + Y}\)</span>. Then:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Var(Z) &amp; = Var\left(X + Y \right) = Var(X) + Var(Y) + 2 Cov(X,Y).
+\end{align}\end{split}\]</div>
+<p>Suppose <span class="math">\(\smash{Var(X) = Var(Y) = \sigma^2}\)</span> and that they are
+independent <span class="math">\(\smash{(Cov(X,Y)=0)}\)</span>. Then:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Var(Z) &amp; = Var(X) + Var(Y) = 2 \sigma^2 \\
+\Rightarrow Sd(Z) &amp; = \sqrt{Var(Z)} = \sqrt{2} \sigma.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="id2">
+<h2>Properties of Variance<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Extending the prior result, given random variables
+<span class="math">\(\smash{\left\{X_i\right\}_{i=1}^n}\)</span>, define a new random
+variable <span class="math">\(\smash{Z = \sum_{i=1}^n X_i}\)</span>. Then:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Var(Z) &amp; = Var\left(\sum_{i=1}^n X_i \right) = \sum_{i=1}^n
+Var(X_i) + 2 \sum_{i=1}^{n-1} \sum_{j=i+1}^n Cov(X_i,X_j).
+\end{align}\end{split}\]</div>
+<p>Suppose <span class="math">\(\smash{Var(X_i) = \sigma^2, \,\, i=1,\ldots,n}\)</span> and that
+each random variable is independent of the others
+<span class="math">\(\smash{(Cov(X_i,X_j)=0, \,\, i \neq j)}\)</span>. Then:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Var(Z) &amp; = \sum_{i=1}^n Var(X_i) = \sum_{i=1}^n \sigma^2 = n
+\sigma^2 \\
+\Rightarrow Sd(Z) &amp; = \sqrt{Var(Z)} = \sqrt{n} \sigma.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="normal-random-variables">
+<h2>Normal Random Variables<a class="headerlink" href="#normal-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(\smash{X_i \sim N(\mu,\sigma), \,\, i=1,\ldots, n}\)</span>.</p>
+<ul class="simple">
+<li>Define a new random variable <span class="math">\(\smash{Z = \sum_{i=1}^n
+X_i}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We already know <span class="math">\(\smash{E[Z] = n\mu}\)</span> and <span class="math">\(\smash{Sd(Z)
+= \sqrt{n} \sigma}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>However, the sum of Normals is also Normal: <span class="math">\(\smash{Z \sim
+N\left(n\mu, \sqrt{n} \sigma\right)}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="additive-normal-example">
+<h2>Additive Normal Example<a class="headerlink" href="#additive-normal-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose the monthly return on an asset is Normally distributed for
+each month over the next year.</p>
+<ul>
+<li><p class="first">We will assume the expected value is 1% and standard deviation is
+5% and that returns across months are independent:</p>
+<div class="math">
+\[\begin{align}
+R_i \stackrel{i.i.d.}{\sim} N(0.01,0.05), \,\,\,\, i =
+1,\ldots, 12.
+\end{align}\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li>The annual return is the sum of monthly returns: <span class="math">\(\smash{R_a =
+\sum_{i=1}^{12} R_i}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The distribution of the annual return is <span class="math">\(\smash{R_a \sim
+N(0.12,0.1732)}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>Additive Normal Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Note that we can also work backwards.</p>
+<ul class="simple">
+<li>Suppose you know that the annual expected return is
+<span class="math">\(\smash{\mu_a = 0.12}\)</span>, the annual standard deviation is
+<span class="math">\(\smash{\sigma_a = 0.1732}\)</span> and that monthly returns are
+independent.</li>
+</ul>
+<ul>
+<li><p class="first">The monthly expected return and standard deviation are:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mu_m &amp; = \frac{\mu_a}{n} = \frac{0.12}{12} = 0.01 \\
+\sigma_m &amp; = \frac{\sigma_a}{\sqrt{n}} = \frac{0.1732}{\sqrt{12}}
+= 0.05.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+</div>
+<div class="section" id="wiener-process">
+<h2>Wiener Process<a class="headerlink" href="#wiener-process" title="Permalink to this headline">¶</a></h2>
+<p>A random variable <span class="math">\(\smash{Z(t)}\)</span> follows a Wiener process if:</p>
+<ul>
+<li><p class="first">During a short time interval <span class="math">\(\smash{\Delta t}\)</span>,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\Delta Z(t) &amp; = Z(t) - Z(t-\Delta t) = \varepsilon \sqrt{\Delta
+t}, \,\,\, \varepsilon \sim N(0,1).
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li>The values of <span class="math">\(\smash{\Delta Z(t)}\)</span> for any two short
+intervals <span class="math">\(\smash{\Delta t}\)</span>  are independent.</li>
+</ul>
+</div>
+<div class="section" id="moments-of-the-wiener-process">
+<h2>Moments of the Wiener Process<a class="headerlink" href="#moments-of-the-wiener-process" title="Permalink to this headline">¶</a></h2>
+<p>What are the first two moments of <span class="math">\(\smash{\Delta Z(t)}\)</span>?</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E\left[\Delta Z(t)\right] &amp; = E\left[\varepsilon \sqrt{\Delta
+t}\right] = \sqrt{\Delta t} E\left[\varepsilon\right]
+= 0 \\
+Var\left(\Delta Z(t)\right) &amp; = Var\left(\varepsilon \sqrt{\Delta
+t}\right) = \Delta t Var\left(\varepsilon\right) = \Delta t \\
+Sd\left(\Delta Z(t)\right) &amp; = Sd\left(\varepsilon \sqrt{\Delta t}
+\right) = \sqrt{\Delta t} Sd\left(\varepsilon\right) = \sqrt{\Delta
+t}.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="wiener-process-over-long-horizon">
+<h2>Wiener Process Over Long Horizon<a class="headerlink" href="#wiener-process-over-long-horizon" title="Permalink to this headline">¶</a></h2>
+<p>Consider the evolution of <span class="math">\(\smash{Z(t)}\)</span> over a longer horizon
+<span class="math">\(\smash{T}\)</span>.</p>
+<ul class="simple">
+<li>Divide the time interval <span class="math">\(\smash{(0,T)}\)</span> into
+<span class="math">\(\smash{N}\)</span> small intervals of equal length
+<span class="math">\(\smash{\Delta t}\)</span>.</li>
+</ul>
+<ul>
+<li><p class="first">Then:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Z(T) - Z(0) &amp; = \sum_{i=1}^N \varepsilon_i \sqrt{\Delta t},
+\,\,\, \varepsilon_i \stackrel{i.i.d.}{\sim} N(0,1).
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Wiener Process Over Long Horizon<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">The resulting moments are:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E\left[Z(T) - Z(0)\right] &amp; = \sum_{i=1}^N \sqrt{\Delta t}
+E[\varepsilon_i] = 0 \\
+Var\left(Z(T) - Z(0)\right) &amp; = \sum_{i=1}^N \Delta t
+Var(\varepsilon_i) = T \\
+Sd\left(Z(T) - Z(0)\right) &amp; = \sum_{i=1}^N \sqrt{\Delta t}
+Sd(\varepsilon_i) = \sqrt{T}.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+</div>
+<div class="section" id="limit-of-wiener-process">
+<h2>Limit of Wiener Process<a class="headerlink" href="#limit-of-wiener-process" title="Permalink to this headline">¶</a></h2>
+<p>As <span class="math">\(\smash{\Delta t \to 0}\)</span>, we use the notation
+<span class="math">\(\smash{dZ = \varepsilon dt}\)</span>.</p>
+<ul class="simple">
+<li>Note that as <span class="math">\(\smash{\Delta t \to 0}\)</span>, the standard deviation
+of <span class="math">\(\smash{\Delta Z(t)}\)</span> becomes infinite.</li>
+</ul>
+</div>
+<div class="section" id="wiener-process-sample-paths">
+<h2>Wiener Process Sample Paths<a class="headerlink" href="#wiener-process-sample-paths" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/samplePathsSmall.png"><img alt="_images/samplePathsSmall.png" class="align-center" src="_images/samplePathsSmall.png" style="width: 4in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="generalized-wiener-process">
+<h2>Generalized Wiener Process<a class="headerlink" href="#generalized-wiener-process" title="Permalink to this headline">¶</a></h2>
+<p>Consider the <em>generalized Wiener process</em>:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+dX &amp; = a dt + b dZ.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{a}\)</span> is the <em>drift rate</em> and <span class="math">\(\smash{b}\)</span> is the
+<em>variance rate</em>.</li>
+</ul>
+<ul class="simple">
+<li>The basic Wiener process has drift rate zero and unit variance
+rate.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>Generalized Wiener Process<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>In discrete time, the generalize Wiener process is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\Delta X &amp; = a \Delta t + b \varepsilon \sqrt{\Delta t}.
+\end{align}\end{split}\]</div>
+<p>The moments are:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+E[\Delta X] &amp; = a \Delta t \\
+Var(\Delta X) &amp; = b^2 \Delta t \\
+Sd(\Delta X) &amp; = b \sqrt{\Delta t}.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="wiener-process-comparison">
+<h2>Wiener Process Comparison<a class="headerlink" href="#wiener-process-comparison" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/processComparison.png"><img alt="_images/processComparison.png" class="align-center" src="_images/processComparison.png" style="width: 8in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="ito-process">
+<h2>Ito Process<a class="headerlink" href="#ito-process" title="Permalink to this headline">¶</a></h2>
+<p>An <em>Ito process</em> is a generalization of a generalized Wiener process:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+dX &amp; = a(X,t) dt + b(X,t) dZ.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>The drift rate and variance rate are functions of the process value
+and time - i.e. they are variable.</li>
+</ul>
+<p>In discrete time:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\Delta X &amp; = a(X,t) \Delta t + b(X,t) \varepsilon \sqrt{\Delta t}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>The discrete time analog requires an approximation: the drift and
+variance rate are constant over small intervals <span class="math">\(\smash{\Delta
+t}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="model-for-asset-prices">
+<h2>Model for Asset Prices<a class="headerlink" href="#model-for-asset-prices" title="Permalink to this headline">¶</a></h2>
+<p>We will use an Ito process as a model for asset prices.</p>
+<ul class="simple">
+<li>We think of percentage returns as being constant for a particular
+asset.</li>
+</ul>
+<ul class="simple">
+<li>This means that the size of the moves (the drift) changes with the
+level of the price.</li>
+</ul>
+<ul class="simple">
+<li>Variance also typically changes with the level of asset prices.</li>
+</ul>
+<ul class="simple">
+<li>This means an Ito process is a better model than a generalized
+Wiener process.</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>Model for Asset Prices<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>We will employ the following Ito process:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+dS &amp; = \mu S dt + \sigma S dZ.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>The drift rate function takes the specific form:
+<span class="math">\(\smash{a(S,t) = \mu S}\)</span>.<ul>
+<li>The drift rate increases proportionally with the asset price
+and does not depend on time.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>The variance rate function takes the specific form:
+<span class="math">\(\smash{b(S,t) = \sigma S}\)</span>.<ul>
+<li>The variance rate increases proportionally with the asset price
+and does not depend on time.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>This form of an Ito process is known as <em>geometric Brownian
+motion</em>.</li>
+</ul>
+</div>
+<div class="section" id="geometric-brownian-motion">
+<h2>Geometric Brownian Motion<a class="headerlink" href="#geometric-brownian-motion" title="Permalink to this headline">¶</a></h2>
+<p>Geometric Brownian motion can also be written as:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{dS}{S} &amp; = \mu dt + \sigma dZ.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{\frac{dS}{S}}\)</span> is effectively the return.</li>
+</ul>
+<ul class="simple">
+<li>Note that returns evolve as a generalized Wiener process (constant
+drift and variance rates).</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\mu}\)</span> and <span class="math">\(\smash{\sigma}\)</span> are the expected
+return and volatility of the asset.</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>Geometric Brownian Motion<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>In discrete time, geometric Brownian motion is described as:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{\Delta S}{S} &amp; = \mu \Delta t + \sigma \varepsilon
+\sqrt{\Delta t}.
+\end{align}\end{split}\]</div>
+<p>This means <span class="math">\(\smash{\frac{\Delta S}{S} \sim N(\mu \Delta t,
+\sigma \sqrt{\Delta t})}\)</span>.</p>
+</div>
+<div class="section" id="simulating-geometric-brownian-motion">
+<h2>Simulating Geometric Brownian Motion<a class="headerlink" href="#simulating-geometric-brownian-motion" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s estimate the daily mean and standard deviation of Lockheed
+Martin (LMT) returns using data prior to January 1, 2015:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>quantmod<span class="p">)</span>
+<span class="o">&gt;</span> getSymbols<span class="p">(</span><span class="s">&quot;LMT&quot;</span><span class="p">,</span>src<span class="o">=</span><span class="s">&quot;yahoo&quot;</span><span class="p">,</span> from<span class="o">=</span><span class="s">&quot;2010-01-01&quot;</span><span class="p">,</span> to<span class="o">=</span><span class="s">&quot;2014-12-31&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> lmtRets <span class="o">=</span> dailyReturn<span class="p">(</span>LMT<span class="p">)</span>
+<span class="o">&gt;</span> mu <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>lmtRets<span class="p">)</span>
+<span class="o">&gt;</span> sigma <span class="o">=</span> sd<span class="p">(</span>lmtRets<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">cat</span><span class="p">(</span>mu<span class="p">,</span>sigma<span class="p">)</span>
+<span class="m">0.0008037858</span> <span class="m">0.01122918</span>
+</pre></div>
+</div>
+<p>We now simulate 1000 price paths of one year (250 trading days)
+starting on Jan 2, 2015:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> nSim <span class="o">=</span> <span class="m">100</span>
+<span class="o">&gt;</span> nDays <span class="o">=</span> <span class="m">252</span>
+<span class="o">&gt;</span> S0 <span class="o">=</span> <span class="m">186.21</span> <span class="c1"># price on Jan 2, 2015</span>
+<span class="o">&gt;</span> S <span class="o">=</span> <span class="kt">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span>nrow<span class="o">=</span>nDays<span class="p">,</span>ncol<span class="o">=</span>nSim<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kr">for</span><span class="p">(</span>ix <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>nSim<span class="p">){</span>
+<span class="o">+</span>    DeltaS <span class="o">=</span> mu<span class="o">*</span>S0 <span class="o">+</span> sigma<span class="o">*</span>S0<span class="o">*</span>rnorm<span class="p">(</span>nDays<span class="p">)</span>
+<span class="o">+</span>    S<span class="p">[,</span>ix<span class="p">]</span> <span class="o">=</span> S0 <span class="o">+</span> <span class="kp">cumsum</span><span class="p">(</span>DeltaS<span class="p">)</span>
+<span class="o">+</span> <span class="p">}</span>
+<span class="o">&gt;</span> matplot<span class="p">(</span>S<span class="p">,</span>type<span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span>col<span class="o">=</span>rgb<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0.3</span><span class="p">),</span>lty<span class="o">=</span><span class="m">1</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Simulated Price of LMT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Simulating Geometric Brownian Motion<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>The closing price on Jan 4, 2016 was <span class="math">\(\smash{\$211.61}\)</span>.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/simulation.png"><img alt="_images/simulation.png" class="align-center" src="_images/simulation.png" style="width: 4in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="ito-s-lemma">
+<h2>Ito&#8217;s Lemma<a class="headerlink" href="#ito-s-lemma" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(\smash{X}\)</span> follows and Ito process:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+dX &amp; = a(X,t) dt + b(X,t) dZ.
+\end{align}\end{split}\]</div>
+<p>For some function <span class="math">\(\smash{G(X,t)}\)</span>, Ito&#8217;s lemma says:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+dG &amp; = \left(\frac{\partial G}{\partial X} a(X,t) + \frac{\partial
+G}{\partial t} + \frac{1}{2} \frac{\partial^2 G}{\partial X^2}
+b(X,t)^2 \right) dt + \frac{\partial G}{\partial X} b(X,t) dZ.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="id9">
+<h2>Ito&#8217;s Lemma<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>Ito&#8217;s lemma says that <span class="math">\(\smash{G(X,t)}\)</span> is an Ito process with
+drift and variance rates</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+\frac{\partial G}{\partial X} a(X,t) + \frac{\partial
+G}{\partial t} + \frac{\partial^2 G}{\partial X^2} b(X,t) \\
+\left(\frac{\partial G}{\partial X}\right)^2 b(X,t)^2.
+\end{gather}\end{split}\]</div>
+</div>
+<div class="section" id="ito-s-lemma-for-geometric-brownian-motion">
+<h2>Ito&#8217;s Lemma for Geometric Brownian Motion<a class="headerlink" href="#ito-s-lemma-for-geometric-brownian-motion" title="Permalink to this headline">¶</a></h2>
+<p>Recall our model for stock prices:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+dS &amp; = \mu S dt + \sigma S dZ.
+\end{align}\end{split}\]</div>
+<p>In this case, Ito&#8217;s lemma says that <span class="math">\(\smash{G(S,t)}\)</span> follows:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+dG &amp; = \left(\frac{\partial G}{\partial S} \mu S + \frac{\partial
+G}{\partial t} + \frac{1}{2} \frac{\partial^2 G}{\partial S^2}
+\sigma^2 S^2 \right) dt + \frac{\partial G}{\partial S} \sigma S
+dZ.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="application-to-forward-contracts">
+<h2>Application to Forward Contracts<a class="headerlink" href="#application-to-forward-contracts" title="Permalink to this headline">¶</a></h2>
+<p>Recall the formula for the value of a forward contract (given current
+time <span class="math">\(\smash{t}\)</span> and horizon <span class="math">\(\smash{T-t}\)</span>):</p>
+<div class="math">
+\[\begin{align}
+F = S e^{r(T-t)}.
+\end{align}\]</div>
+<ul class="simple">
+<li>In this case <span class="math">\(\smash{F = G(S,t)}\)</span>.</li>
+</ul>
+<p>The derivatives are</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{\partial F}{\partial S} &amp; = e^{r(T-t)}, \,\,\,\,
+\frac{\partial^2 F}{\partial S^2}  = 0, \,\,\,\, \frac{\partial
+F}{\partial t} = -r Se^{r(T-t)}.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="id10">
+<h2>Application to Forward Contracts<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>Following Ito&#8217;s lemma,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+dF &amp; = \left(e^{r(T-t)} \mu S - r S e^{r(T-t)} \right) dt +
+e^{r(T-t)} \sigma S dZ \\
+&amp; = (\mu - r) F dt + \sigma F dZ.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="distribution-of-prices">
+<h2>Distribution of Prices<a class="headerlink" href="#distribution-of-prices" title="Permalink to this headline">¶</a></h2>
+<p>What is the distribution of <span class="math">\(\smash{S}\)</span> if it follows geometric
+Brownian motion?</p>
+<ul class="simple">
+<li>We know that returns, <span class="math">\(\smash{\frac{dS}{S}}\)</span>, are Normal.</li>
+</ul>
+<p>Let&#8217;s use Ito&#8217;s lemma to derive the law of motion of
+<span class="math">\(\smash{G(S,t) = \ln(S)}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{\partial G}{\partial S} &amp; = \frac{1}{S} \,\,\,\,
+\frac{\partial^2 G}{\partial S^2} = -\frac{1}{S} \,\,\,\,
+\frac{\partial G}{\partial t} = 0 \\
+\Rightarrow dG &amp; = \left(\mu - \frac{\sigma^2}{2} \right) dt +
+\sigma dZ.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{\ln(S)}\)</span> follows a generalized Wiener process with
+drift rate <span class="math">\(\smash{\mu - \frac{\sigma^2}{2}}\)</span> and variance rate
+<span class="math">\(\smash{\sigma^2}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>Distribution of Prices<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>The discrete analog to the process for <span class="math">\(\smash{\Delta \ln(S)}\)</span>
+is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\Delta \ln(S) &amp; = \left(\mu - \frac{\sigma^2}{2} \right) \Delta t +
+\sigma \varepsilon \sqrt{\Delta t}.
+\end{align}\end{split}\]</div>
+<p>For <span class="math">\(\smash{\Delta t = T}\)</span>, <span class="math">\(\smash{\Delta \ln(S) =
+\ln(S_T) - \ln(S_0)}\)</span>, which results in:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\ln(S_T) - \ln(S_0) \sim N\left(\left(\mu -
+\frac{\sigma^2}{2}\right)T, \sigma \sqrt{T}\right) \\
+\Rightarrow \ln(S_T) \sim N\left(\ln(S_0) + \left(\mu -
+\frac{\sigma^2}{2}\right)T, \sigma \sqrt{T}\right) \\
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>This means that prices are <em>lognormally</em> distributed.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="binomialTree.html" class="btn btn-neutral" title="Binomial Trees"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2016.03.28',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

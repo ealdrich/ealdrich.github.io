@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Binomial Trees &mdash; Econ 236</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Econ 236" href="index.html" />
+    <link rel="next" title="Wiener Processes" href="wiener.html" />
+    <link rel="prev" title="Options" href="options.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="binomial-trees">
+
+<h1>Binomial Trees</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="random-walk">
+
+<h2>Random Walk</h2>
+
+<p>A <em>random walk</em> is a stochastic process the evolves in the following
+manner:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Y_t &amp; = Y_{t-1} + \varepsilon_t.
+\end{align}\]</div>
+<ul class="simple">
+<li>If <span class="math notranslate nohighlight">\(\smash{\varepsilon_t \sim N(0,1)}\)</span>, then
+<span class="math notranslate nohighlight">\(\smash{Y_t}\)</span> is a continuous random variable and is a
+referred to as a Gaussian random walk.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math notranslate nohighlight">\(\smash{\varepsilon_t}\)</span> is drawn from a discrete
+distribution, then <span class="math notranslate nohighlight">\(\smash{Y_t}\)</span> is also a discrete random
+variable.</li>
+</ul>
+<ul class="simple">
+<li>We will refer to <span class="math notranslate nohighlight">\(\smash{\varepsilon_t}\)</span> as the <em>innovation</em>
+or <em>shock</em>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="binomial-distribution">
+
+<h2>Binomial Distribution</h2>
+
+<p>Suppose a random variable <span class="math notranslate nohighlight">\(\smash{X}\)</span> can only take one of two
+values <span class="math notranslate nohighlight">\(\smash{X_u}\)</span> and <span class="math notranslate nohighlight">\(\smash{X_d}\)</span>.</p>
+<ul class="simple">
+<li>If <span class="math notranslate nohighlight">\(\smash{P(X = X_u) = p}\)</span> and <span class="math notranslate nohighlight">\(\smash{P(X = X_d) =
+1-p}\)</span>, then <span class="math notranslate nohighlight">\(\smash{X}\)</span> follows a Bernoulli distribution with
+parameter <span class="math notranslate nohighlight">\(\smash{p}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>In notation: <span class="math notranslate nohighlight">\(\smash{X \sim Bernoulli(p)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The sum of <span class="math notranslate nohighlight">\(\smash{n}\)</span> independent Bernoulli random variables
+is a Binomial random variable with parameters <span class="math notranslate nohighlight">\(\smash{n}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{p}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>In notation: if <span class="math notranslate nohighlight">\(\smash{Y_t = \sum_{i=t-n}^t X_i}\)</span> then
+<span class="math notranslate nohighlight">\(\smash{Y_t \sim Binomial(n,p)}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="bernoulli-random-walk">
+
+<h2>Bernoulli Random Walk</h2>
+
+<p>A very simple model of stock prices assumes that they follow a random
+walk with Bernoulli innovations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+P_t &amp; = P_{t-1} + \varepsilon_t, \,\,\,\, \varepsilon_t \sim
+Bernoulli(p).
+\end{align}\]</div>
+<ul class="simple">
+<li>Interpretation: The stock price can only move to one of two values
+at each time period.</li>
+</ul>
+<ul class="simple">
+<li>This model is useful for valuing options on the asset.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="binomial-tree-example">
+
+<h2>Binomial Tree Example</h2>
+
+<p>Suppose a stock price is currently <span class="math notranslate nohighlight">\(\smash{\$20}\)</span> and that in
+three months it will either be <span class="math notranslate nohighlight">\(\smash{\$18}\)</span> or
+<span class="math notranslate nohighlight">\(\smash{\$22}\)</span>.</p>
+<ul class="simple">
+<li>You would like to buy a call option with strike of
+<span class="math notranslate nohighlight">\(\smash{\$21}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If the price moves up to <span class="math notranslate nohighlight">\(\smash{\$22}\)</span>, the option will be
+worth <span class="math notranslate nohighlight">\(\smash{\$1}\)</span> at expiry.</li>
+</ul>
+<ul class="simple">
+<li>If the price moves down to <span class="math notranslate nohighlight">\(\smash{\$18}\)</span>, the option will be
+worthless.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id1">
+
+<h2>Binomial Tree Example</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/binomialTree1.png"><img alt="_images/binomialTree1.png" class="align-center" src="_images/binomialTree1.png" style="width: 8in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="a-riskless-portfolio">
+
+<h2>A Riskless Portfolio</h2>
+
+<p>Consider the following portfolio:</p>
+<ul class="simple">
+<li>Buy <span class="math notranslate nohighlight">\(\smash{\Delta}\)</span> shares of the stock.</li>
+</ul>
+<ul class="simple">
+<li>Sell one call option.</li>
+</ul>
+<ul class="simple">
+<li>If the prices moves up, the value of the portfolio is
+<span class="math notranslate nohighlight">\(\smash{\$22 \Delta - 1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If the prices moves down, the value of the portfolio is
+<span class="math notranslate nohighlight">\(\smash{\$18 \Delta}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math notranslate nohighlight">\(\smash{\Delta}\)</span> can be chosen so that <span class="math notranslate nohighlight">\(\smash{\$22
+\Delta - 1 = \$18 \Delta}\)</span>, the portfolio is risk free.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id2">
+
+<h2>A Riskless Portfolio</h2>
+
+<p>Clearly, if <span class="math notranslate nohighlight">\(\smash{\Delta = 0.25}\)</span> the payoffs are equal and
+the portfolio is riskless.</p>
+<ul class="simple">
+<li>Thus a portfolio which is long 0.25 shares and short 1 option is
+riskless.</li>
+</ul>
+<ul class="simple">
+<li>If the prices moves up, the value of the portfolio is
+<span class="math notranslate nohighlight">\(\smash{\$22 \Delta - 1 = \$4.5}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If the prices moves down, the value of the portfolio is
+<span class="math notranslate nohighlight">\(\smash{\$18 \Delta = \$4.5}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Although it’s not possible to buy 0.25 shares, you can buy 100
+shares and short 400 calls.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="value-of-the-riskless-portfolio">
+
+<h2>Value of the Riskless Portfolio</h2>
+
+<p>Since the portfolio has no risk, it must earn the risk-free rate of
+return.</p>
+<ul class="simple">
+<li>Suppose the continuously compounded risk-free interest rate is 12%
+per annum.</li>
+</ul>
+<ul class="simple">
+<li>The value of the portfolio today must be the present value of the
+riskless <span class="math notranslate nohighlight">\(\smash{\$4.5}\)</span> payoff:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+4.5 e^{-0.12 \times 3/12} &amp; = 4.367.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id3">
+
+<h2>Value of the Riskless Portfolio</h2>
+
+<ul class="simple">
+<li>The cost of the portfolio is <span class="math notranslate nohighlight">\(\smash{\$20 \Delta - f = 5 -f}\)</span>,
+where <span class="math notranslate nohighlight">\(\smash{f}\)</span> is the current price of the call.</li>
+</ul>
+<ul class="simple">
+<li>The cost and value of the portfolio must be equal, otherwise an
+arbitrage opportunity would exist:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+5 - f &amp; = 4.367 \\
+\Rightarrow f &amp; = 0.633.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="one-step-binomial-tree">
+
+<h2>One-Step Binomial Tree</h2>
+
+<p>We can generalize the previous example.</p>
+<ul class="simple">
+<li>The current stock price is <span class="math notranslate nohighlight">\(\smash{S_0}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The current option price is <span class="math notranslate nohighlight">\(\smash{f}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Time periods are <span class="math notranslate nohighlight">\(\smash{T}\)</span> years.</li>
+</ul>
+<ul class="simple">
+<li>At the end of the next time period, the stock price will be either
+<span class="math notranslate nohighlight">\(\smash{S_0 u}\)</span> or <span class="math notranslate nohighlight">\(\smash{S_0 d}\)</span>, where
+<span class="math notranslate nohighlight">\(\smash{u &gt; 1}\)</span> and <span class="math notranslate nohighlight">\(\smash{d &lt; 1}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{u-1}\)</span> represents a percentage increase and
+<span class="math notranslate nohighlight">\(\smash{d - 1}\)</span> represents a percentage decrease.</li>
+</ul>
+<ul class="simple">
+<li>The option values at the end of next time period are either
+<span class="math notranslate nohighlight">\(\smash{f_u}\)</span> or <span class="math notranslate nohighlight">\(\smash{f_d}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id4">
+
+<h2>One-Step Binomial Tree</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/binomialTree1General.png"><img alt="_images/binomialTree1General.png" class="align-center" src="_images/binomialTree1General.png" style="width: 8in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="one-step-portfolio">
+
+<h2>One-Step Portfolio</h2>
+
+<p>Consider a portfolio that is long <span class="math notranslate nohighlight">\(\smash{\Delta}\)</span> shares and
+short 1 call option.</p>
+<ul class="simple">
+<li>If the stock price moves up, the value is <span class="math notranslate nohighlight">\(\smash{S_0 u
+\Delta - f_u}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If the stock price moves down, the value is <span class="math notranslate nohighlight">\(\smash{S_0 d
+\Delta - f_d}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Find <span class="math notranslate nohighlight">\(\smash{\Delta}\)</span> such that the payoffs are equal:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\Delta &amp; = \frac{f_u - f_d}{S_0 u - S_0 d}.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id5">
+
+<h2>One-Step Portfolio</h2>
+
+<p>Since the payoffs are equivalent in each state, the portfolio is
+riskless.</p>
+<ul class="simple">
+<li>Suppose the continuously compounded risk-free rate is
+<span class="math notranslate nohighlight">\(\smash{r}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The present value of the portfolio payoff is <span class="math notranslate nohighlight">\(\smash{\left(S_0
+u \Delta - f_u\right) e^{-rT}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The current cost of the portfolio is <span class="math notranslate nohighlight">\(\smash{S_0 \Delta -
+f}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="call-option-price">
+
+<h2>Call Option Price</h2>
+
+<p>Equating cost and value of the portfolio:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+S_0 \Delta - f &amp; = \left(S_0 u \Delta - f_u\right) e^{-rT} \\
+\Rightarrow f &amp; = S_0 \Delta \left(1-u e^{-rT}\right) + f_u
+e^{-rT} \\
+&amp; = S_0 \frac{f_u-f_d}{S_0 u - S_0 d} \left(1-u e^{-rT}\right) +
+f_u e^{-rT} \\
+&amp; = \frac{f_u\left(1-d e^{-rT}\right) + f_d\left(u e^{-rT} -
+1\right)}{u-d} \\
+&amp; = e^{-rT} \left(p f_u + (1-p) f_d\right),
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\smash{p = \frac{e^{rT} - d}{u-d}}\)</span>.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="revisiting-one-period-example">
+
+<h2>Revisiting One-Period Example</h2>
+
+<p>Recall the previous example:</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{u = 1.1}\)</span>, <span class="math notranslate nohighlight">\(\smash{d = 0.9}\)</span>, <span class="math notranslate nohighlight">\(\smash{f_u
+= 1}\)</span>, <span class="math notranslate nohighlight">\(\smash{f_d = 0}\)</span>, <span class="math notranslate nohighlight">\(\smash{r = 0.12}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{T = 3/12}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Thus <span class="math notranslate nohighlight">\(\smash{p = \frac{e^{0.12\times 3/12} - 0.9}{1.1-0.9} =
+0.6523}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{f = e^{-0.12 \times 0.25} \left(0.6523 \times 1 +
+0.3477 \times 0\right) = 0.633}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="two-step-binomial-tree">
+
+<h2>Two-Step Binomial Tree</h2>
+
+<p>Consider a two-period example, where the stock price can move up or
+down during the first period, and then can move up or down during the
+second period.</p>
+<ul class="simple">
+<li>There will be either three or four possible stock prices at the end
+of time two.</li>
+</ul>
+<ul class="simple">
+<li>We can solve the problem backwards:<ul>
+<li>First solve for the prices of the options in each state of the
+world at the end of period 1 (two separate problems).</li>
+<li>Use those prices to solve for the price at the current time
+(single problem).</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id6">
+
+<h2>Two-Step Binomial Tree</h2>
+
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/binomialTree2General.png"><img alt="_images/binomialTree2General.png" class="align-center" src="_images/binomialTree2General.png" style="width: 8in;" /></a>
+</div></blockquote>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id7">
+
+<h2>Two-Step Binomial Tree</h2>
+
+<p>Let us now denote a time period as <span class="math notranslate nohighlight">\(\smash{\Delta t}\)</span>.</p>
+<ul class="simple">
+<li>The value (price) of the call option at the end of the first period
+in the high state is:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+f_u &amp; = e^{-r \Delta t} \left(p f_{uu} + (1-p) f_{ud}\right)
+\end{align}\]</div>
+<ul class="simple">
+<li>The value (price) of the call option at the end of the first period
+in the low state is:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+f_d &amp; = e^{-r \Delta t} \left(p f_{ud} + (1-p) f_{dd}\right)
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id8">
+
+<h2>Two-Step Binomial Tree</h2>
+
+<ul class="simple">
+<li>The value (price) of the call option at the current time is:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+f &amp; = e^{-r \Delta t} \left(p f_{u} + (1-p) f_{d}\right) \\
+&amp; = e^{-2r \Delta t}\left(p^2 f_{uu} + 2*p(1-p) f_{ud} + (1-p)^2
+f_{dd} \right).
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="two-step-binomial-tree-example">
+
+<h2>Two-Step Binomial Tree Example</h2>
+
+<p>Continuing with the previous example: <span class="math notranslate nohighlight">\(\smash{u = 1.1}\)</span>,
+<span class="math notranslate nohighlight">\(\smash{d = 0.9}\)</span>, <span class="math notranslate nohighlight">\(\smash{r = 0.12}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{\Delta t = 3/12}\)</span>.</p>
+<ul class="simple">
+<li>If the stock price moves up twice <span class="math notranslate nohighlight">\(\smash{S_0 u^2 = 24.2}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{f_{uu} = 3.2}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If the stock price moves down twice <span class="math notranslate nohighlight">\(\smash{S_0 d^2 = 16.2}\)</span>
+and <span class="math notranslate nohighlight">\(\smash{f_{dd} = 0}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If the stock price moves up and down <span class="math notranslate nohighlight">\(\smash{S_0 ud = 19.8}\)</span>
+and <span class="math notranslate nohighlight">\(\smash{f_{ud} = 0}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id9">
+
+<h2>Two-Step Binomial Tree Example</h2>
+
+<p>Given the numbers above:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+f_u &amp; = e^{-0.12 \times 0.25} \left(0.6523 \times 3.2 + 0.3477
+\times 0 \right) = 2.0257 \\
+f_d &amp; = e^{-0.12 \times 0.25} \left(0.6523 \times 0 + 0.3477
+\times 0 \right) = 0 \\
+f &amp; = e^{-0.12 \times 0.25} \left(0.6523 \times 2.0257 + 0.3477
+\times 0 \right) = 1.2823.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="valuing-put-options">
+
+<h2>Valuing Put Options</h2>
+
+<p>The foregoing treatment was not unique to call options.</p>
+<ul class="simple">
+<li>We likewise could have determine the number of shares necessary to
+create a riskless portfolio that is long the stock and short a put.</li>
+</ul>
+<ul class="simple">
+<li>This would result in a symmetric solution for
+<span class="math notranslate nohighlight">\(\smash{\Delta}\)</span>, but using the final values of the put in
+each state.</li>
+</ul>
+<ul class="simple">
+<li>The same formulas for the one- and two-period trees can be used to
+value the option.<ul>
+<li>The only difference is that the option payoffs at each node are
+different than the call.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="two-step-put-option-example">
+
+<h2>Two-Step Put Option Example</h2>
+
+<p>The current price of a stock is <span class="math notranslate nohighlight">\(\smash{S_0 = \$50}\)</span>,
+<span class="math notranslate nohighlight">\(\smash{u = 1.2}\)</span>, <span class="math notranslate nohighlight">\(\smash{d = 0.8}\)</span>, <span class="math notranslate nohighlight">\(\smash{r =
+0.05}\)</span> and <span class="math notranslate nohighlight">\(\smash{\Delta t = 1}\)</span>. Consider a put with strike
+price <span class="math notranslate nohighlight">\(\smash{\$52}\)</span>.</p>
+<ul class="simple">
+<li>If the stock price moves up twice <span class="math notranslate nohighlight">\(\smash{S_0 u^2 = 72}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{f_{uu} = 0}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If the stock price moves down twice <span class="math notranslate nohighlight">\(\smash{S_0 d^2 = 32}\)</span>
+and <span class="math notranslate nohighlight">\(\smash{f_{dd} = 20}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If the stock price moves up and down <span class="math notranslate nohighlight">\(\smash{S_0 ud = 48}\)</span>
+and <span class="math notranslate nohighlight">\(\smash{f_{ud} = 4}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{p = \frac{e^{r \Delta t} - d}{u-d} =
+\frac{e^{0.05 \times 1} - 0.8}{1.2-0.8} = 0.6282}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id10">
+
+<h2>Two-Step Put Option Example</h2>
+
+<p>Given the numbers above:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+f_u &amp; = e^{-0.05 \times 1} \left(0.6282 \times 0 + 0.3718
+\times 4 \right) = 1.4147 \\
+f_d &amp; = e^{-0.05 \times 1} \left(0.6282 \times 4 + 0.3718
+\times 20 \right) = 9.4635 \\
+f &amp; = e^{-0.05 \times 1} \left(0.6282 \times 1.4147 + 0.3718
+\times 9.4635 \right) = 4.1923.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="american-options">
+
+<h2>American Options</h2>
+
+<p>To value an American option with a binomial tree:</p>
+<ul class="simple">
+<li>At each node, compute the value of the call implied by the
+subsequent nodes (using the foregoing methods).</li>
+</ul>
+<ul class="simple">
+<li>Compute the value of immediate exercise.</li>
+</ul>
+<ul class="simple">
+<li>Assign the value as the maximum of these two quantities.</li>
+</ul>
+<ul class="simple">
+<li>Proceed in reverse fashion until the value is computed at the first
+node, taking into account the possibilities of early exercise.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="american-option-example">
+
+<h2>American Option Example</h2>
+
+<p>Suppose that the put in the previous example is an American option.</p>
+<ul class="simple">
+<li>If the stock price moves down, the value of immediate exercise is
+<span class="math notranslate nohighlight">\(\smash{\$12}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>This means <span class="math notranslate nohighlight">\(\smash{f_d = \max(9.4626,12) = 12}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>As a result:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+f &amp; = e^{-0.05 \times 1} \left(0.6282 \times 1.4147 + 0.3718
+\times 12 \right) = 5.0894.
+\end{align}\]</div>
+<ul class="simple">
+<li>Note that the value of the American option is greater than that of
+the European option.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="delta">
+
+<h2>Delta</h2>
+
+<p>Recall that <span class="math notranslate nohighlight">\(\smash{\Delta}\)</span> is the number of shares that must
+be purchased to create a riskless portfolio with a short option.</p>
+<ul class="simple">
+<li>It is the ratio of possible option values over the possible stock
+prices.</li>
+</ul>
+<ul class="simple">
+<li>It is often written and referred to as <em>delta</em>.</li>
+</ul>
+<ul class="simple">
+<li>Following this investment strategy is called <em>delta hedging</em>.</li>
+</ul>
+<ul class="simple">
+<li>Call option deltas are positive and put option deltas are negative.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="call-deltas">
+
+<h2>Call Deltas</h2>
+
+<p>In the two-period call option example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\Delta_0 &amp; = \frac{2.0257 - 0}{22-18} = 0.5064 \\
+\Delta_u &amp; = \frac{3.2 - 0}{24.2-19.8} = 0.7273 \\
+\Delta_d &amp; = \frac{0 - 0}{19.8-16.2} = 0,
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\smash{\Delta_0}\)</span> is the delta for the first time period
+and <span class="math notranslate nohighlight">\(\smash{\Delta_u}\)</span> and <span class="math notranslate nohighlight">\(\smash{\Delta_d}\)</span> are the
+deltas for the second periods if the price moves up and down.</p>
+<ul class="simple">
+<li>Notice that delta changes with time - i.e you need to rebalance your
+portfolio to maintain a riskless hedge.</li>
+</ul>
+<ul class="simple">
+<li>This is called dynamic hedging.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="put-deltas">
+
+<h2>Put Deltas</h2>
+
+<p>In the two-period put option example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\Delta_0 &amp; = \frac{1.4147 - 9.4636}{60-40} = -0.4024 \\
+\Delta_u &amp; = \frac{0-4}{72-48} = -0.1667 \\
+\Delta_d &amp; = \frac{4-20}{48-32} = -1.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="stock-return-volatility">
+
+<h2>Stock Return Volatility</h2>
+
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{\sigma^2}\)</span> is the annualized variance of the
+stock returns.</p>
+<ul class="simple">
+<li>Assuming the returns are independent, <span class="math notranslate nohighlight">\(\smash{\Delta t
+\sigma^2}\)</span> is a good approximation of the variance for period
+<span class="math notranslate nohighlight">\(\smash{\Delta t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>This means a good approximation of the standard deviation, or
+volatility, for period <span class="math notranslate nohighlight">\(\smash{\Delta t}\)</span> is
+<span class="math notranslate nohighlight">\(\smash{\sqrt{\Delta t} \sigma}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="binomial-tree-parameters">
+
+<h2>Binomial Tree Parameters</h2>
+
+<p>Given the current stock price, <span class="math notranslate nohighlight">\(\smash{S_0}\)</span>, the option strike
+price and the risk-free rate, <span class="math notranslate nohighlight">\(\smash{r}\)</span>:</p>
+<ul class="simple">
+<li>The binomial tree is completely determined by three parameters:
+<span class="math notranslate nohighlight">\(\smash{u}\)</span>, <span class="math notranslate nohighlight">\(\smash{d}\)</span> and <span class="math notranslate nohighlight">\(\smash{\Delta t}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{u}\)</span> and <span class="math notranslate nohighlight">\(\smash{d}\)</span> are often set so that
+<span class="math notranslate nohighlight">\(\smash{u = e^{\sigma \sqrt{\Delta t}}}\)</span> and <span class="math notranslate nohighlight">\(\smash{d =
+e^{-\sigma \sqrt{\Delta t}}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>In doing so, it can be shown that the volatility of the returns in
+the binomial tree approximate <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id11">
+
+<h2>Binomial Tree Parameters</h2>
+
+<p>Simple binomial tree models with long time periods are unrealistic.</p>
+<ul class="simple">
+<li>We can simply increase the number of steps in the model.</li>
+</ul>
+<ul class="simple">
+<li>For example, for a three-month period with daily time steps, there
+would be a total of roughly 66 period (22 trading days per month).</li>
+</ul>
+<ul class="simple">
+<li>For the recombining trees we considered above, this amounts to 66
+possible terminal values and <span class="math notranslate nohighlight">\(\smash{\sum_{i=1}^{65} i =
+2145}\)</span> individual options nodes to value.</li>
+</ul>
+<ul class="simple">
+<li>For the non-recombining trees, this amounts to
+<span class="math notranslate nohighlight">\(\smash{2^{65}}\)</span> possible terminal values and
+<span class="math notranslate nohighlight">\(\smash{\sum_{i=1}^{65} 2^{i-1}}\)</span> individual options nodes to
+value.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="options-on-other-assets">
+
+<h2>Options on Other Assets</h2>
+
+<p>We have only valued options on a stock that doesn’t pay dividends.</p>
+<ul class="simple">
+<li>To value other assets, we only need to adjust the interest rate
+<span class="math notranslate nohighlight">\(\smash{r}\)</span> used in the calculation of <span class="math notranslate nohighlight">\(\smash{p}\)</span> to
+account for any earnings or costs associated with the underlying
+asset.</li>
+</ul>
+<ul class="simple">
+<li>Discounting to present value is always done with <span class="math notranslate nohighlight">\(\smash{r}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id12">
+
+<h2>Options on Other Assets</h2>
+
+<p>For stock paying dividends:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+p &amp; = \frac{e^{(r-q)\Delta t}-d}{u-d}.
+\end{align}\]</div>
+<p>For currencies:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+p &amp; = \frac{e^{(r-r_f)\Delta t}-d}{u-d}.
+\end{align}\]</div>
+<p>For futures:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+p &amp; = \frac{1-d}{u-d}.
+\end{align}\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

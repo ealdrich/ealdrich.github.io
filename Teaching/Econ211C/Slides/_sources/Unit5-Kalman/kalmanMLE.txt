@@ -1,0 +1,146 @@
+==============================================================================
+ML Estimation of State-Space Models
+==============================================================================
+
+Kalman Filter Forecasts
+==============================================================================
+The Kalman filter forecasts :math:`\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}` and
+:math:`\smash{\hat{\boldsymbol{Y}}_{t|t-1}}` are linear projections of
+:math:`\smash{\boldsymbol{\xi}_{t}}` and :math:`\smash{\boldsymbol{Y}_{t}}` on
+:math:`\smash{(\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1})}`.
+
+.. raw:: <!--pause-->
+
+- They are optimal among all forecasts that are linear functions of
+  :math:`\smash{(\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1})}`.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\boldsymbol{\xi}_{1}}` and
+  :math:`\smash{\{\boldsymbol{w}_{t},\boldsymbol{v}_{t}\}_{t=1}^{T}}` are multivariate
+  Gaussian, :math:`\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}` and
+  :math:`\smash{\hat{\boldsymbol{Y}}_{t|t-1}}` are optimal among *all*
+  forecasts that are functions of
+  :math:`\smash{(\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1})}` (linear and
+  non-linear).
+
+Conditional Distribution of :math:`\smash{\boldsymbol{Y}_t}`
+==============================================================================
+The distribution of
+:math:`\smash{\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}}` is also
+multivariate Gaussian, of the form:
+
+.. math::
+
+   \smash{\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1} \sim
+   MVN(A^{'}\boldsymbol{x}_{t} + H^{'}\hat{\boldsymbol{\xi}}_{t|t-1},H^{'}P_{t|t-1}H
+   +R)}
+
+Conditional Distribution of :math:`\smash{\boldsymbol{Y}_t}`
+==============================================================================
+Thus, the density function is
+
+.. math::
+
+   \begin{align}
+   f_{\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},
+   \boldsymbol{\mathcal{Y}}_{t-1}} & (\boldsymbol{Y}_{t}|
+   \boldsymbol{x}_{t},
+   \boldsymbol{\mathcal{Y}}_{t-1},\boldsymbol{\theta}) \\
+   & = (2\pi)^{-n/2} | H^{'}P_{t|t-1}H + R|^{-1/2} \\
+   & \hspace{1in} \times
+   \exp\bigg\{-\frac{1}{2}\left(\boldsymbol{Y}_{t} - A^{'}\boldsymbol{x}_{t} -
+   H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}\right) \\
+   & \hspace{2.5in} \times \left(H^{'}P_{t|t-1}H +
+   R\right)^{-1} \\
+   & \hspace{3.5in} \times \left(\boldsymbol{Y}_{t} - A^{'}\boldsymbol{x}_{t} -
+   H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}\right)^{'}\bigg\}
+   \end{align}
+
+where :math:`\smash{\boldsymbol{\theta}}` aggregates all known parameters in
+:math:`\smash{F, A, H, Q,}` and :math:`\smash{R}`.
+
+Log-likelihood
+==============================================================================
+The log-likelihood is the joint density
+
+.. math::
+
+   \smash{\ell(\boldsymbol{\theta}) =  \sum_{t=1}^{T}
+   \log\left(f_{\boldsymbol{Y}_{t}|\boldsymbol{X}_{t},
+   \boldsymbol{\mathcal{Y}}_{t-1}}
+   (\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},
+   \boldsymbol{\mathcal{Y}}_{t-1},\boldsymbol{\theta})\right)}
+
+.. raw:: <!--pause-->
+
+- The log-likelihood can be maximized numerically with respect to
+  :math:`\smash{F(\boldsymbol{\theta}), A(\boldsymbol{\theta}), H(\boldsymbol{\theta}),
+  Q(\boldsymbol{\theta})}`, and :math:`\smash{R(\boldsymbol{\theta})}`.
+
+.. raw:: <!--pause-->
+
+- This is an exact log likelihood and yields exact MLEs.
+
+.. raw:: <!--pause-->
+
+- Maximum likelihood estimation for :math:`\smash{MA}` and
+  :math:`\smash{ARMA}` can be performed in this manner.
+
+Basic Prescription
+==============================================================================
+1. Guess :math:`\smash{\boldsymbol{\theta}^{(0)}}`
+
+.. raw:: <!--pause-->
+
+2. Given :math:`\smash{\boldsymbol{\theta}^{(s)}}`, compute
+   :math:`\smash{F(\boldsymbol{\theta}^{(s)}), A(\boldsymbol{\theta}^{(s)}),
+   H(\boldsymbol{\theta}^{(s)}), Q(\boldsymbol{\theta}^{(s)}),}` and
+   :math:`\smash{R(\boldsymbol{\theta}^{(s)})}`.
+
+.. raw:: <!--pause-->
+
+3. Use the Kalman Filter to iteratively compute
+   :math:`\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}` and
+   :math:`\smash{P_{t|t-1}}`, :math:`\smash{t =1,\ldots,T}`.
+
+.. raw:: <!--pause-->
+
+4. Compute the log-likelihood using
+   :math:`\smash{H(\boldsymbol{\theta}^{(s)}), A(\boldsymbol{\theta}^{(s)}),
+   R(\boldsymbol{\theta}^{(s)})}`, and
+   :math:`\smash{\{\hat{\boldsymbol{\xi}}_{t|t-1},P_{t|t-1}\}_{t=1}^{T}}`.
+
+.. raw:: <!--pause-->
+
+5. Use a numerical method to update
+   :math:`\smash{\boldsymbol{\theta}^{(s+1)}}`.
+
+.. raw:: <!--pause-->
+
+6. If :math:`\smash{||\boldsymbol{\theta}^{(s+1)} - \boldsymbol{\theta}^{(s)}|| <
+   \tau}`, stop.  Otherwise, set :math:`\smash{i = i +1}` and return
+   to step 2.
+
+Basic Prescription
+==============================================================================
+Updating :math:`\smash{\boldsymbol{\theta}^{(i)} \rightarrow
+\boldsymbol{\theta}^{(i+1)}}` may involve numerical or analytical
+derivatives.
+
+.. raw:: <!--pause-->
+
+- Analytical derivatives of the log likelihood with respect to each
+  :math:`\smash{\theta_{i}}` will involve
+
+.. math::
+
+   \smash{ \frac{\partial \hat{\boldsymbol{\xi}}_{t|t-1}
+   (\boldsymbol{\theta})}{\partial \theta_{i}} \hspace{4pt} \text{
+   and } \hspace{4pt} \frac{\partial P_{t|t-1}}{\partial
+   \theta_{i}}}.
+
+.. raw:: <!--pause-->
+
+- These derivatives can be updated recursively similar to
+  :math:`\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}` and :math:`\smash{P_{t|t-1}}`.

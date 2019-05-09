@@ -1,0 +1,762 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Options &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="prev" title="The Term Structure of Interest Rates" href="termStructure.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="options">
+<h1>Options</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="call-options">
+<h2>Call Options</h2>
+<p>A call option is a contract that allows the buyer the <em>option</em> to
+purchase an asset for a pre-specified price on or before a particular
+date.  It has the following
+ingredients:</p>
+<ul class="to-build simple">
+<li>Underlying asset: The asset that may be bought or sold when the
+option is exercised.</li>
+</ul>
+<ul class="to-build simple">
+<li>Maturity (exercise) date: The date at which the contract expires.</li>
+</ul>
+<ul class="to-build simple">
+<li>Strike price: The pre-specified price at which the underlying can be
+purchased.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Call Options</h2>
+<p>The buyer of the option is <em>not obligated</em> to buy the underlying asset
+at the strike price.</p>
+<ul class="to-build simple">
+<li>The <em>buyer</em> has the <em>option</em> to buy.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <em>seller</em> of the call option is <em>obligated</em> to sell the
+underlying if the buyer wants to exercise the option.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the price of the underlying asset is above the strike price on
+the maturity date, the buyer will exercise. Why?</li>
+</ul>
+<ul class="to-build simple">
+<li>If the price of the underlying asset is below the strike price on
+the maturity date, the buyer will not exercise. Why?</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Call Options</h2>
+<p>The call option has no downside risk for the buyer.</p>
+<ul class="to-build simple">
+<li>The buyer is better off if the underlying asset price rises.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the underlying asset price falls, the buyer doesn't lose
+anything.</li>
+</ul>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Call Options</h2>
+<p>However, the seller of the option <em>only</em> faces downside risk.</p>
+<ul class="to-build simple">
+<li>The seller is worse off if the underlying asset price rises.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the underlying asset price falls, the seller doesn't gain
+anything.</li>
+</ul>
+<p class="to-build">The seller must be compensated for taking the risk of having to sell
+the underlying for a low price.</p>
+<ul class="to-build simple">
+<li>The buyer pays a <em>premium</em> to purchase the option contract.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="call-option-example">
+<h2>Call Option Example</h2>
+<p>On March 8th 2013, stock for Chipotle Mexican Grill (CMG) sold for
+$321.84 and an option contract with a strike price of $320.00 and
+maturity date of March 15th 2013 cost $5.30.</p>
+<ul class="to-build simple">
+<li>If the price of Chipotle is less than $320.00 on March 15th, the
+option will not be exercised.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the price is $325.00 on March 15th, the option holder (buyer)
+will exercise the contract.</li>
+</ul>
+<ul class="to-build simple">
+<li>The gain to the buyer will be $5.00.</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Call Option Example</h2>
+<ul class="simple">
+<li>Remember that the contract cost $5.30, so the buyer has a net loss
+of $0.30.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the price on March 15th is greater than $325.30, the buyer will
+have a net gain.</li>
+</ul>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="put-options">
+<h2>Put Options</h2>
+<p>A put option is a contract that allows the buyer the option to sell an
+asset (the underlying) for a pre-specified price (the strike) on or
+before a particular date (the maturity date).</p>
+<ul class="to-build simple">
+<li>The buyer of the put benefits when the price of the underlying asset
+falls below the strike.</li>
+</ul>
+<ul class="to-build simple">
+<li>The buyer of the option can buy the asset at the market price and
+sell it at the higher strike price (to the writer of the put
+option).</li>
+</ul>
+<ul class="to-build simple">
+<li>If the price of the asset rises above the strike, the buyer will not
+exercise the option and has no downside loss.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Put Options</h2>
+<ul class="simple">
+<li>The put is an <em>option</em> (not an <em>obligation</em>) for the buyer to sell
+the asset at the strike price.</li>
+</ul>
+<ul class="to-build simple">
+<li>The writer of the put is under <em>obligation</em> to buy the asset
+whenever the buyer chooses to exercise the option.</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="put-option-example">
+<h2>Put Option Example</h2>
+<p>Consider again Chipotle stock which sold for $321.84 on March
+8th 2013.</p>
+<ul class="to-build simple">
+<li>A put option with a strike price of $320.00 and a maturity date of
+March 15th 2013 costs $3.30.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the price of the stock is above $320.00 on March 15th, the
+option will not be exercised.</li>
+</ul>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Put Option Example</h2>
+<ul class="simple">
+<li>Suppose the price is below $320.00 on March 15th: $315.00.</li>
+</ul>
+<ul class="to-build simple">
+<li>The buyer of the put will exercise the contract, buying the stock
+for $315.00 on the market and selling to the put writer for
+$320.00.</li>
+</ul>
+<ul class="to-build simple">
+<li>The gross profit would be $320.00 - $315.00 = $5.00.</li>
+</ul>
+<ul class="to-build simple">
+<li>The net profit would be: $5.00 - $3.30.</li>
+</ul>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="moneyness">
+<h2>Moneyness</h2>
+<p>An option is</p>
+<ul class="to-build simple">
+<li><em>In the money</em> when its strike price would produce profits for the
+holder.</li>
+</ul>
+<ul class="to-build simple">
+<li><em>Out of the money</em> when exercise would be unprofitable.</li>
+</ul>
+<ul class="to-build simple">
+<li><em>At the money</em> when the strike price is equal to the asset price.</li>
+</ul>
+<p class="to-build">The moneyness can be determined at any time, as if the option were
+exercised at that instant.</p>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="american-vs-european">
+<h2>American vs. European</h2>
+<ul class="simple">
+<li>An American option allows the buyer to exercise the contract on or
+before the maturity date.</li>
+</ul>
+<ul class="to-build simple">
+<li>A European option only allows exercise on the maturity date.</li>
+</ul>
+<ul class="to-build simple">
+<li>Since an American option encompasses all of the possibilities of a
+European option, it should always be more valuable and cost more.</li>
+</ul>
+<ul class="to-build simple">
+<li>As the name denotes, virtually all options traded in the U.S. are of
+the American flavor.</li>
+</ul>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="notation">
+<h2>Notation</h2>
+<p>We use the following notation:</p>
+<div class="to-build math">
+\[T = \text{Maturity date}\]</div>
+<div class="to-build math">
+\[S_t = \text{Underlying asset price at time } t\]</div>
+<div class="to-build math">
+\[X = \text{Strike Price}\]</div>
+<div class="to-build math">
+\[C_t = \text{Value of a call option at time } t\]</div>
+<div class="to-build math">
+\[P_t = \text{Value of a put option at time } t\]</div>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="call-option-payoff-buyer">
+<h2>Call Option Payoff (Buyer)</h2>
+<p>The payoff to a call option holder (buyer) at expiration is</p>
+<div class="to-build math">
+\[\begin{split}C_T = \begin{cases} S_T - X, &amp; \text{if  } S_T &gt; X \\ 0, &amp;
+\text{if  } S_T \leq X. \end{cases}\end{split}\]</div>
+<ul class="to-build simple">
+<li>If the asset price is above the strike, the holder can buy the
+underlying for <span class="math">\(X\)</span> and immediately sell it for <span class="math">\(S_T\)</span>,
+yielding a profit of <span class="math">\(S_T-X\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the asset price is below the strike, the option is worthless.</li>
+</ul>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Call Option Payoff (Buyer)</h2>
+<p>The payoffs above did not account for the cost of the option.</p>
+<ul class="to-build simple">
+<li>If the option is purchased at time <span class="math">\(t\)</span> for a price of
+<span class="math">\(C_t\)</span>, the net payoff to the holder at expiration is</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}C_T = \begin{cases} S_T - X - C_t, &amp; \text{if  } S_T &gt; X \\ -C_t, &amp;
+\text{if  } S_T \leq X. \end{cases}\end{split}\]</div>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Call Option Payoff (Buyer</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1502_lg.jpg"><img alt="_images/bod34698_1502_lg.jpg" class="align-center" src="_images/bod34698_1502_lg.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="call-option-payoff-seller">
+<h2>Call Option Payoff (Seller)</h2>
+<p>On the flip side, the gross payoff to the call option writer at
+expiration is</p>
+<div class="to-build math">
+\[\begin{split}C_T &amp; = \begin{cases} X - S_T, &amp; \text{if  } S_T &gt; X
+\\ 0, &amp; \text{if  } S_T \leq X. \end{cases}\end{split}\]</div>
+<p class="to-build">The net payoff is</p>
+<div class="to-build math">
+\[\begin{split}C_T &amp; = \begin{cases} X - S_T + C_t, &amp; \text{if  } S_T &gt; X
+\\ C_t, &amp; \text{if  } S_T \leq X. \end{cases}\end{split}\]</div>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Call Option Payoff (Seller)</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1503_lg.jpg"><img alt="_images/bod34698_1503_lg.jpg" class="align-center" src="_images/bod34698_1503_lg.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="put-option-payoff-buyer">
+<h2>Put Option Payoff (Buyer)</h2>
+<p>The gross payoff to put option holders at expiration is</p>
+<div class="to-build math">
+\[\begin{split}P_T &amp; = \begin{cases} 0, &amp; \text{if  } S_T &gt; X
+\\ X - S_T, &amp; \text{if  } S_T \leq X. \end{cases}\end{split}\]</div>
+<ul class="to-build simple">
+<li>If the underlying asset price is below the strike, the holder can
+purchase it for <span class="math">\(S_T\)</span> and immediately resell for <span class="math">\(X\)</span>,
+yielding a profit of <span class="math">\(X-S_T\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the asset price is above the strike at expiration, the option is
+worthless.</li>
+</ul>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="id10">
+<h2>Put Option Payoff (Buyer)</h2>
+<p>The <em>net</em> payoff to put option holders is</p>
+<div class="to-build math">
+\[\begin{split}P_T &amp; = \begin{cases} -P_t, &amp; \text{if  } S_T &gt; X
+\\ X - S_T - P_t, &amp; \text{if  } S_T \leq X. \end{cases}\end{split}\]</div>
+
+<div class="slide-no">21</div>
+
+</article>
+<article class="appear slide level-2" id="id11">
+<h2>Put Option Payoff (Buyer)</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1504_lg.jpg"><img alt="_images/bod34698_1504_lg.jpg" class="align-center" src="_images/bod34698_1504_lg.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">22</div>
+
+</article>
+<article class="appear slide level-2" id="speculation-and-hedging">
+<h2>Speculation and Hedging</h2>
+<p>Options can be used for both speculation and hedging.</p>
+<ul class="to-build simple">
+<li>Suppose you have $10,000 available for investment.</li>
+</ul>
+<ul class="to-build simple">
+<li>A share of stock costs $100.</li>
+</ul>
+<ul class="to-build simple">
+<li>An option with a strike price of $100 and six-month maturity costs
+$10.</li>
+</ul>
+<ul class="to-build simple">
+<li>You can lend money (purchase the risk-free asset) at a rate of 3%
+for the next six months.</li>
+</ul>
+
+<div class="slide-no">23</div>
+
+</article>
+<article class="appear slide level-2" id="id12">
+<h2>Speculation and Hedging</h2>
+<p>Consider three strategies.</p>
+<ul class="to-build simple">
+<li>Strategy A: Invest entirely in stock, buying 100 shares at the
+current price of $100.</li>
+</ul>
+<ul class="to-build simple">
+<li>Strategy B: Invest entirely in at-the-money options, buying 10 call
+contracts (each for 100 shares) selling for $1000 a piece.</li>
+</ul>
+<ul class="to-build simple">
+<li>Strategy C: Purchase 100 call options (1 contract) for $1,000 and
+invest the remaining $9,000 in the risk-free asset, which will
+yield a total of <span class="math">\(\$9,000\times1.03 = \$9,270\)</span> at the
+end of the six months.</li>
+</ul>
+
+<div class="slide-no">24</div>
+
+</article>
+<article class="appear slide level-2" id="id13">
+<h2>Speculation and Hedging</h2>
+<p>The values of the three strategies are:</p>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/table1.png"><img alt="_images/table1.png" class="align-center" src="_images/table1.png" style="width: 8in;" /></a>
+
+<div class="slide-no">25</div>
+
+</article>
+<article class="appear slide level-2" id="id14">
+<h2>Speculation and Hedging</h2>
+<p>The returns to the three strategies are:</p>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/table2.png"><img alt="_images/table2.png" class="align-center" src="_images/table2.png" style="width: 8in;" /></a>
+
+<div class="slide-no">26</div>
+
+</article>
+<article class="appear slide level-2" id="id15">
+<h2>Speculation and Hedging</h2>
+<p>From these tables we see two features of options.</p>
+<ul class="to-build">
+<li><p class="first">Options offer leverage.</p>
+<ul class="to-build simple">
+<li>For the all-option portfolio, the return plummets to -100% when
+the stock price is below the strike.</li>
+</ul>
+<ul class="to-build simple">
+<li>The return rockets to numbers that are much greater than simply
+holding the stock when the stock price increases above the
+strike.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">27</div>
+
+</article>
+<article class="appear slide level-2" id="id16">
+<h2>Speculation and Hedging</h2>
+<ul>
+<li><p class="first">Options offer insurance.</p>
+<ul class="to-build simple">
+<li>The mixed portfolio has limited downside loss: the investor can't
+lose more than -7.3%.</li>
+</ul>
+<ul class="to-build simple">
+<li>It also has limited upside gains: if the stock price is above the
+strike, its returns are always below the portfolio comprised of
+only stock.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">28</div>
+
+</article>
+<article class="appear slide level-2" id="id17">
+<h2>Speculation and Hedging</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1505_lg.jpg"><img alt="_images/bod34698_1505_lg.jpg" class="align-center" src="_images/bod34698_1505_lg.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">29</div>
+
+</article>
+<article class="appear slide level-2" id="protective-put">
+<h2>Protective Put</h2>
+<p>A protective put strategy consists of simultaneously purchasing a
+share of stock and a put option on that stock.</p>
+<ul class="to-build simple">
+<li>This limits the potential downside loss of the stock while leaving
+the potential gains intact.</li>
+</ul>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="to-build reference internal image-reference" href="_images/table3.png"><img alt="_images/table3.png" class="to-build align-center" src="_images/table3.png" style="width: 4in;" /></a>
+
+<div class="slide-no">30</div>
+
+</article>
+<article class="appear slide level-2" id="id18">
+<h2>Protective Put</h2>
+<p>The put acts as insurance against loss.</p>
+<ul class="to-build simple">
+<li>Comparing the net payoff of the protective put with the strategy of
+holding stock alone shows that the former comes at a cost.</li>
+</ul>
+<ul class="to-build simple">
+<li>This is the insurance premium.</li>
+</ul>
+
+<div class="slide-no">31</div>
+
+</article>
+<article class="appear slide level-2" id="id19">
+<h2>Protective Put</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1506_lg.jpg"><img alt="_images/bod34698_1506_lg.jpg" class="align-center" src="_images/bod34698_1506_lg.jpg" style="width: 3in;" /></a>
+
+<div class="slide-no">32</div>
+
+</article>
+<article class="appear slide level-2" id="id20">
+<h2>Protective Put</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1507_lg.jpg"><img alt="_images/bod34698_1507_lg.jpg" class="align-center" src="_images/bod34698_1507_lg.jpg" style="width: 5.5in;" /></a>
+
+<div class="slide-no">33</div>
+
+</article>
+<article class="appear slide level-2" id="covered-call">
+<h2>Covered Call</h2>
+<p>A covered call strategy consists of simultaneously purchasing a share
+of stock and writing a call option on that stock.</p>
+<ul class="to-build simple">
+<li>It doesn't eliminate downside loss (like the protective put).</li>
+</ul>
+<ul class="to-build simple">
+<li>It covers the obligation to deliver the stock for less than its
+market value if the stock price is above the strike.</li>
+</ul>
+<ul class="to-build simple">
+<li>The call writer is charging a premium (the call price) in order to
+forsake the upside gain of holding the stock.</li>
+</ul>
+<a class="to-build reference internal image-reference" href="_images/table4.png"><img alt="_images/table4.png" class="to-build align-center" src="_images/table4.png" style="width: 5in;" /></a>
+
+<div class="slide-no">34</div>
+
+</article>
+<article class="appear slide level-2" id="id21">
+<h2>Covered Call</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1508_lg.jpg"><img alt="_images/bod34698_1508_lg.jpg" class="align-center" src="_images/bod34698_1508_lg.jpg" style="width: 3in;" /></a>
+
+<div class="slide-no">35</div>
+
+</article>
+<article class="appear slide level-2" id="straddle">
+<h2>Straddle</h2>
+<p>A straddle consists of purchasing call and put options for the same
+asset and strike price.</p>
+<ul class="to-build simple">
+<li>It is a bet on volatility.</li>
+</ul>
+<ul class="to-build simple">
+<li>The straddle holder will earn (gross) positive returns if the stock
+price moves up or down, but nothing if it remains at the strike.</li>
+</ul>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="to-build reference internal image-reference" href="_images/table5.png"><img alt="_images/table5.png" class="to-build align-center" src="_images/table5.png" style="width: 4in;" /></a>
+
+<div class="slide-no">36</div>
+
+</article>
+<article class="appear slide level-2" id="id22">
+<h2>Straddle</h2>
+<p>So why doesn't everyone hold straddles?</p>
+<ul class="to-build simple">
+<li>Because the investor must pay for both contracts.</li>
+</ul>
+<ul class="to-build simple">
+<li>The investor doesn't earn a <em>net</em> return unless the stock price
+moves enough to compensate for the initial outlay.</li>
+</ul>
+
+<div class="slide-no">37</div>
+
+</article>
+<article class="appear slide level-2" id="id23">
+<h2>Straddle</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1509_lg.jpg"><img alt="_images/bod34698_1509_lg.jpg" class="align-center" src="_images/bod34698_1509_lg.jpg" style="width: 3in;" /></a>
+
+<div class="slide-no">38</div>
+
+</article>
+<article class="appear slide level-2" id="spread">
+<h2>Spread</h2>
+<p>A spread is a combination of two or more options (both calls or both
+puts) on the same stock with different strikes.</p>
+<ul class="to-build simple">
+<li>Some of the options are purchased while others are sold.</li>
+</ul>
+<ul class="to-build simple">
+<li>A money spread is the simultaneous purchase and sale of options with
+different strikes.</li>
+</ul>
+<ul class="to-build simple">
+<li>A time spread is the simultaneous purchase and sale of options with
+different maturities.</li>
+</ul>
+
+<div class="slide-no">39</div>
+
+</article>
+<article class="appear slide level-2" id="bullish-spread">
+<h2>Bullish Spread</h2>
+<p>A bullish spread:</p>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="to-build reference internal image-reference" href="_images/table6.png"><img alt="_images/table6.png" class="to-build align-center" src="_images/table6.png" style="width: 7in;" /></a>
+
+<div class="slide-no">40</div>
+
+</article>
+<article class="appear slide level-2" id="id24">
+<h2>Bullish Spread</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1510_lg.jpg"><img alt="_images/bod34698_1510_lg.jpg" class="align-center" src="_images/bod34698_1510_lg.jpg" style="width: 3in;" /></a>
+
+<div class="slide-no">41</div>
+
+</article>
+<article class="appear slide level-2" id="collar">
+<h2>Collar</h2>
+<p>An example of a collar is the purchase of a protective put for one
+strike price and the sale of a call option, on the same stock, for a
+higher strike.</p>
+<ul class="to-build simple">
+<li>This strategy eliminates downside losses below the strike of the put
+and also upside gains beyond the strike of the call.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this case, the investor constrains gains and losses within a
+region close to the current price of the stock.</li>
+</ul>
+
+<div class="slide-no">42</div>
+
+</article>
+<article class="appear slide level-2" id="protective-put-alternative">
+<h2>Protective Put Alternative</h2>
+<p>A protective put eliminates the downside loss of holding stock. We
+could achieve this with an alternative strategy.</p>
+<ul class="to-build simple">
+<li>Purchase a call option with strike price <span class="math">\(X\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Purchase a T-bill (lend at the risk-free rate) with a face value
+equal to the call strike price, <span class="math">\(X\)</span>, and the same maturity
+date as the call.</li>
+</ul>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="to-build reference internal image-reference" href="_images/table7.png"><img alt="_images/table7.png" class="to-build align-center" src="_images/table7.png" style="width: 4in;" /></a>
+
+<div class="slide-no">43</div>
+
+</article>
+<article class="appear slide level-2" id="put-call-parity">
+<h2>Put Call Parity</h2>
+<p>The payoffs in the previous table are identical to those for the
+protective put.</p>
+<ul class="to-build simple">
+<li>Hence, the cost of the protective put strategy should be equal to
+the cost of the call plus bonds strategy (why?!!!).</li>
+</ul>
+<ul class="to-build simple">
+<li>This fact is known as the <em>Put-Call Parity Relationship</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Mathematically, it can be expressed as:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}C_0 + \frac{X}{1+r_f} &amp; = S_0 + P_0.\end{split}\]</div>
+<ul class="to-build simple">
+<li>This relationship is very useful because it allows us to compute the
+value of a call option if we know the price of the corresponding
+put, and vice versa.</li>
+</ul>
+
+<div class="slide-no">44</div>
+
+</article>
+<article class="appear slide level-2" id="put-call-parity-example">
+<h2>Put Call Parity Example</h2>
+<p>Assume</p>
+<ul class="to-build simple">
+<li>An asset currently sells for $110.</li>
+</ul>
+<ul class="to-build simple">
+<li>A call option with strike <span class="math">\(X = \$105\)</span> and 1-year maturity
+sells for $17.</li>
+</ul>
+<ul class="to-build simple">
+<li>A put option with strike <span class="math">\(X = \$105\)</span> and 1-year maturity
+sells for $5.</li>
+</ul>
+<ul class="to-build simple">
+<li>The risk-free interest rate is 5% per year.</li>
+</ul>
+<ul class="to-build simple">
+<li>Does the parity relationship hold?</li>
+</ul>
+
+<div class="slide-no">45</div>
+
+</article>
+<article class="appear slide level-2" id="id25">
+<h2>Put Call Parity Example</h2>
+<div class="math">
+\[\begin{split}C_0 + \frac{X}{1+r_f} &amp; \stackrel{?}{=} S_0 + P_0.\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\$117 = \$17 + \frac{\$105}{1.05} &amp; \neq \$110 + \$5 = \$115.\end{split}\]</div>
+<ul class="to-build simple">
+<li>The relationship doesn't hold.</li>
+</ul>
+<ul class="to-build simple">
+<li>How might an investor take advantage of the situation?</li>
+</ul>
+
+<div class="slide-no">46</div>
+
+</article>
+<article class="appear slide level-2" id="id26">
+<h2>Put Call Parity Example</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/table8.png"><img alt="_images/table8.png" class="align-center" src="_images/table8.png" style="width: 7in;" /></a>
+
+<div class="slide-no">47</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

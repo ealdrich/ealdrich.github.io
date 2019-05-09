@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Finance Preliminaries &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="index.html" />
+    <link rel="next" title="Stationarity" href="stationarity.html" />
+    <link rel="prev" title="Econ 211C" href="index.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="finance-preliminaries">
+
+<h1>Finance Preliminaries</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="introduction">
+
+<h2>Introduction</h2>
+
+<p>Our objective is to learn the theory and application of
+time series methods.</p>
+<ul class="simple">
+<li>We will focus on financial time series applications.</li>
+</ul>
+<ul class="simple">
+<li>The methods in this course are broadly applicable to <em>any</em> type of
+time series.</li>
+</ul>
+<ul class="simple">
+<li>We will use the <a class="reference external" href="http://www.r-project.org/">R</a> programming
+environment to work with financial time series data.</li>
+</ul>
+<ul class="simple">
+<li>The <a class="reference external" href="http://www.quantmod.com/">quantmod</a> library will be especially useful:</li>
+</ul>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;quantmod&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="time-series-example">
+
+<h2>Time Series Example</h2>
+
+<p>Let's plot the historical prices for Facebook (FB).</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>quantmod<span class="p">)</span>
+<span class="o">&gt;</span> getSymbols<span class="p">(</span><span class="s">&quot;FB&quot;</span><span class="p">,</span>src<span class="o">=</span><span class="s">&quot;google&quot;</span><span class="p">,</span> from<span class="o">=</span><span class="s">&quot;2012-01-01&quot;</span><span class="p">,</span> to<span class="o">=</span><span class="s">&quot;2014-12-31&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> png<span class="p">(</span>filename<span class="o">=</span><span class="s">&quot;fb.png&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> chartSeries<span class="p">(</span>FB<span class="p">)</span>
+<span class="o">&gt;</span> dev.off<span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="plot-of-facebook-price">
+
+<h2>Plot of Facebook Price</h2>
+
+<a class="reference internal image-reference" href="_images/fb.png"><img alt="_images/fb.png" class="align-center" src="_images/fb.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="facebook-returns">
+
+<h2>Facebook Returns</h2>
+
+<p>To plot just the closing prices:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> chartSeries<span class="p">(</span>Cl<span class="p">(</span>FB<span class="p">))</span>
+<span class="o">&gt;</span> chartSeries<span class="p">(</span>FB<span class="o">$</span>FB.Close<span class="p">)</span>
+</pre></div>
+</div>
+<p>Or daily returns:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> chartSeries<span class="p">(</span>dailyReturn<span class="p">(</span>Cl<span class="p">(</span>FB<span class="p">)))</span>
+</pre></div>
+</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="plot-of-facebook-returns">
+
+<h2>Plot of Facebook Returns</h2>
+
+<a class="reference internal image-reference" href="_images/fbRet.png"><img alt="_images/fbRet.png" class="align-center" src="_images/fbRet.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="one-period-return">
+
+<h2>One-Period Return</h2>
+
+<p>Let <span class="math">\(P_t\)</span> be the price of an asset at time <span class="math">\(t\)</span>.</p>
+<ul class="simple">
+<li>The <em>gross return</em> of the asset between dates <span class="math">\(t-1\)</span> and
+<span class="math">\(t\)</span> is:</li>
+</ul>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+R_t &amp; = \frac{P_t}{P_{t-1}}
+\,\,\,\, \text{or} \,\,\,\, P_t = P_{t-1} R_t.
+\end{align*}}\end{split}\]</div>
+<ul class="simple">
+<li>The <em>net return</em> is:</li>
+</ul>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+r_t &amp; = R_t - 1 = \frac{P_t}{P_{t-1}} - 1 = \frac{P_t -
+P_{t-1}}{P_{t-1}}.
+\end{align*}}\end{split}\]</div>
+<ul class="simple">
+<li>Note that the return can be computed between any two dates (i.e.
+daily, weekly, monthly, etc).</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="multi-period-return">
+
+<h2>Multi-Period Return</h2>
+
+<p>The <span class="math">\(k\)</span> -period gross return between dates <span class="math">\(t-k\)</span> and
+<span class="math">\(t\)</span> is:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+R_t(k) &amp; =
+\frac{P_t}{P_{t-k}} = \frac{P_t}{P_{t-1}} \times
+\frac{P_{t-1}}{P_{t-2}} \times
+\cdots \times \frac{P_{t-k+1}}{P_{t-k}} \\
+&amp; = R_t R_{t-1} \cdots R_{t-k+1} \\
+&amp; = \prod_{j=0}^{k-1} R_{t-j}.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li>The <span class="math">\(k\)</span> -period net return is:</li>
+</ul>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+r_t(k) &amp; = \frac{P_t - P_{t-k}}{P_{t-k}}.
+\end{align*}}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="logarithmic-approximation">
+
+<h2>Logarithmic Approximation</h2>
+
+<p>In general, for any small value <span class="math">\(\smash{\varepsilon &gt; 0}\)</span>:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+\ln(1+\varepsilon) &amp; \approx \varepsilon.
+\end{align*}\end{split}\]</div>
+<p>Thus,</p>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+\ln(R_t) &amp; = \ln(1+r_t) \approx r_t.
+\end{align*}}\end{split}\]</div>
+<p>Furthermore, by the definition of gross returns,</p>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+r_t &amp; \approx \ln(R_t) = \ln(P_t/P_{t-1}) = \ln(P_t) - \ln(P_{t-1}).
+\end{align*}}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="approximation-for-multiperiod-returns">
+
+<h2>Approximation for Multiperiod Returns</h2>
+
+<p>A similar relationship holds for the <span class="math">\(k\)</span> -period net return:</p>
+<div class="math">
+\[\begin{split}\smash{\begin{align*}
+r_t(k) &amp; \approx \ln(P_t) - \ln(P_{t-k}).
+\end{align*}}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="time-intervals">
+
+<h2>Time Intervals</h2>
+
+<p>The interval of time for returns is of vital importance for
+understanding the data.</p>
+<ul class="simple">
+<li>Daily returns are very different from weekly, monthly, annual,
+etc. returns.</li>
+</ul>
+<ul class="simple">
+<li>Intra-day returns at various time scales (millisecond, second,
+minute) are very different from each other.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="aggregating-trading-intervals">
+
+<h2>Aggregating Trading Intervals</h2>
+
+<p>When aggregating returns, we consider the following.</p>
+<ul class="simple">
+<li>There are approximately 250 trading days in a year.</li>
+</ul>
+<ul class="simple">
+<li>There are approximately 22 trading days in a month.</li>
+</ul>
+<ul class="simple">
+<li>There are 5 trading days in a week.</li>
+</ul>
+<ul class="simple">
+<li>U.S. equities markets are open from 9:30 am to 4:00 pm Eastern time
+- 6.5 hours each day.</li>
+</ul>
+<ul class="simple">
+<li>Thus there are approximately 6.5 hours, or 390 minutes or 23,400
+seconds or 23,400,000 milliseconds in a trading day.</li>
+</ul>
+<ul class="simple">
+<li>Similarly, there are approximately 1625 trading hours, 97,500
+trading minutes, 5,850,000 trading seconds and 5,850,000,000 trading
+milliseconds in a year.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="aggregating-returns">
+
+<h2>Aggregating Returns</h2>
+
+<p>To aggregate net returns, we simply add them:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+r_t(k) &amp; = \ln(P_t) - \ln(P_{t-k}) \\
+&amp; = \ln(P_t) - \ln(P_{t-1}) +
+\ln(P_{t-1}) - \ln(P_{t-2}) + \ln(P_{t-2}) \\
+&amp; \hspace{2in} - \ldots -
+\ln(P_{t-k+1}) + \ln(P_{t-k+1}) - \ln(P_{t-k}) \\
+&amp; = r_t + r_{t-1} + r_{t-2} + \ldots + r_{t-k+1} \\
+&amp; = \sum_{j=0}^{k-1} r_{t-j}.
+\end{align*}\end{split}\]</div>
+<p>For example, to annualize daily returns,</p>
+<div class="math">
+\[\begin{split}\begin{align*}
+r_t(250) &amp; = \sum_{j=0}^{250} r_j.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="example-of-aggregating-returns">
+
+<h2>Example of Aggregating Returns</h2>
+
+<p>Get Exxon Mobile equities data for the week of March 23rd, 2015.</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> getSymbols<span class="p">(</span><span class="s">&quot;XOM&quot;</span><span class="p">,</span> from<span class="o">=</span><span class="s">&quot;2015-03-23&quot;</span><span class="p">,</span> to<span class="o">=</span><span class="s">&quot;2015-03-27&quot;</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;XOM&quot;</span>
+<span class="o">&gt;</span> XOM
+           XOM.Open XOM.High XOM.Low XOM.Close XOM.Volume XOM.Adjusted
+<span class="m">2015-03-23</span>    <span class="m">85.02</span>    <span class="m">85.78</span>   <span class="m">85.01</span>     <span class="m">85.43</span>   <span class="m">17163200</span>        <span class="m">85.43</span>
+<span class="m">2015-03-24</span>    <span class="m">85.30</span>    <span class="m">85.78</span>   <span class="m">84.50</span>     <span class="m">84.52</span>   <span class="m">10099500</span>        <span class="m">84.52</span>
+<span class="m">2015-03-25</span>    <span class="m">85.05</span>    <span class="m">85.57</span>   <span class="m">84.77</span>     <span class="m">84.86</span>   <span class="m">11816000</span>        <span class="m">84.86</span>
+<span class="m">2015-03-26</span>    <span class="m">85.30</span>    <span class="m">85.57</span>   <span class="m">84.09</span>     <span class="m">84.32</span>   <span class="m">14388500</span>        <span class="m">84.32</span>
+<span class="m">2015-03-27</span>    <span class="m">84.04</span>    <span class="m">84.05</span>   <span class="m">83.33</span>     <span class="m">83.58</span>   <span class="m">11094600</span>        <span class="m">83.58</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>What are the daily returns?</li>
+</ul>
+<ul class="simple">
+<li>What is the weekly return?</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="asset-classes">
+
+<h2>Asset Classes</h2>
+
+<p>There are several broad classes of assets traded in financial markets.</p>
+<ul class="simple">
+<li>Equities.</li>
+</ul>
+<ul class="simple">
+<li>Futures.</li>
+</ul>
+<ul class="simple">
+<li>Options.</li>
+</ul>
+<ul class="simple">
+<li>Bonds.</li>
+</ul>
+<ul class="simple">
+<li>Currencies.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="indices">
+
+<h2>Indices</h2>
+
+<p>Indices are synthetic portfolios of assets that are not
+typically traded.</p>
+<ul class="simple">
+<li>The S&amp;P 500 index is a portfolio of 500 equities <em>and is not
+traded</em>.</li>
+</ul>
+<ul class="simple">
+<li>To hold the S&amp;P 500 index, one can:<ul>
+<li>Purchase the 500 component equities in the correct proportions.</li>
+<li>Purchase shares in a mutual fund that tracks the index.</li>
+<li>Purchase shares of the SPY exchange traded fund (ETF).</li>
+<li>Purchase futures contracts on SPX.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="important-indices">
+
+<h2>Important Indices</h2>
+
+<ul class="simple">
+<li>S&amp;P 500 (SPX).</li>
+</ul>
+<ul class="simple">
+<li>VIX - portfolio of S&amp;P 500 options which represents the expected
+value of a one-standard deviation move in the S&amp;P 500 index over
+the next month (in annual terms).</li>
+</ul>
+<ul class="simple">
+<li>On March 30th, 2015, the closing value for VIX was 14.51 and the
+closing value for SPX 2086.24.</li>
+</ul>
+<ul class="simple">
+<li>Hence, the market expects the standard deviation of the SPX to be
+<span class="math">\(14.51/\sqrt{12} = 4.19\)</span> percent or  <span class="math">\(\smash{0.0419\times
+2086.24 = 87.39}\)</span> index points.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="important-assets">
+
+<h2>Important Assets</h2>
+
+<ul class="simple">
+<li>SPY - SPX ETF.</li>
+</ul>
+<ul class="simple">
+<li>E-mini - Futures contract on the SPX.</li>
+</ul>
+<ul class="simple">
+<li>SPX Options.</li>
+</ul>
+<ul class="simple">
+<li>SPY Options.</li>
+</ul>
+<ul class="simple">
+<li>VIX Options.</li>
+</ul>
+<ul class="simple">
+<li>VIX Futures.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="vix">
+
+<h2>VIX</h2>
+
+<div class="code highlight-python"><div class="highlight"><pre><span></span>&gt; getSymbols(&quot;^VIX&quot;, from=&quot;2014-01-01&quot;, to=&quot;2015-03-27&quot;)
+&gt; chartSeries(Cl(VIX))
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/vix.png"><img alt="_images/vix.png" class="align-center" src="_images/vix.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="near-month-vx-futures">
+
+<h2>Near-Month VX Futures</h2>
+
+<div class="code highlight-python"><div class="highlight"><pre><span></span>&gt; install.packages(&quot;Quandl&quot;)
+&gt; library(Quandl)
+&gt; VX1 = Quandl(&quot;OFDP/FUTURE_VX1&quot;,type=&quot;xts&quot;)
+&gt; chartSeries(VX1)
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/vx1.png"><img alt="_images/vx1.png" class="align-center" src="_images/vx1.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="e-mini-near-month-returns">
+
+<h2>E-mini Near-Month Returns</h2>
+
+<div class="code highlight-python"><div class="highlight"><pre><span></span>&gt; ES1 = Quandl(&quot;OFDP/FUTURE_ES1&quot;,start_date=&quot;2007-01-01&quot;,end_date=&quot;2015-03-27&quot;,type=&quot;xts&quot;)
+&gt; chartSeries(dailyReturn(ES1$Open))
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/es1.png"><img alt="_images/es1.png" class="align-center" src="_images/es1.png" style="width: 6in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="important-features-of-returns">
+
+<h2>Important Features of Returns</h2>
+
+<p>What do you notice about the E-mini returns?</p>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

@@ -1,0 +1,785 @@
+.. slideconf::
+   :slide_classes: appear
+
+
+==============================================================================
+Options
+==============================================================================
+
+Options
+==============================================================================
+Options are contracts that give the option to buy or sell an asset on
+or before a specific date at a specific price.
+
+.. raw:: <!--pause-->
+
+- A *call* option is an option to buy.
+
+.. raw:: <!--pause-->
+
+- A *put* option is an option to sell.
+
+.. raw:: <!--pause-->
+
+- A *European* option can only be exercised at maturity.
+
+.. raw:: <!--pause-->
+
+- An *American* option can be exercised any time prior to maturity.
+
+
+Terminology
+==============================================================================
+- Underlying asset: The asset that may be bought or sold when the
+  option is exercised.
+
+.. raw:: <!--pause-->
+
+- Maturity (exercise) date: The date at which the contract expires.
+
+.. raw:: <!--pause-->
+
+- Strike (exercise) price: The pre-specified price at which the
+  underlying can be bought or sold.
+
+Underlying Assets
+==============================================================================
+Common underlying assets include:
+
+.. raw:: <!--pause-->
+
+- Common stock.
+
+.. raw:: <!--pause-->
+
+- Foreign currency.
+
+.. raw:: <!--pause-->
+	 
+- Stock indices.
+
+.. raw:: <!--pause-->
+
+- Volatility indices. 
+
+.. raw:: <!--pause-->
+
+- Futures contracts.
+
+.. raw:: <!--pause-->
+
+Options are written on many other underlying *assets*.
+
+Options Exchanges
+==============================================================================
+Many options are exchange traded.
+
+- `Chicago Board Options Exchange <http://www.cboe.com/>`_ (CBOE).
+
+.. raw:: <!--pause-->
+
+- `International Securities Exchange <https://www.ise.com/>`_ (ISE).
+
+.. raw:: <!--pause-->
+
+- `Nasdaq PHLX <http://www.nasdaqtrader.com/micro.aspx?id=phlx>`_.
+
+.. raw:: <!--pause-->
+
+- `BATS <https://batsoptions.com/>`_.
+  
+.. raw:: <!--pause-->
+
+- `NYSE MKT <https://www.nyse.com/markets/nyse-mkt>`_ (formerly
+  American Stock Exchange, or AMEX).
+
+.. raw:: <!--pause-->
+
+- `NYSE Arca <https://www.nyse.com/markets/nyse-arca>`_.
+
+Exchange-Traded Options
+==============================================================================
+Exchanges serve to standardize contracts on popular options.
+
+.. raw:: <!--pause-->
+
+- Expiration dates.
+
+.. raw:: <!--pause-->
+
+- Strike prices.
+
+.. raw:: <!--pause-->
+
+- Class - call or put.
+
+.. raw:: <!--pause-->
+
+- American or European.
+
+.. raw:: <!--pause-->
+
+- Size of options contract.
+
+.. raw:: <!--pause-->
+
+- Size of underlying.
+
+.. raw:: <!--pause-->
+
+- Margin requirements.
+
+VIX Options Specs
+==============================================================================
+  .. image:: Options/optionsSpecs.png
+     :width: 8in
+     :align: center
+
+Implications of Options
+==============================================================================
+The buyer of a call (put) option is *not obligated* to buy (sell) the
+underlying asset at the strike price.
+
+.. raw:: <!--pause-->
+
+- The *buyer* has the *option* to buy (sell).
+
+.. raw:: <!--pause-->
+
+- The *seller* of the call (put) option is *obligated* to sell (buy)
+  the underlying if the buyer wants to exercise the option.
+
+.. raw:: <!--pause-->
+
+- If the price of the underlying asset is above (below) the strike
+  price on the maturity date, the buyer will exercise. Why?
+
+.. raw:: <!--pause-->
+  
+- If the price of the underlying asset is below (above) the strike
+  price on the maturity date, the buyer will not exercise. Why?
+
+Options as Insurance
+==============================================================================
+Options have no downside risk for the buyer.
+
+.. raw:: <!--pause-->
+
+- The buyer of a call (put) is better off if the underlying asset
+  price rises (falls).
+
+.. raw:: <!--pause-->
+
+- If the underlying asset price falls (rises), the buyer doesn't lose
+  anything.
+
+Obligation of Sellers
+==============================================================================
+However, the seller of an option *only* faces downside risk.  
+
+.. raw:: <!--pause-->
+
+- The seller of a call (put) is worse off if the underlying asset
+  price rises (falls).
+
+.. raw:: <!--pause-->
+
+- If the underlying asset price falls (rises), the seller doesn't gain
+  anything.
+
+.. raw:: <!--pause-->
+
+The seller must be compensated for taking the risk of having to sell
+(buy) the underlying for a low (high) price.
+
+.. raw:: <!--pause-->
+
+- The buyer pays a *premium* to purchase the option contract.
+
+Call Option Example
+==============================================================================
+On March 8th 2013, stock for Chipotle Mexican Grill (CMG) sold for
+:math:`\smash{\$321.84}` and an option contract with a strike price of
+:math:`\smash{\$320.00}` and maturity date of March 15th 2013 cost
+:math:`\smash{\$5.30}`.
+
+.. raw:: <!--pause-->
+
+- If the price of Chipotle is less than :math:`\smash{\$320.00}` on
+  March 15th, the option will not be exercised.
+
+.. raw:: <!--pause-->
+
+- If the price is :math:`\smash{\$325.00}` on March 15th, the option
+  holder (buyer) will exercise the contract.
+
+.. raw:: <!--pause-->
+
+- The gain to the buyer will be :math:`\smash{\$5.00}`.
+
+Call Option Example
+==============================================================================
+- Remember that the contract cost :math:`\smash{\$5.30}`, so the buyer
+  has a net loss of :math:`\smash{\$0.30}`.
+
+.. raw:: <!--pause-->
+
+- If the price on March 15th is greater than :math:`\smash{\$325.30}`,
+  the buyer will have a net gain.
+
+Put Option Example
+==============================================================================
+Consider again Chipotle stock which sold for :math:`\smash{\$321.84}`
+on March 8th 2013.
+
+.. raw:: <!--pause-->
+
+- A put option with a strike price of :math:`\smash{\$320.00}` and a
+  maturity date of March 15th 2013 costs :math:`\smash{\$3.30}`.
+
+.. raw:: <!--pause-->
+
+- If the price of the stock is above :math:`\smash{\$320.00}` on March
+  15th, the option will not be exercised.
+
+Put Option Example
+==============================================================================
+- Suppose the price is below :math:`\smash{\$320.00}` on March 15th:
+  :math:`\smash{\$315.00}`.
+
+.. raw:: <!--pause-->
+
+- The buyer of the put will exercise the contract, buying the stock
+  for :math:`\smash{\$315.00}` on the market and selling to the put
+  writer for :math:`\smash{\$320.00}`.
+
+.. raw:: <!--pause-->
+
+- The gross profit would be :math:`\smash{\$320.00}` -
+  :math:`\smash{\$315.00}` = :math:`\smash{\$5.00}`.
+
+.. raw:: <!--pause-->
+
+- The net profit would be: :math:`\smash{\$5.00}` -
+  :math:`\smash{\$3.30}`.
+
+Moneyness
+==============================================================================
+An option is  
+
+.. raw:: <!--pause-->
+
+- *In the money* when its strike price would produce profits for the
+  holder.
+
+.. raw:: <!--pause-->
+
+- *Out of the money* when exercise would be unprofitable.
+
+.. raw:: <!--pause-->
+
+- *At the money* when the strike price is equal to the asset price.
+
+.. raw:: <!--pause-->
+
+The moneyness can be determined at any time, as if the option were
+exercised at that instant.
+
+Notation
+==============================================================================
+We use the following notation:
+
+.. math::
+
+   \begin{align}
+   T & = \text{Maturity date} \\
+   S_t & = \text{Underlying asset price at time } t \\
+   X & = \text{Strike Price} \\
+   C_t & = \text{Value of a call option at time } t \\
+   P_t & = \text{Value of a put option at time } t.
+   \end{align}
+ 
+Call Option Payoff (Buyer)
+==============================================================================
+The payoff to a call option holder (buyer) at expiration is 
+
+.. raw:: <!--pause-->
+
+.. math::
+
+  C_T = \begin{cases} S_T - X & \text{if  } S_T > X \\ 0 &
+  \text{if  } S_T \leq X. \end{cases}
+
+.. raw:: <!--pause-->
+
+- If the asset price is above the strike, the holder can buy the
+  underlying for :math:`\smash{X}` and immediately sell it for
+  :math:`\smash{S_T}`, yielding a profit of :math:`\smash{S_T-X}`.
+
+.. raw:: <!--pause-->
+
+- If the asset price is below the strike, the option is worthless.
+
+Call Option Payoff (Buyer)
+==============================================================================
+The payoffs above did not account for the cost of the option.
+
+.. raw:: <!--pause-->
+
+- If the option is purchased at time :math:`\smash{t}` for a price of
+  :math:`\smash{C_t}`, the net payoff to the holder at expiration is
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   C_T = \begin{cases} S_T - X - C_t, & \text{if  } S_T > X \\ -C_t, &
+   \text{if  } S_T \leq X. \end{cases}
+
+Call Option Payoff (Buyer)
+==============================================================================
+  .. image:: Options/bod34698_1502_lg.jpg
+     :width: 8in
+     :align: center
+
+Call Option Payoff (Seller)
+==============================================================================
+On the flip side, the gross payoff to the call option writer at
+expiration is
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   C_T & = \begin{cases} X - S_T, & \text{if  } S_T > X
+   \\ 0, & \text{if  } S_T \leq X. \end{cases}
+   \end{align}
+   
+.. raw:: <!--pause-->
+
+The net payoff is
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   C_T & = \begin{cases} X - S_T + C_t, & \text{if  } S_T > X
+   \\ C_t, & \text{if  } S_T \leq X. \end{cases}
+   \end{align}
+   
+Call Option Payoff (Seller)
+==============================================================================
+  .. image:: Options/bod34698_1503_lg.jpg
+     :width: 8in
+     :align: center
+
+Put Option Payoff (Buyer)
+==============================================================================
+The gross payoff to put option holders at expiration is 
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   P_T & = \begin{cases} 0, & \text{if  } S_T > X
+   \\ X - S_T, & \text{if  } S_T \leq X. \end{cases}
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- If the underlying asset price is below the strike, the holder can
+  purchase it for :math:`\smash{S_T}` and immediately resell for
+  :math:`\smash{X}`, yielding a profit of :math:`\smash{X-S_T}`.  
+
+.. raw:: <!--pause-->
+
+- If the asset price is above the strike at expiration, the option is
+  worthless.
+
+Put Option Payoff (Buyer)
+==============================================================================
+The *net* payoff to put option holders is
+
+.. math::
+
+   \begin{align}
+   P_T & = \begin{cases} -P_t, & \text{if  } S_T > X
+   \\ X - S_T - P_t, & \text{if  } S_T \leq X. \end{cases}
+   \end{align}
+
+Put Option Payoff (Buyer)
+==============================================================================
+  .. image:: Options/bod34698_1504_lg.jpg
+     :width: 8in
+     :align: center
+
+Speculation and Hedging
+==============================================================================
+Options can be used for both speculation and hedging. 
+
+.. raw:: <!--pause-->
+
+- Suppose you have :math:`\smash{\$10,000}` available for investment.  
+
+.. raw:: <!--pause-->
+
+- A share of stock costs :math:`\smash{\$100}`.
+
+.. raw:: <!--pause-->
+
+- An option with a strike price of :math:`\smash{\$100}` and six-month
+  maturity costs :math:`\smash{\$10}`.
+
+.. raw:: <!--pause-->
+
+- You can lend money (purchase the risk-free asset) at a rate of 3\%
+  for the next six months.
+
+Speculation and Hedging
+==============================================================================
+Consider three strategies.  
+
+.. raw:: <!--pause-->
+
+- Strategy A: Invest entirely in stock, buying 100 shares at the
+  current price of :math:`\smash{\$100}`.
+
+.. raw:: <!--pause-->
+
+- Strategy B: Invest entirely in at-the-money options, buying 10 call
+  contracts (each for 100 shares) selling for :math:`\smash{\$1000}` a
+  piece.
+
+.. raw:: <!--pause-->
+
+- Strategy C: Purchase 100 call options (1 contract) for
+  :math:`\smash{\$1,000}` and invest the remaining
+  :math:`\smash{\$9,000}` in the risk-free asset, which will yield a
+  total of :math:`\smash{\$9,000\times1.03 = \$9,270}` at the end of
+  the six months.
+
+Speculation and Hedging
+==============================================================================
+The values of the three strategies are:
+
+.. image:: Options/table1.png
+   :width: 8in
+   :align: center
+
+Speculation and Hedging
+==============================================================================
+The returns to the three strategies are:
+
+.. image:: Options/table2.png
+   :width: 8in
+   :align: center
+
+Speculation and Hedging
+==============================================================================
+From these tables we see two features of options. 
+
+.. raw:: <!--pause-->
+
+- Options offer leverage.
+    
+  - For the all-option portfolio, the return plummets to -100\% when
+    the stock price is below the strike.  
+
+  - The return rockets to numbers that are much greater than simply
+    holding the stock when the stock price increases above the
+    strike.
+
+Speculation and Hedging
+==============================================================================    
+- Options offer insurance.  
+    
+  - The mixed portfolio has limited downside loss: the investor can't
+    lose more than -7.3\%.
+
+  -  It also has limited upside gains: if the stock price is above the
+     strike, its returns are always below the portfolio comprised of
+     only stock.
+
+Speculation and Hedging
+==============================================================================
+:math:`\qquad`
+
+  .. image:: Options/bod34698_1505_lg.jpg
+     :width: 8in
+     :align: center
+
+Protective Put
+==============================================================================
+A protective put strategy consists of simultaneously purchasing a
+share of stock and a put option on that stock.  
+
+.. raw:: <!--pause-->
+
+- This limits the potential downside loss of the stock while leaving
+  the potential gains intact.
+
+.. raw:: <!--pause-->
+
+    .. image:: Options/table3.png
+       :width: 4in
+       :align: center
+
+Protective Put
+==============================================================================
+The put acts as insurance against loss.  
+
+.. raw:: <!--pause-->
+
+- Comparing the net payoff of the protective put with the strategy of
+  holding stock alone shows that the former comes at a cost.  
+
+.. raw:: <!--pause-->
+
+- This is the insurance premium.
+
+Protective Put
+==============================================================================
+  .. image:: Options/bod34698_1506_sm.jpg
+     :width: 3in
+     :align: left
+
+Protective Put
+==============================================================================
+  .. image:: Options/bod34698_1507_lg.jpg
+     :width: 5.5in
+     :align: center
+
+Covered Call
+==============================================================================
+A covered call strategy consists of simultaneously purchasing a share
+of stock and writing a call option on that stock.  
+
+.. raw:: <!--pause-->
+
+- It doesn't eliminate downside loss (like the protective put).  
+
+.. raw:: <!--pause-->
+
+- It covers the obligation to deliver the stock for less than its
+  market value if the stock price is above the strike.  
+
+.. raw:: <!--pause-->
+
+- The call writer is charging a premium (the call price) in order to
+  forsake the upside gain of holding the stock.  
+
+Covered Call
+==============================================================================
+.. image:: Options/table4.png
+   :width: 5in
+   :align: center
+
+Covered Call
+==============================================================================
+  .. image:: Options/bod34698_1508_sm.jpg
+     :width: 3in
+     :align: center
+
+Straddle
+==============================================================================
+A straddle consists of purchasing call and put options for the same
+asset and strike price.
+
+.. raw:: <!--pause-->
+
+- It is a bet on volatility.
+
+.. raw:: <!--pause-->
+  
+- The straddle holder will earn (gross) positive returns if the stock
+  price moves up or down, but nothing if it remains at the strike.
+
+Straddle
+==============================================================================
+.. image:: Options/table5.png
+   :width: 4in
+   :align: center
+
+Straddle
+==============================================================================
+So why doesn't everyone hold straddles?  
+
+.. raw:: <!--pause-->
+
+- Because the investor must pay for both contracts.
+
+.. raw:: <!--pause-->
+
+- The investor doesn't earn a *net* return unless the stock price
+  moves enough to compensate for the initial outlay.
+
+Straddle
+==============================================================================
+  .. image:: Options/bod34698_1509_sm.jpg
+     :width: 3in
+     :align: center
+
+Spread
+==============================================================================
+A spread is a combination of two or more options (both calls or both
+puts) on the same stock with different strikes.
+
+.. raw:: <!--pause-->
+
+- Some of the options are purchased while others are sold.
+
+.. raw:: <!--pause-->
+
+- A money spread is the simultaneous purchase and sale of options with
+  different strikes.
+
+.. raw:: <!--pause-->
+
+- A time spread is the simultaneous purchase and sale of options with
+  different maturities.
+
+Bullish Spread
+==============================================================================
+A bullish spread:
+
+.. raw:: <!--pause-->
+
+.. image:: Options/table6.png
+   :width: 7in
+   :align: center
+
+Bullish Spread
+==============================================================================
+  .. image:: Options/bod34698_1510_sm.jpg
+     :width: 3in
+     :align: center
+
+Collar
+==============================================================================
+An example of a collar is the purchase of a protective put for one
+strike price and the sale of a call option, on the same stock, for a
+higher strike.
+
+.. raw:: <!--pause-->
+
+- This strategy eliminates downside losses below the strike of the put
+  and also upside gains beyond the strike of the call.
+
+.. raw:: <!--pause-->
+
+- In this case, the investor constrains gains and losses within a
+  region close to the current price of the stock.
+
+Protective Put Alternative
+==============================================================================
+A protective put eliminates the downside loss of holding stock. We
+could achieve this with an alternative strategy.
+
+.. raw:: <!--pause-->
+
+- Purchase a call option with strike price :math:`\smash{X}`. 
+
+.. raw:: <!--pause-->
+
+- Purchase a T-bill (lend at the risk-free rate) with a face value
+  equal to the call strike price, :math:`\smash{X}`, and the same
+  maturity date as the call.
+
+Protective Put Alternative
+==============================================================================
+.. image:: Options/table7.png
+   :width: 4in
+   :align: center
+
+Put Call Parity
+==============================================================================
+The payoffs in the previous table are identical to those for the
+protective put.
+
+.. raw:: <!--pause-->
+
+- Hence, the cost of the protective put strategy should be equal to
+  the cost of the call plus bonds strategy (why?!!!).  
+
+.. raw:: <!--pause-->
+
+- This fact is known as the *Put-Call Parity Relationship*.
+
+.. raw:: <!--pause-->
+
+- Mathematically, it can be expressed as:
+  
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   C_0 + X e^{-r_f T} & = S_0 + P_0.
+   \end{align}
+   
+.. raw:: <!--pause-->  
+
+- This relationship is very useful because it allows us to compute the
+  value of a call option if we know the price of the corresponding
+  put, and vice versa.
+
+Put Call Parity Example
+==============================================================================
+Assume  
+
+.. raw:: <!--pause-->
+
+- An asset currently sells for :math:`\smash{\$110}`.  
+
+.. raw:: <!--pause-->
+
+- A call option with strike :math:`\smash{X = \$105}` and 1-year
+  maturity sells for :math:`\smash{\$17}`.
+
+.. raw:: <!--pause-->
+
+- A put option with strike :math:`\smash{X = \$105}` and 1-year
+  maturity sells for :math:`\smash{\$5}`.
+
+.. raw:: <!--pause-->
+
+- The continuously-compounded risk-free interest rate is
+  :math:`\smash{4.879\%}` per year.
+
+.. raw:: <!--pause-->
+
+- Does the parity relationship hold?
+
+Put Call Parity Example
+==============================================================================
+.. math::
+
+   \begin{align}
+   C_0 + X e^{r_f} & \stackrel{?}{=} S_0 + P_0.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   \$117 = \$17 + \$105 e^{-0.04879} & \neq \$110 + \$5 = \$115.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- The relationship doesn't hold.
+
+.. raw:: <!--pause-->
+
+- How might an investor take advantage of the situation?
+  
+Put Call Parity Example
+==============================================================================
+.. image:: Options/table8.png
+   :width: 7in
+   :align: center
+

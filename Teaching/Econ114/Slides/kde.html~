@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Kernel Density Estimation &mdash; Econ 114 - Advanced Quantitative Methods</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html" />
+    <link rel="up" title="Exploratory Data Analysis" href="data.html" />
+    <link rel="next" title="Sample Quantiles" href="quantiles.html" />
+    <link rel="prev" title="Exploratory Data Analysis" href="data.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="kernel-density-estimation">
+<h1>Kernel Density Estimation</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="data-samples">
+<h2>Data Samples</h2>
+<p>Suppose we are presented with a set of data observations <span class="math">\(y_1,
+y_2, \ldots, y_n\)</span>.</p>
+<ul class="to-build simple">
+<li>In this course we will often assume that the observations are
+realizations of random variables <span class="math">\(Y_1, Y_2, \ldots, Y_n\)</span>,
+where <span class="math">\(Y_i \sim F\)</span>, <span class="math">\(\forall i\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>That is, we will assume <span class="math">\(Y_i\)</span> all come from the same
+distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>In the case of financial data, we will also view the
+observations <span class="math">\(y_1, y_2, \ldots, y_n\)</span> as being ordered by
+time.</li>
+</ul>
+<ul class="to-build simple">
+<li>This is referred to as a <em>time series</em>.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="time-series-data-example">
+<h2>Time Series Data Example</h2>
+<a class="reference internal image-reference" href="_images/sp500TimeSeries.png"><img alt="_images/sp500TimeSeries.png" class="align-center" src="_images/sp500TimeSeries.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="histogram">
+<h2>Histogram</h2>
+<p>Suppose we have dataset <span class="math">\(y_1, y_2, \ldots, y_n\)</span> drawn from the
+same distribution <span class="math">\(F\)</span>.</p>
+<ul class="to-build simple">
+<li>We typically don't know <span class="math">\(F\)</span> and would like to estimate it
+with the data.</li>
+</ul>
+<ul class="to-build simple">
+<li>A simple estimate of <span class="math">\(F\)</span> is obtained by a histogram.</li>
+</ul>
+<p class="to-build">A histogram:</p>
+<ul class="to-build simple">
+<li>Divides the possible values of the random variable(s) <span class="math">\(y\)</span>
+into <span class="math">\(K\)</span> regions, called bins.</li>
+</ul>
+<ul class="to-build simple">
+<li>Counts the number of observations that fall into each bin.</li>
+</ul>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="histogram-of-sp500-daily-returns">
+<h2>Histogram of SP500 Daily Returns</h2>
+<a class="reference internal image-reference" href="_images/sp500Hist.png"><img alt="_images/sp500Hist.png" class="align-center" src="_images/sp500Hist.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Kernel Density Estimation</h2>
+<p>Histograms are crude estimators of density functions.</p>
+<ul class="to-build simple">
+<li>The <em>kernel density estimator</em> (KDE) is a better
+estimator.</li>
+</ul>
+<ul class="to-build simple">
+<li>A KDE uses a kernel, which is a probability density function
+symmetric about zero.</li>
+</ul>
+<ul class="to-build simple">
+<li>Often, the kernel is chosen to be a standard normal
+density.</li>
+</ul>
+<ul class="to-build simple">
+<li>The kernel has <em>nothing</em> to do with the true density of
+the data (i.e. choosing a normal kernel doesn't mean the data is
+normally distributed).</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Kernel Density Estimation</h2>
+<p>Given random variables <span class="math">\(Y_1, Y_2, \ldots, Y_n\)</span>, the KDE is</p>
+<div class="to-build math">
+\[\widehat{f(y)} = \frac{1}{nb} \sum_{i=1}^n K\left(\frac{Y_i - y}{b}
+\right).\]</div>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Kernel Density Estimation</h2>
+<p>The KDE superimposes a density function (the kernel) over each data
+observation.</p>
+<ul class="to-build simple">
+<li>The bandwidth parameter <span class="math">\(b\)</span> dictates the width of the
+kernel.</li>
+</ul>
+<ul class="to-build simple">
+<li>Larger values of <span class="math">\(b\)</span> mean that the kernels of adjacent
+observations have a larger effect on the density estimate at a
+particular observation, <span class="math">\(y_i\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>In this fashion, <span class="math">\(b\)</span> dictates the amount of data
+<em>smoothing</em>.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="illustration-of-kde-estimator">
+<h2>Illustration of KDE Estimator</h2>
+<a class="reference internal image-reference" href="_images/kde-illustration.png"><img alt="_images/kde-illustration.png" class="align-center" src="_images/kde-illustration.png" style="width: 5.25in;" /></a>
+<p>This plot was taken directly from Ruppert (2011).</p>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="kernel-density-bandwidth">
+<h2>Kernel Density Bandwidth</h2>
+<p>Choosing <span class="math">\(b\)</span> requires a tradeoff between bias and
+variance.</p>
+<ul class="to-build simple">
+<li>Small values of <span class="math">\(b\)</span> detect fine features of the true
+density but permit a lot of random variation.</li>
+</ul>
+<blockquote>
+<div><ul class="to-build simple">
+<li>The KDE has high variance and low bias.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(b\)</span> is too small, the KDE is <em>undersmoothed</em> or
+<em>overfit</em> - it adheres too closely to the data.</li>
+</ul>
+</div></blockquote>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Kernel Density Bandwidth</h2>
+<ul class="simple">
+<li>Large values of <span class="math">\(b\)</span> smooth over random variation but
+obscure fine details of the distribution.</li>
+</ul>
+<blockquote>
+<div><ul class="to-build simple">
+<li>The KDE has low variance and high bias.</li>
+</ul>
+<ul class="to-build simple">
+<li>If <span class="math">\(b\)</span> is too large, the KDE is <em>oversmoothed</em> or
+<em>underfit</em> - it misses features of the true density.</li>
+</ul>
+</div></blockquote>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="kde-of-s-p-500-daily-returns">
+<h2>KDE of S&amp;P 500 Daily Returns</h2>
+<a class="reference internal image-reference" href="_images/sp500KDE.png"><img alt="_images/sp500KDE.png" class="align-center" src="_images/sp500KDE.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>KDE of S&amp;P 500 Daily Returns</h2>
+<p>The KDE of the S&amp;P 500 returns suggests a density that resembles a
+normal distribution.</p>
+<ul class="to-build simple">
+<li>We can compare the KDE with a normal distribution with <span class="math">\(\mu
+= \hat{\mu}\)</span> and <span class="math">\(\sigma^2 = \hat{\sigma}^2\)</span>, where</li>
+</ul>
+<div class="to-build math">
+\[\hat{\mu} = \frac{1}{n}\sum_{i=1}^n y_i\]</div>
+<div class="to-build math">
+\[\hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{\mu})^2.\]</div>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>KDE of S&amp;P 500 Daily Returns</h2>
+<ul class="simple">
+<li>We can also compare the KDE with a normal distribution with
+<span class="math">\(\mu = \tilde{\mu}\)</span> and <span class="math">\(\sigma^2 = \tilde{\sigma}^2\)</span></li>
+</ul>
+<div class="to-build math">
+\[\tilde{\mu} = \text{median}\left(\{Y_i\}_{i=1}^n\right)\]</div>
+<div class="to-build math">
+\[\begin{split}\tilde{\sigma}^2 &amp; = \text{MAD}\left(\{Y_i\}_{i=1}^n\right) =
+\text{median}\left(\{|y_i - \tilde{\mu}|\}_{i=1}^n\right).\end{split}\]</div>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="comparison-of-kde-with-normal-densities">
+<h2>Comparison of KDE with Normal Densities</h2>
+<a class="reference internal image-reference" href="_images/sp500KDENorm.png"><img alt="_images/sp500KDENorm.png" class="align-center" src="_images/sp500KDENorm.png" style="width: 7.5in;" /></a>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Comparison of KDE with Normal Densities</h2>
+<p>Outlying observations in the S&amp;P 500 returns have great influence
+on the estimates <span class="math">\(\hat{\mu}\)</span> and <span class="math">\(\hat{\sigma}^2\)</span>.</p>
+<ul class="to-build simple">
+<li>As a result, a <span class="math">\(N(\hat{\mu}, \hat{\sigma})\)</span> deviates
+substantially from the KDE.</li>
+</ul>
+<p class="to-build">The median, <span class="math">\(\tilde{\mu}\)</span>, and median absolute deviation,
+<span class="math">\(\tilde{\sigma}^2\)</span>, are less sensitive (more robust) to
+outliers.</p>
+<ul class="to-build simple">
+<li>As a result, a <span class="math">\(N(\tilde{\mu}, \tilde{\sigma})\)</span> deviates
+less from the KDE.</li>
+</ul>
+<ul class="to-build simple">
+<li>The fit is still not perfect - asset returns are often better
+approximated with a heavy tailed distribution, like the
+<span class="math">\(t\)</span>.</li>
+</ul>
+
+<div class="slide-no">16</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Advanced Quantitative Methods',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,356 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ARMA Processes &mdash; Econ 114 - Advanced Quantitative Methods</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html"/>
+        <link rel="up" title="Time Series" href="timeSeries.html"/>
+        <link rel="next" title="Bayesian Methods" href="bayesian.html"/>
+        <link rel="prev" title="Moving Average Processes" href="ma.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Econ 114
+        
+
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preliminaries.html">Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resampling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="timeSeries.html">Time Series</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stationarity.html">Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">ARMA Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#process"><span class="math">\(ARMA(p,q)\)</span> Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expectation-of">Expectation of <span class="math">\(ARMA(p,q)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autocovariances-of">Autocovariances of <span class="math">\(ARMA(p,q)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Autocovariances of <span class="math">\(ARMA(p,q)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estimating-models">Estimating <span class="math">\(ARMA\)</span> Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#which">Which <span class="math">\(ARMA\)</span>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Which <span class="math">\(ARMA\)</span>?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian Methods</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 114</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="timeSeries.html">Time Series</a> &raquo;</li>
+      
+    <li>ARMA Processes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/arma.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="arma-processes">
+<h1>ARMA Processes<a class="headerlink" href="#arma-processes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="process">
+<h2><span class="math">\(ARMA(p,q)\)</span> Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h2>
+<p>Given white noise <span class="math">\(\{\varepsilon_t\}\)</span>, consider the
+process</p>
+<div class="to-build math">
+\[\begin{split}Y_t &amp; = c + \phi_1 Y_{t-1} + \ldots + \phi_p Y_{t-p} +
+\varepsilon_t + \theta_1 \varepsilon_{t-1} + \ldots \theta_q
+\varepsilon_{t-q},\end{split}\]</div>
+<p class="to-build">where <span class="math">\(c\)</span>, <span class="math">\(\{\phi_i\}_{i=1}^p\)</span> and
+<span class="math">\(\{\theta_i\}_{i=1}^q\)</span> are constants.</p>
+<ul class="to-build simple">
+<li>This is an <span class="math">\(ARMA(p,q)\)</span> process.</li>
+</ul>
+</div>
+<div class="section" id="expectation-of">
+<h2>Expectation of <span class="math">\(ARMA(p,q)\)</span><a class="headerlink" href="#expectation-of" title="Permalink to this headline">¶</a></h2>
+<p>Assume <span class="math">\(Y_t\)</span> is weakly stationary.</p>
+<div class="to-build math">
+\[\begin{split}E[Y_t] &amp; = c + \phi_1 E[Y_{t-1}] + \ldots + \phi_p E[Y_{t-p}] \\
+&amp; \hspace{0.75in} + E[\varepsilon_t] + \theta_1 E[\varepsilon_{t-1}] + \ldots
++ \theta_q E[\varepsilon_{t-q}]\end{split}\]</div>
+<div class="to-build math">
+\[= c + \phi_1 E[Y_t] + \ldots + \phi_p E[Y_t] \hspace{0.8in}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow E[Y_t] &amp; = \frac{c}{1-\phi_1 - \ldots - \phi_p} =
+\mu. \hspace{1.75in}\end{split}\]</div>
+<ul class="to-build simple">
+<li>This is the same mean as an <span class="math">\(AR(p)\)</span> process with parameters
+<span class="math">\(c\)</span> and <span class="math">\(\{\phi_i\}_{i=1}^p\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="autocovariances-of">
+<h2>Autocovariances of <span class="math">\(ARMA(p,q)\)</span><a class="headerlink" href="#autocovariances-of" title="Permalink to this headline">¶</a></h2>
+<p>Given that <span class="math">\(\mu = c/(1-\phi_1 - \ldots - \phi_p)\)</span> for weakly
+stationary <span class="math">\(Y_t\)</span>:</p>
+<div class="to-build math">
+\[\begin{split}Y_t &amp; = \mu(1-\phi_1 - \ldots - \phi_p) + \phi_1
+Y_{t-1} + \ldots + \phi_p Y_{t-p} \\
+&amp; \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+\varepsilon_{t-q}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow &amp; (Y_t - \mu) = \phi_1(Y_{t-1} - \mu) +
+\ldots + \phi_p(Y_{t-p} - \mu) \\
+&amp; \hspace{2in} + \varepsilon_t + \theta_1 \varepsilon_1 + \ldots \theta_q
+\varepsilon_{t-q}.\end{split}\]</div>
+<div class="to-build math">
+\[\gamma_j = E\left[(Y_t - \mu) (Y_{t-j} - \mu)\right] \hspace{2.7in}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = \phi_1 E\left[(Y_{t-1} - \mu) (Y_{t-j} - \mu)\right] + \ldots \\
+&amp; \hspace{0.5in} + \phi_p E\left[(Y_{t-p} - \mu) (Y_{t-j} -
+\mu)\right] \\
+&amp; \hspace{1in} + E\left[\varepsilon_t (Y_{t-j} - \mu)\right] +
+\theta_1 E\left[\varepsilon_{t-1} (Y_{t-j} - \mu)\right] \\
+&amp; \hspace{2.25in} + \ldots +
+\theta_q E\left[\varepsilon_{t-q} (Y_{t-j} - \mu)\right]\end{split}\]</div>
+</div>
+<div class="section" id="id1">
+<h2>Autocovariances of <span class="math">\(ARMA(p,q)\)</span><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>For <span class="math">\(j &gt; q\)</span>, <span class="math">\(\gamma_j\)</span> will follow the same law of
+motion as for an <span class="math">\(AR(p)\)</span> process:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\gamma_j &amp; = \phi_1 \gamma_{j-1} + \ldots + \phi_p \gamma_{j-p}
+\,\,\,\,\, \text{ for } j = q+1, \ldots\end{split}\]</div>
+<ul class="to-build simple">
+<li>These values will not be the same as the <span class="math">\(AR(p)\)</span> values for
+<span class="math">\(j = q+1, \ldots\)</span>, since the initial <span class="math">\(\gamma_0, \ldots,
+\gamma_q\)</span> will differ.</li>
+</ul>
+<ul class="to-build simple">
+<li>The first <span class="math">\(q\)</span> autocovariances, <span class="math">\(\gamma_0, \ldots,
+\gamma_q\)</span>, of an <span class="math">\(ARMA(p,q)\)</span> will be more complicated than
+those of an <span class="math">\(AR(p)\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="estimating-models">
+<h2>Estimating <span class="math">\(ARMA\)</span> Models<a class="headerlink" href="#estimating-models" title="Permalink to this headline">¶</a></h2>
+<p>Estimation of an <span class="math">\(ARMA\)</span> model is done via maximum
+likelihood.</p>
+<ul class="to-build simple">
+<li>For an <span class="math">\(ARMA(p,q)\)</span> model, one would first specify a joint
+likelihood for the parameters <span class="math">\(\{\phi_1, \ldots, \phi_p,
+\theta_1, \ldots, \theta_q, \mu, \sigma^2\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Taking derivatives of the log likelihood with respect to each of the
+parameters would result in a system of equations that could be
+solved for the MLEs: <span class="math">\(\{\hat{\phi}_1, \ldots, \hat{\phi}_p,
+\hat{\theta}_1, \ldots, \hat{\theta}_q, \hat{\mu},
+\hat{\sigma}^2\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The exact likelihood is cumbersome and maximization requires
+specialize numerical methods.</li>
+</ul>
+<ul class="to-build simple">
+<li>The MLEs can be obtained with the <span class="math">\(\mathtt{arima}\)</span> function in
+<span class="math">\(\mathtt{R}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="which">
+<h2>Which <span class="math">\(ARMA\)</span>?<a class="headerlink" href="#which" title="Permalink to this headline">¶</a></h2>
+<p>How do we know if an <span class="math">\(ARMA\)</span> model is appropriate and which
+<span class="math">\(ARMA\)</span> model to fit?</p>
+<ul class="to-build simple">
+<li>After fitting an <span class="math">\(ARMA\)</span> model, we can examine the residuals.</li>
+</ul>
+<ul class="to-build simple">
+<li>The <span class="math">\(\mathtt{acf}\)</span> function in <span class="math">\(\mathtt{R}\)</span> can be used
+to compute empirical autocorrelations of the residuals.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the residuals are autocorrelated, the model is not a good
+fit. Consider changing the parameters <span class="math">\(p\)</span> and <span class="math">\(q\)</span> of the
+<span class="math">\(ARMA\)</span> or using another model.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Which <span class="math">\(ARMA\)</span>?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="math">\(\mathtt{auto.arima}\)</span> function in <span class="math">\(\mathtt{R}\)</span>
+estimates a range of <span class="math">\(ARMA(p,q)\)</span> models and selects the one with
+the best fit.</p>
+<ul class="to-build simple">
+<li><span class="math">\(\mathtt{auto.arima}\)</span> uses the <em>Akaike Information Criterion</em>
+(AIC) or the <em>Bayesian Information Criterion</em> (BIC) to select the
+model.</li>
+</ul>
+<ul class="to-build simple">
+<li>Minimizing AIC and BIC amounts to minimizing the sum of squared
+residuals, with a penalty term that is related to the number of
+model parameters.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bayesian.html" class="btn btn-neutral float-right" title="Bayesian Methods" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ma.html" class="btn btn-neutral" title="Moving Average Processes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Eric M. Aldrich.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Advanced Quantitative Methods',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

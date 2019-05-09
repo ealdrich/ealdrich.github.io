@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ARMA Maximum Likelihood Estimation &mdash; Econ 211C 2016.03.29 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
+        <link rel="up" title="Estimation" href="../estimation.html"/>
+        <link rel="next" title="Numerical Optimization" href="numerical.html"/>
+        <link rel="prev" title="Maximum Likelihood Estimation" href="mle.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../estimation.html">Estimation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mle.html">Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">ARMA Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numerical.html">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Econ 211C</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../estimation.html">Estimation</a> &raquo;</li>
+      
+    <li>ARMA Maximum Likelihood Estimation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/Unit2-MLE/mleArma.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="arma-maximum-likelihood-estimation">
+<h1>ARMA Maximum Likelihood Estimation<a class="headerlink" href="#arma-maximum-likelihood-estimation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="likelihood">
+<h2><span class="math">\(\smash{AR(p)}\)</span> Likelihood<a class="headerlink" href="#likelihood" title="Permalink to this headline">¶</a></h2>
+<p>Recall a Gaussian <span class="math">\(AR(p)\)</span> process:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Y_t &amp; = c + \phi_1 Y_{t-1} + \ldots + \phi_p Y_{t-p} +
+\varepsilon_t, \,\,\,\, \varepsilon_t \stackrel{i.i.d.}{\sim}
+\mathcal{N}(0,\sigma^2).
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>In this case <span class="math">\(\smash{\boldsymbol{\theta} =
+(c,\phi_1,\ldots,\phi_p,\sigma^2)}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>We will suppose that <span class="math">\(\smash{\{Y_t\}}\)</span> is stationary and
+causal.</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2><span class="math">\(\smash{AR(p)}\)</span> Likelihood<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we know that <span class="math">\(\smash{Y_{t-1} = y_{t-1}, Y_{t-2} =
+y_{t-2}, \ldots, Y_{t-p} = y_{t-p}}\)</span> for <span class="math">\(\smash{t &gt; p}\)</span>. Then</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+Y_t = c + \phi_1 y_{t-1} + \ldots + \phi_p y_{t-p} +
+\varepsilon_t \\
+\text{E}[Y_t|Y_{t-1},\ldots,Y_{t-p},\boldsymbol{\theta}] = c +
+\phi_1 y_{t-1} + \ldots + \phi_p y_{t-p} \\
+\text{Var}(Y_t|Y_{t-1},\ldots,Y_{t-p},\boldsymbol{\theta}) =
+\sigma^2.
+\end{gather}\end{split}\]</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="math">\(\smash{AR(p)}\)</span> Likelihood<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Thus,</p>
+<div class="math">
+\[\begin{align}
+Y_t|Y_{t-1},\ldots,Y_{t-p} \sim \mathcal{N}(c+\phi_1 y_{t-1} +
+\ldots + \phi_p y_{t-p}, \sigma^2),
+\end{align}\]</div>
+<p>which means</p>
+<div class="math">
+\[\begin{split}\begin{align}
+f_{Y_t|Y_{t-1},\ldots,Y_{t-p}} &amp; (y_t|y_{t-1},\ldots,y_{t-p},
+\boldsymbol{\theta}) \\
+&amp; = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp
+\left\{-\frac{1}{2\sigma^2}(y_t - c - \phi_1 y_{t-1} - \ldots -
+\phi_p y_{t-p})^2\right\}.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="math">\(\smash{AR(p)}\)</span> Likelihood<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>The likelihood of <span class="math">\(\smash{\boldsymbol{Y}_T = \{Y_t\}}\)</span> is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mathcal{L}(\boldsymbol{\theta}|\boldsymbol{y}_T) &amp; =
+f_{\boldsymbol{Y}_T}(\boldsymbol{y}_T|\boldsymbol{\theta}) \\
+&amp; = f_{\boldsymbol{Y}_p}(\boldsymbol{y}_p|\boldsymbol{\theta})
+\prod_{t=p+1}^T
+f_{Y_t|Y_{t-1},\ldots,Y_{t-p}}(y_t|y_{t-1},\ldots,y_{t-p},\boldsymbol{\theta})
+\end{align}\end{split}\]</div>
+<p>where
+<span class="math">\(\smash{f_{\boldsymbol{Y}_p}(\boldsymbol{y}_p|\boldsymbol{\theta})}\)</span>
+is the joint density of <span class="math">\(\smash{\boldsymbol{Y}_T =
+\{Y_t\}_{t=1}^p}\)</span>.</p>
+<ul class="simple">
+<li>Maximizing this likelihood results in a set of nonlinear equations
+in <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> and
+<span class="math">\(\smash{\boldsymbol{y}_T}\)</span>, and must be solved numerically.</li>
+</ul>
+</div>
+<div class="section" id="conditional-likelihood">
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional Likelihood<a class="headerlink" href="#conditional-likelihood" title="Permalink to this headline">¶</a></h2>
+<p>We can approximate the <span class="math">\(\smash{AR(p)}\)</span> likelihood with only the
+product of conditional densities:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mathcal{L}(\boldsymbol{\theta}|\boldsymbol{y}_T) &amp; \approx
+\prod_{t=p+1}^T
+f_{Y_t|Y_{t-1},\ldots,Y_{t-p}}(y_t|y_{t-1},\ldots,y_{t-p},\boldsymbol{\theta})
+\\
+&amp; = \prod_{t=p+1}^T \frac{1}{\sqrt{2 \pi \sigma^2}} \exp
+\left\{-\frac{1}{2\sigma^2}(y_t - c - \phi_1 y_{t-1} - \ldots -
+\phi_p y_{t-p})^2\right\} \\
+&amp; = \left(2 \pi \sigma^2\right)^{-\frac{T-p}{2}} \exp
+\left\{-\frac{1}{2\sigma^2} \sum_{t=p+1}^T (y_t - c - \phi_1
+y_{t-1} - \ldots - \phi_p y_{t-p})^2\right\}.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="conditional-log-likelihood">
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional Log Likelihood<a class="headerlink" href="#conditional-log-likelihood" title="Permalink to this headline">¶</a></h2>
+<p>The conditional log likelihood of the <span class="math">\(\smash{AR(p)}\)</span> is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\ell(\boldsymbol{\theta}|\boldsymbol{y}_T) &amp; = -\frac{T-p}{2}
+\log(2\pi) -\frac{T-p}{2} \log(\sigma^2) -\frac{1}{2\sigma^2}
+\sum_{t=p+1}^T (y_t - c - \phi_1 y_{t-1} - \ldots - \phi_p
+y_{t-p})^2.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>Maximizing the conditional log likelihood with respect to
+<span class="math">\(\smash{c,\phi_1,\ldots,\phi_p}\)</span>, conditional on
+<span class="math">\(\smash{\sigma^2}\)</span>, is the same as minimizing</li>
+</ul>
+<div class="math">
+\[\smash{\sum_{t=p+1}^T (y_t - c - \phi_1 y_{t-1} - \ldots - \phi_p
+y_{t-p})^2.}\]</div>
+<ul class="simple">
+<li>Hence, the MLEs are the same as the least squares estimates.</li>
+</ul>
+</div>
+<div class="section" id="conditional-mles">
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional MLEs<a class="headerlink" href="#conditional-mles" title="Permalink to this headline">¶</a></h2>
+<p>Since the MLEs and LS estimates are the same, we can solve for the
+MLEs by simply running a regression</p>
+<div class="math">
+\[\smash{\boldsymbol{y} = X \boldsymbol{\beta} +
+\boldsymbol{e},}\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\boldsymbol{\beta} = \left[\begin{array}{c} c \\ \phi_{1} \\ \vdots
+\\ \phi_{p} \end{array} \right] \hspace{5pt} X =
+\left[\begin{array}{ccccc} 1 &amp; y_{T-1} &amp; y_{T-2} &amp; \ldots &amp; y_{T-p}
+\\ \vdots &amp;\vdots &amp;\vdots &amp;\vdots &amp;\vdots \\ 1 &amp; y_{p} &amp; y_{p-1} &amp;
+\ldots &amp; y_{1} \end{array}\right] \hspace{5pt}
+\boldsymbol{y} =\left[\begin{array}{c} y_{T} \\ \vdots \\ y_{p+1}
+\\ \end{array} \right] \hspace{5pt} \boldsymbol{e} =
+\left[\begin{array}{c} e_{T} \\ \vdots \\ e_{p+1} \\
+\end{array}\right].\end{split}\]</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional MLEs<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Differentiating the log likelihood with respect to <span class="math">\(\smash{\sigma^{2}}\)</span>,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\frac{\partial l}{\partial \sigma^{2}}\Big|_{\hat{\sigma}^{2}} &amp;
+= - \frac{T-p}{2\hat{\sigma}^{2}} +
+\frac{1}{2\hat{\sigma}^{4}} \sum_{t=p+1}^{T}(y_{t}-c-\phi
+y_{t-1}-\ldots-\phi_{p}y_{t-p})^{2} = 0 \\
+\implies \hat{\sigma}^{2} &amp; = \frac{1}{T-p}
+\sum_{t=p+1}^{T}(y_{t}-c-\phi y_{t-1}-\ldots-\phi_{p}y_{t-p})^{2}
+\\
+&amp; \approx \frac{1}{T-p} \sum_{t=p+1}^{T}(y_{t}-\hat{c}-\hat{\phi}
+y_{t-1}-\ldots-\hat{\phi_p} y_{t-p})^{2}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>This is the usual regression estimator of <span class="math">\(\smash{\sigma^2}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2><span class="math">\(\smash{AR(p)}\)</span> Conditional MLEs<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Assuming Gaussianity doesn&#8217;t impact the consistency of our
+estimates.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\boldsymbol{\varepsilon}}\)</span> is not Gaussian, then
+<span class="math">\(\smash{\hat{\boldsymbol{\beta}}}\)</span> is the Quasi Maximum
+Likelihood Estimate because the model is misspecified.</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Likelihood<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>Recall a Gaussian <span class="math">\(\smash{MA(q)}\)</span> process:</p>
+<div class="math">
+\[Y_t = \mu + \varepsilon_{t} + \psi_1 \varepsilon_{t-1} + \psi_2
+\varepsilon_{t-2} + \ldots + \psi_q \varepsilon_{t-q},
+\hspace{5pt} \varepsilon_{t} \overset{i.i.d.}{\sim} \mathcal{N}(0,\sigma^{2})\]</div>
+<ul class="simple">
+<li>Now, <span class="math">\(\smash{\boldsymbol{\theta} = (\mu,\psi_1,\ldots,\psi_q,\sigma^{2})^{'}}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Likelihood<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math">\(\smash{\varepsilon_{t-q}, \ldots, \varepsilon_{t-1}}\)</span>
+are known with certainty then</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Y_t &amp; \sim \mathcal{N}(\mu + \psi_1 \varepsilon_{t-1} + \ldots +
+\psi_q \varepsilon_{t-q}, \sigma^2) \\
+\implies f_{Y_t|\varepsilon_{t-q}, \ldots,
+\varepsilon_{t-1}} &amp; (y_t|\varepsilon_{t-q}, \ldots,
+\varepsilon_{t-1}) \\
+&amp; = \frac{1}{\sqrt{2\pi \sigma^2}}
+\exp\left\{-\frac{1}{2\sigma^2} (y_t - \mu - \psi_1
+\varepsilon_{t-1} - \ldots - \psi_q \varepsilon_{t-q})^2 \right\}
+\\
+&amp; = \frac{1}{\sqrt{2\pi \sigma^2}}
+\exp\left\{-\frac{1}{2\sigma^2} \varepsilon_t^2 \right\}.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="id8">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Likelihood<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>Assume <span class="math">\(\smash{\varepsilon_{0} = \varepsilon_{-1} =
+\varepsilon_{-2} = \ldots = \varepsilon_{-q+1} = 0}\)</span> and iteratively
+compute</p>
+<div class="math">
+\[\smash{\varepsilon_t = y_t - \mu - \psi_1 \varepsilon_{t-1} -
+\ldots - \psi_q \varepsilon_{t-q}, \,\,\,\, \text{for} \,\,\,\, t =
+1,\ldots,T}.\]</div>
+</div>
+<div class="section" id="id9">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Likelihood<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>Then the likelihood is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\mathcal{L}(\boldsymbol{\theta}|\boldsymbol{y}_T,
+\boldsymbol{\varepsilon}_0 = \boldsymbol{0}) &amp; =
+f_{Y_1,\ldots,Y_T|\boldsymbol{\varepsilon}_0}(y_1,\ldots,y_T|
+\boldsymbol{\varepsilon}_0, \boldsymbol{\theta}) \\
+&amp; = f_{Y_1|\boldsymbol{\varepsilon}_0}(y_1|\boldsymbol{\varepsilon}_0,
+\boldsymbol{\theta}) \prod_{t=2}^T f_{Y_t|Y_1,\ldots,Y_t,
+\boldsymbol{\varepsilon}_0}(y_t|y_1,\ldots,y_t,\boldsymbol{\varepsilon}_0,
+\boldsymbol{\theta}) \\
+&amp; = \prod_{t=1}^T \frac{1}{\sqrt{2\pi \sigma^2}}
+\exp\left\{-\frac{1}{2\sigma^2} \varepsilon_t^2 \right\} \\
+&amp; = \frac{1}{(2\pi \sigma^2)^{\frac{T}{2}}}
+\exp\left\{-\frac{1}{2\sigma^2} \sum_{t=1}^T \varepsilon_t^2
+\right\}
+\end{align}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\boldsymbol{\varepsilon}_0 =
+\{\varepsilon_t\}_{t=-q+1}^{0}}\)</span>.</p>
+</div>
+<div class="section" id="id10">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Log Likelihood<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>The log likelihood is</p>
+<div class="math">
+\[\smash{\ell(\boldsymbol{\theta}|\boldsymbol{y}_T,
+\boldsymbol{\varepsilon}_0 = \boldsymbol{0}) = -\frac{T}{2}
+\log(2\pi) - \frac{T}{2} \log(\sigma^2) - \frac{1}{2\sigma^2}
+\sum_{t=1}^T \varepsilon_t^2.}\]</div>
+<ul class="simple">
+<li>The MLEs cannot be found analytically.</li>
+</ul>
+<p>The rough numerical algorithm is</p>
+<ol class="arabic simple">
+<li>Guess values for <span class="math">\(\smash{\boldsymbol{\theta} = (\mu,
+\psi_1,\ldots,\psi_q,\sigma^2)^{'}}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Assume <span class="math">\(\smash{\varepsilon_{0} = \varepsilon_{-1} =
+\varepsilon_{-2} = \ldots = \varepsilon_{-q+1} = 0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Iteratively compute <span class="math">\(\smash{\{\varepsilon\}_{t=1}^T}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>Evaluate the log likelihood for
+<span class="math">\(\smash{\{\varepsilon\}_{t=1}^T}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li>Update <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> and return to step 2
+until convergence.</li>
+</ol>
+</div>
+<div class="section" id="id11">
+<h2><span class="math">\(\smash{MA(q)}\)</span> Conditional Log Likelihood<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>The conditional log likelihood function can only be used with the
+invertible representation of the <span class="math">\(\smash{MA(q)}\)</span>.</p>
+<ul class="simple">
+<li>If a non-invertible representation is used, it can be shown (via
+backward recursion on <span class="math">\(\smash{\varepsilon_t}\)</span>) that the
+assumption of <span class="math">\(\smash{\boldsymbol{\varepsilon}_0 =
+\boldsymbol{0}}\)</span> is explosive.</li>
+</ul>
+</div>
+<div class="section" id="cond-likelihood">
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> Cond. Likelihood<a class="headerlink" href="#cond-likelihood" title="Permalink to this headline">¶</a></h2>
+<p>Recall a Gaussian <span class="math">\(\smash{ARMA(p,q)}\)</span> process:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+Y_t &amp; = c + \phi_1 y_{t-1} + \ldots + \phi_p y_{t-p} \\
+&amp; \hspace{0.7in} +
+\varepsilon_{t} + \psi_1 \varepsilon_{t-1} + \psi_2
+\varepsilon_{t-2} + \ldots + \psi_q \varepsilon_{t-q},
+\hspace{5pt} \varepsilon_{t} \overset{i.i.d.}{\sim}
+\mathcal{N}(0,\sigma^{2}).
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="id12">
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> Cond. Likelihood<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>To form the conditional likelihood, we combine the methods of the
+<span class="math">\(\smash{AR(p)}\)</span> and <span class="math">\(\smash{MA(q)}\)</span>:</p>
+<ol class="arabic simple">
+<li>Condition on <span class="math">\(\smash{y_0 = y_{-1} = \ldots = y_{-p+1} = \mu =
+\frac{c}{1-\phi_1 - \ldots - \phi_p}}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Condition on <span class="math">\(\smash{\varepsilon_0 = \varepsilon_{-1} =
+\ldots = \varepsilon_{-q+1} = 0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Recursively compute <span class="math">\(\smash{\{\varepsilon_t\}_{t=1}^T}\)</span> using
+<span class="math">\(\smash{\{y_t\}_{t=1}^T}\)</span>,
+<span class="math">\(\smash{\{\varepsilon_t\}_{t=-q+1}^0}\)</span> and
+<span class="math">\(\smash{\{y_t\}_{t=-p+1}^0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>Compute the log likelihood as</li>
+</ol>
+<div class="math">
+\[\smash{\ell(\boldsymbol{\theta}|\boldsymbol{y}_T,
+\boldsymbol{\varepsilon}_0 = \boldsymbol{0}) = -\frac{T}{2}
+\log(2\pi) - \frac{T}{2} \log(\sigma^2) - \frac{1}{2\sigma^2}
+\sum_{t=1}^T \varepsilon_t^2.}\]</div>
+<p>The <span class="math">\(\smash{MA}\)</span> polynomial must be invertible in order to use
+the conditional log likelihood for estimation.</p>
+</div>
+<div class="section" id="id13">
+<h2><span class="math">\(\smash{ARMA(p,q)}\)</span> Cond. Likelihood<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>Alternatively, we could start the recursions at <span class="math">\(\smash{t=p+1}\)</span>
+without an initial condition on <span class="math">\(\smash{\{y_t\}_{t=-p+1}^0}\)</span>.</p>
+<ol class="arabic simple">
+<li>Condition on <span class="math">\(\smash{\varepsilon_p = \varepsilon_{p-1} =
+\ldots = \varepsilon_{p-q+1} = 0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Recursively compute <span class="math">\(\smash{\{\varepsilon_t\}_{t=p+1}^T}\)</span>
+using <span class="math">\(\smash{\{y_t\}_{t=1}^T}\)</span> and
+<span class="math">\(\smash{\{\varepsilon_t\}_{t=p-q+1}^0}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Compute the log likelihood as</li>
+</ol>
+<div class="math">
+\[\smash{\ell(\boldsymbol{\theta}|\boldsymbol{y}_T,
+\boldsymbol{\varepsilon}_0 = \boldsymbol{0}) = -\frac{T-p}{2}
+\log(2\pi) - \frac{T-p}{2} \log(\sigma^2) - \frac{1}{2\sigma^2}
+\sum_{t=p+1}^T \varepsilon_t^2.}\]</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numerical.html" class="btn btn-neutral float-right" title="Numerical Optimization">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mle.html" class="btn btn-neutral" title="Maximum Likelihood Estimation"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

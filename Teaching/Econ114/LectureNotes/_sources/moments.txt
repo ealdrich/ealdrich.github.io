@@ -1,0 +1,424 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Moments
+==============================================================================
+
+
+
+Moments
+==============================================================================
+Given a random variable :math:`X`: 
+
+.. rst-class:: to-build
+
+- The :math:`k` -th *moment* of :math:`X` is
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[X^k] = \int_{-\infty}^{\infty} x^k f(x) dx.
+
+.. rst-class:: to-build
+
+- The :math:`k` -th *central moment* of :math:`X` is
+
+.. rst-class:: to-build
+
+.. math::
+   \mu_k = E\left[\left(X-E[X]\right)^k\right] =
+   \int_{-\infty}^{\infty} \left(x-E[X]\right)^k f(x) dx.
+
+
+
+
+Moments
+==============================================================================
+Some special cases for *any* random variable
+:math:`X`:  
+
+.. rst-class:: to-build
+
+- The first moment of :math:`X` is its mean.  
+
+.. rst-class:: to-build
+
+- The first *central* moment of :math:`X` is zero.
+
+.. rst-class:: to-build
+  
+- The second *central* moment of :math:`X` is its variance.
+
+
+
+
+Sample Moments
+==============================================================================
+Given realizations :math:`x_1, \ldots, x_n` of a random variable
+:math:`X`,
+
+.. rst-class:: to-build
+
+- The moments of :math:`X` can be approximated by replacing
+  expectations with simple averages:
+
+.. rst-class:: to-build
+
+.. math::
+
+  \hat{\mu}_k = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^k,
+  \,\,\,\,\,\, \text{where} \,\,\,\,\,\, \bar{x} = \frac{1}{n}
+  \sum_{i=1}^n x_i.
+
+.. rst-class:: to-build
+
+- For example, the sample variance is
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hat{\mu}_2 = \hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2.
+
+
+
+
+Skewness
+==============================================================================
+*Skewness* measures the degree of asymmetry of a distribution.  
+
+.. rst-class:: to-build
+
+- Formally, skewness is defined as
+
+.. rst-class:: to-build
+
+.. math::
+
+   Sk = E\left[\left(\frac{X - E[X]}{\sigma}\right)^3\right] = \frac{\mu_3}{\sigma^3}.
+
+.. rst-class:: to-build
+
+- Zero skewness corresponds to a symmetric distribution.   
+
+.. rst-class:: to-build
+
+- Positive skewness indicates a relatively long right tail.
+
+.. rst-class:: to-build
+
+- Negative skewness indicates a relatively long left tail.
+
+
+
+
+Skewness Example
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/Moments/skewExamples.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Moments/skewExamples.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+Kurtosis
+==============================================================================
+*Kurtosis* measures the extent to which probability is concentrated in
+the center and tails of a distribution rather than the "shoulders".
+
+.. rst-class:: to-build
+
+- Formally, kurtosis is defined as 
+
+.. rst-class:: to-build
+
+.. math::
+
+   Kur  = E\left[\left(\frac{X - E[Y]}{\sigma}\right)^4\right] =
+   \frac{\mu_4}{\sigma^4}.
+
+.. rst-class:: to-build
+
+- High values of kurtosis indicate heavy tails and low values indicate
+  light tails.
+
+
+
+Kurtosis
+==============================================================================
+- For skewed distributions, kurtosis may measure both asymmetry and
+  tail weight.
+
+.. rst-class:: to-build
+
+- For symmetric distributions, kurtosis only measures tail weight.
+
+
+
+
+Kurtosis
+==============================================================================
+The Kurtosis of a *all* normal distributions is 3.
+
+.. rst-class:: to-build
+
+- *Excess Kurtosis*, :math:`Kur - 3`, is a measure of the kurtosis of
+  a distribution relative to that of a normal.  
+
+.. rst-class:: to-build
+
+- If excess kurtosis is positive, the distribution has heavier tails
+  than a normal.
+
+.. rst-class:: to-build
+
+- If excess kurtosis is negative, the distribution has lighter tails
+  than a normal.
+
+
+
+
+Kurtosis of :math:`t`-Distribution
+==============================================================================
+Let :math:`t_{\nu}` denote a random variable that has a
+:math:`t`-distribution with :math:`\nu` degrees of freedom.
+
+.. rst-class:: to-build
+
+- The kurtosis of :math:`t_{\nu}` exists only for :math:`\nu > 4` and
+  is equal to
+
+.. rst-class:: to-build
+
+.. math::
+
+   Kur(t_{\nu}) = 3 + \frac{6}{\nu-4}.
+
+.. rst-class:: to-build
+
+- So, for a :math:`t_5`-distribution, the kurtosis is 9.  
+
+.. rst-class:: to-build
+
+- Clearly, as :math:`\nu \to \infty`, :math:`Kur(t_{\nu}) \to 3`,
+  which is the kurtosis of a normal.
+
+.. rst-class:: to-build
+
+- This makes sense because :math:`t_{\nu} \to \mathcal{N}(0,1)` as
+  :math:`\nu \to \infty`.
+
+
+
+
+Kurtosis Example
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/Moments/tNormComp.png
+     :width: 8in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Moments/tNormComp.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    setwd("~/Dropbox/Academics/Teaching/Econ114/W2013/RScripts/")
+
+    ###############################################################################
+    # Comparison of tail weight of Normal and t distributions
+    ###############################################################################
+
+    # The possible values of the random variables over which to plot densities
+    xGrid = seq(-5, 5, length=1000)
+
+    # Compute values of the normal density at each x
+    normDens = dnorm(xGrid, 0, 1)
+
+    # The degrees of freedom for the t
+    nu = 5;
+
+    # Compute the standardized t density at each x
+    # Note that to compute the standard t, we must multiply by sqrt(nu/(nu-2))
+    mult = sqrt(nu/(nu-2))
+    tDens = mult*dt(mult*xGrid, df=nu)
+
+    # Plot the two densities
+    pdf(file="tNormComp.pdf", height=10, width=6)
+    par(mfrow=c(2,1))
+    ymin = min(min(normDens), min(tDens))
+    ymax = max(max(normDens), max(tDens))
+    plot(xGrid, normDens, type='l', xlim=c(-4, 4), ylim=c(ymin, ymax), xlab="", ylab="")
+    lines(xGrid, tDens, lty=2)
+    legend('topleft', legend=c("Standard Normal Density","Standard t Density (df=5)"),
+	   lty=c(1,2), cex=0.75)
+
+	   # Zoom in on the upper tails
+	   plot(xGrid, normDens, type='l', xlim=c(2.5, 5), ylim=c(0, 0.03), xlab="", ylab="")
+	   lines(xGrid, tDens, lty=2)
+	   legend('topright', legend=c("Standard Normal Density","Standard t Density (df=5)"),
+    lty=c(1,2), cex=0.75)
+
+    graphics.off()
+
+
+Sample Skewness and Kurtosis
+==============================================================================
+Given realizations :math:`x_1, \ldots, x_n` of a random variable
+:math:`X`, skewness and kurtosis can be approximated by
+
+.. rst-class:: to-build
+
+.. math::
+
+   \widehat{SK} = \frac{1}{n} \sum_{i=1}^n \left(\frac{x_i -
+   \bar{x}}{\hat{\sigma}}\right)^3
+
+.. rst-class:: to-build
+
+.. math::
+
+  \widehat{Kur} = \frac{1}{n} \sum_{i=1}^n \left(\frac{x_i -
+  \bar{x}}{\hat{\sigma}}\right)^4.
+
+
+
+Sample Skewness and Kurtosis
+==============================================================================
+Sample skewness and kurtosis can be used to diagnose normality.
+
+.. rst-class:: to-build
+
+- However, sample skewness and kurtosis are heavily influenced by
+  outliers.
+
+
+
+Sample Skewness and Kurtosis
+==============================================================================
+- Consider a random sample of 999 values drawn from a
+  :math:`\mathcal{N}(0,1)` distribution.
+
+.. rst-class:: to-build
+
+- The sample skewness and kurtosis are 0.0072 and 3.17, respectively.
+
+.. rst-class:: to-build
+
+- These are close to the true values of 0 and 3.
+
+.. rst-class:: to-build
+  
+- If one outlier equal to 30 is added to the dataset, the sample
+  skewness and kurtosis become 10.48 and 231.05, respectively.
+
+
+
+
+Sample Skewness and Kurtosis
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/Moments/outlierNormQQ.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/Moments/outlierNormQQ.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    ###############################################################################
+    # Sample Skewness and Kurtosis with Outlier
+    ###############################################################################
+
+    # Draw 999 values from a N(0,1)
+    normSamp = rnorm(999, 0, 1)
+
+    # Create an outlier
+    outlier = 30
+
+    # Put the normal sample and outlier together in one sample
+    totalSamp = c(normSamp, outlier)
+
+    # Normal QQ-plot
+    pdf(file="outlierNormQQ.pdf", height=8, width=10)
+    qqnorm(totalSamp, datax=TRUE)
+    graphics.off()
+
+    # Compute sample skewness of only normal part
+    skPart = mean(((normSamp - mean(normSamp))/sd(normSamp))^3)
+
+    # Compute sample kurtosis of only normal part
+    kurPart = mean(((normSamp - mean(normSamp))/sd(normSamp))^4)
+
+    # Compute sample skewness
+    sk = mean(((totalSamp - mean(totalSamp))/sd(totalSamp))^3)
+
+    # Compute sample kurtosis
+    kur = mean(((totalSamp - mean(totalSamp))/sd(totalSamp))^4)
+
+
+
+Location, Scale and Shape Parameters
+==============================================================================
+- A *location parameter* shifts a distribution to the right or left
+  without changing the distribution's variability or shape.
+
+.. rst-class:: to-build
+
+- A *scale parameter* changes the variability of a distribution
+  without changing its location or shape.
+
+.. rst-class:: to-build
+
+- A parameter is a scale parameter if it increases by :math:`|a|` when
+  all data values are multiplied by :math:`a`.
+
+.. rst-class:: to-build
+
+- A *shape* parameter is any parameter that is not changed by location
+  and scale parameters.
+
+.. rst-class:: to-build
+
+- Shape parameters dictate skewness and kurtosis.
+
+
+
+
+Location, Scale and Shape Parameters
+==============================================================================
+Examples of location, scale and shape parameters: 
+
+.. rst-class:: to-build
+
+- The mean or median of any distribution are location parameters.
+
+.. rst-class:: to-build
+
+- The standard deviation (alternatively, variance) or median absolute
+  deviation of any distribution are scale parameters.
+
+.. rst-class:: to-build
+
+- The degrees of freedom parameter of a :math:`t` distribution is a
+  shape parameter.

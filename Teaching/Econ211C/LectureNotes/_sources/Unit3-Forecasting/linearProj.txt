@@ -1,0 +1,321 @@
+==============================================================================
+Linear Predictors
+==============================================================================
+
+
+Forecasting
+==============================================================================
+Suppose we are interested in forecasting a random variable
+:math:`\smash{Y_{t+1}}` based on a set of variables
+:math:`\smash{\boldsymbol{X}_t}`.
+  
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{X}_t}` might be comprised of
+  :math:`\smash{m}` lags of :math:`\smash{Y_{t+1}}`:
+  :math:`\smash{Y_t, Y_{t-1}, \ldots, Y_{t-m+1}}`.
+
+.. raw:: <!--pause-->
+
+- We can denote :math:`\smash{Y^*_{t+1|t}}` as the forecast of
+  :math:`\smash{Y_{t+1}}` based on :math:`\smash{\boldsymbol{X}_t}`.
+
+.. raw:: <!--pause-->
+
+- We can choose :math:`\smash{Y^*_{t+1|t}}` to minimize some loss
+  function, :math:`\smash{L\left(Y^*_{t+1|t}\right)}`, which evaluates
+  the quality of :math:`\smash{Y^*_{t+1|t}}`. 
+
+.. raw:: <!--pause-->
+
+- A common choice is the quadratic loss function:
+
+.. math::
+
+   \begin{align*}
+   L\left(Y^*_{t+1|t}\right) & = \text{E}\left[\left(Y_{t+1} -
+   Y^*_{t+1|t}\right)^2\right].
+   \end{align*}
+  
+
+
+
+Mean Squared Error Loss
+==============================================================================
+Quadratic loss is also known as *mean squared error*.
+
+.. math::
+
+   \begin{align*}
+   MSE\left(Y^*_{t+1|t}\right) & = \text{E}\left[\left(Y_{t+1} -
+   Y^*_{t+1|t}\right)^2\right].
+   \end{align*} 
+  
+.. raw:: <!--pause-->
+
+- The conditional expectation,
+  :math:`\smash{\text{E}\left[Y_{t+1}|\boldsymbol{X}_t \right]}`
+  minimizes :math:`\smash{MSE\left(Y^*_{t+1|t}\right)}`.
+  
+
+
+
+MSE Minimizer
+==============================================================================
+Let :math:`\smash{Y^*_{t+1|t} = g(\boldsymbol{X}_t)}`. Then
+
+.. math::
+
+   \begin{align*}
+   \text{E}\left[\left(Y_{t+1} -
+   g(\boldsymbol{X}_t)\right)^2\right] & = \text{E}\Big[\big(Y_{t+1} -
+   \text{E}[Y_{t+1}|\boldsymbol{X}_t] \\
+   & \hspace{1in} + \text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+   g(\boldsymbol{X}_t) \big)^2\Big] \\
+   & = \text{E}\left[\left(Y_{t+1} -
+   \text{E}[Y_{t+1}|\boldsymbol{X}_t]\right)^2\right] \\
+   & \hspace{0.25in} +
+   2\text{E}\Big[\big(Y_{t+1}-\text{E}[Y_{t+1}|\boldsymbol{X}_t]\big) \\
+   & \hspace{0.75in} \times
+   \big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big)\Big] \\
+   & \hspace{1in} +
+   \text{E}\left[\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+   g(\boldsymbol{X}_t)\big)^2\right]
+   \end{align*}
+
+
+MSE Minimizer
+==============================================================================
+By the law of iterated expectations
+
+.. math::
+
+   \begin{align*}
+   \text{E}\Big[&\big(Y_{t+1}-\text{E}[Y_{t+1}|\boldsymbol{X}_t]\big)
+   \big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big)\Big] \\
+   & \hspace{0.25in} = \text{E}\Big[ \text{E}\big[\left(Y_{t+1} -
+   \text{E}[Y_{t+1}|\boldsymbol{X}_t]\right) \big| \boldsymbol{X}_t\big]
+   \big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big) \Big] \\
+   & \hspace{0.25in} = \text{E}\Big[
+   \left(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - \text{E}[Y_{t+1}|\boldsymbol{X}_t]\right)
+   \big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] - g(\boldsymbol{X}_t)\big) \Big] \\
+   & \hspace{0.25in} = 0.
+   \end{align*}
+  
+.. raw:: <!--pause-->
+
+- This means that the second term of the equation on the previous
+  slide is zero.
+    
+
+MSE Minimizer
+==============================================================================
+Substituting the previous result: 
+
+.. math::
+
+   \begin{align*}
+   \text{E}\left[\left(Y_{t+1} - g(\boldsymbol{X}_t)\right)^2\right] & =
+   \text{E}\left[\left(Y_{t+1} - \text{E}[Y_{t+1}|\boldsymbol{X}_t]\right)^2\right]
+   \\
+   & \hspace{0.5in} +
+   \text{E}\left[\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+   g(\boldsymbol{X}_t)\big)^2\right]
+   \end{align*} 
+  
+.. raw:: <!--pause-->
+
+- Clearly the the :math:`\smash{MSE}` is minimized when
+
+.. math::
+
+    \smash{\text{E}\left[\big(\text{E}[Y_{t+1}|\boldsymbol{X}_t] -
+    g(\boldsymbol{X}_t)\big)^2\right] = 0.}
+
+.. raw:: <!--pause-->
+
+- This occurs when :math:`\smash{\text{E}[Y_{t+1}|\boldsymbol{X}_t] =
+  g(\boldsymbol{X}_t)}`.
+  
+
+Linear Projection
+==============================================================================
+We can restrict our forecast to be a linear function of
+:math:`\smash{\boldsymbol{X}_t}`:
+
+.. math::
+
+   \begin{align*}
+   Y^*_{t+1|t} & = \boldsymbol{X}'_t \boldsymbol{\beta}.
+   \end{align*} 
+  
+.. raw:: <!--pause-->
+
+- Let :math:`\smash{\boldsymbol{\beta}^*}` be the value of
+  :math:`\smash{\boldsymbol{\beta}}` so that the forecast error is
+  *orthogonal* to or *uncorrelated* with
+  :math:`\smash{\boldsymbol{X}_t}`:
+
+.. math::
+
+   \begin{align*}
+   \text{E}\Big[\boldsymbol{X}_t \underbrace{\left(Y_{t+1} - \boldsymbol{X}'_t
+   \boldsymbol{\beta}^*\right)}_{\text{forecast error}} \Big] & =
+   \boldsymbol{0}.
+   \end{align*} 
+    
+.. raw:: <!--pause-->
+
+- This is a *system* of equations. 
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{\beta}^*}` minimizes the
+  :math:`\smash{MSE}`.
+  
+
+Linear Projection
+==============================================================================
+We can use the same steps as before to show that
+:math:`\smash{\boldsymbol{\beta}^*}` minimizes :math:`\smash{MSE}`.
+  
+.. raw:: <!--pause-->
+
+- Begin with an arbitrary linear forecasting rule,
+  :math:`\smash{Y^*_{t+1|t} = \boldsymbol{X}'_t \boldsymbol{\gamma}}`. 
+
+.. raw:: <!--pause-->
+
+- Show that
+
+.. math::
+
+   \begin{align*}
+   MSE\left( Y^*_{t+1|t} \right) & =
+   \text{E}\left[\left(Y_{t+1} - \boldsymbol{X}'_t \boldsymbol{\gamma}
+   \right)^2\right] \\
+   & = \text{E}\left[\left(Y_{t+1} - \boldsymbol{X}'_t
+   \boldsymbol{\beta}^* + \boldsymbol{X}'_t \boldsymbol{\beta}^* -
+   \boldsymbol{X}'_t \boldsymbol{\gamma} \right)^2\right] \\
+   & = \text{E}\Big[\big(Y_{t+1} - \boldsymbol{X}'_t
+   \boldsymbol{\beta}^*\big)^2\Big] + \text{E}\left[\left(\boldsymbol{X}'_t
+   \boldsymbol{\beta}^* - \boldsymbol{X}'_t
+   \boldsymbol{\gamma}\right)^2\right].
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- Hence, :math:`\smash{MSE}` is minimized when
+  :math:`\smash{\boldsymbol{\gamma} = \boldsymbol{\beta}^*}`.
+  
+
+Linear Projection
+==============================================================================
+:math:`\smash{Y^*_{t+1|t} = \boldsymbol{X}'_t \boldsymbol{\beta}^*}`
+is referred to as the *linear projection* of :math:`\smash{Y_{t+1}}`
+on :math:`\smash{\boldsymbol{X}_t}`. 
+  
+.. raw:: <!--pause-->
+
+- We will denote the linear projection as
+
+.. math::
+
+   \begin{equation*}
+   \hat{P}(Y_{t+1}|\boldsymbol{X}_t) = \boldsymbol{X}'_t \boldsymbol{\beta}^*
+   \,\,\,\,\,\,\, \text{or} \,\,\,\,\,\,\, \hat{Y}_{t+1|t} =
+   \boldsymbol{X}'_t \boldsymbol{\beta}^*.
+   \end{equation*} 
+    
+.. raw:: <!--pause-->
+
+- Clearly
+
+.. math::
+
+   \begin{equation*}
+   MSE\left(\hat{P}(Y_{t+1}|\boldsymbol{X}_t)\right) \geq
+   MSE\left(\text{E}[Y_{t+1}|\boldsymbol{X}_t]\right).
+   \end{equation*}
+  
+
+Linear Projection Solution
+==============================================================================
+Using the orthogonality condition:
+
+.. math::
+
+   \begin{align}
+   \boldsymbol{\beta}^* & = \text{E}\left[\boldsymbol{X}_t \boldsymbol{X}'_t\right]^{-1}
+   \text{E}\left[\boldsymbol{X}_t Y_{t+1}\right].
+   \end{align} 
+  
+.. raw:: <!--pause-->
+
+- Least squares projection is the sample analogue of the equation
+  above.
+  
+
+Linear Projection MSE
+==============================================================================
+Using our solution for :math:`\smash{\boldsymbol{\beta}^*}`, we can
+solve for the MSE of the linear projection:
+
+.. math::
+
+   \begin{align*}
+   MSE(Y^*_{t+1|t}) & = \text{E}\left[\left(Y_{t+1}- \boldsymbol{X}'_t
+   \boldsymbol{\beta}^*\right)^2\right] \\
+   & = \text{E}[Y^2_{t+1}] - 2\text{E}[Y_{t+1} \boldsymbol{X}'_t \boldsymbol{\beta}^*] +
+   \text{E}[\boldsymbol{\beta}^{*'} \boldsymbol{X}_t \boldsymbol{X}'_t \boldsymbol{\beta}^*] \\
+   & = \text{E}[Y^2_{t+1}] - 2\text{E}[Y_{t+1} \boldsymbol{X}'_t] \text{E}\left[\boldsymbol{X}_t
+   \boldsymbol{X}'_t\right]^{-1} \text{E}\left[\boldsymbol{X}_t Y_{t+1}\right] \\
+   & \hspace{0.85in} +
+   \text{E}\left[Y_{t+1} \boldsymbol{X}'_t\right] \text{E}\left[\boldsymbol{X}_t
+   \boldsymbol{X}'_t\right]^{-1} \text{E}[\boldsymbol{X}_t \boldsymbol{X}'_t] \\
+   & \hspace{1.6in} \times
+   \text{E}\left[\boldsymbol{X}_t \boldsymbol{X}'_t\right]^{-1} \text{E}\left[\boldsymbol{X}_t
+   Y_{t+1}\right] \\
+   & = \text{E}[Y^2_{t+1}] - \text{E}[Y_{t+1} \boldsymbol{X}'_t] \text{E}\left[\boldsymbol{X}_t
+   \boldsymbol{X}'_t\right]^{-1} \text{E}\left[\boldsymbol{X}_t Y_{t+1}\right].
+   \end{align*}
+
+
+Vector Linear Projection
+==============================================================================
+Let :math:`\smash{\boldsymbol{Y}_{t+1}}` be an :math:`\smash{(n \times
+1)}` vector and :math:`\smash{\boldsymbol{X}_t}` an :math:`\smash{(m
+\times 1)}` vector.
+
+.. raw:: <!--pause-->
+
+- The linear projection of :math:`\smash{\boldsymbol{Y}_{t+1}}` on
+  :math:`\smash{\boldsymbol{X}_t}` is
+
+.. math::
+
+   \begin{align*}
+   \hat{P}(\boldsymbol{Y}'_{t+1}|\boldsymbol{X}_t) = \hat{\boldsymbol{Y}}'_{t+1|t}
+   = \boldsymbol{X}'_t \boldsymbol{\beta}^*.
+   \end{align*} 
+
+where :math:`\smash{\boldsymbol{\beta}^*}` is the :math:`\smash{(m \times n)}` matrix such that
+
+.. math::
+
+   \begin{align*}
+   \text{E}\Big[\boldsymbol{X}_t \left(\boldsymbol{Y}'_{t+1} - \boldsymbol{X}'_t
+   \boldsymbol{\beta}^*\right)\Big] & = \boldsymbol{0}.
+   \end{align*}
+    
+.. raw:: <!--pause-->
+
+- As in the univariate case
+
+.. math::
+
+   \begin{align*}
+   \boldsymbol{\beta}^* & = \text{E}\left[\boldsymbol{X}_t \boldsymbol{X}'_t\right]^{-1}
+   \text{E}\left[\boldsymbol{X}_t \boldsymbol{Y}'_{t+1}\right].
+   \end{align*}
+

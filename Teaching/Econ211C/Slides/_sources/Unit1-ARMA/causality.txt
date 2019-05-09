@@ -1,0 +1,242 @@
+==============================================================================
+Causality and Invertibility
+==============================================================================
+
+Causality
+==============================================================================
+Suppose :math:`\smash{\{Y_t\}}` is an :math:`\smash{AR(1)}` process:
+
+.. math::
+
+   \begin{align*}
+   Y_t & = \phi Y_{t-1} + \varepsilon_t.
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- We have shown that when :math:`\smash{|\phi| < 1}`,
+  :math:`\smash{\{Y_t\}}` is stationary.
+
+.. raw:: <!--pause-->
+
+- What if :math:`\smash{|\phi| > 1}`?
+
+Causality
+==============================================================================
+Let's run the :math:`\smash{AR}` recursion forward:
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align*}
+   Y_{t-1} & = \frac{1}{\phi} Y_t - \frac{1}{\phi} \varepsilon_t =
+   \frac{1}{\phi} \left(\frac{1}{\phi} Y_{t+1} - \frac{1}{\phi}
+   \varepsilon_{t+1}\right) - \frac{1}{\phi} \varepsilon_t \\
+   & = - \frac{1}{\phi} \varepsilon_t - \left(\frac{1}{\phi}\right)^2
+   \varepsilon_{t+1} + \left(\frac{1}{\phi}\right)^2 Y_{t+1} \\
+   & \vdots \\
+   & = - \sum_{j=0}^{\infty} \left(\frac{1}{\phi}\right)^{j+1}
+   \varepsilon_{t+j} \\
+   & = - \left(\sum_{j=0}^{\infty} \left(\frac{1}{\phi}\right)^{j+1}
+   L^{-j}\right) \varepsilon_t.
+   \end{align*}
+
+Causality
+==============================================================================
+The previous sum converges, so :math:`\smash{Y_t}` is stationary.
+
+.. raw:: <!--pause-->
+
+- However it is not a function of past :math:`\smash{\varepsilon_t}`.
+
+
+Causality
+==============================================================================
+A process :math:`\smash{\{X_t\}}` is a causal function of
+:math:`\smash{\{W_t\}}` if :math:`\smash{\exists \psi(L) = \psi_0 +
+\psi_1L^1 + \ldots}` such that :math:`\smash{x_t = \psi(L) w_t}` and
+:math:`\smash{\sum_{j=0}^{\infty} |\psi_j| < \infty}`.
+
+.. raw:: <!--pause-->
+
+- An :math:`\smash{AR(1)}` is causal only if :math:`\smash{|\phi|
+  < 1}`.
+
+.. raw:: <!--pause-->
+
+- However it is stationary as long as :math:`\smash{|\phi|
+  \neq 1}`.
+
+Causality of :math:`\smash{AR(p)}`
+==============================================================================
+Suppose :math:`\smash{\{Y_t\}}` is an :math:`\smash{AR(p)}` process
+with lag polynomial :math:`\smash{\phi(L)}`.
+
+.. raw:: <!--pause-->
+
+- If all roots of :math:`\smash{\phi(L)}` are inside or outside the
+  unit circle, :math:`\smash{\{Y_t\}}` is stationary.
+
+.. raw:: <!--pause-->
+
+- If any root of :math:`\smash{\phi(L)}` is on the unit circle,
+  :math:`\smash{\{Y_t\}}` is not stationary.
+
+.. raw:: <!--pause-->
+
+- If all roots of :math:`\smash{\phi(L)}` are outside the unit circle,
+  :math:`\smash{\phi(L)^{-1}}` exists and :math:`\smash{\{Y_t\}}` is
+  stationary and causal.
+
+Invertibility
+==============================================================================
+Suppose :math:`\smash{\{Y_t\}}` is an :math:`\smash{MA(q)}` process:
+
+.. math::
+
+   \smash{Y_t = \mu + \theta(L) \varepsilon_t,}
+
+where :math:`\smash{\theta(L) = 1+\theta_1 L^1 + \ldots + \theta_q
+L^q}`.
+
+.. raw:: <!--pause-->
+
+- We say :math:`\smash{\{Y_t\}}` is *invertible* if
+  :math:`\smash{\theta(L)^{-1}}` exists.
+
+Invertibility
+==============================================================================
+The :math:`\smash{MA(q)}` lag polynomial can be factored as
+
+.. math::
+
+   \smash{\theta(L) = 1+\theta_1 L^1 + \ldots + \theta_q L^q =
+   (1-\eta_1 L)\cdots(1-\eta_q L).}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\left\{\frac{1}{\eta_i}\right\}_{i=1}^q}` are the
+  roots of :math:`\smash{\theta(L)}`.
+
+.. raw:: <!--pause-->
+
+Suppose :math:`\smash{|\eta_i| < 1 \,\, \forall i}`. Then
+
+.. math::
+
+   \begin{align*}
+   (1-\eta_i L)^{-1} & = \sum_{j=0}^{\infty} \eta^j_i L^j \,\,\,\,
+   \forall i \\
+   \theta(L)^{-1} & = \left(\sum_{j=0}^{\infty} \eta^j_1 L^j\right)
+   \cdots \left(\sum_{j=0}^{\infty} \eta^j_q L^j\right).
+   \end{align*}
+
+Stationarity/Invertibility
+==============================================================================
+We previously showed that an :math:`\smash{MA(q)}` is *always*
+stationary, regardless of the roots of :math:`\smash{\theta(L)}`.
+
+.. raw:: <!--pause-->
+
+- It is only invertible if all of the roots of
+  :math:`\smash{\theta(L)}` lie outside the unit circle.
+
+.. raw:: <!--pause-->
+
+- In this case
+
+.. math::
+
+   \smash{\varepsilon_t = \theta(L)^{-1} Y_t}.
+
+.. raw:: <!--pause-->
+
+- That is, :math:`\smash{\{\varepsilon_t\}}` is a causal function of
+  :math:`\smash{\{Y_t\}}`.
+
+Inverting an :math:`\smash{MA(q)}`
+==============================================================================
+Given an :math:`\smash{MA(q)}` process,
+
+.. math::
+
+   \smash{Y_t = \mu + \theta(L) \varepsilon_t, \,\,\,\, \varepsilon_t
+   \stackrel{i.i.d.}{\sim} WN(0,\sigma^2)},
+
+suppose, without loss of generality,
+
+- :math:`\smash{|\eta_i| < 1}` for :math:`\smash{i=1,\ldots,m}`
+
+- :math:`\smash{|\eta_i| > 1}` for :math:`\smash{i=m+1,\ldots,q}`.
+
+Inverting an :math:`\smash{MA(q)}`
+==============================================================================
+Create a new process
+
+.. math::
+
+   \smash{\widetilde{Y}_t = \mu + \tilde{\theta}(L) \tilde{\varepsilon}_t,
+   \,\,\,\, \tilde{\varepsilon}_t \stackrel{i.i.d.}{\sim}
+   WN(0,\sigma^2 \eta^2_{m+1} \cdots \eta^2_q),}
+
+where
+
+.. math::
+
+   \begin{align*}
+   \tilde{\theta}(L) & = 1+\tilde{\theta}_1 L^1 + \ldots +
+   \tilde{\theta}_q L^q \\
+   & = \left(1-\eta_1 L\right) \cdots
+   \left(1-\eta_mL\right) \cdot \left(1-\frac{1}{\eta_{m+1}}L\right)
+   \cdots \left(1 - \frac{1}{\eta_q}L\right).
+   \end{align*}
+
+Inverting an :math:`\smash{MA(q)}`
+==============================================================================
+It can be shown that :math:`\smash{\widetilde{Y}_t}` has the same first
+and second moments as :math:`\smash{Y_t}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\widetilde{Y}_t}` is known as the invertible represenation
+  of the :math:`\smash{MA(q)}` process.
+
+.. raw:: <!--pause-->
+
+- Note that every :math:`\smash{MA(q)}` process has an invertible
+  representation so long as none of the roots of
+  :math:`\smash{\theta(L)}` lie on the unit circle.
+
+.. raw:: <!--pause-->
+
+- If an invertible representation exists, it is unique.
+
+Causality and Invertibility of an :math:`\smash{ARMA(p,q)}`
+==============================================================================
+The notions of stationarity, causality and invertibility extend to an
+:math:`\smash{ARMA(p,q)}` process:
+
+.. math::
+
+   \begin{align}
+   \phi(L) Y_t & = c + \theta(L) \varepsilon_t.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- If none of the roots of :math:`\smash{\phi(L)}` lie on the unit
+  circle, :math:`\smash{\{Y_t\}}` is stationary.
+
+.. raw:: <!--pause-->
+
+- If all of the roots of :math:`\smash{\phi(L)}` lie outside the unit
+  circle, :math:`\smash{\{Y_t\}}` is causal.
+
+.. raw:: <!--pause-->
+
+- If none of the roots of :math:`\smash{\theta(L)}` lie on the unit
+  circle, :math:`\smash{\{Y_t\}}` has a unique invertible
+  representation.
+
+

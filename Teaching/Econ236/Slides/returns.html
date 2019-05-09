@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Rates of Return &mdash; Econ 236</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Econ 236" href="index.html" />
+    <link rel="next" title="Forward Contracts" href="forwards.html" />
+    <link rel="prev" title="Econ 236 - Financial Engineering" href="index.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="rates-of-return">
+
+<h1>Rates of Return</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="holding-period-return">
+
+<h2>Holding Period Return</h2>
+
+<p>Consider a stock with beginning price <span class="math notranslate nohighlight">\(\smash{P_0}\)</span>, ending
+price <span class="math notranslate nohighlight">\(\smash{P_1}\)</span> and a dividend payment of
+<span class="math notranslate nohighlight">\(\smash{d}\)</span>.</p>
+<ul class="simple">
+<li>The <em>holding period return</em> is</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+HPR &amp; = \frac{P_1 - P_0 + d}{P_0} \\
+&amp; = \underbrace{\frac{P_1 - P_0}{P_0}}_\text{capital gains yield} +
+\underbrace{\frac{d}{P_0}}_\text{dividend yield}.
+\end{align*}\end{split}\]</div>
+<p>This definition can be used for assets other than stocks (e.g. a bond
+with a coupon payment).</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="holding-period-return-example">
+
+<h2>Holding Period Return Example</h2>
+
+<ul class="simple">
+<li>On Nov 9th 2012, Apple stock closed at <span class="math notranslate nohighlight">\(\smash{P_0 = \$547.06}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>On Nov 12th, Apple payed a dividend of <span class="math notranslate nohighlight">\(\smash{d = \$2.65}\)</span>
+per share and the price closed at <span class="math notranslate nohighlight">\(\smash{P_1 = \$542.83}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>What was the HPR?</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+HPR &amp; = \frac{\$542.83 - \$547.06}{\$547.06} +
+\frac{\$2.65}{\$547.06} \\
+&amp; = \frac{-\$4.23}{\$547.06} + \frac{\$2.65}{\$547.06} \\
+&amp; = \frac{-\$1.58}{\$547.06} \\
+&amp; = -0.00289.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="gross-and-net-returns">
+
+<h2>Gross and Net Returns</h2>
+
+<p>Forget dividends or cash payouts for a moment.</p>
+<ul class="simple">
+<li>The <em>capital gains yield</em> is</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\underbrace{\frac{P_1 - P_0}{P_0}}_\text{net return}\,\,\, &amp; =
+\underbrace{\frac{P_1}{P_0}}_\text{gross return} - \,\,\,\,\, 1.
+\end{align*}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id1">
+
+<h2>Gross and Net Returns</h2>
+
+<p>What’s the difference between net and gross returns?</p>
+<ul class="simple">
+<li>The net return is the fraction of your invested money that you gain
+by holding the asset, excluding the original money.</li>
+</ul>
+<ul class="simple">
+<li>The gross return is the total gain, including your original
+money. It is the factor by which you multiply your original invested
+amount to determine the final invested amount.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="multi-period-returns">
+
+<h2>Multi-period Returns</h2>
+
+<p>Suppose an asset has net returns
+<span class="math notranslate nohighlight">\(\smash{\{r_t\}_{t=0}^{T}}\)</span>. Consider two forms of average
+returns:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\text{Arithmetic Average} &amp; = \frac{1}{T} \sum_{t=0}^T r_t
+\end{align*}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\text{Geometric Average} &amp; = \left(\prod_{t=0}^T
+(1+r_t)\right)^{\frac{1}{T}}.
+\end{align*}\]</div>
+<p>The geometric average is the <em>constant</em> return that would
+have to be earned each period to yield the same final value of the
+asset.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="annualized-returns-ear">
+
+<h2>Annualized Returns - EAR</h2>
+
+<p>Suppose you enter into a contract to pay or receive a net rate of
+return <span class="math notranslate nohighlight">\(\smash{r}\)</span> on an asset for each of <span class="math notranslate nohighlight">\(\smash{n}\)</span>
+periods in a year.</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{n=12}\)</span>  is a monthly contract.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{n=4}\)</span> is a quarterly contract.</li>
+</ul>
+<ul class="simple">
+<li>The Effective Annual Rate (EAR) is</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+1 + \text{EAR} &amp; = (1 + r)^n.
+\end{align*}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="annualized-returns-apr">
+
+<h2>Annualized Returns - APR</h2>
+
+<p>Suppose you enter into a contract to pay or receive a net rate of
+return <span class="math notranslate nohighlight">\(\smash{r}\)</span> on an asset for each of <span class="math notranslate nohighlight">\(\smash{n}\)</span>
+periods in a year.</p>
+<ul class="simple">
+<li>The Annual Percentage Rate (APR) is</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\text{APR} &amp; = n \times r.
+\end{align*}\]</div>
+<p>The APR ignores compounding (as seen in the following example).</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="annualized-returns-example">
+
+<h2>Annualized Returns - Example</h2>
+
+<p>You invest $100 in an asset that pays 5% return each quarter for
+one year.</p>
+<div class="math notranslate nohighlight">
+\[\smash{Q1: \$100 \times 1.05 = \$105}\]</div>
+<div class="math notranslate nohighlight">
+\[\smash{Q2: \$105 \times 1.05 = \$110.25}\]</div>
+<div class="math notranslate nohighlight">
+\[\smash{Q3: \$110.25 \times 1.05 = \$115.76}\]</div>
+<div class="math notranslate nohighlight">
+\[\smash{Q4: \$115.76 \times 1.05 = \$121.55}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id2">
+
+<h2>Annualized Returns - Example</h2>
+
+<div class="math notranslate nohighlight">
+\[\smash{EAR: (1.05)^4 - 1 = 0.2155}\]</div>
+<div class="math notranslate nohighlight">
+\[\smash{APR: 0.05 \times 4 = 0.2}\]</div>
+<div class="math notranslate nohighlight">
+\[\smash{HPR: \frac{\$121.55 - \$100}{\$100} = 0.2155.}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="ear-and-apr">
+
+<h2>EAR and APR</h2>
+
+<p>What is the relationship between EAR and APR?</p>
+<p>Since <span class="math notranslate nohighlight">\(r = \frac{\text{APR}}{n}\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[1 +\text{EAR}  = \left(1 + \frac{APR}{n}\right)^n.\]</div>
+<p>We can rearrange the equation above to get</p>
+<div class="math notranslate nohighlight">
+\[\text{APR} = \left[(1+\text{EAR})^{\frac{1}{n}} - 1\right]
+\times n.\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="continuous-compounding">
+
+<h2>Continuous Compounding</h2>
+
+<p>Continuous compounding is what occurs when we allow the number of
+periods in the year, <span class="math notranslate nohighlight">\(\smash{n}\)</span>, to become large.</p>
+<ul class="simple">
+<li>For daily returns, <span class="math notranslate nohighlight">\(\smash{n=365}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>For hourly returns, <span class="math notranslate nohighlight">\(\smash{n=8760}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>For returns each minute, <span class="math notranslate nohighlight">\(\smash{n=525,000}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>For returns each second, <span class="math notranslate nohighlight">\(\smash{n=31,536,000}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id3">
+
+<h2>Continuous Compounding</h2>
+
+<p>Continuous compounding is the limit, when <span class="math notranslate nohighlight">\(\smash{n =
+\infty}\)</span>. In this case</p>
+<div class="math notranslate nohighlight">
+\[\lim_{n \to \infty} \left(1 + \frac{\text{APR}}{n}\right)^n =
+e^{\text{APR}}.\]</div>
+<p>So, under continuous compounding</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+1 + \text{EAR} &amp; = e^{\text{APR}}
+\end{align*}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\text{APR} &amp; = \ln(1+\text{EAR}).
+\end{align*}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="inflation">
+
+<h2>Inflation</h2>
+
+<p>Inflation is the increase of the general price level over
+time.</p>
+<ul class="simple">
+<li>Inflation erodes the purchasing power of a given amount of
+money over time.</li>
+</ul>
+<ul class="simple">
+<li>In the presence of inflation, an asset that yields a return of
+<span class="math notranslate nohighlight">\(\smash{r}\)</span> doesn’t actually generate <span class="math notranslate nohighlight">\(\smash{r}\)</span> units
+of additional real purchasing power for each dollar invested.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="nominal-vs-real-returns">
+
+<h2>Nominal vs. Real Returns</h2>
+
+<p>In the previous slides we computed nominal returns.</p>
+<ul class="simple">
+<li>Let us momentarily change notation and refer to the nominal return
+of an asset as <span class="math notranslate nohighlight">\(\smash{R}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Then the real return of the asset is the nominal return discounted
+by inflation:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[1+r = \frac{1+R}{1+\pi}.\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{r}\)</span> is the net real return and <span class="math notranslate nohighlight">\(\smash{\pi}\)</span> is
+net inflation.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id4">
+
+<h2>Nominal vs. Real Returns</h2>
+
+<ul class="simple">
+<li>This relationship is approximated by</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+r &amp; \approx R - \pi.
+\end{align*}\]</div>
+<p>See the proof on the next slide.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="nominal-vs-real-returns-proof">
+
+<h2>Nominal vs. Real Returns - Proof</h2>
+
+<p>The proof requires an approximation. For some small number
+<span class="math notranslate nohighlight">\(\smash{\varepsilon &gt; 0}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\ln(1+\varepsilon) &amp; \approx \varepsilon.
+\end{align*}\]</div>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+1+r &amp; = \frac{1+R}{1+\pi} \\
+\Rightarrow \ln(1+r) &amp; = \ln\left(\frac{1+R}{1+\pi}\right) \\
+\Rightarrow \ln(1+r) &amp; = \ln(1+R) - \ln(1+\pi) \\
+\Rightarrow r &amp; \approx R - \pi.
+\end{align*}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="nominal-vs-real-returns-example">
+
+<h2>Nominal vs. Real Returns - Example</h2>
+
+<p>Suppose you can invest in a CD that pays 8% return over the next year
+and that inflation is 5% during the same period.</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{R = 0.08}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\pi = 0.05}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{r \approx 0.08 - 0.05 = 0.03}\)</span>.</li>
+</ul>
+<p>The actual real rate of return is</p>
+<div class="math notranslate nohighlight">
+\[r = \frac{1.08}{1.05} - 1 = 0.0286.\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="expected-inflation">
+
+<h2>Expected Inflation</h2>
+
+<p>In practice, future inflation is not known, even though the nominal
+rate of return may be known with certainty.</p>
+<ul class="simple">
+<li>Think of a fixed-income asset.</li>
+</ul>
+<ul class="simple">
+<li>In this case</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+R &amp; = r + E[\pi].
+\end{align*}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{E[\pi]}\)</span> is expected inflation.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id5">
+
+<h2>Expected Inflation</h2>
+
+<ul class="simple">
+<li>The returns to typical government bonds are nominal.</li>
+</ul>
+<ul class="simple">
+<li>In 1997, the U.S. Treasury introduced “Treasury Inflation-Protected
+Securities” (TIPS).</li>
+</ul>
+<ul class="simple">
+<li>These have coupon and principle payments that
+are corrected for observed inflation over time.</li>
+</ul>
+<ul class="simple">
+<li>The difference between these rates of return on these two
+instruments can be treated as a measure of expected inflation.</li>
+</ul>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

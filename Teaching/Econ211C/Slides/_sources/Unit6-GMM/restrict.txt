@@ -1,0 +1,242 @@
+==============================================================================
+GMM Over-Identifying Restrictions
+==============================================================================
+
+Criterion Function Limiting Distribution
+==============================================================================
+Since
+
+.. math::
+
+   \begin{gather}
+   \sqrt{T}\boldsymbol{g}_{T}(\boldsymbol{\theta}_{0})
+   \stackrel{d}{\longrightarrow} N(0,S) \\
+   \implies  (\sqrt{T}
+   \boldsymbol{g}_{T}(
+   \boldsymbol{\theta}_{0})^{'})S^{-1}(\sqrt{T}\boldsymbol{g}_{T}
+   (\boldsymbol{\theta}_{0})) = T
+   \boldsymbol{g}_{T}(\boldsymbol{\theta}_{0})^{'}S^{-1}
+   \boldsymbol{g}_{T}(\boldsymbol{\theta}_{0})
+   \overset{d}{\longrightarrow} \chi^{2}(r)
+   \end{gather}
+
+where :math:`\smash{r > k}` is the number of moment conditions.
+
+Estimated Criterion Function
+==============================================================================
+It turns out that
+
+.. math::
+
+   \smash{T
+   \boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})^{'}\hat{S}^{-1}
+   \boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})
+   \overset{d}{\not\to} \chi^{2}(r)}.
+
+.. raw:: <!--pause-->
+
+- This is because :math:`\smash{k}` moment conditions will be set to
+  zero exactly.
+
+Exact Identification
+==============================================================================
+Consider :math:`\smash{r=k}`. In this case
+
+.. math::
+
+   \begin{gather}
+   \boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}) = 0 \\
+   T \boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})^{'}\hat{S}^{-1}
+   \boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}) = 0.
+   \end{gather}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{r-k}` of the moment conditions will be non-zero.
+
+Over Identification
+==============================================================================
+In general,
+
+.. math::
+
+   \smash{J_{T}(\hat{\boldsymbol{\theta}}) = T
+   \boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})^{'}\hat{S}^{-1}
+   \boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}})
+   \overset{d}{\longrightarrow} \chi^{2}(r-k)}.
+
+.. raw:: <!--pause-->
+
+- To test if our moment conditions are close to zero, we compute
+  :math:`\smash{J_{T}(\hat{\boldsymbol{\theta}})}` and compare with a
+  :math:`\smash{\chi^{2}(r-k)}` distribution.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{J_{T}(\hat{\boldsymbol{\theta}})}` is far in the
+  tail of the :math:`\smash{\chi^{2}(r-k)}` distribution, we might
+  conclude that the model is misspecified.
+
+Asset Pricing with GMM
+==============================================================================
+Suppose an agent derives utility from consumption,
+:math:`\smash{c_{t}}`, and seeks to maximze the discounted sum of
+expected utility:
+
+.. math::
+
+   \smash{ \sum_{\tau = 0}^{\infty}
+   \beta^{\tau}E[u(c_{t+\tau})|\Omega_{t}]},
+
+where :math:`\smash{u(c_{t})}` is the period utility function and
+satisfies:
+
+.. math::
+
+   \smash{ \frac{\partial u(c_{t})}{\partial c_{t}} > 0 \,\,\, \text{and}
+   \,\,\, \frac{\partial^{2} u(c_{t})}{\partial c_{t}^{2}} < 0}.
+
+Equilibrium Conditions
+==============================================================================
+Suppose that the agent can purchase :math:`\smash{m}` assets paying
+gross returns :math:`\smash{(1 + r_{i,t+1})}` between periods
+:math:`\smash{t}` and :math:`\smash{t+1}`, for :math:`\smash{i =
+1,\ldots, m}`.
+
+.. raw:: <!--pause-->
+
+- The agent's portfolio must satisfy
+
+.. math::
+
+   \smash{u^{'}(c_{t}) = \beta E[(1+r_{i,t+1})u^{'}(c_{t+1}) |
+   \Omega_{t}] \,\,\, \text{for} \,\,\, i=1,\ldots,m}.
+
+Equilibrium Conditions
+==============================================================================
+The equilibrium conditions say that marginal utility of consuming an
+extra unit today should be equivalent to the expected marginal
+consumption gained by purchasing a unit of any asset.
+
+.. raw:: <!--pause-->
+
+- If these conditions didn't hold, the agent wouldn't be at an
+  optimum.
+
+.. raw:: <!--pause-->
+
+The portfolio conditions can be rewritten as:
+
+.. math::
+
+   \smash{E\left[\left(\beta
+   \frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})
+   -1\right)\bigg|\Omega_{t}\right] = 0 \,\,\, \text{for}
+   i=1,\ldots,m}.
+
+Equilibrium Conditions
+==============================================================================
+Given a vector :math:`\smash{\boldsymbol{x}_{t} \in \Omega_{t}}`, by
+the law of iterated expectations
+
+.. math::
+
+   \begin{align}
+   E\left[\underset{\boldsymbol{h}(\boldsymbol{\theta},
+   \boldsymbol{y}_{t})}{\underbrace{\left(\beta
+   \frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})
+   -1\right)\boldsymbol{x}_{t}}} \right] & =
+   E\left[E\left[\left(\beta
+   \frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})
+   -1\right)\boldsymbol{x}_{t} \bigg|\Omega_{t}\right]\right] \\
+   & E\left[\underset{0}{\underbrace{E\left[\left(\beta
+   \frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})
+   -1\right) \bigg|\Omega_{t}\right]}} \boldsymbol{x}_{t} \right] = 0,
+   \end{align}
+
+for :math:`\smash{i=1,\ldots,m}`.
+
+Stochastic Discount Factor
+==============================================================================
+Economic theory says that all returns discounted by
+:math:`\smash{\beta \frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}}` should be
+identical:
+
+.. math::
+
+   \begin{gather}
+   E\left[\underset{m_{t,t+1}}{\underbrace{\beta
+   \frac{u^{'}(c_{t+1})}{u^{'} (c_{t})}(1+r_{i,t+1})}}\right] = 1 \\
+   \implies E[m_{t,t+1}(1+r_{i,t+1})] = 1.
+   \end{gather}
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\beta
+  \frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1}) - 1}` is a forecast
+  error and should be uncorrelated with any variable
+  :math:`\smash{\boldsymbol{x}_{t} \in \Omega_{t}}`
+
+Casting as GMM
+==============================================================================
+This problem maps easily into GMM where
+
+.. math::
+
+   \begin{gather}
+   \boldsymbol{y}_{t} =
+   (r_{1,+1},\ldots,r_{m,t+1},c_{t},c_{t+1},
+   \boldsymbol{x}_{t}^{'})^{'} \\
+   \boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t}) =
+   \left[\begin{array}{c} \left(1 - \beta
+   \frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{i,t+1})\right)\boldsymbol{x}_{t}
+   \\ \vdots \\ \left(1 - \beta
+   \frac{u^{'}(c_{t+1})}{u^{'}(c_{t})}(1+r_{m,t+1})\right)\boldsymbol{x}_{t}
+   \\ \end{array} \right] \\
+   \boldsymbol{g}_{T}(\boldsymbol{\theta}) =  \frac{1}{T}
+   \sum_{t=0}^{T}
+   \boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t}).
+   \end{gather}
+
+Weighting Matrix for Asset Problem
+==============================================================================
+Since the forecast errors in
+:math:`\smash{\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})}`
+are unpredictable, they exhibit no serial correlation.
+
+.. raw:: <!--pause-->
+
+- Thus, :math:`\smash{\boldsymbol{h}(\boldsymbol{\theta},
+  \boldsymbol{y}_{t})}` exhibits no serial correlation.
+
+.. raw:: <!--pause-->
+
+This means :math:`\smash{S}` can be simply be estimated by
+
+.. math::
+
+   \smash{\hat{S}_{T} =  \frac{1}{T}  \sum_{t=0}^{T}
+   \boldsymbol{h}(\hat{\boldsymbol{\theta}}, \boldsymbol{y}_{t})
+   \boldsymbol{h}(\hat{\boldsymbol{\theta}},\boldsymbol{y}_{t})^{'}}.
+
+Hansen and Singleton (1982)
+==============================================================================
+Hansen and Singleton (1982) used GMM to estimate parameters of a model
+where
+
+.. math::
+
+   \smash{u(c_{t}) = \begin{cases} \frac{c_{t}^{1-\gamma}}{1-\gamma} &
+   \text{for} \,\,\, \gamma > 0 \,\,\, \text{and} \,\,\, \gamma \neq 1
+   \\ log(c_{t}) & \text{for} \,\,\, \gamma = 1 \\ \end{cases}.}
+
+.. raw:: <!--pause-->
+
+- In this case, :math:`\smash{\boldsymbol{\theta} =
+  (\beta,\gamma)^{'}}`.
+
+.. raw:: <!--pause-->
+
+- Since forecast errors are uncorrelated with past returns and
+  consumption, the lagged values of asset returns and aggregate
+  consumption in :math:`\smash{\boldsymbol{x}_{t}}`.

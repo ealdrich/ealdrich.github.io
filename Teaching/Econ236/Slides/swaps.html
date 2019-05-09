@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Swaps &mdash; Econ 236</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.03.28',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Econ 236" href="index.html" />
+    <link rel="next" title="Options" href="options.html" />
+    <link rel="prev" title="Forward Rate Agreements" href="fra.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="appear slide level-1" id="swaps">
+
+<h1>Swaps</h1>
+
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id1">
+
+<h2>Swaps</h2>
+
+<p>A swap is an agreement to exchange cash flows in the future.</p>
+<ul class="simple">
+<li>It is an over-the-counter agreement.</li>
+</ul>
+<ul class="simple">
+<li>Dates, cash flows and timing of payments are variables of the
+contract.</li>
+</ul>
+<ul class="simple">
+<li>The cash flows are typically determined by an interest rate or
+exchange rate.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="forward-futures-as-swap">
+
+<h2>Forward/Futures as Swap</h2>
+
+<p>A forward or futures contract can be viewed as a simple swap:</p>
+<ul class="simple">
+<li>Suppose you buy an E-mini contract today for <span class="math notranslate nohighlight">\(\smash{F =
+2000}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>You are agreeing to a swap in which you pay <span class="math notranslate nohighlight">\(\smash{50F}\)</span> and
+receive <span class="math notranslate nohighlight">\(\smash{50P}\)</span>, where <span class="math notranslate nohighlight">\(\smash{P}\)</span> is the
+settlement price of the contract.</li>
+</ul>
+<p>Swaps are typically more complex, involving a stream of swapped cash
+flows.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="interest-rate-swap">
+
+<h2>Interest Rate Swap</h2>
+
+<p>Basic components of an interest rate swap:</p>
+<ul class="simple">
+<li>Notional principal.</li>
+</ul>
+<ul class="simple">
+<li>Fixed interest rate.</li>
+</ul>
+<ul class="simple">
+<li>Floating interest rate.</li>
+</ul>
+<ul class="simple">
+<li>Predetermined time period for cash flows.</li>
+</ul>
+<p>One party pays fixed interest on the principal during the
+predetermined period and the other pays floating interest.</p>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="libor-swap">
+
+<h2>LIBOR Swap</h2>
+
+<p>Typically LIBOR is the floating rate used in interest rate swaps.</p>
+<ul class="simple">
+<li>A LIBOR swap is referred to as a <a href="#id2"><span class="problematic" id="id3">``</span></a>Libor-for-fixed” swap.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="libor-swap-example">
+
+<h2>LIBOR Swap Example</h2>
+
+<p>Suppose Microsoft and Intel engage in a 3-year swap on Mar 5, 2014.</p>
+<ul class="simple">
+<li>The notional principal is $100 million.</li>
+</ul>
+<ul class="simple">
+<li>Payments made semi-annually.</li>
+</ul>
+<ul class="simple">
+<li>Microsoft pays 5% fixed (per annum, semi-annual compounding).</li>
+</ul>
+<ul class="simple">
+<li>Intel pays 6-month LIBOR (per annum, semi-annual compounding).</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="libor-swap-diagram">
+
+<h2>LIBOR Swap Diagram</h2>
+
+<a class="reference internal image-reference" href="_images/intelSwapDiagram.png"><img alt="_images/intelSwapDiagram.png" class="align-center" src="_images/intelSwapDiagram.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="libor-swap-cash-flows">
+
+<h2>LIBOR Swap Cash Flows</h2>
+
+<a class="reference internal image-reference" href="_images/liborSwapTable.png"><img alt="_images/liborSwapTable.png" class="align-center" src="_images/liborSwapTable.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="libor-swap-cash-flows-with-notional">
+
+<h2>LIBOR Swap Cash Flows with Notional</h2>
+
+<a class="reference internal image-reference" href="_images/liborSwapBondTable.png"><img alt="_images/liborSwapBondTable.png" class="align-center" src="_images/liborSwapBondTable.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id4">
+
+<h2>LIBOR Swap Example</h2>
+
+<ul class="simple">
+<li>Microsoft pays $2.5 million to Intel on Sep 5, 2014 and each
+subsequent 6 months until Mar 5, 2017.</li>
+</ul>
+<ul class="simple">
+<li>On Sep 5, 2014, Intel pays Mar 5, 2014 LIBOR (4.2%): $2.1
+million.</li>
+</ul>
+<ul class="simple">
+<li>Each subsequent 6 months, Intel pays the LIBOR rate from the date 6
+months prior to the payment.</li>
+</ul>
+<ul class="simple">
+<li>The first exchange of payments is known at initiation of the swap.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id5">
+
+<h2>LIBOR Swap Cash Flows</h2>
+
+<p>Typically only one party in the swap makes a payment of the difference
+between the two cash flows.</p>
+<ul class="simple">
+<li>In the previous example, Microsoft would pay \$0.4 million on Sep
+5, 2015 and $0.1 million on Mar 5, 2015.</li>
+</ul>
+<ul class="simple">
+<li>Note that the principal is not exchanged at the end of the contract,
+which is why it is called <em>notional</em>.</li>
+</ul>
+<ul class="simple">
+<li>If the notional were traded, the swap could be characterized as an
+exchange of floating- and fixed-rate bonds.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="transforming-a-liability">
+
+<h2>Transforming a Liability</h2>
+
+<p>A swap can transform a floating-rate loan into a fixed-rate loan and
+vice versa.</p>
+<ul class="simple">
+<li>If Microsoft has a floating-rate loan on $100 million at LIBOR plus
+10 basis points (1 basis point = 0.01%), the swap transforms it into
+a loan of 5.1% fixed.<ol class="arabic">
+<li>Microsoft pays LIBOR plus 0.1% to outside lenders.</li>
+<li>It receives LIBOR from swap.</li>
+<li>It pays 5% to Intel.</li>
+</ol>
+</li>
+</ul>
+<ul class="simple">
+<li>If Intel has a fixed-rate loan on $100 million at 5.2%, the swap
+transforms it into a loan of LIBOR plus 20 basis points:<ol class="arabic">
+<li>Intel pays 5.2% to outside lenders.</li>
+<li>It receives 5% from swap.</li>
+<li>It pays LIBOR to Microsoft.</li>
+</ol>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id6">
+
+<h2>Transforming a Liability</h2>
+
+<a class="reference internal image-reference" href="_images/swapLiabilityDiagram.png"><img alt="_images/swapLiabilityDiagram.png" class="align-center" src="_images/swapLiabilityDiagram.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="transforming-a-asset">
+
+<h2>Transforming a Asset</h2>
+
+<p>A swap can transform a floating-rate asset into a fixed-rate asset and
+vice versa.</p>
+<ul class="simple">
+<li>If Microsoft holds $100 million in bonds paying 4.7% per annum,
+the swap transforms the bonds into asset paying LIBOR minus 30 basis
+points:<ol class="arabic">
+<li>Microsoft receives 4.7% from bonds.</li>
+<li>It receives LIBOR from swap.</li>
+<li>It pays 5% to Intel.</li>
+</ol>
+</li>
+</ul>
+<ul class="simple">
+<li>If Intel holds $100 million in bonds paying LIBOR minus 20 basis
+points, the swap transforms the bonds into an asset paying 4.8%:<ol class="arabic">
+<li>Intel receives LIBOR minus 0.2% from bonds.</li>
+<li>It receives 5% from swap.</li>
+<li>It pays LIBOR to Intel.</li>
+</ol>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id7">
+
+<h2>Transforming a Liability</h2>
+
+<a class="reference internal image-reference" href="_images/swapAssetDiagram.png"><img alt="_images/swapAssetDiagram.png" class="align-center" src="_images/swapAssetDiagram.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="financial-intermediaries">
+
+<h2>Financial Intermediaries</h2>
+
+<p>Typically the parties to a swap connect via a banking intermediary.</p>
+<ul class="simple">
+<li>The bank earns a commission of 3% or 4% for providing the
+service and assuming default risk.</li>
+</ul>
+<ul class="simple">
+<li>The individual swap parties don’t know who is on the other side of
+the transaction.</li>
+</ul>
+<ul class="simple">
+<li>In many cases, market makers enter into swaps with one party without
+having an exact offsetting position.</li>
+</ul>
+<ul class="simple">
+<li>Market makers will post bid and offer (fixed) rates - the average of
+bid and offer is the <em>swap rate</em>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="financial-intermediaries-diagram">
+
+<h2>Financial Intermediaries Diagram</h2>
+
+<a class="reference internal image-reference" href="_images/swapIntermediary1.png"><img alt="_images/swapIntermediary1.png" class="align-center" src="_images/swapIntermediary1.png" style="width: 8in;" /></a>
+<a class="reference internal image-reference" href="_images/swapIntermediary2.png"><img alt="_images/swapIntermediary2.png" class="align-center" src="_images/swapIntermediary2.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="market-maker-quotes">
+
+<h2>Market Maker Quotes</h2>
+
+<a class="reference internal image-reference" href="_images/marketMakerTable.png"><img alt="_images/marketMakerTable.png" class="align-center" src="_images/marketMakerTable.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="an-important-fact">
+
+<h2>An Important Fact</h2>
+
+<p>Recall the basic bond pricing formula:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+P &amp; = \frac{c\times F}{r} \left(1 - \frac{1}{(1+r)^T}\right) +
+\frac{F}{(1+r)^T}.
+\end{align}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{c}\)</span> is the coupon rate, expressed in terms of the
+compounding period.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{r}\)</span> is the discount rate.</li>
+</ul>
+<ul class="simple">
+<li>Note that when <span class="math notranslate nohighlight">\(\smash{c=r}\)</span>, <span class="math notranslate nohighlight">\(\smash{P=F}\)</span>.<ul>
+<li>This is because the income stream from the bond is equal (in
+percentage terms) to the rate at which you discount.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>What if <span class="math notranslate nohighlight">\(\smash{c&gt;r}\)</span> or <span class="math notranslate nohighlight">\(\smash{c&lt;r}\)</span>?</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="swap-value-floating-side">
+
+<h2>Swap Value: Floating Side</h2>
+
+<p>The floating side of a swap is a bond that pays LIBOR.</p>
+<ul class="simple">
+<li>The bond is also discounted at LIBOR.</li>
+</ul>
+<ul class="simple">
+<li>This is a case where the coupon rate equals the discount rate.</li>
+</ul>
+<ul class="simple">
+<li>After each interest payment, the bond is equal to the face, or
+notional principal, <span class="math notranslate nohighlight">\(\smash{L}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><em>Immediately</em> prior to the interest payment, <span class="math notranslate nohighlight">\(\smash{k^*}\)</span>,
+which is known at the beginning of the period, the bond is worth
+<span class="math notranslate nohighlight">\(\smash{L+k^*}\)</span>.</li>
+</ul>
+<ul>
+<li><p class="first">If the payment is made at time <span class="math notranslate nohighlight">\(\smash{t^*}\)</span>, we can discount
+back to the present using the continuously compounded risk-free,
+<span class="math notranslate nohighlight">\(\smash{r^*}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+B_{fl} &amp; = (L+k^*) e^{-r^* t^*}.
+\end{align}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="swap-value-diagram">
+
+<h2>Swap Value Diagram</h2>
+
+<a class="reference internal image-reference" href="_images/swapValueDiagram.png"><img alt="_images/swapValueDiagram.png" class="align-center" src="_images/swapValueDiagram.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="swap-value-fixed-side">
+
+<h2>Swap Value: Fixed Side</h2>
+
+<p>The fixed side of a swap is a fixed-rate bond.</p>
+<ul>
+<li><p class="first">The present value of the bond can be computed in the usual way,
+using spot rates:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+B_{fix} &amp; = c e^{-r_1t_1} + c e^{-r_2t_2} + \ldots + (c+L)
+e^{-r_nt_n}.
+\end{align}\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{c}\)</span> is the fixed payment and <span class="math notranslate nohighlight">\(\smash{L}\)</span> is the
+notional principal.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{n}\)</span> is the number of payment periods and
+<span class="math notranslate nohighlight">\(\smash{r_i, i=1,\ldots,n}\)</span> are the spot rates.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="swap-value">
+
+<h2>Swap Value</h2>
+
+<p>The resulting swap value is the difference in value of the fixed and
+floating bonds.</p>
+<ul>
+<li><p class="first">For the party holding the long position in floating:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V_{swap} &amp; = B_{fl} - B_{fix}.
+\end{align}\]</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">For the party holding the long position in fixed:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V_{swap} &amp; = B_{fix} - B_{fl}.
+\end{align}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="swap-value-example">
+
+<h2>Swap Value Example</h2>
+
+<p>Some time ago you went long on the floating side of a swap, receiving
+6-month LIBOR on $100 million principal and paying 3% per annum
+(semi-annual compounding).</p>
+<ul class="simple">
+<li>The swap has 1.25 years remaining.</li>
+</ul>
+<ul class="simple">
+<li>Continuously compounded 3-, 9- and 15-month LIBOR rates are 2.8%,
+3.2% and 3.4%.</li>
+</ul>
+<ul class="simple">
+<li>6-month LIBOR (compounded semi-annually) at last payment date was
+2.9%.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id8">
+
+<h2>Swap Value Example</h2>
+
+<p>The fixed-side bond value (in millions of dollars) is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+B_{fix} &amp; = 1.5 e^{-0.028\times 0.25} + 1.5 e^{-0.032\times
+0.75} + 101.5 e^{-0.034\times 1.25} = 100.2306.
+\end{align}\]</div>
+<p>The floating-side bond value (in millions of dollars) is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+B_{fl} &amp; = 101.45 e^{-0.028\times 0.25} = 100.7423.
+\end{align}\]</div>
+<p>The swap value (in millions of dollars) is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V_{swap} &amp; = B_{fl} - B_{fix} = 100.7423 - 100.2306 = 0.5117.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="swap-value-table">
+
+<h2>Swap Value Table</h2>
+
+<a class="reference internal image-reference" href="_images/swapValueTable.png"><img alt="_images/swapValueTable.png" class="align-center" src="_images/swapValueTable.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="swap-value-fra-portfolio">
+
+<h2>Swap Value: FRA Portfolio</h2>
+
+<p>Each swap payment can be considered an individual FRA.</p>
+<ul class="simple">
+<li>In the Intel/Microsoft example, the exchange on Mar 5, 2015 is an
+FRA where 5% is traded for 6-month LIBOR, determined on Sep5, 2014,
+etc.</li>
+</ul>
+<ul class="simple">
+<li>Since the future LIBOR rates are unknown, each FRA is valued using
+the forward rates implied by the LIBOR zero curve.</li>
+</ul>
+<ul class="simple">
+<li>Hence, the swap can be valued as follows:<ol class="arabic">
+<li>Compute forward rates using the LIBOR zero curve.</li>
+<li>Compute cash flows assuming future LIBOR rates are equal to the
+forward rates.</li>
+<li>Discount the cash flows using the LIBOR zero curve.</li>
+</ol>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="swap-value-example-fra-portfolio">
+
+<h2>Swap Value Example: FRA Portfolio</h2>
+
+<p>Continuing with the previous example:</p>
+<ul class="simple">
+<li>The LIBOR rate for the first cash receipt (at 3 months) is already
+determined at 2.9% per annum (semi-annual compounding).</li>
+</ul>
+<ul>
+<li><p class="first">The forward rate (continuous compounding) for the period between 3
+months and 9 months is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{0.032 \times 0.75 + 0.028 \times 0.25}{0.5} &amp; = 0.034.
+\end{align}\]</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">With semi-annual compounding (using EAR/APR relationship):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+2(e^{0.034/2} - 1) &amp; = 0.034291.
+\end{align}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id9">
+
+<h2>Swap Value Example: FRA Portfolio</h2>
+
+<ul>
+<li><p class="first">The forward rate for the period between 9 months and 15 months is</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{0.034 \times 1.25 + 0.032 \times 0.75}{0.5} &amp; = 0.037.
+\end{align}\]</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">With semi-annual compounding (using EAR/APR relationship):</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+2(e^{0.037/2} - 1) &amp; = 0.037344.
+\end{align}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id10">
+
+<h2>Swap Value Example: FRA Portfolio</h2>
+
+<p>The swap cash flows are (in millions of dollars):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+0.5 \times 0.029 \times 100 - 1.5 &amp; = 1.45 - 1.5 = -0.05 \\
+0.5 \times 0.034291 \times 100 - 1.5 &amp; = 1.7145 - 1.5 = 0.21455 \\
+0.5 \times 0.037344 \times 100 - 1.5 &amp; = 1.867 - 1.5 = 0.3672.
+\end{align}\end{split}\]</div>
+<p>The present value is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V_{swap} &amp; = -0.05 e^{-0.028 \times 0.25} + 0.21455 e^{-0.032 \times
+0.75} + 0.3672 e^{-0.034 \times 1.25} = 0.5117.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="swap-value-example-fra-table">
+
+<h2>Swap Value Example: FRA Table</h2>
+
+<a class="reference internal image-reference" href="_images/swapValueFRATable.png"><img alt="_images/swapValueFRATable.png" class="align-center" src="_images/swapValueFRATable.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="currency-swaps">
+
+<h2>Currency Swaps</h2>
+
+<p>In a <em>fixed-for-fixed currency swap</em> two parties exchange principal
+and fixed interest payments on two different currencies.</p>
+<ul class="simple">
+<li>Typically the principal is exchanged at initiation, where the
+principal values are roughly equal, given the exchange rate.</li>
+</ul>
+<ul class="simple">
+<li>The principal values are exchanged again at the end, but may be
+quite different (due to exchange rate fluctuations).</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="currency-swap-example">
+
+<h2>Currency Swap Example</h2>
+
+<p>Suppose IBM and BP enter into a 5-year currency swap on Feb 1, 2014.</p>
+<ul class="simple">
+<li>IBM pays 5% fixed in sterling and receives 6% fixed in dollars.</li>
+<li>Principal amounts are 15 million USD and 10 million GBP and
+interest payments are once a year.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id11">
+
+<h2>Currency Swap Example</h2>
+
+<a class="reference internal image-reference" href="_images/currencySwapDiagram.png"><img alt="_images/currencySwapDiagram.png" class="align-center" src="_images/currencySwapDiagram.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id12">
+
+<h2>Currency Swap Example</h2>
+
+<a class="reference internal image-reference" href="_images/currencySwapTable.png"><img alt="_images/currencySwapTable.png" class="align-center" src="_images/currencySwapTable.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="currency-swap-transforming-liabilities-and-assets">
+
+<h2>Currency Swap: Transforming Liabilities and Assets</h2>
+
+<p>Suppose IBM can issue USD bonds, but not GBP.</p>
+<ul class="simple">
+<li>The swap effectively transforms 15 million USD in debt to 10
+million GBP in debt for IBM.</li>
+</ul>
+<ul class="simple">
+<li>Alternatively, suppose IBM has an opportunity to invest 10
+million GBP at 5% interest in the UK for 5 years, but feels the
+dollar will strengthen.<ul>
+<li>The swap effectively transforms the GBP investment into a USD
+investment.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="currency-swap-valuation-bonds">
+
+<h2>Currency Swap Valuation: Bonds</h2>
+
+<p>Let <span class="math notranslate nohighlight">\(\smash{V_{swap}}\)</span> be the USD value of a swap where dollars
+are received and foreign currency paid:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V_{swap} &amp; = B_D - S_0 B_F.
+\end{align}\]</div>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{B_F}\)</span> is the foreign currency bond value (denominated
+in units of the foreign currency).</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{B_D}\)</span> is the USD bond value (denominated in USD).</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{S_0}\)</span> is the spot exchange rate (as USD per unit of
+foreign currency).</li>
+</ul>
+<p>The value of the swap where foreign currency is received and USD paid
+is the opposite:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V_{swap} &amp; = S_0 B_F - B_D.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="currency-swap-valuation-example-bonds">
+
+<h2>Currency Swap Valuation Example: Bonds</h2>
+
+<p>You currently hold a swap in which you receive 5% per annum on Yen
+and pay 8% per annum on USD.</p>
+<ul class="simple">
+<li>The swap has 3 years remaining.</li>
+</ul>
+<ul class="simple">
+<li>Continuous compounded discount rates are 4% per annum in Japan and
+9% per annum in the U.S.</li>
+</ul>
+<ul class="simple">
+<li>Principal values are 10 million USD and 1,200 million JPY.</li>
+</ul>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{S_0}\)</span> = 1/110 USD/JPY.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="id13">
+
+<h2>Currency Swap Valuation Example: Bonds</h2>
+
+<p>The present value of JPY cash flows (in millions of JPY) is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+60 e^{-0.04 \times 1} + 60 e^{-0.04 \times 2} + 1260 e^{-0.04 \times
+3} = 1230.55.
+\end{align}\]</div>
+<p>The present value of USD cash flows (in millions of USD) is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+0.8 e^{-0.09 \times 1} + 0.8 e^{-0.09 \times 2} + 10.8 e^{-0.09 \times
+3} = 9.6439.
+\end{align}\]</div>
+<p>The value of the swap (in millions of USD) is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\frac{1230.55}{110} - 9.6439 &amp; = 1.5430.
+\end{align}\]</div>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="currency-swap-valuation-table-bonds">
+
+<h2>Currency Swap Valuation Table: Bonds</h2>
+
+<a class="reference internal image-reference" href="_images/currencySwapValueBond.png"><img alt="_images/currencySwapValueBond.png" class="align-center" src="_images/currencySwapValueBond.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="currency-swap-valuation-forward-portfolio">
+
+<h2>Currency Swap Valuation: Forward Portfolio</h2>
+
+<p>Each currency swap cash flow exchange is a single forward contract on
+foreign exchange.</p>
+<ul>
+<li><p class="first">Recall the forward exchange rate is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+F_0 &amp; = S_0 e^{(r-r_f)T}.
+\end{align}\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li>The currency forwards are valued by assuming that the forward
+exchange rates are realized.</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="currency-swap-valuation-example">
+
+<h2>Currency Swap Valuation Example</h2>
+
+<p>Continuing with the previous example:</p>
+<ul>
+<li><p class="first">The JPY cash flows, in USD are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\frac{60}{110} e^{(0.09-0.04)\times 1} &amp; = 0.57342 \\
+\frac{60}{110} e^{(0.09-0.04)\times 2} &amp; = 0.60282 \\
+\frac{1260}{110} e^{(0.09-0.04)\times 3} &amp; = 13.30828.
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">The present value of cash flows is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+(0.57342 - 0.8) e^{-0.09 \times 1} + (0.60282 - 0.8) e^{-0.09
+\times 2} + (13.30828 - 10.8) e^{-0.09 \times 3} = 1.5430.
+\end{align}\]</div>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="currency-swap-valuation-table-forward-portfolio">
+
+<h2>Currency Swap Valuation Table: Forward Portfolio</h2>
+
+<a class="reference internal image-reference" href="_images/currencySwapValueForward.png"><img alt="_images/currencySwapValueForward.png" class="align-center" src="_images/currencySwapValueForward.png" style="width: 8in;" /></a>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="other-currency-swaps">
+
+<h2>Other Currency Swaps</h2>
+
+<p>Other common currency swaps include:</p>
+<ul class="simple">
+<li>Fixed-for-floating.<ul>
+<li>This can be regarded as portfolio of a fixed-for-fixed currency
+swap and a fixed-for-floating interest rate swap.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Floating-for-floating.<ul>
+<li>This can be regarded as portfolio of a fixed-for-fixed currency
+swap and two fixed-for-floating interest rate swaps.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+</article>
+<article class="appear slide level-2" id="other-swaps">
+
+<h2>Other Swaps</h2>
+
+<ul class="simple">
+<li>Many variations of interest swaps exists with differing rates,
+payment periods, principals, etc.</li>
+</ul>
+<ul class="simple">
+<li>Credit default swaps (CDS): annual premium is paid (spread) in
+exchange for a cash payment if a company defaults.</li>
+</ul>
+<ul class="simple">
+<li>Equity swaps: returns on equity index swapped for LIBOR.</li>
+</ul>
+<ul class="simple">
+<li>Commodity swaps: series of forward commodity contracts.</li>
+</ul>
+<ul class="simple">
+<li>Volatility swaps: predetermined volatility swapped with realized
+(historical) vol.</li>
+</ul>
+<ul class="simple">
+<li>Countless others: financial engineering at its finest.</li>
+</ul>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

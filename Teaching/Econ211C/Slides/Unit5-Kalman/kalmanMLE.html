@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ML Estimation of State-Space Models &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="The Kalman Filter" href="../kalman.html" />
+    <link rel="next" title="Generalized Method of Moments" href="../gmmIndex.html" />
+    <link rel="prev" title="The Kalman Filter" href="kalmanFilter.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="ml-estimation-of-state-space-models">
+
+<h1>ML Estimation of State-Space Models</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="kalman-filter-forecasts">
+
+<h2>Kalman Filter Forecasts</h2>
+
+<p>The Kalman filter forecasts <span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and
+<span class="math">\(\smash{\hat{\boldsymbol{Y}}_{t|t-1}}\)</span> are linear projections of
+<span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span> and <span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> on
+<span class="math">\(\smash{(\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1})}\)</span>.</p>
+<ul class="simple">
+<li>They are optimal among all forecasts that are linear functions of
+<span class="math">\(\smash{(\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1})}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\boldsymbol{\xi}_{1}}\)</span> and
+<span class="math">\(\smash{\{\boldsymbol{w}_{t},\boldsymbol{v}_{t}\}_{t=1}^{T}}\)</span> are multivariate
+Gaussian, <span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and
+<span class="math">\(\smash{\hat{\boldsymbol{Y}}_{t|t-1}}\)</span> are optimal among <em>all</em>
+forecasts that are functions of
+<span class="math">\(\smash{(\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1})}\)</span> (linear and
+non-linear).</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="conditional-distribution-of">
+
+<h2>Conditional Distribution of <span class="math">\(\smash{\boldsymbol{Y}_t}\)</span></h2>
+
+<p>The distribution of
+<span class="math">\(\smash{\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}}\)</span> is also
+multivariate Gaussian, of the form:</p>
+<div class="math">
+\[\smash{\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1} \sim
+MVN(A^{'}\boldsymbol{x}_{t} + H^{'}\hat{\boldsymbol{\xi}}_{t|t-1},H^{'}P_{t|t-1}H
++R)}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Conditional Distribution of <span class="math">\(\smash{\boldsymbol{Y}_t}\)</span></h2>
+
+<p>Thus, the density function is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+f_{\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},
+\boldsymbol{\mathcal{Y}}_{t-1}} &amp; (\boldsymbol{Y}_{t}|
+\boldsymbol{x}_{t},
+\boldsymbol{\mathcal{Y}}_{t-1},\boldsymbol{\theta}) \\
+&amp; = (2\pi)^{-n/2} | H^{'}P_{t|t-1}H + R|^{-1/2} \\
+&amp; \hspace{1in} \times
+\exp\bigg\{-\frac{1}{2}\left(\boldsymbol{Y}_{t} - A^{'}\boldsymbol{x}_{t} -
+H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}\right) \\
+&amp; \hspace{2.5in} \times \left(H^{'}P_{t|t-1}H +
+R\right)^{-1} \\
+&amp; \hspace{3.5in} \times \left(\boldsymbol{Y}_{t} - A^{'}\boldsymbol{x}_{t} -
+H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}\right)^{'}\bigg\}
+\end{align}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> aggregates all known parameters in
+<span class="math">\(\smash{F, A, H, Q,}\)</span> and <span class="math">\(\smash{R}\)</span>.</p>
+
+
+
+
+</article>
+<article class="slide level-2" id="log-likelihood">
+
+<h2>Log-likelihood</h2>
+
+<p>The log-likelihood is the joint density</p>
+<div class="math">
+\[\smash{\ell(\boldsymbol{\theta}) =  \sum_{t=1}^{T}
+\log\left(f_{\boldsymbol{Y}_{t}|\boldsymbol{X}_{t},
+\boldsymbol{\mathcal{Y}}_{t-1}}
+(\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},
+\boldsymbol{\mathcal{Y}}_{t-1},\boldsymbol{\theta})\right)}\]</div>
+<ul class="simple">
+<li>The log-likelihood can be maximized numerically with respect to
+<span class="math">\(\smash{F(\boldsymbol{\theta}), A(\boldsymbol{\theta}), H(\boldsymbol{\theta}),
+Q(\boldsymbol{\theta})}\)</span>, and <span class="math">\(\smash{R(\boldsymbol{\theta})}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>This is an exact log likelihood and yields exact MLEs.</li>
+</ul>
+<ul class="simple">
+<li>Maximum likelihood estimation for <span class="math">\(\smash{MA}\)</span> and
+<span class="math">\(\smash{ARMA}\)</span> can be performed in this manner.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="basic-prescription">
+
+<h2>Basic Prescription</h2>
+
+<ol class="arabic simple">
+<li>Guess <span class="math">\(\smash{\boldsymbol{\theta}^{(0)}}\)</span></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Given <span class="math">\(\smash{\boldsymbol{\theta}^{(s)}}\)</span>, compute
+<span class="math">\(\smash{F(\boldsymbol{\theta}^{(s)}), A(\boldsymbol{\theta}^{(s)}),
+H(\boldsymbol{\theta}^{(s)}), Q(\boldsymbol{\theta}^{(s)}),}\)</span> and
+<span class="math">\(\smash{R(\boldsymbol{\theta}^{(s)})}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Use the Kalman Filter to iteratively compute
+<span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and
+<span class="math">\(\smash{P_{t|t-1}}\)</span>, <span class="math">\(\smash{t =1,\ldots,T}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>Compute the log-likelihood using
+<span class="math">\(\smash{H(\boldsymbol{\theta}^{(s)}), A(\boldsymbol{\theta}^{(s)}),
+R(\boldsymbol{\theta}^{(s)})}\)</span>, and
+<span class="math">\(\smash{\{\hat{\boldsymbol{\xi}}_{t|t-1},P_{t|t-1}\}_{t=1}^{T}}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li>Use a numerical method to update
+<span class="math">\(\smash{\boldsymbol{\theta}^{(s+1)}}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="6">
+<li>If <span class="math">\(\smash{||\boldsymbol{\theta}^{(s+1)} - \boldsymbol{\theta}^{(s)}|| &lt;
+\tau}\)</span>, stop.  Otherwise, set <span class="math">\(\smash{i = i +1}\)</span> and return
+to step 2.</li>
+</ol>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Basic Prescription</h2>
+
+<p>Updating <span class="math">\(\smash{\boldsymbol{\theta}^{(i)} \rightarrow
+\boldsymbol{\theta}^{(i+1)}}\)</span> may involve numerical or analytical
+derivatives.</p>
+<ul class="simple">
+<li>Analytical derivatives of the log likelihood with respect to each
+<span class="math">\(\smash{\theta_{i}}\)</span> will involve</li>
+</ul>
+<div class="math">
+\[\smash{ \frac{\partial \hat{\boldsymbol{\xi}}_{t|t-1}
+(\boldsymbol{\theta})}{\partial \theta_{i}} \hspace{4pt} \text{
+and } \hspace{4pt} \frac{\partial P_{t|t-1}}{\partial
+\theta_{i}}}.\]</div>
+<ul class="simple">
+<li>These derivatives can be updated recursively similar to
+<span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and <span class="math">\(\smash{P_{t|t-1}}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

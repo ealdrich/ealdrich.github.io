@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <script type="text/javascript" src="rootDir.js">  </script>
+  <script type="text/javascript" src="head.js">  </script>
+  <body>
+    <div><script type="text/javascript" src="mainMenu.js">  </script></div>
+    <div>
+     <div class="outer">
+       <div class="content">
+         <div id="section">Description</div>
+         <div>
+	   This is a seminar course for students in the Masters in Applied Economics and Finance degree program at UCSC. Seminars occur once a week on Thursdays and attendance is mandatory. There are no assignments or exams and the course grade is determined entirely by attendance. The objective of the seminar series is to teach professional development topics, such as resume and cover letter preparation and developing an impactful online profile, as well as to provide exposure to industry professionals who work in the areas of applied economics and finance.
+         </div>
+         <div id="section">Attendance</div>
+	 <div>
+	   Since the course grade is determined entirely by attendance, students are required to attend each seminar and record their presence on a sign-in sheet. Signing the sheet for another student who does not attend the seminar is considered a violation of the UCSC academic integrity standard and will be penalized with course failure. As unforseen circumstances may arise that cause a student to miss a seminar, each student is allowed one (explained) absence during the quarter. Thus, attending 9 out of 10 seminars during the quarter is considered passing, provided that the single absence is explained.
+	 </div>
+         <div id="section">Schedule</div>
+	 <div>Location: 179 Social Sciences 2. Time: 3:30 - 4:30 p.m.</div>
+	 <ul>
+	   <li>Apr 5: <a class="body" href="https://www.linkedin.com/in/arjun-swami/">Arjun Swami</a>, <a class="body" href="https://www.welton.com/">Welton Investment Partners</a></li>
+	   <li>Apr 12: <a class="body" href="https://www.linkedin.com/in/kevin-troxell-6371b494/">Kevin Troxell</a>, <a class="body" href="https://www.sofi.com">SoFi</a></li>
+	   <li>Apr 19: <a class="body" href="https://www.linkedin.com/in/adrienne-bergenfeld-09a2795/">Adrienne Bergenfeld</a>, UCSC Global Engagement</li>
+	   <li>Apr 26: <a class="body" href="https://www.linkedin.com/in/jessica-salomon-772a94a9/">Jessica Saloman</a> and <a class="body" href="https://www.linkedin.com/in/niklaskunkel/">Niklas Kunkel</a>, <a class="body" href="https://makerdao.com/">MakerDao</a> </li>
+	   <li>May 3: Jeffrey Scharf, <a class="body" href="http://scharfinvestments.com/">Scharf Investments</a></li>
+	   <li>May 10: Hold for possible schedule change</li>
+	   <li>May 17: <a class="body" href="https://www.linkedin.com/in/harlan-findley-105870/">Harlan Findley, <a class="body" href="https://www.google.com/about/">Google LLC</a> </li>
+	   <li>May 24: <a class="body" href="https://www.linkedin.com/in/peter-williams-194b30a/">Peter Williams</a>, <a class="body" href="http://www.turner.com/">Turner Broadcasting</a></li>
+	   <li>May 31: TBA </li>
+	   <li>Jun 7: <a class="body" href="https://www.linkedin.com/in/lindsey-giddings-89693745/">Lindsey Giddings</a>, <a class="body" href="https://www.fisherinvestments.com/en-us">Fisher Investments</a></li>
+         </ul>
+       </div>
+     </div>
+   </div>
+  </body>
+</html>

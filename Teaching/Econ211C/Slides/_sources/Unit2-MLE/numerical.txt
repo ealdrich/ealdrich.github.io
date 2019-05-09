@@ -1,0 +1,316 @@
+==============================================================================
+Numerical Optimization
+==============================================================================
+
+Numerical Maximum Likelihood
+==============================================================================
+Given, :math:`\smash{\boldsymbol{\theta}}` and
+:math:`\smash{\boldsymbol{y}}`, suppose we can compute the value of a
+      likelihood or log likelihood.
+
+.. raw:: <!--pause-->
+
+- Likelhood optimization is often very challenging.
+
+.. raw:: <!--pause-->
+
+- We may not be able to obtain analytical expressions for the MLEs,
+  :math:`\smash{\hat{\boldsymbol{\theta}}}`.
+
+.. raw:: <!--pause-->
+
+- Numerical optimization techniques will often help us find an
+  approximate (not exact) MLE.
+
+.. raw:: <!--pause-->
+
+- We will need to set a tolerance level for the quality of our
+  approximation.
+
+Grid Search
+==============================================================================
+Let :math:`\smash{\boldsymbol{\theta} \in \mathbb{R}^k}`.
+
+.. raw:: <!--pause-->
+
+- We can define a univariate grid of :math:`\smash{m_i}` points
+  :math:`\smash{\theta_i \in \Theta^{(i)} = \{\theta_{i,1}, \ldots,
+  \theta_{i,m_i}\}}` for :math:`\smash{i=1,\ldots,k}`.
+
+.. raw:: <!--pause-->
+
+- Define :math:`\smash{\Theta = \Theta^{(1)} \otimes \Theta^{(2)}
+  \otimes \cdots \otimes \Theta^{(k)}}`, which is the cartesian
+  product of the :math:`\smash{k}` univariate grids.
+
+.. raw:: <!--pause-->
+
+- Often such grids are equally spaced, but this is certainly not
+  required.
+
+.. raw:: <!--pause-->
+
+- Optimal location of grid points is an extremely important way to
+  improve numerical efficiency.
+
+Grid Search
+==============================================================================
+To implement grid search, we simply evaluate the likelihood at each
+value in :math:`\smash{\Theta}`.
+
+.. raw:: <!--pause-->
+
+- Each value in :math:`\smash{\Theta}` defines a set of
+  candidate parameter values.
+
+.. raw:: <!--pause-->
+
+- The approximated MLE is the point that achieves the highest
+  likelihood or log likelihood value.
+
+.. raw:: <!--pause-->
+
+Grid search is ineffective for large :math:`\smash{k}` because the
+number of grid points in :math:`\smash{\Theta}` grows
+exponentially.
+
+.. raw:: <!--pause-->
+
+- Doubling the number of points (for more accuracy) in each dimension
+  results in :math:`\smash{2^k}` extra points.
+
+.. raw:: <!--pause-->
+
+- This is called the curse of dimensionality.
+
+:math:`\smash{AR(1)}` Grid Search
+==============================================================================
+Suppose :math:`\smash{c=0}` and :math:`\smash{\sigma^2 = 1}`.
+
+.. raw:: <!--pause-->
+
+- In this case, :math:`\smash{\boldsymbol{\theta} = \phi}` and
+  :math:`\smash{k=1}`.
+
+.. raw:: <!--pause-->
+
+- Under stationarity, we know :math:`\smash{|\phi| < 1}`, so we might
+  define an equally-spaced grid of values
+  :math:`\smash{\{-0.99,-0.98,\ldots, 0.98,0.99\}}`.
+
+.. raw:: <!--pause-->
+
+- Given data :math:`\smash{\boldsymbol{y}}`, we can compute the exact
+  or conditional likelihood for each :math:`\smash{\phi_i}` in the
+  grid.
+
+.. raw:: <!--pause-->
+
+- The :math:`\smash{\phi_i}` that results in the highest likelihood
+  value is the approximate MLE, which we denote
+  :math:`\smash{\phi^*}`.
+
+.. raw:: <!--pause-->
+
+- We can iteratively refine the grid around :math:`\smash{\phi^*}`
+  until our tolerance is reached.
+
+Binary Search
+==============================================================================
+Binary search is an optimization method that is far more efficient
+than grid search, for *univariate* problems.
+
+.. raw:: <!--pause-->
+
+- It can only be used if the criterion function is concave.
+
+.. raw:: <!--pause-->
+
+- The algorithm is
+
+.. raw:: <!--pause-->
+
+1. Pick two adjacent points :math:`\smash{\theta_j}` and
+   :math:`\smash{\theta_{j+1}}` in the middle of the grid and evaluate
+   the likelihood.
+
+.. raw:: <!--pause-->
+
+2. If :math:`\smash{\mathcal{L}(\theta_{j+1}) <
+   \mathcal{L}(\theta_j)}`, set the upper bound of the grid to be
+   :math:`\smash{\theta_{j+1}}` and otherwise set the lower bound to be
+   :math:`\smash{\theta_j}`.
+
+.. raw:: <!--pause-->
+
+3. If the lower and upper bounds are separated by more than one grid
+   point, return to step 1. Otherwise, stop.
+
+.. raw:: <!--pause-->
+
+- Golden search is similar to binary search. See Heer and
+  Maussner (2009) for details.
+
+Newton's Method
+==============================================================================
+Newton's method is an iterative root finding algorithm, that uses
+derivative/gradient information:
+
+.. math::
+
+   \smash{x^{(i+1)} = x^{(i)} - f(x^{(i)})/f'(x^{(i)}).}
+
+The value :math:`\smash{x^{(n)}}` for large :math:`\smash{n}` is an
+approximation of the function root, :math:`\smash{x: f(x) = 0}`.
+
+Newton-Raphson
+==============================================================================
+Newton's method can also be used for optimization (not just root
+finding).
+
+.. raw:: <!--pause-->
+
+- Optimization is the same as root finding for the derivative
+  function.
+
+.. raw:: <!--pause-->
+
+- The Newton-Raphson algorithm is
+
+.. math::
+
+   \smash{x^{(i+1)} = x^{(i)} - f'(x^{(i)})/f''(x^{(i)}).}
+
+Newton-Raphson
+==============================================================================
+Define
+
+.. math::
+
+   \begin{align*}
+   \boldsymbol{g}(\boldsymbol{\theta}) & = \nabla
+   \ell(\boldsymbol{\theta}) = \frac{\partial
+   \ell(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}} \\
+   \mathcal{H}(\boldsymbol{\theta}) & = \nabla^2
+   \ell(\boldsymbol{\theta}) = \nabla
+   \boldsymbol{g}(\boldsymbol{\theta}) = \frac{\partial^2
+   \ell(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}^2},
+   \end{align*}
+
+where :math:`\smash{\mathcal{H}(\boldsymbol{\theta})}` is positive
+definite:
+
+.. math::
+
+   \smash{\boldsymbol{x}^T \mathcal{H}(\boldsymbol{\theta})
+   \boldsymbol{x} > 0 \,\,\,\, \forall \boldsymbol{x} \in
+   \mathbb{R}^k.}
+
+Newton-Raphson
+==============================================================================
+We approximate :math:`\smash{\ell(\boldsymbol{\theta})}` with a
+second-order Taylor expansion around
+:math:`\smash{\boldsymbol{\theta}^{(0)}}`:
+
+.. math::
+
+   \smash{\tilde{\ell}(\boldsymbol{\theta}) =
+   \ell(\boldsymbol{\theta}^{(0)})} +
+   \boldsymbol{g}(\boldsymbol{\theta}^{(0)})^T (\boldsymbol{\theta} -
+   \boldsymbol{\theta}^{(0)}) + \frac{1}{2} (\boldsymbol{\theta} -
+   \boldsymbol{\theta}^{(0)})^T \mathcal{H}(\boldsymbol{\theta}^{(0)})
+   (\boldsymbol{\theta} - \boldsymbol{\theta}^{(0)}).
+
+.. raw:: <!--pause-->
+
+The Newton-Raphson method chooses
+:math:`\smash{\boldsymbol{\theta}^{(1)}}` to maximize
+:math:`\smash{\tilde{\ell}(\boldsymbol{\theta})}`:
+
+.. math::
+
+   \begin{gather*}
+   \nabla
+   \tilde{\ell}(\boldsymbol{\theta})\Big|_{\boldsymbol{\theta}=\boldsymbol{\theta}^{(1)}}
+   = \boldsymbol{g}(\boldsymbol{\theta}^{(0)}) +
+   \mathcal{H}(\boldsymbol{\theta}^{(0)}) (\boldsymbol{\theta}^{(1)} -
+   \boldsymbol{\theta}^{(0)}) = 0. \\
+   \implies \boldsymbol{\theta}^{(1)} = \boldsymbol{\theta}^{(0)} -
+   \mathcal{H}(\boldsymbol{\theta}^{(0)})^{-1}
+   \boldsymbol{g}(\boldsymbol{\theta}^{(0)}).
+   \end{gather*}
+
+Newton-Raphson
+==============================================================================
+The Newton-Raphson method begins with
+:math:`\smash{\boldsymbol{\theta}^{(0)}}` and iteratively computes
+
+.. math::
+
+   \smash{\boldsymbol{\theta}^{(i+1)} = \boldsymbol{\theta}^{(i)} -
+   \mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}
+   \boldsymbol{g}(\boldsymbol{\theta}^{(i)})}
+
+until :math:`\smash{||\boldsymbol{\theta}^{(i+1)} -
+\boldsymbol{\theta}^{(i)}|| < \tau}`, where :math:`\smash{\tau}` is
+some tolerance level.
+
+Newton-Raphson
+==============================================================================
+- Newton-Raphson converges fast if the likelihood is concave and the
+  initial guess is good enough.
+
+.. raw:: <!--pause-->
+
+- A modified version of Newton-Raphson computes:
+
+.. math::
+
+   \smash{\boldsymbol{\theta}^{(i+1)} = \boldsymbol{\theta}^{(i)} -
+   s \mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}
+   \boldsymbol{g}(\boldsymbol{\theta}^{(i)})}
+
+for various values of :math:`\smash{s}` at each iteration and chooses
+:math:`\smash{\boldsymbol{\theta}^{(i+1)}}` that yields the largest
+likelihood value.
+
+Quasi Newton-Raphson
+==============================================================================
+Various modified Newton-Raphson methods have been proposed which
+substitute other positive definite matrices for
+:math:`\smash{\mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}}`.
+
+.. raw:: <!--pause-->
+
+- These are useful if
+  :math:`\smash{\mathcal{H}(\boldsymbol{\theta}^{(i)})^{-1}}` is not
+  possible to compute or invert.
+
+.. raw:: <!--pause-->
+
+- Typically these are slower but more robust.
+
+Numerical Differentiation
+==============================================================================
+If analytical derivatives are not possible, numerical derivatives are
+an option.
+
+.. raw:: <!--pause-->
+
+- The :math:`\smash{i}` th element of
+  :math:`\smash{\boldsymbol{g}(\boldsymbol{\theta})}` can be
+  approximated with:
+
+.. math::
+
+   \smash{g_i(\boldsymbol{\theta}) = \frac{1}{\Delta}
+   \left(\ell(\theta_1,\ldots,\theta_i+\Delta,\ldots,\theta_k) -
+   \ell(\theta_1,\ldots,\theta_i,\ldots,\theta_k)\right)},
+
+for some small :math:`\smash{\Delta}`.
+
+.. raw:: <!--pause-->
+
+- The hessian can be computed numerically from
+  :math:`\smash{\boldsymbol{g}(\boldsymbol{\theta})}` in a similar
+  manner.

@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <script type="text/javascript" src="../rootDir.js">  </script>
+  <script type="text/javascript" src="../head.js">  </script>
+  <body>
+    <div><script type="text/javascript" src="../mainMenu.js">  </script></div>
+    <div class="outer">
+      <div class="content">
+        <div id="section">Contact</div>
+        <div>Instructor: <a class="body" href="https://people.ucsc.edu/~ealdrich/">Eric Aldrich</a></div>
+        <div>Office: 435 Engineering 2</div>
+	<div>Office hours: Tuesdays, 10:00 a.m. - Noon or by appointment.</div>
+	<div>E-mail: <a class="body" href="mailto:ealdrich@ucsc.edu">ealdrich@ucsc.edu</a></div>
+      </div>
+    </div>
+  </body>
+</html>

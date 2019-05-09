@@ -1,0 +1,461 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sample Quantiles &mdash; Econ 114 - Advanced Quantitative Methods</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Econ 114 - Advanced Quantitative Methods" href="index.html"/>
+        <link rel="up" title="Exploratory Data Analysis" href="data.html"/>
+        <link rel="next" title="Data Transformations" href="transform.html"/>
+        <link rel="prev" title="Kernel Density Estimation" href="kde.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> Econ 114
+        
+
+        
+        </a>
+
+        
+          
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preliminaries.html">Preliminaries</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="data.html">Exploratory Data Analysis</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="kde.html">Kernel Density Estimation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Sample Quantiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#empirical-density-function">Empirical Density Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edf-example">EDF Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#order-statistics">Order Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quantiles">Quantiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Quantiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Sample Quantiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-probability-plots">Normal Probability Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Normal Probability Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Normal Probability Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interpreting-normal-probability-plots">Interpreting Normal Probability Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-probability-plot-illustrations">Normal Probability Plot Illustrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-prob-plots-for-normal-data">Normal Prob. Plots for Normal Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-prob-plots-for-lognormal-data">Normal Prob. Plots for Lognormal Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plots-of-lognormal-densities">Plots of Lognormal Densities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-prob-plots-for-data">Normal Prob. Plots for <span class="math">\(t\)</span> Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plots-of-densities">Plots of <span class="math">\(t\)</span> Densities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-probability-plots-vs-kdes">Normal Probability Plots vs. KDEs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qq-plots">QQ Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s-p-500-returns-and-distributions">S&amp;P 500 Returns and <span class="math">\(t\)</span> Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s-p-500-returns-dm-dollar-and-risk-free">S&amp;P 500 Returns, DM/Dollar and Risk-free</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html">Data Transformations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeSeries.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian Methods</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 114</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="data.html">Exploratory Data Analysis</a> &raquo;</li>
+      
+    <li>Sample Quantiles</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/quantiles.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sample-quantiles">
+<h1>Sample Quantiles<a class="headerlink" href="#sample-quantiles" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="empirical-density-function">
+<h2>Empirical Density Function<a class="headerlink" href="#empirical-density-function" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(y_1, y_2, \ldots, y_n\)</span> is a data sample from a true CDF
+<span class="math">\(F\)</span>.</p>
+<ul class="to-build simple">
+<li>The <em>empirical density function</em> (EDF), <span class="math">\(F_n(y)\)</span>, is the
+proportion of the sample that is less than or equal to <span class="math">\(y\)</span>:</li>
+</ul>
+<div class="to-build math">
+\[F_n(y) = \frac{\sum_{i=1}^n I\{y_i \leq y\}}{n},\]</div>
+<p class="to-build">where</p>
+<div class="to-build math">
+\[\begin{split}I\{y_i \leq y\} = \begin{cases} 1 &amp; \text{if } y_i \leq y \\ 0 &amp;
+\text{otherwise}. \end{cases}\end{split}\]</div>
+</div>
+<div class="section" id="edf-example">
+<h2>EDF Example<a class="headerlink" href="#edf-example" title="Permalink to this headline">¶</a></h2>
+<p>The figure below compares the EDF of a sample of 150 observations
+drawn from a <span class="math">\(N(0,1)\)</span> with the true CDF.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/edfExample.png"><img alt="_images/edfExample.png" class="align-center" src="_images/edfExample.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+<p>This plot was taken directly from Ruppert (2011).</p>
+</div>
+<div class="section" id="order-statistics">
+<h2>Order Statistics<a class="headerlink" href="#order-statistics" title="Permalink to this headline">¶</a></h2>
+<p><em>Order statistics</em> are the values <span class="math">\(y_1, y_2, \ldots, y_n\)</span>
+ordered from smallest to largest.</p>
+<ul class="to-build simple">
+<li>Order statistics are denoted by <span class="math">\(y_{(1)}, y_{(2)}, \ldots
+y_{(n)}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The parentheses in the subscripts differentiate them from the
+unordered sample.</li>
+</ul>
+</div>
+<div class="section" id="quantiles">
+<h2>Quantiles<a class="headerlink" href="#quantiles" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="math">\(q\)</span> <em>quantile</em> of a distribution is the value <span class="math">\(y\)</span> such
+that</p>
+<div class="math">
+\[\begin{split}F_Y(y) &amp; = q \,\,\,\,\, \Rightarrow \,\,\,\,\, y = F_Y^{-1}(q).\end{split}\]</div>
+<ul class="to-build simple">
+<li>Note that <span class="math">\(q \in (0,1)\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Quantiles are often called <span class="math">\(100q\)</span> th <em>percentiles</em>.</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>Quantiles<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Special quantiles:</p>
+<ul class="to-build simple">
+<li>Median: <span class="math">\(q = 0.5\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Quartiles: <span class="math">\(q = \{0.25, 0.5, 0.75\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Quintiles: <span class="math">\(q = \{0.2, 0.4, 0.6, 0.8\}\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Deciles: <span class="math">\(q = \{0.1, 0.2, \ldots, 0.8, 0.9\}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Sample Quantiles<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="math">\(q\)</span> <em>sample quantile</em> of a distribution is the value
+<span class="math">\(y_{(k)}\)</span> such that</p>
+<div class="math">
+\[\begin{split}F_n(y_{(k)}) &amp; \leq q.\end{split}\]</div>
+<ul class="to-build simple">
+<li>This is simply the value <span class="math">\(y_{(k)}\)</span> where <span class="math">\(k\)</span> is
+<span class="math">\(qn\)</span> rounded down to the nearest integer.</li>
+</ul>
+</div>
+<div class="section" id="normal-probability-plots">
+<h2>Normal Probability Plots<a class="headerlink" href="#normal-probability-plots" title="Permalink to this headline">¶</a></h2>
+<p>We are often interested in determining whether our data are drawn
+from a normal distribution.</p>
+<ul class="to-build">
+<li><p class="first">If the data is normally distributed, then the <span class="math">\(q\)</span> sample
+quantiles will be approximately equal to <span class="math">\(\mu + \sigma
+\Phi^{-1}(q)\)</span>.</p>
+<ul class="to-build">
+<li><dl class="first docutils">
+<dt><span class="math">\(\mu\)</span> and <span class="math">\(\sigma\)</span> are the true (unobserved) mean and</dt>
+<dd><p class="first last">standard deviation of the data.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\Phi\)</span> is the standard normal CDF.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>Normal Probability Plots<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Hence, a plot of the sample quantiles vs. <span class="math">\(\Phi^{-1}\)</span> should be
+roughly linear.</p>
+<ul class="to-build simple">
+<li>In practice this is accomplished by plotting <span class="math">\(y_{(i)}\)</span>
+vs. <span class="math">\(\Phi(i/(n+1))\)</span>, for <span class="math">\(i=1,\ldots, n\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Deviations from linearity suggest nonnormality.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Normal Probability Plots<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>There is no consensus as to which axis should represent the sample
+quantiles in a normal probability plot.</p>
+<ul class="to-build simple">
+<li>Interpretation of the plot will depend on the choice of axes
+for sample and theoretical quantiles.</li>
+</ul>
+<ul class="to-build simple">
+<li>We will always place sample quantiles on the <span class="math">\(x\)</span>
+axis.</li>
+</ul>
+<ul class="to-build simple">
+<li>In R, the argument &#8216;datax&#8217; of the function
+&#8216;qqnorm&#8217; must be set to &#8216;TRUE&#8217; (by default, it is
+&#8216;FALSE&#8217;).</li>
+</ul>
+</div>
+<div class="section" id="interpreting-normal-probability-plots">
+<h2>Interpreting Normal Probability Plots<a class="headerlink" href="#interpreting-normal-probability-plots" title="Permalink to this headline">¶</a></h2>
+<p>With the sample quantiles on the <span class="math">\(x\)</span> axis:</p>
+<ul class="to-build simple">
+<li>A convex curve indicates <em>left skewness</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>A concave curve indicates <em>right skewness</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>A convex-concave curve indicates <em>heavy tails</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>A concave-convex curve indicates <em>light tails</em>.</li>
+</ul>
+</div>
+<div class="section" id="normal-probability-plot-illustrations">
+<h2>Normal Probability Plot Illustrations<a class="headerlink" href="#normal-probability-plot-illustrations" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/normPlotIllustration.png"><img alt="_images/normPlotIllustration.png" class="align-center" src="_images/normPlotIllustration.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+<p>This plot was taken directly from Ruppert (2011).</p>
+</div>
+<div class="section" id="normal-prob-plots-for-normal-data">
+<h2>Normal Prob. Plots for Normal Data<a class="headerlink" href="#normal-prob-plots-for-normal-data" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/normPlotExample1.png"><img alt="_images/normPlotExample1.png" class="align-center" src="_images/normPlotExample1.png" style="width: 4.5in;" /></a>
+</div></blockquote>
+<p>This plot was taken directly from Ruppert (2011).</p>
+</div>
+<div class="section" id="normal-prob-plots-for-lognormal-data">
+<h2>Normal Prob. Plots for Lognormal Data<a class="headerlink" href="#normal-prob-plots-for-lognormal-data" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/normPlotExample2.png"><img alt="_images/normPlotExample2.png" class="align-center" src="_images/normPlotExample2.png" style="width: 4.5in;" /></a>
+</div></blockquote>
+<p>This plot was taken directly from Ruppert (2011).</p>
+</div>
+<div class="section" id="plots-of-lognormal-densities">
+<h2>Plots of Lognormal Densities<a class="headerlink" href="#plots-of-lognormal-densities" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/lognormExamples.png"><img alt="_images/lognormExamples.png" class="align-center" src="_images/lognormExamples.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="normal-prob-plots-for-data">
+<h2>Normal Prob. Plots for <span class="math">\(t\)</span> Data<a class="headerlink" href="#normal-prob-plots-for-data" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/normPlotExample3.png"><img alt="_images/normPlotExample3.png" class="align-center" src="_images/normPlotExample3.png" style="width: 4.5in;" /></a>
+</div></blockquote>
+<p>This plot was taken directly from Ruppert (2011).</p>
+</div>
+<div class="section" id="plots-of-densities">
+<h2>Plots of <span class="math">\(t\)</span> Densities<a class="headerlink" href="#plots-of-densities" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/tdistExamples.png"><img alt="_images/tdistExamples.png" class="align-center" src="_images/tdistExamples.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="normal-probability-plots-vs-kdes">
+<h2>Normal Probability Plots vs. KDEs<a class="headerlink" href="#normal-probability-plots-vs-kdes" title="Permalink to this headline">¶</a></h2>
+<p>If the relationship between theoretical and sample quantiles is
+complex, the KDE is a better tool to understand deviations from
+normality.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/trimodalKDE.png"><img alt="_images/trimodalKDE.png" class="align-center" src="_images/trimodalKDE.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+<p>This plot was taken directly from Ruppert (2011).</p>
+</div>
+<div class="section" id="qq-plots">
+<h2>QQ Plots<a class="headerlink" href="#qq-plots" title="Permalink to this headline">¶</a></h2>
+<p>Normal probability plots are special examples of
+<em>quantile-quantile</em> (QQ) plots.</p>
+<ul class="to-build simple">
+<li>A QQ plot is a plot of quantiles from one sample or
+distribution against the quantiles of another sample or
+distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>For example, we could compare the quantiles of S&amp;P 500
+daily returns against a <span class="math">\(t\)</span> distribution.</li>
+</ul>
+<ul class="to-build simple">
+<li>Alternatively, we could compare the quantiles of S&amp;P 500
+daily returns against other financial data.</li>
+</ul>
+<ul class="to-build simple">
+<li>QQ plots of multiple datasets indicate which distribution is
+more/less left/right skewed or which has heavier/lighter
+tails.</li>
+</ul>
+</div>
+<div class="section" id="s-p-500-returns-and-distributions">
+<h2>S&amp;P 500 Returns and <span class="math">\(t\)</span> Distributions<a class="headerlink" href="#s-p-500-returns-and-distributions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="s-p-500-returns-dm-dollar-and-risk-free">
+<h2>S&amp;P 500 Returns, DM/Dollar and Risk-free<a class="headerlink" href="#s-p-500-returns-dm-dollar-and-risk-free" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/sp-dm-rf-qq.png"><img alt="_images/sp-dm-rf-qq.png" class="align-center" src="_images/sp-dm-rf-qq.png" style="width: 7.5in;" /></a>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="transform.html" class="btn btn-neutral float-right" title="Data Transformations" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kde.html" class="btn btn-neutral" title="Kernel Density Estimation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Eric M. Aldrich.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'Advanced Quantitative Methods',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

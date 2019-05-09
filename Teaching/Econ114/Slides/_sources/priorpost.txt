@@ -1,0 +1,837 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Prior and Posterior Distributions
+==============================================================================
+
+
+Prior Distribution
+==============================================================================
+Bayes' Theorem can be used to model the distribution of parameters.  
+
+.. rst-class:: to-build
+
+- Recall that the likelihood of data :math:`{\bf y}` can be
+  expressed as :math:`f({\bf y}|{\bf \theta})`.
+
+.. rst-class:: to-build
+
+- :math:`{\bf \theta}` is a vector of parameters. 
+
+.. rst-class:: to-build
+  
+- In reality, we think of :math:`{\bf \theta}` as a set of unknown
+  values that are *not random*.
+
+.. rst-class:: to-build
+
+- However, we treat :math:`{\bf \theta}` as random because of our
+  lack of knowledge.
+
+.. rst-class:: to-build
+
+- That is, our lack of knowledge induces a distribution over
+  :math:`{\bf \theta}`.
+
+
+
+
+Prior Distribution and Likelihood
+==============================================================================
+The *prior distribution* :math:`\pi({\bf \theta})` expresses our
+beliefs about :math:`{\bf \theta}` prior to observing data
+:math:`{\bf y}`.
+
+.. rst-class:: to-build
+
+- :math:`\pi({\bf \theta})` is different from the likelihood:
+  :math:`f({\bf y}|{\bf \theta})`.
+
+.. rst-class:: to-build
+
+- :math:`\pi({\bf \theta})` is loosely interpreted as the
+  probability of :math:`{\bf \theta}` occurring before we observe
+  data.
+
+.. rst-class:: to-build
+
+- :math:`f({\bf y}|{\bf \theta})` is loosely interpreted as the
+  probability of the data occurring, given a specific value of the
+  parameter vector :math:`{\bf \theta}`.
+
+
+
+Joint Density
+==============================================================================
+The joint density of :math:`{\bf y}` and :math:`{\bf \theta}` is
+
+.. rst-class:: to-build
+
+.. math::
+
+   f({\bf y},{\bf \theta}) & = f({\bf y}|{\bf \theta})
+   \pi({\bf \theta}).
+
+.. rst-class:: to-build
+
+- This is analogous to the relationship we previously derived:
+  
+.. rst-class:: to-build
+
+.. math::
+
+    P(A \cap B) & = P(A|B)P(B).
+  
+
+
+
+
+Marginal Density
+==============================================================================
+The marginal density of :math:`{\bf y}` is
+
+.. rst-class:: to-build
+
+.. math::
+
+   f({\bf y}) & = \int f({\bf y},{\bf \theta}) d{\bf \theta}
+   = \int f({\bf y}|{\bf \theta}) \pi({\bf \theta})
+   d{\bf \theta}.
+
+
+
+Marginal Density
+==============================================================================
+- This is analogous to the relationship we previously derived:
+  
+.. rst-class:: to-build
+
+.. math::
+
+    P(A) = P\left((A \cap B_1) \cup \cdots \cup (A \cap
+    B_K)\right) \hspace{0.38in}
+  
+.. rst-class:: to-build
+
+.. math::
+
+    = P(A \cap B_1) + \cdots + P(A \cap B_K)
+  
+.. rst-class:: to-build
+
+.. math::
+
+    \hspace{0.53in} = P(A|B_1) P(B_1) + \cdots + P(A|B_K) P(B_K)
+  
+.. rst-class:: to-build
+
+.. math::
+
+    = \sum_{i=1}^K P(A|B_i) P(B_i), \hspace{0.8in}
+  
+.. rst-class:: to-build 
+
+for a partition :math:`\{B_i\}_{i=1}^K`.
+
+
+
+
+Posterior Distribution
+==============================================================================
+According to Bayes' Theorem,
+
+.. rst-class:: to-build
+
+.. math::
+
+   \pi({\bf \theta}|{\bf y}) & =
+   \frac{f({\bf y}|{\bf \theta})
+   \pi({\bf \theta})}{f({\bf y})} \hspace{0.92in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   = \frac{f({\bf y}|{\bf \theta})
+   \pi({\bf \theta})}{\int f({\bf y}|{\bf \theta})
+   \pi({\bf \theta}) d{\bf \theta}}.
+
+.. rst-class:: to-build
+
+- :math:`\pi({\bf \theta}|{\bf y})` is referred to as the
+  *posterior distribution* of :math:`{\bf \theta}`.
+
+.. rst-class:: to-build
+
+- :math:`\pi({\bf \theta}|{\bf y})` is loosely interpreted as the
+  probability of :math:`{\bf \theta}` after observing
+  :math:`{\bf y}`.
+
+
+
+
+Bayesian Updating
+==============================================================================
+Bayesian analysis is a method to use data to update our beliefs about
+:math:`{\bf \theta}`.
+
+.. rst-class:: to-build
+
+- We begin with a prior distribution :math:`\pi({\bf \theta})` which
+  captures our views about the likelihood of :math:`{\bf \theta}`
+  taking particular values.
+
+.. rst-class:: to-build
+
+- We specify a model for the probability density of the data, given
+  :math:`{\bf \theta}`: :math:`f({\bf y}|{\bf \theta})`.
+
+.. rst-class:: to-build
+
+- We use the likelihood to update our beliefs about
+  :math:`{\bf \theta}`:
+  
+.. rst-class:: to-build
+
+.. math::
+
+   \pi({\bf \theta}|{\bf y}) & =
+   \frac{f({\bf y}|{\bf \theta}) \pi({\bf \theta})}{\int
+   f({\bf y}|{\bf \theta}) \pi({\bf \theta})
+   d{\bf \theta}}.
+
+.. rst-class:: to-build
+   
+- If the data are very informative,
+  :math:`\pi({\bf \theta}|{\bf y})` can be quite different from
+  :math:`\pi({\bf \theta})`. 
+
+
+
+
+A Note on Proportionality
+==============================================================================
+Suppose
+
+.. rst-class:: to-build
+
+.. math::
+
+   w = ax
+
+.. rst-class:: to-build
+
+.. math::
+
+   y = bx
+
+.. rst-class:: to-build
+
+.. math::
+
+   z = wy
+
+.. rst-class:: to-build
+
+then
+
+.. rst-class:: to-build
+
+.. math::
+
+   w \propto x
+
+.. rst-class:: to-build
+
+.. math::
+
+   y \propto x
+
+.. rst-class:: to-build
+
+.. math::
+
+   z \propto x^2.
+
+
+
+A Note on Proportionality
+==============================================================================
+More generally, if
+
+.. rst-class:: to-build
+
+.. math::
+
+   w = g_w(x) h_w(u)
+
+.. rst-class:: to-build
+
+.. math::
+
+   y = g_y(x) h_y(u)
+
+.. rst-class:: to-build
+
+.. math::
+
+   z = wy
+
+.. rst-class:: to-build
+
+then
+
+.. rst-class:: to-build
+
+.. math::
+
+   w \propto g_w(x)
+
+.. rst-class:: to-build
+
+.. math::
+
+   y \propto g_y(x)
+
+.. rst-class:: to-build
+
+.. math::
+
+   z \propto g_w(x) g_y(x).
+
+
+
+
+A Note on Proportionality
+==============================================================================
+Since :math:`f({\bf y})` is not a function of :math:`{\bf \theta}`, 
+
+.. rst-class:: to-build
+
+.. math::
+
+   \pi({\bf \theta}|{\bf y}) & =
+   \frac{f({\bf y}|{\bf \theta})\pi({\bf \theta})}{f({\bf y})}
+   \propto f({\bf y}|{\bf \theta})\pi({\bf \theta}).
+ 
+.. rst-class:: to-build
+
+- It is often easier to work with only
+  :math:`f({\bf y}|{\bf \theta})\pi({\bf \theta})`.
+
+
+
+
+Conjugate Priors
+==============================================================================
+Our choice of :math:`\pi({\bf \theta})` and
+:math:`f({\bf y}|{\bf \theta})` may not yield an analytic solution
+for :math:`\pi({\bf \theta}|{\bf y})`.  
+
+.. rst-class:: to-build
+
+- :math:`\pi({\bf \theta}|{\bf y})` still exists, but it must be
+  computed numerically.
+
+.. rst-class:: to-build
+
+- However, when the likelihood and prior have similar forms, they
+  result in tractable posteriors.
+
+.. rst-class:: to-build
+
+- A *conjugate* prior is a distribution that results in a posterior of
+  the same family when coupled with a particular likelihood.
+
+
+Conjugate Priors
+==============================================================================
+- For example, if :math:`f({\bf y}|{\bf \theta})` is a binomial
+  distribution and :math:`\pi({\bf \theta})` is a beta distribution,
+  :math:`\pi({\bf \theta}|{\bf y})` will also be a beta
+  distribution.
+
+.. rst-class:: to-build
+
+- Alternatively, if :math:`f({\bf y}|{\bf \theta})` is a
+  normal distribution and :math:`\pi({\bf \theta})` is a normal
+  distribution, :math:`\pi({\bf \theta}|{\bf y})` will also be a
+  normal distribution.
+ 
+
+
+
+Normal Example
+==============================================================================
+Suppose :math:`Y_1, \ldots, Y_n \stackrel{i.i.d.}{\sim}
+\mathcal{N}(\mu,\sigma^2)`, where :math:`\sigma^2` is *known* and
+:math:`\mu` is *unknown*.
+
+.. rst-class:: to-build
+
+- Assume :math:`\pi(\mu)` is :math:`\mathcal{N}(\mu_0, \sigma^2_0)`, where
+  :math:`\mu_0` and :math:`\sigma^2_0` are known parameters. 
+
+.. rst-class:: to-build
+  
+- We will see below that :math:`\sigma^2_0` provides a measure of how
+  strong our beliefs are that :math:`\mu = \mu_0` prior to observing
+  data.
+
+
+
+
+Normal Example
+==============================================================================
+The prior is
+
+.. rst-class:: to-build
+
+.. math::
+
+  \pi(\mu) & = \frac{1}{\sqrt{2\pi} \sigma_0} \exp
+  \left\{-\frac{1}{2\sigma^2_0} (\mu - \mu_0)^2 \right\} \hspace{0.5in}
+
+.. rst-class:: to-build
+
+.. math::
+
+  \hspace{0.4in} & = \frac{1}{\sqrt{2\pi} \sigma_0} \exp
+  \left\{-\frac{1}{2\sigma^2_0} (\mu^2 - 2\mu\mu_0 + \mu^2_0)
+  \right\}
+
+.. rst-class:: to-build
+
+.. math::
+
+  & \propto \exp \left\{\frac{\mu \mu_0}{\sigma^2_0} -
+    \frac{\mu^2}{2\sigma^2_0} \right\}. \hspace{1in}
+
+
+
+
+Normal Example
+==============================================================================
+The likelihood is
+
+.. rst-class:: to-build
+
+.. math::
+
+   f(Y_1,\ldots, Y_n|\mu) & = \prod_{i=1}^n \left[
+   \frac{1}{\sqrt{2\pi} \sigma} \exp\left\{-\frac{1}{2\sigma^2}
+   (Y_i - \mu)^2\right\}\right] \hspace{0.25in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \left(\frac{1}{2\pi \sigma^2}\right)^{n/2}
+   \exp \left\{-\frac{1}{2\sigma^2} \sum_{i=1}^n (Y_i -
+   \mu)^2\right\} \hspace{0.13in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.5in} & = \left(\frac{1}{2\pi \sigma^2}\right)^{n/2}
+   \exp\left\{-\frac{1}{2\sigma^2} \left(-2n\bar{Y}\mu + n\mu^2 -
+   \sum_{i=1}^n Y_i^2\right)\right\}
+
+.. rst-class:: to-build
+
+.. math::
+
+   & \propto \exp\left\{\frac{n\bar{Y}\mu}{\sigma^2} -
+   \frac{n\mu^2}{2\sigma^2} \right\} \hspace{1.5in}
+
+
+
+
+Normal Example
+==============================================================================
+The posterior is
+
+.. rst-class:: to-build
+
+.. math::
+
+   \pi(\mu|Y_1,\ldots,Y_n) & \propto f(Y_1,\ldots,
+   Y_n|\mu) \pi(\mu) \hspace{2in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{1.07in} & \propto \exp\left\{\frac{n\bar{Y}\mu}{\sigma^2} -
+   \frac{n\mu^2}{2\sigma^2} \right\} \exp \left\{\frac{\mu
+   \mu_0}{\sigma^2_0} - \frac{\mu^2}{2\sigma^2_0} \right\}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{1.07in} & = \exp \left\{\left(\frac{n\bar{Y}}{\sigma^2} +
+   \frac{\mu_o}{\sigma^2_0}\right) \mu - \left(\frac{n}{2\sigma^2} +
+   \frac{1}{2\sigma^2_0} \right) \mu^2\right\}
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \exp\left\{A \mu - \frac{B}{2} \mu^2\right\} \hspace{0.63in}
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \exp\left\{-\frac{B}{2} \left(\mu^2 -
+   \frac{2A}{B} \mu \right)\right\}
+
+
+
+
+Normal Example
+==============================================================================
+
+.. rst-class:: to-build
+
+.. math::
+
+   \hspace{0.65in} & \propto \exp\left\{-\frac{B}{2}
+   \left(\mu^2 - \frac{2A}{B} \mu \right)\right\}
+   \exp\left\{-\frac{B}{2} \left(\frac{A}{B}\right)^2\right\}
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \exp\left\{-\frac{B}{2} \left(\mu^2 -
+   \frac{2A}{B} \mu + \left(\frac{A}{B}\right)^2 \right) \right\}
+
+.. rst-class:: to-build
+
+.. math::
+
+   & = \exp\left\{-\frac{B}{2} \left(\mu -
+   \frac{A}{B}\right)^2\right\}. \hspace{0.9in}
+
+
+
+
+Normal Example
+==============================================================================
+We see that :math:`\pi(\mu|Y_1,\ldots,Y_n)` is
+:math:`\mathcal{N}\left(\frac{A}{B}, \frac{1}{B}\right)` where
+
+.. rst-class:: to-build
+
+.. math::
+
+   E[\mu|Y_1,\ldots,Y_n] & = \frac{A}{B} =
+   \frac{\frac{n\bar{Y}}{\sigma^2} +
+   \frac{\mu_0}{\sigma^2_0}}{\frac{n}{\sigma^2} +
+   \frac{1}{\sigma^2_0}}
+
+.. rst-class:: to-build
+
+.. math::
+
+   Var(\mu|Y_1,\ldots,Y_n) & = \frac{1}{B} =
+   \frac{1}{\frac{n}{\sigma^2} + \frac{1}{\sigma^2_0}}.
+
+
+
+
+Normal Example
+==============================================================================
+- If :math:`\sigma^2_0` is very small relative to
+  :math:`\sigma^2/n`, :math:`E[\mu|Y_1,\ldots,Y_n] \approx \mu_0` and
+  :math:`Var(\mu|Y_1,\ldots,Y_n) \approx \sigma^2_0`.
+
+.. rst-class:: to-build
+
+- In this case, the prior is very precise and contains a lot of
+  information - the data doesn't add much to prior knowledge.
+
+.. rst-class:: to-build
+
+- If :math:`\sigma^2/n` is very small relative to
+  :math:`\sigma^2_0`, :math:`E[\mu|Y_1,\ldots,Y_n] \approx \bar{Y}` and
+  :math:`Var(\mu|Y_1,\ldots,Y_n) \approx \frac{\sigma^2}{n}`.
+
+.. rst-class:: to-build
+
+- In this case, the prior is very imprecise and contains very little
+  information - the data is very informative and adds a lot to prior
+  knowledge.
+
+
+
+
+Moderate Prior
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/midPrior1.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/midPrior1.png
+     :width: 6in
+
+
+
+Moderate Prior
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/midPrior2.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/midPrior2.png
+     :width: 6in
+
+
+
+Moderate Prior
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/midPrior3.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/midPrior3.png
+     :width: 6in
+
+
+
+Uninformative Prior
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/badPrior1.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/badPrior1.png
+     :width: 6in
+
+
+
+Uninformative Prior
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/badPrior2.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/badPrior2.png
+     :width: 6in
+
+
+
+Uninformative Prior
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/badPrior3.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/badPrior3.png
+     :width: 6in
+
+
+
+Informative Prior
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/goodPrior1.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/goodPrior1.png
+     :width: 6in
+
+
+
+Informative Prior
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/goodPrior2.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/goodPrior2.png
+     :width: 6in
+
+
+
+Informative Prior
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/goodPrior3.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/goodPrior3.png
+     :width: 6in
+
+
+
+Bayesian Parameter Estimates
+==============================================================================
+The most common Bayesian parameter estimates are 
+
+.. rst-class:: to-build
+
+- The mean of the posterior distribution.  
+
+.. rst-class:: to-build
+
+- The mode of the posterior distribution.  
+
+.. rst-class:: to-build
+
+- The median of the posterior distribution. 
+
+.. rst-class:: to-build
+  
+- For large :math:`n`, the the mode is approximately equal to the
+  MLE.
+
+
+
+
+Frequentist Confidence Intervals
+==============================================================================
+When constructing typical confidence intervals: 
+
+.. rst-class:: to-build
+
+- Parameters are viewed as fixed and data as random.
+
+.. rst-class:: to-build
+
+- The interval is random because the data is random.
+
+.. rst-class:: to-build
+
+- We interpret the interval as containing the true parameter with some
+  probability *before the data are observed*.
+
+.. rst-class:: to-build
+
+- Once the data are observed, the computed interval either contains or
+  does not contain the true parameter.
+
+.. rst-class:: to-build
+  
+- We interpret a 95\% confidence interval in the following way:
+  if we could draw 100 samples similar to the one we have, roughly
+  95 of the associated confidence intervals should contain the true
+  parameter.
+
+
+
+
+Bayesian Credible Intervals
+==============================================================================
+Bayesian credible intervals are the Bayesian equivalent to frequentist
+confidence intervals.
+
+.. rst-class:: to-build
+
+- In the Bayesian paradigm, the parameters are viewed as random while
+  the data are fixed.
+
+.. rst-class:: to-build
+
+- An interval based on the posterior distribution has a natural
+  interpration as a probability of containing the true parameter,
+  *even after the data have been observed*.
+
+
+
+
+Equal-tails Credible Interval
+==============================================================================
+The most basic :math:`1-\alpha` credible interval is formed by computing
+the :math:`\alpha/2` and :math:`1-\alpha/2` quantiles of the posterior
+distribution.  
+
+.. rst-class:: to-build
+
+- For example, suppose :math:`\alpha = 0.05`: you want to compute a
+  95\% credible interval.
+
+.. rst-class:: to-build
+
+- Determine the 0.025 and 0.975 quantiles.  
+
+.. rst-class:: to-build
+
+- These are the values corresponding to 2.5\% of the distribution in
+  the lower tail and 2.5\% of the distribution in the upper tail.
+
+
+
+
+Equal-tails Credible Interval
+==============================================================================
+:math:`\qquad`
+
+.. ifslides::
+
+  .. image:: /_static/PriorPost/credInt.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/PriorPost/credInt.png
+     :width: 6in

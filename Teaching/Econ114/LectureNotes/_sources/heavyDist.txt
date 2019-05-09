@@ -1,0 +1,531 @@
+.. slideconf::
+   :slide_classes: appear
+
+==============================================================================
+Heavy-Tailed Distributions
+==============================================================================
+
+
+Heavy-Tailed Distributions
+==============================================================================
+Observed data often do not conform to a Normal
+distribution.  
+
+.. rst-class:: to-build
+
+- In many cases, extreme values are more likely than would be dictated
+  by a Normal.
+
+.. rst-class:: to-build
+
+- This is especially true of financial data. 
+
+.. rst-class:: to-build
+  
+- In this lecture, we will study several examples of distributions
+  with heavy tails, which assign higher probability to extreme
+  values.
+
+
+
+
+Generalized Error Distributions
+==============================================================================
+Suppose that :math:`X` follows a *Generalized Error Distribution*
+with shape parameter :math:`\nu: \,\, X \sim GED(\nu)`.  
+
+.. rst-class:: to-build
+
+- Then for :math:`x \in (-\infty, \infty)`,
+
+.. rst-class:: to-build
+
+.. math::
+
+   f_{X}(x|\nu) = \kappa(\nu) \exp\left\{-\frac{1}{2}
+   \left|\frac{x}{\lambda_{\nu}}\right|^{\nu}\right\}, \text{where}
+
+.. rst-class:: to-build
+
+.. math::
+
+   \lambda_{\nu} = \left(\frac{2^{-2/\nu}
+   \Gamma(\nu^{-1})}{\Gamma(3/\nu)}\right)^{1/2} \,\,\,\,\,\,
+   \text{and} \,\,\,\,\,\, \kappa(\nu) = \frac{\nu}{\lambda_{\nu}
+   2^{1+\frac{1}{\nu}} \Gamma(\nu^{-1})}.
+
+
+
+Generalized Error Distributions
+==============================================================================
+- :math:`\lambda_{\nu}` and :math:`\kappa(\nu)` are constants and are
+  chosen so that the density integrates to unity and has unit
+  variance.
+
+.. rst-class:: to-build
+
+- The shape parameter :math:`\nu > 0` determines tail weight.
+
+
+
+
+Generalized Error Distributions
+==============================================================================
+For many distributions, the scaling constants are simply a
+nuisance.  
+
+.. rst-class:: to-build
+
+- We can focus attention on only the part of the function
+  that relates to values of the random variable. 
+  
+.. rst-class:: to-build
+
+- Disregarding constants, we say that the density is *proportional*
+  to:
+
+.. rst-class:: to-build
+
+.. math::
+
+   f_{X}(x|\nu) & \propto \exp\left\{
+   -\left|\frac{x}{\theta}\right|^{\nu}\right\}.
+
+.. rst-class:: to-build
+
+- As :math:`x \to \infty`, :math:`-|x|^{\nu} \to -\infty` faster for
+  larger values of :math:`\nu`.  
+
+.. rst-class:: to-build
+
+- This means that as :math:`x \to \infty`, :math:`f_{X}(x|\nu) \to 0`
+  faster for larger values of :math:`\nu`. 
+
+
+
+Exponential Tails
+==============================================================================
+For generalized error distributions, larger values of :math:`\nu`
+correspond to lighter tails and smaller values to heavier tails.  
+
+.. rst-class:: to-build
+
+- We say that the generalized error distribution has *exponential
+  tails*, since the tails diminish exponentially as :math:`x \to
+  \infty` and :math:`x \to -\infty`.
+
+
+
+Exponential Tails
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/HeavyDist/expTails.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/HeavyDist/expTails.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    ###############################################################################
+    # Plot Exponential Tails for Varying Tail Indices
+    ###############################################################################
+
+    # Tail index
+    alpha = 1:10;
+
+    # Grid of values for x variable
+    xGrid = seq(0,3,length=1000);
+
+    # For each alpha, compute exp(-|x|^alpha) and store as column in yGrid matrix
+    yGrid = NULL;
+    for(i in 1:length(alpha)){
+        yGrid = cbind(yGrid, exp(-abs(xGrid^alpha[i])))
+    }
+
+    # Plot the functions for each alpha
+    plot(xGrid, yGrid[,1], type='l', xlab='x', ylab='', ylim=c(0,1),
+         main='Exponential Tails for Increasing Tail Indices')
+    for(i in 2:length(alpha)){
+	lines(xGrid, yGrid[,i], col=gray(i/13))
+    }
+    dev.copy(pdf, file="expTails.pdf", height=8, width=10)
+    dev.off()
+
+
+
+Generalized Error Distribution Examples
+==============================================================================
+Special cases of generalized error distributions: 
+
+.. rst-class:: to-build
+
+- :math:`\nu = 2`: :math:`\mathcal{N}(0,1)`.  
+
+.. rst-class:: to-build
+
+- :math:`\nu = 1`: Double-exponential distribution. 
+
+.. rst-class:: to-build
+  
+- The double-exponential distribution has heavier tails than a
+  standard normal since its shape parameter is smaller.  
+
+.. rst-class:: to-build
+
+- Heavier tails that the double-exponential are obtained with
+  :math:`\nu < 1`.
+
+
+
+
+Power-Law Distributions
+==============================================================================
+Suppose that :math:`X` follows a *Power-Law Distribution* with shape
+parameter :math:`\alpha: \,\, X \sim PL(\alpha)`.
+
+.. rst-class:: to-build
+
+- Then for :math:`x \in (-\infty, \infty)`,
+
+.. rst-class:: to-build
+
+.. math::
+
+   f_{X}(x|\alpha) = A x^{-(1+\alpha)} \propto x^{-(1+\alpha)}.
+
+.. rst-class:: to-build
+
+- :math:`A` is chosen so that the density integrates to unity.
+
+.. rst-class:: to-build
+
+- :math:`\alpha > 0`, otherwise the density will integrate to
+  :math:`\infty`.
+
+.. rst-class:: to-build
+
+- The power-law distribution has a polynomial tail, because the tails
+  diminish at a polynomial rate as :math:`x \to \infty` and :math:`x
+  \to -\infty`.
+
+
+
+Polynomial Tails
+==============================================================================
+The parameter :math:`\alpha` is referred to as the *tail index*.  
+
+.. rst-class:: to-build
+
+- As :math:`x \to \infty`, :math:`x^{-(1+\alpha)} \to 0` faster for
+  larger values of :math:`\alpha`.
+
+.. rst-class:: to-build
+
+- This means that larger values of :math:`\alpha` correspond to
+  lighter tails and smaller values to heavier tails.
+
+.. rst-class:: to-build
+
+- A power-law distribution has heavier tails than a generalized error
+  distribution:
+
+.. rst-class:: to-build
+
+.. math::
+
+   \frac{\exp\left(-\left|\frac{x}{\theta}\right|^{\nu}\right)}{|x|^{-(1+\alpha)}}
+   \to 0 \,\,\,\,\, \text{as} \,\,\,\,\, |x| \to \infty.
+
+
+
+Polynomial Tails
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/HeavyDist/polyTails.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/HeavyDist/polyTails.png
+     :width: 6in
+
+.. ifnotslides::
+
+  To create this plot, run the following script::
+
+    ###############################################################################
+    # Plot Polynomial Tails for Varying Tail Indices
+    ###############################################################################
+
+    # Tail index
+    alpha = 1:10;
+
+    # Grid of values for x variable
+    xGrid = seq(0,4,length=1000);
+
+    # For each alpha, compute x^(-(1+alpha)) and store as column in yGrid matrix
+    yGrid = NULL;
+    for(i in 1:length(alpha)){
+	yGrid = cbind(yGrid, xGrid^(-(1+alpha[i])))
+    }
+
+    # Plot the functions for each alpha
+    plot(xGrid, yGrid[,1], type='l', xlab='x', ylab='',
+         main='Polynomial Tails for Increasing Tail Indices', ylim=c(0,3))
+    for(i in 2:length(alpha)){
+	lines(xGrid, yGrid[,i], col=gray(i/13))
+    }
+    dev.copy(pdf, file="polyTails.pdf", height=8, width=10)
+    dev.off()
+
+
+
+:math:`t`-Distribution
+==============================================================================
+The density of a :math:`t` -distribution is
+
+.. math::
+
+   f_{t,\nu}(y) & =
+   \left[\frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi \nu}
+    \Gamma\left(\frac{\nu}{2}\right)}\right] \frac{1}{\left(1 +
+    y^2/\nu\right)^{\frac{\nu+1}{2}}},
+
+where
+
+.. rst-class:: to-build
+
+.. math::
+
+   \Gamma(t) & = \int_0^{\infty} x^{t-1} \exp(-x)dx, \,\,\,\,\,\, t
+   > 0.
+
+
+
+:math:`t` -Distribution
+==============================================================================
+Note that for large values of :math:`|y|`,
+
+.. math::
+
+   f_{t,\nu}(y) \propto \frac{1}{\left(1 +
+   y^2/\nu\right)^{\frac{\nu+1}{2}}} \stackrel{\sim}{\propto}
+   \frac{1}{\left(y^2/\nu\right)^{\frac{\nu+1}{2}}} \propto |y|^{-(\nu+1)}.
+
+.. rst-class:: to-build
+
+- This means the :math:`t`-distribution has polynomial tails with tail
+  index :math:`\nu`.
+
+.. rst-class:: to-build
+
+- Smaller values of :math:`\nu` correspond to heavier tails.
+
+
+
+
+Comparison of Gen. Error and :math:`t`- Dist
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/HeavyDist/heavyCompTail.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/HeavyDist/heavyCompTail.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+Comparison of Gen. Error and :math:`t`- Dist
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/HeavyDist/heavyCompCenter.png
+     :width: 7.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/HeavyDist/heavyCompCenter.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+
+Discrete Mixtures
+==============================================================================
+Consider a distribution that is 90\% :math:`\mathcal{N}(0,1)` and 10\%
+:math:`\mathcal{N}(0,25)`.  
+
+.. rst-class:: to-build
+
+- Generate :math:`X \sim \mathcal{N}(0,1)`.  
+
+.. rst-class:: to-build
+
+- Generate :math:`U \sim Unif(0,1)`, with :math:`U` independent of
+  :math:`X`.
+
+.. rst-class:: to-build
+
+- Set :math:`Y = X` if :math:`U < 0.9`.  
+
+.. rst-class:: to-build
+
+- Set :math:`Y = 5X` if :math:`U \geq 0.9`.
+
+
+
+
+Discrete Mixtures
+==============================================================================
+We say that :math:`Y` follows a *finite* or *discrete normal mixture
+distribution*.
+
+.. rst-class:: to-build
+
+- Roughly 90\% of the time it is drawn from a
+  :math:`\mathcal{N}(0,1)`.
+
+.. rst-class:: to-build
+
+- Roughly 10\% of the time it is drawn from a
+  :math:`\mathcal{N}(0,25)`.  
+
+.. rst-class:: to-build
+
+- The individual normal distributions are called the
+  *component* distributions of :math:`Y`.  
+
+.. rst-class:: to-build
+
+- This random variable could be used to model a market with two
+  *regimes*: low volatility and high volatility.
+
+
+
+
+Discrete Mixtures
+==============================================================================
+The variance of :math:`Y` is
+
+.. math::
+
+   Var(Y) & = 0.9 \times 1 + 0.1 \times 25 = 3.4.
+
+.. rst-class:: to-build
+
+- Consider :math:`Z \sim \mathcal{N}(0,\sqrt{3.4}) =
+  \mathcal{N}(0,1.84)`.
+
+.. rst-class:: to-build
+
+- The distributions of :math:`Y` and :math:`Z` are *very*
+  different.  
+
+.. rst-class:: to-build
+
+- :math:`f_Y` has much heavier tails than :math:`f_Z`.  
+
+.. rst-class:: to-build
+
+- For example, the probability of observing the value 6 (3.25
+  standard deviations from the mean) is essentially zero for
+  :math:`Z`.  
+
+.. rst-class:: to-build
+
+- However, 10\% of the time, the value 6 is only 6/5 = 1.2
+  standard deviations from the mean for :math:`Y`.
+
+
+
+
+Discrete Mixtures
+==============================================================================
+  .. ifslides::
+
+  .. image:: /_static/HeavyDist/normalMix.png
+     :width: 5.5in
+     :align: center
+
+.. ifnotslides::
+
+  .. image:: /_static/HeavyDist/normalMix.png
+     :width: 6in
+
+This plot was taken directly from Ruppert (2011).
+
+
+
+Continuous Mixtures
+==============================================================================
+In general, :math:`Y` follows a *normal scale mixture distribution* if
+
+.. math::
+
+   Y & = \mu + \sqrt{U} Z,
+
+.. rst-class:: to-build
+
+where
+
+.. rst-class:: to-build
+
+- :math:`\mu` is a constant.  
+
+.. rst-class:: to-build
+
+- :math:`Z \sim \mathcal{N}(0,1)`.  
+
+.. rst-class:: to-build
+
+- :math:`U` is a positive random variable giving the variance of each
+  normal component.
+
+.. rst-class:: to-build
+
+- :math:`Z` and :math:`U` are independent.
+
+
+
+Continuous Mixtures
+==============================================================================
+- If :math:`U` is continuous, :math:`Y` follows a *continuous scale
+  mixture distribution*.  
+
+.. rst-class:: to-build
+
+- :math:`f_U` is known as the *mixing
+  distribution*.  
+
+.. rst-class:: to-build
+
+- A finite normal mixture has exponential
+  tails.  
+
+.. rst-class:: to-build
+
+- A continuous normal mixture can have polynomial tails if the
+  mixing distribution has heavy enough tails.  
+
+.. rst-class:: to-build
+
+- The :math:`t` -distribution is an example of a continuous normal
+  mixture.
+
+

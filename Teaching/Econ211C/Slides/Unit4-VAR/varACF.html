@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Autocovariances of Vector Processes &mdash; Econ 211C</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2016.03.29',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/common.js"></script>
+    
+    <script type="text/javascript" src="../_static/slides.js"></script>
+    <script type="text/javascript" src="../_static/sync.js"></script>
+    <script type="text/javascript" src="../_static/controller.js"></script>
+    <script type="text/javascript" src="../_static/init.js"></script>
+    
+    
+    <link rel="top" title="Econ 211C" href="../index.html" />
+    <link rel="up" title="Vector Processes" href="../varProcesses.html" />
+    <link rel="next" title="The Kalman Filter" href="../kalman.html" />
+    <link rel="prev" title="Vector Autoregression" href="var.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  
+<article class="slide level-1" id="autocovariances-of-vector-processes">
+
+<h1>Autocovariances of Vector Processes</h1>
+
+
+
+
+
+</article>
+<article class="slide level-2" id="vector-autocovariance">
+
+<h2>Vector Autocovariance</h2>
+
+<p>Given an <span class="math">\(\smash{n}\)</span> -dimensional, weakly stationary vector
+process, <span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span>, the <span class="math">\(\smash{j}\)</span> th
+autocovariance matix is defined as:</p>
+<div class="math">
+\[\smash{\Gamma_{j,t} =
+E[(\boldsymbol{Y}_{t}-\boldsymbol{\mu})(\boldsymbol{Y}_{t-j} -
+\boldsymbol{\mu})^{'}]}.\]</div>
+<p>Since <span class="math">\(\smash{Y_{1,t}}\)</span> is different from
+<span class="math">\(\smash{Y_{2,t}}\)</span>, <span class="math">\(\smash{\Gamma_{j} \neq \Gamma_{-j}}\)</span>:</p>
+<div class="math">
+\[\smash{\Gamma_{j}(1,2) = Cov(Y_{1,t},Y_{2,t-j}) \neq
+Cov(Y_{1,t},Y_{2,t+j}) = \Gamma_{-j}(1,2).}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id1">
+
+<h2>Vector Autocovariance</h2>
+
+<p>It is true that <span class="math">\(\smash{\Gamma_{j} = \Gamma_{-j}^{'}}\)</span>:</p>
+<div class="math">
+\[\smash{\Gamma_{j}(1,2) = Cov(Y_{1,t},Y_{2,t-j}) =
+Cov(Y_{2,t},Y_{1,t+j}) = \Gamma_{-j}(2,1).}\]</div>
+<ul class="simple">
+<li>Stationarity does impose <span class="math">\(\smash{Cov(Y_{1,t},Y_{2,t-j}) =
+Cov(Y_{1,t+j},Y_{2,t})}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="vector-ma-q-process">
+
+<h2>Vector MA(q) Process</h2>
+
+<p>A vector moving average process of order <span class="math">\(\smash{q}\)</span> is</p>
+<div class="math">
+\[\boldsymbol{Y}_{t} = \boldsymbol{\mu} + \boldsymbol{\varepsilon}_{t} +
+\Theta_{1}\boldsymbol{\varepsilon}_{t-1} +
+\Theta_{2}\boldsymbol{\varepsilon}_{t-2} + \ldots +
+\Theta_{q}\boldsymbol{\varepsilon}_{t-q}, \,\,\,
+\boldsymbol{\varepsilon}_{t}\overset{i.i.d}{\sim}
+WN(\boldsymbol{0},\Omega),\]</div>
+<p>where <span class="math">\(\smash{\Theta_{j}}\)</span> is an <span class="math">\(\smash{N \times N}\)</span>
+matrix of <span class="math">\(\smash{MA}\)</span> coefficients for <span class="math">\(\smash{j =
+1,\ldots,q}\)</span>.</p>
+<ul class="simple">
+<li>We can define <span class="math">\(\smash{\Theta_{0} = I_{n}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Clearly <span class="math">\(\smash{E[\boldsymbol{Y}_{t}] = \boldsymbol{\mu}
+\,\,\, \forall \, t}\)</span>.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="vector-ma-q-autocovariances">
+
+<h2>Vector MA(q) Autocovariances</h2>
+
+<p>The jth autocovariance matrix is:</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\Gamma_{j} &amp; =
+E[(\boldsymbol{Y}_{t}-\boldsymbol{\mu})(\boldsymbol{Y}_{t-j} -
+\boldsymbol{\mu})^{'}] \\
+&amp; = E[(\Theta_{0}\boldsymbol{\varepsilon}_{t} +
+\Theta_{1}\boldsymbol{\varepsilon}_{t-1} + \ldots +
+\Theta_{q}\boldsymbol{\varepsilon}_{t-q}) \\
+&amp; \hspace{1.5in} \times (\Theta_{0}\boldsymbol{\varepsilon}_{t-j} +
+\Theta_{1}\boldsymbol{\varepsilon}_{t-j-1} + \ldots +
+\Theta_{q}\boldsymbol{\varepsilon}_{t-j-q})^{'}]
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id2">
+
+<h2>Vector MA(q) Autocovariances</h2>
+
+<ul class="simple">
+<li>For <span class="math">\(\smash{|j| &gt; q: \Gamma_{j} = \boldsymbol{0}_{N \times N}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>For <span class="math">\(\smash{j = 0}:\)</span></li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align}
+\Gamma_{0} &amp; = \Theta_{0}\Omega \Theta_{0}^{'} + \Theta_{1} \Omega
+\Theta_{1}^{'} + \ldots + \Theta_{q} \Omega \Theta_{q}^{'} \\
+&amp; = \sum_{i=0}^{q} \Theta_{i} \Omega \Theta_{i}^{'}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>For <span class="math">\(\smash{j = 1,\ldots,q}\)</span>:</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align}
+\Gamma_{j} &amp; = \Theta_{j}\Omega \Theta_{0}^{'} + \Theta_{j+1}
+\Omega \Theta_{1}^{'} + \ldots + \Theta_{q} \Omega \Theta_{q-j}^{'}
+\\
+&amp; = \sum_{i=0}^{q-j} \Theta_{j+i}\Omega \Theta_{i}^{'}.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id3">
+
+<h2>Vector MA(q) Autocovariances</h2>
+
+<ul class="simple">
+<li>For <span class="math">\(\smash{j = -1,\ldots, -q}\)</span>:</li>
+</ul>
+<div class="math">
+\[\begin{split}\begin{align}
+\Gamma_{j} &amp; = \Theta_{0}\Omega \Theta_{-j}^{'} + \Theta_{1} \Omega
+\Theta_{-j+1}^{'} + \ldots + \Theta_{q+j} \Omega \Theta_{q}^{'} \\
+&amp; = \sum_{i=0}^{q+j} \Theta_{i}\Omega \Theta_{-j+i}^{'}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{\Gamma_{j}^{'} = \Gamma_{-j}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>Because 1st and 2nd moments of <span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span>
+are independent of time, the vector <span class="math">\(\smash{MA(q)}\)</span> process is
+weakly stationary.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="vector-autocovariances">
+
+<h2>Vector <span class="math">\(\smash{MA(\infty)}\)</span> Autocovariances</h2>
+
+<p>The vector <span class="math">\(\smash{MA(\infty)}\)</span> is the limit of the vector
+<span class="math">\(\smash{MA(q)}\)</span>:</p>
+<div class="math">
+\[\smash{\boldsymbol{Y}_{t} = \boldsymbol{\mu} +
+\boldsymbol{\varepsilon}_{t} + \Theta_{1}\boldsymbol{\varepsilon}_{t-1} +
+\Theta_{2}\boldsymbol{\varepsilon}_{t-2} + \ldots}\]</div>
+<ul class="simple">
+<li>The sequence of matrices
+<span class="math">\(\smash{\{\Theta_{s}\}_{s=0}^{\infty}}\)</span> is absolutely summable
+if each component sequence is absolutely summable.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id4">
+
+<h2>Vector <span class="math">\(\smash{MA(\infty)}\)</span> Autocovariances</h2>
+
+<p>If <span class="math">\(\smash{\{\Theta_{s}\}_{s=0}^{\infty}}\)</span> is absolutely
+summable:</p>
+<ul class="simple">
+<li><span class="math">\(\smash{E[\boldsymbol{Y}_{t}] = \boldsymbol{\mu}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\Gamma_{j} = \sum_{i=0}^{\infty}
+\Theta_{j+i}\Omega \Theta_{i}^{'}, \,\,\,\, j = 0,1,2,...}\)</span></li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> is ergodic for 1st and 2nd
+moments.</li>
+</ul>
+<ul class="simple">
+<li><span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> is stationary.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id5">
+
+<h2>Vector <span class="math">\(\smash{VAR(p)}\)</span> Autocovariances</h2>
+
+<p>When a stationary <span class="math">\(\smash{VAR(p)}\)</span> is expressed as a vector
+<span class="math">\(\smash{MA(\infty)}\)</span>, it satisfies the absolute summability
+condition.</p>
+<ul class="simple">
+<li><span class="math">\(\smash{\Theta_{s} = F^{s}= T\Lambda^{s} T^{-1}}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>The component-wise sum of absolute values over <span class="math">\(\smash{s =
+0,1,2,...}\)</span> will be a weighted average of absolute values of
+eigenvalues raised to powers.</li>
+</ul>
+<ul class="simple">
+<li>Because of stationarity, <span class="math">\(\smash{|\lambda_{i}| &lt; 1, i =
+1,...,np}\)</span>, which means <span class="math">\(\smash{\{F^{s}\}_{s=0}^{\infty}}\)</span> is
+absolutely summable.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id6">
+
+<h2>Vector <span class="math">\(\smash{VAR(p)}\)</span> Autocovariances</h2>
+
+<p>Recall that a <span class="math">\(\smash{VAR(p)}\)</span> can be expressed as:</p>
+<div class="math">
+\[\smash{\boldsymbol{\xi}_{t} = F\boldsymbol{\xi}_{t-1} +
+\boldsymbol{v}_{t}}\]</div>
+<p>In this case</p>
+<div class="math">
+\[\begin{split}\smash{\Sigma = E[\boldsymbol{\xi}_{t}\boldsymbol{\xi}_{t}^{'}] =
+\left[\begin{array}{cccc} \Gamma_{0} &amp; \Gamma_{1} &amp; \ldots &amp;
+\Gamma_{p-1} \\ \Gamma_{1}^{'} &amp; \Gamma_{0} &amp; \ldots &amp; \Gamma_{p-2}
+\\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\Gamma_{p-1}^{'} &amp;
+\Gamma_{p-2}^{'} &amp; \ldots &amp; \Gamma_{0} \\ \end{array} \right]}.\end{split}\]</div>
+<div class="math">
+\[\,\,\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="id7">
+
+<h2>Vector <span class="math">\(\smash{VAR(p)}\)</span> Autocovariances</h2>
+
+<p>By the definition of <span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span>,</p>
+<div class="math">
+\[\begin{split}\begin{align}
+\Sigma &amp; = E[\boldsymbol{\xi}_{t}\boldsymbol{\xi}_{t}^{'}] \\
+&amp; = E\left[(F\boldsymbol{\xi}_{t-1} +
+\boldsymbol{v}_{t})(F\boldsymbol{\xi}_{t-1} +
+\boldsymbol{v}_{t})^{'}\right] \\
+&amp; = F\underset{\Sigma}{\underbrace{E[\boldsymbol{\xi}_{t-1}
+\boldsymbol{\xi}_{t-1}^{'}]}}F^{'} +
+\underset{Q}{\underbrace{E[\boldsymbol{v}_{t}\boldsymbol{v}_{t}^{'}]}}
+\\
+&amp; = F\Sigma F^{'} + Q.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+<article class="slide level-2" id="using-the-vec-operator">
+
+<h2>Using the Vec Operator</h2>
+
+<p>In general</p>
+<div class="math">
+\[\smash{Vec(ABC) = C^{'}\bigotimes A \cdot Vec(B)}.\]</div>
+<p>Thus,</p>
+<div class="math">
+\[\begin{split}\begin{gather}
+Vec(\Sigma) = F \bigotimes F\cdot Vec(\Sigma) + Vec(Q) \\
+\implies Vec(\Sigma) = [I - F\bigotimes F]^{-1} \cdot Vec(Q).
+\end{gather}\end{split}\]</div>
+<ul class="simple">
+<li><span class="math">\(\smash{F \bigotimes F}\)</span> is an <span class="math">\(\smash{(np)^{2} \times
+(np)^{2}}\)</span> matrix.</li>
+</ul>
+<ul class="simple">
+<li>Because all eigenvalues of <span class="math">\(\smash{F}\)</span> lie inside the unit
+circle, so do all eigenvalues of <span class="math">\(\smash{F\bigotimes F}\)</span>,
+which means <span class="math">\(\smash{F\bigotimes F}\)</span> is invertible.</li>
+</ul>
+
+
+
+
+</article>
+<article class="slide level-2" id="id8">
+
+<h2>Vector <span class="math">\(\smash{VAR(p)}\)</span> Autocovariances</h2>
+
+<div class="math">
+\[\begin{split}\begin{align}
+\Sigma_{j} &amp; = E[\boldsymbol{\xi}_{t}\boldsymbol{\xi}_{t-j}^{'}] \\
+&amp; = FE[\boldsymbol{\xi}_{t-1}\boldsymbol{\xi}_{t-j}^{'}] \\
+&amp; = F\Sigma_{j-1}, j= 1,2,3,... \\
+\implies \Sigma_{j} &amp; = F^{j}\Sigma.
+\end{align}\end{split}\]</div>
+
+
+
+
+</article>
+
+</section>
+
+<section id="slide_notes">
+
+</section>
+
+  </body>
+</html>

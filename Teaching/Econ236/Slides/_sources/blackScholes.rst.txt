@@ -1,0 +1,389 @@
+.. slideconf::
+   :slide_classes: appear
+
+
+==============================================================================
+Black-Scholes-Merton Model
+==============================================================================
+
+Overview
+==============================================================================
+The Black-Scholes-Merton (BSM) model provides a simple formula for
+computing the price of an option.
+
+.. raw:: <!--pause-->
+
+- It is derived in a fashion similar to the binomial option pricing
+  model.
+
+.. raw:: <!--pause-->
+
+- A riskless portfolio is obtained by buying :math:`\smash{\Delta}`
+  shares of the underlying asset and shorting a single option.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\Delta}` represents :math:`\smash{\frac{\partial
+  C}{\partial S}}`, where :math:`\smash{S}` is the price of the
+  underlying and :math:`\smash{C}` is the price of the option.
+
+.. raw:: <!--pause-->
+
+- Unlike the binomial model, the BSM model :math:`\smash{\Delta}` is
+  only valid for an infinitesimal length of time.
+
+BSM Assumptions
+==============================================================================
+The BSM model depends on the following assumptions.
+
+.. raw:: <!--pause-->
+
+- The price of the underlying asset follows geometric Brownian motion
+  with parameters :math:`\smash{\mu}` and :math:`\smash{\sigma}`.
+
+- There is no restriction on short selling.
+
+- There are no transaction costs or taxes.
+
+- All assets are perfectly divisible.
+
+- The underlying doesn't pay dividends.
+
+- There are no riskless arbitrage opportunities.
+
+- Asset trading occurs continuously.
+
+- The risk-free rate, :math:`\smash{r}` is constant and the same for
+  all maturities.
+
+BSM and Ito's Lemma
+==============================================================================
+Suppose the price of an asset follows geometric Brownian motion:
+
+.. math::
+
+   \begin{align}
+   dS & = \mu S dt + \sigma S dZ.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+According to Ito's lemma, the price of a derivative,
+:math:`\smash{f}`, follows:
+
+.. math::
+
+   \begin{align}
+   df & = \left(\frac{\partial f}{\partial S} \mu S + \frac{\partial
+   f}{\partial t} + \frac{1}{2} \frac{\partial^2 f}{\partial S^2}
+   \sigma^2 S^2 \right) dt + \frac{\partial f}{\partial S} \sigma S
+   dZ.
+   \end{align}
+
+A Riskless Portfolio
+==============================================================================
+Consider a portfolio that is short one unit of the derivative and long
+:math:`\smash{\frac{\partial f}{\partial S}}` units of the underlying:
+
+.. math::
+
+   \begin{align}
+   \Pi & = -f + \frac{\partial f}{\partial S} S \\
+   \Rightarrow d \Pi & = -df + \frac{\partial f}{\partial S} dS \\
+   & = \left(-\frac{\partial f}{\partial t} - \frac{1}{2}
+   \frac{\partial^2 f}{\partial S^2} \sigma^2 S^2\right) dt.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+Note that the portfolio is not affected by :math:`\smash{Z}`, so it is
+riskless.
+
+A Riskless Portfolio
+==============================================================================
+- The portfolio must earn the risk-free rate of return over period
+  :math:`\smash{dt}`.
+
+.. math::
+
+   \begin{gather}
+   d \Pi = r \Pi dt \\
+   \Rightarrow \left(\frac{\partial f}{\partial t} + \frac{1}{2}
+   \frac{\partial^2 f}{\partial S^2} \sigma^2 S^2\right) dt =
+   r\left(f - \frac{\partial f}{\partial S} S\right) dt \\
+   \Rightarrow rf = \frac{\partial f}{\partial t} + \frac{\partial
+   f}{\partial S} rS + \frac{1}{2} \frac{\partial^2 f}{\partial S^2}
+   \sigma^2 S^2.
+   \end{gather}
+
+.. raw:: <!--pause-->
+
+- This is the BSM differential equation.
+
+Boundary Conditions
+==============================================================================
+The BSM differential equation is true for any derivative that depends
+on :math:`\smash{S}`.
+
+.. raw:: <!--pause-->
+
+- Boundary conditions determine the price of a particular derivative.
+
+.. raw:: <!--pause-->
+
+- For example, the boundary condition for a call option is its
+  terminal value: :math:`\smash{f = \max(S-X,0)}`.
+
+.. raw:: <!--pause-->
+
+- Likewise, the boundary condition for a put option is its
+  terminal value: :math:`\smash{f = \max(X-S,0)}`.
+
+BSM Price of Forward
+==============================================================================
+Suppose that some time ago a forward contract was entered into with
+delivery price :math:`\smash{K}` and maturity :math:`\smash{T}`.
+
+.. raw:: <!--pause-->
+
+- Recall that at intermediate date :math:`\smash{t}` the value of the
+  forward is :math:`\smash{f = S - K e^{-r(T-t)}}`.
+
+.. raw:: <!--pause-->
+
+- It follows:
+
+.. math::
+
+   \begin{align}
+   \frac{\partial f}{\partial t} = -r K e^{-r(T-t)} \,\,\,\,
+   \frac{\partial f}{\partial S} = 1 \,\,\,\, \frac{\partial^2
+   f}{\partial S^2} = 0.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- Substituting these into the BSM equation, :math:`\smash{rf = rS - rK
+  e^{-r(T-t)}}`, which is true.
+
+Risk-Neutral Valuation
+==============================================================================
+A basic principle of asset pricing is that investors demand higher
+expected return, :math:`\smash{\mu}`, in the presence of higher
+volatility, :math:`\smash{\sigma}`.
+
+.. raw:: <!--pause-->
+
+- Note that :math:`\smash{\mu}` doesn't appear in the BSM differential
+  equation.
+
+.. raw:: <!--pause-->
+
+- This means we can treat investors *as if* they are risk neutral.
+
+.. raw:: <!--pause-->
+
+- That is, we can value assets under the assumption that investors
+  only demand expected return :math:`\smash{r}`, even though they
+  aren't really risk neutral.
+
+.. raw:: <!--pause-->
+
+- The practical implication is that once we compute future asset
+  payoffs, we can discount them at the risk-free rate (implicitly
+  assuming this is the rate of return that investors demand).
+
+BSM Option Pricing Formulas
+==============================================================================
+The BSM option pricing formulas are:
+
+.. math::
+
+   \begin{align}
+   C & = S_0 \Phi(d_1) - X e^{-rT} \Phi(d_2) \\
+   P & = X e^{-rT} \Phi(-d_2) - S_0 \Phi(-d_1)\\
+   d_1 & = \frac{\log(S_0/X) + (r+\sigma^2/2)T}{\sigma \sqrt{T}} \\
+   d_2 & = \frac{\log(S_0/X) + (r-\sigma^2/2)T}{\sigma \sqrt{T}} = d_1
+   - \sigma \sqrt{T}.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- These satisfy the BSM differential equation.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\Phi(x)}` represents the standard Normal CDF:
+  :math:`\smash{P(X \leq x)}` when :math:`\smash{X \sim N(0,1)}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{C}` and :math:`\smash{P}` are the prices of European
+  call and put options on the underlying, :math:`\smash{S}`.
+
+Normal CDF
+==============================================================================
+.. image:: BlackScholes/normCDF.png
+   :width: 4in
+   :align: center
+
+Interpretation
+==============================================================================
+.. math::
+
+   \begin{align}
+   P(S_T \geq X) & = P\left(\log(S_T) \geq \log(X)\right) \\
+   & = P\left(\frac{\log(S_T) -
+   E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)} \geq
+   \frac{\log(X) -
+   E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)}\right) \\
+   & = 1 - \Phi\left(\frac{\log(X) -
+   E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)}\right) \\
+   & = \Phi\left(-\frac{\log(X) -
+   E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)}\right) \\
+   & = \Phi(d_2).
+   \end{align}
+
+Interpretation
+==============================================================================
+The last equation above follows because, under risk-neutrality
+:math:`\smash{E\left[\log(S_T)\right] = \log(S_0) + (r - \sigma^2/2)T}` and
+:math:`\smash{Sd\left(\log(S_T)\right) = \sigma \sqrt{T}}`:
+
+.. math::
+
+   \begin{align}
+   -\frac{\log(X) - E\left[\log(S_T)\right]}{Sd\left(\log(S_T)\right)}
+   & = \frac{\log(S_0) + (r - \sigma^2/2)T - \log(X)}{\sigma
+   \sqrt{T}} \\
+   & = \frac{\log(S_0/X) + (r - \sigma^2/2)T}{\sigma \sqrt{T}} \\
+   & = d_2.
+   \end{align}
+
+Interpretation
+==============================================================================
+:math:`\smash{\Phi(d_1)}` is similar to :math:`\smash{\Phi(d_2)}`, but
+slightly harder to interpret.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{S_0\Phi(d_1) e^{rT}}` is the expected asset price
+  (under risk neutrality), conditional on the asset expiring with
+  :math:`\smash{S_T \geq X}`.
+
+.. raw:: <!--pause-->
+
+- The expected payoff of the call option is:
+
+.. math::
+
+   \begin{align}
+   S_0 \Phi(d_1) e^{rT} - X \Phi(d_2).
+   \end{align}
+
+.. raw:: <!--pause-->
+	    
+- The present value of the call option expected payoff is:
+
+.. math::
+
+   \begin{align}
+   S_0 \Phi(d_1) - X e^{-rT} \Phi(d_2).
+   \end{align}
+
+Extreme Cases
+==============================================================================
+Suppose the current stock price :math:`\smash{S_0}` is very large
+relative to the strike :math:`\smash{X}`.
+
+.. raw:: <!--pause-->
+
+- In this case :math:`\smash{d_1}` and :math:`\smash{d_2}` are very
+  large.
+
+.. raw:: <!--pause-->
+
+- As a result :math:`\smash{\Phi(d_1)}` and :math:`\smash{\Phi(d_2)}`
+  approach 1.
+
+.. raw:: <!--pause-->
+
+- This causes the call option value to be :math:`\smash{S_0 - X
+  e^{-rT}}`.
+
+  - This is identical to a forward contract, which makes sense for a
+    deep-in-the-money call.
+
+.. raw:: <!--pause-->
+
+- Likewise :math:`\smash{\Phi(-d_1)}` and :math:`\smash{\Phi(-d_2)}`
+  approach 0.
+
+.. raw:: <!--pause-->
+
+- This causes the put option value to be 0.
+
+Extreme Cases
+==============================================================================
+Suppose :math:`\smash{\sigma \to 0}`.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{S_0 > X e^{-rT}}`, then :math:`\smash{d_1 \to
+  \infty}` and :math:`\smash{d_2 \to \infty}`, causing
+  :math:`\smash{\Phi(d_1) \to 1}` and :math:`\smash{\Phi(d_2) \to 1}`.
+
+.. raw:: <!--pause-->
+
+- The result is a value of :math:`\smash{S_0 - X e^{-rT} > 0}`, which
+  is identical to the riskless payoff :math:`\smash{\max(S_0 e^{rT} -
+  X,0)}`.
+
+.. raw:: <!--pause-->
+
+- Likewise, if :math:`\smash{S_0 < X e^{-rT}}`, then :math:`\smash{d_1
+  \to -\infty}` and :math:`\smash{d_2 \to -\infty}`, causing
+  :math:`\smash{\Phi(d_1) \to 0}` and :math:`\smash{\Phi(d_2) \to 0}`.
+
+.. raw:: <!--pause-->
+
+- The result is a value of :math:`\smash{0}`, which is identical to
+  the riskless payoff :math:`\smash{\max(S_0 e^{rT} - X,0)}`.
+
+Implied Volatility
+==============================================================================
+Volatility, :math:`\smash{\sigma}`, is the single parameter of the BSM
+model that is not directly observed.
+
+.. raw:: <!--pause-->
+
+- Typically, the BSM equation is not used to compute an option price,
+  but to compute an *implied volatility*, given an option price.
+
+.. raw:: <!--pause-->
+
+- For example, if :math:`\smash{C = 1.875}`, :math:`\smash{S_0 = 21}`,
+  :math:`\smash{X = 20}`, :math:`\smash{r = 0.1}` and :math:`\smash{T
+  = 0.25}`, what is the value that :math:`\smash{\sigma}` must take
+  for the BSM equation to hold for a European call option?
+
+VIX Index
+==============================================================================
+The VIX index is an index of implied volatilities for 30-day S\&P 500
+options (calls and puts).
+
+.. raw:: <!--pause-->
+
+- It is interpreted as the (annualized) one standard deviation move
+  (in percentage) of the S&P 500 index over the next 30 days.
+
+.. raw:: <!--pause-->
+
+- Options and futures trade on the VIX itself (as well as the S&P
+  500).
+
+Historical VIX
+==============================================================================
+.. image:: BlackScholes/vixFigure.png
+   :width: 4in
+   :align: center

@@ -1,0 +1,6 @@
+document.write('<div class="mainMenu">')
+    document.write('<div style="padding-top: 15px; text-align: right; padding-right: 10px;">')
+    document.write('<span class="mainMenuTitle"><a class="mainMenuTitle" href="'+rootFolder+'">BrigPy</a></span>')
+    document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Exercises/">Exercises</a></span>')
+    document.write('</div>')
+    document.write('</div>')

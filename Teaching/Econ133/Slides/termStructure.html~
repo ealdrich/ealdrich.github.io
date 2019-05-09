@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Term Structure of Interest Rates &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="up" title="Bonds" href="bonds.html" />
+    <link rel="next" title="Options" href="options.html" />
+    <link rel="prev" title="Bond Prices and Yields" href="bondPrices.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="the-term-structure-of-interest-rates">
+<h1>The Term Structure of Interest Rates</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="yield-curve">
+<h2>Yield Curve</h2>
+<p>Bonds of different maturities often have different yields to maturity.</p>
+<ul class="to-build simple">
+<li>The relationship between yield and maturity is summarized
+graphically in the <em>yield curve</em>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Consider several examples below.</li>
+</ul>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="to-build reference internal image-reference" href="_images/bod34698_1012_lg.jpg"><img alt="_images/bod34698_1012_lg.jpg" class="to-build align-center" src="_images/bod34698_1012_lg.jpg" style="width: 6in;" /></a>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="yield-curve-slope">
+<h2>Yield Curve Slope</h2>
+<p>An upward sloping yield curve is evidence that short-term interest
+rates are going to rise.</p>
+<ul class="to-build">
+<li><p class="first">Consider two investment strategies.</p>
+<ul class="to-build simple">
+<li>Buy and hold a two-year zero-coupon bond, offering 6% return each
+year.</li>
+</ul>
+<ul class="to-build simple">
+<li>Buy a one-year bond today, offering a 5% return over the coming
+year, and roll the investment into another one-year zero-coupon
+bond a year from now, offering an interest rate of <span class="math">\(r_2\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>These investments should be equivalent. Why?</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Yield Curve Slope</h2>
+<p>Suppose you begin with $890 to invest (the price of a two-year
+zero-coupon bond with 6% YTM.</p>
+<ul class="to-build simple">
+<li>Equating the returns to each strategy gives:</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\$890 \times (1.06)^2 &amp; = \$890 \times (1.05) \times (1+r_2)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow 1 + r_2 &amp; = \frac{1.06^2}{1.05} = 1.0701\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow r_2 &amp; = 0.0701.\end{split}\]</div>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="two-investment-strategies">
+<h2>Two Investment Strategies</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/pg484_1.jpg"><img alt="_images/pg484_1.jpg" class="align-center" src="_images/pg484_1.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="spot-rates-and-short-rates">
+<h2>Spot Rates and Short Rates</h2>
+<p>We distinguish between two types of interest rates.</p>
+<ul class="to-build simple">
+<li>Spot rate: the rate offered <em>today</em> on zero-coupon bonds of
+different maturities.<ul class="to-build">
+<li>In the previous example, the one-year spot rate is 5% and the two
+year spot rate is 6%.</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>Short rate: the rate for given time interval (one year) offered at
+different points in time.<ul class="to-build">
+<li>In the previous example, the first-year short rate is 5% (same as
+the spot!) and the second-year short rate is 7.01%.</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Spot Rates and Short Rates</h2>
+<p>The spot rate for a given period should be the geometric average of
+short rates over that interval.</p>
+<ul class="to-build simple">
+<li>Let <span class="math">\(y_2\)</span> be the two-year spot rate.</li>
+</ul>
+<ul class="to-build simple">
+<li>Let <span class="math">\(r_1\)</span> and <span class="math">\(r_2\)</span> be the first-year and second-year
+short rates.</li>
+</ul>
+<ul class="to-build simple">
+<li>Don't forget that <span class="math">\(y_1 = r_1\)</span>.</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}(1+y_2)^2 &amp; = (1+r_1)\times(1+r_2)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow 1+y_2 &amp; = \sqrt{(1+r_1) \times (1+r_2)}.\end{split}\]</div>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Spot Rates and Short Rates</h2>
+<p>So, if the yield curve slopes up (<span class="math">\(y_2 &gt; y_1 = r_1\)</span>), we
+conclude that short-term rates will rise (<span class="math">\(r_2 &gt; r_1\)</span>).</p>
+<ul class="to-build simple">
+<li>Reverse reasoning holds for a downward sloping yield curve.</li>
+</ul>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="spot-rate-and-short-rate-example">
+<h2>Spot Rate and Short Rate Example</h2>
+<p>Assume the following spot rates and short rates:</p>
+<ul class="to-build simple">
+<li>Spots: <span class="math">\(y_1 = 0.05\)</span>, <span class="math">\(y_2 = 0.06\)</span> and <span class="math">\(y_3 =
+0.07\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Shorts: <span class="math">\(r_1 = y_1\)</span> and <span class="math">\(r_2 = 0.0701\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>What is the three-year short rate, <span class="math">\(r_3\)</span>?</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Spot Rate and Short Rate Example</h2>
+<p>Buying a three-year zero-coupon bond should be identical to buying a
+two-year zero and rolling into a one-year zero.</p>
+<div class="to-build math">
+\[\begin{split}(1+y_3)^3 &amp; = (1+y_2)^2 \times (1+r_3)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow 1.07^3 &amp; = 1.06^2 \times (1+r_3)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow r_3 &amp; = \frac{1.07^3}{1.06^2} - 1 = 0.09025.\end{split}\]</div>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Spot Rate and Short Rate Example</h2>
+<p>We know</p>
+<div class="to-build math">
+\[\begin{split}(1+y_2)^2 &amp; = (1+r_1) \times (1+r_2).\end{split}\]</div>
+<p class="to-build">So the full decomposition is</p>
+<div class="to-build math">
+\[\begin{split}(1+y_3)^3 &amp; = (1+y_2)^2 \times (1+r_3)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = (1+r_1) \times (1+r_2) \times (1+r_3)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow 1.07^3 &amp; = 1.05 \times 1.0701 \times 1.09025.\end{split}\]</div>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Spot Rate and Short Rate Example</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/pg486_3.jpg"><img alt="_images/pg486_3.jpg" class="align-center" src="_images/pg486_3.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="general-short-rates">
+<h2>General Short Rates</h2>
+<p>We can generalize the previous results.</p>
+<ul class="to-build simple">
+<li>Investing in an <span class="math">\(n\)</span> period zero-coupon bond should be the same
+as investing in an <span class="math">\(n-1\)</span> zero and rolling into a one-period
+zero at time <span class="math">\(n-1\)</span>.</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}(1+y_n)^n &amp; = (1+y_{n-1})^{n-1} \times (1+r_n)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow 1+r_n &amp; = \frac{(1+y_n)^n}{(1+y_{n-1})^{n-1}}.\end{split}\]</div>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="forward-rates">
+<h2>Forward Rates</h2>
+<p>In the development above, we assumed no uncertainty.</p>
+<ul class="to-build simple">
+<li>All future rates were known at time zero.</li>
+</ul>
+<ul class="to-build simple">
+<li>In reality, we don't have perfect knowledge of time <span class="math">\(n\)</span> short
+rates at time zero.</li>
+</ul>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="id7">
+<h2>Forward Rates</h2>
+<p>To distinguish between actual short rates that occur in the future, we
+define the forward rate to be</p>
+<div class="to-build math">
+\[\begin{split}\Rightarrow 1+f_n &amp; = \frac{(1+y_n)^n}{(1+y_{n-1})^{n-1}}.\end{split}\]</div>
+<ul class="to-build simple">
+<li>The time <span class="math">\(t=n\)</span> forward rate is the break-even interest rate
+that equates the returns of an n-period zero-coupon bond with an
+<span class="math">\((n-1)\)</span> -period zero rolled into a one-period zero.</li>
+</ul>
+<ul class="to-build simple">
+<li>It may not be equal to the expected future short rate.</li>
+</ul>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="expectations-hypothesis">
+<h2>Expectations Hypothesis</h2>
+<p>The <em>Expectations Hypothesis</em> of the yield curve says that expected
+short rates equal forward rates:</p>
+<div class="to-build math">
+\[\begin{split}E[r_n] &amp; = f_n\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow (1+y_n)^n &amp; = (1+y_{n-1})^{n-1}(1+E[r_n]).\end{split}\]</div>
+<ul class="to-build simple">
+<li>If the yield curve slopes upward, short rates are expected to rise:
+<span class="math">\(E[r_n] &gt; E[r_{n-1}] &gt; r_1 = y_1\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the yield curve slopes downward, short rates are expected to
+fall: <span class="math">\(E[r_n] &lt; E[r_{n-1}] &lt; r_1 = y_1\)</span>.</li>
+</ul>
+
+<div class="slide-no">16</div>
+
+</article>
+<article class="appear slide level-2" id="liquidity-preference-theory">
+<h2>Liquidity Preference Theory</h2>
+<p>According to the <em>Liquidity Preference Theory</em> of the yield curve,
+investors must be compensated for holding longer-term bonds.</p>
+<ul class="to-build simple">
+<li>Longer-term bonds are subject to greater risk, and so investors
+should demand a premium for holding them.</li>
+</ul>
+<ul class="to-build simple">
+<li>In reality, a <em>premium</em> means that investors will only buy them for
+a lower price (which means greater yield).</li>
+</ul>
+
+<div class="slide-no">17</div>
+
+</article>
+<article class="appear slide level-2" id="id8">
+<h2>Liquidity Preference Theory</h2>
+<p>The Liquidity Preference Theory can be expressed as forward rates
+being equal to expected short rates plus a premium, <span class="math">\(\phi\)</span>:</p>
+<div class="to-build math">
+\[\begin{split}f_n &amp; = E[r_n] + \phi\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow (1+y_n)^n &amp; = (1+y_{n-1})^{n-1}(1+E[r_n] + \phi).\end{split}\]</div>
+<ul class="to-build simple">
+<li>According to this theory, expected short rates <em>can be</em> constant if
+the yield curve is upward sloping.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the yield curve is downward sloping, expected short rates must be
+falling. Why?</li>
+</ul>
+
+<div class="slide-no">18</div>
+
+</article>
+<article class="appear slide level-2" id="liquidity-preference-example">
+<h2>Liquidity Preference Example</h2>
+<p>Suppose you buy a two-year bond and that</p>
+<ul class="to-build simple">
+<li>Short rates for the next two years are constant at 8%: <span class="math">\(r_1 =
+E[r_2] = 0.08\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>The liquidity premium for year two is 1%: <span class="math">\(\phi = 0.01\)</span>.</li>
+</ul>
+
+<div class="slide-no">19</div>
+
+</article>
+<article class="appear slide level-2" id="id9">
+<h2>Liquidity Preference Example</h2>
+<p>What is the yield to maturity of the two year bond?</p>
+<div class="to-build math">
+\[\begin{split}(1+y_2)^2 &amp; = (1+r_1)(1+f_2) \hspace{1.25in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = (1+r_1)(1+E[r_2]+\phi)\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = (1.08)(1.09) \hspace{0.8in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow 1+y_2 &amp; = \sqrt{1.08 \times 1.09} \hspace{1.4in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = 1.085. \hspace{1.2in}\end{split}\]</div>
+<ul class="to-build simple">
+<li>So the yield curve slopes up (<span class="math">\(y_2 &gt; y_1\)</span>) even though
+expected short rates are constant.</li>
+</ul>
+
+<div class="slide-no">20</div>
+
+</article>
+<article class="appear slide level-2" id="expectations-hypothesis-example">
+<h2>Expectations Hypothesis Example</h2>
+<p>However, if there is no liquidity premium</p>
+<div class="to-build math">
+\[\begin{split}(1+y_2)^2 &amp; = (1+r_1)(1+f_2) \hspace{0.95in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = (1+r_1)(1+E[r_2]) \hspace{0.02in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = (1.08)(1.08) \hspace{0.5in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}\Rightarrow 1+y_2 &amp; = \sqrt{1.08 \times 1.08} \hspace{1.1in}\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}&amp; = 1.08. \hspace{1in}\end{split}\]</div>
+<ul class="to-build simple">
+<li>Now the yield curve is flat.</li>
+</ul>
+
+<div class="slide-no">21</div>
+
+</article>
+<article class="appear slide level-2" id="implications-of-the-theories">
+<h2>Implications of the Theories</h2>
+<p>The slope of the yield curve <em>always</em> determines whether <em>forward
+rates</em> are rising or falling.</p>
+<ul class="to-build simple">
+<li><span class="math">\(y_2 &gt; y_1\)</span> means <span class="math">\(f_2 &gt; f_1\)</span> (by the definition of
+forward rates!).</li>
+</ul>
+<ul class="to-build simple">
+<li>If the Expectations Hypothesis holds, <span class="math">\(E[r_2] = f_2\)</span>, so
+<span class="math">\(y_2 &gt; y_1\)</span> means <span class="math">\(E[r_2] &gt; r_1 = f_1 = y_1\)</span>.</li>
+</ul>
+
+<div class="slide-no">22</div>
+
+</article>
+<article class="appear slide level-2" id="id10">
+<h2>Implications of the Theories</h2>
+<ul>
+<li><p class="first">If the Liquidity Preference Theory holds, we have no guarantee that
+<span class="math">\(E[r_2] &gt; r_1\)</span> if <span class="math">\(y_2 &gt; y_1\)</span>.</p>
+<ul class="to-build simple">
+<li>Short rates could be constant with a moderate liquidity premium.</li>
+</ul>
+<ul class="to-build simple">
+<li>Short rates could be rising some, with a small liquidity premium.</li>
+</ul>
+<ul class="to-build simple">
+<li>Short rates could be falling, with a large liquidity premium.</li>
+</ul>
+<ul class="to-build simple">
+<li>What about if <span class="math">\(y_2 &lt; y_1\)</span>?</li>
+</ul>
+</li>
+</ul>
+
+<div class="slide-no">23</div>
+
+</article>
+<article class="appear slide level-2" id="exp-hypothesis-vs-liquidity-pref-theory">
+<h2>Exp. Hypothesis vs. Liquidity Pref Theory</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1014_lg.jpg"><img alt="_images/bod34698_1014_lg.jpg" class="align-center" src="_images/bod34698_1014_lg.jpg" style="width: 4.8in;" /></a>
+
+<div class="slide-no">24</div>
+
+</article>
+<article class="appear slide level-2" id="historical-term-spread">
+<h2>Historical Term Spread</h2>
+<p><span class="math">\(\qquad\)</span></p>
+<a class="reference internal image-reference" href="_images/bod34698_1015_lg.jpg"><img alt="_images/bod34698_1015_lg.jpg" class="align-center" src="_images/bod34698_1015_lg.jpg" style="width: 8in;" /></a>
+
+<div class="slide-no">25</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

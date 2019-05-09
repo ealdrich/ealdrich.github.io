@@ -1,3 +1,8 @@
 document.write('<div class="subMenu">')
+document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Teaching/Econ114/">ECON 114</a></span>')
 document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Teaching/Econ133/">ECON 133</a></span>')
+document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Teaching/Econ211C/">ECON 211C</a></span>')
+document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Teaching/Econ236/">ECON 236</a></span>')
+document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Teaching/Econ294B/">ECON 294B</a></span>')
+document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Teaching/ComputationGroup/">Computation Group</a></span>')
 document.write('</div>')

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <script type="text/javascript" src="../rootDir.js">  </script>
+  <script type="text/javascript" src="../head.js">  </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  <body>
+    <div><script type="text/javascript" src="../mainMenu.js">  </script></div>
+    <div class="outer">
+    <div style="text-align: left; margin-left: 40px">
+      <div id="section"> A Basic GPU Problem </div>
+<p>The intent of this example is to provide very basic code that teaches the mechanics of writing GPGPU software. While the computations are unnecessary, it provides side-by-side comparisons of several computing languages and the manner in which a GPU can be accessed.</p>
+<p>&nbsp;</p>
+<div id="section"> Software </div>
+<p>The software is hosted at GitHub: <a class="body" href="https://github.com/ealdrich/BasicGPU">Basic GPU Repository Page</a>.</p>
+<p>The recommended method of obtaining the software is by cloning the repository&nbsp;with&nbsp;<a class="body" href="http://git-scm.com/">Git</a>. Otherwise, a ZIP archive can be downloaded from the repository page.</p>
+<p>&nbsp;The repository contains several different implementations of the problem described in the next section:</p>
+<ul>
+<li>Single-threaded, sequential C++, making use of the&nbsp;<a class="body" href="http://eigen.tuxfamily.org/index.php?title=Main_Page">Eigen template library</a>&nbsp;for linear algebra computations.</li>
+<li>Single-threaded, sequential Matlab. This is done to compare with what the majority of economists would use to solve the problem.</li>
+<li><a class="body" href="http://thrust.github.com/">Thrust</a>, using the OpenMP backend to solve the problem in parallel on several CPU cores.</li>
+<li><a class="body" href="http://thrust.github.com/">Thrust</a>, using the CUDA backend to solve the problem in parallel on the GPU.&nbsp;</li>
+<li>CUDA C.</li>
+</ul>
+<p>The side-by-side implementations allow users to learn the basics of massively parallel programming by comparing code with familiar benchmarks (Matlab or sequential&nbsp;C++).</p>
+<p>&nbsp;</p>
+<div id="section"> Problem Description </div>
+<p>Consider the second-order polynomial</p>
+<p>\begin{equation} y = ax^2 + bx + c. \label{objective} \end{equation}</p>
+<p>The figure below depicts a range of these polynomials for $a \in [-0.9, -0.1]$, $b = 2.3$ and $c = 5.4$, where the darkest line corresponds to the case $a = -.0.1$.</p>
+<p>&nbsp;<span class="full-image-block ssNonEditable"><span><img src="polynomials.png" alt="" width="500"/></span></span></p>
+<p>For a given set of parameter values, it is trivial to show that the maximum occurs at</p>
+<p>\begin{equation} x = \frac{b}{2a}. \label{max} \end{equation}</p>
+<p>However, for the purposes of demonstrating the mechanics of parallel computing, the software uses Newton's Method to numerically compute the maximum for each $a \in [-0.9, -0.1]$.</p>
+<p>&nbsp;</p>
+<div id="section"> Algorithm </div>
+<ol>
+<li>Discretize the range of the second-order parameter, $a$, so that it is an equally-spaced grid of $N$ values between -0.9 and -0.1. Denote the grid $\mathcal{A}$.</li>
+<li><strong>for</strong> each $a \in \mathcal{A}$</li>
+<li>&nbsp; &nbsp; Find the maximum of Equation \eqref{objective} via Newton's Method.</li>
+<li><strong>end for</strong></li>
+</ol>
+<p>A&nbsp;basic implementation would involve computing the maxima in Step 3 in a serial fashion for&nbsp;each value of $a \in \mathcal{A}$ in the loop at&nbsp;Step 2.&nbsp;Alternatively, with many parallel processors available, the loop at&nbsp;Step 2 could be eliminated and the&nbsp;optimization at Step 3 could be assigned&nbsp;to an individual processor and computed in parallel for each $a \in \mathcal{A}$.</p>
+<div></div>
+    </div>
+  </body>

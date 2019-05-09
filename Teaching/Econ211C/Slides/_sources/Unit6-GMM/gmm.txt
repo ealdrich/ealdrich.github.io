@@ -1,0 +1,226 @@
+==============================================================================
+Generalized Method of Moments
+==============================================================================
+
+Setup
+==============================================================================
+Let :math:`\smash{\boldsymbol{Y}_t}` be an :math:`\smash{(n \times
+1)}` vector of random variables and
+:math:`\smash{\boldsymbol{\theta}}` a :math:`\smash{(k \times 1)}` vector
+of parameters governing the process
+:math:`\smash{\{\boldsymbol{Y}_{t}\}}`.
+
+.. raw:: <!--pause-->
+
+- Denote the true parameter vector as
+  :math:`\smash{\boldsymbol{\theta}_{0}}`.
+
+Moment Conditions
+==============================================================================
+Suppose we can specify an :math:`\smash{(r \times 1)}` vector valued
+function
+:math:`\smash{\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t}):
+(\mathbb{R}^{k} \times \mathbb{R}^{n}) \rightarrow
+\mathbb{R}^{r}}` such that:
+
+.. math::
+
+   \smash{E[\boldsymbol{h}(\boldsymbol{\theta}_{0},\boldsymbol{Y}_{t})]
+   = 0, \,\,\, \text{where} \,\,\, r \ge k}.
+
+.. raw:: <!--pause-->
+
+Define :math:`\smash{\boldsymbol{\mathcal{Y}}_t = (\boldsymbol{y}_1,
+\ldots, \boldsymbol{y}_t)}` and
+
+.. math::
+
+   \smash{\boldsymbol{g}_{T}(\boldsymbol{\theta}|
+   \boldsymbol{\mathcal{Y}}_T) = \frac{1}{T} \sum_{t=1}^{T}
+   \boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})}.
+
+.. raw:: <!--pause-->
+
+Note that :math:`\smash{\boldsymbol{g}_{T}(\boldsymbol{\theta}|
+\boldsymbol{\mathcal{Y}}_T): \mathbb{R}^{k} \rightarrow
+\mathbb{R}^{r}}`.
+
+GMM Estimator
+==============================================================================
+We want to choose :math:`\smash{\hat{\boldsymbol{\theta}}_{gmm}}` such that the
+sample moments :math:`\smash{\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}_{gmm}|
+\boldsymbol{\mathcal{Y}}_T)}` are close to zero.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{r = k}`, we can choose
+  :math:`\smash{\hat{\boldsymbol{\theta}}_{gmm}}` such that
+  :math:`\smash{\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}_{gmm}|
+  \boldsymbol{\mathcal{Y}}_T) = 0}` because we have
+  :math:`\smash{k}` equations and :math:`\smash{k}` unknowns.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{r > k}` we have more equations than unknowns; in
+  general there is no :math:`\smash{\hat{\boldsymbol{\theta}}_{gmm}}` such that
+  :math:`\smash{\boldsymbol{g}_{T}(\hat{\boldsymbol{\theta}}_{gmm}|
+  \boldsymbol{\mathcal{Y}}_T) = 0}`.
+
+GMM Estimator
+==============================================================================
+If :math:`\smash{r > k}`, we minimize a quadratic form:
+
+.. math::
+
+   \smash{\underset{1 \times
+   1}{\underbrace{Q_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)}}
+   = \underset{(1 \times
+   r)}{\underbrace{\boldsymbol{g}_{T}(\boldsymbol{\theta}|
+   \boldsymbol{\mathcal{Y}}_T)'}}\underset{(r \times
+   r)}{\underbrace{W_{T}}}\underset{(r \times
+   1)}{\underbrace{\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)}}}.
+
+.. raw:: <!--pause-->
+
+- The matrix :math:`\smash{W_{T}}` places more weight on some moment
+  conditions and less on others.
+
+.. raw:: <!--pause-->
+
+- We might have to use numerical optimization to minimze
+  :math:`\smash{Q_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)}`.
+
+Example: t-distribution
+==============================================================================
+The method of moments estimator of the t-distribution is a special
+case of the GMM estimator.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{Y}_{t}} = Y_t`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{\theta} = \nu}`
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{W_{T} = 1}`
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t})
+  = Y_{t}^{2} -  \frac{\nu}{\nu - 2}}`.
+
+.. raw:: <!--pause-->
+
+Note that
+
+.. math::
+
+   \smash{E[Y_{t}^{2}] =  \frac{\nu}{\nu-2}}.
+
+Example: t-distribution
+==============================================================================
+.. math::
+
+   \begin{align}
+   E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t})] & =
+   E\left[Y_{t}^{2} -  \frac{\nu}{\nu-2}\right] = 0 \\
+   \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)
+   & = \frac{1}{T} \sum_{t=1}^{T} \left(y_{t}^{2} -  \frac{\nu}{\nu -
+   2}\right).
+   \end{align}
+
+.. raw:: <!--pause-->
+
+In this case, :math:`\smash{r = k = 1}`, and
+
+.. math::
+
+   \smash{Q_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T) =
+   \left[ \frac{1}{T} \sum_{t=1}^{T} \left(y_{t}^{2} -
+   \frac{\nu}{\nu - 2}\right)\right]^{2}}.
+
+.. raw:: <!--pause-->
+
+Since :math:`\smash{r = k = 1}`, :math:`\smash{\hat{\nu}_{gmm}}` can
+be chosen such that
+:math:`\smash{Q_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T) =
+0}`.
+
+Example: t-distribution with :math:`\smash{r = 2}`
+==============================================================================
+Suppose we add a moment condition for the t-distribution.
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\nu > 4}`, then
+
+.. math::
+
+   \smash{\mu_{4} = E[Y_{t}^{4}] =
+   \frac{3\nu^{2}}{(\nu-2)(\nu-4)}}.
+
+.. raw:: <!--pause-->
+
+- In this case, :math:`\smash{ r = 2 > 1 = k}`.
+
+.. raw:: <!--pause-->
+
+- We now have more moment conditions than parameters.
+
+Example: t-distribution with :math:`\smash{r = 2}`
+==============================================================================
+We map this problem into GMM form in the following way:
+
+- :math:`\smash{\boldsymbol{Y}_{t} = Y_t}`
+
+- :math:`\smash{\boldsymbol{\theta} = \nu}`
+
+
+.. math::
+
+   \begin{align}
+   W_{T} & = \left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \\ \end{array}
+   \right] \\
+   \boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t}) & =
+   \left[\begin{array}{c} Y_{t}^{2} -  \frac{\nu}{\nu - 2} \\
+   Y_{t}^{4} -  \frac{3\nu^{2}}{(\nu-2)(\nu-4)} \\ \end{array}
+   \right] \\
+   \boldsymbol{g}_{T}(\boldsymbol{\theta} |
+   \boldsymbol{\mathcal{Y}}_T) & =  \frac{1}{T} 
+   \sum_{t=1}^{T} h(\boldsymbol{\theta},\boldsymbol{y}_{t}).
+   \end{align}
+
+Example: t-distribution with :math:`\smash{r = 2}`
+==============================================================================
+The weighting matrix :math:`\smash{W_{T} = I_2}` places equal weight
+on the two moment conditions.
+
+.. raw:: <!--pause-->
+
+- We could alter this matrix to emphasize one condition more than
+  another.
+
+
+GMM Consistency
+==============================================================================
+If :math:`\smash{\boldsymbol{Y}_{t}}` is strictly stationary and
+:math:`\smash{\boldsymbol{h}}` continuous, a law of large numbers will
+hold: 
+
+.. math::
+
+   \smash{\boldsymbol{g}_{T}(\boldsymbol{\theta})
+   \overset{p}{\rightarrow}
+   E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{Y}_{t})]}.
+
+.. raw:: <!--pause-->
+
+Under certain regularity  conditions, it can be shown that 
+
+.. math::
+
+   \smash{\boldsymbol{\theta}_{gmm}  \overset{p}{\rightarrow}
+   \boldsymbol{\theta}_{0}}.

@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ML Estimation of State-Space Models &mdash; Econ 211C 2016.03.29 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
+        <link rel="up" title="The Kalman Filter" href="../kalman.html"/>
+        <link rel="next" title="Generalized Method of Moments" href="../gmmIndex.html"/>
+        <link rel="prev" title="The Kalman Filter" href="kalmanFilter.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">ML Estimation of State-Space Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Econ 211C</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../kalman.html">The Kalman Filter</a> &raquo;</li>
+      
+    <li>ML Estimation of State-Space Models</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/Unit5-Kalman/kalmanMLE.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="ml-estimation-of-state-space-models">
+<h1>ML Estimation of State-Space Models<a class="headerlink" href="#ml-estimation-of-state-space-models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="kalman-filter-forecasts">
+<h2>Kalman Filter Forecasts<a class="headerlink" href="#kalman-filter-forecasts" title="Permalink to this headline">¶</a></h2>
+<p>The Kalman filter forecasts <span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and
+<span class="math">\(\smash{\hat{\boldsymbol{Y}}_{t|t-1}}\)</span> are linear projections of
+<span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span> and <span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> on
+<span class="math">\(\smash{(\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1})}\)</span>.</p>
+<ul class="simple">
+<li>They are optimal among all forecasts that are linear functions of
+<span class="math">\(\smash{(\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1})}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>If <span class="math">\(\smash{\boldsymbol{\xi}_{1}}\)</span> and
+<span class="math">\(\smash{\{\boldsymbol{w}_{t},\boldsymbol{v}_{t}\}_{t=1}^{T}}\)</span> are multivariate
+Gaussian, <span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and
+<span class="math">\(\smash{\hat{\boldsymbol{Y}}_{t|t-1}}\)</span> are optimal among <em>all</em>
+forecasts that are functions of
+<span class="math">\(\smash{(\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1})}\)</span> (linear and
+non-linear).</li>
+</ul>
+</div>
+<div class="section" id="conditional-distribution-of">
+<h2>Conditional Distribution of <span class="math">\(\smash{\boldsymbol{Y}_t}\)</span><a class="headerlink" href="#conditional-distribution-of" title="Permalink to this headline">¶</a></h2>
+<p>The distribution of
+<span class="math">\(\smash{\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}}\)</span> is also
+multivariate Gaussian, of the form:</p>
+<div class="math">
+\[\smash{\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1} \sim
+MVN(A^{'}\boldsymbol{x}_{t} + H^{'}\hat{\boldsymbol{\xi}}_{t|t-1},H^{'}P_{t|t-1}H
++R)}\]</div>
+</div>
+<div class="section" id="id1">
+<h2>Conditional Distribution of <span class="math">\(\smash{\boldsymbol{Y}_t}\)</span><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Thus, the density function is</p>
+<div class="math">
+\[\begin{split}\begin{align}
+f_{\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},
+\boldsymbol{\mathcal{Y}}_{t-1}} &amp; (\boldsymbol{Y}_{t}|
+\boldsymbol{x}_{t},
+\boldsymbol{\mathcal{Y}}_{t-1},\boldsymbol{\theta}) \\
+&amp; = (2\pi)^{-n/2} | H^{'}P_{t|t-1}H + R|^{-1/2} \\
+&amp; \hspace{1in} \times
+\exp\bigg\{-\frac{1}{2}\left(\boldsymbol{Y}_{t} - A^{'}\boldsymbol{x}_{t} -
+H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}\right) \\
+&amp; \hspace{2.5in} \times \left(H^{'}P_{t|t-1}H +
+R\right)^{-1} \\
+&amp; \hspace{3.5in} \times \left(\boldsymbol{Y}_{t} - A^{'}\boldsymbol{x}_{t} -
+H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}\right)^{'}\bigg\}
+\end{align}\end{split}\]</div>
+<p>where <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> aggregates all known parameters in
+<span class="math">\(\smash{F, A, H, Q,}\)</span> and <span class="math">\(\smash{R}\)</span>.</p>
+</div>
+<div class="section" id="log-likelihood">
+<h2>Log-likelihood<a class="headerlink" href="#log-likelihood" title="Permalink to this headline">¶</a></h2>
+<p>The log-likelihood is the joint density</p>
+<div class="math">
+\[\smash{\ell(\boldsymbol{\theta}) =  \sum_{t=1}^{T}
+\log\left(f_{\boldsymbol{Y}_{t}|\boldsymbol{X}_{t},
+\boldsymbol{\mathcal{Y}}_{t-1}}
+(\boldsymbol{Y}_{t}|\boldsymbol{x}_{t},
+\boldsymbol{\mathcal{Y}}_{t-1},\boldsymbol{\theta})\right)}\]</div>
+<ul class="simple">
+<li>The log-likelihood can be maximized numerically with respect to
+<span class="math">\(\smash{F(\boldsymbol{\theta}), A(\boldsymbol{\theta}), H(\boldsymbol{\theta}),
+Q(\boldsymbol{\theta})}\)</span>, and <span class="math">\(\smash{R(\boldsymbol{\theta})}\)</span>.</li>
+</ul>
+<ul class="simple">
+<li>This is an exact log likelihood and yields exact MLEs.</li>
+</ul>
+<ul class="simple">
+<li>Maximum likelihood estimation for <span class="math">\(\smash{MA}\)</span> and
+<span class="math">\(\smash{ARMA}\)</span> can be performed in this manner.</li>
+</ul>
+</div>
+<div class="section" id="basic-prescription">
+<h2>Basic Prescription<a class="headerlink" href="#basic-prescription" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Guess <span class="math">\(\smash{\boldsymbol{\theta}^{(0)}}\)</span></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Given <span class="math">\(\smash{\boldsymbol{\theta}^{(s)}}\)</span>, compute
+<span class="math">\(\smash{F(\boldsymbol{\theta}^{(s)}), A(\boldsymbol{\theta}^{(s)}),
+H(\boldsymbol{\theta}^{(s)}), Q(\boldsymbol{\theta}^{(s)}),}\)</span> and
+<span class="math">\(\smash{R(\boldsymbol{\theta}^{(s)})}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Use the Kalman Filter to iteratively compute
+<span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and
+<span class="math">\(\smash{P_{t|t-1}}\)</span>, <span class="math">\(\smash{t =1,\ldots,T}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>Compute the log-likelihood using
+<span class="math">\(\smash{H(\boldsymbol{\theta}^{(s)}), A(\boldsymbol{\theta}^{(s)}),
+R(\boldsymbol{\theta}^{(s)})}\)</span>, and
+<span class="math">\(\smash{\{\hat{\boldsymbol{\xi}}_{t|t-1},P_{t|t-1}\}_{t=1}^{T}}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li>Use a numerical method to update
+<span class="math">\(\smash{\boldsymbol{\theta}^{(s+1)}}\)</span>.</li>
+</ol>
+<ol class="arabic simple" start="6">
+<li>If <span class="math">\(\smash{||\boldsymbol{\theta}^{(s+1)} - \boldsymbol{\theta}^{(s)}|| &lt;
+\tau}\)</span>, stop.  Otherwise, set <span class="math">\(\smash{i = i +1}\)</span> and return
+to step 2.</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>Basic Prescription<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Updating <span class="math">\(\smash{\boldsymbol{\theta}^{(i)} \rightarrow
+\boldsymbol{\theta}^{(i+1)}}\)</span> may involve numerical or analytical
+derivatives.</p>
+<ul class="simple">
+<li>Analytical derivatives of the log likelihood with respect to each
+<span class="math">\(\smash{\theta_{i}}\)</span> will involve</li>
+</ul>
+<div class="math">
+\[\smash{ \frac{\partial \hat{\boldsymbol{\xi}}_{t|t-1}
+(\boldsymbol{\theta})}{\partial \theta_{i}} \hspace{4pt} \text{
+and } \hspace{4pt} \frac{\partial P_{t|t-1}}{\partial
+\theta_{i}}}.\]</div>
+<ul class="simple">
+<li>These derivatives can be updated recursively similar to
+<span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and <span class="math">\(\smash{P_{t|t-1}}\)</span>.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gmmIndex.html" class="btn btn-neutral float-right" title="Generalized Method of Moments">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kalmanFilter.html" class="btn btn-neutral" title="The Kalman Filter"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Eric M. Aldrich.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

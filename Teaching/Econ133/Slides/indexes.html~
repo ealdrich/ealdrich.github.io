@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Indexes and Funds &mdash; Econ 133 - Security Markets and Financial Institutions</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/single.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="top" title="Econ 133 - Security Markets and Financial Institutions" href="index.html" />
+    <link rel="up" title="Markets" href="markets.html" />
+    <link rel="next" title="Trading" href="trading.html" />
+    <link rel="prev" title="Asset Classes" href="assetClasses.html" /> 
+  </head>
+  <body>
+
+<section
+   id="slide_container"
+   class='slides layout-regular'>
+
+
+  <article class="appear slide level-1" id="indexes-and-funds">
+<h1>Indexes and Funds</h1>
+
+<div class="slide-no">1</div>
+
+</article>
+<article class="appear slide level-2" id="indexes">
+<h2>Indexes</h2>
+<p>Indexes are weighted averages of asset characteristics.</p>
+<ul class="to-build simple">
+<li>For example, it might be a weighted average of stock prices, stock
+returns, or bond yields.</li>
+</ul>
+<ul class="to-build">
+<li><p class="first">The two most widely cited indexes are:</p>
+<ul class="to-build simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Djia">The Dow Jones Industrial Average (DJIA)</a>.</li>
+</ul>
+<ul class="to-build simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/S%26P_500">The Standard and Poor's Composite 500 (S&amp;P 500)</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="to-build simple">
+<li>These are reported every day in <a class="reference external" href="http://wsj.com">common news outlets</a>.</li>
+</ul>
+
+<div class="slide-no">2</div>
+
+</article>
+<article class="appear slide level-2" id="dow-jones">
+<h2>Dow Jones</h2>
+<p>The Dow Jones Industrial Average (DJIA) is the oldest U.S. index,
+dating to 1896.</p>
+<ul class="to-build simple">
+<li>Since 1926 it has included 30 large stocks.</li>
+</ul>
+<ul class="to-build simple">
+<li>Originally a simple average of the prices.</li>
+</ul>
+<ul class="to-build simple">
+<li>Percentage change in the Dow was originally the return on a
+portfolio consisting of one share invested in each of the stocks
+in the index.</li>
+</ul>
+
+<div class="slide-no">3</div>
+
+</article>
+<article class="appear slide level-2" id="id1">
+<h2>Dow Jones</h2>
+<ul class="simple">
+<li>The DJIA is a price-weighted average: the amount of money invested
+in each asset of the portfolio is proportional to the share price.</li>
+</ul>
+<ul class="to-build simple">
+<li>Due to splits and changes in the composition of the index, the DJIA
+is no longer a simple weighted average of prices.</li>
+</ul>
+
+<div class="slide-no">4</div>
+
+</article>
+<article class="appear slide level-2" id="price-weighted-indexes">
+<h2>Price-Weighted Indexes</h2>
+<p>Consider a price-weighted index of two stocks, <span class="math">\(X\)</span> and <span class="math">\(Y\)</span>
+.</p>
+<ul class="to-build simple">
+<li>The price of <span class="math">\(X\)</span> is originally $25 and increases to $30.</li>
+</ul>
+<ul class="to-build simple">
+<li>The price of <span class="math">\(Y\)</span> is originally $100 and decreases to $90.</li>
+</ul>
+<p class="to-build">Then</p>
+<ul class="to-build simple">
+<li>Initial index value = <span class="math">\(\frac{\$25+\$100}{2} = \$62.5\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Final index value = <span class="math">\(\frac{\$30+\$90}{2} = \$60\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Percentage change = <span class="math">\(\frac{-\$2.5}{\$62.5} = -0.04 = -4\%\)</span>.</li>
+</ul>
+
+<div class="slide-no">5</div>
+
+</article>
+<article class="appear slide level-2" id="id2">
+<h2>Price-Weighted Indexes</h2>
+<p>Note that price-weighted indexes give higher priced stocks more
+weight.</p>
+<ul class="to-build simple">
+<li>The percentage change in stock <span class="math">\(X\)</span> is:</li>
+</ul>
+<div class="to-build math">
+\[\frac{\$30 - \$25}{\$25} = 0.2 = 20\%\]</div>
+<ul class="to-build simple">
+<li>The percentage change in stock <span class="math">\(Y\)</span> is:</li>
+</ul>
+<div class="to-build math">
+\[\frac{\$90 - \$100}{\$100} = -0.1 = -10\%\]</div>
+
+<div class="slide-no">6</div>
+
+</article>
+<article class="appear slide level-2" id="id3">
+<h2>Price-Weighted Indexes</h2>
+<ul class="simple">
+<li>The overall percentage change in the index is</li>
+</ul>
+<div class="to-build math">
+\[\% \text{change in index} = \frac{p^0_X}{p^0_X+p^0_Y} \Delta_X +
+ \frac{p^0_Y}{p^0_X+p^0_Y} \Delta_Y\]</div>
+<div class="to-build math">
+\[= 0.2 * 0.2 + 0.8 * (-0.1) = -0.04.\]</div>
+<ul class="to-build simple">
+<li><span class="math">\(p^0_i\)</span> is the initial price of stock <span class="math">\(i\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li><span class="math">\(\Delta_i\)</span> is the percentage change in the price of stock <span class="math">\(i\)</span>.</li>
+</ul>
+
+<div class="slide-no">7</div>
+
+</article>
+<article class="appear slide level-2" id="splits-and-price-weighted-averages">
+<h2>Splits and Price-Weighted Averages</h2>
+<p>Suppose that stock <span class="math">\(Y\)</span> split, causing its price to fall to $50.</p>
+<ul class="to-build simple">
+<li>This would cause a large fall in the value of the index, unless an
+adjustment is made to the divisor.</li>
+</ul>
+<ul class="to-build simple">
+<li>That is, the index value before the split is</li>
+</ul>
+<div class="to-build math">
+\[\frac{\$25 + \$100}{2} = \$62.5.\]</div>
+<ul class="to-build simple">
+<li>The post-split divisor, <span class="math">\(d\)</span>, should be the value such that</li>
+</ul>
+<div class="to-build math">
+\[\frac{\$25 + \$50}{d} = \$62.5.\]</div>
+
+<div class="slide-no">8</div>
+
+</article>
+<article class="appear slide level-2" id="id4">
+<h2>Splits and Price-Weighted Averages</h2>
+<ul class="simple">
+<li>Hence, <span class="math">\(d\)</span> falls from 2 to 1.2.</li>
+</ul>
+<ul class="to-build simple">
+<li>Notice that since the split causes the price of <span class="math">\(Y\)</span> to fall,
+it's relative weight in the portfolio will fall.</li>
+</ul>
+<ul class="to-build simple">
+<li>Movements in the price of <span class="math">\(Y\)</span> will have a smaller impact on
+the index.</li>
+</ul>
+
+<div class="slide-no">9</div>
+
+</article>
+<article class="appear slide level-2" id="standard-and-poor-s-composite-500">
+<h2>Standard and Poor's Composite 500</h2>
+<p>The S&amp;P 500 stock index has two advantages over the Dow:</p>
+<ul class="to-build simple">
+<li>It is comprised of 500 large stocks, and hence is more broadly based
+and a better indicator of the market as a whole.</li>
+</ul>
+<ul class="to-build simple">
+<li>It is a value-weighted, rather than price-weighted, index.</li>
+</ul>
+<ul class="to-build simple">
+<li>The market value or market capitalization of a firm is simply its
+total value on the market: price per share times the number of
+shares outstanding.</li>
+</ul>
+<ul class="to-build simple">
+<li>A value-weighted index weights each stock in the index according to
+its market cap.</li>
+</ul>
+
+<div class="slide-no">10</div>
+
+</article>
+<article class="appear slide level-2" id="value-weighted-indexes">
+<h2>Value-Weighted Indexes</h2>
+<p>If stock <span class="math">\(X\)</span> currently has 20 shares trading in the market and
+stock <span class="math">\(Y\)</span> only has 1 share, the market caps for <span class="math">\(X\)</span> and
+<span class="math">\(Y\)</span> are</p>
+<div class="to-build math">
+\[\begin{split}MC^0_X &amp; = 20 * \$25 = \$500\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}MC^0_Y &amp; = 1*\$100=\$100.\end{split}\]</div>
+<ul class="to-build simple">
+<li>A value-weighted index of the two stocks would give <span class="math">\(X\)</span> five times
+the weight as <span class="math">\(Y\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Compare to the price-weighted index which gives <span class="math">\(Y\)</span> four times
+the weight.</li>
+</ul>
+<ul class="to-build simple">
+<li>Initially, the total stock on the market is equal to $500 + $100 =
+$600.</li>
+</ul>
+
+<div class="slide-no">11</div>
+
+</article>
+<article class="appear slide level-2" id="id5">
+<h2>Value-Weighted Indexes</h2>
+<p>After the price changes, market caps become</p>
+<div class="to-build math">
+\[\begin{split}MC^1_X &amp; = 20 * \$30 = \$600\end{split}\]</div>
+<div class="to-build math">
+\[\begin{split}MC^1_Y &amp; = 1*\$90=\$90.\end{split}\]</div>
+<ul class="to-build simple">
+<li>The total value of stock is now $690.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the initial value of the value weighted index was $100, after
+the price changes it would be <span class="math">\(\$100*\frac{\$690}{\$600} =
+\$115\)</span>.</li>
+</ul>
+
+<div class="slide-no">12</div>
+
+</article>
+<article class="appear slide level-2" id="id6">
+<h2>Value-Weighted Indexes</h2>
+<ul class="simple">
+<li>In this case the value of the index rises since it gives a
+relatively higher weight to <span class="math">\(X\)</span>.</li>
+</ul>
+<div class="to-build math">
+\[\begin{split}\% \text{change in index} &amp; = \frac{MC^0_X}{MC^0_X + MC^0_Y}
+\Delta_X + \frac{MC^0_Y}{MC^0_X + MC^0_Y} \Delta_Y\end{split}\]</div>
+<div class="to-build math">
+\[= \frac{5}{6} * 0.2 + \frac{1}{6} * (-0.1) = 0.15.\]</div>
+
+<div class="slide-no">13</div>
+
+</article>
+<article class="appear slide level-2" id="equally-weighted-indexes">
+<h2>Equally-Weighted Indexes</h2>
+<p>One of the advantages of price-weighted and value-weighted indexes
+is that they correspond to buy-and-hold portfolio strategies:</p>
+<ul class="to-build simple">
+<li>A price-weighted index is equivalent to buying and holding one share
+(or an equal number of shares) of each stock in the index.</li>
+</ul>
+<ul class="to-build simple">
+<li>A value-weighted index is equivalent to buying and holding each
+share of the index in proportion to its market cap.</li>
+</ul>
+
+<div class="slide-no">14</div>
+
+</article>
+<article class="appear slide level-2" id="equally-weighted-indexes-cont">
+<h2>Equally-Weighted Indexes (Cont.)</h2>
+<p>In contrast, one could form an equally-weighted index, where all
+stocks receive the exact same weight.</p>
+<ul class="to-build simple">
+<li>This does not correspond to a buy-and-hold strategy.</li>
+</ul>
+<ul class="to-build simple">
+<li>Consider starting with with equal amounts of money invested in
+stocks <span class="math">\(X\)</span> and <span class="math">\(Y\)</span>.</li>
+</ul>
+<ul class="to-build simple">
+<li>If the price of <span class="math">\(X\)</span> increases by 20% and the price of
+<span class="math">\(Y\)</span> falls by 10%, the dollar amount invested in each stock is no longer equal.</li>
+</ul>
+<ul class="to-build simple">
+<li>To keep the investment equally weighted, you would have to sell some
+shares of <span class="math">\(X\)</span> and buy shares of <span class="math">\(Y\)</span>.</li>
+</ul>
+
+<div class="slide-no">15</div>
+
+</article>
+<article class="appear slide level-2" id="other-indexes">
+<h2>Other Indexes</h2>
+<p>There are a wide number of published indexes:</p>
+<ul class="to-build simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Nasdaq_Composite">Nasdaq Composite</a>.</li>
+</ul>
+<ul class="to-build simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/NYSE_Composite">NYSE Composite</a>.</li>
+</ul>
+<ul class="to-build simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Wilshire_5000">Wilshire 5000</a>.</li>
+</ul>
+<ul class="to-build simple">
+<li>Sub-indexes of the S&amp;P 500 and others above.</li>
+</ul>
+<p class="to-build">To hold these as part of a portfolio one could</p>
+<ul class="to-build simple">
+<li>Buy shares of a <a class="reference external" href="http://en.wikipedia.org/wiki/Mutual_fund">mutual fund</a> that tracks the index.</li>
+</ul>
+<ul class="to-build simple">
+<li>Buy shares of an <a class="reference external" href="http://en.wikipedia.org/wiki/Exchange-traded_fund">Exchange Traded Fund (ETF)</a> which is a
+portfolio of the shares in the index.</li>
+</ul>
+
+<div class="slide-no">16</div>
+
+</article>
+
+
+</section>
+
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Security Markets and Financial Institutions',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/common.js"></script>
+    <script type="text/javascript" src="_static/slides.js"></script>
+    <script type="text/javascript" src="_static/sync.js"></script>
+    <script type="text/javascript" src="_static/controller.js"></script>
+    <script type="text/javascript" src="_static/init.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,449 @@
+==============================================================================
+The Kalman Filter
+==============================================================================
+
+State-Space Representation
+==============================================================================
+Recall the basic state-space representation
+
+.. math::
+
+   \begin{align}
+   \underset{(r \times 1)}{\boldsymbol{\xi}_{t+1}} & =
+   \underset{(r \times r)}{F}\underset{(r \times 1)}{\boldsymbol{\xi}_{t}} +
+   \underset{(r \times 1)}{\boldsymbol{v}_{t+1}} \\
+   \underset{(n \times 1)}{\boldsymbol{Y}_{t}} & =
+   \underset{(n \times k)}{A^{'}}\underset{(k \times 1)}{\boldsymbol{x}_{t}} +
+   \underset{(n \times r)}{H^{'}}\underset{(r \times 1)}{\boldsymbol{\xi}_{t}} +
+   \underset{(n \times 1)}{\boldsymbol{w}_{t}} \\
+   E[\boldsymbol{v}_{t}\boldsymbol{v}_{\tau}^{'}] & = \begin{cases}
+   \underset{(n \times n)}{Q} & t = \tau \\ 0 & \text{o/w} \end{cases} \\
+   E[\boldsymbol{w}_{t}\boldsymbol{w}_{\tau}^{'}] & = \begin{cases}
+   \underset{(n \times n)}{R} & t = \tau \\ 0 & \text{o/w} \end{cases} \\
+   E[\boldsymbol{v}_{t}\boldsymbol{w}_{\tau}^{'}] & = 0 \hspace{4pt} \forall
+   \hspace{4pt} t,\tau.
+   \end{align}
+
+Kalman Filter Overview
+==============================================================================
+Collect all known information at time :math:`\smash{t}` into a vector:
+
+.. math::
+
+   \smash{\underset{((n+k)t \times 1)}{ \boldsymbol{\mathcal{Y}_{t}}}
+   =  (\boldsymbol{Y_{t}}^{'},
+   \boldsymbol{Y_{t-1}}^{'},...,\boldsymbol{Y_{1}}^{'},
+   \boldsymbol{x_{t}}^{'},\boldsymbol{x_{t-1}}^{'},...,\boldsymbol{x_{1}}^{'})^{'}}
+
+.. raw:: <!--pause-->
+
+The Kalman Filter computes:
+
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{\xi}}_{t+1|t} & =
+   \hat{E}[\boldsymbol{\xi}_{t+1}|\boldsymbol{\mathcal{Y}}_{t}] \\
+   \underset{(r \times r)}{P_{t+1|t}} & =
+   E[(\boldsymbol{\xi}_{t+1}-\hat{\boldsymbol{\xi}}_{t+1|t)}(\xi_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|t})^{'}],
+   \end{align}
+
+where :math:`\smash{P_{t+1|t}}` is the MSE matrix for
+:math:`\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}`.
+
+Starting the Recursion
+==============================================================================
+We begin the recursion with
+
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{\xi}}_{1|0} & =
+   E[\boldsymbol{\xi}_{1}|\mathcal{Y}_{0} = \emptyset] =
+   E[\boldsymbol{\xi}_{1}] \\
+   P_{1|0} & = E[(\boldsymbol{\xi}_{1} -
+   E[\boldsymbol{\xi}_{1}])(\boldsymbol{\xi}_{1} -
+   E[\boldsymbol{\xi}_{1}])^{'}].
+   \end{align}
+
+.. raw:: <!--pause-->
+
+According to the state equation, the unconditional expectation of
+:math:`\smash{\boldsymbol{\xi}_{t}}` is:
+
+.. math::
+
+   \begin{align}
+   E[\boldsymbol{\xi}_{t+1}] & = FE[\boldsymbol{\xi}_{t}] \\
+   \implies E[\boldsymbol{\xi}_{t}] & = FE[\boldsymbol{\xi}_{t}] \\
+   \implies (I_{r} - F)E[\boldsymbol{\xi}_{t}] & = 0 \\
+   \implies E[\xi_{t}] & = 0.
+   \end{align}
+
+Starting the Recursion
+==============================================================================
+Further, the state equation also implies the unconditional variance of
+:math:`\smash{\boldsymbol{\xi}_{t}}` is:
+
+.. math::
+
+   \begin{align}
+   \underset{\Sigma}{\underbrace{E[\boldsymbol{\xi}_{t+1}\boldsymbol{\xi}_{t+1}^{'}]}}
+   & = E[(F\boldsymbol{\xi}_{t} + \boldsymbol{v}_{t+1}) (F\boldsymbol{\xi}_{t} + \boldsymbol{v}_{t+1})^{'}] \\
+   & =
+   F\underset{\Sigma}{\underbrace{E[\boldsymbol{\xi}_{t}\boldsymbol{\xi}_{t}^{'}]}}F^{'} +
+   F\underset{0}{\underbrace{E[\boldsymbol{\xi}_{t}\boldsymbol{v}_{t+1}^{'}]}} +
+   \underset{0}{\underbrace{E[\boldsymbol{v}_{t+1}\boldsymbol{\xi}_{t}^{'}]}}F^{'} +
+   \underset{Q}{\underbrace{E[\boldsymbol{v}_{t+1}\boldsymbol{v}_{t+1}^{'}]}} \\
+   \implies \Sigma & = F \Sigma F^{'} + Q \\
+   \implies Vec(P_{1|0}) & = Vec(\Sigma) = [I_{r^{2}} - (F \otimes
+   F)]^{-1} Vec(Q).
+   \end{align}
+
+Forecasting :math:`\smash{Y_{t}}`
+==============================================================================
+Our objective will be to obtain
+:math:`\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}` and
+:math:`\smash{P_{t+1|t}}`, given values for
+:math:`\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}` and
+:math:`\smash{P_{t|t-1}}`.
+
+.. raw:: <!--pause-->
+
+- :math:`\smash{\boldsymbol{x}_{t}}` contains no information about
+  :math:`\smash{\boldsymbol{\xi}_{t}}` beyond what is contained in
+  :math:`\smash{\boldsymbol{\mathcal{Y}}_{t-1}}`:
+
+.. math::
+
+   \smash{E[\boldsymbol{\xi}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}]
+   = E[\boldsymbol{\xi}_{t}|\boldsymbol{\mathcal{Y}}_{t-1}] =
+   \hat{\boldsymbol{\xi}}_{t|t-1}}.
+
+.. raw:: <!--pause-->
+
+According to the observation equation:
+
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{Y}}_{t|t-1} & =
+   \hat{E}[\boldsymbol{Y}_{t}|
+   \boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}] \\
+   & = A^{'}\boldsymbol{x}_{t} +
+   H^{'}E[\boldsymbol{\xi}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}] +
+   \underset{0}{\underbrace{E[\boldsymbol{w}_{t}| \boldsymbol{x}_{t},
+   \boldsymbol{\mathcal{Y}}_{t-1}]}} \\
+   & = A^{'}\boldsymbol{x}_{t} + H^{'} \hat{\boldsymbol{\xi}}_{t|t-1}.
+   \end{align}
+
+Forecast Error
+==============================================================================
+The forecast error is:
+
+.. math::
+
+   \begin{align}
+   \boldsymbol{Y}_{t} - \hat{\boldsymbol{Y}}_{t|t-1} & =
+   A^{'}\boldsymbol{x}_{t} + H^{'}\boldsymbol{\xi}_{t} +
+   \boldsymbol{w}_{t} - A^{'}\boldsymbol{x}_{t} -
+   H^{'}\hat{\boldsymbol{\xi}}_{t|t-1} \\
+   & = H^{'}(\boldsymbol{\xi}_{t} -
+   \hat{\boldsymbol{\xi}}_{t|t-1}) + \boldsymbol{w}_{t},
+   \end{align}
+
+.. raw:: <!--pause-->
+
+which has the MSE matrix:
+
+.. math::
+
+   \begin{align}
+   E[(\boldsymbol{Y}_{t} -
+   \hat{\boldsymbol{Y}}_{t|t-1})(\boldsymbol{Y}_{t} & -
+   \hat{\boldsymbol{Y}}_{t|t-1})^{'}] \\
+   & = H^{'}\underset{P_{t|t-1}}{\underbrace{E[(\boldsymbol{\xi}_{t} -
+   \hat{\boldsymbol{\xi}}_{t|t-1})(\boldsymbol{\xi}_{t} -
+   \hat{\boldsymbol{\xi}}_{t|t-1})^{'}]}}H
+   +\underset{R}{\underbrace{E[\boldsymbol{w}_{t}\boldsymbol{w}_{t}^{'}]}} \\
+   & = H^{'}P_{t|t-1}H + R.
+   \end{align}
+
+Forecast MSE
+==============================================================================
+We have used the fact that:
+
+.. math::
+
+   \smash{E[\boldsymbol{w}_{t}(\boldsymbol{\xi}_{t} -
+   \hat{\boldsymbol{\xi}}_{t|t-1})] = 0}
+
+because :math:`\smash{E[\boldsymbol{w}_{t}\boldsymbol{\xi}_{t}^{'}] =
+0}` and because
+
+.. math::
+
+   \smash{E[\boldsymbol{w}_{t}\hat{\boldsymbol{\xi}}_{t|t-1}^{'}] =
+   E[\boldsymbol{w}_{t}(F\xi_{t-1})^{'}] =
+   E[\boldsymbol{w}_{t}\boldsymbol{\xi}_{t-1}^{'}]F^{'} = 0}.
+
+Update the forecast of :math:`\smash{\xi_{t}}`
+==============================================================================
+After we observe :math:`\smash{\boldsymbol{Y}_{t}}`, we can obtain a
+new forecast of :math:`\smash{\boldsymbol{\xi}_{t}}`:
+
+.. math::
+
+   \smash{\hat{\boldsymbol{\xi}}_{t|t} =
+   E[\boldsymbol{\xi}_{t}|\boldsymbol{Y}_{t},\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}]
+   = E[\boldsymbol{\xi}_{t}|\boldsymbol{\mathcal{Y}}_{t}]}.
+
+Update the forecast of :math:`\smash{\xi_{t}}`
+==============================================================================
+The formula for updating a linear projection in this fashion is:
+
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{\xi}}_{t|t} & = \hat{\boldsymbol{\xi}}_{t|t-1} +
+   E[({\boldsymbol{\xi}}_{t} -
+   \hat{\boldsymbol{\xi}}_{t|t-1})
+   (\boldsymbol{Y}_{t}-\hat{\boldsymbol{Y}}_{t|t-1})^{'}] \\
+   & \hspace{2in} \times E[(\boldsymbol{Y}_{t} -
+   \hat{\boldsymbol{Y}}_{t|t-1})(\boldsymbol{Y}_{t} -
+   \hat{\boldsymbol{Y}}_{t|t-1})^{'}]^{-1} \hspace{3pt}
+   (\boldsymbol{Y}_{t} - \hat{\boldsymbol{Y}}_{t|t-1}) \\
+   & = \hat{\boldsymbol{\xi}}_{t|t-1} + E[(\boldsymbol{\xi}_{t} -
+   \hat{\boldsymbol{\xi}}_{t|t-1})(\boldsymbol{w}_{t}^{'} +
+   (\boldsymbol{\xi}_{t} - \hat{\boldsymbol{\xi}}_{t|t-1})^{'}H)] \\
+   & \hspace{2in} \times (H^{'}P_{t|t-1}H +
+   R)^{-1}(\boldsymbol{Y}_{t}-A^{'}\boldsymbol{x}_{t} -
+   H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}) \\
+   & = \hat{\boldsymbol{\xi}}_{t|t-1} +
+   \overset{K_{t}}{\overbrace{P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}}}
+   \hspace{3pt} (\boldsymbol{Y}_{t}-A^{'}\boldsymbol{x}_{t} -
+   H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}).
+   \end{align}
+
+Update the forecast of :math:`\smash{\xi_{t}}`
+==============================================================================
+The associated MSE is:
+
+.. math::
+
+   \begin{align}
+   P_{t|t} & = E[(\boldsymbol{\xi}_{t} -
+   \hat{\boldsymbol{\xi}}_{t|t})(\boldsymbol{\xi}_{t} -
+   \hat{\boldsymbol{\xi}}_{t|t})^{'}] \\
+   & = P_{t|t-1} -
+   P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}H^{'}P_{t|t-1}.
+   \end{align}
+
+Forecasting :math:`\smash{\boldsymbol{\xi}_{t+1}}`
+==============================================================================
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{\xi}}_{t+1|t} & =
+   \hat{E}[\boldsymbol{\xi}_{t+1}|\boldsymbol{\mathcal{Y}}_{t}] \\
+   & = F\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\mathcal{Y}}_{t}] +
+   E[\boldsymbol{v}_{t+1}|\boldsymbol{\mathcal{Y}}_{t}] \\
+   & = F\hat{\boldsymbol{\xi}}_{t|t} \\
+   & = F\hat{\boldsymbol{\xi}}_{t|t-1} + F
+   K_{t}(\boldsymbol{Y}_{t}-A^{'}\boldsymbol{x}_{t} +
+   H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}).
+   \end{align}
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{align}
+   P_{t+1|t} & = E[(\boldsymbol{\xi}_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|t})(\boldsymbol{\xi}_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|t})^{'}] \\
+   & = E[( F\boldsymbol{\xi}_{t} + \boldsymbol{v}_{t+1} -
+   F\hat{\boldsymbol{\xi}}_{t|t})(F\boldsymbol{\xi}_{t} +
+   \boldsymbol{v}_{t+1} - F\hat{\boldsymbol{\xi}}_{t|t})^{'}] \\
+   & = F P_{t|t} F^{'} + Q \\
+   & = F(P_{t|t-1} - P_{t|t-1} H(H^{'}P_{t|t-1}H + R)^{-1} \hspace{3pt}
+   H^{'}P_{t|t-1})F^{'} + Q.
+   \end{align}
+
+Forecasting :math:`\smash{\boldsymbol{Y}_{t+1}}`
+==============================================================================
+.. math::
+
+   \smash{\hat{\boldsymbol{Y}}_{t+1|t} =
+   E[\boldsymbol{Y}_{t+1}|\boldsymbol{x}_{t+1},\boldsymbol{\mathcal{Y}}_{t}]=
+   A^{'}\boldsymbol{x}_{t+1} + H^{'} \hat{\boldsymbol{\xi}}_{t+1|t}},
+
+.. raw:: <!--pause-->
+
+which has associated MSE:
+
+.. math::
+
+   \smash{E[(\boldsymbol{Y}_{t+1} - \hat{\boldsymbol{Y}}_{t+1|t})(\boldsymbol{Y}_{t+1} -
+   \hat{\boldsymbol{Y}}_{t+1|t})^{'}] = H^{'}P_{t+1|t}H + R}.
+
+Forecasting :math:`\smash{\boldsymbol{Y}_{t+s}}`
+==============================================================================
+Iterating on the state equation:
+
+.. math::
+
+   \begin{gather}
+   \boldsymbol{\xi}_{t+s} = F^{s}\boldsymbol{\xi}_{t} +
+   F^{s-1}\boldsymbol{v}_{t+1} + F^{s-2}\boldsymbol{v}_{t+2} +
+   \ldots + F\boldsymbol{v}_{t+s-1} + \boldsymbol{v}_{t+s} \\
+   \implies
+   E[\boldsymbol{\xi}_{t+s}|\boldsymbol{\xi}_{t},\boldsymbol{\mathcal{Y}}_{t}]
+   = F^{s}\boldsymbol{\xi}_{t}.
+   \end{gather}
+
+.. raw:: <!--pause-->
+
+By the law of iterated expectations:
+
+.. math::
+
+   \smash{\hat{\boldsymbol{\xi}}_{t+s|t} =
+   E[\boldsymbol{\xi}_{t+s}|\boldsymbol{\mathcal{Y}}_{t}] =
+   E[E[\boldsymbol{\xi}_{t+s}|\boldsymbol{\xi}_{t},\boldsymbol{\mathcal{Y}}_{t}]|\boldsymbol{\mathcal{Y}}_{t}]
+   = E[F^{s}\boldsymbol{\xi}_{t}|\boldsymbol{\mathcal{Y}}_{t}] =
+   F^{s}\hat{\boldsymbol{\xi}}_{t|t}}.
+
+Forecasting :math:`\smash{\boldsymbol{Y}_{t+s}}`
+==============================================================================
+The forecast error is:
+
+.. math::
+
+   \smash{\boldsymbol{\xi}_{t+s} - \hat{\boldsymbol{\xi}}_{t+s|t} =
+   F^{s}(\boldsymbol{\xi}_{t} - \hat{\boldsymbol{\xi}}_{t|t}) +
+   F^{s-1}\boldsymbol{v}_{t+1} + \ldots + F\boldsymbol{v}_{t+s-1} +
+   \boldsymbol{v}_{t+s}},
+
+.. raw:: <!--pause-->
+
+with MSE:
+
+.. math::
+
+   \smash{P_{t+s|t} = F^{s}P_{t|t}(F^{'})^{s} +
+   F^{s-1}Q(F^{'})^{s-1} + \ldots + FQF^{'} + Q }.
+
+Forecasting :math:`\smash{\boldsymbol{Y}_{t+s}}`
+==============================================================================
+Rewrite the observation equation:
+
+.. math::
+
+   \smash{\boldsymbol{Y}_{t+s} = A^{'}\boldsymbol{x}_{t+s} +
+   H^{'}\boldsymbol{\xi}_{t+s} + \boldsymbol{w}_{t+s}}.
+
+.. raw:: <!--pause-->
+
+Thus,
+
+.. math::
+
+   \smash{\hat{\boldsymbol{Y}}_{t+s|t}  =
+   E[\boldsymbol{Y}_{t+s}|\boldsymbol{x}_{t+s},\boldsymbol{\mathcal{Y}}_{t}]
+   = A^{'}\boldsymbol{x}_{t+s} + H^{'}\hat{\boldsymbol{\xi}}_{t+s|t}}.
+
+Forecasting :math:`\smash{\boldsymbol{Y}_{t+s}}`
+==============================================================================
+The forecast error is:
+
+.. math::
+
+   \begin{align}
+   \boldsymbol{Y}_{t+s} - \hat{\boldsymbol{Y}}_{t+s|t} & =
+   A^{'}\boldsymbol{x}_{t+s} + H^{'}\boldsymbol{\xi}_{t+s} +
+   \boldsymbol{w}_{t+s} - A^{'}\boldsymbol{x}_{t+s}  -
+   H^{'}\hat{\boldsymbol{\xi}}_{t+s|t} \\
+   & = H^{'}(\boldsymbol{\xi}_{t+s} -
+   \hat{\boldsymbol{\xi}}_{t+s|t}) + \boldsymbol{w}_{t+s},
+   \end{align}
+
+.. raw:: <!--pause-->
+
+with MSE:
+
+.. math::
+
+   \smash{E[(\boldsymbol{Y}_{t+s} -
+   \hat{\boldsymbol{Y}}_{t+s|t})(\boldsymbol{Y}_{t+s} -
+   \hat{\boldsymbol{Y}}_{t+s|t})^{'}] = H^{'}P_{t+s|t}H + R}.
+
+Summary of Kalman Filter Steps
+==============================================================================
+1. Start with forecast :math:`\smash{\hat{\boldsymbol{\xi}}_{1|0}}`
+   and associated MSE matrix :math:`\smash{P_{1|0}}`
+
+.. raw:: <!--pause-->
+
+2. Given forecast :math:`\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}`
+   and MSE :math:`\smash{P_{t|t-1}}`, compute
+
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{\xi}}_{t|t} & = \hat{\boldsymbol{\xi}}_{t|t-1} +
+   \overset{K_{t}}{\overbrace{P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}}}
+   \hspace{3pt} (\boldsymbol{Y}_{t}-A^{'}\boldsymbol{x}_{t} +
+   H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}) \\
+   P_{t|t} & = P_{t|t-1} -
+   P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}H^{'}P_{t|t-1}.
+   \end{align}
+
+Summary of Kalman Filter Steps
+==============================================================================
+3. Given :math:`\smash{\hat{\boldsymbol{\xi}}_{t|t}}` and MSE
+   :math:`\smash{P_{t|t}}`, compute
+
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{\xi}}_{t+1|t} & =
+   F\hat{\boldsymbol{\xi}}_{t|t-1} + F
+   K_{t}(\boldsymbol{Y}_{t}-A^{'}\boldsymbol{x}_{t} +
+   H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}) \\
+   P_{t+1|t} & = F(P_{t|t-1} - P_{t|t-1} H(H^{'}P_{t|t-1}H + R)^{-1}
+   \hspace{3pt} H^{'}P_{t|t-1})F^{'} + Q.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+4. Given :math:`\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}` and MSE
+   :math:`\smash{P_{t+1|t}}`, compute
+
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{Y}}_{t+1|t} & =
+   A^{'}\boldsymbol{x}_{t+1} + H^{'} \hat{\boldsymbol{\xi}}_{t+1|t}
+   \\
+   E[(\boldsymbol{Y}_{t+1} -
+   \hat{\boldsymbol{Y}}_{t+1|t})(\boldsymbol{Y}_{t+1} -
+   \hat{\boldsymbol{Y}}_{t+1|t})^{'}] & = H^{'}P_{t+1|t}H + R.
+   \end{align}
+
+Example: Long-Run Risks
+==============================================================================
+.. math::
+
+   \begin{gather}
+   x_{t+1} = \rho x_{t} + \varphi_{e}\sigma e_{t+1} \\
+   g_{t+1} = \log\left(C_{t+1}/C_{t}\right) = \mu + x_{t} + \sigma
+   \eta_{t+1} \\
+   g_{d,t+1} = \log\left(D_{t+1}/D_{t}\right) = \mu_{d} + \phi
+   x_{t} + \varphi_{d}\sigma u_{t+1} \\
+   \varphi_{t+1},u_{t+1},\eta_{t+1} \overset{i.i.d.}{\sim} N(0,1) \\
+   \end{gather}
+
+where :math:`\smash{C_{t}}` and :math:`\smash{D_{t}}` are aggregate
+consumption and aggregate dividends.

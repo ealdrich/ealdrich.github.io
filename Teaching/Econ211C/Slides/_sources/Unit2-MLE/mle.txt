@@ -1,0 +1,741 @@
+==============================================================================
+Maximum Likelihood Estimation
+==============================================================================
+
+
+Estimating Parameters of Distributions
+==============================================================================
+We almost never know the true distribution of a data sample.
+
+.. raw:: <!--pause-->
+
+- We might hypothesize a family of distributions that capture broad
+  characteristics of the data (locations, scale and shape).  
+
+.. raw:: <!--pause-->
+
+- However, there may be a set of one or more parameters of the
+  distribution that we don't know.
+
+.. raw:: <!--pause-->
+
+- Typically we use the data to estimate the unknown parameters,
+  :math:`\smash{\boldsymbol{\theta}}`.
+
+
+
+Joint CDF
+==============================================================================
+Suppose we have a collection of random variables :math:`\smash{{\bf Y}_T =
+(Y_1, \ldots, Y_T)'}`.
+
+.. raw:: <!--pause-->
+
+- We view a data sample of size :math:`\smash{T}` as one realization of each
+  random variable: :math:`\smash{{\bf y}_T = (y_1, \ldots, y_T)'}`.
+
+.. raw:: <!--pause-->
+
+- The *joint cumulative density* of :math:`\smash{{\bf Y}_T}` is
+
+.. math::
+
+   F_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) = P(Y_1 \leq y_1,
+   \ldots, Y_T \leq y_T).
+
+
+
+Joint Density
+==============================================================================
+- The *joint probability density* of :math:`\smash{{\bf Y}_T}` is
+
+.. math::
+
+   \begin{align*}
+   f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) & = \frac{\partial^T
+   F_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}{\partial Y_1 \ldots
+   \partial Y_T}.
+   \end{align*}
+
+since
+
+.. math::
+
+   \begin{align*}
+   F_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})& =
+   \int_{-\infty}^{y_1}\ldots \int_{-\infty}^{y_T} f_{{\bf Y}_T}({\bf
+   a}_T|\boldsymbol{\theta}) \,\, da_1 \ldots da_T.
+   \end{align*}
+
+
+Independence
+==============================================================================
+When :math:`\smash{Y_1, \ldots, Y_T}` are independent of each other
+and have identical distributions:
+
+.. raw:: <!--pause-->
+
+- We say that they are *independent and identically distributed*, or
+  i.i.d.
+
+.. raw:: <!--pause-->
+
+- When :math:`\smash{Y_1, \ldots, Y_T}` are i.i.d., they have the same
+  marginal densities:
+
+.. math::
+
+   f_{Y_1}(y|\boldsymbol{\theta}) = \ldots = f_{Y_T}(y|\boldsymbol{\theta}).
+
+
+
+Joint Density Under Independence
+==============================================================================
+Further, when :math:`\smash{Y_1, \ldots, Y_T}` are i.i.d.
+
+.. math::
+
+   \begin{align*}
+   f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) & = f_{Y_1}(y_1|\boldsymbol{\theta}) \cdot
+   f_{Y_2}(y_2|\boldsymbol{\theta}) \cdots f_{Y_T}(y_T|\boldsymbol{\theta}) =
+   \prod_{i=1}^T f_{Y_i}(y_i|\boldsymbol{\theta}).
+   \end{align*}
+
+.. raw:: <!--pause-->
+
+- This is analogous to the computation of joint probabilities.
+
+.. raw:: <!--pause-->
+
+- For independent events :math:`\smash{A}`, :math:`\smash{B}` and
+  :math:`\smash{C}`,
+
+.. math::
+
+   \begin{align*}
+   P(A \cap B \cap C) = P(A)P(B)P(C).
+   \end{align*}
+
+Bayes' Rule
+==============================================================================
+Recall Bayes' Rule:
+
+.. math::
+
+   \begin{gather}
+   P(A|B) = \frac{P(A \cap B)}{P(B)} \\
+   \Rightarrow P(A \cap B) = P(A|B)P(B).
+   \end{gather}
+
+.. raw:: <!--pause-->
+
+Iterating:
+
+.. math::
+
+   \begin{align*}
+   P(A \cap B \cap C) & = P((A \cap B) \cap C) \\
+   & = P(A \cap B | C) P(C) \\
+   & = P(A|B,C)P(B|C)P(C).
+   \end{align*}
+
+Bayes' Rule
+==============================================================================
+The previous iteration generalizes to be:
+
+.. math::
+
+   \begin{align*}
+   P\left(\bigcap_{i=1}^n A_i\right) & = P(A_n|A_{n-1},\ldots,A_1) \\
+   & \hspace{0.5in} \times P(A_{n-1}|A_{n-2},\ldots,A_1) \cdots P(A_2|A_1) P(A_1) \\
+   & = P(A_1) \prod_{i=2}^n P(A_i|{\bf A}_{i-1})
+   \end{align*}
+
+where :math:`\smash{{\bf A_i} = (A_1,\ldots,A_i)'}`
+
+General Joint Density
+==============================================================================
+Suppose :math:`\smash{Y_1, \ldots, Y_T}` depend on each other sequentially.
+
+.. raw:: <!--pause-->
+
+- We use Bayes' Rule to obtain the joint density:
+
+.. math::
+
+   f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) =
+   f_{Y_1}(y_1|\boldsymbol{\theta}) \prod_{t=2}^T f_{Y_t|{\bf
+   Y}_{t-1}}(y_t|{\bf y}_{t-1},\boldsymbol{\theta}).
+
+
+Maximum Likelihood Estimation
+==============================================================================
+One of the most important and powerful methods of parameter estimation
+is *maximum likelihood estimation*.  It requires
+
+.. raw:: <!--pause-->
+
+- A data sample: :math:`\smash{{\bf y} = (y_1, \ldots, y_T)'}`.
+
+.. raw:: <!--pause-->
+
+- A joint probability density:
+
+.. math::
+
+   f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) =
+   f_{Y_1}(y_1|\boldsymbol{\theta}) \prod_{t=2}^T f_{Y_t|{\bf
+   Y}_{t-1}}(y_t|{\bf y}_{t-1},\boldsymbol{\theta}).
+
+
+Likelihood
+==============================================================================
+:math:`\smash{f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}` is loosely interpreted
+as the probability of observing data sample :math:`\smash{{\bf y}_T}`, given a
+functional form for the density of :math:`\smash{Y_1, \ldots, Y_T}` and given
+a set of parameters :math:`\smash{\boldsymbol{\theta}}`.  
+
+.. raw:: <!--pause-->
+
+- We can reverse the notion and think of :math:`\smash{{\bf y}_T}` as being
+  fixed and :math:`\smash{\boldsymbol{\theta}}` some unknown variable. 
+  
+.. raw:: <!--pause-->
+
+- In this case we write :math:`\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf
+  y}_T) = f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}`.  
+
+.. raw:: <!--pause-->
+
+- We refer to :math:`\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}` as
+  the likelihood.  
+
+.. raw:: <!--pause-->
+
+- Fixing :math:`\smash{{\bf y}_T}`, maximum likelihood estimation chooses the
+  value of :math:`\smash{\boldsymbol{\theta}}` that maximizes
+  :math:`\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T) =
+  f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}`.
+
+
+
+
+Likelihood Maximization
+==============================================================================
+Given :math:`\smash{\boldsymbol{\theta} = (\theta_1, \ldots, \theta_p)'}`, we
+maximize :math:`\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}` by  
+
+.. raw:: <!--pause-->
+
+- Differentiating with respect to each :math:`\smash{\theta_i}`, :math:`\smash{i = 1,
+  \ldots, p}`.
+
+.. raw:: <!--pause-->
+
+- Setting the resulting derivatives equal to zero.  
+
+.. raw:: <!--pause-->
+
+- Solving for the values :math:`\smash{\hat{\theta}_i}`, :math:`\smash{i = 1, \ldots,
+  p}`, that make all of the derivatives zero.
+
+
+
+
+Log Likelihood
+==============================================================================
+It is often easier to work with the logarithm of the likelihood
+function.
+
+.. raw:: <!--pause-->
+
+- By the properties of logarithms 
+
+.. math::
+
+   \begin{align*}
+   \ell(\boldsymbol{\theta}|{\bf y}_T) & =
+   \log\left(\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)\right) \\
+   & = \log\left(f_{Y_1}(y_1|\boldsymbol{\theta}) \prod_{t=2}^T
+   f_{Y_t|{\bf Y}_{t-1}}(y_t|{\bf y}_{t-1},\boldsymbol{\theta})
+   \right) \\
+   & = \log\left(f_{Y_1}(y_1|\boldsymbol{\theta})\right) +
+   \sum_{t=2}^T \log\left(f_{Y_t|{\bf Y}_{t-1}}(y_t|{\bf
+   y}_{t-1},\boldsymbol{\theta})\right)
+   \end{align*}
+
+
+Log Likelihood
+==============================================================================
+- Maximizing :math:`\smash{\ell(\boldsymbol{\theta}|{\bf y}_T)}` is the same
+  as maximizing :math:`\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}`
+  since :math:`\smash{\log}` is a monotonic transformation.
+
+.. raw:: <!--pause-->
+
+- A derivative of :math:`\smash{\mathcal{L}}` will involve many product-rule
+  terms, whereas a derivative of :math:`\smash{\ell}` will simply be a sum
+  of derivatives.
+
+
+
+MLE Example
+==============================================================================
+Suppose we have a dataset :math:`\smash{{\bf y}_n = (y_1, \ldots, y_n)}`,
+where
+
+.. math::
+
+   Y_1, \ldots, Y_n \stackrel{i.i.d.}{\sim} \mathcal{N}(\mu,\sigma^2).
+
+.. raw:: <!--pause-->
+
+- We will assume :math:`\smash{\mu}` is *unknown* and :math:`\smash{\sigma}` is
+  *known*.
+
+.. raw:: <!--pause-->
+
+- So, :math:`\smash{\boldsymbol{\theta} = \mu}` (it is a single value, rather than
+  a vector).
+
+
+
+MLE Example
+==============================================================================
+- The likelihood is
+
+.. math::
+
+   \begin{align*}
+   \mathcal{L}(\mu|{\bf y}_n) & = f_{{\bf Y}_n}({\bf y}_n|\mu) \\
+   & = \prod_{i=1}^n f_{Y_i}(y_i|\mu) \\
+   & = \prod_{i=1}^n \frac{1}{\sqrt{2\pi \sigma^2}} \exp
+   \left\{-\frac{1}{2} \frac{(y_i - \mu)^2}{\sigma^2} \right\} \\
+   & = \frac{1}{(2\pi \sigma^2)^{n/2}} \exp \left\{-\frac{1}{2
+   \sigma^2} \sum_{i=1}^n (y_i - \mu)^2 \right\}.
+   \end{align*}
+
+
+
+MLE Example
+==============================================================================
+The log likelihood is
+
+.. math::
+
+  \ell(\mu|{\bf y}_n) = -\frac{n}{2} \log(2\pi) - \frac{n}{2}
+  \log(\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \mu)^2.
+
+
+
+MLE Example
+==============================================================================
+- The MLE, :math:`\smash{\hat{\mu}}`, is the value that sets :math:`\smash{\frac{d}{d
+  \mu} \ell(\mu|{\bf y}) = 0}`:
+
+.. raw:: <!--pause-->
+
+.. math::
+
+   \begin{gather}
+   \frac{d}{d \mu} \ell(\mu|{\bf y}_n) \bigg|_{\hat{\mu}} =
+   \frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \hat{\mu}) = 0 \\
+   \Rightarrow \sum_{i=1}^n (y_i - \hat{\mu}) = 0 \\
+   \Rightarrow \sum_{i=1}^n \hat{\mu} = \sum_{i=1}^n y_i \\
+   \Rightarrow \hat{\mu} = \bar{y} = \frac{1}{n} \sum_{i=1}^n y_i.
+   \end{gather}
+
+
+MLE Example: :math:`\smash{n=1}`, Unknown :math:`\smash{\mu}`
+==============================================================================
+Suppose we have only one observation: :math:`\smash{y_1}`.  
+
+.. raw:: <!--pause-->
+
+- If we specialize the previous result:
+
+.. math::
+
+   \begin{align}
+   \hat{\mu} = y_1.
+   \end{align}
+
+.. raw:: <!--pause-->
+
+- The density :math:`\smash{f_{Y_1}(y_1|\mu)}` gives the probability of
+  observing some data value :math:`\smash{y_1}`, conditional on some *known*
+  parameter :math:`\smash{\mu}`.
+
+.. raw:: <!--pause-->
+
+- This is a normal distribution with mean :math:`\smash{\mu}` and variance
+  :math:`\smash{\sigma^2}`.
+
+
+MLE Example: :math:`\smash{n=1}`, Unknown :math:`\smash{\mu}`
+==============================================================================
+- The likelihood :math:`\smash{\mathcal{L}(\mu|y_1)}` gives the probability of
+  :math:`\smash{\mu}`, conditional on some observed data value :math:`\smash{y_1}`.
+
+.. raw:: <!--pause-->
+
+- This is a normal distribution with mean :math:`\smash{y_1}` and variance
+  :math:`\smash{\sigma^2}`.
+
+
+
+MLE Example: :math:`\smash{n=1}`
+==============================================================================
+.. image:: ../_static/MLE/densExample.png
+   :width: 7.5in
+   :align: center
+
+MLE Example: :math:`\smash{n=1}`
+==============================================================================
+.. code::
+
+   #######################################################################################
+   # Plot likelihood for normal data with unknown mean
+   #######################################################################################
+
+   # Generate the true normal density
+   mu = 10;
+   sig = 15;
+   xGrid = seq(mu-5*sig, mu+5*sig, length=10000)
+   trueDens = dnorm(xGrid, mu, sig)
+
+   # A couple of possible data values
+   y11 = 30;
+   y12 = -17.7;
+
+   # Plot the true normal distribution with possible data values
+   plot(xGrid, trueDens, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+        yaxt='n', bty='L')
+   axis(1, labels=c(expression(mu), expression(y[1]), expression(y[1])),
+        at=c(mu, y11, y12))
+   abline(v=mu)
+   segments(y11, 0, y11, dnorm(y11, mu, sig), lty=2)
+   segments(y12, 0, y12, dnorm(y12, mu, sig), lty=2)
+   dev.copy(png, file="densExample.png", height=600, width=1000)
+   dev.off()
+
+
+MLE Example: :math:`\smash{n=1}`, Unknown :math:`\smash{\mu}`
+==============================================================================
+.. image:: ../_static/MLE/likeExample.png
+   :align: center
+
+
+MLE Example: :math:`\smash{n=1}`, Unknown :math:`\smash{\mu}`
+==============================================================================
+.. code::
+
+   # Plot several densities for fixed data observation
+   mu1 = -33
+   mu2 = 27
+   dens1 = dnorm(xGrid, mu1, sig)
+   dens2 = dnorm(xGrid, mu2, sig)
+   par(mfrow=c(2,1))
+   plot(xGrid, trueDens, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+        yaxt='n', bty='L')
+   axis(1, labels=c(expression(mu^1), expression(mu^2), expression(mu^2), expression(y[1])),
+        at=c(mu, mu1, mu2, y12))
+   lines(xGrid, dens1)
+   lines(xGrid, dens2)
+   abline(v=mu)
+   abline(v=mu1)
+   abline(v=mu2)
+   segments(y12, 0, y12, dnorm(y12, mu, sig), lty=2)
+   segments(y12, 0, y12, dnorm(y12, mu1, sig), lty=3)
+   segments(y12, 0, y12, dnorm(y12, mu2, sig), lty=4)
+
+   # Plot the resulting likelihood
+   like = dnorm(xGrid, y12, sig)
+   plot(xGrid, like, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+        yaxt='n', bty='L')
+   axis(1, labels=c(expression(mu^1), expression(mu^2), expression(mu^2), expression(y[1])),
+        at=c(mu, mu1, mu2, y12))
+   abline(v=y12)
+   segments(mu, 0, mu, dnorm(mu, y12, sig), lty=2)
+   segments(mu1, 0, mu1, dnorm(mu1, y12, sig), lty=2)
+   segments(mu2, 0, mu2, dnorm(mu2, y12, sig), lty=2)
+   dev.copy(png, file="likeExample.png", height=600, width=400)
+   dev.off()
+
+
+MLE Example: :math:`\smash{n=1}`, Unknown :math:`\smash{\sigma}`
+==============================================================================
+Let's continue with the assumption of one data observation, :math:`\smash{y_1}`.  
+
+.. raw:: <!--pause-->
+
+- If :math:`\smash{\mu}` is known but :math:`\smash{\sigma}` is unknown, the density
+  of the data, :math:`\smash{y_1}`, is still normal.
+
+.. raw:: <!--pause-->
+
+- However, the likelihood is
+
+.. math::
+
+   \mathcal{L}(\sigma^2|y_1) = \frac{\alpha}{\sigma^2}
+   \exp\left\{-\frac{\beta}{\sigma^2}\right\}
+
+.. math::
+
+   \alpha = \frac{1}{\sqrt{2\pi}}, \qquad \beta =
+   \frac{(y_1-\mu)^2}{2}.
+
+.. raw:: <!--pause-->
+
+- The likelihood for :math:`\smash{\sigma^2}` is *not* normal, but *inverse
+  gamma*.
+
+
+
+
+MLE Example: :math:`\smash{n=1}`, Unknown :math:`\smash{\sigma}`
+==============================================================================
+.. image:: ../_static/MLE/likeExample2.png
+   :width: 5in
+   :align: center
+
+MLE Example: :math:`\smash{n=1}`, Unknown :math:`\smash{\sigma}`
+==============================================================================
+.. code::
+
+   #######################################################################################
+   # Plot likelihood for normal data with unknown sd
+   #######################################################################################
+
+   # Plot several densities for fixed data observation
+   sig1 = 50
+   sig2 = 25
+   dens1 = dnorm(xGrid, mu, sig1)
+   dens2 = dnorm(xGrid, mu, sig2)
+   par(mfrow=c(2,1))
+   yMax = max(max(trueDens), max(dens1), max(dens2))
+   plot(xGrid, trueDens, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+        yaxt='n', bty='L', ylim=c(0,yMax))
+   axis(1, labels=c(expression(mu), expression(y[1])), at=c(mu, y12))
+   lines(xGrid, dens1)
+   lines(xGrid, dens2)
+   abline(v=mu)
+   segments(y12, 0, y12, dnorm(y12, mu, sig), lty=2)
+   segments(y12, 0, y12, dnorm(y12, mu, sig1), lty=3)
+   segments(y12, 0, y12, dnorm(y12, mu, sig2), lty=4)
+   xDist = max(xGrid)-mu
+   text(c(mu+0.29*xDist, mu+0.4*xDist, mu+0.7*xDist), c(0.66, 0.4, 0.23)*yMax,
+        labels=c(expression(sigma[1]^2), expression(sigma[2]^2), expression(sigma[3]^2)))
+
+   # Plot the resulting likelihood (which is an inverse gamma)
+   alpha = -0.5
+   beta = ((y12 - mu)^2)/2
+   scale = 1/sqrt(2*pi)
+   sigGrid = seq(0.01,3000,length=10000)
+   like = scale*(sigGrid^(-alpha-1))*exp(-beta/sigGrid)
+   likeTrue = scale*(sig^(-2*alpha-2))*exp(-beta/sig^2)
+   like1 = scale*(sig1^(-2*alpha-2))*exp(-beta/sig1^2)
+   like2 = scale*(sig2^(-2*alpha-2))*exp(-beta/sig2^2)
+   plot(sigGrid, like, type='l', xaxs='i', yaxs='i', xaxt='n', xlab='', ylab='',
+        yaxt='n', bty='L')
+   axis(1, labels=c(expression(sigma[1]^2), expression(sigma[2]^2), expression(sigma[3]^2)),
+        at=c(sig^2, sig1^2, sig2^2))
+   segments(sig^2, min(like), sig^2, likeTrue, lty=2)
+   segments(sig1^2, min(like), sig1^2, like1, lty=2)
+   segments(sig2^2, min(like), sig2^2, like2, lty=2)
+   dev.copy(png, file="likeExample2.png", height=600, width=400)
+   dev.off()
+
+
+MLE Accuracy
+==============================================================================
+Maximum likelihood estimation results in estimates of true unknown
+parameters.
+
+.. raw:: <!--pause-->
+
+- What is the probability that our estimates are identical to the true
+  population parameters?
+
+.. raw:: <!--pause-->
+
+- Our estimates are imprecise and contain error. 
+
+.. raw:: <!--pause-->
+
+- We would like to quantify the precision of our estimates with
+  standard errors.
+
+.. raw:: <!--pause-->
+
+- We will use the *Fisher Information* to compute standard errors.
+
+
+
+
+Fisher Information
+==============================================================================
+Let :math:`\smash{\mathcal{H}(\boldsymbol{\theta}|{\bf y}_t) = \frac{d^2}{d
+\boldsymbol{\theta}^2} \ell(\boldsymbol{\theta}|{\bf y}_T)}`, the
+matrix of second derivatives of the log likelihood.
+
+.. raw:: <!--pause-->
+
+- The Fisher Information is
+
+.. math::
+
+   \mathcal{I}(\boldsymbol{\theta}) = - E\left[
+   \mathcal{H}(\boldsymbol{\theta}|{\bf y}_t)\right].
+
+.. raw:: <!--pause-->
+
+- The observed Fisher Information is
+
+.. math::
+
+   \widetilde{\mathcal{I}}(\boldsymbol{\theta}) = -
+   \mathcal{H}(\boldsymbol{\theta}|{\bf y}_t).
+
+
+Fisher Information
+==============================================================================
+- Observed Fisher Information does not take an expectation, which may
+  be difficult to compute.
+
+.. raw:: <!--pause-->
+
+- Since :math:`\smash{\ell(\boldsymbol{\theta}|{\bf y}_T)}` is often a sum of
+  many terms, :math:`\smash{\widetilde{\mathcal{I}}(\boldsymbol{\theta})}`
+  will converge to :math:`\smash{\mathcal{I}(\boldsymbol{\theta})}` for large
+  samples.
+
+
+
+MLE Central Limit Theorem
+==============================================================================
+Under certain conditions, a central limit theorem holds for the MLE,
+:math:`\smash{\hat{\boldsymbol{\theta}}}`.
+
+.. raw:: <!--pause-->
+
+- For infinitely large samples :math:`\smash{{\bf y}_T}`,
+
+.. math::
+
+   \hat{\boldsymbol{\theta}} \sim \mathcal{N}(\boldsymbol{\theta},
+   \mathcal{I}(\boldsymbol{\theta})^{-1}).
+
+.. raw:: <!--pause-->
+
+- For large samples, :math:`\smash{\hat{\boldsymbol{\theta}}}` is normally
+  distributed *regardless* of the distribution of the data,
+  :math:`\smash{{\bf y}_T}`.
+
+
+
+MLE Central Limit Theorem
+==============================================================================
+- :math:`\smash{\hat{\boldsymbol{\theta}}}` is also normally distributed for
+  large samples even if :math:`\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf
+  y}_T)}` is some other distribution.
+
+.. raw:: <!--pause-->
+
+- Hence, for large samples,
+
+.. math::
+
+   Var(\hat{\theta}_i) =
+   \frac{1}{\mathcal{I}(\boldsymbol{\theta})_{ii}} \qquad \Rightarrow
+   \qquad Std(\hat{\theta}_i) =
+   \frac{1}{\sqrt{\mathcal{I}(\boldsymbol{\theta})_{ii}}}
+
+
+
+MLE Standard Errors
+==============================================================================
+Since we don't know the true :math:`\smash{\boldsymbol{\theta}}`, we
+approximate
+
+.. math::
+
+   Std(\hat{\theta}_i) \approx
+   \frac{1}{\sqrt{\mathcal{I}(\hat{\boldsymbol{\theta}})_{ii}}}.
+
+.. raw:: <!--pause-->
+
+- Alternatively, to avoid computing the expectation, we could use the
+  approximation
+
+.. math::
+
+   Std(\hat{\theta}_i) \approx
+   \frac{1}{\sqrt{\widetilde{\mathcal{I}}(\hat{\boldsymbol{\theta}})_{ii}}}.
+
+
+
+MLE Standard Errors
+==============================================================================  
+- In reality, we never have an infinite sample size.  
+
+.. raw:: <!--pause-->
+
+- For finite samples, these values are approximations of the standard
+  errors of the components of :math:`\smash{\hat{\boldsymbol{\theta}}}`.
+
+
+
+MLE Variance Example
+==============================================================================
+Let's return to the example where :math:`\smash{Y_1, \ldots, Y_n
+\stackrel{i.i.d.}{\sim} \mathcal{N}(\mu, \sigma^2)}`, with known
+:math:`\smash{\sigma}`.
+
+.. raw:: <!--pause-->
+
+- The log likelihood is
+
+.. math::
+
+   \ell(\mu|{\bf y}_n) = -\frac{n}{2} \log(2\pi) - \frac{n}{2}
+   \log(\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \mu)^2.
+   
+.. raw:: <!--pause-->
+
+- The resulting derivatives are
+
+.. math::
+
+   \frac{\partial \ell(\mu|{\bf y}_n)}{\partial \mu} =
+   \frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \mu),  \qquad
+   \frac{\partial^2 \ell(\mu|{\bf y}_n)}{\partial \mu^2} =
+   -\frac{n}{\sigma^2}.
+
+
+
+MLE Variance Example
+==============================================================================
+In this case the Fisher Information is identical to the observed
+Fisher Information:
+
+.. math::
+
+   \mathcal{I}(\mu) = -E\left[-\frac{n}{\sigma^2}\right] =
+   \frac{n}{\sigma^2} = \widetilde{\mathcal{I}}(\mu).
+
+.. raw:: <!--pause-->
+
+- Since :math:`\smash{\mathcal{I}(\mu)}` doesn't depend on :math:`\smash{\mu}`, we
+  don't need to resort to an approximation with :math:`\smash{\hat{\mu} =
+  \bar{{\bf y}}}`.
+
+.. raw:: <!--pause-->
+
+- The result is
+
+.. math::
+
+   Std(\hat{\mu}) = \frac{1}{\sqrt{\mathcal{I}(\mu)}} =
+   \frac{\sigma}{\sqrt{n}}.
