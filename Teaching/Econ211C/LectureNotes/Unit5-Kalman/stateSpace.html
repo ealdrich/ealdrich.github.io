@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>State Space Models &mdash; Econ 211C 2016.03.29 documentation</title>
@@ -12,43 +13,59 @@
 
   
   
+  
+  
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
-        <link rel="up" title="The Kalman Filter" href="../kalman.html"/>
-        <link rel="next" title="The Kalman Filter" href="kalmanFilter.html"/>
-        <link rel="prev" title="The Kalman Filter" href="../kalman.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Kalman Filter" href="kalmanFilter.html" />
+    <link rel="prev" title="The Kalman Filter" href="../kalman.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Econ 211C
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2016.03.29
+              </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -56,142 +73,117 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
           
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
+            
+            
+              
+            
+            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">State Space Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">State Space Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#state-space-representation">State Space Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">State Space Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mutually-uncorrelated-errors">Mutually Uncorrelated Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-smash-ar-p">Example <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Example <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-smash-arma-p-q">Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="kalmanFilter.html">The Kalman Filter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kalmanMLE.html">ML Estimation of State-Space Models</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">Econ 211C</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Econ 211C</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../kalman.html">The Kalman Filter</a> &raquo;</li>
-      
-    <li>State Space Models</li>
+        
+      <li>State Space Models</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/Unit5-Kalman/stateSpace.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../_sources/Unit5-Kalman/stateSpace.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="state-space-models">
 <h1>State Space Models<a class="headerlink" href="#state-space-models" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="state-space-representation">
 <h2>State Space Representation<a class="headerlink" href="#state-space-representation" title="Permalink to this headline">¶</a></h2>
 <p>A state space model is a dynamic system of equations</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \boldsymbol{\xi}_{t+1} &amp; = F\boldsymbol{\xi}_{t} +
 \boldsymbol{v}_{t+1} \\
@@ -210,16 +202,16 @@ E[\boldsymbol{v}_{t}\boldsymbol{w}_{\tau}^{'}] &amp; = \boldsymbol{0}
 <div class="section" id="id1">
 <h2>State Space Representation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> is a vector of <span class="math">\(\smash{n}\)</span>
-variables observed at <span class="math">\(\smash{t}\)</span>.</li>
+<li><span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t}}\)</span> is a vector of <span class="math notranslate nohighlight">\(\smash{n}\)</span>
+variables observed at <span class="math notranslate nohighlight">\(\smash{t}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li><span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span> is a vector of
-<span class="math">\(\smash{r}\)</span> unobserved variables at <span class="math">\(\smash{t}\)</span>.</li>
+<li><span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t}}\)</span> is a vector of
+<span class="math notranslate nohighlight">\(\smash{r}\)</span> unobserved variables at <span class="math notranslate nohighlight">\(\smash{t}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li><span class="math">\(\smash{\boldsymbol{x}_{t}}\)</span> is a vector of exogenous or
-predetermined variables at <span class="math">\(\smash{t}\)</span>.</li>
+<li><span class="math notranslate nohighlight">\(\smash{\boldsymbol{x}_{t}}\)</span> is a vector of exogenous or
+predetermined variables at <span class="math notranslate nohighlight">\(\smash{t}\)</span>.</li>
 </ul>
 <ul class="simple">
 <li>The first equation of the system is the state equation.</li>
@@ -228,18 +220,18 @@ predetermined variables at <span class="math">\(\smash{t}\)</span>.</li>
 <li>The second equation of the system is the observation equation.</li>
 </ul>
 <ul class="simple">
-<li><span class="math">\(\smash{\boldsymbol{v}_{t}}\)</span> and
-<span class="math">\(\smash{\boldsymbol{w}_{t}}\)</span> are vector WN processes and
+<li><span class="math notranslate nohighlight">\(\smash{\boldsymbol{v}_{t}}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{w}_{t}}\)</span> are vector WN processes and
 mutually uncorrelated at all lags.</li>
 </ul>
 </div>
 <div class="section" id="mutually-uncorrelated-errors">
 <h2>Mutually Uncorrelated Errors<a class="headerlink" href="#mutually-uncorrelated-errors" title="Permalink to this headline">¶</a></h2>
 <p>If we assume
-<span class="math">\(\smash{E[\boldsymbol{v}_{t}\boldsymbol{\xi}_{1}^{'}] =
+<span class="math notranslate nohighlight">\(\smash{E[\boldsymbol{v}_{t}\boldsymbol{\xi}_{1}^{'}] =
 E[\boldsymbol{w}_{t}\boldsymbol{\xi}_{1}^{'}] = \boldsymbol{0} } \,\,
 \forall t &gt; 1\)</span>:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 E[\boldsymbol{v}_{t} \boldsymbol{\xi}_{\tau}^{'}]
 &amp; = E[\boldsymbol{v}_{t}(\boldsymbol{v}_{\tau}^{'} +
@@ -253,7 +245,7 @@ H^{'}\boldsymbol{\xi}_{\tau} + \boldsymbol{w}_{\tau})^{'}] = \boldsymbol{0}
 \hspace{4pt} \forall \hspace{4pt} \tau &lt; t.
 \end{align}\end{split}\]</div>
 <p>Similarly,</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 E[\boldsymbol{w}_{t} \boldsymbol{\xi}_{\tau}^{'}] &amp; = \boldsymbol{0}
 \hspace{4pt} \forall \hspace{4pt} \tau &lt; t \\
@@ -261,14 +253,14 @@ E[\boldsymbol{w}_{t} \boldsymbol{Y}_{\tau}^{'}] &amp; = \boldsymbol{0} \hspace{4
 \forall \hspace{4pt} \tau &lt; t.
 \end{align}\end{split}\]</div>
 </div>
-<div class="section" id="example">
-<h2>Example <span class="math">\(\smash{AR(p)}\)</span><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>The standard form of an <span class="math">\(\smash{AR(p)}\)</span>:</p>
-<div class="math">
+<div class="section" id="example-smash-ar-p">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span><a class="headerlink" href="#example-smash-ar-p" title="Permalink to this headline">¶</a></h2>
+<p>The standard form of an <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\smash{Y_{t+1} - \mu = \phi_{1}(Y_{t} - \mu) + \phi_{2}(Y_{t-1} -
 \mu) + \ldots + \phi_{p}(Y_{t-p+1} - \mu) + \varepsilon_{t+1}}.\]</div>
 <p>Define:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\smash{\boldsymbol{\xi}_{t} = \left[\begin{array}{c} Y_{t} - \mu \\
 Y_{t-1} - \mu \\ \vdots \\ Y_{t-p+1} - \mu \\ \end{array}
 \right], \,\,\,\,\, F = \left[\begin{array}{ccccc} \phi_{1} &amp;
@@ -277,12 +269,12 @@ Y_{t-1} - \mu \\ \vdots \\ Y_{t-p+1} - \mu \\ \end{array}
 &amp; 0 \\ \end{array} \right], \,\,\,\,\, \boldsymbol{v}_{t} =
 \left[\begin{array}{c} \varepsilon_{t} \\ 0 \\ 0 \\ \vdots \\ 0 \\
 \end{array} \right],}\end{split}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\,\,\]</div>
 </div>
 <div class="section" id="id2">
-<h2>Example <span class="math">\(\smash{AR(p)}\)</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="math">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather}
 \boldsymbol{Y}_{t} = Y_{t}, \hspace{10pt} A^{'} = \mu, \hspace{10pt}
 \boldsymbol{x}_{t} = 1, \hspace{10pt} H^{'} = [1 \hspace{3pt} 0
@@ -293,24 +285,24 @@ Q = \left[\begin{array}{cccc} \sigma^{2} &amp; 0&amp; \ldots &amp; 0 \\ 0 &amp; 
 0\\ \end{array} \right].
 \end{gather}\end{split}\]</div>
 </div>
-<div class="section" id="id3">
-<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>The standard form of an <span class="math">\(\smash{ARMA(p,q)}\)</span>:</p>
-<div class="math">
+<div class="section" id="example-smash-arma-p-q">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#example-smash-arma-p-q" title="Permalink to this headline">¶</a></h2>
+<p>The standard form of an <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 Y_{t+1} - \mu &amp; = \phi_{1}(Y_{t}- \mu) + \ldots +
 \phi_{r}(Y_{t-r+1}- \mu) \\
 &amp; \hspace{2in} + \varepsilon_{t+1} + \theta_{1}\varepsilon_{t} +
 \ldots + \theta_{r-1}\varepsilon_{t-r+2}
 \end{align}\end{split}\]</div>
-<p>where <span class="math">\(\smash{r = \text{max}\{p,q+1\}}\)</span> and
-<span class="math">\(\smash{\phi_{j} = 0}\)</span> for <span class="math">\(\smash{j&gt;p}\)</span> and
-<span class="math">\(\smash{\theta_{j} = 0}\)</span> for <span class="math">\(\smash{j &gt; q}\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\smash{r = \text{max}\{p,q+1\}}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{\phi_{j} = 0}\)</span> for <span class="math notranslate nohighlight">\(\smash{j&gt;p}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{\theta_{j} = 0}\)</span> for <span class="math notranslate nohighlight">\(\smash{j &gt; q}\)</span>.</p>
 </div>
-<div class="section" id="id4">
-<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Define:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\boldsymbol{\xi}_{t} = \left[\begin{array}{c} Y_{t}- \mu \\
 \phi_{2}(Y_{t-1}-\mu) + \ldots + \phi_{r}(Y_{t-r+1} - \mu) +
 \theta_{1}\varepsilon_{t} + \ldots +
@@ -318,12 +310,12 @@ Y_{t+1} - \mu &amp; = \phi_{1}(Y_{t}- \mu) + \ldots +
 \phi_{r}(Y_{t-r+2} - \mu) + \theta_{2}\varepsilon_{t} + \ldots +
 \theta_{r-1}\varepsilon_{t-r+3} \\ \vdots \\ \phi_{r}(Y_{t-1} -
 \mu) + \theta_{r-1}\varepsilon_{t} \\ \end{array} \right],\end{split}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\,\,\]</div>
 </div>
-<div class="section" id="id5">
-<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="math">
+<div class="section" id="id4">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather}
 F = \left[\begin{array}{ccccc} \phi_{1} &amp; 1 &amp; 0 &amp; \ldots &amp; 0
 \\ \phi_{2} &amp; 0 &amp; 1 &amp; \ldots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp;
@@ -338,11 +330,11 @@ F = \left[\begin{array}{ccccc} \phi_{1} &amp; 1 &amp; 0 &amp; \ldots &amp; 0
 \boldsymbol{w}_{t} = 0, \hspace{10pt} R = 0.
 \end{gather}\end{split}\]</div>
 </div>
-<div class="section" id="id6">
-<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>Alternatively, define <span class="math">\(\smash{\boldsymbol{\xi}_t = (\xi_t,
+<div class="section" id="id5">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Alternatively, define <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_t = (\xi_t,
 \xi_{t-1}, \ldots, \xi_{t-r+1})^{'}}\)</span> and</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather}
 F =
 \left[\begin{array}{ccccc} \phi_1 &amp; \phi_2 &amp; \ldots &amp;
@@ -360,44 +352,46 @@ Q = \left[\begin{array}{cccc} \sigma^{2} &amp; 0&amp; \ldots &amp; 0 \\ 0 &amp; 
 0\\ \end{array} \right].
 \end{gather}\end{split}\]</div>
 </div>
-<div class="section" id="id7">
-<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>Then, by the state equation</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather}
 \boldsymbol{\xi}_t = F \boldsymbol{\xi}_{t-1} + \boldsymbol{v}_t \\
 \implies \phi_r(L) \xi_t = \varepsilon_t,
 \end{gather}\end{split}\]</div>
 <p>and the observation equation</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather}
 \boldsymbol{Y}_t = A^{'} \boldsymbol{x}_t + H^{'}
 \boldsymbol{\xi}_t + \boldsymbol{w}_t \\
 \implies (Y_t - \mu) = \theta_r(L) \xi_t.
 \end{gather}\end{split}\]</div>
 </div>
-<div class="section" id="id8">
-<h2>Example <span class="math">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>Combining these two equations,</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \phi_r(L) (Y_t-\mu) &amp; = \theta_r(L) \phi_r(L) \xi_t \\
 &amp; = \theta_r(L) \varepsilon_t,
 \end{align}\end{split}\]</div>
-<p>which is the equation for an <span class="math">\(\smash{ARMA(p,q)}\)</span>.</p>
+<p>which is the equation for an <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span>.</p>
 </div>
 </div>
 
 
+           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="kalmanFilter.html" class="btn btn-neutral float-right" title="The Kalman Filter">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="kalmanFilter.html" class="btn btn-neutral float-right" title="The Kalman Filter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../kalman.html" class="btn btn-neutral" title="The Kalman Filter"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../kalman.html" class="btn btn-neutral float-left" title="The Kalman Filter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -406,13 +400,14 @@ Q = \left[\begin{array}{cccc} \sigma^{2} &amp; 0&amp; \ldots &amp; 0 \\ 0 &amp; 
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich.
+        &copy; Copyright 2016, Eric M. Aldrich
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
 </footer>
+
         </div>
       </div>
 
@@ -422,36 +417,15 @@ Q = \left[\begin{array}{cccc} \sigma^{2} &amp; 0&amp; \ldots &amp; 0 \\ 0 &amp; 
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2016.03.29',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Time Series Models of Volatility &mdash; Econ 211C 2016.03.29 documentation</title>
@@ -12,41 +13,58 @@
 
   
   
+  
+  
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
-        <link rel="prev" title="GMM Over-Identifying Restrictions" href="../Unit6-GMM/restrict.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="GMM Over-Identifying Restrictions" href="../Unit6-GMM/restrict.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Econ 211C
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2016.03.29
+              </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -54,152 +72,106 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
           
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
+            
+            
+              
+            
+            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/svar.html">Structural Vector Autoregression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/impulseResponse.html">Impulse Response Functions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Time Series Models of Volatility</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Time Series Models of Volatility</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#basic-model">Basic Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">Basic Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-model">The <span class="math">\(\smash{ARCH}\)</span> Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#order"><span class="math">\(\smash{ARCH}\)</span> Order</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#notes-on">Notes on <span class="math">\(\smash{ARCH}\)</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#estimation"><span class="math">\(\smash{ARCH}\)</span> Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">The <span class="math">\(\smash{GARCH}\)</span> Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">Notes on <span class="math">\(\smash{GARCH}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-smash-arch-model">The <span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smash-arch-order"><span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes-on-smash-arch">Notes on <span class="math notranslate nohighlight">\(\smash{ARCH}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smash-arch-estimation"><span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-smash-garch-model">The <span class="math notranslate nohighlight">\(\smash{GARCH}\)</span> Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes-on-smash-garch">Notes on <span class="math notranslate nohighlight">\(\smash{GARCH}\)</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stochastic-volatility">Stochastic Volatility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stochastic-volatility-estimation">Stochastic Volatility Estimation</a></li>
 </ul>
 </li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">Econ 211C</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Econ 211C</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
-    <li>Time Series Models of Volatility</li>
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Time Series Models of Volatility</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/Unit7-Volatility/volatility.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../_sources/Unit7-Volatility/volatility.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="time-series-models-of-volatility">
 <h1>Time Series Models of Volatility<a class="headerlink" href="#time-series-models-of-volatility" title="Permalink to this headline">¶</a></h1>
@@ -234,7 +206,7 @@ volatility.</li>
 </div>
 <div class="section" id="id2">
 <h2>Motivation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
 <span class="n">getSymbols</span><span class="p">(</span><span class="s1">&#39;SPY&#39;</span><span class="p">)</span>
 <span class="n">spyRets</span> <span class="o">=</span> <span class="n">dailyReturn</span><span class="p">(</span><span class="n">Cl</span><span class="p">(</span><span class="n">SPY</span><span class="p">))</span>
 <span class="n">png</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;spyQQACF.png&#39;</span><span class="p">,,</span><span class="n">height</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">units</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="n">res</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
@@ -254,22 +226,22 @@ volatility.</li>
 <div class="section" id="basic-model">
 <h2>Basic Model<a class="headerlink" href="#basic-model" title="Permalink to this headline">¶</a></h2>
 <p>Consider the following model</p>
-<div class="math">
-\[\begin{split}\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{align}
 r_t &amp; = \mu_t + \varepsilon_t, \,\,\, \varepsilon_t \sim
 N(0,\sigma_t^2).
-\end{align}\end{split}\]</div>
+\end{align}\]</div>
 <ul class="simple">
-<li>The mean, <span class="math">\(\smash{\mu_t}\)</span>, may follow a linear time series
+<li>The mean, <span class="math notranslate nohighlight">\(\smash{\mu_t}\)</span>, may follow a linear time series
 process</li>
 </ul>
-<div class="math">
-\[\begin{split}\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{align}
 \mu_t &amp; = \phi_0 + \sum_{i=1}^k \lambda_i x_{it} + \sum_{i=1}^p
 \phi_i r_{t-i} + \sum_{i=1}^q \theta_i \varepsilon_{t-i}.
-\end{align}\end{split}\]</div>
+\end{align}\]</div>
 <ul class="simple">
-<li>The variables <span class="math">\(\smash{\{x_{it}\}}\)</span> are exogenous explanatory
+<li>The variables <span class="math notranslate nohighlight">\(\smash{\{x_{it}\}}\)</span> are exogenous explanatory
 variables (e.g. the market return, for the CAPM, or dummy variables
 for month/week/day effects).</li>
 </ul>
@@ -278,70 +250,70 @@ for month/week/day effects).</li>
 <h2>Basic Model<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>Time series models of volatility augment the model of the mean with a
 process that governs conditional volatility,
-<span class="math">\(\smash{\sigma_t}\)</span>.</p>
+<span class="math notranslate nohighlight">\(\smash{\sigma_t}\)</span>.</p>
 <ul class="simple">
 <li>Some models specify a deterministic process for volatility
-(<span class="math">\(\smash{ARCH}\)</span>/<span class="math">\(\smash{GARCH}\)</span>).</li>
+(<span class="math notranslate nohighlight">\(\smash{ARCH}\)</span>/<span class="math notranslate nohighlight">\(\smash{GARCH}\)</span>).</li>
 </ul>
 <ul class="simple">
 <li>Others specify a random process (stochastic volatility).</li>
 </ul>
 </div>
-<div class="section" id="the-model">
-<h2>The <span class="math">\(\smash{ARCH}\)</span> Model<a class="headerlink" href="#the-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-smash-arch-model">
+<h2>The <span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> Model<a class="headerlink" href="#the-smash-arch-model" title="Permalink to this headline">¶</a></h2>
 <p>Engle (1982) proposed the following model for volatility</p>
-<div class="math">
-\[\begin{split}\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{align}
 \sigma_t^2 &amp; = \alpha_0 + \sum_{i=1}^m \alpha_i
 \varepsilon_{t-i}^2.
-\end{align}\end{split}\]</div>
-<p>where <span class="math">\(\smash{\alpha_0 &gt; 0}\)</span> and <span class="math">\(\smash{\alpha_i \geq 0}\)</span>
-for <span class="math">\(\smash{i=1,\ldots,m}\)</span>.</p>
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\smash{\alpha_0 &gt; 0}\)</span> and <span class="math notranslate nohighlight">\(\smash{\alpha_i \geq 0}\)</span>
+for <span class="math notranslate nohighlight">\(\smash{i=1,\ldots,m}\)</span>.</p>
 <ul class="simple">
-<li>Recall, <span class="math">\(\smash{\varepsilon_t \sim N(0,\sigma_t^2)}\)</span>.</li>
+<li>Recall, <span class="math notranslate nohighlight">\(\smash{\varepsilon_t \sim N(0,\sigma_t^2)}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>Alternatively, we could write <span class="math">\(\smash{\varepsilon_t = \sigma_t
-z_t}\)</span>, where <span class="math">\(\smash{z_t \sim N(0,1)}\)</span>.</li>
+<li>Alternatively, we could write <span class="math notranslate nohighlight">\(\smash{\varepsilon_t = \sigma_t
+z_t}\)</span>, where <span class="math notranslate nohighlight">\(\smash{z_t \sim N(0,1)}\)</span>.</li>
 </ul>
 </div>
-<div class="section" id="order">
-<h2><span class="math">\(\smash{ARCH}\)</span> Order<a class="headerlink" href="#order" title="Permalink to this headline">¶</a></h2>
-<p>Define <span class="math">\(\smash{\eta_t = \varepsilon_t^2 - \sigma_t^2}\)</span>.</p>
+<div class="section" id="smash-arch-order">
+<h2><span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> Order<a class="headerlink" href="#smash-arch-order" title="Permalink to this headline">¶</a></h2>
+<p>Define <span class="math notranslate nohighlight">\(\smash{\eta_t = \varepsilon_t^2 - \sigma_t^2}\)</span>.</p>
 <ul class="simple">
-<li>It can be shown that <span class="math">\(\smash{\{\eta_t\}}\)</span> is an uncorrelated,
+<li>It can be shown that <span class="math notranslate nohighlight">\(\smash{\{\eta_t\}}\)</span> is an uncorrelated,
 zero-mean series (not necessarily i.i.d.).</li>
 </ul>
 <ul class="simple">
-<li>Thus the <span class="math">\(\smash{ARCH}\)</span> model can be written as</li>
+<li>Thus the <span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> model can be written as</li>
 </ul>
-<div class="math">
-\[\begin{split}\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{align}
 \varepsilon_t^2 &amp; = \alpha_0 + \sum_{i=1}^m \alpha_i
 \varepsilon_{t-i}^2 + \eta_t.
-\end{align}\end{split}\]</div>
+\end{align}\]</div>
 <ul class="simple">
 <li>As a result, the order can be diagnosed using the tools of
-<span class="math">\(\smash{AR}\)</span> order determination (PACF).</li>
+<span class="math notranslate nohighlight">\(\smash{AR}\)</span> order determination (PACF).</li>
 </ul>
 <ul class="simple">
 <li>This is done on the residuals, after estimating the mean equation.</li>
 </ul>
 </div>
-<div class="section" id="notes-on">
-<h2>Notes on <span class="math">\(\smash{ARCH}\)</span><a class="headerlink" href="#notes-on" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="notes-on-smash-arch">
+<h2>Notes on <span class="math notranslate nohighlight">\(\smash{ARCH}\)</span><a class="headerlink" href="#notes-on-smash-arch" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>It can be shown that the <span class="math">\(\smash{ARCH}\)</span> model results in
+<li>It can be shown that the <span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> model results in
 excess kurthosis (relative to a Normal).</li>
 <li>The model parameters must be restricted in order to maintain finite
 unconditional variance and positive conditional variance.</li>
 </ul>
 </div>
-<div class="section" id="estimation">
-<h2><span class="math">\(\smash{ARCH}\)</span> Estimation<a class="headerlink" href="#estimation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smash-arch-estimation">
+<h2><span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> Estimation<a class="headerlink" href="#smash-arch-estimation" title="Permalink to this headline">¶</a></h2>
 <p>Under the assumption of Normality, the conditional likelihood function
 is</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{gather}
 f(\varepsilon_{m+1},\ldots,\varepsilon_T|\alpha_0,\ldots,\alpha_m,\varepsilon_1,\ldots,\varepsilon_m)
 = \prod_{t=m+1}^T \frac{1}{\sqrt{2\pi \sigma_t^2}} \exp{\left\{
@@ -350,49 +322,49 @@ f(\varepsilon_{m+1},\ldots,\varepsilon_T|\alpha_0,\ldots,\alpha_m,\varepsilon_1,
 <ul class="simple">
 <li>MLE is conducted with an interative approach:<ul>
 <li>Compute a set of observed residuals
-<span class="math">\(\smash{\{\varepsilon_t\}}\)</span>.</li>
+<span class="math notranslate nohighlight">\(\smash{\{\varepsilon_t\}}\)</span>.</li>
 <li>For a candidate estimate of the parameters, iteratively compute
-<span class="math">\(\smash{\{\sigma_t^2\}_{m+1}^T}\)</span> with the variance
+<span class="math notranslate nohighlight">\(\smash{\{\sigma_t^2\}_{m+1}^T}\)</span> with the variance
 equation and evaluate the likelihood.</li>
 <li>Update the parameters and repeat.</li>
 </ul>
 </li>
 </ul>
 <ul class="simple">
-<li>MLE is often conducted with a <span class="math">\(\smash{t}\)</span> distribution or
+<li>MLE is often conducted with a <span class="math notranslate nohighlight">\(\smash{t}\)</span> distribution or
 generalized error distribution.</li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h2>The <span class="math">\(\smash{GARCH}\)</span> Model<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-smash-garch-model">
+<h2>The <span class="math notranslate nohighlight">\(\smash{GARCH}\)</span> Model<a class="headerlink" href="#the-smash-garch-model" title="Permalink to this headline">¶</a></h2>
 <p>Bollerslev (1986) proposed the following extension to the
-<span class="math">\(\smash{ARCH}\)</span> model:</p>
-<div class="math">
-\[\begin{split}\begin{align}
+<span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
 \sigma_t^2 &amp; = \alpha_0 + \sum_{i=1}^m \alpha_i
 \varepsilon_{t-i}^2 + \sum_{j=1}^s \beta_j \sigma_{t-j}^2.
-\end{align}\end{split}\]</div>
-<p>where <span class="math">\(\smash{\alpha_0 &gt; 0}\)</span>, <span class="math">\(\smash{\alpha_i\geq 0}\)</span>,
-<span class="math">\(\smash{\beta_j\geq 0}\)</span>, and
-<span class="math">\(\smash{\sum_{i=1}^{\max(m,s)} (\alpha_i+\beta_i) &lt; 1}\)</span>
-for <span class="math">\(\smash{i=1,\ldots,m}\)</span>.</p>
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\smash{\alpha_0 &gt; 0}\)</span>, <span class="math notranslate nohighlight">\(\smash{\alpha_i\geq 0}\)</span>,
+<span class="math notranslate nohighlight">\(\smash{\beta_j\geq 0}\)</span>, and
+<span class="math notranslate nohighlight">\(\smash{\sum_{i=1}^{\max(m,s)} (\alpha_i+\beta_i) &lt; 1}\)</span>
+for <span class="math notranslate nohighlight">\(\smash{i=1,\ldots,m}\)</span>.</p>
 </div>
-<div class="section" id="id6">
-<h2>Notes on <span class="math">\(\smash{GARCH}\)</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="notes-on-smash-garch">
+<h2>Notes on <span class="math notranslate nohighlight">\(\smash{GARCH}\)</span><a class="headerlink" href="#notes-on-smash-garch" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><span class="math">\(\smash{GARCH}\)</span> is often preferred to <span class="math">\(\smash{ARCH}\)</span>
+<li><span class="math notranslate nohighlight">\(\smash{GARCH}\)</span> is often preferred to <span class="math notranslate nohighlight">\(\smash{ARCH}\)</span>
 because it requires far fewer parameters.</li>
 </ul>
 <ul class="simple">
 <li>MLE is conducted in a similar fashion, but requires an initial
-condition for <span class="math">\(\smash{\{\sigma_t\}_{m-s+1}^m}\)</span>.</li>
+condition for <span class="math notranslate nohighlight">\(\smash{\{\sigma_t\}_{m-s+1}^m}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>As with <span class="math">\(\smash{ARCH}\)</span> models, <span class="math">\(\smash{GARCH}\)</span> models
+<li>As with <span class="math notranslate nohighlight">\(\smash{ARCH}\)</span> models, <span class="math notranslate nohighlight">\(\smash{GARCH}\)</span> models
 feature excess kurtosis.</li>
 </ul>
 <ul class="simple">
-<li>Many refinements of the <span class="math">\(\smash{GARCH}\)</span> model have been
+<li>Many refinements of the <span class="math notranslate nohighlight">\(\smash{GARCH}\)</span> model have been
 developed to account for asymmetry in volatility and other
 features.</li>
 </ul>
@@ -400,18 +372,18 @@ features.</li>
 <div class="section" id="stochastic-volatility">
 <h2>Stochastic Volatility<a class="headerlink" href="#stochastic-volatility" title="Permalink to this headline">¶</a></h2>
 <p>Stochastic volatility models are an alternative to deterministic
-models of volatility (<span class="math">\(\smash{ARCH}\)</span>/<span class="math">\(\smash{GARCH}\)</span>).</p>
+models of volatility (<span class="math notranslate nohighlight">\(\smash{ARCH}\)</span>/<span class="math notranslate nohighlight">\(\smash{GARCH}\)</span>).</p>
 <ul class="simple">
 <li>Consider the simple model of Taylor (1986):</li>
 </ul>
-<div class="math">
-\[\begin{split}\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{align}
 \log(\sigma_t^2) &amp; = \eta_0 + \eta_1 \log(\sigma_{t-1}^2) + u_t,
 \,\,\, u_t \sim WN(0,\sigma_u^2).
-\end{align}\end{split}\]</div>
+\end{align}\]</div>
 <ul class="simple">
-<li><span class="math">\(\smash{u_t}\)</span> may be correlated with the return innovation
-<span class="math">\(\smash{\varepsilon_t}\)</span>.</li>
+<li><span class="math notranslate nohighlight">\(\smash{u_t}\)</span> may be correlated with the return innovation
+<span class="math notranslate nohighlight">\(\smash{\varepsilon_t}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="stochastic-volatility-estimation">
@@ -421,7 +393,7 @@ model above.</p>
 <ul class="simple">
 <li>Consider the state-space system of Nelson (1988):</li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \log(r_t^2) &amp; = \log(\sigma_t^2) + \log(z_t^2), \,\,\, z_t
 \stackrel{i.i.d.}{\sim} N(0,1) \\
@@ -440,13 +412,15 @@ the Kalman filter, for such problems.</li>
 </div>
 
 
+           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../Unit6-GMM/restrict.html" class="btn btn-neutral" title="GMM Over-Identifying Restrictions"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Unit6-GMM/restrict.html" class="btn btn-neutral float-left" title="GMM Over-Identifying Restrictions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -455,13 +429,14 @@ the Kalman filter, for such problems.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich.
+        &copy; Copyright 2016, Eric M. Aldrich
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
 </footer>
+
         </div>
       </div>
 
@@ -471,36 +446,15 @@ the Kalman filter, for such problems.</li>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2016.03.29',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

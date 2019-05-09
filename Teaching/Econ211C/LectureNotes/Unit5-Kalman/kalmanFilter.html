@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>The Kalman Filter &mdash; Econ 211C 2016.03.29 documentation</title>
@@ -12,43 +13,59 @@
 
   
   
+  
+  
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
-        <link rel="up" title="The Kalman Filter" href="../kalman.html"/>
-        <link rel="next" title="ML Estimation of State-Space Models" href="kalmanMLE.html"/>
-        <link rel="prev" title="State Space Models" href="stateSpace.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ML Estimation of State-Space Models" href="kalmanMLE.html" />
+    <link rel="prev" title="State Space Models" href="stateSpace.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Econ 211C
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2016.03.29
+              </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -56,161 +73,125 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
           
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
+            
+            
+              
+            
+            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/svar.html">Structural Vector Autoregression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/impulseResponse.html">Impulse Response Functions</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="stateSpace.html">State Space Models</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">The Kalman Filter</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The Kalman Filter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#state-space-representation">State-Space Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kalman-filter-overview">Kalman Filter Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-the-recursion">Starting the Recursion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Starting the Recursion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecasting-smash-y-t">Forecasting <span class="math notranslate nohighlight">\(\smash{Y_{t}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecast-error">Forecast Error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecast-mse">Forecast MSE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-the-forecast-of-smash-xi-t">Update the forecast of <span class="math notranslate nohighlight">\(\smash{\xi_{t}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Update the forecast of <span class="math notranslate nohighlight">\(\smash{\xi_{t}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Update the forecast of <span class="math notranslate nohighlight">\(\smash{\xi_{t}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecasting-smash-boldsymbol-xi-t-1">Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t+1}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecasting-smash-boldsymbol-y-t-1">Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+1}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecasting-smash-boldsymbol-y-t-s">Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary-of-kalman-filter-steps">Summary of Kalman Filter Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Summary of Kalman Filter Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-long-run-risks">Example: Long-Run Risks</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="kalmanMLE.html">ML Estimation of State-Space Models</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id1">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id2">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id3">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#basic-model">Basic Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id4">Basic Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#the-model">The <span class="math">\(\smash{ARCH}\)</span> Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#order"><span class="math">\(\smash{ARCH}\)</span> Order</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#notes-on">Notes on <span class="math">\(\smash{ARCH}\)</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#estimation"><span class="math">\(\smash{ARCH}\)</span> Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id5">The <span class="math">\(\smash{GARCH}\)</span> Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id6">Notes on <span class="math">\(\smash{GARCH}\)</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#stochastic-volatility">Stochastic Volatility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#stochastic-volatility-estimation">Stochastic Volatility Estimation</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">Econ 211C</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Econ 211C</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../kalman.html">The Kalman Filter</a> &raquo;</li>
-      
-    <li>The Kalman Filter</li>
+        
+      <li>The Kalman Filter</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/Unit5-Kalman/kalmanFilter.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../_sources/Unit5-Kalman/kalmanFilter.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="the-kalman-filter">
 <h1>The Kalman Filter<a class="headerlink" href="#the-kalman-filter" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="state-space-representation">
 <h2>State-Space Representation<a class="headerlink" href="#state-space-representation" title="Permalink to this headline">¶</a></h2>
 <p>Recall the basic state-space representation</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \underset{(r \times 1)}{\boldsymbol{\xi}_{t+1}} &amp; =
 \underset{(r \times r)}{F}\underset{(r \times 1)}{\boldsymbol{\xi}_{t}} +
@@ -229,14 +210,14 @@ E[\boldsymbol{v}_{t}\boldsymbol{w}_{\tau}^{'}] &amp; = 0 \hspace{4pt} \forall
 </div>
 <div class="section" id="kalman-filter-overview">
 <h2>Kalman Filter Overview<a class="headerlink" href="#kalman-filter-overview" title="Permalink to this headline">¶</a></h2>
-<p>Collect all known information at time <span class="math">\(\smash{t}\)</span> into a vector:</p>
-<div class="math">
+<p>Collect all known information at time <span class="math notranslate nohighlight">\(\smash{t}\)</span> into a vector:</p>
+<div class="math notranslate nohighlight">
 \[\smash{\underset{((n+k)t \times 1)}{ \boldsymbol{\mathcal{Y}_{t}}}
 =  (\boldsymbol{Y_{t}}^{'},
 \boldsymbol{Y_{t-1}}^{'},...,\boldsymbol{Y_{1}}^{'},
 \boldsymbol{x_{t}}^{'},\boldsymbol{x_{t-1}}^{'},...,\boldsymbol{x_{1}}^{'})^{'}}\]</div>
 <p>The Kalman Filter computes:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{\boldsymbol{\xi}}_{t+1|t} &amp; =
 \hat{E}[\boldsymbol{\xi}_{t+1}|\boldsymbol{\mathcal{Y}}_{t}] \\
@@ -244,13 +225,13 @@ E[\boldsymbol{v}_{t}\boldsymbol{w}_{\tau}^{'}] &amp; = 0 \hspace{4pt} \forall
 E[(\boldsymbol{\xi}_{t+1}-\hat{\boldsymbol{\xi}}_{t+1|t)}(\xi_{t+1} -
 \hat{\boldsymbol{\xi}}_{t+1|t})^{'}],
 \end{align}\end{split}\]</div>
-<p>where <span class="math">\(\smash{P_{t+1|t}}\)</span> is the MSE matrix for
-<span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\smash{P_{t+1|t}}\)</span> is the MSE matrix for
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}\)</span>.</p>
 </div>
 <div class="section" id="starting-the-recursion">
 <h2>Starting the Recursion<a class="headerlink" href="#starting-the-recursion" title="Permalink to this headline">¶</a></h2>
 <p>We begin the recursion with</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{\boldsymbol{\xi}}_{1|0} &amp; =
 E[\boldsymbol{\xi}_{1}|\mathcal{Y}_{0} = \emptyset] =
@@ -260,8 +241,8 @@ E[\boldsymbol{\xi}_{1}])(\boldsymbol{\xi}_{1} -
 E[\boldsymbol{\xi}_{1}])^{'}].
 \end{align}\end{split}\]</div>
 <p>According to the state equation, the unconditional expectation of
-<span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span> is:</p>
-<div class="math">
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t}}\)</span> is:</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 E[\boldsymbol{\xi}_{t+1}] &amp; = FE[\boldsymbol{\xi}_{t}] \\
 \implies E[\boldsymbol{\xi}_{t}] &amp; = FE[\boldsymbol{\xi}_{t}] \\
@@ -272,8 +253,8 @@ E[\boldsymbol{\xi}_{t+1}] &amp; = FE[\boldsymbol{\xi}_{t}] \\
 <div class="section" id="id1">
 <h2>Starting the Recursion<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Further, the state equation also implies the unconditional variance of
-<span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span> is:</p>
-<div class="math">
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t}}\)</span> is:</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \underset{\Sigma}{\underbrace{E[\boldsymbol{\xi}_{t+1}\boldsymbol{\xi}_{t+1}^{'}]}}
 &amp; = E[(F\boldsymbol{\xi}_{t} + \boldsymbol{v}_{t+1}) (F\boldsymbol{\xi}_{t} + \boldsymbol{v}_{t+1})^{'}] \\
@@ -287,24 +268,24 @@ F\underset{0}{\underbrace{E[\boldsymbol{\xi}_{t}\boldsymbol{v}_{t+1}^{'}]}} +
 F)]^{-1} Vec(Q).
 \end{align}\end{split}\]</div>
 </div>
-<div class="section" id="forecasting">
-<h2>Forecasting <span class="math">\(\smash{Y_{t}}\)</span><a class="headerlink" href="#forecasting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="forecasting-smash-y-t">
+<h2>Forecasting <span class="math notranslate nohighlight">\(\smash{Y_{t}}\)</span><a class="headerlink" href="#forecasting-smash-y-t" title="Permalink to this headline">¶</a></h2>
 <p>Our objective will be to obtain
-<span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}\)</span> and
-<span class="math">\(\smash{P_{t+1|t}}\)</span>, given values for
-<span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and
-<span class="math">\(\smash{P_{t|t-1}}\)</span>.</p>
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{P_{t+1|t}}\)</span>, given values for
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{P_{t|t-1}}\)</span>.</p>
 <ul class="simple">
-<li><span class="math">\(\smash{\boldsymbol{x}_{t}}\)</span> contains no information about
-<span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span> beyond what is contained in
-<span class="math">\(\smash{\boldsymbol{\mathcal{Y}}_{t-1}}\)</span>:</li>
+<li><span class="math notranslate nohighlight">\(\smash{\boldsymbol{x}_{t}}\)</span> contains no information about
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t}}\)</span> beyond what is contained in
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\mathcal{Y}}_{t-1}}\)</span>:</li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{E[\boldsymbol{\xi}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}]
 = E[\boldsymbol{\xi}_{t}|\boldsymbol{\mathcal{Y}}_{t-1}] =
 \hat{\boldsymbol{\xi}}_{t|t-1}}.\]</div>
 <p>According to the observation equation:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{\boldsymbol{Y}}_{t|t-1} &amp; =
 \hat{E}[\boldsymbol{Y}_{t}|
@@ -319,7 +300,7 @@ H^{'}E[\boldsymbol{\xi}_{t}|\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}] +
 <div class="section" id="forecast-error">
 <h2>Forecast Error<a class="headerlink" href="#forecast-error" title="Permalink to this headline">¶</a></h2>
 <p>The forecast error is:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \boldsymbol{Y}_{t} - \hat{\boldsymbol{Y}}_{t|t-1} &amp; =
 A^{'}\boldsymbol{x}_{t} + H^{'}\boldsymbol{\xi}_{t} +
@@ -329,7 +310,7 @@ H^{'}\hat{\boldsymbol{\xi}}_{t|t-1} \\
 \hat{\boldsymbol{\xi}}_{t|t-1}) + \boldsymbol{w}_{t},
 \end{align}\end{split}\]</div>
 <p>which has the MSE matrix:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 E[(\boldsymbol{Y}_{t} -
 \hat{\boldsymbol{Y}}_{t|t-1})(\boldsymbol{Y}_{t} &amp; -
@@ -344,29 +325,29 @@ E[(\boldsymbol{Y}_{t} -
 <div class="section" id="forecast-mse">
 <h2>Forecast MSE<a class="headerlink" href="#forecast-mse" title="Permalink to this headline">¶</a></h2>
 <p>We have used the fact that:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{E[\boldsymbol{w}_{t}(\boldsymbol{\xi}_{t} -
 \hat{\boldsymbol{\xi}}_{t|t-1})] = 0}\]</div>
-<p>because <span class="math">\(\smash{E[\boldsymbol{w}_{t}\boldsymbol{\xi}_{t}^{'}] =
+<p>because <span class="math notranslate nohighlight">\(\smash{E[\boldsymbol{w}_{t}\boldsymbol{\xi}_{t}^{'}] =
 0}\)</span> and because</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{E[\boldsymbol{w}_{t}\hat{\boldsymbol{\xi}}_{t|t-1}^{'}] =
 E[\boldsymbol{w}_{t}(F\xi_{t-1})^{'}] =
 E[\boldsymbol{w}_{t}\boldsymbol{\xi}_{t-1}^{'}]F^{'} = 0}.\]</div>
 </div>
-<div class="section" id="update-the-forecast-of">
-<h2>Update the forecast of <span class="math">\(\smash{\xi_{t}}\)</span><a class="headerlink" href="#update-the-forecast-of" title="Permalink to this headline">¶</a></h2>
-<p>After we observe <span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span>, we can obtain a
-new forecast of <span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span>:</p>
-<div class="math">
+<div class="section" id="update-the-forecast-of-smash-xi-t">
+<h2>Update the forecast of <span class="math notranslate nohighlight">\(\smash{\xi_{t}}\)</span><a class="headerlink" href="#update-the-forecast-of-smash-xi-t" title="Permalink to this headline">¶</a></h2>
+<p>After we observe <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t}}\)</span>, we can obtain a
+new forecast of <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t}}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\smash{\hat{\boldsymbol{\xi}}_{t|t} =
 E[\boldsymbol{\xi}_{t}|\boldsymbol{Y}_{t},\boldsymbol{x}_{t},\boldsymbol{\mathcal{Y}}_{t-1}]
 = E[\boldsymbol{\xi}_{t}|\boldsymbol{\mathcal{Y}}_{t}]}.\]</div>
 </div>
 <div class="section" id="id2">
-<h2>Update the forecast of <span class="math">\(\smash{\xi_{t}}\)</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>Update the forecast of <span class="math notranslate nohighlight">\(\smash{\xi_{t}}\)</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>The formula for updating a linear projection in this fashion is:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{\boldsymbol{\xi}}_{t|t} &amp; = \hat{\boldsymbol{\xi}}_{t|t-1} +
 E[({\boldsymbol{\xi}}_{t} -
@@ -389,9 +370,9 @@ H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}).
 \end{align}\end{split}\]</div>
 </div>
 <div class="section" id="id3">
-<h2>Update the forecast of <span class="math">\(\smash{\xi_{t}}\)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>Update the forecast of <span class="math notranslate nohighlight">\(\smash{\xi_{t}}\)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>The associated MSE is:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 P_{t|t} &amp; = E[(\boldsymbol{\xi}_{t} -
 \hat{\boldsymbol{\xi}}_{t|t})(\boldsymbol{\xi}_{t} -
@@ -400,9 +381,9 @@ P_{t|t} &amp; = E[(\boldsymbol{\xi}_{t} -
 P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}H^{'}P_{t|t-1}.
 \end{align}\end{split}\]</div>
 </div>
-<div class="section" id="id4">
-<h2>Forecasting <span class="math">\(\smash{\boldsymbol{\xi}_{t+1}}\)</span><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="math">
+<div class="section" id="forecasting-smash-boldsymbol-xi-t-1">
+<h2>Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t+1}}\)</span><a class="headerlink" href="#forecasting-smash-boldsymbol-xi-t-1" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{\boldsymbol{\xi}}_{t+1|t} &amp; =
 \hat{E}[\boldsymbol{\xi}_{t+1}|\boldsymbol{\mathcal{Y}}_{t}] \\
@@ -413,7 +394,7 @@ E[\boldsymbol{v}_{t+1}|\boldsymbol{\mathcal{Y}}_{t}] \\
 K_{t}(\boldsymbol{Y}_{t}-A^{'}\boldsymbol{x}_{t} +
 H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}).
 \end{align}\end{split}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 P_{t+1|t} &amp; = E[(\boldsymbol{\xi}_{t+1} -
 \hat{\boldsymbol{\xi}}_{t+1|t})(\boldsymbol{\xi}_{t+1} -
@@ -426,21 +407,21 @@ F\hat{\boldsymbol{\xi}}_{t|t})(F\boldsymbol{\xi}_{t} +
 H^{'}P_{t|t-1})F^{'} + Q.
 \end{align}\end{split}\]</div>
 </div>
-<div class="section" id="id5">
-<h2>Forecasting <span class="math">\(\smash{\boldsymbol{Y}_{t+1}}\)</span><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="math">
+<div class="section" id="forecasting-smash-boldsymbol-y-t-1">
+<h2>Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+1}}\)</span><a class="headerlink" href="#forecasting-smash-boldsymbol-y-t-1" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
 \[\smash{\hat{\boldsymbol{Y}}_{t+1|t} =
 E[\boldsymbol{Y}_{t+1}|\boldsymbol{x}_{t+1},\boldsymbol{\mathcal{Y}}_{t}]=
 A^{'}\boldsymbol{x}_{t+1} + H^{'} \hat{\boldsymbol{\xi}}_{t+1|t}},\]</div>
 <p>which has associated MSE:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{E[(\boldsymbol{Y}_{t+1} - \hat{\boldsymbol{Y}}_{t+1|t})(\boldsymbol{Y}_{t+1} -
 \hat{\boldsymbol{Y}}_{t+1|t})^{'}] = H^{'}P_{t+1|t}H + R}.\]</div>
 </div>
-<div class="section" id="id6">
-<h2>Forecasting <span class="math">\(\smash{\boldsymbol{Y}_{t+s}}\)</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="forecasting-smash-boldsymbol-y-t-s">
+<h2>Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span><a class="headerlink" href="#forecasting-smash-boldsymbol-y-t-s" title="Permalink to this headline">¶</a></h2>
 <p>Iterating on the state equation:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather}
 \boldsymbol{\xi}_{t+s} = F^{s}\boldsymbol{\xi}_{t} +
 F^{s-1}\boldsymbol{v}_{t+1} + F^{s-2}\boldsymbol{v}_{t+2} +
@@ -450,42 +431,42 @@ E[\boldsymbol{\xi}_{t+s}|\boldsymbol{\xi}_{t},\boldsymbol{\mathcal{Y}}_{t}]
 = F^{s}\boldsymbol{\xi}_{t}.
 \end{gather}\end{split}\]</div>
 <p>By the law of iterated expectations:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\hat{\boldsymbol{\xi}}_{t+s|t} =
 E[\boldsymbol{\xi}_{t+s}|\boldsymbol{\mathcal{Y}}_{t}] =
 E[E[\boldsymbol{\xi}_{t+s}|\boldsymbol{\xi}_{t},\boldsymbol{\mathcal{Y}}_{t}]|\boldsymbol{\mathcal{Y}}_{t}]
 = E[F^{s}\boldsymbol{\xi}_{t}|\boldsymbol{\mathcal{Y}}_{t}] =
 F^{s}\hat{\boldsymbol{\xi}}_{t|t}}.\]</div>
 </div>
-<div class="section" id="id7">
-<h2>Forecasting <span class="math">\(\smash{\boldsymbol{Y}_{t+s}}\)</span><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>The forecast error is:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\boldsymbol{\xi}_{t+s} - \hat{\boldsymbol{\xi}}_{t+s|t} =
 F^{s}(\boldsymbol{\xi}_{t} - \hat{\boldsymbol{\xi}}_{t|t}) +
 F^{s-1}\boldsymbol{v}_{t+1} + \ldots + F\boldsymbol{v}_{t+s-1} +
 \boldsymbol{v}_{t+s}},\]</div>
 <p>with MSE:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{P_{t+s|t} = F^{s}P_{t|t}(F^{'})^{s} +
 F^{s-1}Q(F^{'})^{s-1} + \ldots + FQF^{'} + Q }.\]</div>
 </div>
-<div class="section" id="id8">
-<h2>Forecasting <span class="math">\(\smash{\boldsymbol{Y}_{t+s}}\)</span><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>Rewrite the observation equation:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\boldsymbol{Y}_{t+s} = A^{'}\boldsymbol{x}_{t+s} +
 H^{'}\boldsymbol{\xi}_{t+s} + \boldsymbol{w}_{t+s}}.\]</div>
 <p>Thus,</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\hat{\boldsymbol{Y}}_{t+s|t}  =
 E[\boldsymbol{Y}_{t+s}|\boldsymbol{x}_{t+s},\boldsymbol{\mathcal{Y}}_{t}]
 = A^{'}\boldsymbol{x}_{t+s} + H^{'}\hat{\boldsymbol{\xi}}_{t+s|t}}.\]</div>
 </div>
-<div class="section" id="id9">
-<h2>Forecasting <span class="math">\(\smash{\boldsymbol{Y}_{t+s}}\)</span><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>Forecasting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>The forecast error is:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \boldsymbol{Y}_{t+s} - \hat{\boldsymbol{Y}}_{t+s|t} &amp; =
 A^{'}\boldsymbol{x}_{t+s} + H^{'}\boldsymbol{\xi}_{t+s} +
@@ -495,7 +476,7 @@ H^{'}\hat{\boldsymbol{\xi}}_{t+s|t} \\
 \hat{\boldsymbol{\xi}}_{t+s|t}) + \boldsymbol{w}_{t+s},
 \end{align}\end{split}\]</div>
 <p>with MSE:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{E[(\boldsymbol{Y}_{t+s} -
 \hat{\boldsymbol{Y}}_{t+s|t})(\boldsymbol{Y}_{t+s} -
 \hat{\boldsymbol{Y}}_{t+s|t})^{'}] = H^{'}P_{t+s|t}H + R}.\]</div>
@@ -503,14 +484,14 @@ H^{'}\hat{\boldsymbol{\xi}}_{t+s|t} \\
 <div class="section" id="summary-of-kalman-filter-steps">
 <h2>Summary of Kalman Filter Steps<a class="headerlink" href="#summary-of-kalman-filter-steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Start with forecast <span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{1|0}}\)</span>
-and associated MSE matrix <span class="math">\(\smash{P_{1|0}}\)</span></li>
+<li>Start with forecast <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{1|0}}\)</span>
+and associated MSE matrix <span class="math notranslate nohighlight">\(\smash{P_{1|0}}\)</span></li>
 </ol>
 <ol class="arabic simple" start="2">
-<li>Given forecast <span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span>
-and MSE <span class="math">\(\smash{P_{t|t-1}}\)</span>, compute</li>
+<li>Given forecast <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t|t-1}}\)</span>
+and MSE <span class="math notranslate nohighlight">\(\smash{P_{t|t-1}}\)</span>, compute</li>
 </ol>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{\boldsymbol{\xi}}_{t|t} &amp; = \hat{\boldsymbol{\xi}}_{t|t-1} +
 \overset{K_{t}}{\overbrace{P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}}}
@@ -520,13 +501,13 @@ P_{t|t} &amp; = P_{t|t-1} -
 P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}H^{'}P_{t|t-1}.
 \end{align}\end{split}\]</div>
 </div>
-<div class="section" id="id10">
-<h2>Summary of Kalman Filter Steps<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>Summary of Kalman Filter Steps<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple" start="3">
-<li>Given <span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t|t}}\)</span> and MSE
-<span class="math">\(\smash{P_{t|t}}\)</span>, compute</li>
+<li>Given <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t|t}}\)</span> and MSE
+<span class="math notranslate nohighlight">\(\smash{P_{t|t}}\)</span>, compute</li>
 </ol>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{\boldsymbol{\xi}}_{t+1|t} &amp; =
 F\hat{\boldsymbol{\xi}}_{t|t-1} + F
@@ -536,10 +517,10 @@ P_{t+1|t} &amp; = F(P_{t|t-1} - P_{t|t-1} H(H^{'}P_{t|t-1}H + R)^{-1}
 \hspace{3pt} H^{'}P_{t|t-1})F^{'} + Q.
 \end{align}\end{split}\]</div>
 <ol class="arabic simple" start="4">
-<li>Given <span class="math">\(\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}\)</span> and MSE
-<span class="math">\(\smash{P_{t+1|t}}\)</span>, compute</li>
+<li>Given <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}\)</span> and MSE
+<span class="math notranslate nohighlight">\(\smash{P_{t+1|t}}\)</span>, compute</li>
 </ol>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{\boldsymbol{Y}}_{t+1|t} &amp; =
 A^{'}\boldsymbol{x}_{t+1} + H^{'} \hat{\boldsymbol{\xi}}_{t+1|t}
@@ -551,7 +532,7 @@ E[(\boldsymbol{Y}_{t+1} -
 </div>
 <div class="section" id="example-long-run-risks">
 <h2>Example: Long-Run Risks<a class="headerlink" href="#example-long-run-risks" title="Permalink to this headline">¶</a></h2>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather}
 x_{t+1} = \rho x_{t} + \varphi_{e}\sigma e_{t+1} \\
 g_{t+1} = \log\left(C_{t+1}/C_{t}\right) = \mu + x_{t} + \sigma
@@ -560,21 +541,23 @@ g_{d,t+1} = \log\left(D_{t+1}/D_{t}\right) = \mu_{d} + \phi
 x_{t} + \varphi_{d}\sigma u_{t+1} \\
 \varphi_{t+1},u_{t+1},\eta_{t+1} \overset{i.i.d.}{\sim} N(0,1) \\
 \end{gather}\end{split}\]</div>
-<p>where <span class="math">\(\smash{C_{t}}\)</span> and <span class="math">\(\smash{D_{t}}\)</span> are aggregate
+<p>where <span class="math notranslate nohighlight">\(\smash{C_{t}}\)</span> and <span class="math notranslate nohighlight">\(\smash{D_{t}}\)</span> are aggregate
 consumption and aggregate dividends.</p>
 </div>
 </div>
 
 
+           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="kalmanMLE.html" class="btn btn-neutral float-right" title="ML Estimation of State-Space Models">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="kalmanMLE.html" class="btn btn-neutral float-right" title="ML Estimation of State-Space Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="stateSpace.html" class="btn btn-neutral" title="State Space Models"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="stateSpace.html" class="btn btn-neutral float-left" title="State Space Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -583,13 +566,14 @@ consumption and aggregate dividends.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich.
+        &copy; Copyright 2016, Eric M. Aldrich
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
 </footer>
+
         </div>
       </div>
 
@@ -599,36 +583,15 @@ consumption and aggregate dividends.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2016.03.29',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Causality and Invertibility &mdash; Econ 211C 2016.03.29 documentation</title>
@@ -12,43 +13,59 @@
 
   
   
+  
+  
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
-        <link rel="up" title="Linear Time Series Models" href="../linearTS.html"/>
-        <link rel="next" title="Estimation" href="../estimation.html"/>
-        <link rel="prev" title="ARMA Processes" href="arma.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Estimation" href="../estimation.html" />
+    <link rel="prev" title="ARMA Processes" href="arma.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Econ 211C
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2016.03.29
+              </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -56,157 +73,135 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
           
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
+            
+            
+              
+            
+            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="lagOperators.html">Lag Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ma.html">Moving Average Processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ar.html">Autoregressive Processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arma.html">ARMA Processes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Causality and Invertibility</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Causality and Invertibility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#causality">Causality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Causality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Causality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Causality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#causality-of-smash-ar-p">Causality of <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#invertibility">Invertibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Invertibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stationarity-invertibility">Stationarity/Invertibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inverting-an-smash-ma-q">Inverting an <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Inverting an <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Inverting an <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#causality-and-invertibility-of-an-smash-arma-p-q">Causality and Invertibility of an <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">Econ 211C</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Econ 211C</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../linearTS.html">Linear Time Series Models</a> &raquo;</li>
-      
-    <li>Causality and Invertibility</li>
+        
+      <li>Causality and Invertibility</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/Unit1-ARMA/causality.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../_sources/Unit1-ARMA/causality.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="causality-and-invertibility">
 <h1>Causality and Invertibility<a class="headerlink" href="#causality-and-invertibility" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="causality">
 <h2>Causality<a class="headerlink" href="#causality" title="Permalink to this headline">¶</a></h2>
-<p>Suppose <span class="math">\(\smash{\{Y_t\}}\)</span> is an <span class="math">\(\smash{AR(1)}\)</span> process:</p>
-<div class="math">
-\[\begin{split}\begin{align*}
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is an <span class="math notranslate nohighlight">\(\smash{AR(1)}\)</span> process:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
 Y_t &amp; = \phi Y_{t-1} + \varepsilon_t.
-\end{align*}\end{split}\]</div>
+\end{align*}\]</div>
 <ul class="simple">
-<li>We have shown that when <span class="math">\(\smash{|\phi| &lt; 1}\)</span>,
-<span class="math">\(\smash{\{Y_t\}}\)</span> is stationary.</li>
+<li>We have shown that when <span class="math notranslate nohighlight">\(\smash{|\phi| &lt; 1}\)</span>,
+<span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is stationary.</li>
 </ul>
 <ul class="simple">
-<li>What if <span class="math">\(\smash{|\phi| &gt; 1}\)</span>?</li>
+<li>What if <span class="math notranslate nohighlight">\(\smash{|\phi| &gt; 1}\)</span>?</li>
 </ul>
 </div>
 <div class="section" id="id1">
 <h2>Causality<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s run the <span class="math">\(\smash{AR}\)</span> recursion forward:</p>
-<div class="math">
+<p>Let’s run the <span class="math notranslate nohighlight">\(\smash{AR}\)</span> recursion forward:</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 Y_{t-1} &amp; = \frac{1}{\phi} Y_t - \frac{1}{\phi} \varepsilon_t =
 \frac{1}{\phi} \left(\frac{1}{\phi} Y_{t+1} - \frac{1}{\phi}
@@ -222,68 +217,68 @@ L^{-j}\right) \varepsilon_t.
 </div>
 <div class="section" id="id2">
 <h2>Causality<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>The previous sum converges, so <span class="math">\(\smash{Y_t}\)</span> is stationary.</p>
+<p>The previous sum converges, so <span class="math notranslate nohighlight">\(\smash{Y_t}\)</span> is stationary.</p>
 <ul class="simple">
-<li>However it is not a function of past <span class="math">\(\smash{\varepsilon_t}\)</span>.</li>
+<li>However it is not a function of past <span class="math notranslate nohighlight">\(\smash{\varepsilon_t}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="id3">
 <h2>Causality<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>A process <span class="math">\(\smash{\{X_t\}}\)</span> is a causal function of
-<span class="math">\(\smash{\{W_t\}}\)</span> if <span class="math">\(\smash{\exists \psi(L) = \psi_0 +
-\psi_1L^1 + \ldots}\)</span> such that <span class="math">\(\smash{x_t = \psi(L) w_t}\)</span> and
-<span class="math">\(\smash{\sum_{j=0}^{\infty} |\psi_j| &lt; \infty}\)</span>.</p>
+<p>A process <span class="math notranslate nohighlight">\(\smash{\{X_t\}}\)</span> is a causal function of
+<span class="math notranslate nohighlight">\(\smash{\{W_t\}}\)</span> if <span class="math notranslate nohighlight">\(\smash{\exists \psi(L) = \psi_0 +
+\psi_1L^1 + \ldots}\)</span> such that <span class="math notranslate nohighlight">\(\smash{x_t = \psi(L) w_t}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{\sum_{j=0}^{\infty} |\psi_j| &lt; \infty}\)</span>.</p>
 <ul class="simple">
-<li>An <span class="math">\(\smash{AR(1)}\)</span> is causal only if <span class="math">\(\smash{|\phi|
+<li>An <span class="math notranslate nohighlight">\(\smash{AR(1)}\)</span> is causal only if <span class="math notranslate nohighlight">\(\smash{|\phi|
 &lt; 1}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>However it is stationary as long as <span class="math">\(\smash{|\phi|
+<li>However it is stationary as long as <span class="math notranslate nohighlight">\(\smash{|\phi|
 \neq 1}\)</span>.</li>
 </ul>
 </div>
-<div class="section" id="causality-of">
-<h2>Causality of <span class="math">\(\smash{AR(p)}\)</span><a class="headerlink" href="#causality-of" title="Permalink to this headline">¶</a></h2>
-<p>Suppose <span class="math">\(\smash{\{Y_t\}}\)</span> is an <span class="math">\(\smash{AR(p)}\)</span> process
-with lag polynomial <span class="math">\(\smash{\phi(L)}\)</span>.</p>
+<div class="section" id="causality-of-smash-ar-p">
+<h2>Causality of <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span><a class="headerlink" href="#causality-of-smash-ar-p" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is an <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span> process
+with lag polynomial <span class="math notranslate nohighlight">\(\smash{\phi(L)}\)</span>.</p>
 <ul class="simple">
-<li>If all roots of <span class="math">\(\smash{\phi(L)}\)</span> are inside or outside the
-unit circle, <span class="math">\(\smash{\{Y_t\}}\)</span> is stationary.</li>
+<li>If all roots of <span class="math notranslate nohighlight">\(\smash{\phi(L)}\)</span> are inside or outside the
+unit circle, <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is stationary.</li>
 </ul>
 <ul class="simple">
-<li>If any root of <span class="math">\(\smash{\phi(L)}\)</span> is on the unit circle,
-<span class="math">\(\smash{\{Y_t\}}\)</span> is not stationary.</li>
+<li>If any root of <span class="math notranslate nohighlight">\(\smash{\phi(L)}\)</span> is on the unit circle,
+<span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is not stationary.</li>
 </ul>
 <ul class="simple">
-<li>If all roots of <span class="math">\(\smash{\phi(L)}\)</span> are outside the unit circle,
-<span class="math">\(\smash{\phi(L)^{-1}}\)</span> exists and <span class="math">\(\smash{\{Y_t\}}\)</span> is
+<li>If all roots of <span class="math notranslate nohighlight">\(\smash{\phi(L)}\)</span> are outside the unit circle,
+<span class="math notranslate nohighlight">\(\smash{\phi(L)^{-1}}\)</span> exists and <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is
 stationary and causal.</li>
 </ul>
 </div>
 <div class="section" id="invertibility">
 <h2>Invertibility<a class="headerlink" href="#invertibility" title="Permalink to this headline">¶</a></h2>
-<p>Suppose <span class="math">\(\smash{\{Y_t\}}\)</span> is an <span class="math">\(\smash{MA(q)}\)</span> process:</p>
-<div class="math">
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is an <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span> process:</p>
+<div class="math notranslate nohighlight">
 \[\smash{Y_t = \mu + \theta(L) \varepsilon_t,}\]</div>
-<p>where <span class="math">\(\smash{\theta(L) = 1+\theta_1 L^1 + \ldots + \theta_q
+<p>where <span class="math notranslate nohighlight">\(\smash{\theta(L) = 1+\theta_1 L^1 + \ldots + \theta_q
 L^q}\)</span>.</p>
 <ul class="simple">
-<li>We say <span class="math">\(\smash{\{Y_t\}}\)</span> is <em>invertible</em> if
-<span class="math">\(\smash{\theta(L)^{-1}}\)</span> exists.</li>
+<li>We say <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is <em>invertible</em> if
+<span class="math notranslate nohighlight">\(\smash{\theta(L)^{-1}}\)</span> exists.</li>
 </ul>
 </div>
 <div class="section" id="id4">
 <h2>Invertibility<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>The <span class="math">\(\smash{MA(q)}\)</span> lag polynomial can be factored as</p>
-<div class="math">
+<p>The <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span> lag polynomial can be factored as</p>
+<div class="math notranslate nohighlight">
 \[\smash{\theta(L) = 1+\theta_1 L^1 + \ldots + \theta_q L^q =
 (1-\eta_1 L)\cdots(1-\eta_q L).}\]</div>
 <ul class="simple">
-<li><span class="math">\(\smash{\left\{\frac{1}{\eta_i}\right\}_{i=1}^q}\)</span> are the
-roots of <span class="math">\(\smash{\theta(L)}\)</span>.</li>
+<li><span class="math notranslate nohighlight">\(\smash{\left\{\frac{1}{\eta_i}\right\}_{i=1}^q}\)</span> are the
+roots of <span class="math notranslate nohighlight">\(\smash{\theta(L)}\)</span>.</li>
 </ul>
-<p>Suppose <span class="math">\(\smash{|\eta_i| &lt; 1 \,\, \forall i}\)</span>. Then</p>
-<div class="math">
+<p>Suppose <span class="math notranslate nohighlight">\(\smash{|\eta_i| &lt; 1 \,\, \forall i}\)</span>. Then</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 (1-\eta_i L)^{-1} &amp; = \sum_{j=0}^{\infty} \eta^j_i L^j \,\,\,\,
 \forall i \\
@@ -293,43 +288,43 @@ roots of <span class="math">\(\smash{\theta(L)}\)</span>.</li>
 </div>
 <div class="section" id="stationarity-invertibility">
 <h2>Stationarity/Invertibility<a class="headerlink" href="#stationarity-invertibility" title="Permalink to this headline">¶</a></h2>
-<p>We previously showed that an <span class="math">\(\smash{MA(q)}\)</span> is <em>always</em>
-stationary, regardless of the roots of <span class="math">\(\smash{\theta(L)}\)</span>.</p>
+<p>We previously showed that an <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span> is <em>always</em>
+stationary, regardless of the roots of <span class="math notranslate nohighlight">\(\smash{\theta(L)}\)</span>.</p>
 <ul class="simple">
 <li>It is only invertible if all of the roots of
-<span class="math">\(\smash{\theta(L)}\)</span> lie outside the unit circle.</li>
+<span class="math notranslate nohighlight">\(\smash{\theta(L)}\)</span> lie outside the unit circle.</li>
 </ul>
 <ul class="simple">
 <li>In this case</li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\varepsilon_t = \theta(L)^{-1} Y_t}.\]</div>
 <ul class="simple">
-<li>That is, <span class="math">\(\smash{\{\varepsilon_t\}}\)</span> is a causal function of
-<span class="math">\(\smash{\{Y_t\}}\)</span>.</li>
+<li>That is, <span class="math notranslate nohighlight">\(\smash{\{\varepsilon_t\}}\)</span> is a causal function of
+<span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span>.</li>
 </ul>
 </div>
-<div class="section" id="inverting-an">
-<h2>Inverting an <span class="math">\(\smash{MA(q)}\)</span><a class="headerlink" href="#inverting-an" title="Permalink to this headline">¶</a></h2>
-<p>Given an <span class="math">\(\smash{MA(q)}\)</span> process,</p>
-<div class="math">
+<div class="section" id="inverting-an-smash-ma-q">
+<h2>Inverting an <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span><a class="headerlink" href="#inverting-an-smash-ma-q" title="Permalink to this headline">¶</a></h2>
+<p>Given an <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span> process,</p>
+<div class="math notranslate nohighlight">
 \[\smash{Y_t = \mu + \theta(L) \varepsilon_t, \,\,\,\, \varepsilon_t
 \stackrel{i.i.d.}{\sim} WN(0,\sigma^2)},\]</div>
 <p>suppose, without loss of generality,</p>
 <ul class="simple">
-<li><span class="math">\(\smash{|\eta_i| &lt; 1}\)</span> for <span class="math">\(\smash{i=1,\ldots,m}\)</span></li>
-<li><span class="math">\(\smash{|\eta_i| &gt; 1}\)</span> for <span class="math">\(\smash{i=m+1,\ldots,q}\)</span>.</li>
+<li><span class="math notranslate nohighlight">\(\smash{|\eta_i| &lt; 1}\)</span> for <span class="math notranslate nohighlight">\(\smash{i=1,\ldots,m}\)</span></li>
+<li><span class="math notranslate nohighlight">\(\smash{|\eta_i| &gt; 1}\)</span> for <span class="math notranslate nohighlight">\(\smash{i=m+1,\ldots,q}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="id5">
-<h2>Inverting an <span class="math">\(\smash{MA(q)}\)</span><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>Inverting an <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>Create a new process</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\widetilde{Y}_t = \mu + \tilde{\theta}(L) \tilde{\varepsilon}_t,
 \,\,\,\, \tilde{\varepsilon}_t \stackrel{i.i.d.}{\sim}
 WN(0,\sigma^2 \eta^2_{m+1} \cdots \eta^2_q),}\]</div>
 <p>where</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \tilde{\theta}(L) &amp; = 1+\tilde{\theta}_1 L^1 + \ldots +
 \tilde{\theta}_q L^q \\
@@ -339,56 +334,58 @@ WN(0,\sigma^2 \eta^2_{m+1} \cdots \eta^2_q),}\]</div>
 \end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="id6">
-<h2>Inverting an <span class="math">\(\smash{MA(q)}\)</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>It can be shown that <span class="math">\(\smash{\widetilde{Y}_t}\)</span> has the same first
-and second moments as <span class="math">\(\smash{Y_t}\)</span>.</p>
+<h2>Inverting an <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>It can be shown that <span class="math notranslate nohighlight">\(\smash{\widetilde{Y}_t}\)</span> has the same first
+and second moments as <span class="math notranslate nohighlight">\(\smash{Y_t}\)</span>.</p>
 <ul class="simple">
-<li><span class="math">\(\smash{\widetilde{Y}_t}\)</span> is known as the invertible represenation
-of the <span class="math">\(\smash{MA(q)}\)</span> process.</li>
+<li><span class="math notranslate nohighlight">\(\smash{\widetilde{Y}_t}\)</span> is known as the invertible represenation
+of the <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span> process.</li>
 </ul>
 <ul class="simple">
-<li>Note that every <span class="math">\(\smash{MA(q)}\)</span> process has an invertible
+<li>Note that every <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span> process has an invertible
 representation so long as none of the roots of
-<span class="math">\(\smash{\theta(L)}\)</span> lie on the unit circle.</li>
+<span class="math notranslate nohighlight">\(\smash{\theta(L)}\)</span> lie on the unit circle.</li>
 </ul>
 <ul class="simple">
 <li>If an invertible representation exists, it is unique.</li>
 </ul>
 </div>
-<div class="section" id="causality-and-invertibility-of-an">
-<h2>Causality and Invertibility of an <span class="math">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#causality-and-invertibility-of-an" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="causality-and-invertibility-of-an-smash-arma-p-q">
+<h2>Causality and Invertibility of an <span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span><a class="headerlink" href="#causality-and-invertibility-of-an-smash-arma-p-q" title="Permalink to this headline">¶</a></h2>
 <p>The notions of stationarity, causality and invertibility extend to an
-<span class="math">\(\smash{ARMA(p,q)}\)</span> process:</p>
-<div class="math">
-\[\begin{split}\begin{align}
+<span class="math notranslate nohighlight">\(\smash{ARMA(p,q)}\)</span> process:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
 \phi(L) Y_t &amp; = c + \theta(L) \varepsilon_t.
-\end{align}\end{split}\]</div>
+\end{align}\]</div>
 <ul class="simple">
-<li>If none of the roots of <span class="math">\(\smash{\phi(L)}\)</span> lie on the unit
-circle, <span class="math">\(\smash{\{Y_t\}}\)</span> is stationary.</li>
+<li>If none of the roots of <span class="math notranslate nohighlight">\(\smash{\phi(L)}\)</span> lie on the unit
+circle, <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is stationary.</li>
 </ul>
 <ul class="simple">
-<li>If all of the roots of <span class="math">\(\smash{\phi(L)}\)</span> lie outside the unit
-circle, <span class="math">\(\smash{\{Y_t\}}\)</span> is causal.</li>
+<li>If all of the roots of <span class="math notranslate nohighlight">\(\smash{\phi(L)}\)</span> lie outside the unit
+circle, <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> is causal.</li>
 </ul>
 <ul class="simple">
-<li>If none of the roots of <span class="math">\(\smash{\theta(L)}\)</span> lie on the unit
-circle, <span class="math">\(\smash{\{Y_t\}}\)</span> has a unique invertible
+<li>If none of the roots of <span class="math notranslate nohighlight">\(\smash{\theta(L)}\)</span> lie on the unit
+circle, <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> has a unique invertible
 representation.</li>
 </ul>
 </div>
 </div>
 
 
+           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../estimation.html" class="btn btn-neutral float-right" title="Estimation">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../estimation.html" class="btn btn-neutral float-right" title="Estimation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="arma.html" class="btn btn-neutral" title="ARMA Processes"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="arma.html" class="btn btn-neutral float-left" title="ARMA Processes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -397,13 +394,14 @@ representation.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich.
+        &copy; Copyright 2016, Eric M. Aldrich
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
 </footer>
+
         </div>
       </div>
 
@@ -413,36 +411,15 @@ representation.</li>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2016.03.29',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
