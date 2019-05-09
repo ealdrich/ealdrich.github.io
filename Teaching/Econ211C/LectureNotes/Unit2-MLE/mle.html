@@ -5,7 +5,6 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Maximum Likelihood Estimation &mdash; Econ 211C 2016.03.29 documentation</title>
@@ -13,59 +12,43 @@
 
   
   
-  
-  
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ARMA Maximum Likelihood Estimation" href="mleArma.html" />
-    <link rel="prev" title="Estimation" href="../estimation.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
+        <link rel="up" title="Estimation" href="../estimation.html"/>
+        <link rel="next" title="ARMA Maximum Likelihood Estimation" href="mleArma.html"/>
+        <link rel="prev" title="Estimation" href="../estimation.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home"> Econ 211C
-          
-
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                2016.03.29
-              </div>
-            
-          
-
-          
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -73,134 +56,135 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+      </div>
 
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
           
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-            
-            
-              
-            
-            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../estimation.html">Estimation</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Maximum Likelihood Estimation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#estimating-parameters-of-distributions">Estimating Parameters of Distributions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#joint-cdf">Joint CDF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#joint-density">Joint Density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#independence">Independence</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#joint-density-under-independence">Joint Density Under Independence</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bayes-rule">Bayes’ Rule</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Bayes’ Rule</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-joint-density">General Joint Density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Maximum Likelihood Estimation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#likelihood">Likelihood</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#likelihood-maximization">Likelihood Maximization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#log-likelihood">Log Likelihood</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Log Likelihood</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mle-example">MLE Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">MLE Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">MLE Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">MLE Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mle-example-smash-n-1-unknown-smash-mu">MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\mu}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\mu}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mle-example-smash-n-1">MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\mu}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\mu}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mle-example-smash-n-1-unknown-smash-sigma">MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mle-accuracy">MLE Accuracy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fisher-information">Fisher Information</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">Fisher Information</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mle-central-limit-theorem">MLE Central Limit Theorem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">MLE Central Limit Theorem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mle-standard-errors">MLE Standard Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">MLE Standard Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mle-variance-example">MLE Variance Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">MLE Variance Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../estimation.html">Estimation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Maximum Likelihood Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numerical.html">Numerical Optimization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
 </ul>
 
-            
           
-        </div>
+        
       </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Econ 211C</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Econ 211C</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
           <li><a href="../estimation.html">Estimation</a> &raquo;</li>
-        
-      <li>Maximum Likelihood Estimation</li>
-    
-    
+      
+    <li>Maximum Likelihood Estimation</li>
       <li class="wy-breadcrumbs-aside">
         
-            
-            <a href="../_sources/Unit2-MLE/mle.rst.txt" rel="nofollow"> View page source</a>
-          
+          <a href="../_sources/Unit2-MLE/mle.txt" rel="nofollow"> View page source</a>
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+          <div role="main" class="document">
             
   <div class="section" id="maximum-likelihood-estimation">
 <h1>Maximum Likelihood Estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permalink to this headline">¶</a></h1>
@@ -213,93 +197,93 @@ characteristics of the data (locations, scale and shape).</li>
 </ul>
 <ul class="simple">
 <li>However, there may be a set of one or more parameters of the
-distribution that we don’t know.</li>
+distribution that we don&#8217;t know.</li>
 </ul>
 <ul class="simple">
 <li>Typically we use the data to estimate the unknown parameters,
-<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\theta}}\)</span>.</li>
+<span class="math">\(\smash{\boldsymbol{\theta}}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="joint-cdf">
 <h2>Joint CDF<a class="headerlink" href="#joint-cdf" title="Permalink to this headline">¶</a></h2>
-<p>Suppose we have a collection of random variables <span class="math notranslate nohighlight">\(\smash{{\bf Y}_T =
+<p>Suppose we have a collection of random variables <span class="math">\(\smash{{\bf Y}_T =
 (Y_1, \ldots, Y_T)'}\)</span>.</p>
 <ul class="simple">
-<li>We view a data sample of size <span class="math notranslate nohighlight">\(\smash{T}\)</span> as one realization of each
-random variable: <span class="math notranslate nohighlight">\(\smash{{\bf y}_T = (y_1, \ldots, y_T)'}\)</span>.</li>
+<li>We view a data sample of size <span class="math">\(\smash{T}\)</span> as one realization of each
+random variable: <span class="math">\(\smash{{\bf y}_T = (y_1, \ldots, y_T)'}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>The <em>joint cumulative density</em> of <span class="math notranslate nohighlight">\(\smash{{\bf Y}_T}\)</span> is</li>
+<li>The <em>joint cumulative density</em> of <span class="math">\(\smash{{\bf Y}_T}\)</span> is</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[F_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) = P(Y_1 \leq y_1,
 \ldots, Y_T \leq y_T).\]</div>
 </div>
 <div class="section" id="joint-density">
 <h2>Joint Density<a class="headerlink" href="#joint-density" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The <em>joint probability density</em> of <span class="math notranslate nohighlight">\(\smash{{\bf Y}_T}\)</span> is</li>
+<li>The <em>joint probability density</em> of <span class="math">\(\smash{{\bf Y}_T}\)</span> is</li>
 </ul>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+<div class="math">
+\[\begin{split}\begin{align*}
 f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) &amp; = \frac{\partial^T
 F_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}{\partial Y_1 \ldots
 \partial Y_T}.
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 <p>since</p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+<div class="math">
+\[\begin{split}\begin{align*}
 F_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})&amp; =
 \int_{-\infty}^{y_1}\ldots \int_{-\infty}^{y_T} f_{{\bf Y}_T}({\bf
 a}_T|\boldsymbol{\theta}) \,\, da_1 \ldots da_T.
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="independence">
 <h2>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">¶</a></h2>
-<p>When <span class="math notranslate nohighlight">\(\smash{Y_1, \ldots, Y_T}\)</span> are independent of each other
+<p>When <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> are independent of each other
 and have identical distributions:</p>
 <ul class="simple">
 <li>We say that they are <em>independent and identically distributed</em>, or
 i.i.d.</li>
 </ul>
 <ul class="simple">
-<li>When <span class="math notranslate nohighlight">\(\smash{Y_1, \ldots, Y_T}\)</span> are i.i.d., they have the same
+<li>When <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> are i.i.d., they have the same
 marginal densities:</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[f_{Y_1}(y|\boldsymbol{\theta}) = \ldots = f_{Y_T}(y|\boldsymbol{\theta}).\]</div>
 </div>
 <div class="section" id="joint-density-under-independence">
 <h2>Joint Density Under Independence<a class="headerlink" href="#joint-density-under-independence" title="Permalink to this headline">¶</a></h2>
-<p>Further, when <span class="math notranslate nohighlight">\(\smash{Y_1, \ldots, Y_T}\)</span> are i.i.d.</p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+<p>Further, when <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> are i.i.d.</p>
+<div class="math">
+\[\begin{split}\begin{align*}
 f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) &amp; = f_{Y_1}(y_1|\boldsymbol{\theta}) \cdot
 f_{Y_2}(y_2|\boldsymbol{\theta}) \cdots f_{Y_T}(y_T|\boldsymbol{\theta}) =
 \prod_{i=1}^T f_{Y_i}(y_i|\boldsymbol{\theta}).
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 <ul class="simple">
 <li>This is analogous to the computation of joint probabilities.</li>
 </ul>
 <ul class="simple">
-<li>For independent events <span class="math notranslate nohighlight">\(\smash{A}\)</span>, <span class="math notranslate nohighlight">\(\smash{B}\)</span> and
-<span class="math notranslate nohighlight">\(\smash{C}\)</span>,</li>
+<li>For independent events <span class="math">\(\smash{A}\)</span>, <span class="math">\(\smash{B}\)</span> and
+<span class="math">\(\smash{C}\)</span>,</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{align*}
 P(A \cap B \cap C) = P(A)P(B)P(C).
 \end{align*}\]</div>
 </div>
 <div class="section" id="bayes-rule">
-<h2>Bayes’ Rule<a class="headerlink" href="#bayes-rule" title="Permalink to this headline">¶</a></h2>
-<p>Recall Bayes’ Rule:</p>
-<div class="math notranslate nohighlight">
+<h2>Bayes&#8217; Rule<a class="headerlink" href="#bayes-rule" title="Permalink to this headline">¶</a></h2>
+<p>Recall Bayes&#8217; Rule:</p>
+<div class="math">
 \[\begin{split}\begin{gather}
 P(A|B) = \frac{P(A \cap B)}{P(B)} \\
 \Rightarrow P(A \cap B) = P(A|B)P(B).
 \end{gather}\end{split}\]</div>
 <p>Iterating:</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 P(A \cap B \cap C) &amp; = P((A \cap B) \cap C) \\
 &amp; = P(A \cap B | C) P(C) \\
@@ -307,23 +291,23 @@ P(A \cap B \cap C) &amp; = P((A \cap B) \cap C) \\
 \end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="id1">
-<h2>Bayes’ Rule<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>Bayes&#8217; Rule<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>The previous iteration generalizes to be:</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 P\left(\bigcap_{i=1}^n A_i\right) &amp; = P(A_n|A_{n-1},\ldots,A_1) \\
 &amp; \hspace{0.5in} \times P(A_{n-1}|A_{n-2},\ldots,A_1) \cdots P(A_2|A_1) P(A_1) \\
 &amp; = P(A_1) \prod_{i=2}^n P(A_i|{\bf A}_{i-1})
 \end{align*}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\smash{{\bf A_i} = (A_1,\ldots,A_i)'}\)</span></p>
+<p>where <span class="math">\(\smash{{\bf A_i} = (A_1,\ldots,A_i)'}\)</span></p>
 </div>
 <div class="section" id="general-joint-density">
 <h2>General Joint Density<a class="headerlink" href="#general-joint-density" title="Permalink to this headline">¶</a></h2>
-<p>Suppose <span class="math notranslate nohighlight">\(\smash{Y_1, \ldots, Y_T}\)</span> depend on each other sequentially.</p>
+<p>Suppose <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> depend on each other sequentially.</p>
 <ul class="simple">
-<li>We use Bayes’ Rule to obtain the joint density:</li>
+<li>We use Bayes&#8217; Rule to obtain the joint density:</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) =
 f_{Y_1}(y_1|\boldsymbol{\theta}) \prod_{t=2}^T f_{Y_t|{\bf
 Y}_{t-1}}(y_t|{\bf y}_{t-1},\boldsymbol{\theta}).\]</div>
@@ -333,54 +317,54 @@ Y}_{t-1}}(y_t|{\bf y}_{t-1},\boldsymbol{\theta}).\]</div>
 <p>One of the most important and powerful methods of parameter estimation
 is <em>maximum likelihood estimation</em>.  It requires</p>
 <ul class="simple">
-<li>A data sample: <span class="math notranslate nohighlight">\(\smash{{\bf y} = (y_1, \ldots, y_T)'}\)</span>.</li>
+<li>A data sample: <span class="math">\(\smash{{\bf y} = (y_1, \ldots, y_T)'}\)</span>.</li>
 </ul>
 <ul class="simple">
 <li>A joint probability density:</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta}) =
 f_{Y_1}(y_1|\boldsymbol{\theta}) \prod_{t=2}^T f_{Y_t|{\bf
 Y}_{t-1}}(y_t|{\bf y}_{t-1},\boldsymbol{\theta}).\]</div>
 </div>
 <div class="section" id="likelihood">
 <h2>Likelihood<a class="headerlink" href="#likelihood" title="Permalink to this headline">¶</a></h2>
-<p><span class="math notranslate nohighlight">\(\smash{f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}\)</span> is loosely interpreted
-as the probability of observing data sample <span class="math notranslate nohighlight">\(\smash{{\bf y}_T}\)</span>, given a
-functional form for the density of <span class="math notranslate nohighlight">\(\smash{Y_1, \ldots, Y_T}\)</span> and given
-a set of parameters <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\theta}}\)</span>.</p>
+<p><span class="math">\(\smash{f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}\)</span> is loosely interpreted
+as the probability of observing data sample <span class="math">\(\smash{{\bf y}_T}\)</span>, given a
+functional form for the density of <span class="math">\(\smash{Y_1, \ldots, Y_T}\)</span> and given
+a set of parameters <span class="math">\(\smash{\boldsymbol{\theta}}\)</span>.</p>
 <ul class="simple">
-<li>We can reverse the notion and think of <span class="math notranslate nohighlight">\(\smash{{\bf y}_T}\)</span> as being
-fixed and <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\theta}}\)</span> some unknown variable.</li>
+<li>We can reverse the notion and think of <span class="math">\(\smash{{\bf y}_T}\)</span> as being
+fixed and <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> some unknown variable.</li>
 </ul>
 <ul class="simple">
-<li>In this case we write <span class="math notranslate nohighlight">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf
+<li>In this case we write <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf
 y}_T) = f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>We refer to <span class="math notranslate nohighlight">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}\)</span> as
+<li>We refer to <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}\)</span> as
 the likelihood.</li>
 </ul>
 <ul class="simple">
-<li>Fixing <span class="math notranslate nohighlight">\(\smash{{\bf y}_T}\)</span>, maximum likelihood estimation chooses the
-value of <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\theta}}\)</span> that maximizes
-<span class="math notranslate nohighlight">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T) =
+<li>Fixing <span class="math">\(\smash{{\bf y}_T}\)</span>, maximum likelihood estimation chooses the
+value of <span class="math">\(\smash{\boldsymbol{\theta}}\)</span> that maximizes
+<span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T) =
 f_{{\bf Y}_T}({\bf y}_T|\boldsymbol{\theta})}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="likelihood-maximization">
 <h2>Likelihood Maximization<a class="headerlink" href="#likelihood-maximization" title="Permalink to this headline">¶</a></h2>
-<p>Given <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\theta} = (\theta_1, \ldots, \theta_p)'}\)</span>, we
-maximize <span class="math notranslate nohighlight">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}\)</span> by</p>
+<p>Given <span class="math">\(\smash{\boldsymbol{\theta} = (\theta_1, \ldots, \theta_p)'}\)</span>, we
+maximize <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}\)</span> by</p>
 <ul class="simple">
-<li>Differentiating with respect to each <span class="math notranslate nohighlight">\(\smash{\theta_i}\)</span>, <span class="math notranslate nohighlight">\(\smash{i = 1,
+<li>Differentiating with respect to each <span class="math">\(\smash{\theta_i}\)</span>, <span class="math">\(\smash{i = 1,
 \ldots, p}\)</span>.</li>
 </ul>
 <ul class="simple">
 <li>Setting the resulting derivatives equal to zero.</li>
 </ul>
 <ul class="simple">
-<li>Solving for the values <span class="math notranslate nohighlight">\(\smash{\hat{\theta}_i}\)</span>, <span class="math notranslate nohighlight">\(\smash{i = 1, \ldots,
+<li>Solving for the values <span class="math">\(\smash{\hat{\theta}_i}\)</span>, <span class="math">\(\smash{i = 1, \ldots,
 p}\)</span>, that make all of the derivatives zero.</li>
 </ul>
 </div>
@@ -391,7 +375,7 @@ function.</p>
 <ul class="simple">
 <li>By the properties of logarithms</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 \ell(\boldsymbol{\theta}|{\bf y}_T) &amp; =
 \log\left(\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)\right) \\
@@ -406,28 +390,28 @@ y}_{t-1},\boldsymbol{\theta})\right)
 <div class="section" id="id3">
 <h2>Log Likelihood<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Maximizing <span class="math notranslate nohighlight">\(\smash{\ell(\boldsymbol{\theta}|{\bf y}_T)}\)</span> is the same
-as maximizing <span class="math notranslate nohighlight">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}\)</span>
-since <span class="math notranslate nohighlight">\(\smash{\log}\)</span> is a monotonic transformation.</li>
+<li>Maximizing <span class="math">\(\smash{\ell(\boldsymbol{\theta}|{\bf y}_T)}\)</span> is the same
+as maximizing <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf y}_T)}\)</span>
+since <span class="math">\(\smash{\log}\)</span> is a monotonic transformation.</li>
 </ul>
 <ul class="simple">
-<li>A derivative of <span class="math notranslate nohighlight">\(\smash{\mathcal{L}}\)</span> will involve many product-rule
-terms, whereas a derivative of <span class="math notranslate nohighlight">\(\smash{\ell}\)</span> will simply be a sum
+<li>A derivative of <span class="math">\(\smash{\mathcal{L}}\)</span> will involve many product-rule
+terms, whereas a derivative of <span class="math">\(\smash{\ell}\)</span> will simply be a sum
 of derivatives.</li>
 </ul>
 </div>
 <div class="section" id="mle-example">
 <h2>MLE Example<a class="headerlink" href="#mle-example" title="Permalink to this headline">¶</a></h2>
-<p>Suppose we have a dataset <span class="math notranslate nohighlight">\(\smash{{\bf y}_n = (y_1, \ldots, y_n)}\)</span>,
+<p>Suppose we have a dataset <span class="math">\(\smash{{\bf y}_n = (y_1, \ldots, y_n)}\)</span>,
 where</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[Y_1, \ldots, Y_n \stackrel{i.i.d.}{\sim} \mathcal{N}(\mu,\sigma^2).\]</div>
 <ul class="simple">
-<li>We will assume <span class="math notranslate nohighlight">\(\smash{\mu}\)</span> is <em>unknown</em> and <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span> is
+<li>We will assume <span class="math">\(\smash{\mu}\)</span> is <em>unknown</em> and <span class="math">\(\smash{\sigma}\)</span> is
 <em>known</em>.</li>
 </ul>
 <ul class="simple">
-<li>So, <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\theta} = \mu}\)</span> (it is a single value, rather than
+<li>So, <span class="math">\(\smash{\boldsymbol{\theta} = \mu}\)</span> (it is a single value, rather than
 a vector).</li>
 </ul>
 </div>
@@ -436,7 +420,7 @@ a vector).</li>
 <ul class="simple">
 <li>The likelihood is</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 \mathcal{L}(\mu|{\bf y}_n) &amp; = f_{{\bf Y}_n}({\bf y}_n|\mu) \\
 &amp; = \prod_{i=1}^n f_{Y_i}(y_i|\mu) \\
@@ -449,17 +433,17 @@ a vector).</li>
 <div class="section" id="id5">
 <h2>MLE Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>The log likelihood is</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\ell(\mu|{\bf y}_n) = -\frac{n}{2} \log(2\pi) - \frac{n}{2}
 \log(\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \mu)^2.\]</div>
 </div>
 <div class="section" id="id6">
 <h2>MLE Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The MLE, <span class="math notranslate nohighlight">\(\smash{\hat{\mu}}\)</span>, is the value that sets <span class="math notranslate nohighlight">\(\smash{\frac{d}{d
+<li>The MLE, <span class="math">\(\smash{\hat{\mu}}\)</span>, is the value that sets <span class="math">\(\smash{\frac{d}{d
 \mu} \ell(\mu|{\bf y}) = 0}\)</span>:</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{gather}
 \frac{d}{d \mu} \ell(\mu|{\bf y}_n) \bigg|_{\hat{\mu}} =
 \frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \hat{\mu}) = 0 \\
@@ -468,44 +452,44 @@ a vector).</li>
 \Rightarrow \hat{\mu} = \bar{y} = \frac{1}{n} \sum_{i=1}^n y_i.
 \end{gather}\end{split}\]</div>
 </div>
-<div class="section" id="mle-example-smash-n-1-unknown-smash-mu">
-<h2>MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\mu}\)</span><a class="headerlink" href="#mle-example-smash-n-1-unknown-smash-mu" title="Permalink to this headline">¶</a></h2>
-<p>Suppose we have only one observation: <span class="math notranslate nohighlight">\(\smash{y_1}\)</span>.</p>
+<div class="section" id="mle-example-unknown">
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\mu}\)</span><a class="headerlink" href="#mle-example-unknown" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have only one observation: <span class="math">\(\smash{y_1}\)</span>.</p>
 <ul class="simple">
 <li>If we specialize the previous result:</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{align}
 \hat{\mu} = y_1.
 \end{align}\]</div>
 <ul class="simple">
-<li>The density <span class="math notranslate nohighlight">\(\smash{f_{Y_1}(y_1|\mu)}\)</span> gives the probability of
-observing some data value <span class="math notranslate nohighlight">\(\smash{y_1}\)</span>, conditional on some <em>known</em>
-parameter <span class="math notranslate nohighlight">\(\smash{\mu}\)</span>.</li>
+<li>The density <span class="math">\(\smash{f_{Y_1}(y_1|\mu)}\)</span> gives the probability of
+observing some data value <span class="math">\(\smash{y_1}\)</span>, conditional on some <em>known</em>
+parameter <span class="math">\(\smash{\mu}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>This is a normal distribution with mean <span class="math notranslate nohighlight">\(\smash{\mu}\)</span> and variance
-<span class="math notranslate nohighlight">\(\smash{\sigma^2}\)</span>.</li>
+<li>This is a normal distribution with mean <span class="math">\(\smash{\mu}\)</span> and variance
+<span class="math">\(\smash{\sigma^2}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="id7">
-<h2>MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\mu}\)</span><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\mu}\)</span><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The likelihood <span class="math notranslate nohighlight">\(\smash{\mathcal{L}(\mu|y_1)}\)</span> gives the probability of
-<span class="math notranslate nohighlight">\(\smash{\mu}\)</span>, conditional on some observed data value <span class="math notranslate nohighlight">\(\smash{y_1}\)</span>.</li>
+<li>The likelihood <span class="math">\(\smash{\mathcal{L}(\mu|y_1)}\)</span> gives the probability of
+<span class="math">\(\smash{\mu}\)</span>, conditional on some observed data value <span class="math">\(\smash{y_1}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>This is a normal distribution with mean <span class="math notranslate nohighlight">\(\smash{y_1}\)</span> and variance
-<span class="math notranslate nohighlight">\(\smash{\sigma^2}\)</span>.</li>
+<li>This is a normal distribution with mean <span class="math">\(\smash{y_1}\)</span> and variance
+<span class="math">\(\smash{\sigma^2}\)</span>.</li>
 </ul>
-</div>
-<div class="section" id="mle-example-smash-n-1">
-<h2>MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span><a class="headerlink" href="#mle-example-smash-n-1" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../_images/densExample.png"><img alt="../_images/densExample.png" class="align-center" src="../_images/densExample.png" style="width: 7.5in;" /></a>
 </div>
 <div class="section" id="id8">
-<h2>MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################################################################################</span>
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/densExample.png"><img alt="../_images/densExample.png" class="align-center" src="../_images/densExample.png" style="width: 7.5in;" /></a>
+</div>
+<div class="section" id="id9">
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span></span><span class="c1">#######################################################################################</span>
 <span class="c1"># Plot likelihood for normal data with unknown mean</span>
 <span class="c1">#######################################################################################</span>
 
@@ -527,18 +511,18 @@ parameter <span class="math notranslate nohighlight">\(\smash{\mu}\)</span>.</li
 <span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">mu</span><span class="p">)</span>
 <span class="n">segments</span><span class="p">(</span><span class="n">y11</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y11</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y11</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">segments</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">y12</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">dev</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s2">&quot;densExample.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="s2">&quot;densExample.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h2>MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\mu}\)</span><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\mu}\)</span><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <img alt="../_images/likeExample.png" class="align-center" src="../_images/likeExample.png" />
 </div>
-<div class="section" id="id10">
-<h2>MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\mu}\)</span><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot several densities for fixed data observation</span>
+<div class="section" id="id11">
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\mu}\)</span><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Plot several densities for fixed data observation</span>
 <span class="n">mu1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">33</span>
 <span class="n">mu2</span> <span class="o">=</span> <span class="mi">27</span>
 <span class="n">dens1</span> <span class="o">=</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">xGrid</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
@@ -567,39 +551,39 @@ parameter <span class="math notranslate nohighlight">\(\smash{\mu}\)</span>.</li
 <span class="n">segments</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">segments</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">segments</span><span class="p">(</span><span class="n">mu2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">dnorm</span><span class="p">(</span><span class="n">mu2</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">sig</span><span class="p">),</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">dev</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s2">&quot;likeExample.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="s2">&quot;likeExample.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 <span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="mle-example-smash-n-1-unknown-smash-sigma">
-<h2>MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span><a class="headerlink" href="#mle-example-smash-n-1-unknown-smash-sigma" title="Permalink to this headline">¶</a></h2>
-<p>Let’s continue with the assumption of one data observation, <span class="math notranslate nohighlight">\(\smash{y_1}\)</span>.</p>
+<div class="section" id="id12">
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\sigma}\)</span><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s continue with the assumption of one data observation, <span class="math">\(\smash{y_1}\)</span>.</p>
 <ul class="simple">
-<li>If <span class="math notranslate nohighlight">\(\smash{\mu}\)</span> is known but <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span> is unknown, the density
-of the data, <span class="math notranslate nohighlight">\(\smash{y_1}\)</span>, is still normal.</li>
+<li>If <span class="math">\(\smash{\mu}\)</span> is known but <span class="math">\(\smash{\sigma}\)</span> is unknown, the density
+of the data, <span class="math">\(\smash{y_1}\)</span>, is still normal.</li>
 </ul>
 <ul class="simple">
 <li>However, the likelihood is</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\mathcal{L}(\sigma^2|y_1) = \frac{\alpha}{\sigma^2}
 \exp\left\{-\frac{\beta}{\sigma^2}\right\}\]</div>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\alpha = \frac{1}{\sqrt{2\pi}}, \qquad \beta =
 \frac{(y_1-\mu)^2}{2}.\]</div>
 <ul class="simple">
-<li>The likelihood for <span class="math notranslate nohighlight">\(\smash{\sigma^2}\)</span> is <em>not</em> normal, but <em>inverse
+<li>The likelihood for <span class="math">\(\smash{\sigma^2}\)</span> is <em>not</em> normal, but <em>inverse
 gamma</em>.</li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h2>MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\sigma}\)</span><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="../_images/likeExample2.png"><img alt="../_images/likeExample2.png" class="align-center" src="../_images/likeExample2.png" style="width: 5in;" /></a>
 </div>
-<div class="section" id="id12">
-<h2>MLE Example: <span class="math notranslate nohighlight">\(\smash{n=1}\)</span>, Unknown <span class="math notranslate nohighlight">\(\smash{\sigma}\)</span><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################################################################################</span>
+<div class="section" id="id14">
+<h2>MLE Example: <span class="math">\(\smash{n=1}\)</span>, Unknown <span class="math">\(\smash{\sigma}\)</span><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="code highlight-python"><div class="highlight"><pre><span></span><span class="c1">#######################################################################################</span>
 <span class="c1"># Plot likelihood for normal data with unknown sd</span>
 <span class="c1">#######################################################################################</span>
 
@@ -639,7 +623,7 @@ gamma</em>.</li>
 <span class="n">segments</span><span class="p">(</span><span class="n">sig</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">like</span><span class="p">),</span> <span class="n">sig</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">likeTrue</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">segments</span><span class="p">(</span><span class="n">sig1</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">like</span><span class="p">),</span> <span class="n">sig1</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">like1</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">segments</span><span class="p">(</span><span class="n">sig2</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">like</span><span class="p">),</span> <span class="n">sig2</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">like2</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">dev</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s2">&quot;likeExample2.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="s2">&quot;likeExample2.png&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 <span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -665,62 +649,62 @@ standard errors.</li>
 </div>
 <div class="section" id="fisher-information">
 <h2>Fisher Information<a class="headerlink" href="#fisher-information" title="Permalink to this headline">¶</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(\smash{\mathcal{H}(\boldsymbol{\theta}|{\bf y}_t) = \frac{d^2}{d
+<p>Let <span class="math">\(\smash{\mathcal{H}(\boldsymbol{\theta}|{\bf y}_t) = \frac{d^2}{d
 \boldsymbol{\theta}^2} \ell(\boldsymbol{\theta}|{\bf y}_T)}\)</span>, the
 matrix of second derivatives of the log likelihood.</p>
 <ul class="simple">
 <li>The Fisher Information is</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\mathcal{I}(\boldsymbol{\theta}) = - E\left[
 \mathcal{H}(\boldsymbol{\theta}|{\bf y}_t)\right].\]</div>
 <ul class="simple">
 <li>The observed Fisher Information is</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\widetilde{\mathcal{I}}(\boldsymbol{\theta}) = -
 \mathcal{H}(\boldsymbol{\theta}|{\bf y}_t).\]</div>
 </div>
-<div class="section" id="id13">
-<h2>Fisher Information<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h2>Fisher Information<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Observed Fisher Information does not take an expectation, which may
 be difficult to compute.</li>
 </ul>
 <ul class="simple">
-<li>Since <span class="math notranslate nohighlight">\(\smash{\ell(\boldsymbol{\theta}|{\bf y}_T)}\)</span> is often a sum of
-many terms, <span class="math notranslate nohighlight">\(\smash{\widetilde{\mathcal{I}}(\boldsymbol{\theta})}\)</span>
-will converge to <span class="math notranslate nohighlight">\(\smash{\mathcal{I}(\boldsymbol{\theta})}\)</span> for large
+<li>Since <span class="math">\(\smash{\ell(\boldsymbol{\theta}|{\bf y}_T)}\)</span> is often a sum of
+many terms, <span class="math">\(\smash{\widetilde{\mathcal{I}}(\boldsymbol{\theta})}\)</span>
+will converge to <span class="math">\(\smash{\mathcal{I}(\boldsymbol{\theta})}\)</span> for large
 samples.</li>
 </ul>
 </div>
 <div class="section" id="mle-central-limit-theorem">
 <h2>MLE Central Limit Theorem<a class="headerlink" href="#mle-central-limit-theorem" title="Permalink to this headline">¶</a></h2>
 <p>Under certain conditions, a central limit theorem holds for the MLE,
-<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</p>
+<span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</p>
 <ul class="simple">
-<li>For infinitely large samples <span class="math notranslate nohighlight">\(\smash{{\bf y}_T}\)</span>,</li>
+<li>For infinitely large samples <span class="math">\(\smash{{\bf y}_T}\)</span>,</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\hat{\boldsymbol{\theta}} \sim \mathcal{N}(\boldsymbol{\theta},
 \mathcal{I}(\boldsymbol{\theta})^{-1}).\]</div>
 <ul class="simple">
-<li>For large samples, <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}}\)</span> is normally
+<li>For large samples, <span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span> is normally
 distributed <em>regardless</em> of the distribution of the data,
-<span class="math notranslate nohighlight">\(\smash{{\bf y}_T}\)</span>.</li>
+<span class="math">\(\smash{{\bf y}_T}\)</span>.</li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h2>MLE Central Limit Theorem<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h2>MLE Central Limit Theorem<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}}\)</span> is also normally distributed for
-large samples even if <span class="math notranslate nohighlight">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf
+<li><span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span> is also normally distributed for
+large samples even if <span class="math">\(\smash{\mathcal{L}(\boldsymbol{\theta}|{\bf
 y}_T)}\)</span> is some other distribution.</li>
 </ul>
 <ul class="simple">
 <li>Hence, for large samples,</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[Var(\hat{\theta}_i) =
 \frac{1}{\mathcal{I}(\boldsymbol{\theta})_{ii}} \qquad \Rightarrow
 \qquad Std(\hat{\theta}_i) =
@@ -728,82 +712,80 @@ y}_T)}\)</span> is some other distribution.</li>
 </div>
 <div class="section" id="mle-standard-errors">
 <h2>MLE Standard Errors<a class="headerlink" href="#mle-standard-errors" title="Permalink to this headline">¶</a></h2>
-<p>Since we don’t know the true <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\theta}}\)</span>, we
+<p>Since we don&#8217;t know the true <span class="math">\(\smash{\boldsymbol{\theta}}\)</span>, we
 approximate</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[Std(\hat{\theta}_i) \approx
 \frac{1}{\sqrt{\mathcal{I}(\hat{\boldsymbol{\theta}})_{ii}}}.\]</div>
 <ul class="simple">
 <li>Alternatively, to avoid computing the expectation, we could use the
 approximation</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[Std(\hat{\theta}_i) \approx
 \frac{1}{\sqrt{\widetilde{\mathcal{I}}(\hat{\boldsymbol{\theta}})_{ii}}}.\]</div>
 </div>
-<div class="section" id="id15">
-<h2>MLE Standard Errors<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id17">
+<h2>MLE Standard Errors<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>In reality, we never have an infinite sample size.</li>
 </ul>
 <ul class="simple">
 <li>For finite samples, these values are approximations of the standard
-errors of the components of <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</li>
+errors of the components of <span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="mle-variance-example">
 <h2>MLE Variance Example<a class="headerlink" href="#mle-variance-example" title="Permalink to this headline">¶</a></h2>
-<p>Let’s return to the example where <span class="math notranslate nohighlight">\(\smash{Y_1, \ldots, Y_n
+<p>Let&#8217;s return to the example where <span class="math">\(\smash{Y_1, \ldots, Y_n
 \stackrel{i.i.d.}{\sim} \mathcal{N}(\mu, \sigma^2)}\)</span>, with known
-<span class="math notranslate nohighlight">\(\smash{\sigma}\)</span>.</p>
+<span class="math">\(\smash{\sigma}\)</span>.</p>
 <ul class="simple">
 <li>The log likelihood is</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\ell(\mu|{\bf y}_n) = -\frac{n}{2} \log(2\pi) - \frac{n}{2}
 \log(\sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \mu)^2.\]</div>
 <ul class="simple">
 <li>The resulting derivatives are</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\frac{\partial \ell(\mu|{\bf y}_n)}{\partial \mu} =
 \frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \mu),  \qquad
 \frac{\partial^2 \ell(\mu|{\bf y}_n)}{\partial \mu^2} =
 -\frac{n}{\sigma^2}.\]</div>
 </div>
-<div class="section" id="id16">
-<h2>MLE Variance Example<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h2>MLE Variance Example<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <p>In this case the Fisher Information is identical to the observed
 Fisher Information:</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\mathcal{I}(\mu) = -E\left[-\frac{n}{\sigma^2}\right] =
 \frac{n}{\sigma^2} = \widetilde{\mathcal{I}}(\mu).\]</div>
 <ul class="simple">
-<li>Since <span class="math notranslate nohighlight">\(\smash{\mathcal{I}(\mu)}\)</span> doesn’t depend on <span class="math notranslate nohighlight">\(\smash{\mu}\)</span>, we
-don’t need to resort to an approximation with <span class="math notranslate nohighlight">\(\smash{\hat{\mu} =
+<li>Since <span class="math">\(\smash{\mathcal{I}(\mu)}\)</span> doesn&#8217;t depend on <span class="math">\(\smash{\mu}\)</span>, we
+don&#8217;t need to resort to an approximation with <span class="math">\(\smash{\hat{\mu} =
 \bar{{\bf y}}}\)</span>.</li>
 </ul>
 <ul class="simple">
 <li>The result is</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[Std(\hat{\mu}) = \frac{1}{\sqrt{\mathcal{I}(\mu)}} =
 \frac{\sigma}{\sqrt{n}}.\]</div>
 </div>
 </div>
 
 
-           </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mleArma.html" class="btn btn-neutral float-right" title="ARMA Maximum Likelihood Estimation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mleArma.html" class="btn btn-neutral float-right" title="ARMA Maximum Likelihood Estimation">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../estimation.html" class="btn btn-neutral float-left" title="Estimation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../estimation.html" class="btn btn-neutral" title="Estimation"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -812,14 +794,13 @@ don’t need to resort to an approximation with <span class="math notranslate no
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich
-
+        &copy; Copyright 2016, Eric M. Aldrich.
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
 </footer>
-
         </div>
       </div>
 
@@ -829,15 +810,36 @@ don’t need to resort to an approximation with <span class="math notranslate no
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>

@@ -5,7 +5,6 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Impulse Response Functions &mdash; Econ 211C 2016.03.29 documentation</title>
@@ -13,59 +12,43 @@
 
   
   
-  
-  
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The Kalman Filter" href="../kalman.html" />
-    <link rel="prev" title="Structural Vector Autoregression" href="svar.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
+        <link rel="up" title="Vector Processes" href="../varProcesses.html"/>
+        <link rel="next" title="The Kalman Filter" href="../kalman.html"/>
+        <link rel="prev" title="Structural Vector Autoregression" href="svar.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home"> Econ 211C
-          
-
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                2016.03.29
-              </div>
-            
-          
-
-          
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -73,178 +56,217 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+      </div>
 
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
           
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-            
-            
-              
-            
-            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="var.html">Vector Autoregression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="varACF.html">Autocovariances of Vector Processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="svar.html">Structural Vector Autoregression</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Impulse Response Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#definition">Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#forward-iteration">Forward Iteration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#units">Units</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cumulative-irf">Cumulative IRF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#irf-standard-errors">IRF Standard Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">IRF Standard Errors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#irf-plots">IRF Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">IRF Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">IRF Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">IRF Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cumulative-irf-plots">Cumulative IRF Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Cumulative IRF Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">Cumulative IRF Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Cumulative IRF Plots</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Impulse Response Functions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id1">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id2">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id3">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#basic-model">Basic Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id4">Basic Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#the-model">The <span class="math">\(\smash{ARCH}\)</span> Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#order"><span class="math">\(\smash{ARCH}\)</span> Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#notes-on">Notes on <span class="math">\(\smash{ARCH}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#estimation"><span class="math">\(\smash{ARCH}\)</span> Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id5">The <span class="math">\(\smash{GARCH}\)</span> Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#id6">Notes on <span class="math">\(\smash{GARCH}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#stochastic-volatility">Stochastic Volatility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit7-Volatility/volatility.html#stochastic-volatility-estimation">Stochastic Volatility Estimation</a></li>
+</ul>
+</li>
 </ul>
 
-            
           
-        </div>
+        
       </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Econ 211C</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Econ 211C</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
           <li><a href="../varProcesses.html">Vector Processes</a> &raquo;</li>
-        
-      <li>Impulse Response Functions</li>
-    
-    
+      
+    <li>Impulse Response Functions</li>
       <li class="wy-breadcrumbs-aside">
         
-            
-            <a href="../_sources/Unit4-VAR/impulseResponse.rst.txt" rel="nofollow"> View page source</a>
-          
+          <a href="../_sources/Unit4-VAR/impulseResponse.txt" rel="nofollow"> View page source</a>
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+          <div role="main" class="document">
             
   <div class="section" id="impulse-response-functions">
 <h1>Impulse Response Functions<a class="headerlink" href="#impulse-response-functions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
-<p>Recall that a <span class="math notranslate nohighlight">\(\smash{VAR}\)</span> can always be expressed as an <span class="math notranslate nohighlight">\(\smash{VMA(\infty)}\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+<p>Recall that a <span class="math">\(\smash{VAR}\)</span> can always be expressed as an <span class="math">\(\smash{VMA(\infty)}\)</span></p>
+<div class="math">
+\[\begin{split}\begin{align*}
 \boldsymbol{Y}_{t+s} &amp; = \boldsymbol{\mu} +
 \boldsymbol{\varepsilon}_{t+s} + \Psi_{1}
 \boldsymbol{\varepsilon}_{t+s-1} +  \Psi_{2}
 \boldsymbol{\varepsilon}_{t+s-2} + \ldots + \Psi_{s-1}
 \boldsymbol{\varepsilon}_{t+1} + \Psi_s
 \boldsymbol{\varepsilon}_t + \ldots
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 <ul class="simple">
-<li>The <span class="math notranslate nohighlight">\(\smash{(i,j)}\)</span> element of <span class="math notranslate nohighlight">\(\smash{\Psi_s}\)</span>,
-<span class="math notranslate nohighlight">\(\smash{\psi_{i,j}^{(s)}}\)</span>, measures the impact of
-a change in <span class="math notranslate nohighlight">\(\smash{\varepsilon_{j,t}}\)</span> on
-<span class="math notranslate nohighlight">\(\smash{Y_{i,t+s}}\)</span>, holding all other variables constant.</li>
+<li>The <span class="math">\(\smash{(i,j)}\)</span> element of <span class="math">\(\smash{\Psi_s}\)</span>,
+<span class="math">\(\smash{\psi_{i,j}^{(s)}}\)</span>, measures the impact of
+a change in <span class="math">\(\smash{\varepsilon_{j,t}}\)</span> on
+<span class="math">\(\smash{Y_{i,t+s}}\)</span>, holding all other variables constant.</li>
 </ul>
 <ul class="simple">
 <li>The <em>impulse response function</em> is the sequence
-<span class="math notranslate nohighlight">\(\smash{\{\psi_{i,j}^{(s)}\}_{s=0}^S}\)</span>.</li>
+<span class="math">\(\smash{\{\psi_{i,j}^{(s)}\}_{s=0}^S}\)</span>.</li>
 </ul>
 <ul class="simple">
 <li>That is, the impulse response function measures the effect of a
-change in <span class="math notranslate nohighlight">\(\smash{\varepsilon_{j,t}}\)</span> on
-<span class="math notranslate nohighlight">\(\smash{Y_{i,t+s}}\)</span> for the horizon
-<span class="math notranslate nohighlight">\(\smash{s=0,\ldots,S}\)</span>.</li>
+change in <span class="math">\(\smash{\varepsilon_{j,t}}\)</span> on
+<span class="math">\(\smash{Y_{i,t+s}}\)</span> for the horizon
+<span class="math">\(\smash{s=0,\ldots,S}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>Note that there are <span class="math notranslate nohighlight">\(\smash{n^2}\)</span> impulse response functions
-for a <span class="math notranslate nohighlight">\(\smash{VAR(p)}\)</span> with dimension <span class="math notranslate nohighlight">\(\smash{n}\)</span>.</li>
+<li>Note that there are <span class="math">\(\smash{n^2}\)</span> impulse response functions
+for a <span class="math">\(\smash{VAR(p)}\)</span> with dimension <span class="math">\(\smash{n}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="forward-iteration">
 <h2>Forward Iteration<a class="headerlink" href="#forward-iteration" title="Permalink to this headline">¶</a></h2>
 <p>In practice, the impulse response function is computed by:</p>
 <ul class="simple">
-<li>Setting <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t-1} = \boldsymbol{Y}_{t-2} =
+<li>Setting <span class="math">\(\smash{\boldsymbol{Y}_{t-1} = \boldsymbol{Y}_{t-2} =
 \ldots = \boldsymbol{Y}_{t-p} = \boldsymbol{0}}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>Setting <span class="math notranslate nohighlight">\(\smash{\varepsilon_{j,t} = 1}\)</span> and all other elements
-of <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\varepsilon}_t}\)</span> to zero.</li>
+<li>Setting <span class="math">\(\smash{\varepsilon_{j,t} = 1}\)</span> and all other elements
+of <span class="math">\(\smash{\boldsymbol{\varepsilon}_t}\)</span> to zero.</li>
 </ul>
 <ul class="simple">
-<li>Iterating the <span class="math notranslate nohighlight">\(\smash{VAR}\)</span> system forard <span class="math notranslate nohighlight">\(\smash{S}\)</span>
-steps, assuming <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\varepsilon}_{t+s} =
-\boldsymbol{0}}\)</span> for <span class="math notranslate nohighlight">\(\smash{s=1,\ldots,S}\)</span>.</li>
+<li>Iterating the <span class="math">\(\smash{VAR}\)</span> system forard <span class="math">\(\smash{S}\)</span>
+steps, assuming <span class="math">\(\smash{\boldsymbol{\varepsilon}_{t+s} =
+\boldsymbol{0}}\)</span> for <span class="math">\(\smash{s=1,\ldots,S}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>The values of <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span>,
-<span class="math notranslate nohighlight">\(\smash{s=1,\ldots,S}\)</span>, constitute the <span class="math notranslate nohighlight">\(\smash{n}\)</span>
-impulse responses associated with <span class="math notranslate nohighlight">\(\smash{\varepsilon_{j,t}}\)</span>.</li>
+<li>The values of <span class="math">\(\smash{\boldsymbol{Y}_{t+s}}\)</span>,
+<span class="math">\(\smash{s=1,\ldots,S}\)</span>, constitute the <span class="math">\(\smash{n}\)</span>
+impulse responses associated with <span class="math">\(\smash{\varepsilon_{j,t}}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="units">
 <h2>Units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h2>
 <p>Impulse responses are traditionally evaluated as the effect of a unit
-change in <span class="math notranslate nohighlight">\(\smash{\varepsilon_{j,t}}\)</span> on
-<span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+s}}\)</span>, <span class="math notranslate nohighlight">\(\smash{s=1,\ldots,S}\)</span>.</p>
+change in <span class="math">\(\smash{\varepsilon_{j,t}}\)</span> on
+<span class="math">\(\smash{\boldsymbol{Y}_{t+s}}\)</span>, <span class="math">\(\smash{s=1,\ldots,S}\)</span>.</p>
 <ul class="simple">
 <li>It is also common to consider the effect of a one standard deviation
 change in the exogenous shock.</li>
@@ -260,51 +282,51 @@ context of the economic problem.</li>
 <div class="section" id="cumulative-irf">
 <h2>Cumulative IRF<a class="headerlink" href="#cumulative-irf" title="Permalink to this headline">¶</a></h2>
 <p>Impulse responses are often reported in cumulative form</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{align}
 \sum_{s=0}^S \sum_{k=0}^s \psi_{i,j}^{(k)}.
 \end{align}\]</div>
 <ul class="simple">
 <li>These values simply express the cumulative effect of a unit change
-in <span class="math notranslate nohighlight">\(\smash{\varepsilon_{j,t}}\)</span> over horizon
-<span class="math notranslate nohighlight">\(\smash{S}\)</span>.</li>
+in <span class="math">\(\smash{\varepsilon_{j,t}}\)</span> over horizon
+<span class="math">\(\smash{S}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="irf-standard-errors">
 <h2>IRF Standard Errors<a class="headerlink" href="#irf-standard-errors" title="Permalink to this headline">¶</a></h2>
-<p>The Central Limit Theorem for the MLE of a <span class="math notranslate nohighlight">\(\smash{VAR(p)}\)</span> can
+<p>The Central Limit Theorem for the MLE of a <span class="math">\(\smash{VAR(p)}\)</span> can
 be stated as</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{align}
 \sqrt{T} (\hat{\boldsymbol{\phi}} - \boldsymbol{\phi})
 \stackrel{d}{\to} N(0,\Omega \otimes Q^{-1})
 \end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\phi}^{\prime} =
+<p>where <span class="math">\(\smash{\boldsymbol{\phi}^{\prime} =
 (vec(\Phi_1)^{\prime},\ldots,vec(\Phi_p)^{\prime})^{\prime}}\)</span> and
-<span class="math notranslate nohighlight">\(\smash{Q}\)</span> is the matrix with matrices
-<span class="math notranslate nohighlight">\(\smash{\{\Gamma_j\}_{j=0}^{p-1}}\)</span> as blocks.</p>
+<span class="math">\(\smash{Q}\)</span> is the matrix with matrices
+<span class="math">\(\smash{\{\Gamma_j\}_{j=0}^{p-1}}\)</span> as blocks.</p>
 </div>
 <div class="section" id="id1">
 <h2>IRF Standard Errors<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>There are several ways to estimate IRF standard errors. We will
 consider the Monte Carlo method:</p>
 <ul class="simple">
-<li>Draw a candidate <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\phi}^{(n)}}\)</span> from
-<span class="math notranslate nohighlight">\(\smash{N(\hat{\boldsymbol{\phi}},(1/T) \Omega \otimes
+<li>Draw a candidate <span class="math">\(\smash{\boldsymbol{\phi}^{(n)}}\)</span> from
+<span class="math">\(\smash{N(\hat{\boldsymbol{\phi}},(1/T) \Omega \otimes
 Q^{-1})}\)</span>.</li>
-<li>Compute the impulse response for <span class="math notranslate nohighlight">\(\smash{s=0,\ldots,S}\)</span> via
+<li>Compute the impulse response for <span class="math">\(\smash{s=0,\ldots,S}\)</span> via
 forward iteration.</li>
-<li>Repeat for <span class="math notranslate nohighlight">\(\smash{n=1,\ldots,N}\)</span>. The result will be
-<span class="math notranslate nohighlight">\(\smash{n}\)</span> impulse response function estimates:
-<span class="math notranslate nohighlight">\(\smash{\left\{\{\psi_{i,j}^{(s,n)}\}_{s=0}^S\right\}_{n=1}^N}\)</span>.</li>
+<li>Repeat for <span class="math">\(\smash{n=1,\ldots,N}\)</span>. The result will be
+<span class="math">\(\smash{n}\)</span> impulse response function estimates:
+<span class="math">\(\smash{\left\{\{\psi_{i,j}^{(s,n)}\}_{s=0}^S\right\}_{n=1}^N}\)</span>.</li>
 <li>Confidence bands can be computed with emprical quantiles of the
-<span class="math notranslate nohighlight">\(\smash{n}\)</span> values at each <span class="math notranslate nohighlight">\(\smash{s}\)</span>:
-<span class="math notranslate nohighlight">\(\smash{\{\psi_{i,j}^{(s,n)}\}_{n=1}^N}\)</span>.</li>
+<span class="math">\(\smash{n}\)</span> values at each <span class="math">\(\smash{s}\)</span>:
+<span class="math">\(\smash{\{\psi_{i,j}^{(s,n)}\}_{n=1}^N}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">library</span><span class="p">(</span><span class="n">Quandl</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">library</span><span class="p">(</span><span class="n">Quandl</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">library</span><span class="p">(</span><span class="nb">vars</span><span class="p">)</span>
 
 <span class="o">&gt;</span> <span class="c1"># Raw data</span>
@@ -330,7 +352,7 @@ forward iteration.</li>
 </div>
 <div class="section" id="irf-plots">
 <h2>IRF Plots<a class="headerlink" href="#irf-plots" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="c1"># Plot IRFs</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="c1"># Plot IRFs</span>
 <span class="o">&gt;</span> <span class="n">png</span><span class="p">(</span><span class="s1">&#39;irfYG.png&#39;</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">units</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="n">res</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">plot</span><span class="p">(</span><span class="n">irfEst</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="s1">&#39;YG&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
@@ -357,7 +379,7 @@ forward iteration.</li>
 </div>
 <div class="section" id="cumulative-irf-plots">
 <h2>Cumulative IRF Plots<a class="headerlink" href="#cumulative-irf-plots" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="c1"># Plot cumulative IRFs</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="c1"># Plot cumulative IRFs</span>
 <span class="o">&gt;</span> <span class="n">png</span><span class="p">(</span><span class="s1">&#39;irfCumYG.png&#39;</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">units</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="n">res</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">plot</span><span class="p">(</span><span class="n">irfEstCum</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="s1">&#39;YG&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">dev</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
@@ -385,17 +407,15 @@ forward iteration.</li>
 </div>
 
 
-           </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../kalman.html" class="btn btn-neutral float-right" title="The Kalman Filter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../kalman.html" class="btn btn-neutral float-right" title="The Kalman Filter">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="svar.html" class="btn btn-neutral float-left" title="Structural Vector Autoregression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="svar.html" class="btn btn-neutral" title="Structural Vector Autoregression"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -404,14 +424,13 @@ forward iteration.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich
-
+        &copy; Copyright 2016, Eric M. Aldrich.
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
 </footer>
-
         </div>
       </div>
 
@@ -421,15 +440,36 @@ forward iteration.</li>
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>

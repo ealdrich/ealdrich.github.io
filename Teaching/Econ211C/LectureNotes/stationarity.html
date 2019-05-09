@@ -5,7 +5,6 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Stationarity &mdash; Econ 211C 2016.03.29 documentation</title>
@@ -13,59 +12,42 @@
 
   
   
-  
-  
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Linear Time Series Models" href="linearTS.html" />
-    <link rel="prev" title="Finance Preliminaries" href="preliminaries.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="index.html"/>
+        <link rel="next" title="Linear Time Series Models" href="linearTS.html"/>
+        <link rel="prev" title="Finance Preliminaries" href="preliminaries.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home"> Econ 211C
-          
-
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                2016.03.29
-              </div>
-            
-          
-
-          
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -73,20 +55,38 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+      </div>
 
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
           
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-            
-            
-              
-            
-            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="preliminaries.html">Finance Preliminaries</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Stationarity</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="preliminaries.html">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Stationarity</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#time-series">Time Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#distributions">Distributions</a></li>
@@ -111,76 +111,77 @@
 <li class="toctree-l2"><a class="reference internal" href="#id9">Ergodicity</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="linearTS.html">Linear Time Series Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="estimation.html">Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="forecasting.html">Forecasting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="varProcesses.html">Vector Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kalman.html">The Kalman Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gmmIndex.html">Generalized Method of Moments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linearTS.html">Linear Time Series Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="estimation.html">Estimation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit2-MLE/numerical.html">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forecasting.html">Forecasting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="varProcesses.html">Vector Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit4-VAR/var.html">Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kalman.html">The Kalman Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit5-Kalman/stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
 </ul>
 
-            
           
-        </div>
+        
       </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Econ 211C</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Econ 211C</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>Stationarity</li>
-    
-    
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Stationarity</li>
       <li class="wy-breadcrumbs-aside">
         
-            
-            <a href="_sources/stationarity.rst.txt" rel="nofollow"> View page source</a>
-          
+          <a href="_sources/stationarity.txt" rel="nofollow"> View page source</a>
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+          <div role="main" class="document">
             
   <div class="section" id="stationarity">
 <h1>Stationarity<a class="headerlink" href="#stationarity" title="Permalink to this headline">¶</a></h1>
@@ -204,7 +205,7 @@ of a group of random variables.</li>
 <div class="section" id="time-series">
 <h2>Time Series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h2>
 <p>A time series is a stochastic process indexed by time:</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{align*}
 Y_1, Y_2, Y_3, \ldots, Y_{T-1}, Y_T.
 \end{align*}\]</div>
@@ -219,58 +220,58 @@ variables ordered by time.</li>
 <li>We will let lower-case letters denote a realization of a time
 series.</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{align*}
 y_1, y_2, y_3, \ldots, y_{T-1}, y_T.
 \end{align*}\]</div>
 </div>
 <div class="section" id="distributions">
 <h2>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">¶</a></h2>
-<p>We will think of <span class="math notranslate nohighlight">\({\bf Y}_T = \{Y_t\}_{t=1}^T\)</span> as a random
+<p>We will think of <span class="math">\({\bf Y}_T = \{Y_t\}_{t=1}^T\)</span> as a random
 variable in its own right.</p>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\({\bf y}_T = \{y_t\}_{t=1}^T\)</span> is a <em>single</em>
-realization of <span class="math notranslate nohighlight">\({\bf Y}_T = \{Y_t\}_{t=1}^T\)</span>.</li>
+<li><span class="math">\({\bf y}_T = \{y_t\}_{t=1}^T\)</span> is a <em>single</em>
+realization of <span class="math">\({\bf Y}_T = \{Y_t\}_{t=1}^T\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>The CDF is <span class="math notranslate nohighlight">\(F_{{\bf Y}_T}({\bf y}_T)\)</span> and the PDF is
-<span class="math notranslate nohighlight">\(f_{{\bf Y}_T}({\bf y}_T)\)</span>.</li>
+<li>The CDF is <span class="math">\(F_{{\bf Y}_T}({\bf y}_T)\)</span> and the PDF is
+<span class="math">\(f_{{\bf Y}_T}({\bf y}_T)\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>For example, consider <span class="math notranslate nohighlight">\(\smash{T = 100}\)</span>:</li>
+<li>For example, consider <span class="math">\(\smash{T = 100}\)</span>:</li>
 </ul>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+<div class="math">
+\[\begin{split}\begin{align*}
 F\left({\bf y}_{100}\right) &amp; = P(Y_1 \leq y_1, \ldots, Y_{100}
 \leq y_{100}).
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 <ul class="simple">
-<li>Notice that <span class="math notranslate nohighlight">\({\bf Y}_T\)</span> is just a collection of random
-variables and <span class="math notranslate nohighlight">\(f_{{\bf Y}_T}({\bf y}_T)\)</span> is the joint
+<li>Notice that <span class="math">\({\bf Y}_T\)</span> is just a collection of random
+variables and <span class="math">\(f_{{\bf Y}_T}({\bf y}_T)\)</span> is the joint
 density.</li>
 </ul>
 </div>
 <div class="section" id="time-series-observations">
 <h2>Time Series Observations<a class="headerlink" href="#time-series-observations" title="Permalink to this headline">¶</a></h2>
 <p>As statisticians and econometricians, we want many
-observations of <span class="math notranslate nohighlight">\({\bf Y}_T\)</span> to learn about its distribution:</p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+observations of <span class="math">\({\bf Y}_T\)</span> to learn about its distribution:</p>
+<div class="math">
+\[\begin{split}\begin{align*}
 {\bf y}_T^{(1)}, \,\,\,\,\,\, {\bf y}_T^{(2)},&amp; \,\,\,\,\,\, {\bf
 y}_T^{(3)}, \,\,\,\,\,\, \ldots
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 <p>Likewise, if we are only interested in the marginal distribution of
-<span class="math notranslate nohighlight">\(\smash{Y_{17}}\)</span></p>
-<div class="math notranslate nohighlight">
+<span class="math">\(\smash{Y_{17}}\)</span></p>
+<div class="math">
 \[\begin{align*}
 F_{Y_{17}}(a) = P(Y_{17} \leq a)
 \end{align*}\]</div>
-<p>we want many observations: <span class="math notranslate nohighlight">\(\smash{\left\{y_{17}^{(i)}\right\}_{i=1}^N}\)</span>.</p>
+<p>we want many observations: <span class="math">\(\smash{\left\{y_{17}^{(i)}\right\}_{i=1}^N}\)</span>.</p>
 </div>
 <div class="section" id="id1">
 <h2>Time Series Observations<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Unfortunately, we usually only
-have <em>one observation</em> of <span class="math notranslate nohighlight">\({\bf Y}_T\)</span>.</p>
+have <em>one observation</em> of <span class="math">\({\bf Y}_T\)</span>.</p>
 <ul class="simple">
 <li>Think of the daily closing price of Harley-Davidson stock since January 2nd.</li>
 </ul>
@@ -285,16 +286,16 @@ observation.</li>
 </ul>
 <ul class="simple">
 <li>Additional assumptions about the process will allow us to exploit
-information in the full sequence <span class="math notranslate nohighlight">\({\bf y}_T\)</span> to make
+information in the full sequence <span class="math">\({\bf y}_T\)</span> to make
 inferences about the joint
-distribution <span class="math notranslate nohighlight">\(F_{{\bf Y}_T}({\bf y}_T)\)</span>.</li>
+distribution <span class="math">\(F_{{\bf Y}_T}({\bf y}_T)\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="moments">
 <h2>Moments<a class="headerlink" href="#moments" title="Permalink to this headline">¶</a></h2>
 <p>Since the stochastic process is comprised of individual random
 variables, we can consider moments of each:</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 E[Y_t] &amp; = \int_{-\infty}^{\infty} y_t f_{Y_t}(y_t) dy_t = \mu_t \\
 Var(Y_t) &amp; = \int_{-\infty}^{\infty} (y_t-\mu_t)^2 f_{Y_t}(y_t) dy_t
@@ -303,29 +304,29 @@ Var(Y_t) &amp; = \int_{-\infty}^{\infty} (y_t-\mu_t)^2 f_{Y_t}(y_t) dy_t
 </div>
 <div class="section" id="id2">
 <h2>Moments<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 Cov(Y_t, Y_{t-j}) &amp; = \int_{-\infty}^{\infty}
 \int_{-\infty}^{\infty} (y_t-\mu_t)(y_{t-j}-\mu_{t-j}) \\
 &amp; \hspace{2in} \times \, f_{Y_t,Y_{t-j}}(y_t,y_{t-j}) dy_tdy_{t-j}
 = \gamma_{jt},
 \end{align*}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\smash{f_{Y_t}}\)</span> and <span class="math notranslate nohighlight">\(\smash{f_{Y_t,Y_{t-j}}}\)</span> are
-the marginal distributions of <span class="math notranslate nohighlight">\(f_{{\bf Y}_T}\)</span> obtained by
-integrating over the appropriate elements of <span class="math notranslate nohighlight">\({\bf Y}_T\)</span>.</p>
+<p>where <span class="math">\(\smash{f_{Y_t}}\)</span> and <span class="math">\(\smash{f_{Y_t,Y_{t-j}}}\)</span> are
+the marginal distributions of <span class="math">\(f_{{\bf Y}_T}\)</span> obtained by
+integrating over the appropriate elements of <span class="math">\({\bf Y}_T\)</span>.</p>
 </div>
 <div class="section" id="autocovariance-and-autocorrelation">
 <h2>Autocovariance and Autocorrelation<a class="headerlink" href="#autocovariance-and-autocorrelation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\gamma_{jt}}\)</span> is known as the <span class="math notranslate nohighlight">\(\smash{j}\)</span> th
-autocovariance of <span class="math notranslate nohighlight">\(\smash{Y_t}\)</span> since it is the
-covariance of <span class="math notranslate nohighlight">\(\smash{Y_t}\)</span> with its own lagged value.</li>
+<li><span class="math">\(\smash{\gamma_{jt}}\)</span> is known as the <span class="math">\(\smash{j}\)</span> th
+autocovariance of <span class="math">\(\smash{Y_t}\)</span> since it is the
+covariance of <span class="math">\(\smash{Y_t}\)</span> with its own lagged value.</li>
 </ul>
 <ul class="simple">
-<li>The <span class="math notranslate nohighlight">\(\smash{j}\)</span> th autocorrelation of <span class="math notranslate nohighlight">\(\smash{Y_t}\)</span> is
+<li>The <span class="math">\(\smash{j}\)</span> th autocorrelation of <span class="math">\(\smash{Y_t}\)</span> is
 defined as</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 \rho_{jt} &amp; = Corr(Y_t, Y_{t-j}) \\
 &amp; = \frac{Cov(Y_t, Y_{t-j})}{\sqrt{Var(Y_t)} \sqrt{Var(Y_{t-j})}} \\
@@ -334,11 +335,11 @@ defined as</li>
 </div>
 <div class="section" id="sample-moments">
 <h2>Sample Moments<a class="headerlink" href="#sample-moments" title="Permalink to this headline">¶</a></h2>
-<p>If we had <span class="math notranslate nohighlight">\(N\)</span>
-observations <span class="math notranslate nohighlight">\({\bf y}_T^{(1)},\ldots,{\bf y}_T^{(N)}\)</span>, we
-could estimate moments of each (univariate) <span class="math notranslate nohighlight">\(\smash{Y_t}\)</span> in the
+<p>If we had <span class="math">\(N\)</span>
+observations <span class="math">\({\bf y}_T^{(1)},\ldots,{\bf y}_T^{(N)}\)</span>, we
+could estimate moments of each (univariate) <span class="math">\(\smash{Y_t}\)</span> in the
 usual way:</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 \hat{\mu}_t &amp; = \frac{1}{N} \sum_{i=1}^N y_t^{(i)}. \\
 \hat{\gamma}_{0t} &amp; = \frac{1}{N} \sum_{i=1}^N (y_t^{(i)} -
@@ -349,18 +350,18 @@ usual way:</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Suppose each element of <span class="math notranslate nohighlight">\({\bf Y}_T\)</span> is described by</p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+<p>Suppose each element of <span class="math">\({\bf Y}_T\)</span> is described by</p>
+<div class="math">
+\[\begin{split}\begin{align*}
 Y_t &amp; = \mu_t + \varepsilon_t, \,\,\,\, \varepsilon_t
 \stackrel{i.i.d.}{\sim}
 \mathcal{N}(0,\sigma^2_t), \forall t.
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="id3">
 <h2>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>In this case,</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 \mu_t &amp; = E[Y_t] = \mu_t, \,\,\, \forall t, \\
 \gamma_{0t} &amp; = Var(Y_t) = Var(\varepsilon_t) = \sigma^2_t, \,\,\, \forall
@@ -369,20 +370,20 @@ t \\
 \,\,\, \forall t, j \neq 0.
 \end{align*}\end{split}\]</div>
 <ul class="simple">
-<li>If <span class="math notranslate nohighlight">\(\smash{\sigma^2_t = \sigma^2}\)</span>  <span class="math notranslate nohighlight">\(\smash{\forall t}\)</span>, <span class="math notranslate nohighlight">\({\bf \varepsilon}_T\)</span> is known as a <em>Gaussian white noise</em> process.</li>
+<li>If <span class="math">\(\smash{\sigma^2_t = \sigma^2}\)</span>  <span class="math">\(\smash{\forall t}\)</span>, <span class="math">\({\bf \varepsilon}_T\)</span> is known as a <em>Gaussian white noise</em> process.</li>
 </ul>
 <ul class="simple">
-<li>In this case, <span class="math notranslate nohighlight">\({\bf Y}_T\)</span> is a Gaussian white noise
+<li>In this case, <span class="math">\({\bf Y}_T\)</span> is a Gaussian white noise
 process with drift.</li>
 </ul>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\({\bf \mu}_T\)</span> is the drift vector.</li>
+<li><span class="math">\({\bf \mu}_T\)</span> is the drift vector.</li>
 </ul>
 </div>
 <div class="section" id="white-noise">
 <h2>White Noise<a class="headerlink" href="#white-noise" title="Permalink to this headline">¶</a></h2>
-<p>Generally speaking, <span class="math notranslate nohighlight">\({\bf \varepsilon}_T\)</span> is a <em>white noise process</em> if</p>
-<div class="math notranslate nohighlight">
+<p>Generally speaking, <span class="math">\({\bf \varepsilon}_T\)</span> is a <em>white noise process</em> if</p>
+<div class="math">
 \[\begin{split}\begin{gather*}
 E[\varepsilon_t] = 0, \,\,\, \forall t \\
 E[\varepsilon^2_t] = \sigma^2, \,\,\, \forall t \\
@@ -391,52 +392,52 @@ E[\varepsilon_t \varepsilon_{\tau}] = 0, \,\,\, \text{ for } t \neq \tau.
 </div>
 <div class="section" id="id4">
 <h2>White Noise<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>Notice there is no distributional assumption for <span class="math notranslate nohighlight">\(\varepsilon_t\)</span>.</p>
+<p>Notice there is no distributional assumption for <span class="math">\(\varepsilon_t\)</span>.</p>
 <ul class="simple">
-<li>If <span class="math notranslate nohighlight">\(\smash{\varepsilon_t}\)</span> and
-<span class="math notranslate nohighlight">\(\smash{\varepsilon_{\tau}}\)</span> are independent
-for <span class="math notranslate nohighlight">\(\smash{t \neq \tau}\)</span>, <span class="math notranslate nohighlight">\({\bf \varepsilon}_T\)</span> is
+<li>If <span class="math">\(\smash{\varepsilon_t}\)</span> and
+<span class="math">\(\smash{\varepsilon_{\tau}}\)</span> are independent
+for <span class="math">\(\smash{t \neq \tau}\)</span>, <span class="math">\({\bf \varepsilon}_T\)</span> is
 <em>independent white noise</em>.</li>
 </ul>
 <ul class="simple">
-<li>Notice that independence <span class="math notranslate nohighlight">\(\smash{\Rightarrow E[\varepsilon_t
-\varepsilon_{\tau}] = 0}\)</span>, but <span class="math notranslate nohighlight">\(E[\varepsilon_t
+<li>Notice that independence <span class="math">\(\smash{\Rightarrow E[\varepsilon_t
+\varepsilon_{\tau}] = 0}\)</span>, but <span class="math">\(E[\varepsilon_t
 \varepsilon_{\tau}] = 0 \not \Rightarrow\)</span> independence.</li>
 </ul>
 <ul class="simple">
-<li>If <span class="math notranslate nohighlight">\(\smash{\varepsilon_t \sim \mathcal{N}(0, \sigma^2)}\)</span>
-<span class="math notranslate nohighlight">\(\forall t\)</span>, as in the example above, <span class="math notranslate nohighlight">\({\bf
+<li>If <span class="math">\(\smash{\varepsilon_t \sim \mathcal{N}(0, \sigma^2)}\)</span>
+<span class="math">\(\forall t\)</span>, as in the example above, <span class="math">\({\bf
 \varepsilon}_T\)</span> is Gaussian white noise.</li>
 </ul>
 </div>
 <div class="section" id="weak-stationarity">
 <h2>Weak Stationarity<a class="headerlink" href="#weak-stationarity" title="Permalink to this headline">¶</a></h2>
 <p>Suppose the first and second moments of a stochastic process
-<span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> don’t depend on <span class="math notranslate nohighlight">\(\smash{t \in T}\)</span>:</p>
-<div class="math notranslate nohighlight">
+<span class="math">\({\bf Y}_{T}\)</span> don&#8217;t depend on <span class="math">\(\smash{t \in T}\)</span>:</p>
+<div class="math">
 \[\begin{split}\begin{align*}
 E[Y_t] &amp; = \mu \,\,\,\, \forall t \\
 Cov(Y_t, Y_{t-j}) &amp; = \gamma_j \,\,\,\, \forall t \text{ and any
 } j.
 \end{align*}\end{split}\]</div>
 <ul class="simple">
-<li>In this case <span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is <em>weakly stationary</em> or
+<li>In this case <span class="math">\({\bf Y}_{T}\)</span> is <em>weakly stationary</em> or
 <em>covariance stationary</em>.</li>
 </ul>
 <ul class="simple">
-<li>In the previous example, if <span class="math notranslate nohighlight">\(\smash{Y_t = \mu +
-\varepsilon_t}\)</span>  <span class="math notranslate nohighlight">\(\smash{\forall t}\)</span>, <span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is
+<li>In the previous example, if <span class="math">\(\smash{Y_t = \mu +
+\varepsilon_t}\)</span>  <span class="math">\(\smash{\forall t}\)</span>, <span class="math">\({\bf Y}_{T}\)</span> is
 weakly stationary.</li>
 </ul>
 <ul class="simple">
-<li>However if <span class="math notranslate nohighlight">\(\smash{\mu_t \neq \mu}\)</span>  <span class="math notranslate nohighlight">\(\smash{\forall t}\)</span>,
-<span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is <em>not</em> weakly stationary.</li>
+<li>However if <span class="math">\(\smash{\mu_t \neq \mu}\)</span>  <span class="math">\(\smash{\forall t}\)</span>,
+<span class="math">\({\bf Y}_{T}\)</span> is <em>not</em> weakly stationary.</li>
 </ul>
 </div>
 <div class="section" id="autocorrelation-under-weak-stationarity">
 <h2>Autocorrelation under Weak Stationarity<a class="headerlink" href="#autocorrelation-under-weak-stationarity" title="Permalink to this headline">¶</a></h2>
-<p>If <span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is weakly stationary</p>
-<div class="math notranslate nohighlight">
+<p>If <span class="math">\({\bf Y}_{T}\)</span> is weakly stationary</p>
+<div class="math">
 \[\begin{split}\begin{align*}
 \rho_{jt} &amp; = \frac{\gamma_{jt}}{\sqrt{\gamma_{0t}}
 \sqrt{\gamma_{0t-j}}} \\
@@ -445,20 +446,20 @@ weakly stationary.</li>
 &amp; = \rho_j.
 \end{align*}\end{split}\]</div>
 <ul class="simple">
-<li>Note that <span class="math notranslate nohighlight">\(\smash{\rho_0 = 1}\)</span>.</li>
+<li>Note that <span class="math">\(\smash{\rho_0 = 1}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="id5">
 <h2>Weak Stationarity<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>Under weak stationarity, autocovariances <span class="math notranslate nohighlight">\(\smash{\gamma_j}\)</span> only
+<p>Under weak stationarity, autocovariances <span class="math">\(\smash{\gamma_j}\)</span> only
 depend on the distance between random variables within a stochastic
 process:</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{align*}
 Cov(Y_{\tau}, Y_{\tau-j}) = Cov(Y_t, Y_{t-j}) = \gamma_j.
 \end{align*}\]</div>
 <p>This implies</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{align*}
 \gamma_{-j} = Cov(Y_{t+j}, Y_t) = Cov(Y_t, Y_{t-j}) = \gamma_j.
 \end{align*}\]</div>
@@ -466,7 +467,7 @@ Cov(Y_{\tau}, Y_{\tau-j}) = Cov(Y_t, Y_{t-j}) = \gamma_j.
 <div class="section" id="id6">
 <h2>Weak Stationarity<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>More generally,</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 \Sigma_{{\bf Y}_T} &amp; = \left[\begin{array}{ccccc}
 \gamma_0 &amp; \gamma_1 &amp; \cdots &amp; \gamma_{T-2} &amp; \gamma_{T-1}
@@ -479,9 +480,9 @@ Cov(Y_{\tau}, Y_{\tau-j}) = Cov(Y_t, Y_{t-j}) = \gamma_j.
 </div>
 <div class="section" id="strict-stationarity">
 <h2>Strict Stationarity<a class="headerlink" href="#strict-stationarity" title="Permalink to this headline">¶</a></h2>
-<p><span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is <em>strictly stationary</em> if for any
-set <span class="math notranslate nohighlight">\(\smash{\{j_1, j_2, \ldots, j_n\} \in T}\)</span></p>
-<div class="math notranslate nohighlight">
+<p><span class="math">\({\bf Y}_{T}\)</span> is <em>strictly stationary</em> if for any
+set <span class="math">\(\smash{\{j_1, j_2, \ldots, j_n\} \in T}\)</span></p>
+<div class="math">
 \[\begin{align*}
 f_{Y_{j_1},\ldots,Y_{j_n}}(a_1, \ldots, a_n) = f_{Y_{j_1 +
 \tau},\ldots,Y_{j_n + \tau}}(a_1, \ldots, a_n), \,\,\,
@@ -489,15 +490,15 @@ f_{Y_{j_1},\ldots,Y_{j_n}}(a_1, \ldots, a_n) = f_{Y_{j_1 +
 \end{align*}\]</div>
 <ul class="simple">
 <li>Strict stationarity means that the joint distribution of any subset
-of random variables in <span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is invariant to shifts
-in time, <span class="math notranslate nohighlight">\(\smash{\tau}\)</span>.</li>
+of random variables in <span class="math">\({\bf Y}_{T}\)</span> is invariant to shifts
+in time, <span class="math">\(\smash{\tau}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>Strict stationarity <span class="math notranslate nohighlight">\(\smash{\Rightarrow}\)</span> weak stationarity if
+<li>Strict stationarity <span class="math">\(\smash{\Rightarrow}\)</span> weak stationarity if
 the first and second moments of a stochastic process exist.</li>
 </ul>
 <ul class="simple">
-<li>Weak stationarity <span class="math notranslate nohighlight">\(\smash{\not \Rightarrow}\)</span> strict
+<li>Weak stationarity <span class="math">\(\smash{\not \Rightarrow}\)</span> strict
 stationarity: invariance of first and second moments to time shifts
 (weak stationarity) does not mean that all higher moments are
 invariant to time shifts (strict stationarity).</li>
@@ -505,11 +506,11 @@ invariant to time shifts (strict stationarity).</li>
 </div>
 <div class="section" id="id7">
 <h2>Strict Stationarity<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>If <span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is Gaussian then weak stationarity
-<span class="math notranslate nohighlight">\(\smash{\Rightarrow}\)</span> strict stationarity.</p>
+<p>If <span class="math">\({\bf Y}_{T}\)</span> is Gaussian then weak stationarity
+<span class="math">\(\smash{\Rightarrow}\)</span> strict stationarity.</p>
 <ul class="simple">
-<li>If <span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is Gaussian, all marginal distributions of
-<span class="math notranslate nohighlight">\(\smash{(Y_{j_1}, \ldots, Y_{j_n})}\)</span> are also Gaussian.</li>
+<li>If <span class="math">\({\bf Y}_{T}\)</span> is Gaussian, all marginal distributions of
+<span class="math">\(\smash{(Y_{j_1}, \ldots, Y_{j_n})}\)</span> are also Gaussian.</li>
 </ul>
 <ul class="simple">
 <li>Gaussian distributions are fully characterized by their first and
@@ -518,37 +519,37 @@ second moments.</li>
 </div>
 <div class="section" id="ergodicity">
 <h2>Ergodicity<a class="headerlink" href="#ergodicity" title="Permalink to this headline">¶</a></h2>
-<p>Given <span class="math notranslate nohighlight">\(\smash{N}\)</span> identically distributed weakly stationary stochastic
-processes <span class="math notranslate nohighlight">\(\left\{{\bf Y}_{T}\right\}_{i=1}^N\)</span>, the
+<p>Given <span class="math">\(\smash{N}\)</span> identically distributed weakly stationary stochastic
+processes <span class="math">\(\left\{{\bf Y}_{T}\right\}_{i=1}^N\)</span>, the
 <em>ensemble average</em> is</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{align*}
 \frac{1}{N} \sum_{i=1}^N Y_t^{(i)} \stackrel{p}{\to} \mu, \,\,\,\,
 \forall t.
 \end{align*}\]</div>
 <p>For a single stochastic process, we desire conditions under which the
 <em>time average</em></p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+<div class="math">
+\[\begin{split}\begin{align*}
 \frac{1}{T} &amp; \sum_{t=1}^T Y_t \stackrel{p}{\to}
 \mu.
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 </div>
 <div class="section" id="id8">
 <h2>Ergodicity<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>If <span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is weakly stationary and</p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+<p>If <span class="math">\({\bf Y}_{T}\)</span> is weakly stationary and</p>
+<div class="math">
+\[\begin{split}\begin{align*}
 \sum_{j=0}^{\infty} &amp; |\gamma_j| &lt; \infty,
-\end{align*}\]</div>
-<p>Then <span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is <em>ergodic for the mean</em> and the time
+\end{align*}\end{split}\]</div>
+<p>Then <span class="math">\({\bf Y}_{T}\)</span> is <em>ergodic for the mean</em> and the time
 average converges.</p>
 <ul class="simple">
 <li>The equation above requires that the autocovariances fall to zero
 sufficiently quickly.</li>
 </ul>
 <ul class="simple">
-<li>i.e. a <em>long realization</em> of <span class="math notranslate nohighlight">\(\smash{\{y_t\}}\)</span> will have many
+<li>i.e. a <em>long realization</em> of <span class="math">\(\smash{\{y_t\}}\)</span> will have many
 segments that are uncorrelated and which can be used to approximate
 an ensemble average.</li>
 </ul>
@@ -556,34 +557,32 @@ an ensemble average.</li>
 <div class="section" id="id9">
 <h2>Ergodicity<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>A weakly stationary process is ergodic for the second moments if</p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
+<div class="math">
+\[\begin{split}\begin{align*}
 \frac{1}{T-j} \sum_{t=j+1}^T &amp; (Y_t - \mu)(Y_{t-j} - \mu)
 \stackrel{p}{\to} \gamma_j.
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 <ul class="simple">
 <li>Separate conditions exist which cause the equation above to hold.</li>
 </ul>
 <ul class="simple">
-<li>If <span class="math notranslate nohighlight">\({\bf Y}_{T}\)</span> is Gaussian and stationary, then
-<span class="math notranslate nohighlight">\(\smash{\sum_{j=0}^{\infty} |\gamma_j| &lt; \infty}\)</span> ensures that
-<span class="math notranslate nohighlight">\(\smash{{\bf Y}_{T}}\)</span> is ergodic for all moments.</li>
+<li>If <span class="math">\({\bf Y}_{T}\)</span> is Gaussian and stationary, then
+<span class="math">\(\smash{\sum_{j=0}^{\infty} |\gamma_j| &lt; \infty}\)</span> ensures that
+<span class="math">\(\smash{{\bf Y}_{T}}\)</span> is ergodic for all moments.</li>
 </ul>
 </div>
 </div>
 
 
-           </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="linearTS.html" class="btn btn-neutral float-right" title="Linear Time Series Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linearTS.html" class="btn btn-neutral float-right" title="Linear Time Series Models">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="preliminaries.html" class="btn btn-neutral float-left" title="Finance Preliminaries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="preliminaries.html" class="btn btn-neutral" title="Finance Preliminaries"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -592,14 +591,13 @@ an ensemble average.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich
-
+        &copy; Copyright 2016, Eric M. Aldrich.
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
 </footer>
-
         </div>
       </div>
 
@@ -609,15 +607,36 @@ an ensemble average.</li>
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>

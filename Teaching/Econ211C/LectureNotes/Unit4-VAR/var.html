@@ -5,7 +5,6 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Vector Autoregression &mdash; Econ 211C 2016.03.29 documentation</title>
@@ -13,59 +12,43 @@
 
   
   
-  
-  
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Autocovariances of Vector Processes" href="varACF.html" />
-    <link rel="prev" title="Vector Processes" href="../varProcesses.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
+        <link rel="up" title="Vector Processes" href="../varProcesses.html"/>
+        <link rel="next" title="Autocovariances of Vector Processes" href="varACF.html"/>
+        <link rel="prev" title="Vector Processes" href="../varProcesses.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home"> Econ 211C
-          
-
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                2016.03.29
-              </div>
-            
-          
-
-          
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
+        
+        
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -73,164 +56,184 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Vector Autoregression</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#definition">Definition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#smash-ar-p-as-smash-var-1"><span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span> as <span class="math notranslate nohighlight">\(\smash{VAR(1)}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lag-operator-notation">Lag Operator Notation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#weak-stationarity">Weak Stationarity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mean">Mean</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#smash-var-p-as-smash-var-1"><span class="math notranslate nohighlight">\(\smash{VAR(p)}\)</span> as <span class="math notranslate nohighlight">\(\smash{VAR(1)}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1"><span class="math notranslate nohighlight">\(\smash{VAR(p)}\)</span> as <span class="math notranslate nohighlight">\(\smash{VAR(1)}\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#recursive-iteration">Recursive Iteration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Recursive Iteration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vector-smash-ma-infty-representation">Vector <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> Representation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Vector <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> Representation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Vector <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> Representation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#inverse-of-smash-ma-infty-lag-polynomial">Inverse of <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> Lag Polynomial</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#representation-with-uncorrelated-noise">Representation with Uncorrelated Noise</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Representation with Uncorrelated Noise</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="varACF.html">Autocovariances of Vector Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="svar.html">Structural Vector Autoregression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="impulseResponse.html">Impulse Response Functions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
-</ul>
-
-            
-          
-        </div>
       </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Vector Autoregression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varACF.html">Autocovariances of Vector Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Econ 211C</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Econ 211C</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
           <li><a href="../varProcesses.html">Vector Processes</a> &raquo;</li>
-        
-      <li>Vector Autoregression</li>
-    
-    
+      
+    <li>Vector Autoregression</li>
       <li class="wy-breadcrumbs-aside">
         
-            
-            <a href="../_sources/Unit4-VAR/var.rst.txt" rel="nofollow"> View page source</a>
-          
+          <a href="../_sources/Unit4-VAR/var.txt" rel="nofollow"> View page source</a>
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+          <div role="main" class="document">
             
   <div class="section" id="vector-autoregression">
 <h1>Vector Autoregression<a class="headerlink" href="#vector-autoregression" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
-<p>A <span class="math notranslate nohighlight">\(\smash{p}\)</span> th order vector autoregression generalizes a
-scalar <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span>:</p>
-<div class="math notranslate nohighlight">
+<p>A <span class="math">\(\smash{p}\)</span> th order vector autoregression generalizes a
+scalar <span class="math">\(\smash{AR(p)}\)</span>:</p>
+<div class="math">
 \[\smash{\boldsymbol{Y}_{t} = \boldsymbol{c} +
 \Phi_{1}\boldsymbol{Y}_{t-1} + \Phi_{2}\boldsymbol{Y}_{t-2} +
 \ldots + + \Phi_{p}\boldsymbol{Y}_{t-p} +
 \boldsymbol{\varepsilon}_{t}}.\]</div>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{Y_{t} = (Y_{1t},Y_{2t},\ldots,Y_{nt})^{'}}\)</span> is an
-<span class="math notranslate nohighlight">\(\smash{n \times 1}\)</span> vector of random variables.</li>
+<li><span class="math">\(\smash{Y_{t} = (Y_{1t},Y_{2t},\ldots,Y_{nt})^{'}}\)</span> is an
+<span class="math">\(\smash{n \times 1}\)</span> vector of random variables.</li>
 </ul>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\boldsymbol{c} = (c_1,c_2,\ldots,c_n)^{'}}\)</span> is an
-<span class="math notranslate nohighlight">\(\smash{n \times 1}\)</span> vector of constants.</li>
+<li><span class="math">\(\smash{\boldsymbol{c} = (c_1,c_2,\ldots,c_n)^{'}}\)</span> is an
+<span class="math">\(\smash{n \times 1}\)</span> vector of constants.</li>
 </ul>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\Phi_{j}}\)</span> is an <span class="math notranslate nohighlight">\(\smash{n \times n}\)</span> matrix of
-autoregressive coefficients for <span class="math notranslate nohighlight">\(\smash{j = 1,\ldots,p}\)</span>.</li>
+<li><span class="math">\(\smash{\Phi_{j}}\)</span> is an <span class="math">\(\smash{n \times n}\)</span> matrix of
+autoregressive coefficients for <span class="math">\(\smash{j = 1,\ldots,p}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\boldsymbol{\varepsilon}_{t} =
+<li><span class="math">\(\smash{\boldsymbol{\varepsilon}_{t} =
 (\varepsilon_{1t},\ldots, \varepsilon_{nt})^{'} }\)</span> is a vector white
 noise process:</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\smash{E[\boldsymbol{\varepsilon}_{t}] = \boldsymbol{0}  \,\,\, \text{and}
 \,\,\,
 E[\boldsymbol{\varepsilon}_{t}\boldsymbol{\varepsilon}^{'}_{\tau}] =
 \bigg\{\begin{array}{c} \Omega \hspace{10pt} t = \tau \\ 0
 \hspace{10pt} \text{o/w} \\ \end{array}}.\end{split}\]</div>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t}}\)</span> is referred to as a
-<span class="math notranslate nohighlight">\(\smash{VAR(p)}\)</span>.</li>
+<li><span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> is referred to as a
+<span class="math">\(\smash{VAR(p)}\)</span>.</li>
 </ul>
 </div>
-<div class="section" id="smash-ar-p-as-smash-var-1">
-<h2><span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span> as <span class="math notranslate nohighlight">\(\smash{VAR(1)}\)</span><a class="headerlink" href="#smash-ar-p-as-smash-var-1" title="Permalink to this headline">¶</a></h2>
-<p>Recall, an <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span> can be written as a
-<span class="math notranslate nohighlight">\(\smash{VAR(1)}\)</span></p>
-<div class="math notranslate nohighlight">
+<div class="section" id="as">
+<h2><span class="math">\(\smash{AR(p)}\)</span> as <span class="math">\(\smash{VAR(1)}\)</span><a class="headerlink" href="#as" title="Permalink to this headline">¶</a></h2>
+<p>Recall, an <span class="math">\(\smash{AR(p)}\)</span> can be written as a
+<span class="math">\(\smash{VAR(1)}\)</span></p>
+<div class="math">
 \[\smash{\boldsymbol{Y}_{t} = \Phi \boldsymbol{Y}_{t-1} +
 \boldsymbol{v}_{t}}\]</div>
 <p>where</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\smash{\boldsymbol{Y}_{t} = \left[\begin{array}{c} Y_{t} \\ \vdots
 \\ Y_{t-p+1} \\ \end{array} \right], \hspace{10pt}
 \Phi = \left[\begin{array}{ccccc} \phi_{1} &amp; \phi_{2}
@@ -240,13 +243,13 @@ E[\boldsymbol{\varepsilon}_{t}\boldsymbol{\varepsilon}^{'}_{\tau}] =
 \boldsymbol{v}_{t} = \left[\begin{array}{c}
 \varepsilon_{t} \\ 0 \\ 0 \\ \vdots \\ 0 \\ \end{array}
 \right]}\end{split}\]</div>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\,\,\]</div>
 </div>
 <div class="section" id="lag-operator-notation">
 <h2>Lag Operator Notation<a class="headerlink" href="#lag-operator-notation" title="Permalink to this headline">¶</a></h2>
 <p>In lag operator notation,</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 \Phi(L) \boldsymbol{Y}_{t} &amp; = \left[I_{n} - \Phi_{1}L -
 \Phi_{2}L^{2} - \ldots - \Phi_{p}L^{p}\right]\boldsymbol{Y}_{t}
@@ -254,23 +257,23 @@ E[\boldsymbol{\varepsilon}_{t}\boldsymbol{\varepsilon}^{'}_{\tau}] =
 &amp; = \boldsymbol{c} + \boldsymbol{\varepsilon}_{t}.
 \end{align*}\end{split}\]</div>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\Phi(L)}\)</span> is a matrix where each component is a scalar
+<li><span class="math">\(\smash{\Phi(L)}\)</span> is a matrix where each component is a scalar
 lag polynomial.</li>
 </ul>
 </div>
 <div class="section" id="weak-stationarity">
 <h2>Weak Stationarity<a class="headerlink" href="#weak-stationarity" title="Permalink to this headline">¶</a></h2>
 <p>The concept of weak stationarity is unchanged:
-<span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t}}\)</span> is weakly stationary if</p>
-<div class="math notranslate nohighlight">
+<span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> is weakly stationary if</p>
+<div class="math">
 \[\smash{E[\boldsymbol{Y}_{t}] \,\,\, \text{and} \,\,\,
 E[\boldsymbol{Y}_{t}\boldsymbol{Y}_{t-j}^{'}]}\]</div>
-<p>are independent of <span class="math notranslate nohighlight">\(\smash{t \,\, \forall \,\, j}\)</span></p>
+<p>are independent of <span class="math">\(\smash{t \,\, \forall \,\, j}\)</span></p>
 </div>
 <div class="section" id="mean">
 <h2>Mean<a class="headerlink" href="#mean" title="Permalink to this headline">¶</a></h2>
 <p>By weak stationarity,</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 E[\boldsymbol{Y}_{t}] &amp; = \boldsymbol{\mu} = \boldsymbol{c} +
 \Phi_{1}\boldsymbol{\mu} + \ldots + \Phi_{p}\boldsymbol{\mu} \\
@@ -278,24 +281,24 @@ E[\boldsymbol{Y}_{t}] &amp; = \boldsymbol{\mu} = \boldsymbol{c} +
 \Phi_{p}]^{-1}\boldsymbol{c}
 \end{align*}\end{split}\]</div>
 <p>Note that</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\smash{\boldsymbol{\mu} = (\mu_{1},\mu_{2},\ldots,\mu_{n})^{'} \neq
 (\mu,\mu,\ldots,\mu)^{'}}\]</div>
 <p>Alternatively, we can re-express as a zero-mean process:</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\smash{(\boldsymbol{Y}_{t} - \boldsymbol{\mu}) =
 \Phi_{1}(\boldsymbol{Y}_{t-1} - \boldsymbol{\mu}) + \ldots +
 \Phi_{p}(\boldsymbol{Y}_{t-p} - \boldsymbol{\mu}) +
 \boldsymbol{\varepsilon}_{t}}.\]</div>
 </div>
-<div class="section" id="smash-var-p-as-smash-var-1">
-<h2><span class="math notranslate nohighlight">\(\smash{VAR(p)}\)</span> as <span class="math notranslate nohighlight">\(\smash{VAR(1)}\)</span><a class="headerlink" href="#smash-var-p-as-smash-var-1" title="Permalink to this headline">¶</a></h2>
-<p>We can write a <span class="math notranslate nohighlight">\(\smash{VAR(p)}\)</span> as a <span class="math notranslate nohighlight">\(\smash{VAR(1)}\)</span>:</p>
-<div class="math notranslate nohighlight">
+<div class="section" id="id1">
+<h2><span class="math">\(\smash{VAR(p)}\)</span> as <span class="math">\(\smash{VAR(1)}\)</span><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>We can write a <span class="math">\(\smash{VAR(p)}\)</span> as a <span class="math">\(\smash{VAR(1)}\)</span>:</p>
+<div class="math">
 \[\smash{\boldsymbol{\xi}_{t} = F\boldsymbol{\xi}_{t-1} +
 \boldsymbol{v}_{t}}\]</div>
 <p>where</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\smash{\boldsymbol{\xi}_{t} = \left[\begin{array}{c}
 \boldsymbol{Y}_{t} - \boldsymbol{\mu} \\ \boldsymbol{Y}_{t-1} -
 \boldsymbol{\mu} \\ \vdots \\ \boldsymbol{Y}_{t-p+1} -
@@ -308,46 +311,46 @@ I_{n} &amp;\ldots &amp; 0 &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdo
 \boldsymbol{v}_{t} = \left[\begin{array}{c}
 \boldsymbol{\varepsilon}_{t} \\ 0 \\ 0 \\ \vdots \\ 0 \\
 \end{array} \right]}.\end{split}\]</div>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\,\,\]</div>
 </div>
-<div class="section" id="id1">
-<h2><span class="math notranslate nohighlight">\(\smash{VAR(p)}\)</span> as <span class="math notranslate nohighlight">\(\smash{VAR(1)}\)</span><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2><span class="math">\(\smash{VAR(p)}\)</span> as <span class="math">\(\smash{VAR(1)}\)</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Clearly,</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\smash{E[\boldsymbol{v}_{t}\boldsymbol{v}_{\tau}^{'}] =
 \bigg\{\begin{array}{c} Q \hspace{10pt} t = \tau \\ 0 \hspace{10pt}
 \text{o/w} \\ \end{array}}\end{split}\]</div>
 <p>where</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\smash{Q = \left[\begin{array}{cccc} \Omega &amp; 0&amp; \ldots &amp; 0 \\ 0 &amp;
 0 &amp; \ldots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp;
 \ldots &amp; 0 \\ \end{array} \right]_{np \times np}}.\end{split}\]</div>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\,\,\]</div>
 </div>
 <div class="section" id="recursive-iteration">
 <h2>Recursive Iteration<a class="headerlink" href="#recursive-iteration" title="Permalink to this headline">¶</a></h2>
-<p>Recursively iterating on the <span class="math notranslate nohighlight">\(\smash{VAR(1)}\)</span>:</p>
-<div class="math notranslate nohighlight">
+<p>Recursively iterating on the <span class="math">\(\smash{VAR(1)}\)</span>:</p>
+<div class="math">
 \[\smash{\boldsymbol{\xi}_{t+s} =  \boldsymbol{v}_{t+s} +
 F\boldsymbol{v}_{t+s-1}  + F^{2}\boldsymbol{v}_{t+s-2}  + \ldots +
 F^{s-1}\boldsymbol{v}_{t+1}  + F^{s}\xi_{t}}.\]</div>
-<p>Assuming <span class="math notranslate nohighlight">\(\smash{F}\)</span> is nonsingular, it can be decomposed as</p>
-<div class="math notranslate nohighlight">
+<p>Assuming <span class="math">\(\smash{F}\)</span> is nonsingular, it can be decomposed as</p>
+<div class="math">
 \[\smash{F = T \Lambda T^{-1}}.\]</div>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\Lambda}\)</span> is a diagonal matrix comprised of the
-<span class="math notranslate nohighlight">\(\smash{np}\)</span> eigenvalues of <span class="math notranslate nohighlight">\(\smash{F}\)</span>.</li>
+<li><span class="math">\(\smash{\Lambda}\)</span> is a diagonal matrix comprised of the
+<span class="math">\(\smash{np}\)</span> eigenvalues of <span class="math">\(\smash{F}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{T}\)</span> is a matrix of eigenvectors as columns.</li>
+<li><span class="math">\(\smash{T}\)</span> is a matrix of eigenvectors as columns.</li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h2>Recursive Iteration<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>Recursive Iteration<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Substituting the decomposition,</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{gather*}
 F^2 = FF = (T \Lambda T^{-1})\,T \Lambda T^{-1} = T \Lambda^{2}
 T^{-1} \\
@@ -355,39 +358,39 @@ T^{-1} \\
 \text{if} \,\,\,\, |\lambda_{k}| &lt; 1 \,\,\,\, \text{for} \,\,\,\, k
 = 1, \ldots, np.
 \end{gather*}\end{split}\]</div>
-<p>If <span class="math notranslate nohighlight">\(\smash{F^{s}\rightarrow 0}\)</span> as <span class="math notranslate nohighlight">\(\smash{s\rightarrow
+<p>If <span class="math">\(\smash{F^{s}\rightarrow 0}\)</span> as <span class="math">\(\smash{s\rightarrow
 \infty}\)</span>,</p>
 <ul class="simple">
-<li>The effect of <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\varepsilon}_{t}}\)</span> on
-<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t+s}}\)</span> dies out as
-<span class="math notranslate nohighlight">\(\smash{s\rightarrow \infty}\)</span>.</li>
+<li>The effect of <span class="math">\(\smash{\boldsymbol{\varepsilon}_{t}}\)</span> on
+<span class="math">\(\smash{\boldsymbol{\xi}_{t+s}}\)</span> dies out as
+<span class="math">\(\smash{s\rightarrow \infty}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t}}\)</span> (and hence
-<span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t}}\)</span>) is stationary and causal.</li>
+<li><span class="math">\(\smash{\boldsymbol{\xi}_{t}}\)</span> (and hence
+<span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span>) is stationary and causal.</li>
 </ul>
 <ul class="simple">
-<li>Alternatively, <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t}}\)</span> is stationary and
-causal if the roots of <span class="math notranslate nohighlight">\(\smash{[I_{n} - \Phi_{1}z -
+<li>Alternatively, <span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> is stationary and
+causal if the roots of <span class="math">\(\smash{[I_{n} - \Phi_{1}z -
 \Phi_{2}z^{2} - \ldots - \Phi_{p}z^{p}]}\)</span> all lie outside the unit
 circle.</li>
 </ul>
 </div>
-<div class="section" id="vector-smash-ma-infty-representation">
-<h2>Vector <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> Representation<a class="headerlink" href="#vector-smash-ma-infty-representation" title="Permalink to this headline">¶</a></h2>
-<p>If <span class="math notranslate nohighlight">\(\smash{F^{s}\rightarrow 0}\)</span> as <span class="math notranslate nohighlight">\(\smash{s\rightarrow
+<div class="section" id="vector-representation">
+<h2>Vector <span class="math">\(\smash{MA(\infty)}\)</span> Representation<a class="headerlink" href="#vector-representation" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math">\(\smash{F^{s}\rightarrow 0}\)</span> as <span class="math">\(\smash{s\rightarrow
 \infty}\)</span>, then</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\smash{\boldsymbol{\xi}_{t+s} =  \boldsymbol{v}_{t+s} +
 F\boldsymbol{v}_{t+s-1}  + F^{2}\boldsymbol{v}_{t+s-2} +
 F^{3}\boldsymbol{v}_{t+s-3}  + \ldots}\]</div>
-<p>which is a vector <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> process.</p>
+<p>which is a vector <span class="math">\(\smash{MA(\infty)}\)</span> process.</p>
 </div>
-<div class="section" id="id3">
-<h2>Vector <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> Representation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>We can also write <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t}}\)</span> alone as a vector
-<span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span>. First, recognize</p>
-<div class="math notranslate nohighlight">
+<div class="section" id="id4">
+<h2>Vector <span class="math">\(\smash{MA(\infty)}\)</span> Representation<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>We can also write <span class="math">\(\smash{\boldsymbol{Y}_{t}}\)</span> alone as a vector
+<span class="math">\(\smash{MA(\infty)}\)</span>. First, recognize</p>
+<div class="math">
 \[\begin{split}\begin{align*}
 \boldsymbol{Y}_{t+s} &amp; = \boldsymbol{\mu} +
 \boldsymbol{\varepsilon}_{t+s} + \Psi_{1}
@@ -400,35 +403,35 @@ F^{3}\boldsymbol{v}_{t+s-3}  + \ldots}\]</div>
 \boldsymbol{\mu}).
 \end{align*}\end{split}\]</div>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{\Psi_{j} = F_{11}^{(j)}}\)</span>.</li>
+<li><span class="math">\(\smash{\Psi_{j} = F_{11}^{(j)}}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li><span class="math notranslate nohighlight">\(\smash{F_{1k}^{(j)}}\)</span> is comprised of rows 1 to
-<span class="math notranslate nohighlight">\(\smash{n}\)</span> and columns <span class="math notranslate nohighlight">\(\smash{(k-1)n+1}\)</span> to
-<span class="math notranslate nohighlight">\(\smash{kn}\)</span> of matrix <span class="math notranslate nohighlight">\(\smash{F^{j}}\)</span>.</li>
+<li><span class="math">\(\smash{F_{1k}^{(j)}}\)</span> is comprised of rows 1 to
+<span class="math">\(\smash{n}\)</span> and columns <span class="math">\(\smash{(k-1)n+1}\)</span> to
+<span class="math">\(\smash{kn}\)</span> of matrix <span class="math">\(\smash{F^{j}}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>Note that the matrices <span class="math notranslate nohighlight">\(\smash{(F \times
-F)[1:n,1:n]}\)</span> and <span class="math notranslate nohighlight">\(\smash{F[1:n,1:n] \times
+<li>Note that the matrices <span class="math">\(\smash{(F \times
+F)[1:n,1:n]}\)</span> and <span class="math">\(\smash{F[1:n,1:n] \times
 F[1:n,1:n]}\)</span> are not the same.</li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h2>Vector <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> Representation<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>Suppose all eigenvalues of <span class="math notranslate nohighlight">\(\smash{F}\)</span> are inside the unit
+<div class="section" id="id5">
+<h2>Vector <span class="math">\(\smash{MA(\infty)}\)</span> Representation<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Suppose all eigenvalues of <span class="math">\(\smash{F}\)</span> are inside the unit
 circle.</p>
 <ul class="simple">
-<li>Then <span class="math notranslate nohighlight">\(\smash{F^{s}\rightarrow 0}\)</span> as
-<span class="math notranslate nohighlight">\(\smash{s\rightarrow \infty}\)</span>.</li>
+<li>Then <span class="math">\(\smash{F^{s}\rightarrow 0}\)</span> as
+<span class="math">\(\smash{s\rightarrow \infty}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>This means <span class="math notranslate nohighlight">\(\smash{F_{1k}^{(s)}\rightarrow 0}\)</span> as
-<span class="math notranslate nohighlight">\(\smash{s\rightarrow \infty}\)</span>.</li>
+<li>This means <span class="math">\(\smash{F_{1k}^{(s)}\rightarrow 0}\)</span> as
+<span class="math">\(\smash{s\rightarrow \infty}\)</span>.</li>
 </ul>
 <ul class="simple">
 <li>In the limit</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 \boldsymbol{Y}_{t+s} &amp; = \boldsymbol{\mu} +
 \boldsymbol{\varepsilon}_{t+s} + \Psi_{1}
@@ -438,27 +441,27 @@ circle.</p>
 \Psi(L)\boldsymbol{\varepsilon}_{t+s}.
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="inverse-of-smash-ma-infty-lag-polynomial">
-<h2>Inverse of <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> Lag Polynomial<a class="headerlink" href="#inverse-of-smash-ma-infty-lag-polynomial" title="Permalink to this headline">¶</a></h2>
-<p>In this case <span class="math notranslate nohighlight">\(\smash{\Psi(L) = \Phi(L)^{-1}}\)</span> or</p>
-<div class="math notranslate nohighlight">
+<div class="section" id="inverse-of-lag-polynomial">
+<h2>Inverse of <span class="math">\(\smash{MA(\infty)}\)</span> Lag Polynomial<a class="headerlink" href="#inverse-of-lag-polynomial" title="Permalink to this headline">¶</a></h2>
+<p>In this case <span class="math">\(\smash{\Psi(L) = \Phi(L)^{-1}}\)</span> or</p>
+<div class="math">
 \[\smash{[1 - \Phi_{1}L - \Phi_{2}L^{2} - \ldots - \Phi_{p}L^{p}][1 +
 \Psi_{1}L + \Psi_{2}L^{2} + \ldots] = I_{n}}.\]</div>
 </div>
 <div class="section" id="representation-with-uncorrelated-noise">
 <h2>Representation with Uncorrelated Noise<a class="headerlink" href="#representation-with-uncorrelated-noise" title="Permalink to this headline">¶</a></h2>
-<p>We can always write a stationary and causal <span class="math notranslate nohighlight">\(\smash{VAR(p)}\)</span> as
-a vector <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> with a mutually uncorrelated white
+<p>We can always write a stationary and causal <span class="math">\(\smash{VAR(p)}\)</span> as
+a vector <span class="math">\(\smash{MA(\infty)}\)</span> with a mutually uncorrelated white
 noise vector.</p>
 <ul class="simple">
-<li>Define <span class="math notranslate nohighlight">\(\smash{\boldsymbol{u}_{t} =
+<li>Define <span class="math">\(\smash{\boldsymbol{u}_{t} =
 H\boldsymbol{\varepsilon}_{t}\,\,\,\,}\)</span> such that
-<span class="math notranslate nohighlight">\(\smash{\,\,\,\,H \Omega H^{'} = D}\)</span>.</li>
+<span class="math">\(\smash{\,\,\,\,H \Omega H^{'} = D}\)</span>.</li>
 </ul>
 <ul class="simple">
 <li>Then</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 \boldsymbol{Y}_{t} &amp; = \boldsymbol{\mu} +
 H^{-1}H\boldsymbol{\varepsilon}_{t} +
@@ -466,17 +469,17 @@ H^{-1}H\boldsymbol{\varepsilon}_{t} +
 &amp; = \boldsymbol{\mu} + J_{0}\boldsymbol{u}_{t} +
 J_{1}\boldsymbol{u}_{t-1} + J_{2}\boldsymbol{u}_{t-2} + \ldots
 \end{align*}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\smash{J_{s} = \Psi_{s}H^{-1}}\)</span>.</p>
+<p>where <span class="math">\(\smash{J_{s} = \Psi_{s}H^{-1}}\)</span>.</p>
 </div>
-<div class="section" id="id5">
-<h2>Representation with Uncorrelated Noise<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>Representation with Uncorrelated Noise<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>In this case the leading matrix <span class="math notranslate nohighlight">\(\smash{J_{0} \neq I_{n}}\)</span>.</li>
+<li>In this case the leading matrix <span class="math">\(\smash{J_{0} \neq I_{n}}\)</span>.</li>
 </ul>
 <ul class="simple">
 <li>The noise vector is uncorrelated:</li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[\begin{split}\begin{align*}
 E[\boldsymbol{u}_{t}\boldsymbol{u}_{t}^{'}] &amp; =
 E[H\boldsymbol{\varepsilon}_{t} \boldsymbol{\varepsilon}_{t}^{'}
@@ -490,17 +493,15 @@ H^{'} \\
 </div>
 
 
-           </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="varACF.html" class="btn btn-neutral float-right" title="Autocovariances of Vector Processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="varACF.html" class="btn btn-neutral float-right" title="Autocovariances of Vector Processes">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../varProcesses.html" class="btn btn-neutral float-left" title="Vector Processes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../varProcesses.html" class="btn btn-neutral" title="Vector Processes"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -509,14 +510,13 @@ H^{'} \\
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich
-
+        &copy; Copyright 2016, Eric M. Aldrich.
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
 </footer>
-
         </div>
       </div>
 
@@ -526,15 +526,36 @@ H^{'} \\
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2016.03.29',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>
