@@ -94,7 +94,7 @@ a:visited {
 }
 
 #section {
-      font-family: 'Droid Serif';
+      font-family: 'PT Serif';
       font-size: 22px;
       color: #ae0f0f;
       padding-top: 20px;
@@ -102,7 +102,7 @@ a:visited {
 }
 
 #subSection {
-      font-family: 'Droid Serif';
+      font-family: 'PT Serif';
       font-size: 18px;
       color: #333333;
       margin-top: 25px;
@@ -110,7 +110,7 @@ a:visited {
 }
 
 #lecUnit {
-      font-family: 'Droid Serif';
+      font-family: 'PT Serif';
       font-size: 16px;
       color: #333333;
       margin-top: 10px;
@@ -118,7 +118,7 @@ a:visited {
 }
 
 #lecSection {
-      font-family: 'Droid Serif';
+      font-family: 'PT Serif';
       font-size: 14px;
       color: #333333;
       margin-top: 10px;
@@ -126,7 +126,7 @@ a:visited {
 }
 
 #pageTitle {
-      font-family: 'Droid Serif';
+      font-family: 'PT Serif';
       font-size: 25px;
       color: #ae0f0f;
       margin-top: 25px;
@@ -134,7 +134,7 @@ a:visited {
 }
 
 span.scheduleTitle {
-      font-family: 'Droid Serif';
+      font-family: 'PT Serif';
       font-size: 18px;
       color: #333333;
 }
