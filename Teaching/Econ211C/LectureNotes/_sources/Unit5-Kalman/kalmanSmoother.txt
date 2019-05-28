@@ -44,7 +44,7 @@ In our development of the Kalman filter we focused attention on forecasting
 
    \begin{align}
    P_{t+1|T} & =
-   E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|T})(\xi_{t} -
+   E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|T})(\boldsymbol{\xi}_{t} -
    \hat{\boldsymbol{\xi}}_{t|T})^{'}],
    \end{align}
 
@@ -239,8 +239,9 @@ The Prescription
 :math:`\smash{\{P_{t|t}\}_{t=1}^T}`, and
 :math:`\smash{\{P_{t+1|t}\}_{t=0}^{T-1}}`.
 
-2. Set the first smoothed estimate to 
-:math:`\smash{\hat{\boldsymbol{\xi}}_{T|T}}`.
+2. Set the first smoothed estimate and its MSE matrix to 
+:math:`\smash{\hat{\boldsymbol{\xi}}_{T|T}}` and
+:math:`\smash{P_{T|T}}`, respectively.
 
 3. Backward iterate for :math:`\smash{t=T-1,\ldots,1}` on the equations
 

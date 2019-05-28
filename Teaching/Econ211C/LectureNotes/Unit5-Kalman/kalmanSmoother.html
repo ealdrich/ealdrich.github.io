@@ -213,7 +213,7 @@ smoothed estimate of <span class="math notranslate nohighlight">\(\smash{\boldsy
 <div class="math notranslate nohighlight">
 \[\begin{align}
 P_{t+1|T} &amp; =
-E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|T})(\xi_{t} -
+E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|T})(\boldsymbol{\xi}_{t} -
 \hat{\boldsymbol{\xi}}_{t|T})^{'}],
 \end{align}\]</div>
 </div>
@@ -383,8 +383,9 @@ P_{t|T} &amp; = P_{t|t} + J_t (P_{t+1|T}-P_{t+1|t}) J_t^{'}.
 <span class="math notranslate nohighlight">\(\smash{\{\hat{\boldsymbol{\xi}}_{t+1|t}\}_{t=0}^{T-1}}\)</span>,
 <span class="math notranslate nohighlight">\(\smash{\{P_{t|t}\}_{t=1}^T}\)</span>, and
 <span class="math notranslate nohighlight">\(\smash{\{P_{t+1|t}\}_{t=0}^{T-1}}\)</span>.</p>
-<p>2. Set the first smoothed estimate to
-<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{T|T}}\)</span>.</p>
+<p>2. Set the first smoothed estimate and its MSE matrix to
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{T|T}}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{P_{T|T}}\)</span>, respectively.</p>
 <ol class="arabic simple" start="3">
 <li>Backward iterate for <span class="math notranslate nohighlight">\(\smash{t=T-1,\ldots,1}\)</span> on the equations</li>
 </ol>
