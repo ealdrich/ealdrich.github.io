@@ -5,50 +5,63 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GMM Optimal Weighting Matrix &mdash; Econ 211C 2016.03.29 documentation</title>
+  <title>GMM Optimal Weighting Matrix &mdash; Econ 114 - Advanced Quantitative Methods</title>
   
 
   
   
+  
+  
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
-        <link rel="up" title="Generalized Method of Moments" href="../gmmIndex.html"/>
-        <link rel="next" title="GMM Over-Identifying Restrictions" href="restrict.html"/>
-        <link rel="prev" title="Generalized Method of Moments" href="gmm.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GMM Over-Identifying Restrictions" href="restrict.html" />
+    <link rel="prev" title="Generalized Method of Moments" href="gmm.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Econ 114
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -56,150 +69,124 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
           
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
+            
+            
+              
+            
+            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/linearProj.html">Linear Predictors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit3-Forecasting/forecastARMA.html">Forecasting ARMA Models</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mm.html">Method of Moments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gmm.html">Generalized Method of Moments</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GMM Optimal Weighting Matrix</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GMM Optimal Weighting Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#moment-conditions-covariance">Moment Conditions’ Covariance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convergence-in-distribution">Convergence in Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimal-weighting-matrix">Optimal Weighting Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimal-matrix-estimation">Optimal Matrix Estimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Optimal Matrix Estimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-stage-estimation">Two Stage Estimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Two Stage Estimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asymptotic-distribution-of-gmm-estimator">Asymptotic Distribution of GMM Estimator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Asymptotic Distribution of GMM Estimator</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="restrict.html">GMM Over-Identifying Restrictions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">Econ 211C</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Econ 114</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../gmmIndex.html">Generalized Method of Moments</a> &raquo;</li>
-      
-    <li>GMM Optimal Weighting Matrix</li>
+        
+      <li>GMM Optimal Weighting Matrix</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/Unit6-GMM/optMat.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../_sources/Unit6-GMM/optMat.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="gmm-optimal-weighting-matrix">
 <h1>GMM Optimal Weighting Matrix<a class="headerlink" href="#gmm-optimal-weighting-matrix" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="moment-conditions-covariance">
-<h2>Moment Conditions&#8217; Covariance<a class="headerlink" href="#moment-conditions-covariance" title="Permalink to this headline">¶</a></h2>
+<h2>Moment Conditions’ Covariance<a class="headerlink" href="#moment-conditions-covariance" title="Permalink to this headline">¶</a></h2>
 <p>Suppose
-<span class="math">\(\smash{\{\boldsymbol{h}(\boldsymbol{\theta},
+<span class="math notranslate nohighlight">\(\smash{\{\boldsymbol{h}(\boldsymbol{\theta},
 \boldsymbol{Y}_{t})\}_{t=1}^{T}}\)</span> is strictly stationary and
 define</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\Gamma_{\nu} =
 E[\boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{Y}_{t})
 \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{Y}_{t-\nu})^{'}]}\]</div>
 <p>and</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{align}
 S =  \sum_{\nu=-\infty}^{\infty} \Gamma_{\nu} = \Gamma_{0} +
 \sum_{\nu=1}^{\infty} (\Gamma_{\nu} + \Gamma_{\nu}^{'}).
@@ -208,12 +195,12 @@ S =  \sum_{\nu=-\infty}^{\infty} \Gamma_{\nu} = \Gamma_{0} +
 <div class="section" id="convergence-in-distribution">
 <h2>Convergence in Distribution<a class="headerlink" href="#convergence-in-distribution" title="Permalink to this headline">¶</a></h2>
 <p>Asymptotic theory dictates</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\sqrt{T}(\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T}) -
 E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})])
 \overset{d}{\rightarrow} N(0,S)}\]</div>
 <p>where</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{ \sum_{t=1}^{T} \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T})
 \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T})^{'}
 \overset{p}{\rightarrow} S}.\]</div>
@@ -221,98 +208,98 @@ E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})])
 <div class="section" id="optimal-weighting-matrix">
 <h2>Optimal Weighting Matrix<a class="headerlink" href="#optimal-weighting-matrix" title="Permalink to this headline">¶</a></h2>
 <p>Another way to say this (intuitively):</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)
 \overset{approx}{\sim}
 N\left(E[\boldsymbol{h}(\boldsymbol{\theta},\boldsymbol{y}_{t})],
 \frac{S}{T}\right)}\]</div>
-<p>The optimal GMM weighting matrix is <span class="math">\(\smash{S^{-1}}\)</span>:</p>
-<div class="math">
+<p>The optimal GMM weighting matrix is <span class="math notranslate nohighlight">\(\smash{S^{-1}}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\smash{Q_{T}(\boldsymbol{\theta}) =
 \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)^{'}S^{-1}
 \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}}_T)}.\]</div>
 </div>
 <div class="section" id="optimal-matrix-estimation">
 <h2>Optimal Matrix Estimation<a class="headerlink" href="#optimal-matrix-estimation" title="Permalink to this headline">¶</a></h2>
-<p>If <span class="math">\(\smash{\{\boldsymbol{h}(\boldsymbol{\theta_{0}},
+<p>If <span class="math notranslate nohighlight">\(\smash{\{\boldsymbol{h}(\boldsymbol{\theta_{0}},
 \boldsymbol{y}_{t})\}_{t=-\infty}^{\infty}}\)</span> is serially uncorrelated,
-<span class="math">\(\smash{S}\)</span> is consistently estimated by</p>
-<div class="math">
+<span class="math notranslate nohighlight">\(\smash{S}\)</span> is consistently estimated by</p>
+<div class="math notranslate nohighlight">
 \[\smash{S_{T}^{*} = \frac{1}{T} \sum_{t=1}^{T}
 \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t})
 \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t})^{'}}.\]</div>
 <p>If it is serially correlated,</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{S_{T}^{*} = \Gamma_{0,T}^{*} +  \sum_{\nu =1}^{q}\left(1 -
 \frac{\nu}{q+1}\right)\left(\Gamma_{\nu,T}^{*} +
 \Gamma_{\nu,T}^{* \hspace{3pt}'}\right)},\]</div>
 <p>where</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\Gamma_{\nu,T}^{*} =  \frac{1}{T}  \sum_{t = \nu+1}^{T}
 \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t})
 \boldsymbol{h}(\boldsymbol{\theta_{0}},\boldsymbol{y}_{t-\nu})^{'}}.\]</div>
 </div>
 <div class="section" id="id1">
 <h2>Optimal Matrix Estimation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Notice that <span class="math">\(\smash{S^{*}}\)</span> depends on
-<span class="math">\(\smash{\boldsymbol{\theta}_{0}}\)</span>, which is unknown.</p>
+<p>Notice that <span class="math notranslate nohighlight">\(\smash{S^{*}}\)</span> depends on
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\theta}_{0}}\)</span>, which is unknown.</p>
 <ul class="simple">
-<li>We substitute an estimate <span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>
-for <span class="math">\(\smash{\boldsymbol{\theta}_{0}}\)</span> in <span class="math">\(\smash{S^{*}}\)</span>
-and denote the estimated value as <span class="math">\(\smash{\hat{S}}\)</span>.</li>
+<li>We substitute an estimate <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>
+for <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\theta}_{0}}\)</span> in <span class="math notranslate nohighlight">\(\smash{S^{*}}\)</span>
+and denote the estimated value as <span class="math notranslate nohighlight">\(\smash{\hat{S}}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li><span class="math">\(\smash{\hat{S}}\)</span> may make use of appropriate definitions of
-<span class="math">\(\smash{\hat{\Gamma}_{\nu,T}}\)</span> if there is serial
+<li><span class="math notranslate nohighlight">\(\smash{\hat{S}}\)</span> may make use of appropriate definitions of
+<span class="math notranslate nohighlight">\(\smash{\hat{\Gamma}_{\nu,T}}\)</span> if there is serial
 correlation.</li>
 </ul>
 <p>Under certain regularity conditions</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\hat{S} \overset{p}{\rightarrow} S}.\]</div>
 </div>
 <div class="section" id="two-stage-estimation">
 <h2>Two Stage Estimation<a class="headerlink" href="#two-stage-estimation" title="Permalink to this headline">¶</a></h2>
-<p>Note that we want to use <span class="math">\(\smash{\hat{S}^{-1}}\)</span> as the optimal
-weighting matrix to compute <span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>,
-but that <span class="math">\(\smash{\hat{S}^{-1}}\)</span> depends on
-<span class="math">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</p>
+<p>Note that we want to use <span class="math notranslate nohighlight">\(\smash{\hat{S}^{-1}}\)</span> as the optimal
+weighting matrix to compute <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>,
+but that <span class="math notranslate nohighlight">\(\smash{\hat{S}^{-1}}\)</span> depends on
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}}\)</span>.</p>
 <ul class="simple">
-<li>To compute optimal <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span>,
-first estimate <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> with
-<span class="math">\(\smash{W_T = I_{r}}\)</span>.</li>
+<li>To compute optimal <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span>,
+first estimate <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> with
+<span class="math notranslate nohighlight">\(\smash{W_T = I_{r}}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>Use the initial <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> to
-compute <span class="math">\(\smash{\hat{S}_{T}(\hat{\boldsymbol{\theta}}_{gmm})}\)</span>
-and set <span class="math">\(\smash{W_T =
+<li>Use the initial <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> to
+compute <span class="math notranslate nohighlight">\(\smash{\hat{S}_{T}(\hat{\boldsymbol{\theta}}_{gmm})}\)</span>
+and set <span class="math notranslate nohighlight">\(\smash{W_T =
 \hat{S}_{T}(\hat{\boldsymbol{\theta}}_{gmm})^{-1}}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>Compute <span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> again.</li>
+<li>Compute <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> again.</li>
 </ul>
 </div>
 <div class="section" id="id2">
 <h2>Two Stage Estimation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>How is the two-stage procedure better?</p>
 <ul class="simple">
-<li>That is, why is <span class="math">\(\smash{S^{-1}}\)</span> optimal?</li>
+<li>That is, why is <span class="math notranslate nohighlight">\(\smash{S^{-1}}\)</span> optimal?</li>
 </ul>
 <ul class="simple">
-<li>Using <span class="math">\(\smash{S^{-1}}\)</span> or a consistent estimate,
-<span class="math">\(\smash{\hat{S}^{-1}}\)</span>, results in
-<span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> with less
+<li>Using <span class="math notranslate nohighlight">\(\smash{S^{-1}}\)</span> or a consistent estimate,
+<span class="math notranslate nohighlight">\(\smash{\hat{S}^{-1}}\)</span>, results in
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span> with less
 estimation error.</li>
 </ul>
 </div>
 <div class="section" id="asymptotic-distribution-of-gmm-estimator">
 <h2>Asymptotic Distribution of GMM Estimator<a class="headerlink" href="#asymptotic-distribution-of-gmm-estimator" title="Permalink to this headline">¶</a></h2>
 <p>A central limit theorem exists for
-<span class="math">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span>:</p>
-<div class="math">
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\theta}}_{gmm}}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\smash{\sqrt{T} (\hat{\boldsymbol{\theta}}_{gmm} -
 \boldsymbol{\theta}_{0}) \overset{d}{\rightarrow} N(0,V)},\]</div>
 <p>where</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather}
 V = (DS^{-1}D^{'})^{-1} \\
 \frac{\partial \boldsymbol{g}_{T}(\boldsymbol{\theta}|\boldsymbol{\mathcal{Y}_T})}
@@ -322,12 +309,12 @@ V = (DS^{-1}D^{'})^{-1} \\
 </div>
 <div class="section" id="id3">
 <h2>Asymptotic Distribution of GMM Estimator<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>That is, for large <span class="math">\(\smash{T}\)</span>,</p>
-<div class="math">
+<p>That is, for large <span class="math notranslate nohighlight">\(\smash{T}\)</span>,</p>
+<div class="math notranslate nohighlight">
 \[\smash{\hat{\boldsymbol{\theta}}_{gmm} \overset{approx}{\sim}
 N(\boldsymbol{\theta}_{0},  \frac{\hat{V}_{T}}{T})},\]</div>
 <p>where,</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \hat{V}_{T} &amp; = (\hat{D}_{T}\hat{S}_{T}^{-1}\hat{D}_{T}^{'})^{-1}
 \\
@@ -341,15 +328,17 @@ N(\boldsymbol{\theta}_{0},  \frac{\hat{V}_{T}}{T})},\]</div>
 </div>
 
 
+           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="restrict.html" class="btn btn-neutral float-right" title="GMM Over-Identifying Restrictions">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="restrict.html" class="btn btn-neutral float-right" title="GMM Over-Identifying Restrictions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gmm.html" class="btn btn-neutral" title="Generalized Method of Moments"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gmm.html" class="btn btn-neutral float-left" title="Generalized Method of Moments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -358,13 +347,14 @@ N(\boldsymbol{\theta}_{0},  \frac{\hat{V}_{T}}{T})},\]</div>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich.
+        &copy; Copyright 2014, Eric M. Aldrich
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
 </footer>
+
         </div>
       </div>
 
@@ -374,36 +364,15 @@ N(\boldsymbol{\theta}_{0},  \frac{\hat{V}_{T}}{T})},\]</div>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2016.03.29',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

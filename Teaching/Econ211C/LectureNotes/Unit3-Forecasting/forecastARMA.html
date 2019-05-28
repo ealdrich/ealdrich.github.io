@@ -5,50 +5,63 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Forecasting ARMA Models &mdash; Econ 211C 2016.03.29 documentation</title>
+  <title>Forecasting ARMA Models &mdash; Econ 114 - Advanced Quantitative Methods</title>
   
 
   
   
+  
+  
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="Econ 211C 2016.03.29 documentation" href="../index.html"/>
-        <link rel="up" title="Forecasting" href="../forecasting.html"/>
-        <link rel="next" title="Vector Processes" href="../varProcesses.html"/>
-        <link rel="prev" title="Linear Predictors" href="linearProj.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Vector Processes" href="../varProcesses.html" />
+    <link rel="prev" title="Linear Predictors" href="linearProj.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="../index.html" class="fa fa-home"> Econ 211C</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Econ 114
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -56,150 +69,138 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
           
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
+            
+            
+              
+            
+            
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-series-example">Time Series Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-price">Plot of Facebook Price</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#facebook-returns">Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#plot-of-facebook-returns">Plot of Facebook Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#one-period-return">One-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#multi-period-return">Multi-Period Return</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#logarithmic-approximation">Logarithmic Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#approximation-for-multiperiod-returns">Approximation for Multiperiod Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#time-intervals">Time Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-trading-intervals">Aggregating Trading Intervals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#aggregating-returns">Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#example-of-aggregating-returns">Example of Aggregating Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#asset-classes">Asset Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#indices">Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-indices">Important Indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-assets">Important Assets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#vix">VIX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#near-month-vx-futures">Near-Month VX Futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#e-mini-near-month-returns">E-mini Near-Month Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preliminaries.html#important-features-of-returns">Important Features of Returns</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series">Time Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#distributions">Distributions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#time-series-observations">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id1">Time Series Observations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#moments">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id2">Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocovariance-and-autocorrelation">Autocovariance and Autocorrelation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#sample-moments">Sample Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id3">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#white-noise">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id4">White Noise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#weak-stationarity">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#autocorrelation-under-weak-stationarity">Autocorrelation under Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id5">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id6">Weak Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#strict-stationarity">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id7">Strict Stationarity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#ergodicity">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id8">Ergodicity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stationarity.html#id9">Ergodicity</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/lagOperators.html">Lag Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ma.html">Moving Average Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/ar.html">Autoregressive Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/arma.html">ARMA Processes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit1-ARMA/causality.html">Causality and Invertibility</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mle.html">Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/mleArma.html">ARMA Maximum Likelihood Estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit2-MLE/numerical.html">Numerical Optimization</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../forecasting.html">Forecasting</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="linearProj.html">Linear Predictors</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Forecasting ARMA Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Forecasting ARMA Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#forecasting-with-infinite-data">Forecasting with Infinite Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Forecasting with Infinite Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimal-forecast">Optimal Forecast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecast-error">Forecast Error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecast-as-linear-projection">Forecast as Linear Projection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecast-mse">Forecast MSE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecasting-conditional-on-lagged-smash-y-t">Forecasting Conditional on Lagged <span class="math notranslate nohighlight">\(\smash{Y_t}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computing-historical-values">Computing Historical Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-smash-ar-1">Example: <span class="math notranslate nohighlight">\(\smash{AR(1)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Example: <span class="math notranslate nohighlight">\(\smash{AR(1)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forecasting-with-finite-data">Forecasting with Finite Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#approximate-optimal-forecasts">Approximate Optimal Forecasts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-smash-ma-q">Example <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Example <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exact-finite-sample-forecasts">Exact Finite Sample Forecasts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Exact Finite Sample Forecasts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Exact Finite Sample Forecasts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Exact Finite Sample Forecasts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-smash-amra-1-1">Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/var.html">Vector Autoregression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit4-VAR/varACF.html">Autocovariances of Vector Processes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/stateSpace.html">State Space Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanFilter.html">The Kalman Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit5-Kalman/kalmanMLE.html">ML Estimation of State-Space Models</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/mm.html">Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/gmm.html">Generalized Method of Moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/optMat.html">GMM Optimal Weighting Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Unit6-GMM/restrict.html">GMM Over-Identifying Restrictions</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kalman.html">The Kalman Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">Econ 211C</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Econ 114</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../forecasting.html">Forecasting</a> &raquo;</li>
-      
-    <li>Forecasting ARMA Models</li>
+        
+      <li>Forecasting ARMA Models</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/Unit3-Forecasting/forecastARMA.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../_sources/Unit3-Forecasting/forecastARMA.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="forecasting-arma-models">
 <h1>Forecasting ARMA Models<a class="headerlink" href="#forecasting-arma-models" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="forecasting-with-infinite-data">
 <h2>Forecasting with Infinite Data<a class="headerlink" href="#forecasting-with-infinite-data" title="Permalink to this headline">¶</a></h2>
-<p>Consider an <span class="math">\(\smash{ARMA}\)</span> process with
-<span class="math">\(\smash{MA(\infty)}\)</span> representation:</p>
-<div class="math">
-\[\begin{split}\begin{align*}
+<p>Consider an <span class="math notranslate nohighlight">\(\smash{ARMA}\)</span> process with
+<span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> representation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
 Y_t - \mu &amp; = \psi(L) \varepsilon_t, \,\,\,\, \varepsilon_t
 \stackrel{i.i.d.}{\sim}
 WN(0,\sigma^2)
-\end{align*}\end{split}\]</div>
+\end{align*}\]</div>
 <p>where</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather*}
 \psi(L) = \sum_{j=0}^{\infty} \psi_{j}L^{j} \\
 \sum_{j=0}^{\infty}|\psi_{j}| &lt; \infty \\
@@ -211,40 +212,40 @@ WN(0,\sigma^2)
 <p>Suppose</p>
 <ul class="simple">
 <li>we observe an infinite history of
-<span class="math">\(\{\smash{\varepsilon_{t}}\}\)</span> up to date <span class="math">\(\smash{t}\)</span>:
-<span class="math">\(\smash{\{\varepsilon_{t},\varepsilon_{t-1},\varepsilon_{t-2},...\}}\)</span>.</li>
+<span class="math notranslate nohighlight">\(\{\smash{\varepsilon_{t}}\}\)</span> up to date <span class="math notranslate nohighlight">\(\smash{t}\)</span>:
+<span class="math notranslate nohighlight">\(\smash{\{\varepsilon_{t},\varepsilon_{t-1},\varepsilon_{t-2},...\}}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>we know the <span class="math">\(\smash{MA}\)</span> parameters
-<span class="math">\(\smash{\mu, \sigma, \{\psi_{j}\}_{j=0}^{\infty}}\)</span>.</li>
+<li>we know the <span class="math notranslate nohighlight">\(\smash{MA}\)</span> parameters
+<span class="math notranslate nohighlight">\(\smash{\mu, \sigma, \{\psi_{j}\}_{j=0}^{\infty}}\)</span>.</li>
 </ul>
 <p>Then</p>
-<div class="math">
-\[\begin{split}\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{align*}
 Y_{t+s} &amp; = \mu + \varepsilon_{t+s} + \psi_{1}\varepsilon_{t+s-1} +
 \ldots + \psi_{s-1}\varepsilon_{t+1} + \psi_{s}\varepsilon_{t} +
 \psi_{s+1}\varepsilon_{t-1} + \ldots
-\end{align*}\end{split}\]</div>
+\end{align*}\]</div>
 </div>
 <div class="section" id="optimal-forecast">
 <h2>Optimal Forecast<a class="headerlink" href="#optimal-forecast" title="Permalink to this headline">¶</a></h2>
-<p>The optimal forecast of <span class="math">\(\smash{Y_{t+s}}\)</span> in terms of MSE is:</p>
-<div class="math">
+<p>The optimal forecast of <span class="math notranslate nohighlight">\(\smash{Y_{t+s}}\)</span> in terms of MSE is:</p>
+<div class="math notranslate nohighlight">
 \[\begin{align*}
 E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] = \mu +
 \psi_{s}\varepsilon_{t} + \psi_{s+1}\varepsilon_{t-1} + \ldots
 \end{align*}\]</div>
 <p>Note, this is different from</p>
-<div class="math">
-\[\begin{split}\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{align*}
 Y_{t} &amp; = \mu + \psi_{0}\varepsilon_{t} +
 \psi_{1}\varepsilon_{t-1} + \ldots
-\end{align*}\end{split}\]</div>
+\end{align*}\]</div>
 </div>
 <div class="section" id="forecast-error">
 <h2>Forecast Error<a class="headerlink" href="#forecast-error" title="Permalink to this headline">¶</a></h2>
 <p>The forecast error is:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 Y_{t+s} &amp; - E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] \\
 &amp; = \mu + \overbrace{\varepsilon_{t+s} +
@@ -256,32 +257,32 @@ Y_{t+s} &amp; - E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] \\
 &amp; = \varepsilon_{t+s} + \psi_{1}\varepsilon_{t+s-1}  + \ldots +
 \psi_{s-1}\varepsilon_{t+1}
 \end{align*}\end{split}\]</div>
-<p>Since <span class="math">\(\smash{E[Y_{t+s} |
+<p>Since <span class="math notranslate nohighlight">\(\smash{E[Y_{t+s} |
 \varepsilon_{t},\varepsilon_{t-1},\ldots]}\)</span> is linear in
-<span class="math">\(\smash{\{\varepsilon_{\tau}\}_{\tau=-\infty}^{t}}\)</span>
+<span class="math notranslate nohighlight">\(\smash{\{\varepsilon_{\tau}\}_{\tau=-\infty}^{t}}\)</span>
 it is both the optimal forecast and optimal linear forecast.</p>
 </div>
 <div class="section" id="forecast-as-linear-projection">
 <h2>Forecast as Linear Projection<a class="headerlink" href="#forecast-as-linear-projection" title="Permalink to this headline">¶</a></h2>
 <p>Hamilton refers to optimal linear forecasts as
-<span class="math">\(\smash{\hat{E}[Y_{t+s} |
+<span class="math notranslate nohighlight">\(\smash{\hat{E}[Y_{t+s} |
 \varepsilon_{t},\varepsilon_{t-1},\ldots]}\)</span>.</p>
 <ul class="simple">
 <li>In this case</li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{gather*}
 E[Y_{t+s}|\varepsilon_{t},\ldots] =
 \hat{E}[Y_{t+s}|\varepsilon_{t},\ldots] \\
 \implies Y_{t+s|t}^{*} = \hat{Y}_{t+s|t}
 \end{gather*}\end{split}\]</div>
 <p>which is also a linear projection
-<span class="math">\(\smash{\hat{p}(Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots)}\)</span>.</p>
+<span class="math notranslate nohighlight">\(\smash{\hat{p}(Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots)}\)</span>.</p>
 <ul class="simple">
 <li>Clearly, the linear projection condition is satisfied for
-<span class="math">\(\smash{j = t, t-1, \ldots}\)</span></li>
+<span class="math notranslate nohighlight">\(\smash{j = t, t-1, \ldots}\)</span></li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 E[(Y_{t+s} &amp; -
 E[Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots])\varepsilon_{j}]
@@ -294,7 +295,7 @@ E[Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots])\varepsilon_{j}]
 <div class="section" id="forecast-mse">
 <h2>Forecast MSE<a class="headerlink" href="#forecast-mse" title="Permalink to this headline">¶</a></h2>
 <p>The forecast MSE is:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 E[(Y_{t+s} &amp; -
 E[Y_{t+s}|\varepsilon_{t},\varepsilon_{t-1},\ldots])^{2}] \\
@@ -305,38 +306,38 @@ E[(\varepsilon_{t+s} + \psi_{1}\varepsilon_{t+s-1}  + \ldots +
 \sigma^{2}\sum_{j=0}^{s-1}\psi_{j}^{2}.
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="forecasting-conditional-on-lagged">
-<h2>Forecasting Conditional on Lagged <span class="math">\(\smash{Y_t}\)</span><a class="headerlink" href="#forecasting-conditional-on-lagged" title="Permalink to this headline">¶</a></h2>
-<p>Suppose we don&#8217;t observe the full history of
-<span class="math">\(\smash{\varepsilon_{t}}\)</span>.</p>
+<div class="section" id="forecasting-conditional-on-lagged-smash-y-t">
+<h2>Forecasting Conditional on Lagged <span class="math notranslate nohighlight">\(\smash{Y_t}\)</span><a class="headerlink" href="#forecasting-conditional-on-lagged-smash-y-t" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we don’t observe the full history of
+<span class="math notranslate nohighlight">\(\smash{\varepsilon_{t}}\)</span>.</p>
 <ul class="simple">
-<li>Instead, we observe the full history of <span class="math">\(\smash{y_{t}:
+<li>Instead, we observe the full history of <span class="math notranslate nohighlight">\(\smash{y_{t}:
 y_{t},y_{t-1},y_{t-2},\ldots}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>We have an <span class="math">\(\smash{ARMA}\)</span> process with the same
-<span class="math">\(\smash{MA}\)</span> representation as before.</li>
+<li>We have an <span class="math notranslate nohighlight">\(\smash{ARMA}\)</span> process with the same
+<span class="math notranslate nohighlight">\(\smash{MA}\)</span> representation as before.</li>
 </ul>
-<p>If the <span class="math">\(\smash{MA(\infty)}\)</span> representation is invertible, we can
-write it as an <span class="math">\(\smash{AR(\infty)}\)</span>:</p>
-<div class="math">
+<p>If the <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span> representation is invertible, we can
+write it as an <span class="math notranslate nohighlight">\(\smash{AR(\infty)}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\begin{align*}
 \eta(L)(Y_{t}-\mu) = \varepsilon_{t},
 \end{align*}\]</div>
-<p>where <span class="math">\(\smash{\eta(L) = \psi^{-1}(L)}\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\smash{\eta(L) = \psi^{-1}(L)}\)</span>.</p>
 </div>
 <div class="section" id="computing-historical-values">
 <h2>Computing Historical Values<a class="headerlink" href="#computing-historical-values" title="Permalink to this headline">¶</a></h2>
-<p>The history of <span class="math">\(\smash{\varepsilon_{t}}\)</span> can be constructed with
-the history of <span class="math">\(\smash{y_{t}}\)</span>:</p>
-<div class="math">
+<p>The history of <span class="math notranslate nohighlight">\(\smash{\varepsilon_{t}}\)</span> can be constructed with
+the history of <span class="math notranslate nohighlight">\(\smash{y_{t}}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \varepsilon_{t} &amp; = \eta(L)(y_{t}-\mu) \\
 \varepsilon_{t-1} &amp; = \eta(L)(y_{t-1}-\mu) \\
 \varepsilon_{t-2} &amp; = \eta(L)(y_{t-2}-\mu) \\
 &amp; \vdots
 \end{align*}\end{split}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \implies E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] &amp; =
 E[Y_{t+s}|y_{t},y_{t-1},\ldots] \\
@@ -346,24 +347,24 @@ E[Y_{t+s}|y_{t},y_{t-1},\ldots] \\
 \psi_{s+2}L^{2}+\ldots)\eta(L)(y_{t}-\mu).
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="example">
-<h2>Example: <span class="math">\(\smash{AR(1)}\)</span><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>For an <span class="math">\(\smash{AR(1)}\)</span> with <span class="math">\(\smash{|\phi| &lt; 1}\)</span>:</p>
-<div class="math">
-\[\begin{split}\begin{align*}
+<div class="section" id="example-smash-ar-1">
+<h2>Example: <span class="math notranslate nohighlight">\(\smash{AR(1)}\)</span><a class="headerlink" href="#example-smash-ar-1" title="Permalink to this headline">¶</a></h2>
+<p>For an <span class="math notranslate nohighlight">\(\smash{AR(1)}\)</span> with <span class="math notranslate nohighlight">\(\smash{|\phi| &lt; 1}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
 Y_{t} - \mu &amp; = \psi(L)\varepsilon_{t},
-\end{align*}\end{split}\]</div>
+\end{align*}\]</div>
 <p>where</p>
-<div class="math">
-\[\begin{split}\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{align*}
 \psi(L) &amp; = (1 + \phi L + \phi^{2}L^{2}+ \ldots) = (1 + \psi_{1}
 L + \psi_{2} L^2 + \ldots).
-\end{align*}\end{split}\]</div>
+\end{align*}\]</div>
 </div>
 <div class="section" id="id2">
-<h2>Example: <span class="math">\(\smash{AR(1)}\)</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>The optimal forecast <span class="math">\(\smash{s}\)</span> -periods ahead is</p>
-<div class="math">
+<h2>Example: <span class="math notranslate nohighlight">\(\smash{AR(1)}\)</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>The optimal forecast <span class="math notranslate nohighlight">\(\smash{s}\)</span> -periods ahead is</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] &amp; = \mu +
 \psi_{s}\varepsilon_{t} + \psi_{s+1}\varepsilon_{t-1} + \ldots \\
@@ -374,58 +375,58 @@ E[Y_{t+s} | \varepsilon_{t},\varepsilon_{t-1},\ldots] &amp; = \mu +
 &amp; = \mu + \phi^{s}(y_{t} - \mu)
 \end{align*}\end{split}\]</div>
 <ul class="simple">
-<li>The forecast decays toward <span class="math">\(\smash{\mu}\)</span> as <span class="math">\(\smash{s}\)</span>
+<li>The forecast decays toward <span class="math notranslate nohighlight">\(\smash{\mu}\)</span> as <span class="math notranslate nohighlight">\(\smash{s}\)</span>
 increases.</li>
 </ul>
 <ul class="simple">
-<li>The MSE is <span class="math">\(\smash{\sigma^{2}\sum_{j=0}^{s-1}\phi^{2j}}\)</span>.</li>
+<li>The MSE is <span class="math notranslate nohighlight">\(\smash{\sigma^{2}\sum_{j=0}^{s-1}\phi^{2j}}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>As <span class="math">\(\smash{s\rightarrow \infty, MSE \rightarrow
+<li>As <span class="math notranslate nohighlight">\(\smash{s\rightarrow \infty, MSE \rightarrow
 \frac{\sigma^{2}}{1-\phi^{2}} = Var(Y_{t})}\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="forecasting-with-finite-data">
 <h2>Forecasting with Finite Data<a class="headerlink" href="#forecasting-with-finite-data" title="Permalink to this headline">¶</a></h2>
-<p>In reality, we don&#8217;t observe an infinite history of
-<span class="math">\(\smash{y_{t},y_{t-1},y_{t-2},\ldots}\)</span>.</p>
+<p>In reality, we don’t observe an infinite history of
+<span class="math notranslate nohighlight">\(\smash{y_{t},y_{t-1},y_{t-2},\ldots}\)</span>.</p>
 <ul class="simple">
-<li>Suppose we have only a finite set of <span class="math">\(\smash{m}\)</span> past
-observations of <span class="math">\(\smash{y_{t}:
+<li>Suppose we have only a finite set of <span class="math notranslate nohighlight">\(\smash{m}\)</span> past
+observations of <span class="math notranslate nohighlight">\(\smash{y_{t}:
 y_{t},y_{t-1},\ldots,y_{t-m+1}}\)</span>.</li>
 </ul>
 <ul class="simple">
-<li>The optimal <span class="math">\(\smash{AR(p)}\)</span> forecast only makes use of the
-past <span class="math">\(\smash{p}\)</span> observations if available
-(i.e. <span class="math">\(\smash{p&lt;m}\)</span>).</li>
+<li>The optimal <span class="math notranslate nohighlight">\(\smash{AR(p)}\)</span> forecast only makes use of the
+past <span class="math notranslate nohighlight">\(\smash{p}\)</span> observations if available
+(i.e. <span class="math notranslate nohighlight">\(\smash{p&lt;m}\)</span>).</li>
 </ul>
 <ul class="simple">
-<li>If we want to forecast an <span class="math">\(\smash{MA}\)</span> or <span class="math">\(\smash{ARMA}\)</span>
+<li>If we want to forecast an <span class="math notranslate nohighlight">\(\smash{MA}\)</span> or <span class="math notranslate nohighlight">\(\smash{ARMA}\)</span>
 (of arbitrary order), we need an infinite history to construct an
 optimal forecast.</li>
 </ul>
 </div>
 <div class="section" id="approximate-optimal-forecasts">
 <h2>Approximate Optimal Forecasts<a class="headerlink" href="#approximate-optimal-forecasts" title="Permalink to this headline">¶</a></h2>
-<p>Start by setting all <span class="math">\(\smash{\varepsilon}\)</span> &#8216;s prior to time
-<span class="math">\(\smash{t-m+1}\)</span> equal to zero.</p>
-<div class="math">
+<p>Start by setting all <span class="math notranslate nohighlight">\(\smash{\varepsilon}\)</span> ‘s prior to time
+<span class="math notranslate nohighlight">\(\smash{t-m+1}\)</span> equal to zero.</p>
+<div class="math notranslate nohighlight">
 \[\begin{align*}
 E[Y_{t+s}|y_{t},y_{t-1},\ldots] \approx
 E[Y_{t+s}|y_{t},y_{t-1},\ldots,y_{t-m+1},\varepsilon_{t-m} = 0,
 \varepsilon_{t-m-1} = 0, \ldots].
 \end{align*}\]</div>
 </div>
-<div class="section" id="id3">
-<h2>Example <span class="math">\(\smash{MA(q)}\)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-smash-ma-q">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span><a class="headerlink" href="#example-smash-ma-q" title="Permalink to this headline">¶</a></h2>
 <p>Start with</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{gather*}
 \hat{\varepsilon}_{t-m} =
 \hat{\varepsilon}_{t-m-1} = \ldots = \hat{\varepsilon}_{t-m-q+1} = 0.
 \end{gather*}\]</div>
 <p>Calculate forward recursively</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \hat{\varepsilon}_{t-m+1} &amp; = (y_{t-m+1} - \mu) \\
 \hat{\varepsilon}_{t-m+2} &amp; = (y_{t-m+2} - \mu) - \theta_{1}
@@ -435,25 +436,25 @@ E[Y_{t+s}|y_{t},y_{t-1},\ldots,y_{t-m+1},\varepsilon_{t-m} = 0,
 &amp; \vdots
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="id4">
-<h2>Example <span class="math">\(\smash{MA(q)}\)</span><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{MA(q)}\)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>With
-<span class="math">\(\smash{\hat{\varepsilon}_{t},\hat{\varepsilon}_{t-1},\ldots,\hat{\varepsilon}_{t-m+1}}\)</span>
+<span class="math notranslate nohighlight">\(\smash{\hat{\varepsilon}_{t},\hat{\varepsilon}_{t-1},\ldots,\hat{\varepsilon}_{t-m+1}}\)</span>
 in hand we can compute forecasts</p>
-<div class="math">
-\[\begin{split}\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{align*}
 \hat{Y}_{t+s} &amp; = \theta_{s}\hat{\varepsilon}_{t} +
 \theta_{s+1}\hat{\varepsilon}_{t-1} + \ldots +
 \theta_{q}\hat{\varepsilon}_{t-q+s}.
-\end{align*}\end{split}\]</div>
+\end{align*}\]</div>
 </div>
 <div class="section" id="exact-finite-sample-forecasts">
 <h2>Exact Finite Sample Forecasts<a class="headerlink" href="#exact-finite-sample-forecasts" title="Permalink to this headline">¶</a></h2>
 <p>Another forecast approximation method is to simply project
-<span class="math">\(\smash{Y_{t+1} - \mu}\)</span> on <span class="math">\(\smash{\boldsymbol{X}_{t} =
+<span class="math notranslate nohighlight">\(\smash{Y_{t+1} - \mu}\)</span> on <span class="math notranslate nohighlight">\(\smash{\boldsymbol{X}_{t} =
 (Y_{t} -\mu, Y_{t-1}-\mu, \ldots, Y_{t-m+1} - \mu)^T}\)</span>.</p>
 <p>That is</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \hat{Y}_{t+1|t}^{(m)} - \mu &amp; =
 \boldsymbol{X}_{t}^{'}\boldsymbol{\beta}^{(m)} \\
@@ -461,9 +462,9 @@ in hand we can compute forecasts</p>
 \ldots + \beta_{m}^{(m)}(Y_{t-m+1}-\mu).
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="id5">
-<h2>Exact Finite Sample Forecasts<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="math">
+<div class="section" id="id4">
+<h2>Exact Finite Sample Forecasts<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \boldsymbol{\beta}^{(m)} &amp; =
 E[\boldsymbol{X}_{t}\boldsymbol{X}_{t}^{'}]^{-1}E[\boldsymbol{X}_{t}(Y_{t+1}-\mu)]
@@ -476,10 +477,10 @@ E[\boldsymbol{X}_{t}\boldsymbol{X}_{t}^{'}]^{-1}E[\boldsymbol{X}_{t}(Y_{t+1}-\mu
 \gamma_{2} \\ \vdots \\ \gamma_{m} \\ \end{array} \right].
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="id6">
-<h2>Exact Finite Sample Forecasts<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>Exact Finite Sample Forecasts<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>Similarly,</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 Y_{t+s|t}^{(m)} - \mu &amp; =
 \boldsymbol{X}_{t}^{'}\boldsymbol{\beta}^{(m,s)} \\
@@ -488,9 +489,9 @@ Y_{t+s|t}^{(m)} - \mu &amp; =
 \beta_{m}^{(m,s)}(Y_{t-m+1}-\mu).
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="id7">
-<h2>Exact Finite Sample Forecasts<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="math">
+<div class="section" id="id6">
+<h2>Exact Finite Sample Forecasts<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \boldsymbol{\beta}^{(m,s)} &amp; =
 E[\boldsymbol{X}_{t}\boldsymbol{X}_{t}^{'}]^{-1}E[\boldsymbol{X}_{t}(Y_{t+s}-\mu)]
@@ -505,29 +506,29 @@ E[\boldsymbol{X}_{t}\boldsymbol{X}_{t}^{'}]^{-1}E[\boldsymbol{X}_{t}(Y_{t+s}-\mu
 \end{array} \right].
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="id8">
-<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>Let <span class="math">\(\smash{\{Y_t\}}\)</span> be an <span class="math">\(\smash{ARMA(1,1)}\)</span> process
-with <span class="math">\(\smash{|\phi| &lt;1}\)</span> and <span class="math">\(\smash{|\theta| &lt; 1}\)</span>
+<div class="section" id="example-smash-amra-1-1">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#example-smash-amra-1-1" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\smash{\{Y_t\}}\)</span> be an <span class="math notranslate nohighlight">\(\smash{ARMA(1,1)}\)</span> process
+with <span class="math notranslate nohighlight">\(\smash{|\phi| &lt;1}\)</span> and <span class="math notranslate nohighlight">\(\smash{|\theta| &lt; 1}\)</span>
 (causal and invertible).  Then:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 (1-\phi L)(Y_{t} - \mu) &amp; = (1 + \theta L)\varepsilon_{t} \\
 \implies Y_{t} - \mu &amp; = \psi(L)\varepsilon_{t}
 \end{align*}\end{split}\]</div>
-<p>where <span class="math">\(\smash{\,\,\psi (L) = (1-\phi L)^{-1}(1 + \theta
+<p>where <span class="math notranslate nohighlight">\(\smash{\,\,\psi (L) = (1-\phi L)^{-1}(1 + \theta
 L)}\)</span>.</p>
 <ul class="simple">
 <li>We can also write</li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\smash{\varepsilon_{t} = (1+\theta L)^{-1}(1-\phi L)(Y_{t} - \mu) =
 \psi(L)^{-1}(Y_{t} - \mu)}.\]</div>
 </div>
-<div class="section" id="id9">
-<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<p>Expanding the <span class="math">\(\smash{MA}\)</span> representation</p>
-<div class="math">
+<div class="section" id="id7">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>Expanding the <span class="math notranslate nohighlight">\(\smash{MA}\)</span> representation</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \psi(L) &amp; = (1+\phi L + \phi^{2}L^{2} + \ldots)(1 +\theta L) \\
 &amp; = 1 + (\phi + \theta)L + (\phi^{2} + \phi \theta)L^{2} + (\phi^{3} +
@@ -536,19 +537,19 @@ L)}\)</span>.</p>
 \implies \psi_{m} &amp; = \phi^{m} + \phi^{m-1}\theta.
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="id10">
-<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s define <span class="math">\(\smash{\psi_{s}(L)}\)</span> as the polynomial</p>
-<div class="math">
+<div class="section" id="id8">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>Let’s define <span class="math notranslate nohighlight">\(\smash{\psi_{s}(L)}\)</span> as the polynomial</p>
+<div class="math notranslate nohighlight">
 \[\smash{\psi_{s}(L) = \psi_{s} + \psi_{s+1}L + \psi_{s+2}L^{2} +
 \ldots}\]</div>
-<p>This is different from <span class="math">\(\smash{\,\,\psi_{s}L^{s} +
+<p>This is different from <span class="math notranslate nohighlight">\(\smash{\,\,\psi_{s}L^{s} +
 \psi_{s+1}L^{s+1} + \ldots}\)</span></p>
 </div>
-<div class="section" id="id11">
-<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
-<p>For the <span class="math">\(\smash{ARMA(1,1)}\)</span>,</p>
-<div class="math">
+<div class="section" id="id9">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>For the <span class="math notranslate nohighlight">\(\smash{ARMA(1,1)}\)</span>,</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \psi_{s}(L) &amp; = (\phi^{s} + \phi^{s-1}\theta) +
 (\phi^{s+1} + \phi^{s}\theta)L + (\phi^{s+2} +
@@ -559,10 +560,10 @@ L)}\)</span>.</p>
 &amp; = (\phi^{s} + \phi^{s-1}\theta)(1 - \phi L)^{-1}.
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="id12">
-<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<p>Recall, for an <span class="math">\(\smash{MA(\infty)}\)</span>, the optimal forecast is</p>
-<div class="math">
+<div class="section" id="id10">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>Recall, for an <span class="math notranslate nohighlight">\(\smash{MA(\infty)}\)</span>, the optimal forecast is</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \hat{Y}_{t+s|t} - \mu &amp; = E[Y_{t+s} | \varepsilon_{t},
 \varepsilon_{t-1}, \ldots] \\
@@ -570,8 +571,8 @@ L)}\)</span>.</p>
 \psi_{s+1}\varepsilon_{t-1} + \psi_{s+2}\varepsilon_{t-2} + \ldots
 = \psi_{s}(L)\varepsilon_{t}
 \end{align*}\end{split}\]</div>
-<p>So, for the <span class="math">\(\smash{ARMA(1,1)}\)</span>.</p>
-<div class="math">
+<p>So, for the <span class="math notranslate nohighlight">\(\smash{ARMA(1,1)}\)</span>.</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \hat{Y}_{t+s|t} - \mu &amp; = (\phi^{s} + \phi^{s-1}\theta)(1-\phi
 L)^{-1}\varepsilon_{t} \\
@@ -580,10 +581,10 @@ L)^{-1}\varepsilon_{t} \\
 &amp; = (\phi^{s} + \phi^{s-1}\theta)(1+\theta L)^{-1}(Y_{t} - \mu).
 \end{align*}\end{split}\]</div>
 </div>
-<div class="section" id="id13">
-<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>Notice</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \hat{Y}_{t+s|t} - \mu &amp; = (\phi^{s} + \phi^{s-1}\theta)(1+\theta
 L)^{-1}(Y_{t} - \mu) \\
@@ -591,12 +592,12 @@ L)^{-1}(Y_{t} - \mu) \\
 \mu) \\
 &amp; = \phi(\hat{Y}_{t+s-1|t} - \mu), \,\,\,\, \text{ if } s \geq 2,
 \end{align*}\end{split}\]</div>
-<p>which means the forecast decays toward <span class="math">\(\smash{\mu}\)</span>.</p>
+<p>which means the forecast decays toward <span class="math notranslate nohighlight">\(\smash{\mu}\)</span>.</p>
 </div>
-<div class="section" id="id14">
-<h2>Example <span class="math">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
-<p>For <span class="math">\(\smash{s = 1}\)</span>,</p>
-<div class="math">
+<div class="section" id="id12">
+<h2>Example <span class="math notranslate nohighlight">\(\smash{AMRA(1,1)}\)</span><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>For <span class="math notranslate nohighlight">\(\smash{s = 1}\)</span>,</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \hat{Y}_{t+s|t} - \mu &amp; = (\phi +\theta)(1 + \theta L)^{-1}(Y_{t} -
 \mu) \\
@@ -612,15 +613,17 @@ L)^{-1}(Y_{t} - \mu) \\
 </div>
 
 
+           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../varProcesses.html" class="btn btn-neutral float-right" title="Vector Processes">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../varProcesses.html" class="btn btn-neutral float-right" title="Vector Processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="linearProj.html" class="btn btn-neutral" title="Linear Predictors"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="linearProj.html" class="btn btn-neutral float-left" title="Linear Predictors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -629,13 +632,14 @@ L)^{-1}(Y_{t} - \mu) \\
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Eric M. Aldrich.
+        &copy; Copyright 2014, Eric M. Aldrich
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
 </footer>
+
         </div>
       </div>
 
@@ -645,36 +649,15 @@ L)^{-1}(Y_{t} - \mu) \\
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2016.03.29',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

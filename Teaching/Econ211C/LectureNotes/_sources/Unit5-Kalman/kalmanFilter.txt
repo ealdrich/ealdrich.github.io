@@ -45,7 +45,7 @@ The Kalman Filter computes:
    \hat{\boldsymbol{\xi}}_{t+1|t} & =
    \hat{E}[\boldsymbol{\xi}_{t+1}|\boldsymbol{\mathcal{Y}}_{t}] \\
    \underset{(r \times r)}{P_{t+1|t}} & =
-   E[(\boldsymbol{\xi}_{t+1}-\hat{\boldsymbol{\xi}}_{t+1|t)}(\xi_{t+1} -
+   E[(\boldsymbol{\xi}_{t+1}-\hat{\boldsymbol{\xi}}_{t+1|t})(\xi_{t+1} -
    \hat{\boldsymbol{\xi}}_{t+1|t})^{'}],
    \end{align}
 

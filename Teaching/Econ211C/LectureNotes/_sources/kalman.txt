@@ -11,3 +11,5 @@ Contents:
    Unit5-Kalman/kalmanFilter
 
    Unit5-Kalman/kalmanMLE
+   
+   Unit5-Kalman/kalmanSmoother

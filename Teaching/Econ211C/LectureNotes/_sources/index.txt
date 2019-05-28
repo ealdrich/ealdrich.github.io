@@ -1,7 +1,3 @@
-.. Econ 114 slides file, created by
-   hieroglyph-quickstart on Wed Jan  1 17:59:46 2014.
-
-
 Econ 211C
 =========
 

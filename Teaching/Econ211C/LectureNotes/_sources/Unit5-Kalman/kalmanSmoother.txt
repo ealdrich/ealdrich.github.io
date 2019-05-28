@@ -1,0 +1,254 @@
+==============================================================================
+The Kalman Smoother
+==============================================================================
+
+Kalman Equations
+==============================================================================
+Recall the basic Kalman equations
+
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{\xi}}_{t|t} & = \hat{\boldsymbol{\xi}}_{t|t-1} +
+   P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}
+   \hspace{3pt} (\boldsymbol{Y}_{t}-A^{'}\boldsymbol{x}_{t} +
+   H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}) \\
+   \hat{\boldsymbol{\xi}}_{t+1|t} & = F \hat{\boldsymbol{\xi}}_{t|t} \\
+   P_{t|t} & = P_{t|t-1} -
+   P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}H^{'}P_{t|t-1} \\
+   P_{t+1|t} & = F P_{t|t} F^{'} + Q.
+   \end{align}
+
+The State Variable
+==============================================================================
+In our development of the Kalman filter we focused attention on forecasting
+:math:`\smash{\boldsymbol{\xi}_t}` or :math:`\smash{\boldsymbol{Y}_t}`.
+
+- However, we might be inherently interested in 
+  :math:`\smash{\boldsymbol{\xi}_t}` as part of a structural model.
+  
+- In this case, we consider inference about :math:`\smash{\boldsymbol{\xi}_t}`
+  using the full sample of data :math:`\smash{\boldsymbol{\mathcal{Y}}_{T}}`:
+  
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{\xi}}_{t+1|T} & =
+   \hat{E}[\boldsymbol{\xi}_{t+1}|\boldsymbol{\mathcal{Y}}_{T}].
+   \end{align}
+  
+- Will we refer to :math:`\smash{\hat{\boldsymbol{\xi}}_{t|T}}` as the 
+  smoothed estimate of :math:`\smash{\boldsymbol{\xi}_t}` with MSE matrix
+
+.. math::
+
+   \begin{align}
+   P_{t+1|T} & =
+   E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|T})(\xi_{t} -
+   \hat{\boldsymbol{\xi}}_{t|T})^{'}],
+   \end{align}
+
+Linear Forecast Update
+==============================================================================
+If we observed :math:`\smash{\boldsymbol{\xi}_{t+1}}` we could use the
+linear forecast update equation to obtain
+
+.. math::
+
+   \begin{align}
+   \hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},
+   \boldsymbol{\mathcal{Y}}_t] & = \hat{\boldsymbol{\xi}}_{t|t} +
+   E[(\boldsymbol{\xi}_{t} - \hat{\boldsymbol{\xi}}_{t|t})
+   (\boldsymbol{\xi}_{t+1}-\hat{\boldsymbol{\xi}}_{t+1|t})^{'}] \\
+   & \hspace{1in} \times E[(\boldsymbol{\xi}_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|t})(\boldsymbol{\xi}_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|t})^{'}]^{-1} \hspace{3pt}
+   (\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|t}) \\
+   \end{align}
+
+Linear Forecast Update
+==============================================================================
+The first term in the product of the forecast update is
+
+.. math::
+
+   \begin{align}
+   E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|t})(\boldsymbol{\xi}_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|t})^{'}] & =
+   E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|t})(F\boldsymbol{\xi}_{t} +
+   \boldsymbol{v}_{t+1} - F \hat{\boldsymbol{\xi}}_{t|t})^{'}] \\
+   & = E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|t})(\boldsymbol{\xi}_{t}
+   - \hat{\boldsymbol{\xi}}_{t|t})^{'} F^{'}] \\
+   & = P_{t|t} F^{'}.
+   \end{align}
+
+- We made use of the fact that :math:`\smash{\boldsymbol{v}_{t+1}}` is not
+  correlated with :math:`\smash{\boldsymbol{\xi}_{t}}` or
+  :math:`\smash{\hat{\boldsymbol{\xi}}_{t|t}}`.
+
+Thus
+
+.. math::
+
+   \begin{align}
+   \hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_t] & =
+   \hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+   (\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|t}).
+   \end{align}
+
+Linear Forecast Update with All Data
+==============================================================================
+For :math:`\smash{j>0}` we can iterate on the state equation to express
+
+.. math::
+
+   \begin{align}
+   \boldsymbol{Y}_{t+j} & = A^{'} \boldsymbol{x}_{t+j}
+   + H^{'}(F^{j-1} \boldsymbol{\xi}_{t+1} + F^{j-2} \boldsymbol{v}_{t+2}
+   + \ldots + \boldsymbol{v}_{t+j}) + \boldsymbol{w}_{t+j}.
+   \end{align}
+
+Note that the forecast error, :math:`\smash{\boldsymbol{\xi}_t -
+\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_t]}` is
+
+- Uncorrelated with :math:`\smash{\boldsymbol{\xi}_{t+1}}` (by the
+  definition of linear projection).
+  
+- Uncorrelated with :math:`\smash{\boldsymbol{x}_{t+j},
+  \boldsymbol{w}_{t+j}, \boldsymbol{v}_{t+j}, \ldots,
+  \boldsymbol{x}_{t+2}}`.
+
+Linear Forecast Update with All Data
+==============================================================================
+Thus, :math:`\smash{\boldsymbol{\xi}_t -
+\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_t]}`
+is uncorrelated with :math:`\smash{\boldsymbol{Y}_{t+j}}` for
+:math:`\smash{j>0}` and
+
+.. math::
+
+   \begin{align}
+   \hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_T] & =
+   \hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_t] \\
+   & = \hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+   (\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|t}).
+   \end{align}
+
+Smoothed Estimate
+==============================================================================
+Note that
+
+- :math:`\smash{\hat{\boldsymbol{\xi}}_{t|t}}` and
+  :math:`\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}` are exact linear functions of
+  :math:`\smash{\boldsymbol{\mathcal{Y}}_t}`
+  
+- :math:`\smash{P_{t|t} F^{'} P_{t+1|t}^{-1}}` is a function of the fixed
+  parameters
+
+Thus, :math:`\smash{\hat{\boldsymbol{\xi}}_{t|t}}`,
+:math:`\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}`, and
+:math:`\smash{P_{t|t} F^{'} P_{t+1|t}^{-1}}` can be considered constants
+relative to :math:`\smash{\boldsymbol{\mathcal{Y}}_T}`:
+
+.. math::
+
+   \begin{align}
+   \hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\mathcal{Y}}_T] & =
+   \hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+   (\hat{E}[\boldsymbol{\xi}_{t+1}|\boldsymbol{\mathcal{Y}}_T]
+   - \hat{\boldsymbol{\xi}}_{t+1|t}) \\
+   \Rightarrow \hat{\boldsymbol{\xi}}_{t|T} & =
+   \hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+   (\hat{\boldsymbol{\xi}}_{t+1|T} - \hat{\boldsymbol{\xi}}_{t+1|t}).
+   \end{align}
+
+A Convenient Fact
+==============================================================================
+For any :math:`\smash{\tau = 1,\ldots,T}`,
+
+.. math::
+
+   \begin{align}
+   E[\boldsymbol{\xi}_{t+1} \hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}] & = 
+   E[(\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|\tau} +
+   \hat{\boldsymbol{\xi}}_{t+1|\tau})\hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}] \\
+   & = E[(\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|\tau})
+   \hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}] +
+   E[\hat{\boldsymbol{\xi}}_{t+1|\tau}
+   \hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}] \\
+   & = E[\hat{\boldsymbol{\xi}}_{t+1|\tau}
+   \hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}].
+   \end{align}
+
+where the last equality follows because the projection error
+:math:`\smash{\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|\tau}}`
+is uncorrelated with :math:`\smash{\hat{\boldsymbol{\xi}}_{t+1|\tau}}`. It
+follows that
+
+.. math::
+
+   \begin{align}
+   -& E[\hat{\boldsymbol{\xi}}_{t+1|T}
+   \hat{\boldsymbol{\xi}}_{t+1|T}^{'}] + E[\hat{\boldsymbol{\xi}}_{t+1|t}
+   \hat{\boldsymbol{\xi}}_{t+1|t}^{'}] \\
+   & \hspace{1in} = \left\{E[\boldsymbol{\xi}_{t+1}
+   \boldsymbol{\xi}_{t+1}^{'}] - E[\hat{\boldsymbol{\xi}}_{t+1|T}
+   \hat{\boldsymbol{\xi}}_{t+1|T}^{'}]\right\} -
+    \left\{E[\boldsymbol{\xi}_{t+1}
+   \boldsymbol{\xi}_{t+1}^{'}] - E[\hat{\boldsymbol{\xi}}_{t+1|t}
+   \hat{\boldsymbol{\xi}}_{t+1|t}^{'}]\right\} \\
+   & \hspace{1in} = E[(\boldsymbol{\xi}_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|T})(\boldsymbol{\xi}_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|T})^{'}] - E[(\boldsymbol{\xi}_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|t})(\boldsymbol{\xi}_{t+1} -
+   \hat{\boldsymbol{\xi}}_{t+1|t})^{'}] \\
+   & \hspace{1in} = P_{t+1|T} - P_{t+1|t}.
+   \end{align}
+
+Smoothed MSE
+==============================================================================
+For notational convenience, let
+:math:`\smash{J_t = P_{t|t} F^{'} P_{t+1|t}^{-1}}`. Using the equation for
+the smoothed estimate, we obtain
+
+.. math::
+
+   \begin{align}
+   \boldsymbol{\xi}_t - \hat{\boldsymbol{\xi}}_{t|T} & = \boldsymbol{\xi}_t
+   - \hat{\boldsymbol{\xi}}_{t|t} - J_t
+   (\hat{\boldsymbol{\xi}}_{t+1|T} - \hat{\boldsymbol{\xi}}_{t+1|t}) \\
+   \Rightarrow \boldsymbol{\xi}_t - \hat{\boldsymbol{\xi}}_{t|T}
+   + J_t \hat{\boldsymbol{\xi}}_{t+1|T} & = \boldsymbol{\xi}_t
+   - \hat{\boldsymbol{\xi}}_{t|t} + J_t \hat{\boldsymbol{\xi}}_{t+1|t}.
+   \end{align}
+   
+Multiplying both side of the equation by their transposes,
+taking expectations, and applying the convenient fact above:
+
+.. math::
+   
+   \begin{align}
+   P_{t|T} & = P_{t|t} + J_t (P_{t+1|T}-P_{t+1|t}) J_t^{'}.
+   \end{align}
+   
+The Prescription
+==============================================================================
+1. Forward iterate the Kalman filter to obtain 
+:math:`\smash{\{\hat{\boldsymbol{\xi}}_{t|t}\}_{t=1}^T}`, 
+:math:`\smash{\{\hat{\boldsymbol{\xi}}_{t+1|t}\}_{t=0}^{T-1}}`, 
+:math:`\smash{\{P_{t|t}\}_{t=1}^T}`, and
+:math:`\smash{\{P_{t+1|t}\}_{t=0}^{T-1}}`.
+
+2. Set the first smoothed estimate to 
+:math:`\smash{\hat{\boldsymbol{\xi}}_{T|T}}`.
+
+3. Backward iterate for :math:`\smash{t=T-1,\ldots,1}` on the equations
+
+.. math::
+
+   \begin{align}
+   \hat{\boldsymbol{\xi}}_{t|T} & =
+   \hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+   (\hat{\boldsymbol{\xi}}_{t+1|T} - \hat{\boldsymbol{\xi}}_{t+1|t}) \\
+   P_{t|T} & = P_{t|t} + J_t (P_{t+1|T}-P_{t+1|t}) J_t^{'}.
+   \end{align}

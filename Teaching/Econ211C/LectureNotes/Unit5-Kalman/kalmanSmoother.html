@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Kalman Smoother &mdash; Econ 114 - Advanced Quantitative Methods</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Generalized Method of Moments" href="../gmmIndex.html" />
+    <link rel="prev" title="ML Estimation of State-Space Models" href="kalmanMLE.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Econ 114
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preliminaries.html">Finance Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stationarity.html">Stationarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linearTS.html">Linear Time Series Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimation.html">Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecasting.html">Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../varProcesses.html">Vector Processes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../kalman.html">The Kalman Filter</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stateSpace.html">State Space Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kalmanFilter.html">The Kalman Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kalmanMLE.html">ML Estimation of State-Space Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The Kalman Smoother</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kalman-equations">Kalman Equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-state-variable">The State Variable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-forecast-update">Linear Forecast Update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Linear Forecast Update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-forecast-update-with-all-data">Linear Forecast Update with All Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Linear Forecast Update with All Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smoothed-estimate">Smoothed Estimate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-convenient-fact">A Convenient Fact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smoothed-mse">Smoothed MSE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-prescription">The Prescription</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gmmIndex.html">Generalized Method of Moments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unit7-Volatility/volatility.html">Time Series Models of Volatility</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Econ 114</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../kalman.html">The Kalman Filter</a> &raquo;</li>
+        
+      <li>The Kalman Smoother</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Unit5-Kalman/kalmanSmoother.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-kalman-smoother">
+<h1>The Kalman Smoother<a class="headerlink" href="#the-kalman-smoother" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="kalman-equations">
+<h2>Kalman Equations<a class="headerlink" href="#kalman-equations" title="Permalink to this headline">¶</a></h2>
+<p>Recall the basic Kalman equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{\boldsymbol{\xi}}_{t|t} &amp; = \hat{\boldsymbol{\xi}}_{t|t-1} +
+P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}
+\hspace{3pt} (\boldsymbol{Y}_{t}-A^{'}\boldsymbol{x}_{t} +
+H^{'}\hat{\boldsymbol{\xi}}_{t|t-1}) \\
+\hat{\boldsymbol{\xi}}_{t+1|t} &amp; = F \hat{\boldsymbol{\xi}}_{t|t} \\
+P_{t|t} &amp; = P_{t|t-1} -
+P_{t|t-1}H(H^{'}P_{t|t-1}H + R)^{-1}H^{'}P_{t|t-1} \\
+P_{t+1|t} &amp; = F P_{t|t} F^{'} + Q.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="the-state-variable">
+<h2>The State Variable<a class="headerlink" href="#the-state-variable" title="Permalink to this headline">¶</a></h2>
+<p>In our development of the Kalman filter we focused attention on forecasting
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_t}\)</span> or <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_t}\)</span>.</p>
+<ul class="simple">
+<li>However, we might be inherently interested in
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_t}\)</span> as part of a structural model.</li>
+<li>In this case, we consider inference about <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_t}\)</span>
+using the full sample of data <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\mathcal{Y}}_{T}}\)</span>:</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{\boldsymbol{\xi}}_{t+1|T} &amp; =
+\hat{E}[\boldsymbol{\xi}_{t+1}|\boldsymbol{\mathcal{Y}}_{T}].
+\end{align}\]</div>
+<ul class="simple">
+<li>Will we refer to <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t|T}}\)</span> as the
+smoothed estimate of <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_t}\)</span> with MSE matrix</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+P_{t+1|T} &amp; =
+E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|T})(\xi_{t} -
+\hat{\boldsymbol{\xi}}_{t|T})^{'}],
+\end{align}\]</div>
+</div>
+<div class="section" id="linear-forecast-update">
+<h2>Linear Forecast Update<a class="headerlink" href="#linear-forecast-update" title="Permalink to this headline">¶</a></h2>
+<p>If we observed <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t+1}}\)</span> we could use the
+linear forecast update equation to obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},
+\boldsymbol{\mathcal{Y}}_t] &amp; = \hat{\boldsymbol{\xi}}_{t|t} +
+E[(\boldsymbol{\xi}_{t} - \hat{\boldsymbol{\xi}}_{t|t})
+(\boldsymbol{\xi}_{t+1}-\hat{\boldsymbol{\xi}}_{t+1|t})^{'}] \\
+&amp; \hspace{1in} \times E[(\boldsymbol{\xi}_{t+1} -
+\hat{\boldsymbol{\xi}}_{t+1|t})(\boldsymbol{\xi}_{t+1} -
+\hat{\boldsymbol{\xi}}_{t+1|t})^{'}]^{-1} \hspace{3pt}
+(\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|t}) \\
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="id1">
+<h2>Linear Forecast Update<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The first term in the product of the forecast update is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|t})(\boldsymbol{\xi}_{t+1} -
+\hat{\boldsymbol{\xi}}_{t+1|t})^{'}] &amp; =
+E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|t})(F\boldsymbol{\xi}_{t} +
+\boldsymbol{v}_{t+1} - F \hat{\boldsymbol{\xi}}_{t|t})^{'}] \\
+&amp; = E[(\boldsymbol{\xi}_{t}-\hat{\boldsymbol{\xi}}_{t|t})(\boldsymbol{\xi}_{t}
+- \hat{\boldsymbol{\xi}}_{t|t})^{'} F^{'}] \\
+&amp; = P_{t|t} F^{'}.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li>We made use of the fact that <span class="math notranslate nohighlight">\(\smash{\boldsymbol{v}_{t+1}}\)</span> is not
+correlated with <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t}}\)</span> or
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t|t}}\)</span>.</li>
+</ul>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_t] &amp; =
+\hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+(\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|t}).
+\end{align}\]</div>
+</div>
+<div class="section" id="linear-forecast-update-with-all-data">
+<h2>Linear Forecast Update with All Data<a class="headerlink" href="#linear-forecast-update-with-all-data" title="Permalink to this headline">¶</a></h2>
+<p>For <span class="math notranslate nohighlight">\(\smash{j&gt;0}\)</span> we can iterate on the state equation to express</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\boldsymbol{Y}_{t+j} &amp; = A^{'} \boldsymbol{x}_{t+j}
++ H^{'}(F^{j-1} \boldsymbol{\xi}_{t+1} + F^{j-2} \boldsymbol{v}_{t+2}
++ \ldots + \boldsymbol{v}_{t+j}) + \boldsymbol{w}_{t+j}.
+\end{align}\]</div>
+<p>Note that the forecast error, <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_t -
+\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_t]}\)</span> is</p>
+<ul class="simple">
+<li>Uncorrelated with <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t+1}}\)</span> (by the
+definition of linear projection).</li>
+<li>Uncorrelated with <span class="math notranslate nohighlight">\(\smash{\boldsymbol{x}_{t+j},
+\boldsymbol{w}_{t+j}, \boldsymbol{v}_{t+j}, \ldots,
+\boldsymbol{x}_{t+2}}\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Linear Forecast Update with All Data<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Thus, <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_t -
+\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_t]}\)</span>
+is uncorrelated with <span class="math notranslate nohighlight">\(\smash{\boldsymbol{Y}_{t+j}}\)</span> for
+<span class="math notranslate nohighlight">\(\smash{j&gt;0}\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_T] &amp; =
+\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\xi}_{t+1},\boldsymbol{\mathcal{Y}}_t] \\
+&amp; = \hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+(\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|t}).
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="smoothed-estimate">
+<h2>Smoothed Estimate<a class="headerlink" href="#smoothed-estimate" title="Permalink to this headline">¶</a></h2>
+<p>Note that</p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t|t}}\)</span> and
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}\)</span> are exact linear functions of
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\mathcal{Y}}_t}\)</span></li>
+<li><span class="math notranslate nohighlight">\(\smash{P_{t|t} F^{'} P_{t+1|t}^{-1}}\)</span> is a function of the fixed
+parameters</li>
+</ul>
+<p>Thus, <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t|t}}\)</span>,
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t+1|t}}\)</span>, and
+<span class="math notranslate nohighlight">\(\smash{P_{t|t} F^{'} P_{t+1|t}^{-1}}\)</span> can be considered constants
+relative to <span class="math notranslate nohighlight">\(\smash{\boldsymbol{\mathcal{Y}}_T}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{E}[\boldsymbol{\xi}_{t}|\boldsymbol{\mathcal{Y}}_T] &amp; =
+\hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+(\hat{E}[\boldsymbol{\xi}_{t+1}|\boldsymbol{\mathcal{Y}}_T]
+- \hat{\boldsymbol{\xi}}_{t+1|t}) \\
+\Rightarrow \hat{\boldsymbol{\xi}}_{t|T} &amp; =
+\hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+(\hat{\boldsymbol{\xi}}_{t+1|T} - \hat{\boldsymbol{\xi}}_{t+1|t}).
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="a-convenient-fact">
+<h2>A Convenient Fact<a class="headerlink" href="#a-convenient-fact" title="Permalink to this headline">¶</a></h2>
+<p>For any <span class="math notranslate nohighlight">\(\smash{\tau = 1,\ldots,T}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+E[\boldsymbol{\xi}_{t+1} \hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}] &amp; =
+E[(\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|\tau} +
+\hat{\boldsymbol{\xi}}_{t+1|\tau})\hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}] \\
+&amp; = E[(\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|\tau})
+\hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}] +
+E[\hat{\boldsymbol{\xi}}_{t+1|\tau}
+\hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}] \\
+&amp; = E[\hat{\boldsymbol{\xi}}_{t+1|\tau}
+\hat{\boldsymbol{\xi}}_{t+1|\tau}^{'}].
+\end{align}\end{split}\]</div>
+<p>where the last equality follows because the projection error
+<span class="math notranslate nohighlight">\(\smash{\boldsymbol{\xi}_{t+1} - \hat{\boldsymbol{\xi}}_{t+1|\tau}}\)</span>
+is uncorrelated with <span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{t+1|\tau}}\)</span>. It
+follows that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+-&amp; E[\hat{\boldsymbol{\xi}}_{t+1|T}
+\hat{\boldsymbol{\xi}}_{t+1|T}^{'}] + E[\hat{\boldsymbol{\xi}}_{t+1|t}
+\hat{\boldsymbol{\xi}}_{t+1|t}^{'}] \\
+&amp; \hspace{1in} = \left\{E[\boldsymbol{\xi}_{t+1}
+\boldsymbol{\xi}_{t+1}^{'}] - E[\hat{\boldsymbol{\xi}}_{t+1|T}
+\hat{\boldsymbol{\xi}}_{t+1|T}^{'}]\right\} -
+ \left\{E[\boldsymbol{\xi}_{t+1}
+\boldsymbol{\xi}_{t+1}^{'}] - E[\hat{\boldsymbol{\xi}}_{t+1|t}
+\hat{\boldsymbol{\xi}}_{t+1|t}^{'}]\right\} \\
+&amp; \hspace{1in} = E[(\boldsymbol{\xi}_{t+1} -
+\hat{\boldsymbol{\xi}}_{t+1|T})(\boldsymbol{\xi}_{t+1} -
+\hat{\boldsymbol{\xi}}_{t+1|T})^{'}] - E[(\boldsymbol{\xi}_{t+1} -
+\hat{\boldsymbol{\xi}}_{t+1|t})(\boldsymbol{\xi}_{t+1} -
+\hat{\boldsymbol{\xi}}_{t+1|t})^{'}] \\
+&amp; \hspace{1in} = P_{t+1|T} - P_{t+1|t}.
+\end{align}\end{split}\]</div>
+</div>
+<div class="section" id="smoothed-mse">
+<h2>Smoothed MSE<a class="headerlink" href="#smoothed-mse" title="Permalink to this headline">¶</a></h2>
+<p>For notational convenience, let
+<span class="math notranslate nohighlight">\(\smash{J_t = P_{t|t} F^{'} P_{t+1|t}^{-1}}\)</span>. Using the equation for
+the smoothed estimate, we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\boldsymbol{\xi}_t - \hat{\boldsymbol{\xi}}_{t|T} &amp; = \boldsymbol{\xi}_t
+- \hat{\boldsymbol{\xi}}_{t|t} - J_t
+(\hat{\boldsymbol{\xi}}_{t+1|T} - \hat{\boldsymbol{\xi}}_{t+1|t}) \\
+\Rightarrow \boldsymbol{\xi}_t - \hat{\boldsymbol{\xi}}_{t|T}
++ J_t \hat{\boldsymbol{\xi}}_{t+1|T} &amp; = \boldsymbol{\xi}_t
+- \hat{\boldsymbol{\xi}}_{t|t} + J_t \hat{\boldsymbol{\xi}}_{t+1|t}.
+\end{align}\end{split}\]</div>
+<p>Multiplying both side of the equation by their transposes,
+taking expectations, and applying the convenient fact above:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+P_{t|T} &amp; = P_{t|t} + J_t (P_{t+1|T}-P_{t+1|t}) J_t^{'}.
+\end{align}\]</div>
+</div>
+<div class="section" id="the-prescription">
+<h2>The Prescription<a class="headerlink" href="#the-prescription" title="Permalink to this headline">¶</a></h2>
+<p>1. Forward iterate the Kalman filter to obtain
+<span class="math notranslate nohighlight">\(\smash{\{\hat{\boldsymbol{\xi}}_{t|t}\}_{t=1}^T}\)</span>,
+<span class="math notranslate nohighlight">\(\smash{\{\hat{\boldsymbol{\xi}}_{t+1|t}\}_{t=0}^{T-1}}\)</span>,
+<span class="math notranslate nohighlight">\(\smash{\{P_{t|t}\}_{t=1}^T}\)</span>, and
+<span class="math notranslate nohighlight">\(\smash{\{P_{t+1|t}\}_{t=0}^{T-1}}\)</span>.</p>
+<p>2. Set the first smoothed estimate to
+<span class="math notranslate nohighlight">\(\smash{\hat{\boldsymbol{\xi}}_{T|T}}\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li>Backward iterate for <span class="math notranslate nohighlight">\(\smash{t=T-1,\ldots,1}\)</span> on the equations</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{\boldsymbol{\xi}}_{t|T} &amp; =
+\hat{\boldsymbol{\xi}}_{t|t} + P_{t|t} F^{'} P_{t+1|t}^{-1}
+(\hat{\boldsymbol{\xi}}_{t+1|T} - \hat{\boldsymbol{\xi}}_{t+1|t}) \\
+P_{t|T} &amp; = P_{t|t} + J_t (P_{t+1|T}-P_{t+1|t}) J_t^{'}.
+\end{align}\end{split}\]</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gmmIndex.html" class="btn btn-neutral float-right" title="Generalized Method of Moments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kalmanMLE.html" class="btn btn-neutral float-left" title="ML Estimation of State-Space Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Eric M. Aldrich
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
