@@ -2,7 +2,7 @@ body {
       background-color: #f8f6dd;
       text-align: center;
       margin: 0px 0px 50px 0px;
-      font-family: Neuton;
+      font-family: Varela;
       font-size: 14px;
       color: #666666;
 }
@@ -24,7 +24,7 @@ div.name {
       font-weight: 400;
       font-size: 25px;
       line-height: 2em;
-      letter-spacing: 4px;
+      letter-spacing: 2px;
       color: #0099ff;
       opacity: 0.95;
 }
@@ -92,7 +92,7 @@ a:visited {
 }
 
 #section {
-      font-family: 'PT Serif';
+      font-family: 'Varela';
       font-size: 22px;
       color: #ae0f0f;
       margin-top: 20px;
