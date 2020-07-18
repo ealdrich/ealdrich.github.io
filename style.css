@@ -48,6 +48,7 @@ div.outer {
 div.banner {
       height: 174px;
       min-width: 1436px;
+      background: url('Images/background_devon.jpg') no-repeat center;
       background-size: 100%;
 }
 
