@@ -133,46 +133,46 @@ div.outer {
   -webkit-animation-name: bannerFadeInOut;
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-iteration-count: infinite;
-  -webkit-animation-duration: 8s;
+  -webkit-animation-duration: 50s;
 
   -moz-animation-name: bannerFadeInOut;
   -moz-animation-timing-function: ease-in-out;
   -moz-animation-iteration-count: infinite;
-  -moz-animation-duration: 8s;
+  -moz-animation-duration: 50s;
 
   -o-animation-name: bannerFadeInOut;
   -o-animation-timing-function: ease-in-out;
   -o-animation-iteration-count: infinite;
-  -o-animation-duration: 8s;
+  -o-animation-duration: 50s;
 
   animation-name: bannerFadeInOut;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  animation-duration: 8s;
+  animation-duration: 50s;
 }
 #banner img:nth-of-type(1) {
-  -webkit-animation-delay: 6s;
-  -moz-animation-delay: 6s;
-  -o-animation-delay: 6s;
-  animation-delay: 6s;
+  -webkit-animation-delay: 40s;
+  -moz-animation-delay: 40s;
+  -o-animation-delay: 40s;
+  animation-delay: 40s;
 }
 #banner img:nth-of-type(2) {
-  -webkit-animation-delay: 4s;
-  -moz-animation-delay: 4s;
-  -o-animation-delay: 4s;
-  animation-delay: 4s;
+  -webkit-animation-delay: 30s;
+  -moz-animation-delay: 30s;
+  -o-animation-delay: 30s;
+  animation-delay: 30s;
 }
 #banner img:nth-of-type(3) {
-  -webkit-animation-delay: 2s;
-  -moz-animation-delay: 2s;
-  -o-animation-delay: 2s;
-  animation-delay: 2s;
+  -webkit-animation-delay: 20s;
+  -moz-animation-delay: 20s;
+  -o-animation-delay: 20s;
+  animation-delay: 20s;
 }
 #banner img:nth-of-type(4) {
-  -webkit-animation-delay: 0;
-  -moz-animation-delay: 0;
-  -o-animation-delay: 0;
-  animation-delay: 0;
+  -webkit-animation-delay: 10;
+  -moz-animation-delay: 10;
+  -o-animation-delay: 10;
+  animation-delay: 10;
 }
 
 span.mainMenu {
