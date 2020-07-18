@@ -61,22 +61,28 @@ opacity:0;
 }
 
 #banner {
+      position: relative;
       height: 174px;
-      min-width: 1436px;
+      width: 1436px;
+      margin: 0 auto;
+}
+
+#banner img {
+      position: absolute;
+      left: 0;
       -webkit-transition: opacity 1s ease-in-out;
       -moz-transition: opacity 1s ease-in-out;
       -o-transition: opacity 1s ease-in-out;
       transition: opacity 1s ease-in-out;
 }
 
-#banner.top {
+#banner img.bottom {
       animation-name: bannerFadeInOut;
       animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
       animation-duration: 10s;
       animation-direction: alternate;
 }
-
 span.mainMenu {
       font-family: 'Varela';
       font-weight: 50;
