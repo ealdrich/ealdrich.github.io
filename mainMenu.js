@@ -7,4 +7,4 @@ document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'R
 document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Teaching/">TEACHING</a></span>')
 document.write('</div>')
 document.write('</div>')
-document.write('<div class="banner"><img src="Images/background_devon.jpg" /></div>')
+document.write('<div id="banner"><img id="banner" src="Images/background_devon.jpg" /></div>')
