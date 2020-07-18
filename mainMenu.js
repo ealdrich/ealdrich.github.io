@@ -7,7 +7,4 @@ document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'R
 document.write('<span class="mainMenu"><a class="mainMenu" href="'+rootFolder+'Teaching/">TEACHING</a></span>')
 document.write('</div>')
 document.write('</div>')
-document.write('<div id="banner">
-               <img id="banner" class="top" src="Images/background_devon.jpg" />
-               <img id="banner" class="bottom" src="Images/background_lugano.jpg" />
-               </div>')
+document.write('<div id="banner"><img id="banner" class="top" src="Images/background_devon.jpg" /><img id="banner" class="bottom" src="Images/background_lugano.jpg" /></div>')
