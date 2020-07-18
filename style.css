@@ -63,8 +63,6 @@ opacity:0;
 #banner {
       height: 174px;
       min-width: 1436px;
-      #background: url('Images/background_devon.jpg') no-repeat center;
-      #background-size: 100%;
       -webkit-transition: opacity 1s ease-in-out;
       -moz-transition: opacity 1s ease-in-out;
       -o-transition: opacity 1s ease-in-out;
@@ -72,7 +70,7 @@ opacity:0;
 }
 
 #banner.top {
-      animation-name: cf3FadeInOut;
+      animation-name: bannerFadeInOut;
       animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
       animation-duration: 10s;
