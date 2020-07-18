@@ -45,7 +45,7 @@ div.outer {
       line-height: 25px;
 }
 
-div.banner {
+#banner {
       height: 174px;
       min-width: 1436px;
       #background: url('Images/background_devon.jpg') no-repeat center;
