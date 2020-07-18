@@ -45,11 +45,38 @@ div.outer {
       line-height: 25px;
 }
 
+@keyframes bannerFadeInOut {
+  0% {
+  opacity:1;
+}
+45% {
+opacity:1;
+}
+55% {
+opacity:0;
+}
+100% {
+opacity:0;
+}
+}
+
 #banner {
       height: 174px;
       min-width: 1436px;
       #background: url('Images/background_devon.jpg') no-repeat center;
       #background-size: 100%;
+      -webkit-transition: opacity 1s ease-in-out;
+      -moz-transition: opacity 1s ease-in-out;
+      -o-transition: opacity 1s ease-in-out;
+      transition: opacity 1s ease-in-out;
+}
+
+#banner.top {
+      animation-name: cf3FadeInOut;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-duration: 10s;
+      animation-direction: alternate;
 }
 
 span.mainMenu {
