@@ -119,8 +119,7 @@ div.outer {
 
 #banner {
       position: relative;
-      height: 174px;
-      width: 1436px;
+      width: 100%;
       margin: 0 auto;
 }
 
