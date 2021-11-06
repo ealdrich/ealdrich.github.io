@@ -12,6 +12,11 @@ div.mainMenu {
       background-color: #222222;
 }
 
+div.mainMenuOuter {
+      position: relative;
+      min-height: 200px;
+}
+
 div.subMenu {
       height: 50px;
       background-color: #222222;
